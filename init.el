@@ -79,6 +79,7 @@
 (global-unset-key [?\C-x ?\C-z])
 (global-set-key [f1] 'menu-bar-mode)
 (global-set-key (kbd "C-z") 'undo)
+(global-hl-line-mode 1)
 ;;BOOKMARKS
 (define-key global-map [f9] 'bookmark-jump)
 (define-key global-map [f10] 'bookmark-set)
@@ -118,3 +119,55 @@
   "Switch emacs to full screen mode"
   (interactive)
   (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
+
+
+
+;;; Setup rails
+(add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
+(require 'rails-autoload)
+
+;;yassnippet
+(add-to-list 'load-path (concat dotfiles-dir "/yasnippet-0.6.1c"))
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+(yas/load-directory (concat dotfiles-dir "/yasnippet-0.6.1c/snippets"))
+
+
+(require 'org-install)
+;; The following lines are always needed.  Choose your own keys.
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+(global-font-lock-mode 1)                     ; for all buffers
+(transient-mark-mode 1)
+(org-remember-insinuate)
+(setq org-directory "~/Dropbox/org")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cr" 'org-remember)
+(setq org-remember-templates
+      '(("Todo" ?t "* TODO %? %^g\n %i\n" (concat org-directory "/notes.org") "Tasks")
+        ("Journal" ?j "\n* %^{topic} %T \n%i%?\n" (concat org-directory "/notes.org") "Journal")
+        ("Notes" ?n "* %U %?\n\n  %i\n %a"(concat org-directory "/notes.org") "Note")
+        ("Idea" ?i "* %^{Title}\n  %i\n  %a" (concat org-directory "/notes.org") "New Ideas")))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (org-set-local 'yas/trigger-key [tab])
+            (define-key yas/keymap [tab] 'yas/next-field-group)))
+
+
+;;AUTOCOMPLETE
+(add-to-list 'load-path (concat dotfiles-dir "/auto-complete-1.3"))
+(require 'auto-complete-config)
+(ac-config-default)
+
+;; dirty fix for having AC everywhere
+(define-globalized-minor-mode real-global-auto-complete-mode
+  auto-complete-mode (lambda ()
+                       (if (not (minibufferp (current-buffer)))
+                           (auto-complete-mode 1))
+                       ))
+(real-global-auto-complete-mode t)
+(setq rsense-home "/home/ignacy/bin/rsense-0.3")
+(add-to-list 'load-path (concat rsense-home "/etc"))
+(require 'rsense)
