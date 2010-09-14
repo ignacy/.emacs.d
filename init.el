@@ -113,3 +113,8 @@
 
 (global-set-key (kbd "C-c d") 'duplicate-line)
 
+;; install wmctrl (sudo apt-get install wmctrl)
+(defun switch-full-screen ()
+  "Switch emacs to full screen mode"
+  (interactive)
+  (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
