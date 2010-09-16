@@ -1,3 +1,6 @@
 [submodule "emacs-rails-reloaded"]
 	path = emacs-rails-reloaded
 	url = git@github.com:ignacy/emacs-rails-reloaded.git
+[submodule "rhtml"]
+	path = rhtml
+	url = http://github.com/eschulte/rhtml.git

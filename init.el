@@ -1,8 +1,16 @@
 (setq dotfiles-dir "~/.emacs.d")
 (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
 
+
+(setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
+(defun djcb-ditaa-generate ()
+  (interactive)
+  (shell-command
+    (concat ditaa-cmd " " buffer-file-name)))
+
 (set-scroll-bar-mode 'right)
 (setq visible-bell t)
+(show-paren-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -26,6 +34,17 @@
    kept-new-versions 6
    kept-old-versions 2
    version-control t)       ; use versioned backups
+
+
+(load-file (concat imoryc-dir "/markdown-mode.el"))
+(autoload 'markdown-mode "markdown-mode.el"
+   "Major mode for editing Markdown files" t) 
+(setq auto-mode-alist
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist
+   (cons '("\\.text" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist
+   (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
 
 (defun stop-using-minibuffer ()
@@ -124,14 +143,17 @@
 
 ;;; Setup rails
 (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
+(add-to-list 'load-path (concat dotfiles-dir "/inf-ruby-2.1"))
 (require 'rails-autoload)
+(add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
+(require 'rhtml-mode)
+
 
 ;;yassnippet
 (add-to-list 'load-path (concat dotfiles-dir "/yasnippet-0.6.1c"))
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
 (yas/load-directory (concat dotfiles-dir "/yasnippet-0.6.1c/snippets"))
-
 
 (require 'org-install)
 ;; The following lines are always needed.  Choose your own keys.
@@ -154,6 +176,14 @@
           (lambda ()
             (org-set-local 'yas/trigger-key [tab])
             (define-key yas/keymap [tab] 'yas/next-field-group)))
+
+
+(setq 
+  bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
+  bookmark-save-flag 1)                        ;; autosave each change)
+
+(define-key global-map [f9] 'bookmark-jump)
+(define-key global-map [f10] 'bookmark-set)
 
 
 ;;AUTOCOMPLETE

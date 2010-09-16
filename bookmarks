@@ -1,0 +1,9 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("init"
+  (filename . "~/.emacs.d/init.el")
+  (front-context-string . "(setq dotfiles-d")
+  (rear-context-string)
+  (position . 1)))
