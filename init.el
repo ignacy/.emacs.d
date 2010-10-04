@@ -2,6 +2,10 @@
 (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
 
 
+(load-file (concat imoryc-dir "/fuzzy.el"))
+(require 'fuzzy)
+(turn-on-fuzzy-isearch)
+
 (setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
 (defun djcb-ditaa-generate ()
   (interactive)
@@ -104,8 +108,8 @@
 (define-key global-map [f10] 'bookmark-set)
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
-(global-set-key "\C-s" 'isearch-forward-regexp)
-(global-set-key "\C-r" 'isearch-backward-regexp)
+;;(global-set-key "\C-s" 'isearch-forward-regexp)
+;;(global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-,") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-l") 'highlight-lines-matching-regexp)
@@ -201,3 +205,22 @@
 (setq rsense-home "/home/ignacy/bin/rsense-0.3")
 (add-to-list 'load-path (concat rsense-home "/etc"))
 (require 'rsense)
+
+(define-key isearch-mode-map (kbd "C-o")
+  (lambda ()
+    (interactive)
+    (let ((case-fold-search isearch-case-fold-search))
+      (occur (if isearch-regexp isearch-string
+               (regexp-quote isearch-string))))))
+
+
+;;(add-to-list 'load-path (concat dotfiles-dir "/colo;; r-theme-6.6.0"))
+;; (load-file (concat imoryc-dir "/colors/color-theme-g0sub.el"))
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-g0sub)))
+
+(setq font-use-system-font t)
+

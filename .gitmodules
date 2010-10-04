@@ -4,3 +4,6 @@
 [submodule "rhtml"]
 	path = rhtml
 	url = http://github.com/eschulte/rhtml.git
+[submodule "haskell-mode"]
+	path = haskell-mode
+	url = http://github.com/jwiegley/haskell-mode.git
