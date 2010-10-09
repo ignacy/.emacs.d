@@ -1,50 +1,50 @@
-((("be_false" .
+((("do_index" .
    [1 0 0 0 0 0 0 0])
-  ("started?" .
-   [0 0 0 1 0 0 0 0])
-  ("false" .
-   [1 0 0 0 0])
-  ("commited" .
-   [1 0 0 0 1 0 0 0])
-  ("get_uuid" .
-   [0 0 0 0 1 0 0 0])
-  ("start" .
-   [1 0 0 0 0])
-  ("once" .
-   [1 0 0 0])
-  ("UnrollbackableTransaction" .
-   [0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("uuid" .
-   [4 0 0 0])
-  ("be_true" .
-   [2 0 0 0 0 0 0])
-  ("should" .
-   [2 0 0 1 0 0])
-  ("begin" .
-   [1 0 0 0 0])
-  ("nil?" .
-   [2 0 0 0])
-  ("bomber" .
-   [3 0 0 0 0 0])
-  ("memory" .
-   [4 0 0 0 0 0])
-  ("min" .
-   [1 0 0])
-  ("tetris" .
-   [2 0 0 0 0 0])
-  ("do" .
-   [3 0])
-  ("task" .
-   [1 0 0 0])
-  ("desc" .
-   [1 0 0 0])
-  ("/home/ignacy/.xmonad/hooks/startup" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("/home/ignacy/.xmonad/hooks/" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("~/Firefox_wallpaper.png" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("def" .
    [1 0 0])
-  ("do_index" .
+  ("~/Firefox_wallpaper.png" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("/home/ignacy/.xmonad/hooks/" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("/home/ignacy/.xmonad/hooks/startup" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("desc" .
+   [1 0 0 0])
+  ("task" .
+   [1 0 0 0])
+  ("do" .
+   [3 0])
+  ("tetris" .
+   [2 0 0 0 0 0])
+  ("min" .
+   [1 0 0])
+  ("memory" .
+   [4 0 0 0 0 0])
+  ("bomber" .
+   [3 0 0 0 0 0])
+  ("nil?" .
+   [2 0 0 0])
+  ("begin" .
+   [1 0 0 0 0])
+  ("should" .
+   [2 0 0 1 0 0])
+  ("be_true" .
+   [2 0 0 0 0 0 0])
+  ("uuid" .
+   [4 0 0 0])
+  ("UnrollbackableTransaction" .
+   [0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("once" .
+   [1 0 0 0])
+  ("start" .
+   [1 0 0 0 0])
+  ("get_uuid" .
+   [0 0 0 0 1 0 0 0])
+  ("commited" .
+   [1 0 0 0 1 0 0 0])
+  ("false" .
+   [1 0 0 0 0])
+  ("started?" .
+   [0 0 0 1 0 0 0 0])
+  ("be_false" .
    [1 0 0 0 0 0 0 0])))
