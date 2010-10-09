@@ -2,9 +2,8 @@
 (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
 
 
-(load-file (concat imoryc-dir "/fuzzy.el"))
-(require 'fuzzy)
-(turn-on-fuzzy-isearch)
+(load-file (concat dotfiles-dir "/haskell-mode/haskell-site-file.el"))
+
 
 (setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
 (defun djcb-ditaa-generate ()
@@ -102,14 +101,14 @@
 (global-unset-key [?\C-x ?\C-z])
 (global-set-key [f1] 'menu-bar-mode)
 (global-set-key (kbd "C-z") 'undo)
-(global-hl-line-mode 1)
+;; (global-hl-line-mode 1)
 ;;BOOKMARKS
 (define-key global-map [f9] 'bookmark-jump)
 (define-key global-map [f10] 'bookmark-set)
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
-;;(global-set-key "\C-s" 'isearch-forward-regexp)
-;;(global-set-key "\C-r" 'isearch-backward-regexp)
+(global-set-key "\C-s" 'isearch-forward-regexp)
+(global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-,") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-l") 'highlight-lines-matching-regexp)
@@ -214,7 +213,7 @@
                (regexp-quote isearch-string))))))
 
 
-;;(add-to-list 'load-path (concat dotfiles-dir "/colo;; r-theme-6.6.0"))
+;; (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 ;; (load-file (concat imoryc-dir "/colors/color-theme-g0sub.el"))
 ;; (require 'color-theme)
 ;; (eval-after-load "color-theme"
@@ -223,4 +222,33 @@
 ;;      (color-theme-g0sub)))
 
 (setq font-use-system-font t)
+
+(require 'flymake)
+
+;; I don't like the default colors :)
+(set-face-background 'flymake-errline "red4")
+(set-face-background 'flymake-warnline "dark slate blue")
+
+;; Invoke ruby with '-c' to get syntax checking
+(defun flymake-ruby-init ()
+  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+	 (local-file  (file-relative-name
+                       temp-file
+                       (file-name-directory buffer-file-name))))
+    (list "ruby" (list "-c" local-file))))
+
+(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
+(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+
+(push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
+
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+
+	     ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
+	     (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
+		 (flymake-mode))
+	     ))
+
 
