@@ -7,3 +7,6 @@
 [submodule "haskell-mode"]
 	path = haskell-mode
 	url = http://github.com/jwiegley/haskell-mode.git
+[submodule "feature-mode"]
+	path = feature-mode
+	url = http://github.com/michaelklishin/cucumber.el.git
