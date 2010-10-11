@@ -217,13 +217,13 @@
                (regexp-quote isearch-string))))))
 
 
-;; (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
-;; (load-file (concat imoryc-dir "/colors/color-theme-g0sub.el"))
-;; (require 'color-theme)
-;; (eval-after-load "color-theme"
-;;   '(progn
-;;      (color-theme-initialize)
-;;      (color-theme-g0sub)))
+(add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
+(load-file (concat imoryc-dir "/colors/color-theme-sunburst.el"))
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-tm)))
 
 (setq font-use-system-font t)
 
