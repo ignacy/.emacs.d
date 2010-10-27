@@ -45,7 +45,7 @@
 
 (load-file (concat imoryc-dir "/markdown-mode.el"))
 (autoload 'markdown-mode "markdown-mode.el"
-   "Major mode for editing Markdown files" t) 
+   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
    (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist
@@ -185,7 +185,7 @@
             (define-key yas/keymap [tab] 'yas/next-field-group)))
 
 
-(setq 
+(setq
   bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
   bookmark-save-flag 1)                        ;; autosave each change)
 
@@ -218,12 +218,12 @@
 
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
-(load-file (concat imoryc-dir "/colors/color-theme-sunburst.el"))
+;;(load-file (concat imoryc-dir "/colors/color-theme-sunburst.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-tm)))
+     (color-theme-high-contrast)))
 
 (setq font-use-system-font t)
 
@@ -237,7 +237,7 @@
 ;; (defun flymake-ruby-init ()
 ;;   (let* ((temp-file   (flymake-init-create-temp-buffer-copy
 ;;                        'flymake-create-temp-inplace))
-;; 	 (local-file  (file-relative-name
+;;       (local-file  (file-relative-name
 ;;                        temp-file
 ;;                        (file-name-directory buffer-file-name))))
 ;;     (list "ruby" (list "-c" local-file))))
@@ -250,13 +250,49 @@
 ;; (add-hook 'ruby-mode-hook
 ;;           '(lambda ()
 
-;; 	     ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
-;; 	     (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
-;; 		 (flymake-mode))
-;; 	     ))
+;;           ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
+;;           (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
+;;               (flymake-mode))
+;;           ))
 
+(global-set-key (kbd "C-x b") 'bs-show)
+(global-set-key [C-tab] 'bs-show)
+;; Moje funkcje
+
+(defun im/find-note (note)
+  "Find note in org mode notes file"
+  (interactive "sWpisz szukane slowo: ")
+  (find-file "/home/ignacy/Dropbox/org/notes.org")
+  (re-search-forward note)
+  (point))
 
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+(global-set-key (kbd "<right>") 'use-emacs-keys)
+(global-set-key (kbd "<left>") 'use-emacs-keys)
+(global-set-key (kbd "<down>") 'use-emacs-keys)
+(global-set-key (kbd "<up>") 'use-emacs-keys)
+
+(defun use-emacs-keys ()
+  (interactive)
+  "Remind me to use emacs move keys not arrows!!"
+  (message "Use emacs keys you lazy bastard!!"))
+
+(put 'narrow-to-region 'disabled nil)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Dropbox/org/todo.org"))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
