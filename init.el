@@ -66,25 +66,28 @@
 ;; IBUFFER Settings
 (defalias 'list-buffers 'ibuffer)
 (setq ibuffer-show-empty-filter-groups nil)
-(setq ibuffer-shrink-to-minimum-size t)
+;;(setq ibuffer-shrink-to-minimum-size t)
 (setq ibuffer-always-show-last-buffer nil)
 (setq ibuffer-sorting-mode 'recency)
+(setq ibuffer-formats '((mark modified read-only " "
+      (name 30 30 :left :elide)
+      " " filename-and-process)))
+
 (setq ibuffer-use-header-line t)
+(require 'ibuf-ext)
+(add-to-list 'ibuffer-never-show-predicates "^\\*")
 (setq ibuffer-saved-filter-groups
       (quote (("default"
+               ("TERMINAL" (name . "^\\*terminal\\*$"))
+               ("middleware" (filename . "/code/middleware/"))
+               ("fyre" (filename . "/code/webapp/"))
+               ("ruby" (mode . ruby-mode))
+               ("javascript" (name . "\\.js.erb$\\|.js$"))
                ("ogórki" (name . "\\.feature\$"))
                ("dired" (mode . dired-mode))
                ("Org" (mode . org-mode))
-               ("TERMINAL" (name . "^\\*terminal\\*$"))
-               ("ruby" (mode . ruby-mode))
-               ("javascript" (name . "\\.js.erb$\\|.js$"))
                ("haml" (mode . haml-mode))
-               ("elisp" (name . "\\.el\$"))
-               ("emacs" (or
-                         (name . "^\\*scratch\\*$")
-                         (name . "^\\*anything\\*$")
-                         (name . "^\\*WoMan-Log\\*$")
-                         (name . "^\\*Messages\\*$")))))))
+               ("elisp" (name . "\\.el\$"))))))
 
 (add-hook 'ibuffer-mode-hook
           (lambda ()
@@ -125,7 +128,7 @@
     (let ((recent-buffer-name (buffer-name)))
       (ibuffer)
       (ibuffer-jump-to-buffer recent-buffer-name)))
-  (global-set-key [(f12)] 'my-ibuffer)
+(global-set-key [(f12)] 'my-ibuffer)
 (global-set-key [f11] 'switch-full-screen)
 
 
@@ -179,6 +182,9 @@
         ("Journal" ?j "\n* %^{topic} %T \n%i%?\n" (concat org-directory "/notes.org") "Journal")
         ("Notes" ?n "* %U %?\n\n  %i\n %a"(concat org-directory "/notes.org") "Note")
         ("Idea" ?i "* %^{Title}\n  %i\n  %a" (concat org-directory "/notes.org") "New Ideas")))
+
+(setq org-agenda-files "~/Dropbox/org/notes.org")
+
 (add-hook 'org-mode-hook
           (lambda ()
             (org-set-local 'yas/trigger-key [tab])
@@ -218,42 +224,14 @@
 
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
-;;(load-file (concat imoryc-dir "/colors/color-theme-sunburst.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-g0sub.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-high-contrast)))
+     (color-theme-g0sub)))
 
 (setq font-use-system-font t)
-
-;; (require 'flymake)
-
-;; ;; I don't like the default colors :)
-;; (set-face-background 'flymake-errline "red4")
-;; (set-face-background 'flymake-warnline "dark slate blue")
-
-;; ;; Invoke ruby with '-c' to get syntax checking
-;; (defun flymake-ruby-init ()
-;;   (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-;;                        'flymake-create-temp-inplace))
-;;       (local-file  (file-relative-name
-;;                        temp-file
-;;                        (file-name-directory buffer-file-name))))
-;;     (list "ruby" (list "-c" local-file))))
-
-;; (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
-;; (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-
-;; (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
-
-;; (add-hook 'ruby-mode-hook
-;;           '(lambda ()
-
-;;           ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
-;;           (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
-;;               (flymake-mode))
-;;           ))
 
 (global-set-key (kbd "C-x b") 'bs-show)
 (global-set-key [C-tab] 'bs-show)
@@ -289,7 +267,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Dropbox/org/todo.org"))))
+ '(org-agenda-files (quote ("~/Dropbox/org/notes.org"))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.

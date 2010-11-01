@@ -3,27 +3,28 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("customer_show_view"
-  (filename . "~/code/middleware/app/views/customers/show.html.haml")
-  (front-context-string . "\n%tbody\n  %tr\n  ")
-  (rear-context-string . "_to 'Calls', '#'")
-  (position . 49))
- ("rc.lua	"
-  (filename . "~/.config/awesome/rc.lua")
-  (front-context-string . "-- Standard awes")
-  (rear-context-string)
-  (position . 1))
- ("org-remember-last-stored"
-  (filename . "~/Dropbox/org/notes.org")
-  (front-context-string . "** [2010-10-15 p")
-  (rear-context-string . "//:~\n\n#+END_SRC\n")
-  (position . 53322))
- ("zshr"
-  (filename . "~/.zshrc")
-  (front-context-string . "# Lines configur")
-  (rear-context-string)
-  (position . 1))
- ("init"
-  (filename . "~/.emacs.d/init.el")
-  (front-context-string . "(setq dotfiles-d")
-  (rear-context-string)
-  (position . 1)))
+ (filename . "~/code/middleware/app/views/customers/show.html.haml")
+ (front-context-string . "\n%tbody\n  %tr\n  ")
+ (rear-context-string . "_to 'Calls', '#'")
+ (position . 49))
+("rc.lua	"
+ (filename . "~/.config/awesome/rc.lua")
+ (front-context-string . "-- Standard awes")
+ (rear-context-string)
+ (position . 1))
+("org-remember-last-stored"
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** [2010-10-29 p")
+ (rear-context-string . "owanym recznie?\n")
+ (position . 56727))
+("zshr"
+ (filename . "~/.zshrc")
+ (front-context-string . "# Lines configur")
+ (rear-context-string)
+ (position . 1))
+("init"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "(setq dotfiles-d")
+ (rear-context-string)
+ (position . 1))
+)
