@@ -15,7 +15,41 @@
   (shell-command
     (concat ditaa-cmd " " buffer-file-name)))
 
-(set-scroll-bar-mode 'right)
+
+(setq default-mode-line-format
+      (quote
+       (#("-" 0 1
+          (help-echo
+           "mouse-1: select window, mouse-2: delete others ..."))
+        mode-line-mule-info
+        mode-line-modified
+        mode-line-frame-identification
+        "    "
+        mode-line-buffer-identification
+        "    "
+        (:eval (substring
+                (system-name) 0 (string-match "\\..+" (system-name))))
+        ":"
+        default-directory
+        #(" " 0 1
+          (help-echo
+           "mouse-1: select window, mouse-2: delete others ..."))
+        (line-number-mode " Line %l ")
+        global-mode-string
+        #("   %[(" 0 6
+          (help-echo
+           "mouse-1: select window, mouse-2: delete others ..."))
+        (:eval (mode-line-mode-name))
+        mode-line-process
+        minor-mode-alist
+        #("%n" 0 2 (help-echo "mouse-2: widen" local-map (keymap ...)))
+        ")%] "
+        (-3 . "%P")
+        ;;   "-%-"
+        )))
+
+(scroll-bar-mode -1)
+;;(set-scroll-bar-mode 'right)
 (setq visible-bell t)
 (show-paren-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -26,7 +60,13 @@
 (setq backup-inhibited t)
 (global-linum-mode 1)
 (setq linum-format "%3d  ")
+(global-set-key [(control h)] 'backward-kill-word)
+(global-set-key [(control backspace)] 'backward-kill-word)
+(global-set-key [(meta delete)] 'backward-kill-word)
 
+(define-key key-translation-map [?\C-h] [?\C-?])
+
+(setq x-select-enable-clipboard t)
 (setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode nil)
 (setq tab-width 2)
@@ -224,12 +264,12 @@
 
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
-(load-file (concat imoryc-dir "/colors/color-theme-g0sub.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-gruber-darker.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-g0sub)))
+     (color-theme-gruber-darker)))
 
 (setq font-use-system-font t)
 
@@ -256,6 +296,28 @@
 (global-set-key (kbd "<down>") 'use-emacs-keys)
 (global-set-key (kbd "<up>") 'use-emacs-keys)
 
+(defun ruby-interpolate ()
+  "In a double quoted string, interpolate."
+  (interactive)
+  (insert "#")
+  (let ((properties (text-properties-at (point))))
+    (when (and
+           (memq 'font-lock-string-face properties)
+           (save-excursion
+             (ruby-forward-string "\"" (line-end-position) t)))
+      (insert "{}")
+      (backward-char 1))))
+
+(define-key ruby-mode-map (kbd "#") 'ruby-interpolate)
+(setq confirm-nonexistent-file-or-buffer nil)
+(setq kill-buffer-query-functions
+  (remq 'process-kill-buffer-query-function
+         kill-buffer-query-functions))
+
+(setq ibuffer-expert t)
+(setq ibuffer-show-empty-filter-groups nil)
+
+
 (defun use-emacs-keys ()
   (interactive)
   "Remind me to use emacs move keys not arrows!!"
@@ -267,10 +329,6 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Dropbox/org/notes.org"))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+ '(menu-bar-mode t)
+ '(org-agenda-files (quote ("~/Dropbox/org/notes.org")))
+ '(show-paren-mode t))

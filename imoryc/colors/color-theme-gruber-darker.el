@@ -1,4 +1,4 @@
-;; color-theme-gruber-dark.el
+ ;; color-theme-gruber-dark.el
 ;; Revision 1
 ;;
 ;; Copyright (C) 2009-2010 Jason R. Blevins
