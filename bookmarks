@@ -14,9 +14,9 @@
  (position . 1))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** Using ruby ge")
- (rear-context-string . "\n   - nawigacja\n")
- (position . 60868))
+ (front-context-string . "** wtyczka do li")
+ (rear-context-string . " uczenie innych\n")
+ (position . 67719))
 ("zshr"
  (filename . "~/.zshrc")
  (front-context-string . "# Lines configur")
