@@ -4,6 +4,10 @@
 
 (load-file (concat dotfiles-dir "/haskell-mode/haskell-site-file.el"))
 
+(add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1"))
+(add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1/emacs"))
+(require 'rdebug)
+
 (add-to-list 'load-path (concat dotfiles-dir "/feature-mode"))
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
@@ -16,39 +20,13 @@
     (concat ditaa-cmd " " buffer-file-name)))
 
 
-(setq default-mode-line-format
-      (quote
-       (#("-" 0 1
-          (help-echo
-           "mouse-1: select window, mouse-2: delete others ..."))
-        mode-line-mule-info
-        mode-line-modified
-        mode-line-frame-identification
-        "    "
-        mode-line-buffer-identification
-        "    "
-        (:eval (substring
-                (system-name) 0 (string-match "\\..+" (system-name))))
-        ":"
-        default-directory
-        #(" " 0 1
-          (help-echo
-           "mouse-1: select window, mouse-2: delete others ..."))
-        (line-number-mode " Line %l ")
-        global-mode-string
-        #("   %[(" 0 6
-          (help-echo
-           "mouse-1: select window, mouse-2: delete others ..."))
-        (:eval (mode-line-mode-name))
-        mode-line-process
-        minor-mode-alist
-        #("%n" 0 2 (help-echo "mouse-2: widen" local-map (keymap ...)))
-        ")%] "
-        (-3 . "%P")
-        ;;   "-%-"
-        )))
-
 (scroll-bar-mode -1)
+(cua-mode t)
+(setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
+(transient-mark-mode 1) ;; No region when it is not highlighted
+(setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
+(delete-selection-mode t)
+
 ;;(set-scroll-bar-mode 'right)
 (setq visible-bell t)
 (show-paren-mode 1)
