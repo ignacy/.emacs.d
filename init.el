@@ -8,6 +8,7 @@
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
+(setq-default fill-column 80)
 
 (setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
 (defun djcb-ditaa-generate ()
@@ -60,7 +61,11 @@
 (setq backup-inhibited t)
 (global-linum-mode 1)
 (setq linum-format "%3d  ")
-(global-set-key [(control h)] 'backward-kill-word)
+
+(define-key minibuffer-local-map [f3]
+  (lambda () (interactive)
+     (insert (buffer-name (window-buffer (minibuffer-selected-window))))))
+
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [(meta delete)] 'backward-kill-word)
 
@@ -217,11 +222,14 @@
 (setq org-directory "~/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (define-key global-map "\C-cr" 'org-remember)
-(setq org-remember-templates
-      '(("Todo" ?t "* TODO %? %^g\n %i\n" (concat org-directory "/notes.org") "Tasks")
-        ("Journal" ?j "\n* %^{topic} %T \n%i%?\n" (concat org-directory "/notes.org") "Journal")
-        ("Notes" ?n "* %U %?\n\n  %i\n %a"(concat org-directory "/notes.org") "Note")
-        ("Idea" ?i "* %^{Title}\n  %i\n  %a" (concat org-directory "/notes.org") "New Ideas")))
+(setq org-remember-templates '(("Todo" ?t "* TODO %? %^g\n
+      %i\n" (concat org-directory "/notes.org") "Tasks")
+        ("Journal" ?j "\n* %^{topic} %T \n%i%?\n" (concat
+        org-directory "/notes.org") "Journal")
+        ("Notes" ?n "* %U %?\n\n %i\n %a"(concat
+        org-directory "/notes.org") "Note")
+        ("Idea" ?i "* %^{Title}\n %i\n %a" (concat
+        org-directory "/notes.org") "New Ideas")))
 
 (setq org-agenda-files "~/Dropbox/org/notes.org")
 
@@ -264,12 +272,12 @@
 
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
-(load-file (concat imoryc-dir "/colors/color-theme-gruber-darker.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-sunburst.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-gruber-darker)))
+     (color-theme-tm)))
 
 (setq font-use-system-font t)
 
@@ -325,10 +333,9 @@
 
 (put 'narrow-to-region 'disabled nil)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.  If you edit it by hand, you
+  ;; could mess it up, so be careful.  Your init file should contain only one
+  ;; such instance.  If there is more than one, they won't work right.
  '(menu-bar-mode t)
  '(org-agenda-files (quote ("~/Dropbox/org/notes.org")))
  '(show-paren-mode t))
