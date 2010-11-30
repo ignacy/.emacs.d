@@ -3,6 +3,21 @@
 
 
 (load-file (concat dotfiles-dir "/haskell-mode/haskell-site-file.el"))
+(load-file (concat dotfiles-dir "/emacs-rails-reloaded/vendor/anything.el"))
+
+(add-to-list 'load-path imoryc-dir)
+
+(require 'anything)
+(require 'git)
+(require 'proel)
+(require 'xcscope)
+
+(setq cscope-do-not-update-database t
+      grep-find-template "find .  -type f  -print0 | xargs -0 -e grep  -nH -e "
+      anything-sources
+        '(proel-anything-projects
+          proel-anything-current-project-files))
+
 
 (add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1"))
 (add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1/emacs"))

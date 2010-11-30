@@ -14,9 +14,9 @@
  (position . 1))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** [2010-11-25 c")
- (rear-context-string . "e of the month.\n")
- (position . 67903))
+ (front-context-string . "** [2010-11-29 p")
+ (rear-context-string . "pec/spec_helper\n")
+ (position . 68126))
 ("zshr"
  (filename . "~/.zshrc")
  (front-context-string . "# Lines configur")
