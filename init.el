@@ -1,6 +1,7 @@
 (setq dotfiles-dir "~/.emacs.d")
 (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
 
+(setq inhibit-startup-message t)
 
 (load-file (concat dotfiles-dir "/haskell-mode/haskell-site-file.el"))
 (load-file (concat dotfiles-dir "/emacs-rails-reloaded/vendor/anything.el"))
@@ -329,6 +330,5 @@
   ;; custom-set-variables was added by Custom.  If you edit it by hand, you
   ;; could mess it up, so be careful.  Your init file should contain only one
   ;; such instance.  If there is more than one, they won't work right.
- '(menu-bar-mode t)
  '(org-agenda-files (quote ("~/Dropbox/org/notes.org")))
  '(show-paren-mode t))
