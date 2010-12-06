@@ -1,13 +1,17 @@
 (setq dotfiles-dir "~/.emacs.d")
 (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
+(add-to-list 'load-path imoryc-dir)
 
 (setq inhibit-startup-message t)
 
-(load-file (concat dotfiles-dir "/haskell-mode/haskell-site-file.el"))
+;; (load-file (concat dotfiles-dir "/haskell-mode/haskell-site-file.el"))
 (load-file (concat dotfiles-dir "/emacs-rails-reloaded/vendor/anything.el"))
+(load-file (concat imoryc-dir "/ruby-setup.el"))
+(load-file (concat imoryc-dir "/rake-setup.el"))
+(load-file (concat imoryc-dir "/project-top.el"))
 
-(add-to-list 'load-path imoryc-dir)
 
+(require 'rvm)
 (require 'anything)
 (require 'git)
 (require 'proel)
@@ -19,16 +23,11 @@
         '(proel-anything-projects
           proel-anything-current-project-files))
 
-
-(add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1"))
-(add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1/emacs"))
-(require 'rdebug)
-
 (add-to-list 'load-path (concat dotfiles-dir "/feature-mode"))
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
-(setq-default fill-column 80)
+(setq-default fill-column 100)
 
 (setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
 (defun djcb-ditaa-generate ()
@@ -36,14 +35,12 @@
   (shell-command
     (concat ditaa-cmd " " buffer-file-name)))
 
-
 (scroll-bar-mode -1)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
 (delete-selection-mode t)
 
-;;(set-scroll-bar-mode 'right)
 (setq visible-bell t)
 (show-paren-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -65,6 +62,15 @@
 (global-set-key [(meta a)] 'anything)
 
 (setq x-select-enable-clipboard t)
+(global-set-key [(control v)] 'clipboard-yank)
+(global-set-key (kbd "C-x C-x") 'clipboard-kill-region)
+
+(defvar compile-command "rake ") ; set the default make command
+(make-variable-buffer-local 'compile-command)
+; make the compile command buffer local
+; (this allows each buffer to have its
+; own custom compile command)
+
 (setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode nil)
 (setq tab-width 2)
@@ -98,13 +104,9 @@
     (abort-recursive-edit)))
 (add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)
 
-
-
-
 ;; IBUFFER Settings
 (defalias 'list-buffers 'ibuffer)
 (setq ibuffer-show-empty-filter-groups nil)
-;;(setq ibuffer-shrink-to-minimum-size t)
 (setq ibuffer-always-show-last-buffer nil)
 (setq ibuffer-sorting-mode 'recency)
 (setq ibuffer-formats '((mark modified read-only " "
@@ -130,6 +132,7 @@
 (add-hook 'ibuffer-mode-hook
           (lambda ()
             (ibuffer-switch-to-saved-filter-groups "default")))
+
 (defadvice ibuffer-update-title-and-summary (after remove-column-titles)
   (save-excursion
     (set-buffer "*Ibuffer*")
@@ -146,7 +149,8 @@
 (global-unset-key [?\C-x ?\C-z])
 (global-set-key [f1] 'menu-bar-mode)
 (global-set-key (kbd "C-z") 'undo)
-;; (global-hl-line-mode 1)
+
+(global-hl-line-mode 1)
 ;;BOOKMARKS
 (define-key global-map [f9] 'bookmark-jump)
 (define-key global-map [f10] 'bookmark-set)
@@ -181,21 +185,20 @@
 
 (global-set-key (kbd "C-c d") 'duplicate-line)
 
+(defun copy-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (next-line 1)
+)
+(global-set-key (kbd "C-c C-d") 'copy-line)
+
 ;; install wmctrl (sudo apt-get install wmctrl)
 (defun switch-full-screen ()
   "Switch emacs to full screen mode"
   (interactive)
   (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
-
-
-
-;;; Setup rails
-(add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
-(add-to-list 'load-path (concat dotfiles-dir "/inf-ruby-2.1"))
-(require 'rails-autoload)
-(add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
-(require 'rhtml-mode)
-
 
 ;;yassnippet
 (add-to-list 'load-path (concat dotfiles-dir "/yasnippet-0.6.1c"))
@@ -266,7 +269,7 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-im.el"))
+;;(load-file (concat imoryc-dir "/colors/color-theme-im.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
    '(progn
@@ -298,19 +301,6 @@
 (global-set-key (kbd "<down>") 'use-emacs-keys)
 (global-set-key (kbd "<up>") 'use-emacs-keys)
 
-(defun ruby-interpolate ()
-  "In a double quoted string, interpolate."
-  (interactive)
-  (insert "#")
-  (let ((properties (text-properties-at (point))))
-    (when (and
-           (memq 'font-lock-string-face properties)
-           (save-excursion
-             (ruby-forward-string "\"" (line-end-position) t)))
-      (insert "{}")
-      (backward-char 1))))
-
-(define-key ruby-mode-map (kbd "#") 'ruby-interpolate)
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
   (remq 'process-kill-buffer-query-function
@@ -318,7 +308,6 @@
 
 (setq ibuffer-expert t)
 (setq ibuffer-show-empty-filter-groups nil)
-
 
 (defun use-emacs-keys ()
   (interactive)
