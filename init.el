@@ -37,7 +37,6 @@
 
 
 (scroll-bar-mode -1)
-(cua-mode t)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
@@ -52,6 +51,7 @@
 (ido-mode t)
 (setq ido-create-new-buffer 'always)
 (setq backup-inhibited t)
+(setq inhibit-startup-message t)
 (global-linum-mode 1)
 (setq linum-format "%3d  ")
 
@@ -61,8 +61,7 @@
 
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [(meta delete)] 'backward-kill-word)
-
-(define-key key-translation-map [?\C-h] [?\C-?])
+(global-set-key [(meta a)] 'anything)
 
 (setq x-select-enable-clipboard t)
 (setq-default indent-tabs-mode nil)
@@ -166,7 +165,7 @@
     (let ((recent-buffer-name (buffer-name)))
       (ibuffer)
       (ibuffer-jump-to-buffer recent-buffer-name)))
-(global-set-key [(f12)] 'my-ibuffer)
+;; (global-set-key [(f12)] 'my-ibuffer)
 (global-set-key [f11] 'switch-full-screen)
 
 
@@ -265,12 +264,13 @@
 
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
-(load-file (concat imoryc-dir "/colors/color-theme-sunburst.el"))
+
+(load-file (concat imoryc-dir "/colors/color-theme-im-dark.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-tm)))
+     (color-theme-im-dark)))
 
 (setq font-use-system-font t)
 
@@ -329,6 +329,5 @@
   ;; custom-set-variables was added by Custom.  If you edit it by hand, you
   ;; could mess it up, so be careful.  Your init file should contain only one
   ;; such instance.  If there is more than one, they won't work right.
- '(menu-bar-mode t)
  '(org-agenda-files (quote ("~/Dropbox/org/notes.org")))
  '(show-paren-mode t))
