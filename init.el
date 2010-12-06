@@ -266,12 +266,12 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-im-dark.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-im.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
-  '(progn
+   '(progn
      (color-theme-initialize)
-     (color-theme-im-dark)))
+     (color-theme-gtk-ide)))
 
 (setq font-use-system-font t)
 
