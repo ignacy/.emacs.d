@@ -1,6 +1,7 @@
 (setq dotfiles-dir "~/.emacs.d")
 (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
 
+(setq inhibit-startup-message t)
 
 (load-file (concat dotfiles-dir "/haskell-mode/haskell-site-file.el"))
 (load-file (concat dotfiles-dir "/emacs-rails-reloaded/vendor/anything.el"))
