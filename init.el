@@ -9,6 +9,7 @@
 (load-file (concat imoryc-dir "/ruby-setup.el"))
 (load-file (concat imoryc-dir "/rake-setup.el"))
 (load-file (concat imoryc-dir "/project-top.el"))
+(require 'haml-mode)
 
 
 (require 'rvm)

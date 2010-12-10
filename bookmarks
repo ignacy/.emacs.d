@@ -3,32 +3,33 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("ruby-setup.el"
-  (filename . "~/.emacs.d/imoryc/ruby-setup.el")
-  (front-context-string . ";; Setup ruby\n\n(")
-  (rear-context-string)
-  (position . 1))
- ("customer_show_view"
-  (filename . "~/code/middleware/app/views/customers/show.html.haml")
-  (front-context-string . "\n%tbody\n  %tr\n  ")
-  (rear-context-string . "_to 'Calls', '#'")
-  (position . 49))
- ("rc.lua	"
-  (filename . "~/.config/awesome/rc.lua")
-  (front-context-string . "-- Standard awes")
-  (rear-context-string)
-  (position . 1))
- ("org-remember-last-stored"
-  (filename . "~/Dropbox/org/notes.org")
-  (front-context-string . "** [2010-12-06 p")
-  (rear-context-string . "ories present]]\n")
-  (position . 72363))
- ("zshr"
-  (filename . "~/.zshrc")
-  (front-context-string . "# Lines configur")
-  (rear-context-string)
-  (position . 1))
- ("init"
-  (filename . "~/.emacs.d/init.el")
-  (front-context-string . "(setq dotfiles-d")
-  (rear-context-string)
-  (position . 1)))
+ (filename . "~/.emacs.d/imoryc/ruby-setup.el")
+ (front-context-string . ";; Setup ruby\n\n(")
+ (rear-context-string)
+ (position . 1))
+("customer_show_view"
+ (filename . "~/code/middleware/app/views/customers/show.html.haml")
+ (front-context-string . "\n%tbody\n  %tr\n  ")
+ (rear-context-string . "_to 'Calls', '#'")
+ (position . 49))
+("rc.lua	"
+ (filename . "~/.config/awesome/rc.lua")
+ (front-context-string . "-- Standard awes")
+ (rear-context-string)
+ (position . 1))
+("org-remember-last-stored"
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** [2010-12-10 p")
+ (rear-context-string . "tam gdzie wiesz\n")
+ (position . 69984))
+("zshr"
+ (filename . "~/.zshrc")
+ (front-context-string . "# Lines configur")
+ (rear-context-string)
+ (position . 1))
+("init"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "(setq dotfiles-d")
+ (rear-context-string)
+ (position . 1))
+)
