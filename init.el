@@ -9,6 +9,8 @@
 (load-file (concat imoryc-dir "/ruby-setup.el"))
 (load-file (concat imoryc-dir "/rake-setup.el"))
 (load-file (concat imoryc-dir "/project-top.el"))
+
+(require 'git-blame)
 (require 'haml-mode)
 
 
@@ -270,12 +272,12 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-tangotango.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-gruber-darker.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
    '(progn
      (color-theme-initialize)
-     (color-theme-tangotango)))
+     (color-theme-gruber-darker)))
 
 (setq font-use-system-font t)
 
