@@ -4,13 +4,13 @@
 
 (setq inhibit-startup-message t)
 
-;; (load-file (concat dotfiles-dir "/haskell-mode/haskell-site-file.el"))
 (load-file (concat dotfiles-dir "/emacs-rails-reloaded/vendor/anything.el"))
 (load-file (concat imoryc-dir "/ruby-setup.el"))
 (load-file (concat imoryc-dir "/rake-setup.el"))
 (load-file (concat imoryc-dir "/project-top.el"))
 
 (require 'git-blame)
+(require 'git)
 (require 'haml-mode)
 
 
