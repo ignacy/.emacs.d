@@ -27,7 +27,7 @@
 
 
 (setq cscope-do-not-update-database t
-      grep-find-template "find .  -type f  -print0 | xargs -0 -e grep  -nH -e "
+      ;;      grep-find-template "find .  -type f  -print0 | xargs -0 -e grep  -nH -e "
       anything-sources
         '(proel-anything-projects
           proel-anything-current-project-files))
@@ -279,13 +279,12 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-;;(load-file (concat imoryc-dir "/colors/color-theme-im.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-tangotango.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
    '(progn
      (color-theme-initialize)
-     (color-theme-sitaramv-nt)))
-
+     (color-theme-tangotango)))
 
 (setq font-use-system-font t)
 
