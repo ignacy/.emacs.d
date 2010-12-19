@@ -68,28 +68,28 @@
 
 (set-face-attribute (make-face 'test-heading1) nil
                     :family "arial"
-                    :height 240
+                    :height 180
                     :background "#000000"
-                    :foreground "#9999ff"
+                    :foreground "#aaccff"
                     :weight 'bold)
 
 (set-face-attribute (make-face 'test-heading2) nil
                     :family "arial"
-                    :height 180
+                    :height 120
                     :background "#000000"
-                    :foreground "#9999ff"
+                    :foreground "#aaccff"
                     :weight 'bold)
 
 (set-face-attribute (make-face 'test-success) nil
                     :family "arial"
-                    :height 240
+                    :height 120
                     :background (if window-system "#33ff33" "#001100")
                     :foreground (if window-system "black" "white")
                     :weight 'bold)
 
 (set-face-attribute (make-face 'test-failure) nil
                     :family "arial"
-                    :height 240
+                    :height 120
                     :background (if window-system "#ff3333" "#110000")
                     :foreground (if window-system "black" "white")
                     :weight 'bold)

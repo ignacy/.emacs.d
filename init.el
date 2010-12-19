@@ -293,7 +293,6 @@
 
 (setq font-use-system-font t)
 
-(global-set-key (kbd "C-x b") 'bs-show)
 (global-set-key [C-tab] 'bs-show)
 ;; Moje funkcje
 
