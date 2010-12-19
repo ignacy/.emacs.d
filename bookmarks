@@ -19,9 +19,9 @@
  (position . 1))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** [2010-12-10 p")
- (rear-context-string . "tam gdzie wiesz\n")
- (position . 69984))
+ (front-context-string . "** CI JOE chrome")
+ (rear-context-string . "bojesz - efekty\n")
+ (position . 71511))
 ("zshr"
  (filename . "~/.zshrc")
  (front-context-string . "# Lines configur")

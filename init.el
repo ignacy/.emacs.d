@@ -11,12 +11,20 @@
 (load-file (concat imoryc-dir "/project-top.el"))
 (require 'haml-mode)
 
-
 (require 'rvm)
 (require 'anything)
 (require 'git)
 (require 'proel)
 (require 'xcscope)
+
+
+(global-set-key (kbd "C-x C-p") 'find-file-at-point)
+(defadvice find-file-at-point (around goto-line compile activate)
+  (let ((line (and (looking-at ".*:\\([0-9]+\\)")
+                   (string-to-number (match-string 1)))))
+    ad-do-it
+    (and line (goto-line line))))
+
 
 (setq cscope-do-not-update-database t
       grep-find-template "find .  -type f  -print0 | xargs -0 -e grep  -nH -e "
@@ -206,6 +214,7 @@
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
 (yas/load-directory (concat dotfiles-dir "/yasnippet-0.6.1c/snippets"))
+(setq yas/trigger-key "SPC")
 
 (require 'org-install)
 ;; The following lines are always needed.  Choose your own keys.
@@ -275,7 +284,8 @@
 (eval-after-load "color-theme"
    '(progn
      (color-theme-initialize)
-     (color-theme-gtk-ide)))
+     (color-theme-sitaramv-nt)))
+
 
 (setq font-use-system-font t)
 
