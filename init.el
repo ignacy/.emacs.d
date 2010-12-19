@@ -8,6 +8,7 @@
 (load-file (concat imoryc-dir "/ruby-setup.el"))
 (load-file (concat imoryc-dir "/rake-setup.el"))
 (load-file (concat imoryc-dir "/project-top.el"))
+(load-file (concat imoryc-dir "/testing.el"))
 
 (require 'git-blame)
 (require 'git)
@@ -19,6 +20,8 @@
 (require 'proel)
 (require 'xcscope)
 
+(global-set-key (kbd "C-x f") 'ido-find-file)
+(global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
 
 (global-set-key (kbd "C-x C-p") 'find-file-at-point)
 (defadvice find-file-at-point (around goto-line compile activate)

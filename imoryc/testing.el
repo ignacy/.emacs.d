@@ -5,7 +5,6 @@
 ;;; ==================================================================
 
 (require 'compile)
-(require 'toggle)
 (require 'find-in-parent-dir)
 
 ;;; Name of the asynchronous test process.
@@ -21,7 +20,7 @@
 (defconst jw-rdebug-command "rdebug")
 
 ;;; Name of the command to remove ANSI terminal cruft
-(defconst jw-noansi-command  (concat (file-name-as-directory elisp-directory) "bin/noansi"))
+(defconst jw-noansi-command  (concat imoryc-dir "/noansi"))
 
 ;;; NOANSI option string (may be empty, or a pipe to the noansi command)
 (defconst jw-noansi-option  (concat " | " jw-noansi-command))
@@ -251,8 +250,8 @@
   "Return the name of the appropriate spec command to run for the given buffer."
   (let* ((default-directory (jw-find-project-top (buffer-file-name buffer))))
     (or (jw-find-existing-file
-         (list (concat default-directory "script/spec")
-               (concat default-directory "vendor/plugins/rspec/bin/spec")))
+         (list (concat default-directory "rspec")
+               (concat default-directory "script/spec")))
         "rspec")))
 
 (defun jw-find-spec-name ()
@@ -298,6 +297,14 @@ test headers."
     (if jw-test-single-window (delete-other-windows)) ))
 
 ;;; -- Test Run Commands ---------------------------------------------
+(defun jw-push-buffer (buffer)
+  "Push a new buffer onto the screen.
+Current buffer goes to first position."
+  (if (= 2 (count-windows))
+      (jw-neighboring-windows
+       (window-buffer (selected-window))
+       buffer)
+    (switch-to-buffer buffer)))
 
 (defun jw-run-test-rake ()
   "Run the default rake command as a test."
@@ -581,119 +588,6 @@ test file."
         (t (bookmark-set "test")) ))
 
 ;;; -- Toggle Enhancements -------------------------------------------
-
-(defvar jw-test-toggle-style nil
-"Buffer local variable describing the buffer's toggle style.")
-(make-variable-buffer-local 'jw-test-toggle-style)
-
-(defun jw-test-load-project-toggle-style ()
-  "Set the buffer's toggle style from the project defaults."
-  (let* ((togglerc (jw-find-in-parent-dir (buffer-file-name) ".togglerc")))
-    (if (file-readable-p togglerc)
-        (load-file togglerc))
-    (if (null jw-test-toggle-style)
-        (setq jw-test-toggle-style toggle-mapping-style))  ))
-
-(defun jw-test-select-buffer-toggle-style ()
-  "Set the buffer's toggle style.
-If no style is currently selected, load the style from the
-project .togglerc file."
-  (if (null jw-test-toggle-style)
-      (jw-test-load-project-toggle-style) )
-  (setq toggle-mappings (toggle-style jw-test-toggle-style)) )
-
-(defun jw-toggle-buffer ()
-  "Enhanced version of the Ryan Davis's toggle-buffer function
-Check for a .togglerc file at the top level of the project
-directory.  If found, the file will be loaded before toggling,
-allowing per-project toggle customizations."
-  (interactive)
-  (jw-test-select-buffer-toggle-style)
-  (toggle-buffer) )
-
-(defun jw-toggle-clear-buffer-styles ()
-  "Clear all the buffer toggle style settings."
-  (interactive)
-  (let ((buffers (buffer-list)))
-    (while buffers
-      (if (local-variable-p 'jw-test-toggle-style (car buffers))
-          (save-current-buffer
-            (set-buffer (car buffers))
-            (setq jw-test-toggle-style nil) ))
-      (setq buffers (cdr buffers)) )
-    (message "All buffer toggle styles are reset") ))
-
-(defun jw-add-or-replace (name pair)
-  (let* ((key (car pair))
-         (new-value (cdr pair))
-         (alist (eval name))
-         (old-pair (assoc key alist)))
-    (cond ((null old-pair) (add-to-list name pair))
-          ((equal (cdr old-pair) new-value) ())
-          (t (set name (cons pair (assq-delete-all key alist)))) ))
-  (eval name) )
-
-(defun jw-test-buffer-p ()
-  (string-match "_test\." (buffer-name)))
-
-(defun jw-spec-buffer-p ()
-  (string-match "_spec\." (buffer-name)))
-
-(defun jw-test-or-spec-buffer-p ()
-  (or (jw-test-buffer-p)
-      (jw-spec-buffer-p)))
-
-(defun jw-code-test-split ()
-  "Horizontally split between the code and test"
-  (interactive)
-  (delete-other-windows)
-  (if (jw-test-or-spec-buffer-p)
-      (jw-toggle-buffer))
-  (split-window-horizontally)
-  (other-window 1)
-  (jw-toggle-buffer)
-  (other-window 1))
-
-(defun jw-split-or-toggle (n)
-  "Toggle code/test buffer, or split windows with code and test (if prefix)"
-  (interactive "P")
-  (cond ((null n) (jw-toggle-buffer))
-        (t (jw-code-test-split))))
-
-;;; .togglerc specific functions -------------------------------------
-
-;; The following functions are intended to be used in the project
-;; specific .togglerc file.
-;;
-;; Example -- Set the style only:
-;;
-;;   (buffer-toggle-style 'jw-rails)
-;;
-;; Example -- Define a mapping and then select it:
-;;
-;;   (buffer-toggle-mapping
-;;    '(project-style    . (("test/\\1_test.rb" . "lib/\\1.rb")
-;;                           ("\\1_test.rb"      . "\\1.rb") )))
-;;   (buffer-toggle-style 'project-style)
-
-(defun buffer-toggle-style (style-name)
-  "Set the testing toggle style for this buffer.
-Normally called in the .togglerc file at the project level."
-  (setq jw-test-toggle-style style-name) )
-
-(defun buffer-toggle-mapping (mapping)
-  "Define a project specific mapping.
-Note: Make sure the mapping name is unique and doesn't class with
-mappings from other projects."
-  (jw-add-or-replace 'toggle-mapping-styles mapping))
-
-(defun jw-test-toggle-warnings ()
-  "Toggle the 'use warnings' flag for when testing"
-  (interactive)
-  (setq jw-test-warnings (not jw-test-warnings))
-  (if jw-test-warnings
-      (message "Warnings enabled in tests")
-    (message "Warnings disabled in tests") ))
 
 ;;; Add the toggle command to the compilation mode, just make it
 ;;; delete the test buffer.
