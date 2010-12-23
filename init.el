@@ -10,6 +10,9 @@
 (load-file (concat imoryc-dir "/project-top.el"))
 (load-file (concat imoryc-dir "/testing.el"))
 
+(require 'epa)
+(epa-file-enable)
+
 (require 'git-blame)
 (require 'git)
 (require 'haml-mode)
@@ -231,18 +234,18 @@
 (transient-mark-mode 1)
 (org-remember-insinuate)
 (setq org-directory "~/Dropbox/org")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-default-notes-file (concat org-directory "/notes.gpg"))
 (define-key global-map "\C-cr" 'org-remember)
 (setq org-remember-templates '(("Todo" ?t "* TODO %? %^g\n
-      %i\n" (concat org-directory "/notes.org") "Tasks")
+      %i\n" (concat org-directory "/notes.gpg") "Tasks")
         ("Journal" ?j "\n* %^{topic} %T \n%i%?\n" (concat
-        org-directory "/notes.org") "Journal")
+        org-directory "/notes.gpg") "Journal")
         ("Notes" ?n "* %U %?\n\n %i\n %a"(concat
-        org-directory "/notes.org") "Note")
+        org-directory "/notes.gpg") "Note")
         ("Idea" ?i "* %^{Title}\n %i\n %a" (concat
-        org-directory "/notes.org") "New Ideas")))
+        org-directory "/notes.gpg") "New Ideas")))
 
-(setq org-agenda-files "~/Dropbox/org/notes.org")
+(setq org-agenda-files "~/Dropbox/org/notes.gpg")
 
 (add-hook 'org-mode-hook
           (lambda ()
@@ -282,19 +285,34 @@
                (regexp-quote isearch-string))))))
 
 
-(add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
+;;(add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-gruber-darker.el"))
-(require 'color-theme)
-(eval-after-load "color-theme"
-   '(progn
-     (color-theme-initialize)
-     (color-theme-gruber-darker)))
+;;(load-file (concat imoryc-dir "/colors/color-theme-gruber-darker.el"))
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;    '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-gruber-darker)))
 
 (setq font-use-system-font t)
 
 (global-set-key [C-tab] 'bs-show)
 ;; Moje funkcje
+
+(defun push-mark-no-activate ()
+  "Pushes `point' to `mark-ring' and does not activate the region
+Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
+  (interactive)
+  (push-mark (point) t nil)
+  (message "Pushed mark to ring"))
+(global-set-key (kbd "C-`") 'push-mark-no-activate)
+
+(defun jump-to-mark ()
+  "Jumps to the local mark, respecting the `mark-ring' order.
+This is the same as using \\[set-mark-command] with the prefix argument."
+  (interactive)
+  (set-mark-command 1))
+(global-set-key (kbd "M-`") 'jump-to-mark)
 
 (defun im/find-note (note)
   "Find note in org mode notes file"

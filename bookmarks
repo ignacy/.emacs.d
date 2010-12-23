@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("ruby-setup.el"
+(("test-file"
+ (filename . "~/code/webapp/test/unit/scene_profile_test.rb")
+ (front-context-string . "scene.scene_prof")
+ (rear-context-string . "assert_equal 1, ")
+ (position . 822))
+("ruby-setup.el"
  (filename . "~/.emacs.d/imoryc/ruby-setup.el")
  (front-context-string . ";; Setup ruby\n\n(")
  (rear-context-string)
@@ -18,10 +23,10 @@
  (rear-context-string)
  (position . 1))
 ("org-remember-last-stored"
- (filename . "~/Dropbox/org/notes.org")
- (front-context-string . "** CI JOE chrome")
- (rear-context-string . "bojesz - efekty\n")
- (position . 71511))
+ (filename . "~/Dropbox/org/notes.gpg")
+ (front-context-string . "** [2010-12-23 c")
+ (rear-context-string . "okens.rb::end]]\n")
+ (position . 71680))
 ("zshr"
  (filename . "~/.zshrc")
  (front-context-string . "# Lines configur")
