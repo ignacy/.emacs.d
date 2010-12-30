@@ -285,14 +285,14 @@
                (regexp-quote isearch-string))))))
 
 
-;;(add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
+(add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-;;(load-file (concat imoryc-dir "/colors/color-theme-gruber-darker.el"))
-;; (require 'color-theme)
-;; (eval-after-load "color-theme"
-;;    '(progn
-;;      (color-theme-initialize)
-;;      (color-theme-gruber-darker)))
+(load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
+(require 'color-theme)
+(eval-after-load "color-theme"
+    '(progn
+     (color-theme-initialize)
+     (color-theme-irblack)))
 
 (setq font-use-system-font t)
 
