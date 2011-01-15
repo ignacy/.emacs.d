@@ -9,6 +9,9 @@
 (load-file (concat imoryc-dir "/rake-setup.el"))
 (load-file (concat imoryc-dir "/project-top.el"))
 (load-file (concat imoryc-dir "/testing.el"))
+(load-file (concat imoryc-dir "/e-other-window.el"))
+
+(require 'e-other-window)
 
 (require 'epa)
 (epa-file-enable)
@@ -222,7 +225,7 @@
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
 (yas/load-directory (concat dotfiles-dir "/yasnippet-0.6.1c/snippets"))
-(setq yas/trigger-key "SPC")
+(setq yas/trigger-key "TAB")
 
 (require 'org-install)
 ;; The following lines are always needed.  Choose your own keys.
@@ -345,6 +348,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   "Remind me to use emacs move keys not arrows!!"
   (message "Use emacs keys you lazy bastard!!"))
+
+(add-hook 'emacs-lisp-mode-hook '(lambda ()
+                                   (add-hook 'after-save-hook 'emacs-lisp-byte-compile t t)))   ;; Automatically byte-compile emacs-lisp files upon save
+
 
 (put 'narrow-to-region 'disabled nil)
 (custom-set-variables
