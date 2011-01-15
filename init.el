@@ -9,9 +9,6 @@
 (load-file (concat imoryc-dir "/rake-setup.el"))
 (load-file (concat imoryc-dir "/project-top.el"))
 (load-file (concat imoryc-dir "/testing.el"))
-(load-file (concat imoryc-dir "/e-other-window.el"))
-
-(require 'e-other-window)
 
 (require 'epa)
 (epa-file-enable)
@@ -234,21 +231,13 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-font-lock-mode 1)                     ; for all buffers
+
 (transient-mark-mode 1)
-(org-remember-insinuate)
+
 (setq org-directory "~/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "/notes.gpg"))
-(define-key global-map "\C-cr" 'org-remember)
-(setq org-remember-templates '(("Todo" ?t "* TODO %? %^g\n
-      %i\n" (concat org-directory "/notes.gpg") "Tasks")
-        ("Journal" ?j "\n* %^{topic} %T \n%i%?\n" (concat
-        org-directory "/notes.gpg") "Journal")
-        ("Notes" ?n "* %U %?\n\n %i\n %a"(concat
-        org-directory "/notes.gpg") "Note")
-        ("Idea" ?i "* %^{Title}\n %i\n %a" (concat
-        org-directory "/notes.gpg") "New Ideas")))
 
-(setq org-agenda-files "~/Dropbox/org/notes.gpg")
+(define-key global-map "\C-cc" 'org-capture)
 
 (add-hook 'org-mode-hook
           (lambda ()
