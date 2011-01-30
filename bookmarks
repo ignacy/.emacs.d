@@ -4,9 +4,9 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.gpg")
- (front-context-string . "** To jest zajeb")
- (rear-context-string . "        :imlog:\n")
- (position . 75947))
+ (front-context-string . "** Sprawdzanie c")
+ (rear-context-string . "2011-01-25 wto]\n")
+ (position . 74321))
 ("test-file"
  (filename . "~/code/webapp/lib/profile_service/profile_service_test.rb")
  (front-context-string . "require File.dir")
