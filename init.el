@@ -515,6 +515,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                                    (add-hook 'after-save-hook 'emacs-lisp-byte-compile t t)))   ;; Automatically byte-compile emacs-lisp files upon save
 
 
+(set-frame-font "Inconsolata-11")
+
 (put 'narrow-to-region 'disabled nil)
 (custom-set-variables
   ;; custom-set-variables was added by Custom.  If you edit it by hand, you
