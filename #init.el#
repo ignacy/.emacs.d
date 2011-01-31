@@ -9,36 +9,6 @@
 (load-file (concat imoryc-dir "/rake-setup.el"))
 (load-file (concat imoryc-dir "/project-top.el"))
 (load-file (concat imoryc-dir "/testing.el"))
-(load-file (concat imoryc-dir "/sr-speedbar.el"))
-
-(require 'sr-speedbar)
-(global-set-key [(f8)] 'sr-speedbar-toggle)
-
-;;; Customize:
-;;
-;; `sr-speedbar-width-x'
-;;      The `sr-speedbar' window width under WINDOW system.
-;; `sr-speedbar-width-console'
-;;      The `sr-speedbar' window width under CONSOLE.
-;; `sr-speedbar-max-width'
-;;      The max window width allowed remember.
-;; `sr-speedbar-auto-refresh'
-;;      Control status of refresh speedbar content.
-(setq sr-speedbar-auto-refresh t)
-
-;; `sr-speedbar-right-side'
-;;      Puts the speedbar on the right side if non-nil (else left).
-(setq sr-speedbar-right-side nil)
-
-(defun ant-compile ()
-  "Traveling up the path, find build.xml file and run compile."
-  (interactive)
-  (with-temp-buffer
-    (while (and (not (file-exists-p "build.xml"))
-                (not (equal "/" default-directory)))
-      (cd ".."))
-    (call-interactively 'compile)))
-
 
 (require 'epa)
 (epa-file-enable)
@@ -55,28 +25,8 @@
 
 (global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
-;; Window manipulation
-(global-set-key [(control prior)] 'enlarge-window)
-(global-set-key [(control next)] 'shrink-window)
 
-(global-set-key [(f2)] 'ack)
-(global-set-key [(control f2)] 'ack-same)
-(windmove-default-keybindings 'meta)
-
-
-;; Make the whole buffer pretty and consistent
-(defun iwb()
-  "Indent Whole Buffer"
-  (interactive)
-  (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max) nil)
-  (untabify (point-min) (point-max)))
-
-
-(global-set-key [(meta i)] 'iwb)
-
-
-(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+(add-hook 'before 
 
 
 (global-set-key (kbd "C-x C-p") 'find-file-at-point)
@@ -90,8 +40,8 @@
 (setq cscope-do-not-update-database t
       ;;      grep-find-template "find .  -type f  -print0 | xargs -0 -e grep  -nH -e "
       anything-sources
-      '(proel-anything-projects
-        proel-anything-current-project-files))
+        '(proel-anything-projects
+          proel-anything-current-project-files))
 
 (add-to-list 'load-path (concat dotfiles-dir "/feature-mode"))
 (require 'feature-mode)
@@ -103,7 +53,7 @@
 (defun djcb-ditaa-generate ()
   (interactive)
   (shell-command
-   (concat ditaa-cmd " " buffer-file-name)))
+    (concat ditaa-cmd " " buffer-file-name)))
 
 (scroll-bar-mode -1)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
@@ -125,7 +75,7 @@
 
 (define-key minibuffer-local-map [f3]
   (lambda () (interactive)
-    (insert (buffer-name (window-buffer (minibuffer-selected-window))))))
+     (insert (buffer-name (window-buffer (minibuffer-selected-window))))))
 
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [(meta delete)] 'backward-kill-word)
@@ -137,9 +87,9 @@
 
 (defvar compile-command "rake ") ; set the default make command
 (make-variable-buffer-local 'compile-command)
-                                        ; make the compile command buffer local
-                                        ; (this allows each buffer to have its
-                                        ; own custom compile command)
+; make the compile command buffer local
+; (this allows each buffer to have its
+; own custom compile command)
 
 (setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode nil)
@@ -148,24 +98,24 @@
 
 ;; Clear the backups mess
 (setq
- backup-by-copying t      ; don't clobber symlinks
- backup-directory-alist
- '(("." . "~/.backup_for_emacs"))    ; don't litter my fs tree
- delete-old-versions t
- kept-new-versions 6
- kept-old-versions 2
- version-control t)       ; use versioned backups
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.backup_for_emacs"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
 
 
 (load-file (concat imoryc-dir "/markdown-mode.el"))
 (autoload 'markdown-mode "markdown-mode.el"
-  "Major mode for editing Markdown files" t)
+   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-      (cons '("\\.md" . markdown-mode) auto-mode-alist))
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist
-      (cons '("\\.text" . markdown-mode) auto-mode-alist))
+   (cons '("\\.text" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist
-      (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+   (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
 
 (defun stop-using-minibuffer ()
@@ -180,8 +130,8 @@
 (setq ibuffer-always-show-last-buffer nil)
 (setq ibuffer-sorting-mode 'recency)
 (setq ibuffer-formats '((mark modified read-only " "
-                              (name 30 30 :left :elide)
-                              " " filename-and-process)))
+      (name 30 30 :left :elide)
+      " " filename-and-process)))
 
 (setq ibuffer-use-header-line t)
 (require 'ibuf-ext)
@@ -221,7 +171,6 @@
 (global-set-key (kbd "C-z") 'undo)
 
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "gray8")
 ;;BOOKMARKS
 (define-key global-map [f9] 'bookmark-jump)
 (define-key global-map [f10] 'bookmark-set)
@@ -236,11 +185,11 @@
 (global-set-key [(meta g)] 'goto-line)
 (global-set-key "\C-a" 'beginning-of-line-text)
 (defun my-ibuffer ()
-  "Open ibuffer with cursour pointed to most recent buffer name"
-  (interactive)
-  (let ((recent-buffer-name (buffer-name)))
-    (ibuffer)
-    (ibuffer-jump-to-buffer recent-buffer-name)))
+    "Open ibuffer with cursour pointed to most recent buffer name"
+    (interactive)
+    (let ((recent-buffer-name (buffer-name)))
+      (ibuffer)
+      (ibuffer-jump-to-buffer recent-buffer-name)))
 ;; (global-set-key [(f12)] 'my-ibuffer)
 (global-set-key [f11] 'switch-full-screen)
 
@@ -262,7 +211,7 @@
   (kill-line)
   (yank)
   (next-line 1)
-  )
+)
 (global-set-key (kbd "C-c C-d") 'copy-line)
 
 ;; install wmctrl (sudo apt-get install wmctrl)
@@ -292,12 +241,12 @@
 (define-key global-map "\C-cr" 'org-remember)
 (setq org-remember-templates '(("Todo" ?t "* TODO %? %^g\n
       %i\n" (concat org-directory "/notes.gpg") "Tasks")
-                               ("Journal" ?j "\n* %^{topic} %T \n%i%?\n" (concat
-                                                                          org-directory "/notes.gpg") "Journal")
-                               ("Notes" ?n "* %U %?\n\n %i\n %a"(concat
-                                                                 org-directory "/notes.gpg") "Note")
-                               ("Idea" ?i "* %^{Title}\n %i\n %a" (concat
-                                                                   org-directory "/notes.gpg") "New Ideas")))
+        ("Journal" ?j "\n* %^{topic} %T \n%i%?\n" (concat
+        org-directory "/notes.gpg") "Journal")
+        ("Notes" ?n "* %U %?\n\n %i\n %a"(concat
+        org-directory "/notes.gpg") "Note")
+        ("Idea" ?i "* %^{Title}\n %i\n %a" (concat
+        org-directory "/notes.gpg") "New Ideas")))
 
 (setq org-agenda-files "~/Dropbox/org/notes.gpg")
 
@@ -308,8 +257,8 @@
 
 
 (setq
- bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
- bookmark-save-flag 1)                        ;; autosave each change)
+  bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
+  bookmark-save-flag 1)                        ;; autosave each change)
 
 (define-key global-map [f9] 'bookmark-jump)
 (define-key global-map [f10] 'bookmark-set)
@@ -344,7 +293,7 @@
 (load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
-  '(progn
+    '(progn
      (color-theme-initialize)
      (color-theme-irblack)))
 
@@ -389,8 +338,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
-      (remq 'process-kill-buffer-query-function
-            kill-buffer-query-functions))
+  (remq 'process-kill-buffer-query-function
+         kill-buffer-query-functions))
 
 (setq ibuffer-expert t)
 (setq ibuffer-show-empty-filter-groups nil)
@@ -402,15 +351,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (put 'narrow-to-region 'disabled nil)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(org-agenda-files nil)
+  ;; custom-set-variables was added by Custom.  If you edit it by hand, you
+  ;; could mess it up, so be careful.  Your init file should contain only one
+  ;; such instance.  If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Dropbox/org/notes.org")))
  '(show-paren-mode t))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )

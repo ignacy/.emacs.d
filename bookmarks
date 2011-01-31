@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("test-file"
- (filename . "~/code/webapp/lib/profile_service/profile_service_test.rb")
- (front-context-string . "require File.dir")
- (rear-context-string . "ire 'test/unit'\n")
- (position . 21))
+ (filename . "~/code/webapp/test/functional/ios_service_controller_test.rb")
+ (front-context-string . "\n    post :profi")
+ (rear-context-string . "ded_mobileconfig")
+ (position . 463))
 ("ruby-setup.el"
  (filename . "~/.emacs.d/imoryc/ruby-setup.el")
  (front-context-string . ";; Setup ruby\n\n(")
@@ -24,9 +24,9 @@
  (position . 1))
 ("org-remember-last-stored"
  (filename . "~/Dropbox/org/notes.gpg")
- (front-context-string . "** [2010-12-30 c")
- (rear-context-string . " za jego pomoca\n")
- (position . 73369))
+ (front-context-string . "** [2011-01-11 w")
+ (rear-context-string . "v\\nazwa_udzialu\n")
+ (position . 74278))
 ("zshr"
  (filename . "~/.zshrc")
  (front-context-string . "# Lines configur")
