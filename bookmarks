@@ -2,49 +2,8 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("test-file"
- (filename . "~/code/webapp/test/functional/ios_service_controller_test.rb")
- (front-context-string . "\n    post :profi")
- (rear-context-string . "ded_mobileconfig")
- (position . 463))
-(("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.gpg")
- (front-context-string . "** Sprawdzanie c")
- (rear-context-string . "2011-01-25 wto]\n")
- (position . 74321))
-("test-file"
- (filename . "~/code/webapp/lib/profile_service/profile_service_test.rb")
- (front-context-string . "require File.dir")
- (rear-context-string . "ire 'test/unit'\n")
- (position . 21))
-("ruby-setup.el"
- (filename . "~/.emacs.d/imoryc/ruby-setup.el")
- (front-context-string . ";; Setup ruby\n\n(")
- (rear-context-string)
- (position . 1))
-("customer_show_view"
- (filename . "~/code/middleware/app/views/customers/show.html.haml")
- (front-context-string . "\n%tbody\n  %tr\n  ")
- (rear-context-string . "_to 'Calls', '#'")
- (position . 49))
-("rc.lua	"
- (filename . "~/.config/awesome/rc.lua")
- (front-context-string . "-- Standard awes")
- (rear-context-string)
- (position . 1))
-("org-remember-last-stored"
- (filename . "~/Dropbox/org/notes.gpg")
- (front-context-string . "** [2011-01-11 w")
- (rear-context-string . "v\\nazwa_udzialu\n")
- (position . 74278))
-("zshr"
- (filename . "~/.zshrc")
- (front-context-string . "# Lines configur")
- (rear-context-string)
- (position . 1))
 ("init"
  (filename . "~/.emacs.d/init.el")
  (front-context-string . "(setq dotfiles-d")
  (rear-context-string)
  (position . 1))
-)
