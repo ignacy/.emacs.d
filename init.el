@@ -1,4 +1,4 @@
-(setq dotfiles-dir "~/.emacs.d")
+ (setq dotfiles-dir "~/.emacs.d")
 (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
 (add-to-list 'load-path imoryc-dir)
 
@@ -16,6 +16,7 @@
 
 (require 'sr-speedbar)
 (global-set-key [(f8)] 'sr-speedbar-toggle)
+(global-set-key [(f2)] 'magit-status)
 
 ;;; Customize:
 ;;
@@ -58,12 +59,16 @@
 
 (global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
+
+(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+(global-set-key (kbd "C-x b") 'list-buffers)
+
+
+
 ;; Window manipulation
 (global-set-key [(control prior)] 'enlarge-window)
 (global-set-key [(control next)] 'shrink-window)
 
-(global-set-key [(f2)] 'ack)
-(global-set-key [(control f2)] 'ack-same)
 (windmove-default-keybindings 'meta)
 
 
@@ -115,6 +120,9 @@
 (delete-selection-mode t)
 
 (subword-mode t)
+
+
+
 
 (defvar smart-use-extended-syntax nil
   "If t the smart symbol functionality will consider extended
@@ -418,12 +426,12 @@ instead."
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-gruber-darker.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-im3.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-gruber-darker)))
+     (color-theme-im3)))
 
 (setq font-use-system-font t)
 
@@ -573,7 +581,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                                    (add-hook 'after-save-hook 'emacs-lisp-byte-compile t t)))   ;; Automatically byte-compile emacs-lisp files upon save
 
 
-(set-frame-font "Mensch-11")
+(set-frame-font "Mensch-10")
 
 (put 'narrow-to-region 'disabled nil)
 (custom-set-variables
