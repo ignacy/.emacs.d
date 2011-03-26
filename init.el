@@ -1,6 +1,11 @@
- (setq dotfiles-dir "~/.emacs.d")
+(setq dotfiles-dir "~/.emacs.d")
 (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
 (add-to-list 'load-path imoryc-dir)
+
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#222")
+(set-face-foreground 'highlight nil)
+(set-face-foreground 'hl-line nil)
 
 (setq inhibit-startup-message t)
 
@@ -9,30 +14,18 @@
 (load-file (concat imoryc-dir "/rake-setup.el"))
 (load-file (concat imoryc-dir "/project-top.el"))
 (load-file (concat imoryc-dir "/testing.el"))
-(load-file (concat imoryc-dir "/sr-speedbar.el"))
 (load-file (concat dotfiles-dir "/magit-0.8.2/magit.el"))
 
 (require 'magit)
 
-(require 'sr-speedbar)
-(global-set-key [(f8)] 'sr-speedbar-toggle)
-(global-set-key [(f2)] 'magit-status)
+;; android-mode
+(load-file (concat dotfiles-dir "/android-mode/android-mode.el"))
+;;(require 'android-mode)
+(defcustom android-mode-sdk-dir "~/android"
+  "Set to the directory containing the Android SDK."
+  :type 'string
+  :group 'android-mode)
 
-;;; Customize:
-;;
-;; `sr-speedbar-width-x'
-;;      The `sr-speedbar' window width under WINDOW system.
-;; `sr-speedbar-width-console'
-;;      The `sr-speedbar' window width under CONSOLE.
-;; `sr-speedbar-max-width'
-;;      The max window width allowed remember.
-;; `sr-speedbar-auto-refresh'
-;;      Control status of refresh speedbar content.
-(setq sr-speedbar-auto-refresh t)
-
-;; `sr-speedbar-right-side'
-;;      Puts the speedbar on the right side if non-nil (else left).
-(setq sr-speedbar-right-side nil)
 
 (defun ant-compile ()
   "Traveling up the path, find build.xml file and run compile."
@@ -80,7 +73,6 @@
   (indent-region (point-min) (point-max) nil)
   (untabify (point-min) (point-max)))
 
-
 (global-set-key [(meta i)] 'iwb)
 
 
@@ -107,21 +99,18 @@
 
 (setq-default fill-column 100)
 
-(setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
-(defun djcb-ditaa-generate ()
-  (interactive)
-  (shell-command
-   (concat ditaa-cmd " " buffer-file-name)))
+;; (setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
+;; (defun djcb-ditaa-generate ()
+;;   (interactive)
+;;   (shell-command
+;;    (concat ditaa-cmd " " buffer-file-name)))
 
 (scroll-bar-mode -1)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
 (delete-selection-mode t)
-
 (subword-mode t)
-
-
 
 
 (defvar smart-use-extended-syntax nil
@@ -312,8 +301,8 @@ instead."
 (global-set-key [f1] 'menu-bar-mode)
 (global-set-key (kbd "C-z") 'undo)
 
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "gray8")
+;; (global-hl-line-mode 1)
+;;(set-face-background 'hl-line "gray8")
 ;;BOOKMARKS
 (define-key global-map [f9] 'bookmark-jump)
 (define-key global-map [f10] 'bookmark-set)
@@ -439,55 +428,55 @@ instead."
 ;; Moje funkcje
 
 
-    (defun ido-goto-symbol (&optional symbol-list)
-      "Refresh imenu and jump to a place in the buffer using Ido."
-      (interactive)
-      (unless (featurep 'imenu)
-        (require 'imenu nil t))
+(defun ido-goto-symbol (&optional symbol-list)
+  "Refresh imenu and jump to a place in the buffer using Ido."
+  (interactive)
+  (unless (featurep 'imenu)
+    (require 'imenu nil t))
+  (cond
+   ((not symbol-list)
+    (let ((ido-mode ido-mode)
+          (ido-enable-flex-matching
+           (if (boundp 'ido-enable-flex-matching)
+               ido-enable-flex-matching t))
+          name-and-pos symbol-names position)
+      (unless ido-mode
+        (ido-mode 1)
+        (setq ido-enable-flex-matching t))
+      (while (progn
+               (imenu--cleanup)
+               (setq imenu--index-alist nil)
+               (ido-goto-symbol (imenu--make-index-alist))
+               (setq selected-symbol
+                     (ido-completing-read "Symbol? " symbol-names))
+               (string= (car imenu--rescan-item) selected-symbol)))
+      (unless (and (boundp 'mark-active) mark-active)
+        (push-mark nil t nil))
+      (setq position (cdr (assoc selected-symbol name-and-pos)))
       (cond
-       ((not symbol-list)
-        (let ((ido-mode ido-mode)
-              (ido-enable-flex-matching
-               (if (boundp 'ido-enable-flex-matching)
-                   ido-enable-flex-matching t))
-              name-and-pos symbol-names position)
-          (unless ido-mode
-            (ido-mode 1)
-            (setq ido-enable-flex-matching t))
-          (while (progn
-                   (imenu--cleanup)
-                   (setq imenu--index-alist nil)
-                   (ido-goto-symbol (imenu--make-index-alist))
-                   (setq selected-symbol
-                         (ido-completing-read "Symbol? " symbol-names))
-                   (string= (car imenu--rescan-item) selected-symbol)))
-          (unless (and (boundp 'mark-active) mark-active)
-            (push-mark nil t nil))
-          (setq position (cdr (assoc selected-symbol name-and-pos)))
-          (cond
-           ((overlayp position)
-            (goto-char (overlay-start position)))
-           (t
-            (goto-char position)))))
-       ((listp symbol-list)
-        (dolist (symbol symbol-list)
-          (let (name position)
-            (cond
-             ((and (listp symbol) (imenu--subalist-p symbol))
-              (ido-goto-symbol symbol))
-             ((listp symbol)
-              (setq name (car symbol))
-              (setq position (cdr symbol)))
-             ((stringp symbol)
-              (setq name symbol)
-              (setq position
-                    (get-text-property 1 'org-imenu-marker symbol))))
-            (unless (or (null position) (null name)
-                        (string= (car imenu--rescan-item) name))
-              (add-to-list 'symbol-names name)
-              (add-to-list 'name-and-pos (cons name position))))))))
+       ((overlayp position)
+        (goto-char (overlay-start position)))
+       (t
+        (goto-char position)))))
+   ((listp symbol-list)
+    (dolist (symbol symbol-list)
+      (let (name position)
+        (cond
+         ((and (listp symbol) (imenu--subalist-p symbol))
+          (ido-goto-symbol symbol))
+         ((listp symbol)
+          (setq name (car symbol))
+          (setq position (cdr symbol)))
+         ((stringp symbol)
+          (setq name symbol)
+          (setq position
+                (get-text-property 1 'org-imenu-marker symbol))))
+        (unless (or (null position) (null name)
+                    (string= (car imenu--rescan-item) name))
+          (add-to-list 'symbol-names name)
+          (add-to-list 'name-and-pos (cons name position))))))))
 
-    (global-set-key "\C-ci" 'ido-goto-symbol) ; or any key you see fit
+(global-set-key "\C-ci" 'ido-goto-symbol) ; or any key you see fit
 
 (defun push-mark-no-activate ()
   "Pushes `point' to `mark-ring' and does not activate the region
@@ -547,7 +536,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; enable recent files mode.
 (recentf-mode t)
 
-; 50 files ought to be enough.
+                                        ; 50 files ought to be enough.
 (setq recentf-max-saved-items 50)
 
 (defun ido-recentf-open ()
@@ -577,8 +566,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   "Remind me to use emacs move keys not arrows!!"
   (message "Use emacs keys you lazy bastard!!"))
 
-(add-hook 'emacs-lisp-mode-hook '(lambda ()
-                                   (add-hook 'after-save-hook 'emacs-lisp-byte-compile t t)))   ;; Automatically byte-compile emacs-lisp files upon save
+;; (add-hook 'emacs-lisp-mode-hook '(lambda ()
+;;                                    (add-hook 'after-save-hook 'emacs-lisp-byte-compile t t)))   ;; Automatically byte-compile emacs-lisp files upon save
 
 
 ;;(set-frame-font "Mensch-10")
