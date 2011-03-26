@@ -10,3 +10,6 @@
 [submodule "feature-mode"]
 	path = feature-mode
 	url = http://github.com/michaelklishin/cucumber.el.git
+[submodule "android-mode"]
+	path = android-mode
+	url = git://github.com/remvee/android-mode.git
