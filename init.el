@@ -200,10 +200,11 @@ instead."
 (ido-mode t)
 (setq ido-create-new-buffer 'always)
 (setq backup-inhibited t)
-(setq inhibit-startup-message t)
+
 (global-linum-mode 1)
 (setq linum-format "%3d  ")
 
+;; insert current buffer name into minibuffer
 (define-key minibuffer-local-map [f3]
   (lambda () (interactive)
     (insert (buffer-name (window-buffer (minibuffer-selected-window))))))
@@ -224,18 +225,8 @@ instead."
 
 (setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode nil)
-(setq tab-width 2)
+(setq tab-width 4)
 (setq default-indicate-empty-lines t)
-
-;; Clear the backups mess
-(setq
- backup-by-copying t      ; don't clobber symlinks
- backup-directory-alist
- '(("." . "~/.backup_for_emacs"))    ; don't litter my fs tree
- delete-old-versions t
- kept-new-versions 6
- kept-old-versions 2
- version-control t)       ; use versioned backups
 
 
 (load-file (concat imoryc-dir "/markdown-mode.el"))
@@ -413,14 +404,14 @@ instead."
                (regexp-quote isearch-string))))))
 
 
-;; (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
+(add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-;; (load-file (concat imoryc-dir "/colors/color-theme-im3.el"))
-;; (require 'color-theme)
-;; (eval-after-load "color-theme"
-;;   '(progn
-;;      (color-theme-initialize)
-;;      (color-theme-im3)))
+(load-file (concat imoryc-dir "/colors/color-theme-g0sub.el"))
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-g0sub)))
 
 (setq font-use-system-font t)
 
@@ -500,6 +491,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (re-search-forward note)
   (point))
 
+;; (defun im/clear-elc-files
+;;   "Clear all bytecompiled emacs files"
+;;   (shell-command "find ~/.emacs.d/ -name *.elc -exec rm {} \;"))
+
+
 
 (require 'etags)
 (defun ido-find-tag ()
@@ -565,9 +561,3 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   "Remind me to use emacs move keys not arrows!!"
   (message "Use emacs keys you lazy bastard!!"))
-
-;; (add-hook 'emacs-lisp-mode-hook '(lambda ()
-;;                                    (add-hook 'after-save-hook 'emacs-lisp-byte-compile t t)))   ;; Automatically byte-compile emacs-lisp files upon save
-
-
-;;(set-frame-font "Mensch-10")
