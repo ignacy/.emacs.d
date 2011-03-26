@@ -424,14 +424,14 @@ instead."
                (regexp-quote isearch-string))))))
 
 
-(add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
+;; (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-im3.el"))
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-im3)))
+;; (load-file (concat imoryc-dir "/colors/color-theme-im3.el"))
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-im3)))
 
 (setq font-use-system-font t)
 
@@ -581,19 +581,4 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                                    (add-hook 'after-save-hook 'emacs-lisp-byte-compile t t)))   ;; Automatically byte-compile emacs-lisp files upon save
 
 
-(set-frame-font "Mensch-10")
-
-(put 'narrow-to-region 'disabled nil)
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(org-agenda-files nil)
- '(show-paren-mode t))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+;;(set-frame-font "Mensch-10")
