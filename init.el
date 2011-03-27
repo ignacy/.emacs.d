@@ -1,28 +1,60 @@
-(setq dotfiles-dir "~/.emacs.d")
-(setq imoryc-dir (concat dotfiles-dir "/imoryc"))
-(add-to-list 'load-path imoryc-dir)
+(message "Ok. let's do some configuring..")
+(require 'cl)
 
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "#222")
-(set-face-foreground 'highlight nil)
-(set-face-foreground 'hl-line nil)
+;; By setting any of the below to nil
+;; you are dissabling the whole section
+(defvar set-directories t)
+(defvar set-loadpaths t)
+(defvar set-line-highlighting t)
+(defvar set-environment-settings t)
 
-(setq inhibit-startup-message t)
 
-(load-file (concat dotfiles-dir "/emacs-rails-reloaded/vendor/anything.el"))
-(load-file (concat imoryc-dir "/ruby-setup.el"))
-(load-file (concat imoryc-dir "/rake-setup.el"))
-(load-file (concat imoryc-dir "/project-top.el"))
-(load-file (concat imoryc-dir "/testing.el"))
-(load-file (concat dotfiles-dir "/magit-0.8.2/magit.el"))
+;; Helper variables to recognize the environment
+(defvar on-windows
+  (eq system-type 'windows-nt))
 
-(require 'magit)
 
-;; android-mode
-(load-file (concat dotfiles-dir "/android-mode/android-mode.el"))
-;;(require 'android-mode)
+(when set-directories (message "Setting directories..")
+      (if on-windows
+          (progn
+            (message "Running windows.. using AppData/Roaming")
+            (setq dotfiles-dir "~/AppData/Roaming/.emacs.d"))
+        (message "We're not on windows..")
+        (setq dotfiles-dir "~/.emacs.d"))
+      (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
+      (add-to-list 'load-path imoryc-dir))
+
+(when set-loadpaths (message "Setting load paths for libraries")
+      (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
+      (require 'rails-autoload)
+
+      (load-file (concat imoryc-dir "/ruby-setup.el"))
+      (load-file (concat imoryc-dir "/rake-setup.el"))
+      (load-file (concat imoryc-dir "/project-top.el"))
+      (load-file (concat imoryc-dir "/testing.el"))
+      (add-to-list 'load-path (concat dotfiles-dir "/magit-0.8.2"))
+      (require 'magit)
+      (add-to-list 'load-path "~/.emacs.d/android-mode")
+      (require 'android-mode))
+
+
+(when set-environment-settings (message "Setting environment settings")
+      (setq inhibit-startup-message t))
+
+(when set-line-highlighting (message "Switching line highlighting on")
+      (global-hl-line-mode 1)
+      (set-face-background 'hl-line "#222")
+      (set-face-foreground 'highlight nil)
+      (set-face-foreground 'hl-line nil))
+
+
+
 (defcustom android-mode-sdk-dir "~/android"
   "Set to the directory containing the Android SDK."
+  :type 'string
+  :group 'android-mode)
+(defcustom android-mode-avd "@htc"
+  "Default AVD to use."
   :type 'string
   :group 'android-mode)
 
