@@ -18,7 +18,7 @@
       (if on-windows
           (progn
             (message "Running windows.. using AppData/Roaming")
-            (setq dotfiles-dir "~/AppData/Roaming/.emacs.d"))
+            (setq dotfiles-dir "C:/Users/Ignacy/AppData/Roaming/.emacs.d"))
         (message "We're not on windows..")
         (setq dotfiles-dir "~/.emacs.d"))
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
@@ -424,9 +424,11 @@ instead."
                            (auto-complete-mode 1))
                        ))
 (real-global-auto-complete-mode t)
-(setq rsense-home "/home/ignacy/bin/rsense-0.3")
-(add-to-list 'load-path (concat rsense-home "/etc"))
-(require 'rsense)
+
+(unless on-windows
+  (setq rsense-home "/home/ignacy/bin/rsense-0.3")
+  (add-to-list 'load-path (concat rsense-home "/etc"))
+  (require 'rsense))
 
 (define-key isearch-mode-map (kbd "C-o")
   (lambda ()
