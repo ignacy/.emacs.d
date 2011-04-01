@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
+(("build.xml"
+ (filename . "c:/Users/Ignacy/code/FyreTv/build.xml")
+ (front-context-string . "<?xml version=\"1")
+ (rear-context-string)
+ (position . 1))
+("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.gpg")
  (front-context-string . "** Ruby and Garb")
  (rear-context-string . "jekyll_and_hyde\n")

@@ -25,7 +25,7 @@
 
 ;; This color theme is based on color-theme-eon.el by David O'Toole <dto@gnu.org>
 
-;; Code: 
+;; Code:
 
 (require 'color-theme)
 
@@ -605,7 +605,7 @@
      (font-lock-doc ((t (nil))))
      (font-lock-doc-face ((t (:foreground "#729fcf"))))
      (font-lock-doc-string-face ((t (:background "#555753" :foreground "slate gray"))))
-     (font-lock-emphasized-face ((t (:foreground "red"))))
+     ;;(font-lock-emphasized-face ((t (:foreground "red"))))
      (font-lock-exit-face ((t (:foreground "green"))))
      (font-lock-function-name ((t (nil))))
      (font-lock-function-name-face ((t (:foreground "#8ae234"))))
@@ -758,11 +758,9 @@
      (hi-pink ((t (:background "pink"))))
      (hi-red-b ((t (:bold t :foreground "red" :weight bold))))
      (hi-yellow ((t (:background "yellow"))))
-     (highlight ((t (:bold t :background "white" :foreground "red" :weight bold))))
+     ;;(highlight ((t (:bold t :background "white" :foreground "red" :weight bold))))
      (highlight-changes-delete-face ((t (:foreground "gray85" :underline t))))
      (highlight-changes-face ((t (:foreground "gray85"))))
-     (highlight-current-line ((t (nil))))
-     (highlight-current-line-face ((t (nil))))
      (highline-face ((t (:background "DeepSkyBlue4"))))
      (highline-vertical-face ((t (:background "lightcyan"))))
      (holiday ((t (:background "chocolate4"))))
@@ -1214,7 +1212,7 @@
      (slime-repl-result-face ((t (:foreground "red"))))
      (slime-style-warning-face ((t (nil))))
      (slime-warning-face ((t (:foreground "red"))))
-     ;; 
+     ;;
      (smerge-base-face ((t (:foreground "red"))))
      (smerge-markers-face ((t (:background "grey85"))))
      (smerge-mine-face ((t (:foreground "Gray85"))))

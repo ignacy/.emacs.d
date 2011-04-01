@@ -7,7 +7,7 @@
 (defvar set-loadpaths t)
 (defvar set-line-highlighting t)
 (defvar set-environment-settings t)
-
+(defvar set-java-paths-on-windows t)
 
 ;; Helper variables to recognize the environment
 (defvar on-windows
@@ -47,26 +47,53 @@
       (set-face-foreground 'highlight nil)
       (set-face-foreground 'hl-line nil))
 
+(when set-java-paths-on-windows (message "Setting java paths")
+      (when on-windows
+        (setenv "JUNIT_HOME" "/home/ignacy/code/classpath")
+        (setenv "JAVA_HOME" "c://jdk1.6.0_23")
+        (setenv "CLASSPATH" "$CLASSPATH:$JUNIT_HOME:/home/ignacy/code/classpath:/home/ignacy/code/FyreTv/lib/test/testng-5.14.7.jar")))
+
+(unless on-windows (message "Setting androidn on linux")
+        (defcustom android-mode-sdk-dir "~/android"
+          "Set to the directory containing the Android SDK."
+          :type 'string
+          :group 'android-mode))
+
+(when on-windows (message "Setting android for windows")
+      (defcustom android-mode-sdk-dir "c:/Android/android-sdk/"
+        "Set to the directory containing the Android SDK."
+        :type 'string
+        :group 'android-mode))
 
 
-(defcustom android-mode-sdk-dir "~/android"
-  "Set to the directory containing the Android SDK."
-  :type 'string
-  :group 'android-mode)
 (defcustom android-mode-avd "@htc"
   "Default AVD to use."
   :type 'string
   :group 'android-mode)
 
 
-(defun ant-compile ()
-  "Traveling up the path, find build.xml file and run compile."
-  (interactive)
-  (with-temp-buffer
-    (while (and (not (file-exists-p "build.xml"))
-                (not (equal "/" default-directory)))
-      (cd ".."))
-    (call-interactively 'compile)))
+
+(unless on-windows
+  (defun ant-compile ()
+    "Traveling up the path, find build.xml file and run compile."
+    (interactive)
+    (with-temp-buffer
+      (while (and (not (file-exists-p "build.xml"))
+                  (not (equal "/" default-directory)))
+        (cd ".."))
+      (call-interactively 'compile))))
+
+
+(defvar set-working-on-bdj t)
+
+(when set-working-on-bdj
+  (defvar bdj-root "C://Users//Ignacy//code//FyreTv")
+  (defun im/ant (task)
+    "Run ant TASK in the project root directory."
+    (interactive "sTask name: ")
+    (cd bdj-root)
+    (compile (concat "ant " task)))
+  (global-set-key [f5] 'im/ant))
 
 
 (require 'epa)
@@ -223,6 +250,15 @@ instead."
 
 (global-set-key (kbd "M-n") 'smart-symbol-go-forward)
 (global-set-key (kbd "M-p") 'smart-symbol-go-backward)
+
+
+;; (defun im/occur-current
+;;   "Runs occur on current word under the coursor"
+;;   (let (word (thing-at-point 'word))
+;;     (occcur word)))
+
+;; (global-set-key (kbd "C-o") 'im/occur-current)
+
 
 ;; '(setq visible-bell t)
 (show-paren-mode 1)
@@ -440,14 +476,14 @@ instead."
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-g0sub.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-g0sub)))
+     (color-theme-solarized 'dark)))
 
-(setq font-use-system-font t)
+;;(setq font-use-system-font t)
 
 (global-set-key [C-tab] 'bs-show)
 ;; Moje funkcje
