@@ -476,12 +476,12 @@ instead."
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-gruber-darker.el"))
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-solarized 'dark)))
+     (color-theme-gruber-darker)))
 
 ;;(setq font-use-system-font t)
 
@@ -631,3 +631,14 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   "Remind me to use emacs move keys not arrows!!"
   (message "Use emacs keys you lazy bastard!!"))
+
+
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command
+   (format "find %s -type f -name \"*.java\" | etags -l java -" dir-name)))
+;;p find . -name "*.cpp" -print -or -name "*.h" -print | xargs etags
+
+(global-set-key (kbd "M-,") 'tags-search)
+(global-set-key (kbd "M-?") 'tags-loop-continue)

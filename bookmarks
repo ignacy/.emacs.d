@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("build.xml"
+(("boxee_controller.rb"
+ (filename . "c:/Users/Ignacy/code/webapp/app/controllers/services/boxee_controller.rb")
+ (front-context-string . "\n  def movies\n  ")
+ (rear-context-string . "s.to_json\n  end\n")
+ (position . 2230))
+("build.xml"
  (filename . "c:/Users/Ignacy/code/FyreTv/build.xml")
  (front-context-string . "<?xml version=\"1")
  (rear-context-string)
