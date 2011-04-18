@@ -1,6 +1,7 @@
 (message "Ok. let's do some configuring..")
 (require 'cl)
 
+
 ;; By setting any of the below to nil
 ;; you are dissabling the whole section
 (defvar set-directories t)
@@ -8,6 +9,7 @@
 (defvar set-line-highlighting t)
 (defvar set-environment-settings t)
 (defvar set-java-paths-on-windows t)
+(defvar set-working-on-bdj nil)
 
 ;; Helper variables to recognize the environment
 (defvar on-windows
@@ -36,6 +38,15 @@
       (require 'magit)
       (add-to-list 'load-path "~/.emacs.d/android-mode")
       (require 'android-mode))
+
+;; require can begin here
+(require 'anything-config)
+(require 'anything-etags+)
+
+(global-set-key (kbd "M-a") 'anything)
+(global-set-key "\M-." 'anything-etags+-select-one-key)
+
+
 
 
 (when set-environment-settings (message "Setting environment settings")
@@ -83,9 +94,6 @@
         (cd ".."))
       (call-interactively 'compile))))
 
-
-(defvar set-working-on-bdj t)
-
 (when set-working-on-bdj
   (defvar bdj-root "C://Users//Ignacy//code//FyreTv")
   (defun im/ant (task)
@@ -104,10 +112,6 @@
 (require 'haml-mode)
 
 (require 'rvm)
-(require 'anything)
-
-(require 'proel)
-(require 'xcscope)
 
 (global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
@@ -146,11 +150,7 @@
     (and line (goto-line line))))
 
 (setq next-line-add-newlines t)
-(setq cscope-do-not-update-database t
-      ;;      grep-find-template "find .  -type f  -print0 | xargs -0 -e grep  -nH -e "
-      anything-sources
-      '(proel-anything-projects
-        proel-anything-current-project-files))
+
 
 (add-to-list 'load-path (concat dotfiles-dir "/feature-mode"))
 (require 'feature-mode)
@@ -247,6 +247,7 @@ instead."
              (t (error "Invalid direction")))
             word)
         (error "No symbol found")))))
+
 
 (global-set-key (kbd "M-n") 'smart-symbol-go-forward)
 (global-set-key (kbd "M-p") 'smart-symbol-go-backward)
@@ -357,7 +358,7 @@ instead."
 
 
 (global-unset-key [?\C-x ?\C-z])
-(global-set-key [f1] 'menu-bar-mode)
+(global-set-key [f1] 'help)
 (global-set-key (kbd "C-z") 'undo)
 
 ;; (global-hl-line-mode 1)
@@ -476,12 +477,14 @@ instead."
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-gruber-darker.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
+
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-gruber-darker)))
+     (color-theme-irblack)))
 
 ;;(setq font-use-system-font t)
 
@@ -627,6 +630,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq ibuffer-expert t)
 (setq ibuffer-show-empty-filter-groups nil)
 
+;;(keyboard-translate ?\C-h ?\C-?)
+
+(global-set-key (kbd "C-c %") 'replace-regexp)
+(defalias 'qrr 'query-replace-regexp)
+
 (defun use-emacs-keys ()
   (interactive)
   "Remind me to use emacs move keys not arrows!!"
@@ -642,3 +650,4 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (global-set-key (kbd "M-,") 'tags-search)
 (global-set-key (kbd "M-?") 'tags-loop-continue)
+(put 'set-goal-column 'disabled nil)

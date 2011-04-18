@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("boxee_controller.rb"
+(("decrypt.org"
+ (filename . "c:/Users/Ignacy/Dropbox/org/decrypt.org")
+ (front-context-string)
+ (rear-context-string . "file for windows")
+ (position . 28))
+("decrypted_widnows.org"
+ (filename . "c:/Users/Ignacy/Dropbox/org/decrypted_widnows.org")
+ (front-context-string)
+ (rear-context-string . "usage on windows")
+ (position . 50))
+("boxee_controller.rb"
  (filename . "c:/Users/Ignacy/code/webapp/app/controllers/services/boxee_controller.rb")
  (front-context-string . "\n  def movies\n  ")
  (rear-context-string . "s.to_json\n  end\n")
