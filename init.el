@@ -10,6 +10,7 @@
 (defvar set-environment-settings t)
 (defvar set-java-paths-on-windows t)
 (defvar set-working-on-bdj nil)
+(defvar set-use-key-chords t)
 
 ;; Helper variables to recognize the environment
 (defvar on-windows
@@ -102,6 +103,14 @@
     (cd bdj-root)
     (compile (concat "ant " task)))
   (global-set-key [f5] 'im/ant))
+
+
+(when set-use-key-chords
+  (require 'key-chord)
+  (key-chord-mode 1)
+  (key-chord-define-global "uu" 'undo)
+  (key-chord-define-global "dd" 'kill-line)
+  )
 
 
 (require 'epa)
