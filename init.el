@@ -10,7 +10,7 @@
 (defvar set-environment-settings t)
 (defvar set-java-paths-on-windows t)
 (defvar set-working-on-bdj nil)
-(defvar set-use-key-chords t)
+(defvar set-use-key-chords nil)
 
 ;; Helper variables to recognize the environment
 (defvar on-windows
@@ -438,9 +438,21 @@ instead."
 
 (transient-mark-mode 1)
 
-(setq org-directory "~/Dropbox/org")
+(if on-windows
+    (setq org-directory "C:/Users/Ignacy/Dropbox/org")
+  (setq org-directory "~/Dropbox/org"))
 
-(setq org-default-notes-file (concat org-directory "/notes.gpg"))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-agenda-files (list (concat org-directory "/notes.org")))
+
+(defun im/find-note (note)
+  "Find note in org mode notes file"
+  (interactive "sWpisz szukane slowo: ")
+  (find-file org-default-notes-file)
+  (re-search-forward note)
+  (point))
+
+
 
 (define-key global-map "\C-cc" 'org-capture)
 
@@ -639,7 +651,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq ibuffer-expert t)
 (setq ibuffer-show-empty-filter-groups nil)
 
-;;(keyboard-translate ?\C-h ?\C-?)
+
+(keyboard-translate ?\C-h ?\C-?)
 
 (global-set-key (kbd "C-c %") 'replace-regexp)
 (defalias 'qrr 'query-replace-regexp)
@@ -656,6 +669,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (eshell-command
    (format "find %s -type f -name \"*.java\" | etags -l java -" dir-name)))
 ;;p find . -name "*.cpp" -print -or -name "*.h" -print | xargs etags
+(setq tags-revert-without-query t)
 
 (global-set-key (kbd "M-,") 'tags-search)
 (global-set-key (kbd "M-?") 'tags-loop-continue)

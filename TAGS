@@ -1,14 +1,14 @@
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/CarouselController.java,599
-public class CarouselController 14,448
-    private XletView activeView;CarouselController.activeView15,519
-    private FyreTvXlet xlet;CarouselController.xlet16,553
-    public void show(CarouselController.show18,585
-    private void setShowScene(CarouselController.setShowScene23,758
-    public void userEventReceived(CarouselController.userEventReceived32,1157
-    public void setXletReference(CarouselController.setXletReference49,1650
-    public FyreTvXlet getXletReference(CarouselController.getXletReference53,1739
-    public XletView getView(CarouselController.getView57,1819
+public class CarouselController 15,511
+    private XletView activeView;CarouselController.activeView16,601
+    private FyreTvXlet xlet;CarouselController.xlet17,635
+    public void show(CarouselController.show19,667
+    private void setShowScene(CarouselController.setShowScene23,795
+    public void userEventReceived(CarouselController.userEventReceived29,1015
+    public void setXletReference(CarouselController.setXletReference53,1838
+    public FyreTvXlet getXletReference(CarouselController.getXletReference57,1927
+    public XletView getView(CarouselController.getView61,2007
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/Controller.java,36
 public interface Controller 10,289
@@ -41,7 +41,7 @@ public class NavigationItem Controller.NavigationItem7,128
     public Component getComponent(NavigationItem.getComponent88,2733
     public String debug(NavigationItem.debug93,2812
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/helper/NavigationPolicy.java,547
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/helper/NavigationPolicy.java,639
 public class NavigationPolicy 12,266
     private NavigationItem root;NavigationPolicy.root13,321
     private NavigationItem current;NavigationPolicy.current14,355
@@ -50,22 +50,43 @@ public class NavigationPolicy 12,266
     public void applyEvent(NavigationPolicy.applyEvent22,577
     public NavigationItem getItem(NavigationPolicy.getItem47,1470
     public void activate(NavigationPolicy.activate59,1970
+    public NavigationItem getCurrentlyPointed(NavigationPolicy.getCurrentlyPointed63,2056
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/menu/MenuContentController.java,45
 public interface MenuContentController 6,61
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/menu/MenuController.java,697
-public class MenuController 25,905
-    private ArrayList guiMenuItems;MenuController.guiMenuItems26,970
-    private FyreMenuView view;MenuController.view27,1006
-    private GuiManager guiManager;MenuController.guiManager28,1037
-    private FyreTvXlet xlet;MenuController.xlet29,1072
-    public MenuController(MenuController.MenuController31,1102
-    public void show(MenuController.show36,1197
-    public void userEventReceived(MenuController.userEventReceived65,2461
-    public void setXletReference(MenuController.setXletReference90,3560
-    public FyreTvXlet getXletReference(MenuController.getXletReference94,3645
-    public XletView getView(MenuController.getView99,3722
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/menu/MenuController.java,2105
+public class MenuController 29,1264
+    private ArrayList guiMenuItems;MenuController.guiMenuItems30,1348
+    private FyreMenuView view;MenuController.view31,1384
+    private GuiManager guiManager;MenuController.guiManager32,1415
+    private FyreTvXlet xlet;MenuController.xlet33,1450
+    private int stateMenu MenuController.stateMenu34,1479
+    private MenuContentPropertiesHelper reader;MenuController.reader35,1510
+    protected final int HORIZONTAL_MENU MenuController.HORIZONTAL_MENU36,1558
+    protected final int VERTICAL_MENU MenuController.VERTICAL_MENU37,1603
+    protected final int CHILD_MENU MenuController.CHILD_MENU38,1646
+    private RewindableCycleReader currentIterator MenuController.currentIterator39,1686
+    private NormalIterator lastIterator MenuController.lastIterator40,1744
+    private NormalIterator positionIterator MenuController.positionIterator41,1792
+    private String menuTitle MenuController.menuTitle42,1844
+    private int positionTitle MenuController.positionTitle43,1885
+    private ArrayList titles MenuController.titles44,1920
+    public MenuController(MenuController.MenuController46,1969
+    public void show(MenuController.show56,2212
+    public void goDown(MenuController.goDown97,3760
+    public void goUp(MenuController.goUp134,5335
+    private MenuContent mc2 MenuController.mc2194,7590
+    public void goLeft(MenuController.goLeft196,7627
+    public void setAllActive(MenuController.setAllActive208,8077
+    public void setAllInactive(MenuController.setAllInactive216,8315
+    public void setStatesActive(MenuController.setStatesActive224,8556
+    public void setStatesDisActive(MenuController.setStatesDisActive234,8918
+    public void setStatesBeforeActive(MenuController.setStatesBeforeActive244,9284
+    public void userEventReceived(MenuController.userEventReceived255,9659
+    public void setXletReference(MenuController.setXletReference390,15934
+    public FyreTvXlet getXletReference(MenuController.getXletReference394,16019
+    public XletView getView(MenuController.getView399,16096
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/menu/MenuItemController.java,42
 public interface MenuItemController 3,58
@@ -90,21 +111,21 @@ public class PinController 18,638
     private GuiManager guiManager;PinController.guiManager22,794
     public PinController(PinController.PinController24,832
     public void show(PinController.show30,942
-    public void userEventReceived(PinController.userEventReceived39,1263
-    public void setXletReference(PinController.setXletReference123,5543
-    public FyreTvXlet getXletReference(PinController.getXletReference127,5632
-    public XletView getView(PinController.getView131,5712
+    public void userEventReceived(PinController.userEventReceived38,1225
+    public void setXletReference(PinController.setXletReference122,5505
+    public FyreTvXlet getXletReference(PinController.getXletReference126,5594
+    public XletView getView(PinController.getView130,5674
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/SceneCarouselController.java,653
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/SceneCarouselController.java,652
 public class SceneCarouselController 14,458
     private SceneCarouselView activeView;SceneCarouselController.activeView15,534
     private FyreTvXlet xlet;SceneCarouselController.xlet16,577
     public void show(SceneCarouselController.show18,609
     private void setShowScene(SceneCarouselController.setShowScene22,737
-    public void userEventReceived(SceneCarouselController.userEventReceived29,1025
-    public void setXletReference(SceneCarouselController.setXletReference49,1638
-    public FyreTvXlet getXletReference(SceneCarouselController.getXletReference53,1727
-    public XletView getView(SceneCarouselController.getView57,1807
+    public void userEventReceived(SceneCarouselController.userEventReceived28,962
+    public void setXletReference(SceneCarouselController.setXletReference48,1575
+    public FyreTvXlet getXletReference(SceneCarouselController.getXletReference52,1664
+    public XletView getView(SceneCarouselController.getView56,1744
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/SceneController.java,630
 public class SceneController 16,524
@@ -113,28 +134,28 @@ public class SceneController 16,524
     private FyreTvXlet xlet;SceneController.xlet19,673
     public SceneController(SceneController.SceneController21,703
     public void show(SceneController.show25,758
-    public void setXletReference(SceneController.setXletReference38,1214
-    public FyreTvXlet getXletReference(SceneController.getXletReference42,1299
-    public XletView getView(SceneController.getView46,1370
-    public void userEventReceived(SceneController.userEventReceived51,1439
+    public void setXletReference(SceneController.setXletReference42,1262
+    public FyreTvXlet getXletReference(SceneController.getXletReference46,1347
+    public XletView getView(SceneController.getView50,1418
+    public void userEventReceived(SceneController.userEventReceived55,1479
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/controller/TitleDetailsController.java,1216
-public class TitleDetailsController 21,766
-    private FyreTvXlet xlet;TitleDetailsController.xlet22,858
-    private TitleDetailsView view;TitleDetailsController.view23,887
-    private GuiManager manager;TitleDetailsController.manager24,922
-    public static String TITLE_ID TitleDetailsController.TITLE_ID25,954
-    private Map positionToComponentsMap TitleDetailsController.positionToComponentsMap26,1002
-    private Point actualPosition TitleDetailsController.actualPosition27,1059
-    protected Title getTitleToDisplay(TitleDetailsController.getTitleToDisplay29,1116
-    private ArrayList actorsModel TitleDetailsController.actorsModel57,2198
-    public void show(TitleDetailsController.show68,2445
-    public void setXletReference(TitleDetailsController.setXletReference85,3004
-    public FyreTvXlet getXletReference(TitleDetailsController.getXletReference89,3089
-    public XletView getView(TitleDetailsController.getView93,3160
-    public void userEventReceived(TitleDetailsController.userEventReceived97,3224
-    private NavigationPolicy helper;TitleDetailsController.helper102,3363
-    private NavigationPolicy prepareBasicView(TitleDetailsController.prepareBasicView103,3400
+public class TitleDetailsController 21,778
+    private FyreTvXlet xlet;TitleDetailsController.xlet22,870
+    private TitleDetailsView view;TitleDetailsController.view23,899
+    private GuiManager manager;TitleDetailsController.manager24,934
+    public static String TITLE_ID TitleDetailsController.TITLE_ID25,966
+    private Map positionToComponentsMap TitleDetailsController.positionToComponentsMap26,1014
+    private Point actualPosition TitleDetailsController.actualPosition27,1071
+    protected Title getTitleToDisplay(TitleDetailsController.getTitleToDisplay29,1124
+    private ArrayList actorsModel TitleDetailsController.actorsModel57,2181
+    public void show(TitleDetailsController.show68,2424
+    public void setXletReference(TitleDetailsController.setXletReference83,2914
+    public FyreTvXlet getXletReference(TitleDetailsController.getXletReference87,2999
+    public XletView getView(TitleDetailsController.getView91,3070
+    public void userEventReceived(TitleDetailsController.userEventReceived95,3130
+    private NavigationPolicy helper;TitleDetailsController.helper110,3848
+    private NavigationPolicy prepareBasicView(TitleDetailsController.prepareBasicView111,3885
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/exceptions/ContentLoadingException.java,618
 public class ContentLoadingException 8,157
@@ -172,33 +193,34 @@ public class XLetException 9,121
 	public void printStackTrace(XLetException.printStackTrace28,500
 	public void printStackTrace(XLetException.printStackTrace36,654
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/FyreTVLocalConstans.java,326
-public interface FyreTVLocalConstans 3,42
-    String ASSETS_JAR_LOCATOR_NAME FyreTVLocalConstans.ASSETS_JAR_LOCATOR_NAME4,81
-    String GRAPHICS_MAIN_PATH FyreTVLocalConstans.GRAPHICS_MAIN_PATH5,136
-    int H_RESOLUTION FyreTVLocalConstans.H_RESOLUTION6,213
-    int V_RESOLUTION FyreTVLocalConstans.V_RESOLUTION7,242
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/FyreTVGlobalConstants.java,412
+public class FyreTVGlobalConstants 3,42
+    public static final String ASSETS_JAR_LOCATOR_NAME FyreTVGlobalConstants.ASSETS_JAR_LOCATOR_NAME4,79
+    public static final String GRAPHICS_MAIN_PATH FyreTVGlobalConstants.GRAPHICS_MAIN_PATH5,154
+    public static final int H_RESOLUTION FyreTVGlobalConstants.H_RESOLUTION6,251
+    public static final int V_RESOLUTION FyreTVGlobalConstants.V_RESOLUTION7,300
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/FyreTvXlet.java,1148
-public class FyreTvXlet 29,892
-    private static final long serialVersionUID FyreTvXlet.serialVersionUID33,986
-    private XletContext context;FyreTvXlet.context34,1058
-    private DataAccess dataAccess;FyreTvXlet.dataAccess35,1091
-    private GuiManager guiManager;FyreTvXlet.guiManager36,1126
-    private String adaPath;FyreTvXlet.adaPath37,1161
-    private String budaPath;FyreTvXlet.budaPath38,1189
-    private Thread myWorkerThread;FyreTvXlet.myWorkerThread39,1218
-    public void initXlet(FyreTvXlet.initXlet41,1254
-    private void initStoragePaths(FyreTvXlet.initStoragePaths66,2288
-    public void startXlet(FyreTvXlet.startXlet81,2809
-    public void pauseXlet(FyreTvXlet.pauseXlet91,3156
-    public void destroyXlet(FyreTvXlet.destroyXlet96,3265
-    private void doXletDestroy(FyreTvXlet.doXletDestroy109,3836
-    public void run(FyreTvXlet.run131,4401
-    private Controller activeController;FyreTvXlet.activeController153,5263
-    public void route(FyreTvXlet.route161,5489
-    public XletContext getContext(FyreTvXlet.getContext216,7897
-    public String getAdaPath(FyreTvXlet.getAdaPath220,7966
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/FyreTvXlet.java,1221
+public class FyreTvXlet 28,844
+    private static final long serialVersionUID FyreTvXlet.serialVersionUID32,938
+    private XletContext context;FyreTvXlet.context33,1010
+    private DataAccess dataAccess;FyreTvXlet.dataAccess34,1043
+    private GuiManager guiManager;FyreTvXlet.guiManager35,1078
+    private String adaPath;FyreTvXlet.adaPath36,1113
+    private String budaPath;FyreTvXlet.budaPath37,1141
+    private Thread myWorkerThread;FyreTvXlet.myWorkerThread38,1170
+    public void initXlet(FyreTvXlet.initXlet44,1291
+    private void initContentLoader(FyreTvXlet.initContentLoader52,1561
+    private void initStoragePaths(FyreTvXlet.initStoragePaths63,1895
+    public void startXlet(FyreTvXlet.startXlet78,2416
+    public void pauseXlet(FyreTvXlet.pauseXlet88,2763
+    public void destroyXlet(FyreTvXlet.destroyXlet93,2872
+    private void doXletDestroy(FyreTvXlet.doXletDestroy106,3443
+    public void run(FyreTvXlet.run128,4008
+    private Controller activeController;FyreTvXlet.activeController150,4882
+    public void route(FyreTvXlet.route158,5108
+    public XletContext getContext(FyreTvXlet.getContext213,7516
+    public String getAdaPath(FyreTvXlet.getAdaPath217,7585
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/GPRStates.java,534
 public class GPRStates 3,42
@@ -216,19 +238,18 @@ public interface ArrowKeyCode 3,48
     int VK_LEFT ArrowKeyCode.VK_LEFT7,148
     int VK_RIGHT ArrowKeyCode.VK_RIGHT8,171
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/background/FyreTvBackgroundView.java,789
-public class FyreTvBackgroundView 15,452
-    private static final long serialVersionUID FyreTvBackgroundView.serialVersionUID19,529
-    protected final String BACKGROUND_IMAGE FyreTvBackgroundView.BACKGROUND_IMAGE20,582
-    private Image backgroundImage;FyreTvBackgroundView.backgroundImage21,648
-    private HStaticIcon backgroundIcon;FyreTvBackgroundView.backgroundIcon22,683
-    public FyreTvBackgroundView(FyreTvBackgroundView.FyreTvBackgroundView26,738
-    private void initBackgroundImage(FyreTvBackgroundView.initBackgroundImage30,833
-    public void initialize(FyreTvBackgroundView.initialize42,1390
-    public void destroy(FyreTvBackgroundView.destroy52,1844
-    public void requestFocusDefaultComponent(FyreTvBackgroundView.requestFocusDefaultComponent62,2047
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/background/FyreTvBackgroundView.java,718
+public class FyreTvBackgroundView 17,506
+    private static final long serialVersionUID FyreTvBackgroundView.serialVersionUID21,582
+    protected final String BACKGROUND_IMAGE FyreTvBackgroundView.BACKGROUND_IMAGE22,635
+    protected final String BACKGROUND_IMAGE_NAME FyreTvBackgroundView.BACKGROUND_IMAGE_NAME23,701
+    private Image backgroundImage;FyreTvBackgroundView.backgroundImage24,777
+    private HStaticIcon backgroundIcon;FyreTvBackgroundView.backgroundIcon25,812
+    public FyreTvBackgroundView(FyreTvBackgroundView.FyreTvBackgroundView27,853
+    private void initBackgroundImage(FyreTvBackgroundView.initBackgroundImage38,1189
+    public void destroy(FyreTvBackgroundView.destroy50,1767
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/carousel/CarouselPartial.java,1855
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/carousel/CarouselPartial.java,1792
 public class CarouselPartial 32,1059
     private final String SPIN_BUTTON_DIM=CarouselPartial.SPIN_BUTTON_DIM33,1107
     private final String TITLE_FONT CarouselPartial.TITLE_FONT34,1164
@@ -241,37 +262,34 @@ public class CarouselPartial 32,1059
     private HText activeTileLabel;CarouselPartial.activeTileLabel42,1475
     private PropertyKeyBuilder keyBuilder;CarouselPartial.keyBuilder43,1511
     public CarouselPartial(CarouselPartial.CarouselPartial45,1557
-    public void initialize(CarouselPartial.initialize50,1712
-    private HText createActiveTileLabel(CarouselPartial.createActiveTileLabel68,2327
-    private void setLabelToActiveTile(CarouselPartial.setLabelToActiveTile79,2963
-    private void getNextPage(CarouselPartial.getNextPage88,3331
-    public void createAllTiles(CarouselPartial.createAllTiles93,3435
-    public void shuffleTilesLeft(CarouselPartial.shuffleTilesLeft107,3911
-    public void shuffleTilesRight(CarouselPartial.shuffleTilesRight119,4241
-    public void getMovieTitles(CarouselPartial.getMovieTitles131,4533
-    public void destroy(CarouselPartial.destroy143,4921
-    private void addTilesToContainer(CarouselPartial.addTilesToContainer147,4998
-    private void setTilesAndBackgroundImages(CarouselPartial.setTilesAndBackgroundImages154,5178
-    private boolean isOnTheNextPage(CarouselPartial.isOnTheNextPage173,5908
-    private boolean didntAlreadyGetTheNextPage(CarouselPartial.didntAlreadyGetTheNextPage177,6039
+    private HText createActiveTileLabel(CarouselPartial.createActiveTileLabel65,2255
+    private void setLabelToActiveTile(CarouselPartial.setLabelToActiveTile76,2891
+    private void getNextPage(CarouselPartial.getNextPage85,3259
+    public void createAllTiles(CarouselPartial.createAllTiles90,3363
+    public void shuffleTilesLeft(CarouselPartial.shuffleTilesLeft104,3839
+    public void shuffleTilesRight(CarouselPartial.shuffleTilesRight116,4169
+    public void getMovieTitles(CarouselPartial.getMovieTitles128,4461
+    public void destroy(CarouselPartial.destroy140,4849
+    private void addTilesToContainer(CarouselPartial.addTilesToContainer144,4926
+    private void setTilesAndBackgroundImages(CarouselPartial.setTilesAndBackgroundImages151,5106
+    private boolean isOnTheNextPage(CarouselPartial.isOnTheNextPage170,5836
+    private boolean didntAlreadyGetTheNextPage(CarouselPartial.didntAlreadyGetTheNextPage174,5967
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/carousel/CarouselView.java,1151
-public final class CarouselView CarouselPartial.CarouselView23,821
-    private static final long serialVersionUID CarouselView.serialVersionUID24,902
-    private boolean isLastComponentSelected;CarouselView.isLastComponentSelected26,976
-    private HStaticText topLabel;CarouselView.topLabel27,1022
-    private ErrorLayerPartial errorPart;CarouselView.errorPart28,1057
-    private CarouselPartial carousel;CarouselView.carousel29,1099
-    public CarouselView(CarouselView.CarouselView31,1140
-    public void initialize(CarouselView.initialize36,1261
-    private void addKeyManagemenet(CarouselView.addKeyManagemenet53,1782
-    public void setMetadata(CarouselView.setMetadata68,2297
-    public void setMetadata(CarouselView.setMetadata72,2415
-    public CarouselPartial getCarousel(CarouselView.getCarousel82,2697
-    public void destroy(CarouselView.destroy87,2783
-    public void userEventReceived(CarouselView.userEventReceived92,2916
-    public void requestFocusDefaultComponent(CarouselView.requestFocusDefaultComponent120,3819
-    private void addTopAndBottomGraphics(CarouselView.addTopAndBottomGraphics124,3894
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/carousel/CarouselView.java,996
+public final class CarouselView CarouselPartial.CarouselView27,976
+    private static final long serialVersionUID CarouselView.serialVersionUID28,1057
+    private boolean isLastComponentSelected;CarouselView.isLastComponentSelected30,1131
+    private HStaticText topLabel;CarouselView.topLabel31,1177
+    private ErrorLayerPartial errorPart;CarouselView.errorPart32,1212
+    private CarouselPartial carousel;CarouselView.carousel33,1254
+    public CarouselView(CarouselView.CarouselView35,1295
+    private void addKeyManagemenet(CarouselView.addKeyManagemenet49,1641
+    public void setMetadata(CarouselView.setMetadata65,2210
+    public void setMetadata(CarouselView.setMetadata69,2328
+    public CarouselPartial getCarousel(CarouselView.getCarousel79,2610
+    public void destroy(CarouselView.destroy84,2696
+    public void userEventReceived(CarouselView.userEventReceived89,2829
+    private void addTopAndBottomGraphics(CarouselView.addTopAndBottomGraphics117,3732
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/component/GraphicTextButton.java,667
 public class GraphicTextButton 11,225
@@ -322,115 +340,113 @@ public class GraphicTextLook CarouselTileLook.GraphicTextLook14,345
     private static  final Insets insets GraphicTextLook.insets16,400
     public void showLook(GraphicTextLook.showLook18,469
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/enterpin/EnterPinView.java,2735
-public final class EnterPinView 24,778
-    private static final long serialVersionUID EnterPinView.serialVersionUID25,842
-    protected final String BAR_SRC=EnterPinView.BAR_SRC27,920
-    protected final String BAR_BOX EnterPinView.BAR_BOX28,969
-    private final String ENTER_PIN_LABEL_BOX EnterPinView.ENTER_PIN_LABEL_BOX29,1018
-    private final String ENTER_PIN_LABEL_TEXT EnterPinView.ENTER_PIN_LABEL_TEXT30,1088
-    private final String ENTER_PIN_LABEL_FONT EnterPinView.ENTER_PIN_LABEL_FONT31,1160
-    private final String ENTER_PIN_ON_LABEL_COLOR EnterPinView.ENTER_PIN_ON_LABEL_COLOR32,1232
-    private final String ENTER_PIN_OFF_LABEL_COLOR EnterPinView.ENTER_PIN_OFF_LABEL_COLOR33,1312
-    private final String LOCK_ON_ICON_IMAGE EnterPinView.LOCK_ON_ICON_IMAGE34,1394
-    private final String LOCK_ON_ICON_IMAGE_BOX EnterPinView.LOCK_ON_ICON_IMAGE_BOX35,1462
-    private PinButtonPartial pinButton;EnterPinView.pinButton38,1550
-    private InfoPatrial infoPart;EnterPinView.infoPart39,1591
-    private PropertyKeyBuilder keyBuiler;EnterPinView.keyBuiler40,1626
-    private Image lockImage;EnterPinView.lockImage43,1681
-    private HStaticIcon lockIcon;EnterPinView.lockIcon44,1711
-    private boolean isLastComponentSelected;EnterPinView.isLastComponentSelected45,1746
-    private HStaticText enterPinLabel;EnterPinView.enterPinLabel46,1792
-    private ErrorLayerPartial errorPart;EnterPinView.errorPart47,1832
-    private Image menuBarImage;EnterPinView.menuBarImage48,1874
-    private HStaticIcon menuBar;EnterPinView.menuBar49,1907
-    private Inventory guiModel;EnterPinView.guiModel51,1947
-    public void setLastComponentSelected(EnterPinView.setLastComponentSelected54,1983
-    public boolean isLastComponentSelected(EnterPinView.isLastComponentSelected58,2134
-    public PinButtonPartial getPinButton(EnterPinView.getPinButton62,2232
-    public InfoPatrial getInfoPart(EnterPinView.getInfoPart66,2314
-    public EnterPinView(EnterPinView.EnterPinView70,2389
-    public Inventory getGuiModel(EnterPinView.getGuiModel79,2716
-    public void setGuiModel(EnterPinView.setGuiModel83,2789
-    public void initialize(EnterPinView.initialize87,2884
-    private HStaticIcon createLockIcon(EnterPinView.createLockIcon141,4806
-    private Map iconImages;EnterPinView.iconImages158,5618
-    private Image createImage(EnterPinView.createImage159,5647
-    private HStaticIcon createMenuBarIcon(EnterPinView.createMenuBarIcon165,5864
-    public void destroy(EnterPinView.destroy181,6581
-    private HStaticText createPinLabel(EnterPinView.createPinLabel216,7452
-    public void requestFocusDefaultComponent(EnterPinView.requestFocusDefaultComponent228,7945
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/enterpin/EnterPinView.java,2772
+public final class EnterPinView 26,807
+    private static final long serialVersionUID EnterPinView.serialVersionUID27,870
+    protected final String BAR_SRC=EnterPinView.BAR_SRC29,942
+    protected final String BAR_BOX EnterPinView.BAR_BOX30,990
+    private final String ENTER_PIN_LABEL_BOX EnterPinView.ENTER_PIN_LABEL_BOX31,1038
+    private final String ENTER_PIN_LABEL_TEXT EnterPinView.ENTER_PIN_LABEL_TEXT32,1107
+    private final String ENTER_PIN_LABEL_FONT EnterPinView.ENTER_PIN_LABEL_FONT33,1178
+    private final String ENTER_PIN_ON_LABEL_COLOR EnterPinView.ENTER_PIN_ON_LABEL_COLOR34,1249
+    private final String ENTER_PIN_OFF_LABEL_COLOR EnterPinView.ENTER_PIN_OFF_LABEL_COLOR35,1328
+    private final String LOCK_ON_ICON_IMAGE EnterPinView.LOCK_ON_ICON_IMAGE36,1409
+    private final String LOCK_ON_ICON_IMAGE_BOX EnterPinView.LOCK_ON_ICON_IMAGE_BOX37,1476
+    private PinButtonPartial pinButton;EnterPinView.pinButton39,1552
+    private InfoPatrial infoPart;EnterPinView.infoPart40,1592
+    private PropertyKeyBuilder keyBuiler;EnterPinView.keyBuiler41,1626
+    private Image lockImage;EnterPinView.lockImage42,1668
+    private HStaticIcon lockIcon;EnterPinView.lockIcon43,1697
+    private boolean isLastComponentSelected;EnterPinView.isLastComponentSelected44,1731
+    private HStaticText enterPinLabel;EnterPinView.enterPinLabel45,1776
+    private ErrorLayerPartial errorPart;EnterPinView.errorPart46,1815
+    private Image menuBarImage;EnterPinView.menuBarImage47,1856
+    private HStaticIcon menuBar;EnterPinView.menuBar48,1888
+    private Map iconImages;EnterPinView.iconImages49,1921
+    private Inventory guiModel;EnterPinView.guiModel50,1949
+    public void setLastComponentSelected(EnterPinView.setLastComponentSelected52,1982
+    public boolean isLastComponentSelected(EnterPinView.isLastComponentSelected56,2129
+    public PinButtonPartial getPinButton(EnterPinView.getPinButton60,2223
+    public InfoPatrial getInfoPart(EnterPinView.getInfoPart64,2301
+    public EnterPinView(EnterPinView.EnterPinView68,2372
+    public Inventory getGuiModel(EnterPinView.getGuiModel90,3073
+    public void setGuiModel(EnterPinView.setGuiModel94,3142
+    private void addLockIcon(EnterPinView.addLockIcon98,3233
+    private Image createImage(EnterPinView.createImage116,4041
+    private void addMenuBarIcon(EnterPinView.addMenuBarIcon123,4274
+    public void destroy(EnterPinView.destroy138,4957
+    private void addPinLabel(EnterPinView.addPinLabel169,5700
+    public void requestFocusDefaultComponent(EnterPinView.requestFocusDefaultComponent180,6223
+    private void addPinButtons(EnterPinView.addPinButtons184,6333
+    private void addInfoPartial(EnterPinView.addInfoPartial189,6463
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/enterpin/ErrorLayerPartial.java,1763
-public class ErrorLayerPartial EnterPinView.ErrorLayerPartial18,509
-    private String errorMessage;ErrorLayerPartial.errorMessage20,561
-    private Image errorIcon;ErrorLayerPartial.errorIcon22,597
-    private HContainer errorTitleContainer;ErrorLayerPartial.errorTitleContainer24,629
-    private HStaticIcon errorIconSI;ErrorLayerPartial.errorIconSI25,674
-    private HStaticText errorMessageST;ErrorLayerPartial.errorMessageST26,712
-    private final String TITLE_BOX ErrorLayerPartial.TITLE_BOX28,755
-    private final String TITLE_ICON ErrorLayerPartial.TITLE_ICON29,806
-    private final String TITLE_LABEL ErrorLayerPartial.TITLE_LABEL30,859
-    private final String TITLE_COLOR ErrorLayerPartial.TITLE_COLOR31,914
-    private final String TITLE_FONT ErrorLayerPartial.TITLE_FONT32,969
-    private final String TITLE_ICON_DIM ErrorLayerPartial.TITLE_ICON_DIM33,1022
-    private final String MESSAGE_LABEL_BOX ErrorLayerPartial.MESSAGE_LABEL_BOX37,1089
-    private final String MESSAGE_BOX ErrorLayerPartial.MESSAGE_BOX38,1156
-    private final String MESSAGE_FONT ErrorLayerPartial.MESSAGE_FONT39,1211
-    private final String MESSAGE_COLOR ErrorLayerPartial.MESSAGE_COLOR40,1268
-    public ErrorLayerPartial(ErrorLayerPartial.ErrorLayerPartial43,1330
-    public String getErrorMessage(ErrorLayerPartial.getErrorMessage49,1431
-    public void setErrorMessage(ErrorLayerPartial.setErrorMessage55,1513
-    public void initialize(ErrorLayerPartial.initialize59,1621
-    protected Rectangle computeContainerBox(ErrorLayerPartial.computeContainerBox66,1934
-    private HContainer createErrorTitleContainer(ErrorLayerPartial.createErrorTitleContainer80,2544
-    public void destroy(ErrorLayerPartial.destroy101,3716
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/enterpin/ErrorLayerPartial.java,1700
+public class ErrorLayerPartial EnterPinView.ErrorLayerPartial21,603
+    private String errorMessage;ErrorLayerPartial.errorMessage23,655
+    private Image errorIcon;ErrorLayerPartial.errorIcon25,691
+    private HContainer errorTitleContainer;ErrorLayerPartial.errorTitleContainer27,723
+    private HStaticIcon errorIconSI;ErrorLayerPartial.errorIconSI28,768
+    private HStaticText errorMessageST;ErrorLayerPartial.errorMessageST29,806
+    private final String TITLE_BOX ErrorLayerPartial.TITLE_BOX31,849
+    private final String TITLE_ICON ErrorLayerPartial.TITLE_ICON32,900
+    private final String TITLE_LABEL ErrorLayerPartial.TITLE_LABEL33,953
+    private final String TITLE_COLOR ErrorLayerPartial.TITLE_COLOR34,1008
+    private final String TITLE_FONT ErrorLayerPartial.TITLE_FONT35,1063
+    private final String TITLE_ICON_DIM ErrorLayerPartial.TITLE_ICON_DIM36,1116
+    private final String MESSAGE_LABEL_BOX ErrorLayerPartial.MESSAGE_LABEL_BOX40,1183
+    private final String MESSAGE_BOX ErrorLayerPartial.MESSAGE_BOX41,1250
+    private final String MESSAGE_FONT ErrorLayerPartial.MESSAGE_FONT42,1305
+    private final String MESSAGE_COLOR ErrorLayerPartial.MESSAGE_COLOR43,1362
+    public ErrorLayerPartial(ErrorLayerPartial.ErrorLayerPartial46,1424
+    public String getErrorMessage(ErrorLayerPartial.getErrorMessage58,1884
+    public void setErrorMessage(ErrorLayerPartial.setErrorMessage62,1962
+    protected Rectangle computeContainerBox(ErrorLayerPartial.computeContainerBox66,2070
+    private HContainer createErrorTitleContainer(ErrorLayerPartial.createErrorTitleContainer80,2680
+    public void destroy(ErrorLayerPartial.destroy101,3873
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/enterpin/InfoPatrial.java,641
-public class InfoPatrial 19,543
-    private final String INFO_TEXT_COLOR InfoPatrial.INFO_TEXT_COLOR23,596
-    private final String INFO_TEXT_FONT InfoPatrial.INFO_TEXT_FONT24,653
-    private final String INFO_TEXT_PART1 InfoPatrial.INFO_TEXT_PART125,708
-    private final String INFO_TEXT_PART2 InfoPatrial.INFO_TEXT_PART226,765
-    private final String INFO_ICON_IMAGE InfoPatrial.INFO_ICON_IMAGE27,822
-    private Image infoImage;InfoPatrial.infoImage29,885
-    public InfoPatrial(InfoPatrial.InfoPatrial32,923
-    public void initialize(InfoPatrial.initialize35,1012
-    public void destroy(InfoPatrial.destroy59,2286
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/enterpin/InfoPatrial.java,582
+public class InfoPatrial 21,597
+    private final String INFO_TEXT_COLOR InfoPatrial.INFO_TEXT_COLOR23,643
+    private final String INFO_TEXT_FONT InfoPatrial.INFO_TEXT_FONT24,700
+    private final String INFO_TEXT_PART1 InfoPatrial.INFO_TEXT_PART125,755
+    private final String INFO_TEXT_PART2 InfoPatrial.INFO_TEXT_PART226,812
+    private final String INFO_ICON_IMAGE InfoPatrial.INFO_ICON_IMAGE27,869
+    private Image infoImage;InfoPatrial.infoImage29,928
+    public InfoPatrial(InfoPatrial.InfoPatrial32,962
+    public void destroy(InfoPatrial.destroy62,2414
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/enterpin/PinButtonPartial.java,2686
-public class PinButtonPartial 28,1013
-    private final String SPIN_BUTTON_TEXT_FONT PinButtonPartial.SPIN_BUTTON_TEXT_FONT32,1067
-    private final String SPIN_BUTTON_TEXT_COLOR PinButtonPartial.SPIN_BUTTON_TEXT_COLOR33,1135
-    private final String SPIN_BUTTON_DIM=PinButtonPartial.SPIN_BUTTON_DIM34,1205
-    private final String NORMAL_STATE_PIN_IMAGE PinButtonPartial.NORMAL_STATE_PIN_IMAGE35,1259
-    private final String FOCUSED_STATE_PIN_IMAGE PinButtonPartial.FOCUSED_STATE_PIN_IMAGE36,1333
-    private GraphicTextButton firstPinNumber;PinButtonPartial.firstPinNumber40,1415
-    private GraphicTextButton secondPinNumber;PinButtonPartial.secondPinNumber41,1462
-    private GraphicTextButton thirdPinNumber;PinButtonPartial.thirdPinNumber42,1510
-    private GraphicTextButton fourthPinNumber;PinButtonPartial.fourthPinNumber43,1557
-    private GraphicTextButton fifthPinNumber;PinButtonPartial.fifthPinNumber44,1605
-    private GraphicTextButton sixthPinNumber;PinButtonPartial.sixthPinNumber45,1652
-    private final GraphicTextLook graphicTextLook PinButtonPartial.graphicTextLook46,1699
-    private Image normalPinEntryImage;PinButtonPartial.normalPinEntryImage47,1775
-    private Image focusedPinEntryImage;PinButtonPartial.focusedPinEntryImage48,1815
-    private Inventory pin;PinButtonPartial.pin49,1856
-    public PinButtonPartial(PinButtonPartial.PinButtonPartial51,1886
-    public void initialize(PinButtonPartial.initialize56,2021
-    private void setFocusTraversalForButtons(PinButtonPartial.setFocusTraversalForButtons98,4090
-    private GraphicTextButton createPinButton(PinButtonPartial.createPinButton107,4657
-    private void loadNormalPinEntryImage(PinButtonPartial.loadNormalPinEntryImage130,6083
-    private void loadFocusedPinEntryImage(PinButtonPartial.loadFocusedPinEntryImage135,6332
-    public void destroy(PinButtonPartial.destroy140,6585
-    public HGraphicButton getFirstPinNumber(PinButtonPartial.getFirstPinNumber167,7535
-    public HGraphicButton getSecondPinNumber(PinButtonPartial.getSecondPinNumber171,7625
-    public HGraphicButton getThirdPinNumber(PinButtonPartial.getThirdPinNumber175,7717
-    public HGraphicButton getFourthPinNumber(PinButtonPartial.getFourthPinNumber179,7807
-    public HGraphicButton getFifthPinNumber(PinButtonPartial.getFifthPinNumber183,7899
-    public HGraphicButton getSixthPinNumber(PinButtonPartial.getSixthPinNumber187,7989
-    public void applyModel(PinButtonPartial.applyModel191,8083
-    public Inventory applyGuiChangesToModel(PinButtonPartial.applyGuiChangesToModel201,8652
-    public void repaintButtons(PinButtonPartial.repaintButtons211,9216
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/enterpin/PinButtonPartial.java,2622
+public class PinButtonPartial 30,1067
+    private final String SPIN_BUTTON_TEXT_FONT PinButtonPartial.SPIN_BUTTON_TEXT_FONT32,1117
+    private final String SPIN_BUTTON_TEXT_COLOR PinButtonPartial.SPIN_BUTTON_TEXT_COLOR33,1185
+    private final String SPIN_BUTTON_DIM=PinButtonPartial.SPIN_BUTTON_DIM34,1255
+    private final String NORMAL_STATE_PIN_IMAGE PinButtonPartial.NORMAL_STATE_PIN_IMAGE35,1309
+    private final String FOCUSED_STATE_PIN_IMAGE PinButtonPartial.FOCUSED_STATE_PIN_IMAGE36,1383
+    private GraphicTextButton firstPinNumber;PinButtonPartial.firstPinNumber40,1465
+    private GraphicTextButton secondPinNumber;PinButtonPartial.secondPinNumber41,1512
+    private GraphicTextButton thirdPinNumber;PinButtonPartial.thirdPinNumber42,1560
+    private GraphicTextButton fourthPinNumber;PinButtonPartial.fourthPinNumber43,1607
+    private GraphicTextButton fifthPinNumber;PinButtonPartial.fifthPinNumber44,1655
+    private GraphicTextButton sixthPinNumber;PinButtonPartial.sixthPinNumber45,1702
+    private final GraphicTextLook graphicTextLook PinButtonPartial.graphicTextLook46,1749
+    private Image normalPinEntryImage;PinButtonPartial.normalPinEntryImage47,1825
+    private Image focusedPinEntryImage;PinButtonPartial.focusedPinEntryImage48,1865
+    private Inventory pin;PinButtonPartial.pin49,1906
+    public PinButtonPartial(PinButtonPartial.PinButtonPartial51,1936
+    private void setFocusTraversalForButtons(PinButtonPartial.setFocusTraversalForButtons98,4188
+    private GraphicTextButton createPinButton(PinButtonPartial.createPinButton107,4755
+    private void loadNormalPinEntryImage(PinButtonPartial.loadNormalPinEntryImage130,6181
+    private void loadFocusedPinEntryImage(PinButtonPartial.loadFocusedPinEntryImage135,6451
+    public void destroy(PinButtonPartial.destroy140,6725
+    public HGraphicButton getFirstPinNumber(PinButtonPartial.getFirstPinNumber167,7675
+    public HGraphicButton getSecondPinNumber(PinButtonPartial.getSecondPinNumber171,7765
+    public HGraphicButton getThirdPinNumber(PinButtonPartial.getThirdPinNumber175,7857
+    public HGraphicButton getFourthPinNumber(PinButtonPartial.getFourthPinNumber179,7947
+    public HGraphicButton getFifthPinNumber(PinButtonPartial.getFifthPinNumber183,8039
+    public HGraphicButton getSixthPinNumber(PinButtonPartial.getSixthPinNumber187,8129
+    public void applyModel(PinButtonPartial.applyModel191,8219
+    public Inventory applyGuiChangesToModel(PinButtonPartial.applyGuiChangesToModel201,8784
+    public void repaintButtons(PinButtonPartial.repaintButtons211,9344
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/FunctionalKeyCode.java,243
 public interface FunctionalKeyCode 4,47
@@ -440,137 +456,181 @@ public interface FunctionalKeyCode 4,47
     int VK_YELLOW FunctionalKeyCode.VK_YELLOW8,174
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/GUIComponentsBuilder.java,1823
-public class GUIComponentsBuilder 27,891
-    public static class Component{GUIComponentsBuilder.Component29,932
-    public static class StaticIcon GUIComponentsBuilder.StaticIcon34,1060
-    public static class GaugeDiscretteIcon GUIComponentsBuilder.GaugeDiscretteIcon38,1166
-    public static class Label GUIComponentsBuilder.Label43,1331
-    public static class StaticLabel GUIComponentsBuilder.StaticLabel48,1487
-    public static class StateComponents GUIComponentsBuilder.StateComponents52,1594
-    public static class StaticGraphicTextButton GUIComponentsBuilder.StaticGraphicTextButton69,2485
-    private static final long serialVersionUID GUIComponentsBuilder.serialVersionUID81,2797
-    private XletView view;GUIComponentsBuilder.view82,2868
-    private ViewMetadata metadata;GUIComponentsBuilder.metadata83,2895
-    private GUIComponentsBuilder(GUIComponentsBuilder.GUIComponentsBuilder87,2944
-    private HStaticIcon applyDefaultStyle2Icon(GUIComponentsBuilder.applyDefaultStyle2Icon95,3122
-    public static synchronized GUIComponentsBuilder create(GUIComponentsBuilder.create111,3465
-    private Rectangle getBox(GUIComponentsBuilder.getBox117,3641
-    public HStaticIcon createStaticIcon(GUIComponentsBuilder.createStaticIcon139,4587
-    public HNetIcon createNetIcon(GUIComponentsBuilder.createNetIcon166,5751
-    public HStaticText createStaticLabel(GUIComponentsBuilder.createStaticLabel181,6273
-    public HText createLabel(GUIComponentsBuilder.createLabel205,7249
-    public GraphicTextButton createGraphicTextButton(GUIComponentsBuilder.createGraphicTextButton239,8668
-    public HDiscretteGaugeIcon createDiscretteGaugeIcon(GUIComponentsBuilder.createDiscretteGaugeIcon314,12662
-    private Image loadStaticImage(GUIComponentsBuilder.loadStaticImage334,13779
+public class GUIComponentsBuilder 29,943
+    public static class Component{GUIComponentsBuilder.Component31,980
+    public static class StaticIcon GUIComponentsBuilder.StaticIcon36,1104
+    public static class GaugeDiscretteIcon GUIComponentsBuilder.GaugeDiscretteIcon40,1206
+    public static class Label GUIComponentsBuilder.Label45,1367
+    public static class StaticLabel GUIComponentsBuilder.StaticLabel50,1519
+    public static class StateComponents GUIComponentsBuilder.StateComponents54,1622
+    public static class StaticGraphicTextButton GUIComponentsBuilder.StaticGraphicTextButton71,2509
+    private static final long serialVersionUID GUIComponentsBuilder.serialVersionUID83,2808
+    private XletView view;GUIComponentsBuilder.view84,2879
+    private ViewMetadata metadata;GUIComponentsBuilder.metadata85,2906
+    private GUIComponentsBuilder(GUIComponentsBuilder.GUIComponentsBuilder89,2944
+    private HStaticIcon applyDefaultStyle2Icon(GUIComponentsBuilder.applyDefaultStyle2Icon97,3114
+    public static synchronized GUIComponentsBuilder create(GUIComponentsBuilder.create113,3452
+    private Rectangle getBox(GUIComponentsBuilder.getBox119,3616
+    public HStaticIcon createStaticIcon(GUIComponentsBuilder.createStaticIcon141,4557
+    public HNetIcon createNetIcon(GUIComponentsBuilder.createNetIcon168,5736
+    public HStaticText createStaticLabel(GUIComponentsBuilder.createStaticLabel183,6253
+    public HText createLabel(GUIComponentsBuilder.createLabel207,7224
+    public GraphicTextButton createGraphicTextButton(GUIComponentsBuilder.createGraphicTextButton241,8633
+    public HDiscretteGaugeIcon createDiscretteGaugeIcon(GUIComponentsBuilder.createDiscretteGaugeIcon316,12611
+    private Image loadStaticImage(GUIComponentsBuilder.loadStaticImage336,13724
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/GuiManager.java,1550
-public class GuiManager 18,538
-    private HScene scene;GuiManager.scene20,597
-    private ContentLoader contentLoader;GuiManager.contentLoader22,626
-    private int fps GuiManager.fps24,670
-    private static byte[] PROFILE_TIMER_GUI;GuiManager.PROFILE_TIMER_GUI26,702
-    private static byte[] PROFILE_TIMER_FRAME_ANIMATION;GuiManager.PROFILE_TIMER_FRAME_ANIMATION27,748
-    private static byte[] PROFILE_TIMER_ANIMATION_SLEEP;GuiManager.PROFILE_TIMER_ANIMATION_SLEEP28,806
-    private XletView activeView;GuiManager.activeView37,1260
-    public void setActiveView(GuiManager.setActiveView39,1296
-    public XletView getActiveView(GuiManager.getActiveView45,1505
-    public GuiManager(GuiManager.GuiManager49,1586
-    public void initializeContentLoader(GuiManager.initializeContentLoader53,1694
-    public void setDefaultScene(GuiManager.setDefaultScene57,1885
-    public Image loadImage(GuiManager.loadImage75,2368
-    public void destroy(GuiManager.destroy81,2553
-    public void switchGuiVisible(GuiManager.switchGuiVisible113,3353
-    private void sleepQuarterFrame(GuiManager.sleepQuarterFrame117,3489
-    public void show(GuiManager.show131,3877
-    public void repaint(GuiManager.repaint145,4323
-    public void repaintBox(GuiManager.repaintBox151,4439
-    public void repaintBox(GuiManager.repaintBox156,4646
-    public int getFps(GuiManager.getFps162,4824
-    public void setFps(GuiManager.setFps166,4881
-    public static void logComponentDebugInfo(GuiManager.logComponentDebugInfo170,4950
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/GuiManager.java,1281
+public class GuiManager 17,491
+    private HScene scene;GuiManager.scene19,520
+    private int fps GuiManager.fps21,549
+    private static byte[] PROFILE_TIMER_GUI;GuiManager.PROFILE_TIMER_GUI23,581
+    private static byte[] PROFILE_TIMER_FRAME_ANIMATION;GuiManager.PROFILE_TIMER_FRAME_ANIMATION24,627
+    private static byte[] PROFILE_TIMER_ANIMATION_SLEEP;GuiManager.PROFILE_TIMER_ANIMATION_SLEEP25,685
+    private XletView activeView;GuiManager.activeView34,1139
+    public void setActiveView(GuiManager.setActiveView36,1175
+    public XletView getActiveView(GuiManager.getActiveView42,1384
+    public void setDefaultScene(GuiManager.setDefaultScene46,1465
+    public void destroy(GuiManager.destroy58,1807
+    public void switchGuiVisible(GuiManager.switchGuiVisible82,2374
+    private void sleepQuarterFrame(GuiManager.sleepQuarterFrame86,2510
+    public void show(GuiManager.show100,2898
+    public void repaint(GuiManager.repaint114,3344
+    public void repaintBox(GuiManager.repaintBox120,3456
+    public void repaintBox(GuiManager.repaintBox125,3659
+    public int getFps(GuiManager.getFps131,3833
+    public void setFps(GuiManager.setFps135,3890
+    public static void logComponentDebugInfo(GuiManager.logComponentDebugInfo139,3959
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/KeyActionType.java,144
 public interface KeyActionType 3,46
     int KEY_PRESSED KeyActionType.KEY_PRESSED4,79
     int KEY_RELEASED KeyActionType.KEY_RELEASED5,106
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/menu/FyreMenuView.java,1543
-public final class FyreMenuView 21,654
-    private static final long serialVersionUID FyreMenuView.serialVersionUID23,720
-    protected final String RECOMEND_LINK FyreMenuView.RECOMEND_LINK24,792
-    protected final String RECOMEND_LINK_BOX FyreMenuView.RECOMEND_LINK_BOX25,867
-    protected final String RECOMEND_LINK_FONT FyreMenuView.RECOMEND_LINK_FONT26,950
-    protected final String RECOMEND_LINK_COLOR FyreMenuView.RECOMEND_LINK_COLOR27,1035
-    protected final String RECOMEND_LINK_ICON FyreMenuView.RECOMEND_LINK_ICON28,1122
-    protected final String RECOMEND_LINK_ICON_BOX FyreMenuView.RECOMEND_LINK_ICON_BOX29,1207
-    private Image recomendationsImage;FyreMenuView.recomendationsImage31,1302
-    private MenuTitlePartial menu;FyreMenuView.menu32,1342
-    private HStaticIcon recommendationsIcon;FyreMenuView.recommendationsIcon34,1384
-    public FyreMenuView(FyreMenuView.FyreMenuView35,1430
-    private MenuTitlePartial createMenuPartial(FyreMenuView.createMenuPartial44,1724
-    private HStaticIcon createRecomendationIcon(FyreMenuView.createRecomendationIcon52,1978
-    private HStaticText createRecomendationText(FyreMenuView.createRecomendationText66,2613
-    public void initialize(FyreMenuView.initialize81,3229
-    public void destroy(FyreMenuView.destroy103,4010
-    public void requestFocusDefaultComponent(FyreMenuView.requestFocusDefaultComponent115,4301
-    public MenuTitlePartial getMenu(FyreMenuView.getMenu120,4364
-    public void printDebug(FyreMenuView.printDebug124,4436
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/menu/FyreMenuView.java,1709
+public final class FyreMenuView 24,765
+    private static final long serialVersionUID FyreMenuView.serialVersionUID26,831
+    protected final String RECOMEND_LINK FyreMenuView.RECOMEND_LINK27,903
+    protected final String RECOMEND_LINK_BOX FyreMenuView.RECOMEND_LINK_BOX28,978
+    protected final String RECOMEND_LINK_FONT FyreMenuView.RECOMEND_LINK_FONT29,1061
+    protected final String RECOMEND_LINK_COLOR FyreMenuView.RECOMEND_LINK_COLOR30,1146
+    protected final String RECOMEND_LINK_ICON FyreMenuView.RECOMEND_LINK_ICON31,1233
+    protected final String RECOMEND_LINK_ICON_BOX FyreMenuView.RECOMEND_LINK_ICON_BOX32,1318
+    private Image recomendationsImage;FyreMenuView.recomendationsImage34,1413
+    private MenuTitlePartial menu;FyreMenuView.menu35,1453
+    private MenuContentPartial menuContent;FyreMenuView.menuContent36,1489
+    public MenuContentPartial getMenuContent(FyreMenuView.getMenuContent38,1536
+    private HStaticIcon recommendationsIcon;FyreMenuView.recommendationsIcon42,1624
+    public FyreMenuView(FyreMenuView.FyreMenuView44,1672
+    public void initialize(FyreMenuView.initialize50,1902
+    private MenuTitlePartial createMenuPartial(FyreMenuView.createMenuPartial60,2385
+    private MenuContentPartial createMenuContentPartial(FyreMenuView.createMenuContentPartial67,2637
+    private HStaticIcon createRecomendationIcon(FyreMenuView.createRecomendationIcon76,2942
+    private HStaticText createRecomendationText(FyreMenuView.createRecomendationText90,3598
+    public void destroy(FyreMenuView.destroy104,4209
+    public MenuTitlePartial getMenu(FyreMenuView.getMenu116,4500
+    public void printDebug(FyreMenuView.printDebug120,4572
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/menu/MenuContentPartial.java,244
-public final class MenuContentPartial 7,238
-    public MenuContentPartial(MenuContentPartial.MenuContentPartial9,297
-    public void initialize(MenuContentPartial.initialize13,395
-    public void destroy(MenuContentPartial.destroy17,477
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/menu/MenuContentPartial.java,3629
+public final class MenuContentPartial 24,848
+    public static final String MENU_ITEM_PREFIX MenuContentPartial.MENU_ITEM_PREFIX29,990
+    private final String VGAP MenuContentPartial.VGAP30,1050
+    private final String HGAP MenuContentPartial.HGAP31,1091
+    private final String WIDTH MenuContentPartial.WIDTH32,1132
+    private final String HEIGHT MenuContentPartial.HEIGHT33,1179
+    private ForrestReader menuContentReader;MenuContentPartial.menuContentReader34,1228
+    private PropertyKeyBuilder keyBuilder;MenuContentPartial.keyBuilder36,1317
+    private int vGap;MenuContentPartial.vGap37,1361
+    private int hGap;MenuContentPartial.hGap38,1384
+    private int width;MenuContentPartial.width39,1407
+    private int height;MenuContentPartial.height40,1431
+    protected final String ARROW_ICON MenuContentPartial.ARROW_ICON41,1456
+    protected final String ARROW_ICON_BOX MenuContentPartial.ARROW_ICON_BOX42,1511
+    protected final String NONACTIVE_FONT_COLOR MenuContentPartial.NONACTIVE_FONT_COLOR43,1574
+    protected final String ACTIVE_FONT_COLOR MenuContentPartial.ACTIVE_FONT_COLOR44,1649
+    protected final String ACTIVE_FONT MenuContentPartial.ACTIVE_FONT45,1722
+    protected final String NONACTIVE_FONT MenuContentPartial.NONACTIVE_FONT46,1783
+    protected final String FIRST_MENU_NAME MenuContentPartial.FIRST_MENU_NAME47,1846
+    protected final String ACTIVES_CHILDS_FONT_COLOR=MenuContentPartial.ACTIVES_CHILDS_FONT_COLOR48,1902
+    protected final String ACTIVES_CHILDS_FONT=MenuContentPartial.ACTIVES_CHILDS_FONT49,1984
+    protected final String CHILDSPARENTMARK_FONT=MenuContentPartial.CHILDSPARENTMARK_FONT50,2054
+    protected final String CHILDSPARENTMARK_FONT_COLOR=MenuContentPartial.CHILDSPARENTMARK_FONT_COLOR51,2129
+    private HashMap labels MenuContentPartial.labels56,2329
+    public MenuContentPartial(MenuContentPartial.MenuContentPartial57,2374
+    public void setGuiMetadata(MenuContentPartial.setGuiMetadata61,2525
+    public void initialize(MenuContentPartial.initialize64,2648
+    public void activateFirstLevelMenu(MenuContentPartial.activateFirstLevelMenu123,5120
+    public void destroy(MenuContentPartial.destroy160,6412
+    private HText getTextComponent(MenuContentPartial.getTextComponent164,6489
+    private TextStyle activeTextStyle MenuContentPartial.activeTextStyle194,7793
+    private HText applyActiveStyle(MenuContentPartial.applyActiveStyle195,7840
+    private TextStyle nonActiveTextStyle MenuContentPartial.nonActiveTextStyle206,8417
+    private HText applyNonActiveStyle(MenuContentPartial.applyNonActiveStyle207,8467
+    private TextStyle beforeActiveTextStyle MenuContentPartial.beforeActiveTextStyle216,8990
+    private HText applyBeforeActiveStyle(MenuContentPartial.applyBeforeActiveStyle217,9043
+    private TextStyle activeWithoutArrowTextStyle MenuContentPartial.activeWithoutArrowTextStyle227,9596
+    private HText applyActiveWithoutArrow(MenuContentPartial.applyActiveWithoutArrow228,9655
+    public void refreshMenu(MenuContentPartial.refreshMenu239,10240
+    public void repaintMenuLevel(MenuContentPartial.repaintMenuLevel298,12499
+    class TextStyle{MenuContentPartial.TextStyle309,12787
+        private Font font;MenuContentPartial.TextStyle.font310,12809
+        private Color color;MenuContentPartial.TextStyle.color311,12837
+        public TextStyle(MenuContentPartial.TextStyle.TextStyle312,12867
+        public Font getFont(MenuContentPartial.TextStyle.getFont317,13016
+        public Color getColor(MenuContentPartial.TextStyle.getColor320,13086
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/menu/MenuTitlePartial.java,3639
-public final class MenuTitlePartial 29,983
-    protected final String BAR_SRC=MenuTitlePartial.BAR_SRC31,1061
-    protected final String BAR_BOX MenuTitlePartial.BAR_BOX32,1110
-    protected final String ARROW_ICON MenuTitlePartial.ARROW_ICON37,1237
-    protected final String ARROW_ICON_BOX MenuTitlePartial.ARROW_ICON_BOX42,1388
-    protected final String NONACTIVE_FONT_COLOR=MenuTitlePartial.NONACTIVE_FONT_COLOR48,1514
-    protected final String NONACTIVE_FONT MenuTitlePartial.NONACTIVE_FONT53,1647
-    protected final String NONACTIVE_GAP MenuTitlePartial.NONACTIVE_GAP58,1804
-    protected final String NONACTIVE_ITEM_DIM=MenuTitlePartial.NONACTIVE_ITEM_DIM62,1934
-    protected final String NONACTIVE_BOX MenuTitlePartial.NONACTIVE_BOX67,2075
-    protected final String ACTIVE_ICON_BOX=MenuTitlePartial.ACTIVE_ICON_BOX72,2227
-    protected final String ACTIVE_FONT_COLOR=MenuTitlePartial.ACTIVE_FONT_COLOR76,2376
-    protected final String ACTIVE_FONT MenuTitlePartial.ACTIVE_FONT80,2528
-    protected final String ACTIVE_BOX MenuTitlePartial.ACTIVE_BOX85,2657
-    public static final String MENU_ITEM_PREFIX MenuTitlePartial.MENU_ITEM_PREFIX95,2920
-    protected final String CONTROLLER_NAME MenuTitlePartial.CONTROLLER_NAME100,3103
-    protected final String ITEM_ICON MenuTitlePartial.ITEM_ICON105,3269
-    protected final String ITEM_ICON_DIM MenuTitlePartial.ITEM_ICON_DIM110,3421
-    private HIcon activeIconArrow;MenuTitlePartial.activeIconArrow112,3479
-    private PropertyKeyBuilder keyBuiler;MenuTitlePartial.keyBuiler114,3517
-    private Map menuItemsTexts;MenuTitlePartial.menuItemsTexts115,3560
-    private Map menuItemsIcons;MenuTitlePartial.menuItemsIcons116,3593
-    private ArrayList menuMetadata;MenuTitlePartial.menuMetadata117,3626
-    private RewindableCycleReader menuMetadataReader;MenuTitlePartial.menuMetadataReader118,3663
-    private Map iconImages;MenuTitlePartial.iconImages119,3718
-    private Image menuBarImage;MenuTitlePartial.menuBarImage121,3749
-    private HStaticIcon menuBar;MenuTitlePartial.menuBar122,3782
-    public MenuTitlePartial(MenuTitlePartial.MenuTitlePartial124,3818
-    private HStaticIcon createMenuBarIcon(MenuTitlePartial.createMenuBarIcon129,3968
-    private Image createImage(MenuTitlePartial.createImage143,4645
-    private Image createImage(MenuTitlePartial.createImage150,4869
-    private HIcon getIcon(MenuTitlePartial.getIcon157,5121
-    private HText getTextComponent(MenuTitlePartial.getTextComponent176,5876
-    private HText applyActiveStyle(MenuTitlePartial.applyActiveStyle190,6430
-    private HText applyNonActiveStyle(MenuTitlePartial.applyNonActiveStyle200,6900
-    public void setGuiMetadata(MenuTitlePartial.setGuiMetadata217,7574
-    public ArrayList getGuiMetadata(MenuTitlePartial.getGuiMetadata225,7839
-    public void initialize(MenuTitlePartial.initialize230,7920
-    public void setActiveMenuItem(MenuTitlePartial.setActiveMenuItem259,9280
-    private HIcon activeElementIcon MenuTitlePartial.activeElementIcon269,9672
-    private Dimension nonActiveItemDIM MenuTitlePartial.nonActiveItemDIM270,9717
-    private int vgap MenuTitlePartial.vgap271,9765
-    public void refreshMenu(MenuTitlePartial.refreshMenu273,9795
-    public void destroy(MenuTitlePartial.destroy318,11865
-    public synchronized void forward(MenuTitlePartial.forward342,12579
-    public synchronized void backward(MenuTitlePartial.backward352,12836
-    private void dumpComponents(MenuTitlePartial.dumpComponents362,13095
-    public void repaintItem(MenuTitlePartial.repaintItem371,13423
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/menu/MenuTitlePartial.java,3901
+public final class MenuTitlePartial 31,1039
+    protected final String BAR_SRC=MenuTitlePartial.BAR_SRC33,1118
+    protected final String BAR_BOX MenuTitlePartial.BAR_BOX34,1167
+    protected final String ARROW_ICON MenuTitlePartial.ARROW_ICON39,1294
+    protected final String ARROW_ICON_BOX MenuTitlePartial.ARROW_ICON_BOX44,1445
+    protected final String NONACTIVE_FONT_COLOR=MenuTitlePartial.NONACTIVE_FONT_COLOR50,1571
+    protected final String NONACTIVE_FONT MenuTitlePartial.NONACTIVE_FONT55,1704
+    protected final String NONACTIVE_GAP MenuTitlePartial.NONACTIVE_GAP60,1861
+    protected final String NONACTIVE_ITEM_DIM=MenuTitlePartial.NONACTIVE_ITEM_DIM64,1991
+    protected final String NONACTIVE_BOX MenuTitlePartial.NONACTIVE_BOX69,2132
+    protected final String ACTIVE_ICON_BOX=MenuTitlePartial.ACTIVE_ICON_BOX74,2284
+    protected final String ACTIVE_FONT_COLOR=MenuTitlePartial.ACTIVE_FONT_COLOR78,2433
+    protected final String ACTIVE_FONT MenuTitlePartial.ACTIVE_FONT82,2585
+    protected final String ACTIVE_BOX MenuTitlePartial.ACTIVE_BOX87,2714
+    public static final String MENU_ITEM_PREFIX MenuTitlePartial.MENU_ITEM_PREFIX97,2977
+    protected final String CONTROLLER_NAME MenuTitlePartial.CONTROLLER_NAME102,3160
+    protected final String ITEM_ICON MenuTitlePartial.ITEM_ICON107,3326
+    protected final String ITEM_ICON_DIM MenuTitlePartial.ITEM_ICON_DIM112,3478
+    private HIcon activeIconArrow;MenuTitlePartial.activeIconArrow114,3536
+    private PropertyKeyBuilder keyBuiler;MenuTitlePartial.keyBuiler116,3574
+    private Map menuItemsTexts;MenuTitlePartial.menuItemsTexts117,3617
+    private Map menuItemsIcons;MenuTitlePartial.menuItemsIcons118,3650
+    private ArrayList menuMetadata;MenuTitlePartial.menuMetadata119,3683
+    private RewindableCycleReader menuMetadataReader;MenuTitlePartial.menuMetadataReader120,3720
+    private Map iconImages;MenuTitlePartial.iconImages121,3775
+    private Image menuBarImage;MenuTitlePartial.menuBarImage123,3806
+    private HStaticIcon menuBar;MenuTitlePartial.menuBar124,3839
+    public MenuTitlePartial(MenuTitlePartial.MenuTitlePartial126,3875
+    private HStaticIcon createMenuBarIcon(MenuTitlePartial.createMenuBarIcon131,4025
+    private Image createImage(MenuTitlePartial.createImage145,4702
+    private Image createImage(MenuTitlePartial.createImage152,4947
+    private HIcon getIcon(MenuTitlePartial.getIcon159,5220
+    private HText getTextComponent(MenuTitlePartial.getTextComponent178,5975
+    private HText applyActiveStyle(MenuTitlePartial.applyActiveStyle192,6529
+    private HText applyNonActiveStyle(MenuTitlePartial.applyNonActiveStyle202,6999
+    public void setGuiMetadata(MenuTitlePartial.setGuiMetadata219,7673
+    public ArrayList getGuiMetadata(MenuTitlePartial.getGuiMetadata227,7938
+    public void initialize(MenuTitlePartial.initialize232,8019
+    private MenuItem activeItem MenuTitlePartial.activeItem254,9248
+    public void setActiveMenuItem(MenuTitlePartial.setActiveMenuItem260,9368
+    public MenuItem getActiveMenuItem(MenuTitlePartial.getActiveMenuItem272,9797
+    private HIcon activeElementIcon MenuTitlePartial.activeElementIcon284,10216
+    private Dimension nonActiveItemDIM MenuTitlePartial.nonActiveItemDIM285,10261
+    private int vgap MenuTitlePartial.vgap286,10309
+    public void refreshMenu(MenuTitlePartial.refreshMenu288,10339
+    public void destroy(MenuTitlePartial.destroy338,12713
+    public void up(MenuTitlePartial.up362,13427
+    public void down(MenuTitlePartial.down366,13502
+    public synchronized void forward(MenuTitlePartial.forward370,13580
+    public synchronized void backward(MenuTitlePartial.backward379,13810
+    private void dumpComponents(MenuTitlePartial.dumpComponents388,14042
+    public void repaintItem(MenuTitlePartial.repaintItem397,14370
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/Partial.java,930
 public abstract class Partial 13,344
@@ -584,43 +644,41 @@ public abstract class Partial 13,344
     public String getName(Partial.getName30,845
     public void setName(Partial.setName38,1047
     public Partial(Partial.Partial42,1123
-    public void show(Partial.show65,1787
-    public void hide(Partial.hide70,1905
-    private void refresh(Partial.refresh75,2024
-    public void addTo(Partial.addTo80,2156
-    public void addTo(Partial.addTo83,2263
-    public void removeFrom(Partial.removeFrom87,2386
-    public HContainer getContainer(Partial.getContainer91,2503
+    public void show(Partial.show54,1403
+    public void hide(Partial.hide59,1521
+    private void refresh(Partial.refresh64,1640
+    public void addTo(Partial.addTo69,1772
+    public void addTo(Partial.addTo72,1879
+    public void removeFrom(Partial.removeFrom76,2002
+    public HContainer getContainer(Partial.getContainer80,2119
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/scene/PlaybackPartial.java,974
-public class PlaybackPartial 11,370
-    private final String BOX PlaybackPartial.BOX12,417
-    private final String MOVIE_BOX PlaybackPartial.MOVIE_BOX13,455
-    private HTextButton playButton;PlaybackPartial.playButton17,519
-    private HTextButton stopButton;PlaybackPartial.stopButton18,555
-    private HTextButton pause;PlaybackPartial.pause19,591
-    private AbstractDiscNavigator playbackControll;PlaybackPartial.playbackControll21,627
-    public PlaybackPartial(PlaybackPartial.PlaybackPartial23,684
-    public AbstractDiscNavigator getPlaybackControll(PlaybackPartial.getPlaybackControll30,875
-    public void setPlaybackControll(PlaybackPartial.setPlaybackControll36,974
-    public void initialize(PlaybackPartial.initialize42,1111
-    public void destroy(PlaybackPartial.destroy46,1213
-    public void play(PlaybackPartial.play54,1353
-    public void stop(PlaybackPartial.stop58,1453
-    public void pause(PlaybackPartial.pause62,1497
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/scene/PlaybackPartial.java,912
+public class PlaybackPartial 12,409
+    private final String BOX PlaybackPartial.BOX13,456
+    private final String MOVIE_BOX PlaybackPartial.MOVIE_BOX14,494
+    private HTextButton playButton;PlaybackPartial.playButton16,544
+    private HTextButton stopButton;PlaybackPartial.stopButton17,580
+    private HTextButton pause;PlaybackPartial.pause18,616
+    private AbstractDiscNavigator playbackControll;PlaybackPartial.playbackControll20,648
+    public PlaybackPartial(PlaybackPartial.PlaybackPartial22,701
+    public AbstractDiscNavigator getPlaybackControll(PlaybackPartial.getPlaybackControll28,915
+    public void setPlaybackControll(PlaybackPartial.setPlaybackControll32,1012
+    public void destroy(PlaybackPartial.destroy36,1147
+    public void play(PlaybackPartial.play42,1269
+    public void stop(PlaybackPartial.stop46,1365
+    public void pause(PlaybackPartial.pause50,1397
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/scene/SceneView.java,535
-public class SceneView 11,378
-    private ViewMetadata metadata;SceneView.metadata12,431
-    private FyreTvXlet xlet;SceneView.xlet13,466
-    private PlaybackPartial playbackGui;SceneView.playbackGui14,495
-    private static final long serialVersionUID SceneView.serialVersionUID18,560
-    public SceneView(SceneView.SceneView20,633
-    public void initialize(SceneView.initialize25,756
-    public void destroy(SceneView.destroy37,1295
-    public PlaybackPartial getPlaybackPartial(SceneView.getPlaybackPartial47,1501
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/scene/SceneView.java,479
+public class SceneView 12,431
+    private ViewMetadata metadata;SceneView.metadata13,473
+    private FyreTvXlet xlet;SceneView.xlet14,508
+    private PlaybackPartial playbackGui;SceneView.playbackGui15,537
+    private static final long serialVersionUID SceneView.serialVersionUID19,601
+    public SceneView(SceneView.SceneView21,674
+    public void destroy(SceneView.destroy35,1090
+    public PlaybackPartial getPlaybackPartial(SceneView.getPlaybackPartial45,1296
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/scenecarousel/SceneCarouselPartial.java,2250
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/scenecarousel/SceneCarouselPartial.java,2182
 public class SceneCarouselPartial 31,991
     private final String SPIN_BUTTON_DIM=SceneCarouselPartial.SPIN_BUTTON_DIM32,1044
     private final String TITLE_FONT SceneCarouselPartial.TITLE_FONT33,1101
@@ -634,104 +692,108 @@ public class SceneCarouselPartial 31,991
     private PropertyKeyBuilder keyBuilder;SceneCarouselPartial.keyBuilder42,1453
     private boolean frameUp SceneCarouselPartial.frameUp43,1497
     public SceneCarouselPartial(SceneCarouselPartial.SceneCarouselPartial45,1536
-    public void initialize(SceneCarouselPartial.initialize50,1696
-    private HText createActiveTileLabel(SceneCarouselPartial.createActiveTileLabel69,2313
-    private void setLabelToActiveTile(SceneCarouselPartial.setLabelToActiveTile80,2949
-    private void getNextPage(SceneCarouselPartial.getNextPage89,3316
-    public void createAllTiles(SceneCarouselPartial.createAllTiles94,3415
-    public void shuffleTilesLeft(SceneCarouselPartial.shuffleTilesLeft117,4285
-    public void shuffleTilesRight(SceneCarouselPartial.shuffleTilesRight129,4633
-    public void moveUp(SceneCarouselPartial.moveUp141,4942
-    public void moveDown(SceneCarouselPartial.moveDown150,5156
-    public boolean frameIsDown(SceneCarouselPartial.frameIsDown159,5372
-    public void getScenes(SceneCarouselPartial.getScenes163,5443
-    public void destroy(SceneCarouselPartial.destroy171,5666
-    private void addTilesToContainer(SceneCarouselPartial.addTilesToContainer175,5743
-    private void setTilesAndBackgroundImages(SceneCarouselPartial.setTilesAndBackgroundImages182,5923
-    private boolean isOnTheNextPage(SceneCarouselPartial.isOnTheNextPage201,6575
-    private boolean didntAlreadyGetTheNextPage(SceneCarouselPartial.didntAlreadyGetTheNextPage205,6706
+    private HText createActiveTileLabel(SceneCarouselPartial.createActiveTileLabel66,2241
+    private void setLabelToActiveTile(SceneCarouselPartial.setLabelToActiveTile77,2877
+    private void getNextPage(SceneCarouselPartial.getNextPage86,3244
+    public void createAllTiles(SceneCarouselPartial.createAllTiles91,3343
+    public void shuffleTilesLeft(SceneCarouselPartial.shuffleTilesLeft114,4213
+    public void shuffleTilesRight(SceneCarouselPartial.shuffleTilesRight126,4561
+    public void moveUp(SceneCarouselPartial.moveUp138,4870
+    public void moveDown(SceneCarouselPartial.moveDown147,5084
+    public boolean frameIsDown(SceneCarouselPartial.frameIsDown156,5300
+    public void getScenes(SceneCarouselPartial.getScenes160,5371
+    public void destroy(SceneCarouselPartial.destroy168,5594
+    private void addTilesToContainer(SceneCarouselPartial.addTilesToContainer172,5671
+    private void setTilesAndBackgroundImages(SceneCarouselPartial.setTilesAndBackgroundImages179,5851
+    private boolean isOnTheNextPage(SceneCarouselPartial.isOnTheNextPage198,6503
+    private boolean didntAlreadyGetTheNextPage(SceneCarouselPartial.didntAlreadyGetTheNextPage202,6634
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/scenecarousel/SceneCarouselTile.java,547
-public class SceneCarouselTile SceneCarouselPartial.SceneCarouselTile23,785
-    private boolean centerFrame;SceneCarouselTile.centerFrame24,845
-    public SceneCarouselTile(SceneCarouselTile.SceneCarouselTile26,881
-    public void addRedFrame(SceneCarouselTile.addRedFrame47,1566
-    public void removeFrame(SceneCarouselTile.removeFrame52,1671
-    public void setImage(SceneCarouselTile.setImage57,1778
-    private void setDefaultImage(SceneCarouselTile.setDefaultImage68,2164
-    public void paint(SceneCarouselTile.paint80,2523
+public class SceneCarouselTile SceneCarouselPartial.SceneCarouselTile25,839
+    private boolean centerFrame;SceneCarouselTile.centerFrame26,899
+    public SceneCarouselTile(SceneCarouselTile.SceneCarouselTile28,935
+    public void addRedFrame(SceneCarouselTile.addRedFrame49,1620
+    public void removeFrame(SceneCarouselTile.removeFrame54,1725
+    public void setImage(SceneCarouselTile.setImage59,1832
+    private void setDefaultImage(SceneCarouselTile.setDefaultImage70,2218
+    public void paint(SceneCarouselTile.paint82,2598
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/scenecarousel/SceneCarouselView.java,1125
-public final class SceneCarouselView 24,828
-    private SceneCarouselPartial sceneCarousel;SceneCarouselView.sceneCarousel25,914
-    private HStaticText topLabel;SceneCarouselView.topLabel26,963
-    private ErrorLayerPartial errorPart;SceneCarouselView.errorPart27,998
-    public SceneCarouselView(SceneCarouselView.SceneCarouselView29,1042
-    public void initialize(SceneCarouselView.initialize34,1173
-    private void addKeyManagemenet(SceneCarouselView.addKeyManagemenet52,1723
-    public void setMetadata(SceneCarouselView.setMetadata67,2238
-    public void setMetadata(SceneCarouselView.setMetadata71,2356
-    public SceneCarouselPartial getSceneCarousel(SceneCarouselView.getSceneCarousel81,2638
-    public void destroy(SceneCarouselView.destroy86,2739
-    public boolean frameIsDown(SceneCarouselView.frameIsDown91,2872
-    public void userEventReceived(SceneCarouselView.userEventReceived95,2963
-    public void requestFocusDefaultComponent(SceneCarouselView.requestFocusDefaultComponent121,3733
-    private void addTopAndBottomGraphics(SceneCarouselView.addTopAndBottomGraphics125,3808
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/scenecarousel/SceneCarouselView.java,1054
+public final class SceneCarouselView 26,943
+    private SceneCarouselPartial sceneCarousel;SceneCarouselView.sceneCarousel27,1029
+    private HStaticText topLabel;SceneCarouselView.topLabel28,1078
+    private ErrorLayerPartial errorPart;SceneCarouselView.errorPart29,1113
+    public SceneCarouselView(SceneCarouselView.SceneCarouselView31,1157
+    private void addKeyManagemenet(SceneCarouselView.addKeyManagemenet42,1548
+    public void setMetadata(SceneCarouselView.setMetadata57,2063
+    public void setMetadata(SceneCarouselView.setMetadata61,2181
+    public SceneCarouselPartial getSceneCarousel(SceneCarouselView.getSceneCarousel71,2463
+    public void destroy(SceneCarouselView.destroy76,2564
+    public boolean frameIsDown(SceneCarouselView.frameIsDown81,2697
+    public void userEventReceived(SceneCarouselView.userEventReceived85,2788
+    private void addTopAndBottomGraphics(SceneCarouselView.addTopAndBottomGraphics111,3558
+    private void addSceneCarouselPartial(SceneCarouselView.addSceneCarouselPartial127,4278
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/titledetails/TitleDetailsView.java,2944
-public class TitleDetailsView 31,1092
-    private static final long serialVersionUID TitleDetailsView.serialVersionUID35,1177
-    private HStaticIcon frontCoverIcon;TitleDetailsView.frontCoverIcon36,1249
-    private HStaticIcon backCoverIcon;TitleDetailsView.backCoverIcon37,1289
-    private HDiscretteGaugeIcon ratingIcon;TitleDetailsView.ratingIcon38,1328
-    private GraphicTextButton newReleasesIcon;TitleDetailsView.newReleasesIcon39,1372
-    private GraphicTextButton catalogIcon;TitleDetailsView.catalogIcon40,1419
-    private HStaticText titleHeadingLabel;TitleDetailsView.titleHeadingLabel41,1462
-    private HStaticIcon fyrelogoIcon;TitleDetailsView.fyrelogoIcon42,1505
-    private HStaticIcon starringPointer;TitleDetailsView.starringPointer43,1543
-    private Title title;TitleDetailsView.title44,1584
-    private GraphicTextButton playMovieButton;TitleDetailsView.playMovieButton45,1609
-    private GraphicTextButton playWithMinButton;TitleDetailsView.playWithMinButton46,1656
-    private GraphicTextButton gotoLibraryButton;TitleDetailsView.gotoLibraryButton47,1705
-    private GraphicTextButton addToPlayListButton;TitleDetailsView.addToPlayListButton48,1754
-    private GraphicTextButton showSimilarButton;TitleDetailsView.showSimilarButton49,1805
-    private GraphicTextButton buyButton;TitleDetailsView.buyButton50,1854
-    private HStaticIcon studioIcon;TitleDetailsView.studioIcon51,1895
-    private ArrayList starringHTexts;TitleDetailsView.starringHTexts53,1936
-    private HStaticText starringTittle;TitleDetailsView.starringTittle54,1974
-    public void initialize(TitleDetailsView.initialize56,2019
-    public TitleDetailsView(TitleDetailsView.TitleDetailsView115,4959
-    public void destroy(TitleDetailsView.destroy119,5046
-    public void requestFocusDefaultComponent(TitleDetailsView.requestFocusDefaultComponent123,5106
-    private void setRatingValue(TitleDetailsView.setRatingValue127,5210
-    public void displayTitle(TitleDetailsView.displayTitle133,5384
-    public GraphicTextButton getPlayMovieButton(TitleDetailsView.getPlayMovieButton138,5488
-    public GraphicTextButton getAddToPlayListButton(TitleDetailsView.getAddToPlayListButton142,5579
-    public GraphicTextButton getShowSimilarButton(TitleDetailsView.getShowSimilarButton146,5678
-    public GraphicTextButton getBuyButton(TitleDetailsView.getBuyButton150,5773
-    public void displayStarring(TitleDetailsView.displayStarring154,5852
-    public HText getStarringComponent(TitleDetailsView.getStarringComponent167,6318
-    public void setStarringFocus(TitleDetailsView.setStarringFocus172,6464
-    public GraphicTextButton getGotoLibraryButton(TitleDetailsView.getGotoLibraryButton182,6864
-    public GraphicTextButton getPlayWithMinButton(TitleDetailsView.getPlayWithMinButton186,6959
-    public GraphicTextButton getNewReleasesIcon(TitleDetailsView.getNewReleasesIcon190,7054
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/titledetails/TitleDetailsView.java,3443
+public class TitleDetailsView 32,1167
+    private static final long serialVersionUID TitleDetailsView.serialVersionUID36,1251
+    private HStaticIcon frontCoverIcon;TitleDetailsView.frontCoverIcon37,1323
+    private HStaticIcon backCoverIcon;TitleDetailsView.backCoverIcon38,1363
+    private HDiscretteGaugeIcon ratingIcon;TitleDetailsView.ratingIcon39,1402
+    private GraphicTextButton newReleasesIcon;TitleDetailsView.newReleasesIcon40,1446
+    private GraphicTextButton catalogIcon;TitleDetailsView.catalogIcon41,1493
+    private HStaticText titleHeadingLabel;TitleDetailsView.titleHeadingLabel42,1536
+    private HStaticIcon fyrelogoIcon;TitleDetailsView.fyrelogoIcon43,1579
+    private HStaticIcon starringPointer;TitleDetailsView.starringPointer44,1617
+    private Title title;TitleDetailsView.title45,1658
+    private GraphicTextButton playMovieButton;TitleDetailsView.playMovieButton46,1683
+    private GraphicTextButton playWithMinButton;TitleDetailsView.playWithMinButton47,1730
+    private GraphicTextButton gotoLibraryButton;TitleDetailsView.gotoLibraryButton48,1779
+    private GraphicTextButton addToPlayListButton;TitleDetailsView.addToPlayListButton49,1828
+    private GraphicTextButton showSimilarButton;TitleDetailsView.showSimilarButton50,1879
+    private GraphicTextButton buyButton;TitleDetailsView.buyButton51,1928
+    private HStaticIcon studioIcon;TitleDetailsView.studioIcon52,1969
+    private GUIComponentsBuilder guiBuilder;TitleDetailsView.guiBuilder53,2005
+    private ArrayList starringHTexts;TitleDetailsView.starringHTexts55,2051
+    private HStaticText starringTittle;TitleDetailsView.starringTittle56,2089
+    public TitleDetailsView(TitleDetailsView.TitleDetailsView58,2130
+    public void destroy(TitleDetailsView.destroy81,2899
+    private void setRatingValue(TitleDetailsView.setRatingValue85,2959
+    public GraphicTextButton getPlayMovieButton(TitleDetailsView.getPlayMovieButton91,3129
+    public GraphicTextButton getAddToPlayListButton(TitleDetailsView.getAddToPlayListButton95,3220
+    public GraphicTextButton getShowSimilarButton(TitleDetailsView.getShowSimilarButton99,3319
+    public GraphicTextButton getBuyButton(TitleDetailsView.getBuyButton103,3414
+    public void displayStarring(TitleDetailsView.displayStarring107,3493
+    public HText getStarringComponent(TitleDetailsView.getStarringComponent120,3951
+    public void setStarringFocus(TitleDetailsView.setStarringFocus125,4093
+    public GraphicTextButton getGotoLibraryButton(TitleDetailsView.getGotoLibraryButton135,4493
+    public GraphicTextButton getPlayWithMinButton(TitleDetailsView.getPlayWithMinButton139,4588
+    public GraphicTextButton getNewReleasesIcon(TitleDetailsView.getNewReleasesIcon143,4683
+    private void addFyreLogoIcon(TitleDetailsView.addFyreLogoIcon147,4774
+    private void addFrontAndBackCoverIcons(TitleDetailsView.addFrontAndBackCoverIcons157,5295
+    private void addCatalogIcon(TitleDetailsView.addCatalogIcon164,5622
+    private void addButtons(TitleDetailsView.addButtons169,5815
+    private void addStarringTitle(TitleDetailsView.addStarringTitle178,6386
+    private void addStarringLabels(TitleDetailsView.addStarringLabels185,6703
+    private void addStarringPointerAndRatingMarkings(TitleDetailsView.addStarringPointerAndRatingMarkings195,7129
+    private void addStudioIcon(TitleDetailsView.addStudioIcon202,7420
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/XletView.java,911
-public abstract class XletView 15,358
-    public static String NAME XletView.NAME16,410
-    protected GuiManager guiManager;XletView.guiManager18,462
-    protected ViewMetadata metadata;XletView.metadata19,500
-    private MediaTracker mediatracker;XletView.mediatracker20,538
-    private List loadedImages XletView.loadedImages21,578
-    private int trackedImageCount XletView.trackedImageCount22,628
-    private static final long serialVersionUID XletView.serialVersionUID23,668
-    public XletView(XletView.XletView25,743
-    protected GuiManager getGuiManager(XletView.getGuiManager32,910
-    public void initialize(XletView.initialize41,1178
-    public void destroy(XletView.destroy51,1550
-    public void addTrackedImage(XletView.addTrackedImage67,1999
-    public void loadAllImages(XletView.loadAllImages76,2285
-    public ViewMetadata getMetadata(XletView.getMetadata80,2396
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/gui/XletView.java,948
+public abstract class XletView 15,360
+    public static String NAME XletView.NAME16,413
+    protected GuiManager guiManager;XletView.guiManager18,461
+    protected ViewMetadata metadata;XletView.metadata19,499
+    private MediaTracker mediatracker;XletView.mediatracker20,537
+    private List loadedImages XletView.loadedImages21,577
+    private int trackedImageCount XletView.trackedImageCount22,627
+    private static final long serialVersionUID XletView.serialVersionUID23,667
+    public XletView(XletView.XletView25,742
+    protected GuiManager getGuiManager(XletView.getGuiManager33,1005
+    public void destroy(XletView.destroy40,1157
+    public void requestFocusDefaultComponent(XletView.requestFocusDefaultComponent51,1454
+    public void addTrackedImage(XletView.addTrackedImage59,1603
+    public void loadAllImages(XletView.loadAllImages69,1891
+    public ViewMetadata getMetadata(XletView.getMetadata79,2178
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/model/collections/ModelCollection.java,259
 public class ModelCollection 19,460
@@ -740,74 +802,81 @@ public class ModelCollection 19,460
     public void fillScenes(ModelCollection.fillScenes65,2159
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/model/gui/carousel/CarouselTile.java,510
-public class CarouselTile ModelCollection.CarouselTile20,637
-    private static final long serialVersionUID CarouselTile.serialVersionUID21,692
-    private boolean centerFrame;CarouselTile.centerFrame22,746
-    public CarouselTile(CarouselTile.CarouselTile24,782
-    public void addRedFrame(CarouselTile.addRedFrame44,1442
-    public void setImage(CarouselTile.setImage49,1547
-    private void setDefaultImage(CarouselTile.setDefaultImage59,1930
-    public void paint(CarouselTile.paint71,2289
+public class CarouselTile ModelCollection.CarouselTile21,689
+    private static final long serialVersionUID CarouselTile.serialVersionUID22,744
+    private boolean centerFrame;CarouselTile.centerFrame23,798
+    public CarouselTile(CarouselTile.CarouselTile25,834
+    public void addRedFrame(CarouselTile.addRedFrame45,1494
+    public void setImage(CarouselTile.setImage50,1599
+    private void setDefaultImage(CarouselTile.setDefaultImage60,1982
+    public void paint(CarouselTile.paint72,2362
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/model/gui/menu/MenuContent.java,1947
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/model/gui/menu/MenuContent.java,2806
 public class MenuContent 13,397
     private MenuContentController controller;MenuContent.controller14,424
-    public MenuContentController getController(MenuContent.getController16,471
-    public void setController(MenuContent.setController20,556
-    public void setController(MenuContent.setController24,667
-    public MenuContent(MenuContent.MenuContent28,789
-    public MenuContent(MenuContent.MenuContent34,919
-    private String name;MenuContent.name41,1093
-    public String getDisplayName(MenuContent.getDisplayName43,1119
-    public void setDisplayName(MenuContent.setDisplayName47,1191
-    public String getName(MenuContent.getName51,1291
-    public void setName(MenuContent.setName55,1349
-    private String displayName;MenuContent.displayName58,1420
-    private int position MenuContent.position59,1452
-    private boolean isActive MenuContent.isActive60,1482
-    private List childs MenuContent.childs61,1520
-    private MenuContent parent MenuContent.parent62,1563
-    public MenuContent getParent(MenuContent.getParent64,1603
-    public void setParent(MenuContent.setParent68,1670
-    public int getPosition(MenuContent.getPosition72,1755
-    public void setPosition(MenuContent.setPosition76,1818
-    public boolean hasChilds(MenuContent.hasChilds80,1903
-    public Iterator getChilds(MenuContent.getChilds84,1976
-    public void addChild(MenuContent.addChild88,2056
-    public void removeChild(MenuContent.removeChild125,3664
-    public void removeAllChilds(MenuContent.removeAllChilds129,3743
-     private MenuContentController createController(MenuContent.createController133,3813
-    public boolean isActive(MenuContent.isActive152,4953
-    public void setActive(MenuContent.setActive156,5017
-    public int getChildCount(MenuContent.getChildCount160,5108
-    public boolean equals(MenuContent.equals164,5177
-    public String toString(MenuContent.toString182,5864
+    private String relatedItemName;MenuContent.relatedItemName15,470
+    public void setRelatedItemName(MenuContent.setRelatedItemName17,507
+    public String getRelatedItemName(MenuContent.getRelatedItemName21,623
+    public MenuContentController getController(MenuContent.getController25,703
+    public void setController(MenuContent.setController29,788
+    public void setController(MenuContent.setController33,899
+    public MenuContent(MenuContent.MenuContent37,1021
+    public MenuContent(MenuContent.MenuContent43,1151
+    private String name;MenuContent.name50,1325
+    private boolean visible MenuContent.visible51,1350
+    private boolean beforeActive MenuContent.beforeActive52,1386
+    private boolean active_without_arrow MenuContent.active_without_arrow53,1427
+    public boolean isActiveWithoutArrow(MenuContent.isActiveWithoutArrow55,1477
+    public void setActiveWithoutArrow(MenuContent.setActiveWithoutArrow59,1565
+    public boolean isBeforeActive(MenuContent.isBeforeActive64,1765
+    public void setBeforeActive(MenuContent.setBeforeActive68,1839
+    public boolean isVisible(MenuContent.isVisible73,2016
+    public void setVisible(MenuContent.setVisible77,2080
+    public String getDisplayName(MenuContent.getDisplayName81,2165
+    public void setDisplayName(MenuContent.setDisplayName85,2237
+    public String getName(MenuContent.getName89,2337
+    public void setName(MenuContent.setName93,2395
+    private String displayName;MenuContent.displayName96,2466
+    private int position MenuContent.position97,2498
+    private boolean isActive MenuContent.isActive98,2528
+    private List childs MenuContent.childs99,2566
+    private MenuContent parent MenuContent.parent100,2609
+    public MenuContent getParent(MenuContent.getParent102,2649
+    public void setParent(MenuContent.setParent106,2716
+    public int getPosition(MenuContent.getPosition110,2801
+    public void setPosition(MenuContent.setPosition114,2864
+    public boolean hasChilds(MenuContent.hasChilds118,2949
+    public Iterator getChilds(MenuContent.getChilds122,3023
+    public void addChild(MenuContent.addChild126,3103
+    public void removeChild(MenuContent.removeChild163,4711
+    public void removeAllChilds(MenuContent.removeAllChilds167,4790
+     private MenuContentController createController(MenuContent.createController171,4860
+    public boolean isActive(MenuContent.isActive190,6000
+    public void setActive(MenuContent.setActive194,6064
+    public int getChildCount(MenuContent.getChildCount200,6233
+    public boolean equals(MenuContent.equals204,6302
+    public String toString(MenuContent.toString222,6989
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/model/gui/menu/MenuItem.java,1388
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/model/gui/menu/MenuItem.java,1028
 public class MenuItem 9,281
     private String name;MenuItem.name10,305
     private String displayName;MenuItem.displayName11,330
-    private MenuItemController controller;MenuItem.controller13,367
-    private boolean isActive MenuItem.isActive14,410
-    private String iconSrc;MenuItem.iconSrc16,449
-    private Dimension iconDim;MenuItem.iconDim17,477
-    private int position;MenuItem.position18,508
-    private MenuItemController createController(MenuItem.createController22,537
-    public String getName(MenuItem.getName42,1660
-    public String getDisplayName(MenuItem.getDisplayName47,1723
-    public void setDisplayName(MenuItem.setDisplayName52,1796
-    public void setName(MenuItem.setName57,1897
-    public MenuItemController getController(MenuItem.getController61,1969
-    public void setController(MenuItem.setController65,2051
-    public void setController(MenuItem.setController69,2163
-    public boolean isActive(MenuItem.isActive73,2285
-    public void setActive(MenuItem.setActive77,2349
-    public String getIconSrc(MenuItem.getIconSrc81,2436
-    public void setIconSrc(MenuItem.setIconSrc85,2500
-    public Dimension getIconDim(MenuItem.getIconDim89,2584
-    public void setIconDim(MenuItem.setIconDim93,2651
-    public void setPosition(MenuItem.setPosition97,2738
-    public int getPosition(MenuItem.getPosition102,2824
+    private boolean isActive MenuItem.isActive13,367
+    private String iconSrc;MenuItem.iconSrc15,406
+    private Dimension iconDim;MenuItem.iconDim16,434
+    private int position;MenuItem.position17,465
+    public String getName(MenuItem.getName20,503
+    public String getDisplayName(MenuItem.getDisplayName25,566
+    public void setDisplayName(MenuItem.setDisplayName30,639
+    public void setName(MenuItem.setName35,740
+    public boolean isActive(MenuItem.isActive39,816
+    public void setActive(MenuItem.setActive43,880
+    public String getIconSrc(MenuItem.getIconSrc47,967
+    public void setIconSrc(MenuItem.setIconSrc51,1031
+    public Dimension getIconDim(MenuItem.getIconDim55,1115
+    public void setIconDim(MenuItem.setIconDim59,1182
+    public void setPosition(MenuItem.setPosition63,1269
+    public int getPosition(MenuItem.getPosition68,1355
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/model/Inventory.java,654
 public class Inventory 6,129
@@ -884,43 +953,43 @@ public class Title 19,577
     public String getTitle(Title.getTitle137,4439
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/playback/AbstractDiscNavigator.java,3195
-public abstract class AbstractDiscNavigator 43,1418
-    private XletContext xletContext;AbstractDiscNavigator.xletContext45,1534
-    private boolean weAreControlling AbstractDiscNavigator.weAreControlling46,1571
-    private boolean playerIsStarted AbstractDiscNavigator.playerIsStarted47,1651
-    private boolean waitingForStarted AbstractDiscNavigator.waitingForStarted48,1723
-    private boolean currentFullScreen AbstractDiscNavigator.currentFullScreen49,1802
-    private Player mainPlayer;AbstractDiscNavigator.mainPlayer50,1848
-    private PlayListChangeControl playlistControl;AbstractDiscNavigator.playlistControl51,1879
-    private MediaTimePositionControl timePositionControl;AbstractDiscNavigator.timePositionControl52,1930
-    private PlaybackControl playbackControl;AbstractDiscNavigator.playbackControl53,1988
-    private PrimaryAudioControl audioControl;AbstractDiscNavigator.audioControl54,2033
-    private PrimaryGainControl gainControl;AbstractDiscNavigator.gainControl55,2079
-    private TitleContext titleContext;AbstractDiscNavigator.titleContext56,2123
-    private static SIManager siManager;AbstractDiscNavigator.siManager57,2162
-    private final Rectangle fullScreenRect AbstractDiscNavigator.fullScreenRect60,2204
-    private final Rectangle windowRect AbstractDiscNavigator.windowRect61,2298
-    protected int currentPlaylistID AbstractDiscNavigator.currentPlaylistID68,2607
-    public AbstractDiscNavigator(AbstractDiscNavigator.AbstractDiscNavigator70,2650
-    protected static BDLocator makeBDLocator(AbstractDiscNavigator.makeBDLocator78,2855
-    protected static MediaLocator makeMediaLocator(AbstractDiscNavigator.makeMediaLocator91,3240
-    public void selectPlaylist(AbstractDiscNavigator.selectPlaylist96,3408
-    protected static Title makeTitle(AbstractDiscNavigator.makeTitle133,4813
-    public synchronized void selectTitle(AbstractDiscNavigator.selectTitle161,5819
-    protected synchronized void gotoPlaylistInCurrentTitle(AbstractDiscNavigator.gotoPlaylistInCurrentTitle184,6717
-    public synchronized boolean switchVideoMode(AbstractDiscNavigator.switchVideoMode289,11611
-    private boolean setFullScreenVideoSize(AbstractDiscNavigator.setFullScreenVideoSize301,12016
-    public synchronized void gotoMediaTime(AbstractDiscNavigator.gotoMediaTime352,14401
-    public synchronized long getMediaTime(AbstractDiscNavigator.getMediaTime368,15016
-    public synchronized void destroy(AbstractDiscNavigator.destroy385,15505
-    public void markReached(AbstractDiscNavigator.markReached396,15869
-    public void playItemReached(AbstractDiscNavigator.playItemReached400,15995
-    public void controllerUpdate(AbstractDiscNavigator.controllerUpdate404,16129
-    private boolean waitForStarted(AbstractDiscNavigator.waitForStarted483,19639
-    private boolean waitWithTimeout(AbstractDiscNavigator.waitWithTimeout517,20918
-    protected synchronized void pausePlayer(AbstractDiscNavigator.pausePlayer537,21573
-    protected synchronized void stopPlayer(AbstractDiscNavigator.stopPlayer552,22066
-    public boolean getCurrentFullScreen(AbstractDiscNavigator.getCurrentFullScreen560,22289
+public abstract class AbstractDiscNavigator 43,1420
+    private XletContext xletContext;AbstractDiscNavigator.xletContext45,1515
+    private boolean weAreControlling AbstractDiscNavigator.weAreControlling46,1552
+    private boolean playerIsStarted AbstractDiscNavigator.playerIsStarted47,1632
+    private boolean waitingForStarted AbstractDiscNavigator.waitingForStarted48,1704
+    private boolean currentFullScreen AbstractDiscNavigator.currentFullScreen49,1783
+    private Player mainPlayer;AbstractDiscNavigator.mainPlayer50,1829
+    private PlayListChangeControl playlistControl;AbstractDiscNavigator.playlistControl51,1860
+    private MediaTimePositionControl timePositionControl;AbstractDiscNavigator.timePositionControl52,1911
+    private PlaybackControl playbackControl;AbstractDiscNavigator.playbackControl53,1969
+    private PrimaryAudioControl audioControl;AbstractDiscNavigator.audioControl54,2014
+    private PrimaryGainControl gainControl;AbstractDiscNavigator.gainControl55,2060
+    private TitleContext titleContext;AbstractDiscNavigator.titleContext56,2104
+    private static SIManager siManager;AbstractDiscNavigator.siManager57,2143
+    private final Rectangle fullScreenRect AbstractDiscNavigator.fullScreenRect60,2185
+    private final Rectangle windowRect AbstractDiscNavigator.windowRect61,2323
+    protected int currentPlaylistID AbstractDiscNavigator.currentPlaylistID68,2676
+    public AbstractDiscNavigator(AbstractDiscNavigator.AbstractDiscNavigator70,2719
+    protected static BDLocator makeBDLocator(AbstractDiscNavigator.makeBDLocator78,2924
+    protected static MediaLocator makeMediaLocator(AbstractDiscNavigator.makeMediaLocator91,3309
+    public void selectPlaylist(AbstractDiscNavigator.selectPlaylist96,3477
+    protected static Title makeTitle(AbstractDiscNavigator.makeTitle133,4882
+    public synchronized void selectTitle(AbstractDiscNavigator.selectTitle161,5888
+    protected synchronized void gotoPlaylistInCurrentTitle(AbstractDiscNavigator.gotoPlaylistInCurrentTitle184,6786
+    public synchronized boolean switchVideoMode(AbstractDiscNavigator.switchVideoMode278,10653
+    private boolean setFullScreenVideoSize(AbstractDiscNavigator.setFullScreenVideoSize290,11058
+    public synchronized void gotoMediaTime(AbstractDiscNavigator.gotoMediaTime341,13443
+    public synchronized long getMediaTime(AbstractDiscNavigator.getMediaTime357,14058
+    public synchronized void destroy(AbstractDiscNavigator.destroy374,14547
+    public void markReached(AbstractDiscNavigator.markReached385,14911
+    public void playItemReached(AbstractDiscNavigator.playItemReached389,15037
+    public void controllerUpdate(AbstractDiscNavigator.controllerUpdate393,15171
+    private boolean waitForStarted(AbstractDiscNavigator.waitForStarted462,17709
+    private boolean waitWithTimeout(AbstractDiscNavigator.waitWithTimeout496,18988
+    protected synchronized void pausePlayer(AbstractDiscNavigator.pausePlayer516,19643
+    protected synchronized void stopPlayer(AbstractDiscNavigator.stopPlayer531,20136
+    public boolean getCurrentFullScreen(AbstractDiscNavigator.getCurrentFullScreen539,20359
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/application/playback/FyreTvDiscNavigator.java,675
 public class FyreTvDiscNavigator 10,161
@@ -956,48 +1025,40 @@ public class VfsOperationsManager 18,597
     protected static void getFile(VfsOperationsManager.getFile63,2450
     public static void doVFSUpdate(VfsOperationsManager.doVFSUpdate87,3182
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/core/CoreXlet.java,1608
-public class CoreXlet VfsOperationsManager.CoreXlet31,848
-    private String       bindingUnitDir;CoreXlet.bindingUnitDir32,912
-    private String       adaPath;CoreXlet.adaPath33,953
-    private XletContext  context;CoreXlet.context34,987
-    private Thread       thread;CoreXlet.thread35,1021
-    private ServerSocket ssocket;CoreXlet.ssocket36,1054
-    private byte[] buffer CoreXlet.buffer37,1088
-    public static final String URL_STRING CoreXlet.URL_STRING41,1264
-    public static final String MANIFESTXML CoreXlet.MANIFESTXML42,1337
-    public static final String MANIFESTSF CoreXlet.MANIFESTSF43,1404
-    public static final String MAINAPPJAR CoreXlet.MAINAPPJAR44,1470
-    private static Font font;CoreXlet.font47,1531
-    private HScene scene;CoreXlet.scene48,1561
-    private Container gui;CoreXlet.gui49,1587
-    public void run(CoreXlet.run52,1616
-    public synchronized void restartThread(CoreXlet.restartThread74,2342
-    public void initXlet(CoreXlet.initXlet91,2821
-    public void poorMansDebug(CoreXlet.poorMansDebug104,3180
-    public void startXlet(CoreXlet.startXlet130,4025
-    public void destroyXlet(CoreXlet.destroyXlet134,4110
-    public void pauseXlet(CoreXlet.pauseXlet138,4205
-    private void initStoragePaths(CoreXlet.initStoragePaths142,4243
-    private static void eraseContents(CoreXlet.eraseContents155,4804
-    public static void getManifestAndMainApp(CoreXlet.getManifestAndMainApp179,5539
-    protected static void getFile(CoreXlet.getFile190,5963
-    public void doTitleSelection(CoreXlet.doTitleSelection224,7104
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/core/CoreXlet.java,1650
+public class CoreXlet VfsOperationsManager.CoreXlet33,883
+    private String       bindingUnitDir;CoreXlet.bindingUnitDir34,947
+    private String       adaPath;CoreXlet.adaPath35,988
+    private XletContext  context;CoreXlet.context36,1022
+    private Thread       thread;CoreXlet.thread37,1056
+    private ServerSocket ssocket;CoreXlet.ssocket38,1089
+    private byte[] buffer CoreXlet.buffer39,1123
+    public static String URL_STRING;CoreXlet.URL_STRING42,1159
+    public static final String MANIFESTXML CoreXlet.MANIFESTXML44,1197
+    public static final String MANIFESTSF CoreXlet.MANIFESTSF45,1264
+    public static final String MAINAPPJAR CoreXlet.MAINAPPJAR46,1330
+    private static Font font;CoreXlet.font48,1390
+    private HScene scene;CoreXlet.scene49,1420
+    private Container gui;CoreXlet.gui50,1446
+    public void run(CoreXlet.run53,1475
+    public synchronized void restartThread(CoreXlet.restartThread78,2218
+    public void initXlet(CoreXlet.initXlet95,2697
+    public void poorMansDebug(CoreXlet.poorMansDebug108,3056
+    public void startXlet(CoreXlet.startXlet134,3901
+    public void destroyXlet(CoreXlet.destroyXlet138,3986
+    public void pauseXlet(CoreXlet.pauseXlet142,4081
+    private void initStoragePaths(CoreXlet.initStoragePaths146,4119
+    private static void eraseContents(CoreXlet.eraseContents159,4680
+    public void getManifestAndMainApp(CoreXlet.getManifestAndMainApp182,5414
+    protected void getFile(CoreXlet.getFile195,5883
+    public void doTitleSelection(CoreXlet.doTitleSelection229,6961
+    public void setUrlString(CoreXlet.setUrlString243,7592
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/BDJContentLoader.java,1082
-public class BDJContentLoader 22,575
-    private String defaultPath;BDJContentLoader.defaultPath23,633
-    private ServiceDomain assetAccessor;BDJContentLoader.assetAccessor24,666
-    private boolean isInitialized BDJContentLoader.isInitialized25,708
-    public void initialize(BDJContentLoader.initialize27,754
-    public void initialize( String locatorName, String defaultPath) throws InvalidLocatorException, DSMCCException,BDJContentLoader.DSMCCException27,754
-    public void initialize( String locatorName, String defaultPath) throws InvalidLocatorException, DSMCCException, InterruptedIOException,BDJContentLoader.InterruptedIOException27,754
-    public Image loadAsImage(BDJContentLoader.loadAsImage35,1129
-    public void deinitialize(BDJContentLoader.deinitialize51,1785
-    public Image loadImage(BDJContentLoader.loadImage56,1917
-    public void setDefaultPath(BDJContentLoader.setDefaultPath64,2180
-    public boolean isInitialized(BDJContentLoader.isInitialized69,2286
-    public String getAbsolutePath(BDJContentLoader.getAbsolutePath73,2364
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/BDJContentLoader.java,293
+public class BDJContentLoader 19,562
+    private static ServiceDomain serviceDomain;BDJContentLoader.serviceDomain20,595
+    public static Image loadImage(BDJContentLoader.loadImage27,754
+    public static Image loadImageFromDefaultPath(BDJContentLoader.loadImageFromDefaultPath45,1509
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/collections/GlobalImageCollection.java,603
 public class GlobalImageCollection 9,193
@@ -1012,7 +1073,7 @@ public class GlobalImageCollection 9,193
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/collections/Rewindable.java,67
 public interface Rewindable GlobalImageCollection.Rewindable3,48
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/collections/RewindableCycleReader.java,1402
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/collections/RewindableCycleReader.java,2070
 public class RewindableCycleReader 16,680
     protected int pointer=RewindableCycleReader.pointer17,765
     protected ArrayList buffer;RewindableCycleReader.buffer18,794
@@ -1022,55 +1083,56 @@ public class RewindableCycleReader 16,680
     public void forward(RewindableCycleReader.forward32,1085
     public void backward(RewindableCycleReader.backward39,1210
     public Iterator iterator(RewindableCycleReader.iterator46,1329
-    public Iterator backwardIterator(RewindableCycleReader.backwardIterator50,1411
-    public int size(RewindableCycleReader.size54,1497
-    private class ForwardIterator RewindableCycleReader.ForwardIterator58,1562
-        public boolean hasNext(RewindableCycleReader.ForwardIterator.hasNext63,1732
-        public Object next(RewindableCycleReader.ForwardIterator.next70,1895
-        public void remove(RewindableCycleReader.ForwardIterator.remove81,2126
-    private class BackwardIterator RewindableCycleReader.BackwardIterator89,2285
-        public boolean hasNext(RewindableCycleReader.BackwardIterator.hasNext94,2456
-        public Object next(RewindableCycleReader.BackwardIterator.next102,2620
-        public void remove(RewindableCycleReader.BackwardIterator.remove112,2839
+    public NormalIterator normalIterator(RewindableCycleReader.normalIterator50,1411
+    public Iterator backwardIterator(RewindableCycleReader.backwardIterator55,1504
+    public int size(RewindableCycleReader.size59,1590
+    private class ForwardIterator RewindableCycleReader.ForwardIterator63,1655
+        public boolean hasNext(RewindableCycleReader.ForwardIterator.hasNext68,1825
+        public Object next(RewindableCycleReader.ForwardIterator.next75,1988
+        public void remove(RewindableCycleReader.ForwardIterator.remove86,2219
+    private class BackwardIterator RewindableCycleReader.BackwardIterator94,2378
+        public boolean hasNext(RewindableCycleReader.BackwardIterator.hasNext99,2549
+        public Object next(RewindableCycleReader.BackwardIterator.next107,2713
+        public void remove(RewindableCycleReader.BackwardIterator.remove117,2932
+    public class NormalIterator RewindableCycleReader.NormalIterator126,3100
+        public boolean hasNext(RewindableCycleReader.NormalIterator.hasNext131,3260
+        public boolean hasBack(RewindableCycleReader.NormalIterator.hasBack139,3439
+        public void backward(RewindableCycleReader.NormalIterator.backward148,3614
+        public Object current(RewindableCycleReader.NormalIterator.current152,3677
+        public Object next(RewindableCycleReader.NormalIterator.next158,3791
+        public void remove(RewindableCycleReader.NormalIterator.remove166,3946
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/ContentLoader.java,630
-public interface ContentLoader 18,404
-    public void initialize(ContentLoader.initialize48,1394
-    public void initialize(String locatorName, String defaultPath) throws DSMCCException, InterruptedIOException,ContentLoader.InterruptedIOException48,1394
-    public void initialize(String locatorName, String defaultPath) throws DSMCCException, InterruptedIOException, InvalidLocatorException,ContentLoader.InvalidLocatorException48,1394
-    public void initialize(String locatorName, String defaultPath) throws DSMCCException, InterruptedIOException, InvalidLocatorException, IOException;ContentLoader.IOException48,1394
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/MenuContentPropertiesHelper.java,1245
+public class MenuContentPropertiesHelper 18,540
+    protected static final String CONTROLLER MenuContentPropertiesHelper.CONTROLLER20,612
+    protected static final String PARENT MenuContentPropertiesHelper.PARENT22,678
+    protected static final String POSITION MenuContentPropertiesHelper.POSITION23,730
+    protected static final String RELATED_ITEM MenuContentPropertiesHelper.RELATED_ITEM24,786
+    private ArrayList menuContentRootsList;MenuContentPropertiesHelper.menuContentRootsList26,855
+    private MenuContent activeElement;MenuContentPropertiesHelper.activeElement27,899
+    private final ViewMetadata metadata;MenuContentPropertiesHelper.metadata29,943
+    private final String prefix;MenuContentPropertiesHelper.prefix30,984
+    public MenuContentPropertiesHelper(MenuContentPropertiesHelper.MenuContentPropertiesHelper33,1027
+    protected ArrayList parseProperties(MenuContentPropertiesHelper.parseProperties45,1353
+    public void navigateLevelUpper(MenuContentPropertiesHelper.navigateLevelUpper157,7161
+    public void navigateLevelDown(MenuContentPropertiesHelper.navigateLevelDown163,7337
+    public RewindableCycleReader currentLevelChilds(MenuContentPropertiesHelper.currentLevelChilds166,7437
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/MenuContentPropertiesHelper.java,1135
-public class MenuContentPropertiesHelper 15,392
-    protected static final String CONTROLLER MenuContentPropertiesHelper.CONTROLLER17,464
-    protected static final String PARENT MenuContentPropertiesHelper.PARENT19,530
-    protected static final String POSITION MenuContentPropertiesHelper.POSITION20,582
-    private ArrayList menuContentRootsList;MenuContentPropertiesHelper.menuContentRootsList22,643
-    private MenuContent activeElement;MenuContentPropertiesHelper.activeElement23,687
-    private final ViewMetadata metadata;MenuContentPropertiesHelper.metadata25,731
-    private final String prefix;MenuContentPropertiesHelper.prefix26,772
-    public MenuContentPropertiesHelper(MenuContentPropertiesHelper.MenuContentPropertiesHelper29,815
-    protected ArrayList parseProperties(MenuContentPropertiesHelper.parseProperties41,1141
-    public void navigateLevelUpper(MenuContentPropertiesHelper.navigateLevelUpper147,6474
-    public void navigateLevelDown(MenuContentPropertiesHelper.navigateLevelDown153,6650
-    public Iterator currentLevelChilds(MenuContentPropertiesHelper.currentLevelChilds156,6750
-
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/MenuItemPropertiesHelper.java,1182
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/MenuItemPropertiesHelper.java,1093
 public class MenuItemPropertiesHelper 17,330
     protected static final String ITEM_DISPLAY_NAME MenuItemPropertiesHelper.ITEM_DISPLAY_NAME18,389
     protected static final String NAME MenuItemPropertiesHelper.NAME19,458
     protected static final String POSITION MenuItemPropertiesHelper.POSITION22,517
     protected static final String ICON_DIM MenuItemPropertiesHelper.ICON_DIM24,579
     protected static final String ICON_SRC MenuItemPropertiesHelper.ICON_SRC25,636
-    protected static final String CONTROLLER MenuItemPropertiesHelper.CONTROLLER26,690
-    private Map menuItemsMetadata;MenuItemPropertiesHelper.menuItemsMetadata28,756
-    private Iterator iterator;MenuItemPropertiesHelper.iterator29,791
-    public MenuItemPropertiesHelper(MenuItemPropertiesHelper.MenuItemPropertiesHelper31,827
-    private Map parseMenuItemsProperties(MenuItemPropertiesHelper.parseMenuItemsProperties61,2186
-    public boolean hasNext(MenuItemPropertiesHelper.hasNext106,4146
-    public Object next(MenuItemPropertiesHelper.next110,4219
-    public void remove(MenuItemPropertiesHelper.remove123,4839
-    public void reset(MenuItemPropertiesHelper.reset127,4904
+    private Map menuItemsMetadata;MenuItemPropertiesHelper.menuItemsMetadata27,695
+    private Iterator iterator;MenuItemPropertiesHelper.iterator28,730
+    public MenuItemPropertiesHelper(MenuItemPropertiesHelper.MenuItemPropertiesHelper30,766
+    private Map parseMenuItemsProperties(MenuItemPropertiesHelper.parseMenuItemsProperties60,2125
+    public boolean hasNext(MenuItemPropertiesHelper.hasNext105,4085
+    public Object next(MenuItemPropertiesHelper.next109,4158
+    public void remove(MenuItemPropertiesHelper.remove121,4710
+    public void reset(MenuItemPropertiesHelper.reset125,4775
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/PropertiesReader.java,1380
 public class PropertiesReader 11,214
@@ -1101,8 +1163,8 @@ public class PropertyKeyBuilder 9,115
     public PropertyKeyBuilder cascade(PropertyKeyBuilder.cascade21,444
     public String toString(PropertyKeyBuilder.toString25,560
 
-c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/readers/ForrestReader.java,37
-public interface ForrestReader 6,73
+c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/readers/ForrestReader.java,38
+public interface ForrestReader 7,115
 
 c:/Users/Ignacy/code/FyreTv/src/com/cubiware/fyretv/tools/service/DataFetcher.java,448
 public class DataFetcher 18,419
@@ -1486,7 +1548,7 @@ public class RewindableCycleReaderTest 9,179
     public void testClear(RewindableCycleReaderTest.testClear98,2963
     public void testRemove(RewindableCycleReaderTest.testRemove103,3082
 
-c:/Users/Ignacy/code/FyreTv/test/com/cubiware/fyretv/tools/MenuContentPropertiesHelperTest.java,1512
+c:/Users/Ignacy/code/FyreTv/test/com/cubiware/fyretv/tools/MenuContentPropertiesHelperTest.java,1513
 public class MenuContentPropertiesHelperTest 15,295
     private ViewMetadata metadata;MenuContentPropertiesHelperTest.metadata16,359
     private MenuContentPropertiesHelper testObj;MenuContentPropertiesHelperTest.testObj17,394
@@ -1500,9 +1562,9 @@ public class MenuContentPropertiesHelperTest 15,295
     private final String THIRD_SEARCH MenuContentPropertiesHelperTest.THIRD_SEARCH111,5967
     private Map prepareData4testingReader(MenuContentPropertiesHelperTest.prepareData4testingReader112,6013
     public void testReading1LevelBasic(MenuContentPropertiesHelperTest.testReading1LevelBasic148,7789
-    public void testReading2LevelBasic(MenuContentPropertiesHelperTest.testReading2LevelBasic158,8291
-    public void testReading3LevelBasic(MenuContentPropertiesHelperTest.testReading3LevelBasic173,8960
-    public void testReading4Level2ComplexNavigation(MenuContentPropertiesHelperTest.testReading4Level2ComplexNavigation192,9842
+    public void testReading2LevelBasic(MenuContentPropertiesHelperTest.testReading2LevelBasic159,8342
+    public void testReading3LevelBasic(MenuContentPropertiesHelperTest.testReading3LevelBasic175,9068
+    public void testReading4Level2ComplexNavigation(MenuContentPropertiesHelperTest.testReading4Level2ComplexNavigation195,10015
 
 c:/Users/Ignacy/code/FyreTv/test/com/cubiware/fyretv/tools/MenuItemPropertiesHelperTest.java,517
 public class MenuItemPropertiesHelperTest 13,267
@@ -1510,8 +1572,8 @@ public class MenuItemPropertiesHelperTest 13,267
     private final String prefix MenuItemPropertiesHelperTest.prefix15,358
     private HashMap expectedData;MenuItemPropertiesHelperTest.expectedData16,402
     protected void setUp(MenuItemPropertiesHelperTest.setUp17,436
-    public void testParseIterator(MenuItemPropertiesHelperTest.testParseIterator45,2021
-    protected void tearDown(MenuItemPropertiesHelperTest.tearDown69,3531
+    public void testParseIterator(MenuItemPropertiesHelperTest.testParseIterator43,1730
+    protected void tearDown(MenuItemPropertiesHelperTest.tearDown67,3240
 
 c:/Users/Ignacy/code/FyreTv/test/com/cubiware/fyretv/tools/PropertiesReaderTest.java,2517
 public class PropertiesReaderTest 8,126
@@ -1571,15 +1633,6 @@ public class TestOperation 5,74
         protected static final String produceResponse(TestOperation.produceResponse55,1848
         public String toString(TestOperation.toString70,2350
 
-c:/Users/Ignacy/code/FyreTv/test/com/cubiware/fyretv/tools/worker/WorkerLoadTest.java,422
-public class WorkerLoadTest 8,140
-    private final int  THREAD_COUNT WorkerLoadTest.THREAD_COUNT9,188
-    private ArrayList threads;WorkerLoadTest.threads10,230
-    protected void setUp(WorkerLoadTest.setUp12,264
-    public void testWorker(WorkerLoadTest.testWorker22,516
-    private long calculateAwaitTime(WorkerLoadTest.calculateAwaitTime52,1462
-    protected void tearDown(WorkerLoadTest.tearDown63,1847
-
 c:/Users/Ignacy/code/FyreTv/test/com/cubiware/fyretv/tools/worker/WorkerTestingThread.java,1187
 public class WorkerTestingThread 6,104
         private int failedCount WorkerTestingThread.failedCount7,225
@@ -1596,6 +1649,15 @@ public class WorkerTestingThread 6,104
         public synchronized void whenError(WorkerTestingThread.whenError64,2151
         public static WorkerTestingThread produceThread(WorkerTestingThread.produceThread70,2360
         public long getCumulativeWaitTime(WorkerTestingThread.getCumulativeWaitTime78,2715
+
+c:/Users/Ignacy/code/FyreTv/test/com/cubiware/fyretv/tools/worker/WorkerTestLoad.java,422
+public class WorkerTestLoad 8,140
+    private final int  THREAD_COUNT WorkerTestLoad.THREAD_COUNT9,188
+    private ArrayList threads;WorkerTestLoad.threads10,230
+    protected void setUp(WorkerTestLoad.setUp12,264
+    public void testWorker(WorkerTestLoad.testWorker22,516
+    private long calculateAwaitTime(WorkerTestLoad.calculateAwaitTime52,1462
+    protected void tearDown(WorkerTestLoad.tearDown63,1847
 
 c:/Users/Ignacy/code/FyreTv/test/com/cubiware/fyretv/tools/worker/WorkerUnitTest.java,843
 public class WorkerUnitTest 12,278

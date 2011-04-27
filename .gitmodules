@@ -13,3 +13,6 @@
 [submodule "android-mode"]
 	path = android-mode
 	url = git://github.com/remvee/android-mode.git
+[submodule "org-mode"]
+	path = org-mode
+	url = git://orgmode.org/org-mode.git
