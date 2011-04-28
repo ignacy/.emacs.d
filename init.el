@@ -9,7 +9,7 @@
 (defvar set-line-highlighting t)
 (defvar set-environment-settings t)
 (defvar set-java-paths-on-windows t)
-(defvar set-working-on-bdj nil)
+(defvar set-working-on-bdj t)
 (defvar set-use-key-chords nil)
 
 ;; Helper variables to recognize the environment
@@ -55,7 +55,7 @@
 
 (when set-line-highlighting (message "Switching line highlighting on")
       (global-hl-line-mode 1)
-      (set-face-background 'hl-line "#222")
+      (set-face-background 'hl-line "#eee")
       (set-face-foreground 'highlight nil)
       (set-face-foreground 'hl-line nil))
 
@@ -428,7 +428,12 @@ instead."
 (yas/load-directory (concat dotfiles-dir "/yasnippet-0.6.1c/snippets"))
 (setq yas/trigger-key "TAB")
 
+
+(setq org-mode-source-directory-path (concat dotfiles-dir "/org-mode/lisp"))
+(setq load-path (cons org-mode-source-directory-path load-path))
+
 (require 'org-install)
+
 ;; The following lines are always needed.  Choose your own keys.
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
@@ -498,14 +503,15 @@ instead."
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
-(load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
+;; (load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
+;; (load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
+;; (load-file (concat imoryc-dir "/colors/im-light-theme.el"))
 
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-irblack)))
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (im-light-theme)))
 
 ;;(setq font-use-system-font t)
 
@@ -674,3 +680,35 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "M-,") 'tags-search)
 (global-set-key (kbd "M-?") 'tags-loop-continue)
 (put 'set-goal-column 'disabled nil)
+
+(unless (server-running-p)
+  (server-start))
+
+
+(defun isearch-other-window ()
+  """ Search in other window without movign there """
+  (interactive)
+  (save-selected-window
+    (other-window 1)
+    (isearch-forward)))
+
+(global-set-key (kbd "C-M-s") 'isearch-other-window)
+
+
+
+(when on-windows
+  (set-face-attribute 'default nil :font "Consolas-12"))
+
+(when on-windows
+  (add-hook 'comint-output-filter-functions
+            'shell-strip-ctrl-m nil t)
+  (add-hook 'comint-output-filter-functions
+            'comint-watch-for-password-prompt nil t)
+  (setq explicit-shell-file-name "bash.exe")
+  ;; For subprocesses invoked via the shell
+  ;; (e.g., "shell -c command")
+  (setq shell-file-name explicit-shell-file-name)
+  (setenv "PATH" (concat "c:/bin;" (getenv "PATH")))
+  (setq exec-path (cons "c:/bin/" exec-path))
+  (require 'cygwin-mount)
+  (cygwin-mount-activate))
