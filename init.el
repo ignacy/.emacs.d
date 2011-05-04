@@ -48,6 +48,13 @@
 (global-set-key "\M-." 'anything-etags+-select-one-key)
 
 
+(defmacro bind (key fn)
+  "shortcut for global-set-key"
+  `(global-set-key (kbd ,key)
+                   ;; handle unquoted function names and lambdas
+                   ,(if (listp fn)
+                        fn
+                      `',fn)))
 
 
 (when set-environment-settings (message "Setting environment settings")
@@ -135,6 +142,23 @@
 (global-set-key [(control next)] 'shrink-window)
 
 (windmove-default-keybindings 'meta)
+
+;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
+(defun renamefile (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive (list (completing-read "New name: " nil nil nil (buffer-name))))
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+          (message "A buffer named '%s' already exists!" new-name)
+        (progn
+          (rename-file name new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil))))))
+
 
 
 ;; Make the whole buffer pretty and consistent
@@ -503,16 +527,25 @@ instead."
 
 ;; (load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
 ;; (load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
-;; (load-file (concat imoryc-dir "/colors/im-light-theme.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
 
-;; (require 'color-theme)
-;; (eval-after-load "color-theme"
-;;   '(progn
-;;      (color-theme-initialize)
-;;      (im-light-theme)))
+(require 'color-theme)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-wombat)))
 
 ;;(setq font-use-system-font t)
+(setq font-lock-maximum-decoration t)
+(icomplete-mode t)
 
+
+(setq frame-title-format
+      (list '("emacs ")
+            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
+(setq cursor-in-non-selected-windows nil)
+(bind "C-x g" magit-status)
 (global-set-key [C-tab] 'bs-show)
 ;; Moje funkcje
 
