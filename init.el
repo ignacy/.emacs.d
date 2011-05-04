@@ -457,8 +457,6 @@ instead."
   (re-search-forward note)
   (point))
 
-
-
 (define-key global-map "\C-cc" 'org-capture)
 
 (add-hook 'org-mode-hook
@@ -712,3 +710,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (setq exec-path (cons "c:/bin/" exec-path))
   (require 'cygwin-mount)
   (cygwin-mount-activate))
+
+
+
+;; (add-to-list 'default-mode-line-format
+;;              '((t (:eval (format " %d" (line-number-at-pos (point-max)))))) t)
