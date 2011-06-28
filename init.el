@@ -6,11 +6,11 @@
 ;; you are dissabling the whole section
 (defvar set-directories t)
 (defvar set-loadpaths t)
-(defvar set-line-highlighting t)
+(defvar set-line-highlighting nil)
 (defvar set-environment-settings t)
 (defvar set-java-paths-on-windows t)
 (defvar set-working-on-bdj t)
-(defvar set-use-key-chords nil)
+(defvar set-use-key-chords t)
 
 ;; Helper variables to recognize the environment
 (defvar on-windows
@@ -44,7 +44,7 @@
 (require 'anything-config)
 (require 'anything-etags+)
 
-(global-set-key (kbd "M-a") 'anything)
+;;(global-set-key (kbd "M-a") 'anything)
 (global-set-key "\M-." 'anything-etags+-select-one-key)
 
 
@@ -169,7 +169,7 @@
   (indent-region (point-min) (point-max) nil)
   (untabify (point-min) (point-max)))
 
-(global-set-key [(meta i)] 'iwb)
+(global-set-key (kbd "C-x i") 'iwb)
 
 
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
@@ -313,7 +313,6 @@ instead."
 
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [(meta delete)] 'backward-kill-word)
-(global-set-key [(meta a)] 'anything)
 
 (setq x-select-enable-clipboard t)
 (global-set-key [(control v)] 'clipboard-yank)
@@ -407,7 +406,7 @@ instead."
 (global-set-key (kbd "M-,") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-l") 'highlight-lines-matching-regexp)
 (global-set-key (kbd "M-o") 'occur)
-(global-set-key [(meta g)] 'goto-line)
+(global-set-key [(meta g)] 'beginning-of-buffer)
 (global-set-key "\C-a" 'beginning-of-line-text)
 (defun my-ibuffer ()
   "Open ibuffer with cursour pointed to most recent buffer name"
@@ -525,15 +524,15 @@ instead."
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-;; (load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
 ;; (load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
-(load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
+;;(load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
 
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-wombat)))
+     (color-theme-irblack)))
 
 ;;(setq font-use-system-font t)
 (setq font-lock-maximum-decoration t)
@@ -598,7 +597,8 @@ instead."
           (add-to-list 'symbol-names name)
           (add-to-list 'name-and-pos (cons name position))))))))
 
-(global-set-key "\C-ci" 'ido-goto-symbol) ; or any key you see fit
+
+(global-set-key (kbd "M-i") 'ido-goto-symbol)
 
 (defun push-mark-no-activate ()
   "Pushes `point' to `mark-ring' and does not activate the region
@@ -728,7 +728,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 
 (when on-windows
-  (set-face-attribute 'default nil :font "Consolas-12"))
+  (set-face-attribute 'default nil :font "Inconsolata-14"))
 
 (when on-windows
   (add-hook 'comint-output-filter-functions
@@ -744,6 +744,15 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (require 'cygwin-mount)
   (cygwin-mount-activate))
 
+
+(defun vi-open-line-below ()
+  "Insert a newline below the current line and put point at beginning."
+  (interactive)
+  (unless (eolp)
+    (end-of-line))
+  (newline-and-indent))
+
+(global-set-key (kbd "C-S-o") 'vi-open-line-below)
 
 
 ;; (add-to-list 'default-mode-line-format
