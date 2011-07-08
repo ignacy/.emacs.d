@@ -436,7 +436,7 @@ instead."
   (yank)
   (next-line 1)
   )
-(global-set-key (kbd "C-c C-d") 'copy-line)
+(global-set-key (kbd "C-l") 'copy-line)
 
 ;; install wmctrl (sudo apt-get install wmctrl)
 (defun switch-full-screen ()
@@ -524,15 +524,17 @@ instead."
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
-;; (load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
+
+;;(load-file (concat imoryc-dir "/colors/color-theme-molokai.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-g0sub.el"))
+
 ;;(load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
 
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-irblack)))
+     (color-theme-g0sub)))
 
 ;;(setq font-use-system-font t)
 (setq font-lock-maximum-decoration t)
@@ -679,6 +681,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "<left>") 'use-emacs-keys)
 (global-set-key (kbd "<down>") 'use-emacs-keys)
 (global-set-key (kbd "<up>") 'use-emacs-keys)
+
 
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
