@@ -16,3 +16,9 @@
 [submodule "org-mode"]
 	path = org-mode
 	url = git://orgmode.org/org-mode.git
+[submodule "coffee-mode"]
+	path = coffee-mode
+	url = git://github.com/defunkt/coffee-mode.git
+[submodule "textmate.el"]
+	path = textmate.el
+	url = git://github.com/defunkt/textmate.el.git
