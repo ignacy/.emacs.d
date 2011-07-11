@@ -524,15 +524,15 @@ instead."
 
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
-(load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
+;;(load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
 ;; (load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
-;;(load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
 
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-irblack)))
+     (color-theme-wombat)))
 
 ;;(setq font-use-system-font t)
 (setq font-lock-maximum-decoration t)
@@ -727,8 +727,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 
 
-(when on-windows
-  (set-face-attribute 'default nil :font "Inconsolata-14"))
+(set-face-attribute 'default nil :font "Inconsolata-14")
 
 (when on-windows
   (add-hook 'comint-output-filter-functions
@@ -757,3 +756,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 ;; (add-to-list 'default-mode-line-format
 ;;              '((t (:eval (format " %d" (line-number-at-pos (point-max)))))) t)
+
+(add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
+(require 'coffee-mode)
+
+(add-to-list 'load-path (concat dotfiles-dir "/textmate.el"))
+(require 'textmate)
+(textmate-mode)
