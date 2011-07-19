@@ -525,7 +525,7 @@ instead."
 (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
 
 ;;(load-file (concat imoryc-dir "/colors/color-theme-molokai.el"))
-(load-file (concat imoryc-dir "/colors/color-theme-g0sub.el"))
+(load-file (concat imoryc-dir "/colors/color-theme-gnome-3-adwaita.el"))
 
 ;;(load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
 ;; (load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
@@ -535,7 +535,7 @@ instead."
 (eval-after-load "color-theme"
   '(progn
      (color-theme-initialize)
-     (color-theme-g0sub)))
+     (color-theme-gnome-3-adwaita)))
 
 ;;(setq font-use-system-font t)
 (setq font-lock-maximum-decoration t)
@@ -757,13 +757,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (global-set-key (kbd "C-S-o") 'vi-open-line-below)
 
-
-;; (add-to-list 'default-mode-line-format
-;;              '((t (:eval (format " %d" (line-number-at-pos (point-max)))))) t)
-
 (add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
 (require 'coffee-mode)
 
 (add-to-list 'load-path (concat dotfiles-dir "/textmate.el"))
 (require 'textmate)
 (textmate-mode)
+
+
+(setq auto-save-default nil)
