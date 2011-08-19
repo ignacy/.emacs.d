@@ -44,8 +44,8 @@
 (require 'anything-config)
 (require 'anything-etags+)
 
-;;(global-set-key (kbd "M-a") 'anything)
-(global-set-key "\M-." 'anything-etags+-select-one-key)
+;; ;;(global-set-key (kbd "M-a") 'anything)
+ (global-set-key "\M-." 'anything-etags+-select-one-key)
 
 
 (defmacro bind (key fn)
@@ -196,6 +196,21 @@
 ;;   (interactive)
 ;;   (shell-command
 ;;    (concat ditaa-cmd " " buffer-file-name)))
+
+;; (setq path-to-ctags "/usr/local/bin/ctags")
+;; (defun create-tags (dir-name)
+;;   "Create tags file."
+;;   (interactive "DDirectory: ")
+;;   (shell-command
+;;    (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name)))
+;;   )
+
+  (defun create-tags (dir-name)
+     "Create tags file."
+     (interactive "DDirectory: ")
+     (eshell-command
+      (format "find %s -type f -name \"*.[ch]\" | etags -L -" dir-name)))
+
 
 (scroll-bar-mode -1)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
