@@ -33,10 +33,10 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/notes.gpg")
- (front-context-string . "** Ruby and Garb")
- (rear-context-string . "jekyll_and_hyde\n")
- (position . 79218))
+ (filename . "c:/Users/Ignacy/Dropbox/org/notes.org")
+ (front-context-string . "** TODO Telewizr")
+ (rear-context-string . "vXlet.java::}]]\n")
+ (position . 71617))
 ("init.el"
  (filename . "~/.emacs.d/init.el")
  (front-context-string . "(setq dotfiles-d")
