@@ -864,3 +864,35 @@ i.e. in daylight or under bright electric lamps."
              (file-exists-p "/root")
              (file-writable-p "/root"))
     (set-face-background 'mode-line "firebrick")))
+
+
+(defun substitute-regexp (substitution)
+  "Use s/old/new/g regexp syntax for `query-replace'."
+  (interactive
+   (list
+    (read-from-minibuffer "Substitute regexp: " '("s///g" . 3) nil nil
+                          'query-replace-history nil t)))
+  (if (string-match "^s/\\(.*\\)/\\(.*\\)/\\([gi]*\\)" substitution)
+      (let* ((sregex (match-string 1 substitution))
+             (ssubst (match-string 2 substitution))
+             (sflags (match-string 3 substitution))
+             (case-fold-search (string-match "i" sflags)))
+        (perform-replace
+         sregex ssubst (string-match "g" sflags)
+         t nil nil nil
+         (if (and transient-mark-mode mark-active) (region-beginning))
+         (if (and transient-mark-mode mark-active) (region-end))))
+    (error "Invalid syntax")))
+
+
+(defun im/worklog-add (&optional arg)
+  (interactive "P")
+  (find-file "~/Dropbox/org/logfile.org")
+  (goto-char (point-max))
+  (insert "\n")
+  (insert (format-time-string "** %Y-%m-%d %H:%M   - " (current-time)))
+  ((re-search-backward "^[0-9-]+ [0-9:]+" nil t)
+   (forward-line 1)
+   (backward-char)))
+
+(bind "<f6>" im/worklog-add)
