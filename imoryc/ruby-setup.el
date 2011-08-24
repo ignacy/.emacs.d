@@ -46,6 +46,8 @@
      (ignore-errors (require 'ruby-compilation))
      (setq ruby-use-encoding-map nil)
      (add-hook 'ruby-mode-hook 'inf-ruby-keys)
+     (add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
+     (setq tab-width 2)
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
      (define-key ruby-mode-map (kbd "C-c l") "lambda")))
 
@@ -121,7 +123,7 @@
   (save-excursion
     (let ((buf (find-file-noselect f)))
       (set-buffer buf)
-;;      (gud-make-debug-menu)
+      ;;      (gud-make-debug-menu)
       buf)))
 
 (defvar rubydb-command-name ''rvm--emacs-ruby-binary
@@ -129,7 +131,7 @@
 
 ;;;###autoload
 
- (defun rubydb (command-line)
+(defun rubydb (command-line)
   "Run rubydb on program FILE in buffer *gud-FILE*.
 The directory containing FILE becomes the initial working directory
 and source-file directory for your debugger."
@@ -150,7 +152,7 @@ and source-file directory for your debugger."
     (gud-common-init command-line rubydb-command-name))
 
   (gud-def gud-break  "b %l"         "\C-b" "Set breakpoint at current line.")
-;  (gud-def gud-remove "clear %l"     "\C-d" "Remove breakpoint at current line")
+                                        ;  (gud-def gud-remove "clear %l"     "\C-d" "Remove breakpoint at current line")
   (gud-def gud-step   "s"            "\C-s" "Step one source line with display.")
   (gud-def gud-next   "n"            "\C-n" "Step one line (skip functions).")
   (gud-def gud-cont   "c"            "\C-r" "Continue with display.")

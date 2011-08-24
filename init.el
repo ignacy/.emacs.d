@@ -1,16 +1,18 @@
 (message "Ok. let's do some configuring..")
 (require 'cl)
 
-
 ;; By setting any of the below to nil
 ;; you are dissabling the whole section
 (defvar set-directories t)
 (defvar set-loadpaths t)
-(defvar set-line-highlighting nil)
+(defvar set-line-highlighting t)
 (defvar set-environment-settings t)
 (defvar set-java-paths-on-windows t)
 (defvar set-working-on-bdj t)
-(defvar set-use-key-chords t)
+(defvar set-use-key-chords nil)
+(defvar set-indent-before-saving t)
+(defvar set-remove-blinking-from-cursos t)
+(defvar set-use-color-theme nil)
 
 ;; Helper variables to recognize the environment
 (defvar on-windows
@@ -45,7 +47,7 @@
 (require 'anything-etags+)
 
 ;; ;;(global-set-key (kbd "M-a") 'anything)
- (global-set-key "\M-." 'anything-etags+-select-one-key)
+(global-set-key "\M-." 'anything-etags+-select-one-key)
 
 
 (defmacro bind (key fn)
@@ -62,7 +64,8 @@
 
 (when set-line-highlighting (message "Switching line highlighting on")
       (global-hl-line-mode 1)
-      (set-face-background 'hl-line "#eee")
+      (set-face-background 'hl-line "#333")
+      ;;(set-face-background 'hl-line "#eee")
       (set-face-foreground 'highlight nil)
       (set-face-foreground 'hl-line nil))
 
@@ -120,13 +123,19 @@
   )
 
 
+(when set-indent-before-saving
+  (add-hook 'before-save-hook 'iwb)
+  )
+
+(when set-remove-blinking-from-cursos
+  (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
+  )
+
+
 (require 'epa)
 (epa-file-enable)
-
 (require 'git-blame)
-
 (require 'haml-mode)
-
 (require 'rvm)
 
 (global-set-key (kbd "C-x f") 'ido-find-file)
@@ -140,7 +149,6 @@
 ;; Window manipulation
 (global-set-key [(control prior)] 'enlarge-window)
 (global-set-key [(control next)] 'shrink-window)
-
 (windmove-default-keybindings 'meta)
 
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
@@ -174,7 +182,6 @@
 
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
-
 (global-set-key (kbd "C-x C-p") 'find-file-at-point)
 (defadvice find-file-at-point (around goto-line compile activate)
   (let ((line (and (looking-at ".*:\\([0-9]+\\)")
@@ -205,11 +212,11 @@
 ;;    (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name)))
 ;;   )
 
-  (defun create-tags (dir-name)
-     "Create tags file."
-     (interactive "DDirectory: ")
-     (eshell-command
-      (format "find %s -type f -name \"*.[ch]\" | etags -L -" dir-name)))
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (eshell-command
+   (format "find %s -type f -name \"*.[ch]\" | etags -L -" dir-name)))
 
 
 (scroll-bar-mode -1)
@@ -218,6 +225,9 @@
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
 (delete-selection-mode t)
 (subword-mode t)
+(set-default 'cursor-type 'bar)
+(set-cursor-color "yellow")
+
 
 
 (defvar smart-use-extended-syntax nil
@@ -319,7 +329,7 @@ instead."
 (setq backup-inhibited t)
 
 (global-linum-mode 1)
-(setq linum-format "%3d  ")
+(setq linum-format " %3d  ")
 
 ;; insert current buffer name into minibuffer
 (define-key minibuffer-local-map [f3]
@@ -524,6 +534,7 @@ instead."
                        ))
 (real-global-auto-complete-mode t)
 
+
 (unless on-windows
   (setq rsense-home "/home/ignacy/bin/rsense-0.3")
   (add-to-list 'load-path (concat rsense-home "/etc"))
@@ -537,25 +548,23 @@ instead."
                (regexp-quote isearch-string))))))
 
 
-(add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
-
-;;(load-file (concat imoryc-dir "/colors/color-theme-molokai.el"))
-(load-file (concat imoryc-dir "/colors/color-theme-gnome-3-adwaita.el"))
-
-;;(load-file (concat imoryc-dir "/colors/color-theme-irblack.el"))
-;; (load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
+(when set-use-color-theme
+  (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
+  (load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
 
 
-(require 'color-theme)
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-gnome-3-adwaita)))
+  (require 'color-theme)
+  (eval-after-load "color-theme"
+    '(progn
+       (color-theme-initialize)
+       (color-theme-wombat)))
 
-;;(setq font-use-system-font t)
-(setq font-lock-maximum-decoration t)
+  ;;(setq font-use-system-font t)
+  (setq font-lock-maximum-decoration t)
+  )
+
+
 (icomplete-mode t)
-
 
 (setq frame-title-format
       (list '("emacs ")
@@ -565,6 +574,15 @@ instead."
 (bind "C-x g" magit-status)
 (global-set-key [C-tab] 'bs-show)
 ;; Moje funkcje
+
+(bind "C-c j" im/join-line)
+
+
+(defun im/join-line()
+  "Join with previous line but move back to next line after"
+  (interactive)
+  (join-line)
+  (next-line))
 
 
 (defun ido-goto-symbol (&optional symbol-list)
@@ -745,8 +763,9 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-M-s") 'isearch-other-window)
 
 
+;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
+(set-face-attribute 'default nil :font "Inconsolata-13")
 
-(set-face-attribute 'default nil :font "Inconsolata-14")
 
 (when on-windows
   (add-hook 'comint-output-filter-functions
@@ -763,22 +782,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (cygwin-mount-activate))
 
 
-(defun vi-open-line-below ()
-  "Insert a newline below the current line and put point at beginning."
-  (interactive)
-  (unless (eolp)
-    (end-of-line))
-  (newline-and-indent))
-
-(global-set-key (kbd "C-S-o") 'vi-open-line-below)
-
 (add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
 (require 'coffee-mode)
 
 (add-to-list 'load-path (concat dotfiles-dir "/textmate.el"))
 (require 'textmate)
 (textmate-mode)
-
 
 (defadvice erase-buffer (around erase-buffer-noop)
   "make erase-buffer do nothing")
@@ -815,4 +824,43 @@ This is the same as using \\[set-mark-command] with the prefix argument."
       (ad-activate-regexp "erase-buffer-noop")
       ad-do-it
       (ad-deactivate-regexp "erase-buffer-noop"))))
+
 (setq auto-save-default nil)
+
+
+(defun im/dark-colors (&optional frame)
+  "Set colors suitable for working in the darkness without electricity."
+  (interactive)
+  (setq frame-background-mode 'dark)
+  (if frame
+      (select-frame frame)
+    (setq frame (selected-frame)))
+  (set-background-color "black")
+  (set-foreground-color "gainsboro")
+  (when (facep 'region)
+    (set-face-background 'region "DimGray" frame))
+  (when (facep 'fringe)
+    (set-face-background 'fringe (face-background 'default) frame)
+    (set-face-foreground 'fringe (face-foreground 'default) frame)))
+(im/dark-colors)
+
+(defun im/colors-light (&optional frame)
+  "Set colors suitable for working in light environments,
+i.e. in daylight or under bright electric lamps."
+  (interactive)
+  (setq frame-background-mode 'light)
+  (if frame
+      (select-frame frame)
+    (setq frame (selected-frame)))
+  (set-background-color "#fffafa")
+  (set-foreground-color "black")
+  (when (facep 'region)
+    (set-face-background 'region "DarkGrey" frame))
+  (when (facep 'fringe)
+    (set-face-background 'fringe (face-background 'default) frame)
+    (set-face-foreground 'fringe (face-foreground 'default) frame))
+  ;; When started Emacs under root, warn by red color in the modeline
+  (when (and (facep 'mode-line)
+             (file-exists-p "/root")
+             (file-writable-p "/root"))
+    (set-face-background 'mode-line "firebrick")))
