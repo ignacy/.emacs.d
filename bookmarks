@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("notes"
- (filename . "c:/Users/Ignacy/Dropbox/org/notes.org")
- (front-context-string)
- (rear-context-string . " social aspects\n")
- (position . 2375))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "* Tasks\n** Moder")
+ (rear-context-string . "dManifest.xml]]\n")
+ (position . 54743))
 ("notes_uncoded"
  (filename . "c:/Users/Ignacy/Dropbox/org/notes.org")
  (front-context-string . "* brain dump of ")
@@ -33,10 +33,10 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "c:/Users/Ignacy/Dropbox/org/notes.org")
- (front-context-string . "** TODO Telewizr")
- (rear-context-string . "vXlet.java::}]]\n")
- (position . 71617))
+ (filename . "~/Dropbox/org/notes.org")
+ (front-context-string . "** TODO Obczaic ")
+ (rear-context-string . "2011-08-31 śro]\n")
+ (position . 58010))
 ("init.el"
  (filename . "~/.emacs.d/init.el")
  (front-context-string . "(setq dotfiles-d")
