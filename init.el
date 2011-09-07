@@ -123,9 +123,9 @@
   )
 
 
-(when set-indent-before-saving
-  (add-hook 'before-save-hook 'iwb)
-  )
+;; (when set-indent-before-saving
+;;   (add-hook 'before-save-hook 'iwb)
+;;   )
 
 (when set-remove-blinking-from-cursos
   (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
@@ -431,7 +431,7 @@ instead."
 (global-set-key (kbd "M-,") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-l") 'highlight-lines-matching-regexp)
 (global-set-key (kbd "M-o") 'occur)
-(global-set-key [(meta g)] 'beginning-of-buffer)
+;;(global-set-key [(meta g)] 'beginning-of-buffer)
 (global-set-key "\C-a" 'beginning-of-line-text)
 (defun my-ibuffer ()
   "Open ibuffer with cursour pointed to most recent buffer name"
@@ -645,14 +645,14 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (interactive)
   (push-mark (point) t nil)
   (message "Pushed mark to ring"))
-(global-set-key (kbd "C-`") 'push-mark-no-activate)
+(global-set-key (kbd "C-\\") 'push-mark-no-activate)
 
 (defun jump-to-mark ()
   "Jumps to the local mark, respecting the `mark-ring' order.
 This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (set-mark-command 1))
-(global-set-key (kbd "M-`") 'jump-to-mark)
+(global-set-key (kbd "M-\\") 'jump-to-mark)
 
 (defun im/find-note (note)
   "Find note in org mode notes file"
@@ -767,7 +767,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 
 ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
-;;(set-face-attribute 'default nil :font "Inconsolata-13")
+(set-face-attribute 'default nil :font "Inconsolata-14")
 
 
 (when on-windows
@@ -898,66 +898,75 @@ i.e. in daylight or under bright electric lamps."
    (forward-line 1)
    (backward-char)))
 
-(bind "<f6>" im/worklog-add)
+(bind "<f6>" magit-status)
 
 
+(unless on-windows
 
-;; use setq-default to set it for /all/ modes
-(setq mode-line-format
-      (list
-       ;; the buffer name; the file name as a tool tip
-       '(:eval (propertize "%b " 'face 'font-lock-keyword-face
-                           'help-echo (buffer-file-name)))
+  ;; use setq-default to set it for /all/ modes
+  (setq mode-line-format
+        (list
+         ;; the buffer name; the file name as a tool tip
+         '(:eval (propertize "%b " 'face 'font-lock-keyword-face
+                             'help-echo (buffer-file-name)))
 
-       ;; line and column
-       "(" ;; '%02' to set to 2 chars at least; prevents flickering
-       (propertize "%02l" 'face 'font-lock-type-face) ","
-       (propertize "%02c" 'face 'font-lock-type-face)
-       ") "
+         ;; line and column
+         "(" ;; '%02' to set to 2 chars at least; prevents flickering
+         (propertize "%02l" 'face 'font-lock-type-face) ","
+         (propertize "%02c" 'face 'font-lock-type-face)
+         ") "
 
-       ;; relative position, size of file
-       "["
-       (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
-       "/"
-       (propertize "%I" 'face 'font-lock-constant-face) ;; size
-       "] "
+         ;; relative position, size of file
+         "["
+         (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
+         "/"
+         (propertize "%I" 'face 'font-lock-constant-face) ;; size
+         "] "
 
-       ;; the current major mode for the buffer.
-       "["
+         ;; the current major mode for the buffer.
+         "["
 
-       '(:eval (propertize "%m" 'face 'font-lock-string-face
-                           'help-echo buffer-file-coding-system))
-       "] "
+         '(:eval (propertize "%m" 'face 'font-lock-string-face
+                             'help-echo buffer-file-coding-system))
+         "] "
 
 
-       "[" ;; insert vs overwrite mode, input-method in a tooltip
-       '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-                           'face 'font-lock-preprocessor-face
-                           'help-echo (concat "Buffer is in "
-                                              (if overwrite-mode "overwrite" "insert") " mode")))
+         "[" ;; insert vs overwrite mode, input-method in a tooltip
+         '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
+                             'face 'font-lock-preprocessor-face
+                             'help-echo (concat "Buffer is in "
+                                                (if overwrite-mode "overwrite" "insert") " mode")))
 
-       ;; was this buffer modified since the last save?
-       '(:eval (when (buffer-modified-p)
-                 (concat ","  (propertize "Mod"
-                                          'face 'font-lock-warning-face
-                                          'help-echo "Buffer has been modified"))))
+         ;; was this buffer modified since the last save?
+         '(:eval (when (buffer-modified-p)
+                   (concat ","  (propertize "Mod"
+                                            'face 'font-lock-warning-face
+                                            'help-echo "Buffer has been modified"))))
 
-       ;; is this buffer read-only?
-       '(:eval (when buffer-read-only
-                 (concat ","  (propertize "RO"
-                                          'face 'font-lock-type-face
-                                          'help-echo "Buffer is read-only"))))
-       "] "
+         ;; is this buffer read-only?
+         '(:eval (when buffer-read-only
+                   (concat ","  (propertize "RO"
+                                            'face 'font-lock-type-face
+                                            'help-echo "Buffer is read-only"))))
+         "] "
 
-       ;; add the time, with the date and the emacs uptime in the tooltip
-       '(:eval (propertize (format-time-string "%H:%M")
-                           'help-echo
-                           (concat (format-time-string "%c; ")
-                                   (emacs-uptime "Uptime:%hh"))))
-       " --"
-       ;; i don't want to see minor-modes; but if you want, uncomment this:
-       ;; minor-mode-alist  ;; list of minor modes
-       "%-" ;; fill with '-'
-       ))
+         ;; add the time, with the date and the emacs uptime in the tooltip
+         '(:eval (propertize (format-time-string "%H:%M")
+                             'help-echo
+                             (concat (format-time-string "%c; ")
+                                     (emacs-uptime "Uptime:%hh"))))
+         " --"
+         ;; i don't want to see minor-modes; but if you want, uncomment this:
+         ;; minor-mode-alist  ;; list of minor modes
+         "%-" ;; fill with '-'
+         ))
 
-(set-face-background 'modeline "#001A4C")
+  (set-face-background 'modeline "#001A4C")
+
+  )
+
+
+(custom-set-faces
+ '(diff-added ((t (:foreground "Green"))) 'now)
+ '(diff-removed ((t (:foreground "Red"))) 'now)
+ )
