@@ -761,7 +761,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 
 ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
-(set-face-attribute 'default nil :font "Inconsolata-14")
+(set-face-attribute 'default nil :font "Inconsolata-g-14")
 
 
 (when on-windows
