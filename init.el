@@ -12,7 +12,7 @@
 (defvar set-use-key-chords nil)
 (defvar set-indent-before-saving t)
 (defvar set-remove-blinking-from-cursos t)
-(defvar set-use-color-theme nil)
+(defvar set-use-color-theme t)
 
 ;; Helper variables to recognize the environment
 (defvar on-windows
@@ -32,6 +32,8 @@
 (when set-loadpaths (message "Setting load paths for libraries")
       (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
       (require 'rails-autoload)
+
+      (add-to-list 'load-path (concat imoryc-dir "/colors"))
 
       (load-file (concat imoryc-dir "/ruby-setup.el"))
       (load-file (concat imoryc-dir "/rake-setup.el"))
@@ -64,7 +66,7 @@
 
 (when set-line-highlighting (message "Switching line highlighting on")
       (global-hl-line-mode 1)
-      (set-face-background 'hl-line "#333")
+      (set-face-background 'hl-line "#fff")
       ;;(set-face-background 'hl-line "#eee")
       (set-face-foreground 'highlight nil)
       (set-face-foreground 'hl-line nil))
@@ -311,14 +313,6 @@ instead."
 (global-set-key (kbd "M-p") 'smart-symbol-go-backward)
 
 
-;; (defun im/occur-current
-;;   "Runs occur on current word under the coursor"
-;;   (let (word (thing-at-point 'word))
-;;     (occcur word)))
-
-;; (global-set-key (kbd "C-o") 'im/occur-current)
-
-
 ;; '(setq visible-bell t)
 (show-paren-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -553,14 +547,14 @@ instead."
 
 (when set-use-color-theme
   (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
-  (load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
-
-
+  ;;(load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
+  (load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
+  (setq frame-background-mode 'light)
   (require 'color-theme)
   (eval-after-load "color-theme"
     '(progn
        (color-theme-initialize)
-       (color-theme-wombat)))
+       (color-theme-solarized-light)))
 
   ;;(setq font-use-system-font t)
   (setq font-lock-maximum-decoration t)
@@ -845,7 +839,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (when (facep 'fringe)
     (set-face-background 'fringe (face-background 'default) frame)
     (set-face-foreground 'fringe (face-foreground 'default) frame)))
-(im/dark-colors)
+
+(unless set-use-color-theme
+  (im/dark-colors)
+  )
 
 (defun im/colors-light (&optional frame)
   "Set colors suitable for working in light environments,
