@@ -759,9 +759,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (global-set-key (kbd "C-M-s") 'isearch-other-window)
 
-
-;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
-(set-face-attribute 'default nil :font "Inconsolata-g-14")
+(if on-windows
+    (set-face-attribute 'default nil :font "Consolas-14")
+  ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
+  (set-face-attribute 'default nil :font "Inconsolata-g-14")
+  )
 
 
 (when on-windows
