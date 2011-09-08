@@ -39,6 +39,13 @@
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
+
+      (require 'modeline-posn)
+      (setq-default fill-column 80)
+      (setq modelinepos-column-limit 80)
+      (column-number-mode 1)
+      (size-indication-mode 1)
+
       (add-to-list 'load-path (concat dotfiles-dir "/magit-0.8.2"))
       (require 'magit)
       (add-to-list 'load-path "~/.emacs.d/android-mode")
@@ -197,8 +204,6 @@
 (add-to-list 'load-path (concat dotfiles-dir "/feature-mode"))
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
-
-(setq-default fill-column 100)
 
 ;; (setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
 ;; (defun djcb-ditaa-generate ()
