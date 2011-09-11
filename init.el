@@ -13,7 +13,6 @@
 (defvar set-indent-before-saving t)
 (defvar set-remove-blinking-from-cursos t)
 (defvar set-use-color-theme t)
-
 ;; Helper variables to recognize the environment
 (defvar on-windows
   (eq system-type 'windows-nt))
@@ -33,7 +32,7 @@
       (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
       (require 'rails-autoload)
 
-      (add-to-list 'load-path (concat imoryc-dir "/colors"))
+      (add-to-list 'load-path (concat imoryc-dir "/themes"))
 
       (load-file (concat imoryc-dir "/ruby-setup.el"))
       (load-file (concat imoryc-dir "/rake-setup.el"))
@@ -50,6 +49,11 @@
       (require 'magit)
       (add-to-list 'load-path "~/.emacs.d/android-mode")
       (require 'android-mode))
+
+
+
+(when set-use-color-theme
+  (enable-theme 'solarized-light))
 
 ;; require can begin here
 (require 'anything-config)
@@ -550,21 +554,7 @@ instead."
                (regexp-quote isearch-string))))))
 
 
-(when set-use-color-theme
-  (add-to-list 'load-path (concat dotfiles-dir "/color-theme-6.6.0"))
-  ;;(load-file (concat imoryc-dir "/colors/color-theme-wombat.el"))
-  (load-file (concat imoryc-dir "/colors/color-theme-solarized.el"))
-  (setq frame-background-mode 'light)
-  (require 'color-theme)
-  (eval-after-load "color-theme"
-    '(progn
-       (color-theme-initialize)
-       (color-theme-solarized-light)))
-
-  ;;(setq font-use-system-font t)
-  (setq font-lock-maximum-decoration t)
-  )
-
+(setq font-lock-maximum-decoration t)
 
 (icomplete-mode t)
 
