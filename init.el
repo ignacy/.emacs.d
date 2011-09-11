@@ -767,7 +767,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (if on-windows
     (set-face-attribute 'default nil :font "Consolas-14")
   ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
-  (set-face-attribute 'default nil :font "Inconsolata-g-14")
+  (set-face-attribute 'default nil :font "Inconsolata-g-12")
   )
 
 
@@ -832,46 +832,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq auto-save-default nil)
 
 
-(defun im/dark-colors (&optional frame)
-  "Set colors suitable for working in the darkness without electricity."
-  (interactive)
-  (setq frame-background-mode 'dark)
-  (if frame
-      (select-frame frame)
-    (setq frame (selected-frame)))
-  (set-background-color "black")
-  (set-foreground-color "gainsboro")
-  (when (facep 'region)
-    (set-face-background 'region "DimGray" frame))
-  (when (facep 'fringe)
-    (set-face-background 'fringe (face-background 'default) frame)
-    (set-face-foreground 'fringe (face-foreground 'default) frame)))
-
-(unless set-use-color-theme
-  (im/dark-colors)
-  )
-
-(defun im/colors-light (&optional frame)
-  "Set colors suitable for working in light environments,
-i.e. in daylight or under bright electric lamps."
-  (interactive)
-  (setq frame-background-mode 'light)
-  (if frame
-      (select-frame frame)
-    (setq frame (selected-frame)))
-  (set-background-color "#fffafa")
-  (set-foreground-color "black")
-  (when (facep 'region)
-    (set-face-background 'region "DarkGrey" frame))
-  (when (facep 'fringe)
-    (set-face-background 'fringe (face-background 'default) frame)
-    (set-face-foreground 'fringe (face-foreground 'default) frame))
-  ;; When started Emacs under root, warn by red color in the modeline
-  (when (and (facep 'mode-line)
-             (file-exists-p "/root")
-             (file-writable-p "/root"))
-    (set-face-background 'mode-line "firebrick")))
-
 
 (defun substitute-regexp (substitution)
   "Use s/old/new/g regexp syntax for `query-replace'."
@@ -892,21 +852,10 @@ i.e. in daylight or under bright electric lamps."
     (error "Invalid syntax")))
 
 
-(defun im/worklog-add (&optional arg)
-  (interactive "P")
-  (find-file "~/Dropbox/org/logfile.org")
-  (goto-char (point-max))
-  (insert "\n")
-  (insert (format-time-string "** %Y-%m-%d %H:%M   - " (current-time)))
-  ((re-search-backward "^[0-9-]+ [0-9:]+" nil t)
-   (forward-line 1)
-   (backward-char)))
-
 (bind "<f6>" magit-status)
 
 
 (unless on-windows
-
   ;; use setq-default to set it for /all/ modes
   (setq mode-line-format
         (list
@@ -968,8 +917,6 @@ i.e. in daylight or under bright electric lamps."
   (set-face-background 'modeline "#001A4C")
 
   )
-
-
 (custom-set-faces
  '(diff-added ((t (:foreground "Green"))) 'now)
  '(diff-removed ((t (:foreground "Red"))) 'now)
