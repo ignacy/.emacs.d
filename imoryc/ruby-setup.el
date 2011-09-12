@@ -11,23 +11,6 @@
 (add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
 (require 'rhtml-mode)
 
-(require 'ruby-electric)
-;; ruby-electric uses this function, but for some reason my ruby-mode
-;; version doesn't define it.
-(defun ruby-insert-end ()
-  (interactive)
-  (insert "end")
-  (ruby-indent-line t)
-  (end-of-line))
-
-(ruby-electric-mode t)
-
-(defun rel ()
-  "Toggle Ruby electric mode (shortcut)"
-  (interactive)
-  (ruby-electric-mode))
-
-
 (defun ruby-interpolate ()
   "In a double quoted string, interpolate."
   (interactive)

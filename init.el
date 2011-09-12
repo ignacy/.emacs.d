@@ -13,6 +13,7 @@
 (defvar set-indent-before-saving t)
 (defvar set-remove-blinking-from-cursos t)
 (defvar set-use-color-theme t)
+(defvar use-deft t)
 ;; Helper variables to recognize the environment
 (defvar on-windows
   (eq system-type 'windows-nt))
@@ -35,6 +36,11 @@
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
 
       (load-file (concat imoryc-dir "/ruby-setup.el"))
+
+      (add-to-list 'load-path (concat dotfiles-dir "/autopair"))
+      (require 'autopair)
+      (autopair-global-mode)
+
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
@@ -50,6 +56,16 @@
       (add-to-list 'load-path "~/.emacs.d/android-mode")
       (require 'android-mode))
 
+(when use-deft
+  (add-to-list 'load-path (concat dotfiles-dir "/deft"))
+  (require 'deft)
+  (setq deft-extension "md")
+  (setq deft-text-mode 'markdown-mode)
+  (global-set-key [f8] 'deft)
+  (if on-windows
+      (setq deft-directory "C:/Users/Ignacy/Dropbox/notes")
+    (setq deft-directory "~/Dropbox/notes"))
+  )
 
 
 (when set-use-color-theme
@@ -235,9 +251,8 @@
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
 (delete-selection-mode t)
-(subword-mode t)
 (set-default 'cursor-type 'bar)
-(set-cursor-color "yellow")
+;; (set-cursor-color "yellow")
 
 
 
@@ -479,43 +494,6 @@ instead."
 (yas/load-directory (concat dotfiles-dir "/yasnippet-0.6.1c/snippets"))
 (setq yas/trigger-key "TAB")
 
-
-(setq org-mode-source-directory-path (concat dotfiles-dir "/org-mode/lisp"))
-(setq load-path (cons org-mode-source-directory-path load-path))
-
-(require 'org-install)
-
-;; The following lines are always needed.  Choose your own keys.
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-(global-font-lock-mode 1)                     ; for all buffers
-
-(transient-mark-mode 1)
-
-(if on-windows
-    (setq org-directory "C:/Users/Ignacy/Dropbox/org")
-  (setq org-directory "~/Dropbox/org"))
-
-(setq org-default-notes-file (concat org-directory "/notes.org"))
-(setq org-agenda-files (list (concat org-directory "/notes.org")))
-
-(defun im/find-note (note)
-  "Find note in org mode notes file"
-  (interactive "sWpisz szukane slowo: ")
-  (find-file org-default-notes-file)
-  (re-search-forward note)
-  (point))
-
-(define-key global-map "\C-cc" 'org-capture)
-
-(add-hook 'org-mode-hook
-          (lambda ()
-            (org-set-local 'yas/trigger-key [tab])
-            (define-key yas/keymap [tab] 'yas/next-field-group)))
-
-
 (setq
  bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
  bookmark-save-flag 1)                        ;; autosave each change)
@@ -703,10 +681,17 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
-(global-set-key (kbd "<right>") 'use-emacs-keys)
-(global-set-key (kbd "<left>") 'use-emacs-keys)
-(global-set-key (kbd "<down>") 'use-emacs-keys)
-(global-set-key (kbd "<up>") 'use-emacs-keys)
+(add-hook 'java-mode-hook (lambda () (subword-mode)))
+
+
+;; (global-set-key (kbd "<right>") 'use-emacs-keys)
+;; (global-set-key (kbd "<left>") 'use-emacs-keys)
+;; (global-set-key (kbd "<down>") 'use-emacs-keys)
+;; (global-set-key (kbd "<up>") 'use-emacs-keys)
+;; (defun use-emacs-keys ()
+;;   (interactive)
+;;   "Remind me to use emacs move keys not arrows!!"
+;;   (message "Use emacs keys you lazy bastard!!"))
 
 
 (setq confirm-nonexistent-file-or-buffer nil)
@@ -723,10 +708,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-c %") 'replace-regexp)
 (defalias 'qrr 'query-replace-regexp)
 
-(defun use-emacs-keys ()
-  (interactive)
-  "Remind me to use emacs move keys not arrows!!"
-  (message "Use emacs keys you lazy bastard!!"))
 
 
 (defun create-tags (dir-name)
