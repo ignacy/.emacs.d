@@ -69,7 +69,7 @@
 
 
 (when set-use-color-theme
-  (load-theme 'tango-dark))
+  (load-theme 'afterthought))
 
 
 ;; require can begin here
@@ -95,7 +95,7 @@
 (when window-system
   (when set-line-highlighting (message "Switching line highlighting on")
         (global-hl-line-mode 1)
-        (set-face-background 'hl-line "#fff")
+        (set-face-background 'hl-line "#333")
         ;;(set-face-background 'hl-line "#eee")
         (set-face-foreground 'highlight nil)
         (set-face-foreground 'hl-line nil)))
