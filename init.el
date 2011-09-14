@@ -69,7 +69,7 @@
 
 
 (when set-use-color-theme
-  (enable-theme 'solarized-light))
+  (load-theme 'tango-dark))
 
 ;; require can begin here
 (require 'anything-config)
@@ -705,7 +705,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (keyboard-translate ?\C-h ?\C-?)
 
-(global-set-key (kbd "C-c %") 'replace-regexp)
+(global-set-key (kbd "M-%") 'replace-regexp)
 (defalias 'qrr 'query-replace-regexp)
 
 
