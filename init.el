@@ -71,6 +71,7 @@
 (when set-use-color-theme
   (load-theme 'tango-dark))
 
+
 ;; require can begin here
 (require 'anything-config)
 (require 'anything-etags+)
@@ -91,12 +92,13 @@
 (when set-environment-settings (message "Setting environment settings")
       (setq inhibit-startup-message t))
 
-(when set-line-highlighting (message "Switching line highlighting on")
-      (global-hl-line-mode 1)
-      (set-face-background 'hl-line "#fff")
-      ;;(set-face-background 'hl-line "#eee")
-      (set-face-foreground 'highlight nil)
-      (set-face-foreground 'hl-line nil))
+(when window-system
+  (when set-line-highlighting (message "Switching line highlighting on")
+        (global-hl-line-mode 1)
+        (set-face-background 'hl-line "#fff")
+        ;;(set-face-background 'hl-line "#eee")
+        (set-face-foreground 'highlight nil)
+        (set-face-foreground 'hl-line nil)))
 
 (when set-java-paths-on-windows (message "Setting java paths")
       (when on-windows
@@ -245,8 +247,9 @@
   (eshell-command
    (format "find %s -type f -name \"*.[ch]\" | etags -L -" dir-name)))
 
+(when window-system
+  (scroll-bar-mode -1))
 
-(scroll-bar-mode -1)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
