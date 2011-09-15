@@ -895,3 +895,9 @@ This is the same as using \\[set-mark-command] with the prefix argument."
  '(diff-added ((t (:foreground "Green"))) 'now)
  '(diff-removed ((t (:foreground "Red"))) 'now)
  )
+
+(defun im/diff-current-buffer-with-disk ()
+ "Compare the current buffer with it's disk file."
+ (interactive)
+ (diff-buffer-with-file (current-buffer)))
+(global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
