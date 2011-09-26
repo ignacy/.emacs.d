@@ -54,6 +54,9 @@
       (column-number-mode 1)
       (size-indication-mode 1)
 
+      (require 'perspective)
+      (persp-mode)
+
       (add-to-list 'load-path (concat dotfiles-dir "/magit-0.8.2"))
       (require 'magit)
       (add-to-list 'load-path "~/.emacs.d/android-mode")
