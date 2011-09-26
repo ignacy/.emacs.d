@@ -14,6 +14,9 @@
 (defvar set-remove-blinking-from-cursos t)
 (defvar set-use-color-theme t)
 (defvar use-deft t)
+(defvar use-org-mode t)
+
+
 ;; Helper variables to recognize the environment
 (defvar on-windows
   (eq system-type 'windows-nt))
@@ -59,14 +62,29 @@
 (when use-deft
   (add-to-list 'load-path (concat dotfiles-dir "/deft"))
   (require 'deft)
-  (setq deft-extension "md")
-  (setq deft-text-mode 'markdown-mode)
+  (setq deft-extension "org")
+  (setq deft-text-mode 'org-mode)
   (global-set-key [f8] 'deft)
   (if on-windows
-      (setq deft-directory "C:/Users/Ignacy/Dropbox/notes")
-    (setq deft-directory "~/Dropbox/notes"))
+      (setq deft-directory "C:/Users/Ignacy/Dropbox/notes/deft/")
+    (setq deft-directory "~/Dropbox/notes/deft/"))
   )
 
+(when use-org-mode
+  (require 'org-install)
+
+  (if on-windows
+      (setq org-default-notes-file "C:/Users/Ignacy/Dropbox/notes/notes.org")
+    (setq org-default-notes-file "~/Dropbox/notes/notes.org"))
+
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
+           "* TODO %?\n  %i\n  %a")))
+
+  (define-key global-map "\C-cc" 'org-capture)
+  (setq org-clock-persist 'history)
+  (org-clock-persistence-insinuate)
+  )
 
 (when set-use-color-theme
   (load-theme 'afterthought))
@@ -254,7 +272,8 @@
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
 (delete-selection-mode t)
-(set-default 'cursor-type 'bar)
+;;(set-default 'cursor-type 'bar)
+(set-default 'cursor-type 'box)
 ;; (set-cursor-color "yellow")
 
 
@@ -627,7 +646,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun im/find-note (note)
   "Find note in org mode notes file"
   (interactive "sWpisz szukane slowo: ")
-  (find-file "/home/ignacy/Dropbox/org/notes.org")
+  (find-file "/home/ignacy/Dropbox/notes/notes.org")
   (re-search-forward note)
   (point))
 
@@ -897,7 +916,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
  )
 
 (defun im/diff-current-buffer-with-disk ()
- "Compare the current buffer with it's disk file."
- (interactive)
- (diff-buffer-with-file (current-buffer)))
+  "Compare the current buffer with it's disk file."
+  (interactive)
+  (diff-buffer-with-file (current-buffer)))
 (global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
