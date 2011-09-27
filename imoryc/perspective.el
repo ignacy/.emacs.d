@@ -167,7 +167,7 @@ If the value is 'header, `persp-modestring' is shown in the
 header line instead.")
 
 (defface persp-selected-face
-  '((t (:weight bold :foreground "Blue")))
+  '((t (:weight bold :foreground "spring green")))
   "The face used to highlight the current perspective on the modeline.")
 
 (defmacro persp-protect (&rest body)

@@ -48,11 +48,11 @@
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
 
-      (require 'modeline-posn)
-      (setq-default fill-column 80)
-      (setq modelinepos-column-limit 80)
-      (column-number-mode 1)
-      (size-indication-mode 1)
+      ;; (require 'modeline-posn)
+      ;; (setq-default fill-column 80)
+      ;; (setq modelinepos-column-limit 80)
+      ;; (column-number-mode 1)
+      ;; (size-indication-mode 1)
 
       (require 'perspective)
       (persp-mode)
@@ -234,12 +234,11 @@
 
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
-(global-set-key (kbd "C-x C-p") 'find-file-at-point)
-(defadvice find-file-at-point (around goto-line compile activate)
-  (let ((line (and (looking-at ".*:\\([0-9]+\\)")
-                   (string-to-number (match-string 1)))))
-    ad-do-it
-    (and line (goto-line line))))
+;; (defadvice find-file-at-point (around goto-line compile activate)
+;;   (let ((line (and (looking-at ".*:\\([0-9]+\\)")
+;;                    (string-to-number (match-string 1)))))
+;;     ad-do-it
+;;     (and line (goto-line line))))
 
 (setq next-line-add-newlines t)
 
@@ -850,73 +849,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (bind "<f6>" magit-status)
 
-
-(unless on-windows
-  ;; use setq-default to set it for /all/ modes
-  (setq mode-line-format
-        (list
-         ;; the buffer name; the file name as a tool tip
-         '(:eval (propertize "%b " 'face 'font-lock-keyword-face
-                             'help-echo (buffer-file-name)))
-
-         ;; line and column
-         "(" ;; '%02' to set to 2 chars at least; prevents flickering
-         (propertize "%02l" 'face 'font-lock-type-face) ","
-         (propertize "%02c" 'face 'font-lock-type-face)
-         ") "
-
-         ;; relative position, size of file
-         "["
-         (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
-         "/"
-         (propertize "%I" 'face 'font-lock-constant-face) ;; size
-         "] "
-
-         ;; the current major mode for the buffer.
-         "["
-
-         '(:eval (propertize "%m" 'face 'font-lock-string-face
-                             'help-echo buffer-file-coding-system))
-         "] "
-
-
-         "[" ;; insert vs overwrite mode, input-method in a tooltip
-         '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-                             'face 'font-lock-preprocessor-face
-                             'help-echo (concat "Buffer is in "
-                                                (if overwrite-mode "overwrite" "insert") " mode")))
-
-         ;; was this buffer modified since the last save?
-         '(:eval (when (buffer-modified-p)
-                   (concat ","  (propertize "Mod"
-                                            'face 'font-lock-warning-face
-                                            'help-echo "Buffer has been modified"))))
-
-         ;; is this buffer read-only?
-         '(:eval (when buffer-read-only
-                   (concat ","  (propertize "RO"
-                                            'face 'font-lock-type-face
-                                            'help-echo "Buffer is read-only"))))
-         "] "
-
-         ;; add the time, with the date and the emacs uptime in the tooltip
-         '(:eval (propertize (format-time-string "%H:%M")
-                             'help-echo
-                             (concat (format-time-string "%c; ")
-                                     (emacs-uptime "Uptime:%hh"))))
-         " --"
-         ;; i don't want to see minor-modes; but if you want, uncomment this:
-         ;; minor-mode-alist  ;; list of minor modes
-         "%-" ;; fill with '-'
-         ))
-
-  (set-face-background 'modeline "#001A4C")
-
-  )
 (custom-set-faces
  '(diff-added ((t (:foreground "Green"))) 'now)
  '(diff-removed ((t (:foreground "Red"))) 'now)
  )
+;;(set-face-background 'modeline "#001A4C")
 
 (defun im/diff-current-buffer-with-disk ()
   "Compare the current buffer with it's disk file."
