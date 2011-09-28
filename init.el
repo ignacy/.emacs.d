@@ -19,8 +19,8 @@
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
 
-(when on-windows
-  (setenv "HOME" "C:/Users/Ignacy/"))
+;; (when on-windows
+;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
 (when set-use-marmelade
   (require 'package)
@@ -46,10 +46,6 @@
 (when set-directories (message "Setting directories..")
       (if on-windows
           (progn
-            (message "Running windows.. using AppData/Roaming")
-
-
-
 
 (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
         (message "We're not on windows..")
@@ -94,6 +90,7 @@
       (require 'anything-config)
       (require 'anything-etags+)
       (require 'find-file-in-project)
+      (add-to-list 'ffip-patterns "*.java")
 
       (require 'perspective)
       (persp-mode)
@@ -206,7 +203,7 @@
   (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
   )
 
-;(global-set-key (kbd "C-x f") 'ido-find-file)
+                                        ;(global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
 
 (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
@@ -455,7 +452,7 @@ instead."
 
 (global-unset-key [?\C-x ?\C-z])
 (global-set-key [f1] 'help)
-(global-set-key (kbd "C-z") 'undo)
+;; (global-set-key (kbd "C-z") 'undo)
 
 ;; (global-hl-line-mode 1)
 ;;(set-face-background 'hl-line "gray8")
@@ -752,13 +749,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
             'shell-strip-ctrl-m nil t)
   (add-hook 'comint-output-filter-functions
             'comint-watch-for-password-prompt nil t)
-  (setq explicit-shell-file-name "zsh")
-  (setq explicit-sh-args '("-l" "-i"))
+  ;; (setq explicit-shell-file-name "zsh")
+  ;; (setq explicit-sh-args '("-l" "-i"))
   ;; For subprocesses invoked via the shell
   ;; (e.g., "shell -c command")
-  (setq binary-process-input t)
-  (setq w32-quote-process-args ?\")
-  (setq shell-file-name explicit-shell-file-name)
+  ;; (setq shell-file-name explicit-shell-file-name)
   (setenv "PATH" (concat "c:/bin;" (getenv "PATH")))
   (setq exec-path (cons "c:/bin/" exec-path))
   (require 'cygwin-mount)
@@ -768,7 +763,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
 (require 'coffee-mode)
 
-(add-to-list 'load-path (concat dotfiles-dir "/textmate.el"))
 (require 'textmate)
 (textmate-mode)
 
