@@ -1,26 +1,44 @@
 (message "Ok. let's do some configuring..")
 (require 'cl)
 
+;;(setq debug-on-error t)
+
 ;; By setting any of the below to nil
 ;; you are dissabling the whole section
 (defvar set-directories t)
 (defvar set-loadpaths t)
+(defvar set-use-marmelade t)
 (defvar set-line-highlighting t)
 (defvar set-environment-settings t)
 (defvar set-java-paths-on-windows t)
 (defvar set-working-on-bdj t)
-(defvar set-use-key-chords nil)
 (defvar set-indent-before-saving t)
 (defvar set-remove-blinking-from-cursos t)
 (defvar set-use-color-theme t)
 (defvar use-deft t)
 (defvar use-org-mode t)
+(defvar on-windows (eq system-type 'windows-nt))
 
+(when set-use-marmelade
+  (require 'package)
+  (add-to-list 'package-archives
+               '("marmalade" . "http://marmalade-repo.org/packages/"))
+  (package-initialize)
 
-;; Helper variables to recognize the environment
-(defvar on-windows
-  (eq system-type 'windows-nt))
+  (when (not package-archive-contents)
+    (package-refresh-contents))
 
+  (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit
+                                 fuzzy-match textmate autopair perspective
+                                 android-mode deft auto-complete rvm yasnippet
+                                 anything anything-config
+                                 feature-mode marmalade))
+
+  (dolist (p my-packages)
+    (when (not (package-installed-p p))
+      (package-install p)))
+
+  )
 
 (when set-directories (message "Setting directories..")
       (if on-windows
@@ -33,38 +51,49 @@
       (add-to-list 'load-path imoryc-dir))
 
 (when set-loadpaths (message "Setting load paths for libraries")
+
+      (require 'yasnippet)
+      (yas/initialize)
+      (setq yas/trigger-key "TAB")
+
+
       (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
       (require 'rails-autoload)
-
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
-
       (load-file (concat imoryc-dir "/ruby-setup.el"))
 
-      (add-to-list 'load-path (concat dotfiles-dir "/autopair"))
       (require 'autopair)
       (autopair-global-mode)
+
+      (require 'auto-complete-config)
+      (ac-config-default)
 
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
 
-      ;; (require 'modeline-posn)
-      ;; (setq-default fill-column 80)
-      ;; (setq modelinepos-column-limit 80)
-      ;; (column-number-mode 1)
-      ;; (size-indication-mode 1)
+      (require 'feature-mode)
+      (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+
+      (require 'epa)
+      (epa-file-enable)
+      (require 'git-blame)
+      (require 'haml-mode)
+      (require 'ruby-mode)
+      (require 'rvm)
+      (require 'markdown-mode)
+      ;; require can begin here
+      (require 'anything-config)
+      (require 'anything-etags+)
 
       (require 'perspective)
       (persp-mode)
       (global-set-key [f12] 'persp-switch)
 
-      (add-to-list 'load-path (concat dotfiles-dir "/magit-0.8.2"))
       (require 'magit)
-      (add-to-list 'load-path "~/.emacs.d/android-mode")
       (require 'android-mode))
 
 (when use-deft
-  (add-to-list 'load-path (concat dotfiles-dir "/deft"))
   (require 'deft)
   (setq deft-extension "org")
   (setq deft-text-mode 'org-mode)
@@ -91,12 +120,8 @@
   )
 
 (when set-use-color-theme
-  (load-theme 'afterthought))
+  (load-theme 'tango-dark))
 
-
-;; require can begin here
-(require 'anything-config)
-(require 'anything-etags+)
 
 ;; ;;(global-set-key (kbd "M-a") 'anything)
 (global-set-key "\M-." 'anything-etags+-select-one-key)
@@ -167,29 +192,9 @@
     (compile (concat "ant " task)))
   (global-set-key [f5] 'im/ant))
 
-
-(when set-use-key-chords
-  (require 'key-chord)
-  (key-chord-mode 1)
-  (key-chord-define-global "uu" 'undo)
-  (key-chord-define-global "dd" 'kill-line)
-  )
-
-
-;; (when set-indent-before-saving
-;;   (add-hook 'before-save-hook 'iwb)
-;;   )
-
 (when set-remove-blinking-from-cursos
   (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
   )
-
-
-(require 'epa)
-(epa-file-enable)
-(require 'git-blame)
-(require 'haml-mode)
-(require 'rvm)
 
 (global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
@@ -235,18 +240,9 @@
 
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
-;; (defadvice find-file-at-point (around goto-line compile activate)
-;;   (let ((line (and (looking-at ".*:\\([0-9]+\\)")
-;;                    (string-to-number (match-string 1)))))
-;;     ad-do-it
-;;     (and line (goto-line line))))
-
 (setq next-line-add-newlines t)
 
 
-(add-to-list 'load-path (concat dotfiles-dir "/feature-mode"))
-(require 'feature-mode)
-(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 ;; (setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
 ;; (defun djcb-ditaa-generate ()
@@ -398,16 +394,6 @@ instead."
 (setq default-indicate-empty-lines t)
 
 
-(load-file (concat imoryc-dir "/markdown-mode.el"))
-(autoload 'markdown-mode "markdown-mode.el"
-  "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-      (cons '("\\.md" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist
-      (cons '("\\.text" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist
-      (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
-
 
 (defun stop-using-minibuffer ()
   "kill the minibuffer"
@@ -512,13 +498,6 @@ instead."
   (interactive)
   (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
 
-;;yassnippet
-(add-to-list 'load-path (concat dotfiles-dir "/yasnippet-0.6.1c"))
-(require 'yasnippet) ;; not yasnippet-bundle
-(yas/initialize)
-(yas/load-directory (concat dotfiles-dir "/yasnippet-0.6.1c/snippets"))
-(setq yas/trigger-key "TAB")
-
 (setq
  bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
  bookmark-save-flag 1)                        ;; autosave each change)
@@ -526,11 +505,6 @@ instead."
 (define-key global-map [f9] 'bookmark-jump)
 (define-key global-map [f10] 'bookmark-set)
 
-
-;;AUTOCOMPLETE
-(add-to-list 'load-path (concat dotfiles-dir "/auto-complete-1.3"))
-(require 'auto-complete-config)
-(ac-config-default)
 
 ;; dirty fix for having AC everywhere
 (define-globalized-minor-mode real-global-auto-complete-mode
@@ -747,10 +721,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "M-?") 'tags-loop-continue)
 (put 'set-goal-column 'disabled nil)
 
-(unless (server-running-p)
-  (server-start))
-
-
 (defun isearch-other-window ()
   """ Search in other window without movign there """
   (interactive)
@@ -761,7 +731,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-M-s") 'isearch-other-window)
 
 (if on-windows
-    (set-face-attribute 'default nil :font "Consolas-14")
+    (set-face-attribute 'default nil :font "Consolas-12")
   ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
   (set-face-attribute 'default nil :font "Inconsolata-g-12")
   )

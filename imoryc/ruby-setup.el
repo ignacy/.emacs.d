@@ -6,7 +6,6 @@
 
 ;;; Setup rails
 (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
-(add-to-list 'load-path (concat dotfiles-dir "/inf-ruby-2.1"))
 (require 'rails-autoload)
 (add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
 (require 'rhtml-mode)
