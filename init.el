@@ -30,8 +30,8 @@
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit
                                  fuzzy-match textmate autopair perspective
-                                 android-mode deft auto-complete rvm yasnippet
-                                 anything anything-config
+                                 find-file-in-project android-mode deft auto-complete rvm yasnippet
+                                 idle-highlight-mode anything anything-config ido-ubiquitous
                                  feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -44,7 +44,10 @@
       (if on-windows
           (progn
             (message "Running windows.. using AppData/Roaming")
-            (setq dotfiles-dir "C:/Users/Ignacy/AppData/Roaming/.emacs.d"))
+
+
+
+(setq dotfiles-dir "C:/Users/Ignacy/AppData/Roaming/.emacs.d"))
         (message "We're not on windows..")
         (setq dotfiles-dir "~/.emacs.d"))
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
@@ -75,6 +78,8 @@
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
+      (idle-highlight-mode t)
+
       (require 'epa)
       (epa-file-enable)
       (require 'git-blame)
@@ -82,9 +87,9 @@
       (require 'ruby-mode)
       (require 'rvm)
       (require 'markdown-mode)
-      ;; require can begin here
       (require 'anything-config)
       (require 'anything-etags+)
+      (require 'find-file-in-project)
 
       (require 'perspective)
       (persp-mode)
@@ -172,6 +177,7 @@
   :group 'android-mode)
 
 
+(global-set-key (kbd "C-x f") 'find-file-in-project)
 
 (unless on-windows
   (defun ant-compile ()
@@ -196,7 +202,7 @@
   (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
   )
 
-(global-set-key (kbd "C-x f") 'ido-find-file)
+;(global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
 
 (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
