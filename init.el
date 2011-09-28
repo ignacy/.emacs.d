@@ -19,6 +19,9 @@
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
 
+(when on-windows
+  (setenv "HOME" "C:/Users/Ignacy/"))
+
 (when set-use-marmelade
   (require 'package)
   (add-to-list 'package-archives
@@ -47,7 +50,8 @@
 
 
 
-(setq dotfiles-dir "C:/Users/Ignacy/AppData/Roaming/.emacs.d"))
+
+(setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
         (message "We're not on windows..")
         (setq dotfiles-dir "~/.emacs.d"))
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
@@ -748,9 +752,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
             'shell-strip-ctrl-m nil t)
   (add-hook 'comint-output-filter-functions
             'comint-watch-for-password-prompt nil t)
-  (setq explicit-shell-file-name "bash.exe")
+  (setq explicit-shell-file-name "zsh")
+  (setq explicit-sh-args '("-l" "-i"))
   ;; For subprocesses invoked via the shell
   ;; (e.g., "shell -c command")
+  (setq binary-process-input t)
+  (setq w32-quote-process-args ?\")
   (setq shell-file-name explicit-shell-file-name)
   (setenv "PATH" (concat "c:/bin;" (getenv "PATH")))
   (setq exec-path (cons "c:/bin/" exec-path))
