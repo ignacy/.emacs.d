@@ -34,7 +34,7 @@
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit
                                  fuzzy-match textmate autopair perspective
                                  find-file-in-project android-mode deft auto-complete rvm yasnippet
-                                 idle-highlight-mode anything anything-config ido-ubiquitous
+                                 idle-highlight-mode anything anything-config
                                  feature-mode marmalade))
 
   (dolist (p my-packages)
