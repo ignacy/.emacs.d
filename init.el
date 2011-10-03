@@ -838,3 +838,5 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (diff-buffer-with-file (current-buffer)))
 (global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
+
+(setq redisplay-dont-pause t)
