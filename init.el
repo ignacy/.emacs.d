@@ -47,6 +47,7 @@
       (if on-windows
           (progn
 
+
 (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
         (message "We're not on windows..")
         (setq dotfiles-dir "~/.emacs.d"))
@@ -103,6 +104,7 @@
   (require 'deft)
   (setq deft-extension "org")
   (setq deft-text-mode 'org-mode)
+  (setq deft-auto-save-interval 3.0)
   (global-set-key [f8] 'deft)
   (if on-windows
       (setq deft-directory "C:/Users/Ignacy/Dropbox/notes/deft/")
