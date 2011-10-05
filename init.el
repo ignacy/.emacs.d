@@ -33,7 +33,8 @@
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit
                                  fuzzy-match textmate autopair perspective
-                                 find-file-in-project android-mode deft auto-complete rvm yasnippet
+                                 yasnippet find-file-in-project android-mode
+                                 deft auto-complete rvm yasnippet
                                  idle-highlight-mode anything anything-config
                                  feature-mode marmalade))
 
@@ -48,7 +49,7 @@
           (progn
 
 
-(setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
+            (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
         (message "We're not on windows..")
         (setq dotfiles-dir "~/.emacs.d"))
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
@@ -58,8 +59,10 @@
 
       (require 'yasnippet)
       (yas/initialize)
+      (setq yas/root-directory (concat dotfiles-dir "/snippets"))
+      (yas/load-directory yas/root-directory)
+      (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
       (setq yas/trigger-key "TAB")
-
 
       (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
       (require 'rails-autoload)
@@ -128,7 +131,7 @@
   )
 
 (when set-use-color-theme
-  (load-theme 'tango-dark))
+  (load-theme 'tango))
 
 
 ;; ;;(global-set-key (kbd "M-a") 'anything)
@@ -150,7 +153,7 @@
 (when window-system
   (when set-line-highlighting (message "Switching line highlighting on")
         (global-hl-line-mode 1)
-        (set-face-background 'hl-line "#333")
+        ;;(set-face-background 'hl-line "#333")
         ;;(set-face-background 'hl-line "#eee")
         (set-face-foreground 'highlight nil)
         (set-face-foreground 'hl-line nil)))
