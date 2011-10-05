@@ -246,8 +246,7 @@
 
 (global-set-key (kbd "C-x i") 'iwb)
 
-
-(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
+;;(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 (setq next-line-add-newlines t)
 
@@ -686,8 +685,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
       (message "Opening file...")
     (message "Aborting")))
-
-(add-hook 'before-save-hook 'whitespace-cleanup)
 
 (add-hook 'java-mode-hook (lambda () (subword-mode)))
 
