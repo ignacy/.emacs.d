@@ -64,8 +64,8 @@
       (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
       (setq yas/trigger-key "TAB")
 
-      (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
-      (require 'rails-autoload)
+      ;; (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
+      ;; (require 'rails-autoload)
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
       (load-file (concat imoryc-dir "/ruby-setup.el"))
 

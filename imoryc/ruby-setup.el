@@ -4,9 +4,6 @@
 (add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1/emacs"))
 (require 'rdebug)
 
-;;; Setup rails
-(add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
-(require 'rails-autoload)
 (add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
 (require 'rhtml-mode)
 
