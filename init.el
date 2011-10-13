@@ -131,7 +131,7 @@
   )
 
 (when set-use-color-theme
-  (load-theme 'tango))
+  (load-theme 'wombat))
 
 
 ;; ;;(global-set-key (kbd "M-a") 'anything)
@@ -842,3 +842,4 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
 
 (setq redisplay-dont-pause t)
+
