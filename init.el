@@ -23,10 +23,13 @@
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
 (when set-use-marmelade
+
   (require 'package)
+  (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
   (add-to-list 'package-archives
-               '("marmalade" . "http://marmalade-repo.org/packages/"))
+               '("marmalade" . "http://marmalade-repo.org/packages/") t)
   (package-initialize)
+
 
   (when (not package-archive-contents)
     (package-refresh-contents))
@@ -81,6 +84,16 @@
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
+      (load-file (concat imoryc-dir "/matlab.el"))
+
+      ;; Interactively Do Things (highly recommended, but not strictly required)
+      (require 'ido)
+      (ido-mode t)
+     
+      ;; Rinari
+      (add-to-list 'load-path (concat dotfiles-dir "/rinari"))
+      (require 'rinari)
+      (setq rinari-tags-file-name "TAGS")
 
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
@@ -91,7 +104,6 @@
       (epa-file-enable)
       (require 'git-blame)
       (require 'haml-mode)
-      (require 'ruby-mode)
       (require 'rvm)
       (require 'markdown-mode)
       (require 'anything-config)
@@ -861,4 +873,3 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
 
 (setq redisplay-dont-pause t)
-

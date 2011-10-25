@@ -22,3 +22,6 @@
 [submodule "textmate.el"]
 	path = textmate.el
 	url = git://github.com/defunkt/textmate.el.git
+[submodule "rinari"]
+	path = rinari
+	url = https://github.com/eschulte/rinari.git
