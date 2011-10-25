@@ -14,7 +14,7 @@
 (defvar set-working-on-bdj t)
 (defvar set-indent-before-saving t)
 (defvar set-remove-blinking-from-cursos t)
-(defvar set-use-color-theme t)
+(defvar set-use-color-theme nil)
 (defvar use-deft t)
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
@@ -69,6 +69,9 @@
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
       (load-file (concat imoryc-dir "/ruby-setup.el"))
 
+      (load-file (concat imoryc-dir "/pastie.el"))
+      (require 'pastie)
+      
       (require 'autopair)
       (autopair-global-mode)
 
@@ -131,7 +134,8 @@
   )
 
 (when set-use-color-theme
-  (load-theme 'wombat))
+  (load-file (concat imoryc-dir "/themes/afterthought-theme.el"))
+  (load-theme 'afterthought))
 
 
 ;; ;;(global-set-key (kbd "M-a") 'anything)
@@ -287,6 +291,21 @@
 ;; (set-cursor-color "yellow")
 
 
+(setq initial-scratch-message nil)
+(setq inhibit-splash-screen t)
+(icomplete-mode t)
+(setq font-lock-maximum-decoration t)
+(display-time-mode -1)
+
+(setq comment-style 'indent)
+(setq comment-style 'indent)
+(setq frame-title-format
+      (list '("emacs ")
+            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+(setq cursor-in-non-selected-windows nil)
+(setq-default indent-tabs-mode nil)
+(setq read-buffer-completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
 
 (defvar smart-use-extended-syntax nil
   "If t the smart symbol functionality will consider extended
