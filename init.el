@@ -72,9 +72,6 @@
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
       (load-file (concat imoryc-dir "/ruby-setup.el"))
 
-      (load-file (concat imoryc-dir "/pastie.el"))
-      (require 'pastie)
-      
       (require 'autopair)
       (autopair-global-mode)
 
