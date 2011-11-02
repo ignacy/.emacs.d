@@ -779,6 +779,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (require 'textmate)
 (textmate-mode)
+(bind "<f2>" textmate-goto-file)
 
 (defadvice erase-buffer (around erase-buffer-noop)
   "make erase-buffer do nothing")
@@ -854,3 +855,5 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
 
 (setq redisplay-dont-pause t)
+
+(setq ruby-insert-encoding-magic-comment nil)

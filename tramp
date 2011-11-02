@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <11/10/22 19:00:17 /home/ignacy/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <11/11/02 19:15:37 /home/ignacy/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -21,4 +21,5 @@
   ("local-encoding" base64-encode-region)
   ("local-decoding" base64-decode-region)
   ("remote-encoding" "base64")
-  ("remote-decoding" "base64 -d -i")))
+  ("remote-decoding" "base64 -d -i")
+  ("ls" "/bin/ls --color=never")))
