@@ -86,11 +86,13 @@
       ;; Interactively Do Things (highly recommended, but not strictly required)
       (require 'ido)
       (ido-mode t)
-     
-      ;; Rinari
-      (add-to-list 'load-path (concat dotfiles-dir "/rinari"))
-      (require 'rinari)
-      (setq rinari-tags-file-name "TAGS")
+
+
+      (unless on-windows
+	;; Rinari
+	(add-to-list 'load-path (concat dotfiles-dir "/rinari"))
+	(require 'rinari)
+	(setq rinari-tags-file-name "TAGS"))
 
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
@@ -264,7 +266,7 @@
 
 ;;(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
-(setq next-line-add-newlines t)
+;;(setq next-line-add-newlines t)
 
 
 
