@@ -3,3 +3,4 @@ ac-comphist.dat
 *.elc
 elpa/
 org-clock-save.el
+anything-c-adaptive-history
