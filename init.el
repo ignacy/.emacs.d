@@ -18,9 +18,20 @@
 (defvar use-deft t)
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
+(defvar use-im-mode-bindings t)
 
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
+
+(defmacro bind (key fn)
+  "shortcut for global-set-key"
+  `(global-set-key (kbd ,key)
+                   ;; handle unquoted function names and lambdas
+                   ,(if (listp fn)
+                        fn
+                      `',fn)))
+
+
 
 (when set-use-marmelade
 
@@ -50,8 +61,6 @@
 (when set-directories (message "Setting directories..")
       (if on-windows
           (progn
-
-
             (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
         (message "We're not on windows..")
         (setq dotfiles-dir "~/.emacs.d"))
@@ -67,8 +76,6 @@
       (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
       (setq yas/trigger-key "TAB")
 
-      ;; (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
-      ;; (require 'rails-autoload)
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
       (load-file (concat imoryc-dir "/ruby-setup.el"))
 
@@ -78,26 +85,32 @@
       (require 'auto-complete-config)
       (ac-config-default)
 
+      (load-file (concat imoryc-dir "/iy-go-to-char.el"))
+      (require 'iy-go-to-char)
+      (bind "M-m" iy-go-to-char)
+
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
       (load-file (concat imoryc-dir "/matlab.el"))
 
-      ;; Interactively Do Things (highly recommended, but not strictly required)
       (require 'ido)
       (ido-mode t)
 
-
       (unless on-windows
-	;; Rinari
-	(add-to-list 'load-path (concat dotfiles-dir "/rinari"))
-	(require 'rinari)
-	(setq rinari-tags-file-name "TAGS"))
+        ;; Rinari
+        (add-to-list 'load-path (concat dotfiles-dir "/rinari"))
+        (require 'rinari)
+        (setq rinari-tags-file-name "TAGS"))
 
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
-      (idle-highlight-mode t)
+      (defun my-coding-hook ()
+        (idle-highlight-mode t))
+      (add-hook 'emacs-lisp-mode-hook 'my-coding-hook)
+      (add-hook 'ruby-mode-hook 'my-coding-hook)
+      (add-hook 'java-mode-hook 'my-coding-hook)
 
       (require 'epa)
       (epa-file-enable)
@@ -151,15 +164,6 @@
 
 ;; ;;(global-set-key (kbd "M-a") 'anything)
 (global-set-key "\M-." 'anything-etags+-select-one-key)
-
-
-(defmacro bind (key fn)
-  "shortcut for global-set-key"
-  `(global-set-key (kbd ,key)
-                   ;; handle unquoted function names and lambdas
-                   ,(if (listp fn)
-                        fn
-                      `',fn)))
 
 
 (when set-environment-settings (message "Setting environment settings")
@@ -869,9 +873,45 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun im/diff-current-buffer-with-disk ()
   "Compare the current buffer with it's disk file."
   (interactive)
-  (diff-buffer-with-file (current-buffer)))
+  (diff-buffer-with-file b(current-buffer)))
 (global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
 
 (setq redisplay-dont-pause t)
-
 (setq ruby-insert-encoding-magic-comment nil)
+
+
+(when use-im-mode-bindings
+  (defvar im-keys-minor-mode-map (make-keymap) "im-keys-minor-mode keymap.")
+
+  (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line) ; was tab-to-tab-stop
+  (define-key im-keys-minor-mode-map  (kbd "M-j") 'backward-char) ; was indent-new-comment-line
+  (define-key im-keys-minor-mode-map  (kbd "M-k") 'next-line) ; was kill-sentence
+  (define-key im-keys-minor-mode-map  (kbd "M-l") 'forward-char)  ; was downcase-word
+  (define-key im-keys-minor-mode-map  (kbd "M-SPC") 'set-mark-command) ; was just-one-space
+
+
+  (define-minor-mode im-keys-minor-mode
+    "A minor mode so that im key settings override annoying major modes."
+    t " im-keys" 'im-keys-minor-mode-map)
+
+  (im-keys-minor-mode 1)
+
+  (defun im-minibuffer-setup-hook ()
+    (im-keys-minor-mode 0))
+
+  (add-hook 'minibuffer-setup-hook 'im-minibuffer-setup-hook))
+
+(defadvice load (after give-my-keybindings-priority)
+  "Try to ensure that my keybindings always have priority."
+  (if (not (eq (car (car minor-mode-map-alist)) 'im-keys-minor-mode))
+      (let ((mykeys (assq 'im-keys-minor-mode minor-mode-map-alist)))
+        (assq-delete-all 'im-keys-minor-mode minor-mode-map-alist)
+        (add-to-list 'minor-mode-map-alist mykeys))))
+(ad-activate 'load)
+
+
+(define-abbrev-table 'global-abbrev-table '(
+                                            ("firend" "friend" nil 0)
+                                            ("Firend" "Friend" nil 0)))
+(setq save-abbrevs nil)
+
