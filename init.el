@@ -22,6 +22,16 @@
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
+(defmacro bind (key fn)
+  "shortcut for global-set-key"
+  `(global-set-key (kbd ,key)
+                   ;; handle unquoted function names and lambdas
+                   ,(if (listp fn)
+                        fn
+                      `',fn)))
+
+
+
 (when set-use-marmelade
 
   (require 'package)
@@ -67,8 +77,6 @@
       (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
       (setq yas/trigger-key "TAB")
 
-      ;; (add-to-list 'load-path (concat dotfiles-dir "/emacs-rails-reloaded"))
-      ;; (require 'rails-autoload)
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
       (load-file (concat imoryc-dir "/ruby-setup.el"))
 
@@ -78,21 +86,23 @@
       (require 'auto-complete-config)
       (ac-config-default)
 
+      (load-file (concat imoryc-dir "/iy-go-to-char.el"))
+      (require 'iy-go-to-char)
+      (bind "M-m" iy-go-to-char)
+
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
       (load-file (concat imoryc-dir "/matlab.el"))
 
-      ;; Interactively Do Things (highly recommended, but not strictly required)
       (require 'ido)
       (ido-mode t)
 
-
       (unless on-windows
-	;; Rinari
-	(add-to-list 'load-path (concat dotfiles-dir "/rinari"))
-	(require 'rinari)
-	(setq rinari-tags-file-name "TAGS"))
+        ;; Rinari
+        (add-to-list 'load-path (concat dotfiles-dir "/rinari"))
+        (require 'rinari)
+        (setq rinari-tags-file-name "TAGS"))
 
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
@@ -151,15 +161,6 @@
 
 ;; ;;(global-set-key (kbd "M-a") 'anything)
 (global-set-key "\M-." 'anything-etags+-select-one-key)
-
-
-(defmacro bind (key fn)
-  "shortcut for global-set-key"
-  `(global-set-key (kbd ,key)
-                   ;; handle unquoted function names and lambdas
-                   ,(if (listp fn)
-                        fn
-                      `',fn)))
 
 
 (when set-environment-settings (message "Setting environment settings")
@@ -869,9 +870,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun im/diff-current-buffer-with-disk ()
   "Compare the current buffer with it's disk file."
   (interactive)
-  (diff-buffer-with-file (current-buffer)))
+  (diff-buffer-with-file b(current-buffer)))
 (global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
 
-(setq redisplay-dont-pause t)
 
+
+(setq redisplay-dont-pause t)
 (setq ruby-insert-encoding-magic-comment nil)
+
+(bind "M-l" downcase-word)
