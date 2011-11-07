@@ -18,6 +18,7 @@
 (defvar use-deft t)
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
+(defvar use-im-mode-bindings t)
 
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
@@ -60,8 +61,6 @@
 (when set-directories (message "Setting directories..")
       (if on-windows
           (progn
-
-
             (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
         (message "We're not on windows..")
         (setq dotfiles-dir "~/.emacs.d"))
@@ -107,7 +106,11 @@
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
-      (idle-highlight-mode t)
+      (defun my-coding-hook ()
+        (idle-highlight-mode t))
+      (add-hook 'emacs-lisp-mode-hook 'my-coding-hook)
+      (add-hook 'ruby-mode-hook 'my-coding-hook)
+      (add-hook 'java-mode-hook 'my-coding-hook)
 
       (require 'epa)
       (epa-file-enable)
@@ -873,9 +876,42 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (diff-buffer-with-file b(current-buffer)))
 (global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
 
-
-
 (setq redisplay-dont-pause t)
 (setq ruby-insert-encoding-magic-comment nil)
 
-(bind "M-l" downcase-word)
+
+(when use-im-mode-bindings
+  (defvar im-keys-minor-mode-map (make-keymap) "im-keys-minor-mode keymap.")
+
+  (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line) ; was tab-to-tab-stop
+  (define-key im-keys-minor-mode-map  (kbd "M-j") 'backward-char) ; was indent-new-comment-line
+  (define-key im-keys-minor-mode-map  (kbd "M-k") 'next-line) ; was kill-sentence
+  (define-key im-keys-minor-mode-map  (kbd "M-l") 'forward-char)  ; was downcase-word
+  (define-key im-keys-minor-mode-map  (kbd "M-SPC") 'set-mark-command) ; was just-one-space
+
+
+  (define-minor-mode im-keys-minor-mode
+    "A minor mode so that im key settings override annoying major modes."
+    t " im-keys" 'im-keys-minor-mode-map)
+
+  (im-keys-minor-mode 1)
+
+  (defun im-minibuffer-setup-hook ()
+    (im-keys-minor-mode 0))
+
+  (add-hook 'minibuffer-setup-hook 'im-minibuffer-setup-hook))
+
+(defadvice load (after give-my-keybindings-priority)
+  "Try to ensure that my keybindings always have priority."
+  (if (not (eq (car (car minor-mode-map-alist)) 'im-keys-minor-mode))
+      (let ((mykeys (assq 'im-keys-minor-mode minor-mode-map-alist)))
+        (assq-delete-all 'im-keys-minor-mode minor-mode-map-alist)
+        (add-to-list 'minor-mode-map-alist mykeys))))
+(ad-activate 'load)
+
+
+(define-abbrev-table 'global-abbrev-table '(
+                                            ("firend" "friend" nil 0)
+                                            ("Firend" "Friend" nil 0)))
+(setq save-abbrevs nil)
+
