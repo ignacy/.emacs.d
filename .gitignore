@@ -2,4 +2,5 @@ auto-save-list
 ac-comphist.dat
 *.elc
 elpa/
+url/
 org-clock-save.el
