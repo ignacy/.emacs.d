@@ -1,8 +1,8 @@
 ;; Setup ruby
 
-(add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1"))
-(add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1/emacs"))
-(require 'rdebug)
+;; (add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1"))
+;; (add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1/emacs"))
+;; (require 'rdebug)
 
 (add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
 (require 'rhtml-mode)
@@ -24,6 +24,7 @@
   '(progn
      (ignore-errors (require 'ruby-compilation))
      (setq ruby-use-encoding-map nil)
+     (setq ruby-insert-encoding-magic-comment nil)
      (add-hook 'ruby-mode-hook 'inf-ruby-keys)
      (add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
      (setq tab-width 2)

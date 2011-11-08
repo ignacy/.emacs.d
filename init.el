@@ -1,4 +1,3 @@
-(message "Ok. let's do some configuring..")
 (require 'cl)
 
 ;;(setq debug-on-error t)
@@ -19,6 +18,7 @@
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
 (defvar use-im-mode-bindings t)
+(defvar use-recentf-mode t)
 
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
@@ -30,8 +30,6 @@
                    ,(if (listp fn)
                         fn
                       `',fn)))
-
-
 
 (when set-use-marmelade
 
@@ -127,6 +125,13 @@
       (persp-mode)
       (global-set-key [f12] 'persp-switch)
 
+      (add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
+      (require 'coffee-mode)
+
+      (require 'textmate)
+      (textmate-mode)
+      (bind "<f2>" textmate-goto-file)
+
       (require 'magit)
       (require 'android-mode))
 
@@ -166,8 +171,13 @@
 (global-set-key "\M-." 'anything-etags+-select-one-key)
 
 
-(when set-environment-settings (message "Setting environment settings")
-      (setq inhibit-startup-message t))
+(when set-environment-settings
+  (setq initial-scratch-message nil)
+  (setq inhibit-splash-screen t)
+  (icomplete-mode t)
+  (setq font-lock-maximum-decoration t)
+  (display-time-mode -1)
+  (setq inhibit-startup-message t))
 
 (when window-system
   (when set-line-highlighting (message "Switching line highlighting on")
@@ -183,17 +193,17 @@
         (setenv "JAVA_HOME" "c://jdk1.6.0_23")
         (setenv "CLASSPATH" "$CLASSPATH:$JUNIT_HOME:/home/ignacy/code/classpath:/home/ignacy/code/FyreTv/lib/test/testng-5.14.7.jar")))
 
-(unless on-windows (message "Setting androidn on linux")
-        (defcustom android-mode-sdk-dir "~/android"
-          "Set to the directory containing the Android SDK."
-          :type 'string
-          :group 'android-mode))
+(unless on-windows
+  (defcustom android-mode-sdk-dir "~/android"
+    "Set to the directory containing the Android SDK."
+    :type 'string
+    :group 'android-mode))
 
-(when on-windows (message "Setting android for windows")
-      (defcustom android-mode-sdk-dir "c:/Android/android-sdk/"
-        "Set to the directory containing the Android SDK."
-        :type 'string
-        :group 'android-mode))
+(when on-windows
+  (defcustom android-mode-sdk-dir "c:/Android/android-sdk/"
+    "Set to the directory containing the Android SDK."
+    :type 'string
+    :group 'android-mode))
 
 
 (defcustom android-mode-avd "@htc"
@@ -201,8 +211,6 @@
   :type 'string
   :group 'android-mode)
 
-
-(global-set-key (kbd "C-x f") 'find-file-in-project)
 
 (unless on-windows
   (defun ant-compile ()
@@ -227,12 +235,9 @@
   (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
   )
 
-                                        ;(global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
-
 (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 (global-set-key (kbd "C-x b") 'list-buffers)
-
 
 
 ;; Window manipulation
@@ -269,11 +274,7 @@
 (global-set-key (kbd "C-x i") 'iwb)
 
 ;;(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
-
 ;;(setq next-line-add-newlines t)
-
-
-
 ;; (setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
 ;; (defun djcb-ditaa-generate ()
 ;;   (interactive)
@@ -301,16 +302,7 @@
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
 (delete-selection-mode t)
-;;(set-default 'cursor-type 'bar)
 (set-default 'cursor-type 'box)
-;; (set-cursor-color "yellow")
-
-
-(setq initial-scratch-message nil)
-(setq inhibit-splash-screen t)
-(icomplete-mode t)
-(setq font-lock-maximum-decoration t)
-(display-time-mode -1)
 
 (setq comment-style 'indent)
 (setq comment-style 'indent)
@@ -408,10 +400,8 @@ instead."
 (fset 'yes-or-no-p 'y-or-n-p)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(ido-mode t)
 (setq ido-create-new-buffer 'always)
 (setq backup-inhibited t)
-
 (global-linum-mode 1)
 (setq linum-format " %3d  ")
 
@@ -490,10 +480,7 @@ instead."
 
 (global-unset-key [?\C-x ?\C-z])
 (global-set-key [f1] 'help)
-;; (global-set-key (kbd "C-z") 'undo)
 
-;; (global-hl-line-mode 1)
-;;(set-face-background 'hl-line "gray8")
 ;;BOOKMARKS
 (define-key global-map [f9] 'bookmark-jump)
 (define-key global-map [f10] 'bookmark-set)
@@ -505,7 +492,6 @@ instead."
 (global-set-key (kbd "M-,") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-l") 'highlight-lines-matching-regexp)
 (global-set-key (kbd "M-o") 'occur)
-;;(global-set-key [(meta g)] 'beginning-of-buffer)
 (global-set-key "\C-a" 'beginning-of-line-text)
 (defun my-ibuffer ()
   "Open ibuffer with cursour pointed to most recent buffer name"
@@ -547,8 +533,6 @@ instead."
  bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
  bookmark-save-flag 1)                        ;; autosave each change)
 
-(define-key global-map [f9] 'bookmark-jump)
-(define-key global-map [f10] 'bookmark-set)
 
 
 ;; dirty fix for having AC everywhere
@@ -583,21 +567,8 @@ instead."
 (setq frame-title-format
       (list '("emacs ")
             '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
-
 (setq cursor-in-non-selected-windows nil)
-(bind "C-x g" magit-status)
 (global-set-key [C-tab] 'bs-show)
-;; Moje funkcje
-
-(bind "C-c j" im/join-line)
-
-
-(defun im/join-line()
-  "Join with previous line but move back to next line after"
-  (interactive)
-  (join-line)
-  (next-line))
-
 
 (defun ido-goto-symbol (&optional symbol-list)
   "Refresh imenu and jump to a place in the buffer using Ido."
@@ -648,7 +619,7 @@ instead."
           (add-to-list 'name-and-pos (cons name position))))))))
 
 
-(global-set-key (kbd "M-i") 'ido-goto-symbol)
+(global-set-key (kbd "M-s") 'ido-goto-symbol)
 
 (defun push-mark-no-activate ()
   "Pushes `point' to `mark-ring' and does not activate the region
@@ -704,36 +675,31 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-.") 'ido-find-file-in-tag-files)
 
 
-(require 'recentf)
-
-;; get rid of `find-file-read-only' and replace it with something
-;; more useful.
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
-
-;; enable recent files mode.
-(recentf-mode t)
-
-                                        ; 50 files ought to be enough.
-(setq recentf-max-saved-items 50)
-
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
+(when use-recentf-mode
+  ;; enable recent files mode.
+  (require 'recentf)
+  (recentf-mode t)
+  (setq recentf-max-saved-items 100)
+  (defun ido-recentf-open ()
+    "Use `ido-completing-read' to \\[find-file] a recent file"
+    (interactive)
+    (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+        (message "Opening file...")
+      (message "Aborting")))
+  ;; get rid of `find-file-read-only' and replace it with something
+  ;; more useful.
+  (global-set-key (kbd "C-x C-r") 'ido-recentf-open))
 
 (add-hook 'java-mode-hook (lambda () (subword-mode)))
 
-
-;; (global-set-key (kbd "<right>") 'use-emacs-keys)
-;; (global-set-key (kbd "<left>") 'use-emacs-keys)
-;; (global-set-key (kbd "<down>") 'use-emacs-keys)
-;; (global-set-key (kbd "<up>") 'use-emacs-keys)
-;; (defun use-emacs-keys ()
-;;   (interactive)
-;;   "Remind me to use emacs move keys not arrows!!"
-;;   (message "Use emacs keys you lazy bastard!!"))
+(global-set-key (kbd "C-n") 'use-emacs-keys)
+(global-set-key (kbd "C-p") 'use-emacs-keys)
+(global-set-key (kbd "C-f") 'use-emacs-keys)
+(global-set-key (kbd "C-b") 'use-emacs-keys)
+(defun use-emacs-keys ()
+  (interactive)
+  "Remind me to use emacs move keys not arrows!!"
+  (message "Use emacs keys you lazy bastard!!"))
 
 
 (setq confirm-nonexistent-file-or-buffer nil)
@@ -744,13 +710,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq ibuffer-expert t)
 (setq ibuffer-show-empty-filter-groups nil)
 
-
 (keyboard-translate ?\C-h ?\C-?)
 
 (global-set-key (kbd "M-%") 'replace-regexp)
 (defalias 'qrr 'query-replace-regexp)
-
-
 
 (defun create-tags (dir-name)
   "Create tags file."
@@ -796,13 +759,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (cygwin-mount-activate))
 
 
-(add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
-(require 'coffee-mode)
-
-(require 'textmate)
-(textmate-mode)
-(bind "<f2>" textmate-goto-file)
-
 (defadvice erase-buffer (around erase-buffer-noop)
   "make erase-buffer do nothing")
 
@@ -842,34 +798,14 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq auto-save-default nil)
 
 
+;;(set-face-background 'modeline "#001A4C")
 
-(defun substitute-regexp (substitution)
-  "Use s/old/new/g regexp syntax for `query-replace'."
-  (interactive
-   (list
-    (read-from-minibuffer "Substitute regexp: " '("s///g" . 3) nil nil
-                          'query-replace-history nil t)))
-  (if (string-match "^s/\\(.*\\)/\\(.*\\)/\\([gi]*\\)" substitution)
-      (let* ((sregex (match-string 1 substitution))
-             (ssubst (match-string 2 substitution))
-             (sflags (match-string 3 substitution))
-             (case-fold-search (string-match "i" sflags)))
-        (perform-replace
-         sregex ssubst (string-match "g" sflags)
-         t nil nil nil
-         (if (and transient-mark-mode mark-active) (region-beginning))
-         (if (and transient-mark-mode mark-active) (region-end))))
-    (error "Invalid syntax")))
-
-
-(bind "<f6>" magit-status)
-
+;; Diff/git addons
 (custom-set-faces
  '(diff-added ((t (:foreground "Green"))) 'now)
  '(diff-removed ((t (:foreground "Red"))) 'now)
  )
-;;(set-face-background 'modeline "#001A4C")
-
+(bind "<f6>" magit-status)
 (defun im/diff-current-buffer-with-disk ()
   "Compare the current buffer with it's disk file."
   (interactive)
@@ -877,41 +813,34 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
 
 (setq redisplay-dont-pause t)
-(setq ruby-insert-encoding-magic-comment nil)
 
 
 (when use-im-mode-bindings
   (defvar im-keys-minor-mode-map (make-keymap) "im-keys-minor-mode keymap.")
-
+  (define-key im-keys-minor-mode-map (kbd "C-x C-f") 'find-file-in-project)
+  (define-key im-keys-minor-mode-map (kbd "C-x f") 'find-file)
   (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line) ; was tab-to-tab-stop
   (define-key im-keys-minor-mode-map  (kbd "M-j") 'backward-char) ; was indent-new-comment-line
   (define-key im-keys-minor-mode-map  (kbd "M-k") 'next-line) ; was kill-sentence
   (define-key im-keys-minor-mode-map  (kbd "M-l") 'forward-char)  ; was downcase-word
   (define-key im-keys-minor-mode-map  (kbd "M-SPC") 'set-mark-command) ; was just-one-space
 
-
   (define-minor-mode im-keys-minor-mode
     "A minor mode so that im key settings override annoying major modes."
     t " im-keys" 'im-keys-minor-mode-map)
-
   (im-keys-minor-mode 1)
-
   (defun im-minibuffer-setup-hook ()
     (im-keys-minor-mode 0))
-
-  (add-hook 'minibuffer-setup-hook 'im-minibuffer-setup-hook))
-
-(defadvice load (after give-my-keybindings-priority)
-  "Try to ensure that my keybindings always have priority."
-  (if (not (eq (car (car minor-mode-map-alist)) 'im-keys-minor-mode))
-      (let ((mykeys (assq 'im-keys-minor-mode minor-mode-map-alist)))
-        (assq-delete-all 'im-keys-minor-mode minor-mode-map-alist)
-        (add-to-list 'minor-mode-map-alist mykeys))))
-(ad-activate 'load)
-
+  (add-hook 'minibuffer-setup-hook 'im-minibuffer-setup-hook)
+  (defadvice load (after give-my-keybindings-priority)
+    "Try to ensure that my keybindings always have priority."
+    (if (not (eq (car (car minor-mode-map-alist)) 'im-keys-minor-mode))
+        (let ((mykeys (assq 'im-keys-minor-mode minor-mode-map-alist)))
+          (assq-delete-all 'im-keys-minor-mode minor-mode-map-alist)
+          (add-to-list 'minor-mode-map-alist mykeys))))
+  (ad-activate 'load))
 
 (define-abbrev-table 'global-abbrev-table '(
                                             ("firend" "friend" nil 0)
                                             ("Firend" "Friend" nil 0)))
 (setq save-abbrevs nil)
-
