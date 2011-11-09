@@ -13,7 +13,7 @@
 (defvar set-working-on-bdj t)
 (defvar set-indent-before-saving t)
 (defvar set-remove-blinking-from-cursos t)
-(defvar set-use-color-theme nil)
+(defvar set-use-color-theme t)
 (defvar use-deft t)
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
@@ -163,8 +163,7 @@
   )
 
 (when set-use-color-theme
-  (load-file (concat imoryc-dir "/themes/afterthought-theme.el"))
-  (load-theme 'afterthought))
+  (load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
 
 
 ;; ;;(global-set-key (kbd "M-a") 'anything)
@@ -822,13 +821,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (define-key im-keys-minor-mode-map (kbd "M-u") 'backward-word)
   (define-key im-keys-minor-mode-map (kbd "M-o") 'forward-word) ; was (prefix)
   (define-key im-keys-minor-mode-map (kbd "M-'") 'isearch-forward)
-  (define-key im-keys-minor-mode-map (kbd "C-s") 'save-buffer)
   (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line) ; was tab-to-tab-stop
   (define-key im-keys-minor-mode-map  (kbd "M-j") 'backward-char) ; was indent-new-comment-line
   (define-key im-keys-minor-mode-map  (kbd "M-k") 'next-line) ; was kill-sentence
   (define-key im-keys-minor-mode-map  (kbd "M-l") 'forward-char)  ; was downcase-word
   (define-key im-keys-minor-mode-map  (kbd "M-SPC") 'set-mark-command) ; was just-one-space
-  (global-unset-key (kbd "C-x C-s")) ; save-buffer
   (define-minor-mode im-keys-minor-mode
     "A minor mode so that im key settings override annoying major modes."
     t " im-keys" 'im-keys-minor-mode-map)
