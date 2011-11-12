@@ -157,10 +157,12 @@
         '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
            "* TODO %?\n  %i\n  %a")))
 
+  (setq org-agenda-files (quote ("~/Dropbox/notes/deft")))
+  (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d")
   (define-key global-map "\C-cc" 'org-capture)
   (setq org-clock-persist 'history)
-  (org-clock-persistence-insinuate)
-  )
+  (org-clock-persistence-insinuate))
+
 
 (when set-use-color-theme
   (load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
@@ -821,6 +823,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (define-key im-keys-minor-mode-map (kbd "M-u") 'backward-word)
   (define-key im-keys-minor-mode-map (kbd "M-o") 'forward-word) ; was (prefix)
   (define-key im-keys-minor-mode-map (kbd "M-'") 'isearch-forward)
+  (define-key im-keys-minor-mode-map (kbd "M-g") 'kill-line)
+  (define-key im-keys-minor-mode-map (kbd "M-G") 'kill-line-backward)
   (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line) ; was tab-to-tab-stop
   (define-key im-keys-minor-mode-map  (kbd "M-j") 'backward-char) ; was indent-new-comment-line
   (define-key im-keys-minor-mode-map  (kbd "M-k") 'next-line) ; was kill-sentence
