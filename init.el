@@ -47,26 +47,21 @@
                                  fuzzy-match textmate autopair perspective
                                  yasnippet find-file-in-project android-mode
                                  deft auto-complete rvm yasnippet
-                                 idle-highlight-mode anything anything-config
-                                 feature-mode marmalade))
+                                 idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
     (when (not (package-installed-p p))
-      (package-install p)))
-
-  )
+      (package-install p))))
 
 (when set-directories (message "Setting directories..")
       (if on-windows
           (progn
             (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
-        (message "We're not on windows..")
         (setq dotfiles-dir "~/.emacs.d"))
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
       (add-to-list 'load-path imoryc-dir))
 
 (when set-loadpaths (message "Setting load paths for libraries")
-
       (require 'yasnippet)
       (yas/initialize)
       (setq yas/root-directory (concat dotfiles-dir "/snippets"))
@@ -116,10 +111,12 @@
       (require 'haml-mode)
       (require 'rvm)
       (require 'markdown-mode)
-      (require 'anything-config)
-      (require 'anything-etags+)
       (require 'find-file-in-project)
       (add-to-list 'ffip-patterns "*.java")
+      (add-to-list 'ffip-patterns "*.erb")
+      (add-to-list 'ffip-patterns "*.js")
+      (add-to-list 'ffip-patterns "*.css")
+      (add-to-list 'ffip-patterns "*.yml")
 
       (require 'perspective)
       (persp-mode)
@@ -130,7 +127,7 @@
 
       (require 'textmate)
       (textmate-mode)
-      (bind "<f2>" textmate-goto-file)
+      (bind "<f2>" textmate-goto-file)2
 
       (require 'magit)
       (require 'android-mode))
@@ -139,7 +136,7 @@
   (require 'deft)
   (setq deft-extension "org")
   (setq deft-text-mode 'org-mode)
-  (setq deft-auto-save-interval 3.0)
+  (setq deft-auto-save-interval 2.3)
   (global-set-key [f8] 'deft)
   (if on-windows
       (setq deft-directory "C:/Users/Ignacy/Dropbox/notes/deft/")
@@ -148,29 +145,20 @@
 
 (when use-org-mode
   (require 'org-install)
-
   (if on-windows
       (setq org-default-notes-file "C:/Users/Ignacy/Dropbox/notes/notes.org")
     (setq org-default-notes-file "~/Dropbox/notes/notes.org"))
-
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
            "* TODO %?\n  %i\n  %a")))
-
   (setq org-agenda-files (quote ("~/Dropbox/notes/deft")))
   (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d")
   (define-key global-map "\C-cc" 'org-capture)
   (setq org-clock-persist 'history)
   (org-clock-persistence-insinuate))
 
-
 (when set-use-color-theme
   (load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
-
-
-;; ;;(global-set-key (kbd "M-a") 'anything)
-(global-set-key "\M-." 'anything-etags+-select-one-key)
-
 
 (when set-environment-settings
   (setq initial-scratch-message nil)
@@ -181,18 +169,18 @@
   (setq inhibit-startup-message t))
 
 (when window-system
-  (when set-line-highlighting (message "Switching line highlighting on")
-        (global-hl-line-mode 1)
-        ;;(set-face-background 'hl-line "#333")
-        ;;(set-face-background 'hl-line "#eee")
-        (set-face-foreground 'highlight nil)
-        (set-face-foreground 'hl-line nil)))
+  (when set-line-highlighting 
+    (global-hl-line-mode 1)
+    (set-face-background 'hl-line "#333")
+    ;;(set-face-background 'hl-line "#eee")
+    (set-face-foreground 'highlight nil)
+    (set-face-foreground 'hl-line nil)))
 
-(when set-java-paths-on-windows (message "Setting java paths")
-      (when on-windows
-        (setenv "JUNIT_HOME" "/home/ignacy/code/classpath")
-        (setenv "JAVA_HOME" "c://jdk1.6.0_23")
-        (setenv "CLASSPATH" "$CLASSPATH:$JUNIT_HOME:/home/ignacy/code/classpath:/home/ignacy/code/FyreTv/lib/test/testng-5.14.7.jar")))
+(when set-java-paths-on-windows 
+  (when on-windows
+    (setenv "JUNIT_HOME" "/home/ignacy/code/classpath")
+    (setenv "JAVA_HOME" "c://jdk1.6.0_23")
+    (setenv "CLASSPATH" "$CLASSPATH:$JUNIT_HOME:/home/ignacy/code/classpath:/home/ignacy/code/FyreTv/lib/test/testng-5.14.7.jar")))
 
 (unless on-windows
   (defcustom android-mode-sdk-dir "~/android"
@@ -211,7 +199,6 @@
   "Default AVD to use."
   :type 'string
   :group 'android-mode)
-
 
 (unless on-windows
   (defun ant-compile ()
@@ -236,16 +223,6 @@
   (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
   )
 
-(global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
-(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
-(global-set-key (kbd "C-x b") 'list-buffers)
-
-
-;; Window manipulation
-(global-set-key [(control prior)] 'enlarge-window)
-(global-set-key [(control next)] 'shrink-window)
-(windmove-default-keybindings 'meta)
-
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun renamefile (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
@@ -262,39 +239,12 @@
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
 
-
-
-;; Make the whole buffer pretty and consistent
-(defun iwb()
-  "Indent Whole Buffer"
-  (interactive)
-  (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max) nil)
-  (untabify (point-min) (point-max)))
-
-(global-set-key (kbd "C-x i") 'iwb)
-
-;;(add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
-;;(setq next-line-add-newlines t)
-;; (setq ditaa-cmd "java -jar /home/ignacy/bin/ditaa0_9.jar")
-;; (defun djcb-ditaa-generate ()
-;;   (interactive)
-;;   (shell-command
-;;    (concat ditaa-cmd " " buffer-file-name)))
-
-;; (setq path-to-ctags "/usr/local/bin/ctags")
-;; (defun create-tags (dir-name)
-;;   "Create tags file."
-;;   (interactive "DDirectory: ")
-;;   (shell-command
-;;    (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name)))
-;;   )
-
+(setq path-to-ctags "/usr/local/bin/ctags")
 (defun create-tags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")
-  (eshell-command
-   (format "find %s -type f -name \"*.[ch]\" | etags -L -" dir-name)))
+  (shell-command
+   (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name))))
 
 (when window-system
   (scroll-bar-mode -1))
@@ -693,15 +643,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (add-hook 'java-mode-hook (lambda () (subword-mode)))
 
-(global-set-key (kbd "C-n") 'use-emacs-keys)
-(global-set-key (kbd "C-p") 'use-emacs-keys)
-(global-set-key (kbd "C-f") 'use-emacs-keys)
-(global-set-key (kbd "C-b") 'use-emacs-keys)
-(defun use-emacs-keys ()
-  (interactive)
-  "Remind me to use emacs move keys not arrows!!"
-  (message "Use emacs keys you lazy bastard!!"))
-
 
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
@@ -817,35 +758,30 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 
 (when use-im-mode-bindings
-  (defvar im-keys-minor-mode-map (make-keymap) "im-keys-minor-mode keymap.")
-  (define-key im-keys-minor-mode-map (kbd "C-x C-f") 'find-file-in-project)
-  (define-key im-keys-minor-mode-map (kbd "C-x f") 'find-file)
-  (define-key im-keys-minor-mode-map (kbd "M-u") 'backward-word)
-  (define-key im-keys-minor-mode-map (kbd "M-o") 'forward-word) ; was (prefix)
-  (define-key im-keys-minor-mode-map (kbd "M-'") 'isearch-forward)
-  (define-key im-keys-minor-mode-map (kbd "M-g") 'kill-line)
-  (define-key im-keys-minor-mode-map (kbd "M-G") 'kill-line-backward)
-  (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line) ; was tab-to-tab-stop
-  (define-key im-keys-minor-mode-map  (kbd "M-j") 'backward-char) ; was indent-new-comment-line
-  (define-key im-keys-minor-mode-map  (kbd "M-k") 'next-line) ; was kill-sentence
-  (define-key im-keys-minor-mode-map  (kbd "M-l") 'forward-char)  ; was downcase-word
-  (define-key im-keys-minor-mode-map  (kbd "M-SPC") 'set-mark-command) ; was just-one-space
-  (define-minor-mode im-keys-minor-mode
-    "A minor mode so that im key settings override annoying major modes."
-    t " im-keys" 'im-keys-minor-mode-map)
-  (im-keys-minor-mode 1)
-  (defun im-minibuffer-setup-hook ()
-    (im-keys-minor-mode 0))
-  (add-hook 'minibuffer-setup-hook 'im-minibuffer-setup-hook)
-  (defadvice load (after give-my-keybindings-priority)
-    "Try to ensure that my keybindings always have priority."
-    (if (not (eq (car (car minor-mode-map-alist)) 'im-keys-minor-mode))
-        (let ((mykeys (assq 'im-keys-minor-mode minor-mode-map-alist)))
-          (assq-delete-all 'im-keys-minor-mode minor-mode-map-alist)
-          (add-to-list 'minor-mode-map-alist mykeys))))
-  (ad-activate 'load))
+  (load-file (concat imoryc-dir "/ergoemacs-keybindings.el")))
+
+;;ergoemacs-keybindings 
 
 (define-abbrev-table 'global-abbrev-table '(
                                             ("firend" "friend" nil 0)
                                             ("Firend" "Friend" nil 0)))
 (setq save-abbrevs nil)
+
+;; (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
+
+;; (global-set-key (kbd "C-x f") 'find-file)
+;; (global-set-key (kbd "C-x C-f") 'find-file-in-project)
+;; (global-set-key (kbd "C-c l") 'goto-line)
+;; ;; Window manipulation
+;; (global-set-key [(control prior)] 'enlarge-window)
+;; (global-set-key [(control next)] 'shrink-window)
+;; (windmove-default-keybindings 'meta)
+
+(setq-default fill-column 80)
+
+(setq-default scroll-step              1
+              scroll-conservatively    most-positive-fixnum
+              scroll-up-aggressively   0.0
+              scroll-down-aggressively 0.0)
+
+                                
