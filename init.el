@@ -17,7 +17,7 @@
 (defvar use-deft t)
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
-(defvar use-im-mode-bindings t)
+(defvar use-im-mode-bindings nil)
 (defvar use-recentf-mode t)
 
 ;; (when on-windows
@@ -56,7 +56,8 @@
 (when set-directories (message "Setting directories..")
       (if on-windows
           (progn
-            (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
+            
+(setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
         (setq dotfiles-dir "~/.emacs.d"))
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
       (add-to-list 'load-path imoryc-dir))
@@ -767,15 +768,16 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                                             ("Firend" "Friend" nil 0)))
 (setq save-abbrevs nil)
 
-;; (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
+(global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
+(global-set-key (kbd "C-x f") 'find-file)
+(global-set-key (kbd "C-x C-f") 'find-file-in-project)
+(global-set-key (kbd "C-c l") 'goto-line)
+;; Window manipulation
+(global-set-key [(control prior)] 'enlarge-window)
+(global-set-key [(control next)] 'shrink-window)
+(windmove-default-keybindings 'meta)
 
-;; (global-set-key (kbd "C-x f") 'find-file)
-;; (global-set-key (kbd "C-x C-f") 'find-file-in-project)
-;; (global-set-key (kbd "C-c l") 'goto-line)
-;; ;; Window manipulation
-;; (global-set-key [(control prior)] 'enlarge-window)
-;; (global-set-key [(control next)] 'shrink-window)
-;; (windmove-default-keybindings 'meta)
+(global-set-key (kbd "M-z") 'undo)
 
 (setq-default fill-column 80)
 
