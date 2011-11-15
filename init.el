@@ -1,3 +1,4 @@
+
 (require 'cl)
 
 ;;(setq debug-on-error t)
@@ -129,6 +130,10 @@
       (require 'textmate)
       (textmate-mode)
       (bind "<f2>" textmate-goto-file)2
+
+      (require 'keyfreq)
+      (keyfreq-mode 1)
+      (keyfreq-autosave-mode 1)
 
       (require 'magit)
       (require 'android-mode))
