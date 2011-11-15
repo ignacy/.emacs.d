@@ -698,8 +698,9 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   ;; (setq shell-file-name explicit-shell-file-name)
   (setenv "PATH" (concat "c:/bin;" (getenv "PATH")))
   (setq exec-path (cons "c:/bin/" exec-path))
-  (require 'cygwin-mount)
-  (cygwin-mount-activate))
+  ;;(require 'cygwin-mount)
+  ;(cygwin-mount-activate)
+  )
 
 
 (defadvice erase-buffer (around erase-buffer-noop)
@@ -772,12 +773,13 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-x f") 'find-file)
 (global-set-key (kbd "C-x C-f") 'find-file-in-project)
 (global-set-key (kbd "C-c l") 'goto-line)
-;; Window manipulation
 (global-set-key [(control prior)] 'enlarge-window)
 (global-set-key [(control next)] 'shrink-window)
 (windmove-default-keybindings 'meta)
 
 (global-set-key (kbd "M-z") 'undo)
+
+
 
 (setq-default fill-column 80)
 
