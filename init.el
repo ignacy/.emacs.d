@@ -18,7 +18,7 @@
 (defvar use-deft t)
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
-(defvar use-im-mode-bindings nil)
+(defvar use-im-mode-bindings t)
 (defvar use-recentf-mode t)
 
 ;; (when on-windows
@@ -47,7 +47,7 @@
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit
                                  fuzzy-match textmate autopair perspective
                                  yasnippet find-file-in-project android-mode
-                                 deft auto-complete rvm yasnippet
+                                 deft auto-complete rvm yasnippet inf-ruby jump findr
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -684,11 +684,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (global-set-key (kbd "C-M-s") 'isearch-other-window)
 
-(if on-windows
-    (set-face-attribute 'default nil :font "Consolas-12")
-  ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
-  (set-face-attribute 'default nil :font "Inconsolata-g-12")
-  )
+(condition-case nil
+    (set-face-attribute 'default nil :font "Inconsolata-g-12")      
+  (error nil))
+;;(set-face-attribute 'default nil :font "Consolas-12")
+;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
+
 
 
 (when on-windows
@@ -704,7 +705,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (setenv "PATH" (concat "c:/bin;" (getenv "PATH")))
   (setq exec-path (cons "c:/bin/" exec-path))
   ;;(require 'cygwin-mount)
-  ;(cygwin-mount-activate)
+                                        ;(cygwin-mount-activate)
   )
 
 
@@ -763,11 +764,54 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (setq redisplay-dont-pause t)
 
+;; Make the whole buffer pretty and consistent
+(defun iwb()
+  "Indent Whole Buffer"
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max)))
+
+(global-set-key (kbd "C-x i") 'iwb)
+
+
+
 
 (when use-im-mode-bindings
-  (load-file (concat imoryc-dir "/ergoemacs-keybindings.el")))
+  (defvar im-keys-minor-mode-map (make-keymap) "im-keys-minor-mode keymap.")
+  """ Some of my keuybindings placed in minor mode to make sure they are not overriden"
+  (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line) 
+  (define-key im-keys-minor-mode-map (kbd "M-j") 'backward-char) ; was indent-new-comment-line
+  (define-key im-keys-minor-mode-map (kbd "M-k") 'next-line) ; was kill-sentence
+  (define-key im-keys-minor-mode-map (kbd "M-l") 'forward-char) ; was downcase-word
+  (define-key im-keys-minor-mode-map (kbd "M-g") 'kill-line)
+  (define-key im-keys-minor-mode-map (kbd "M-o") 'forward-word)
+  (define-key im-keys-minor-mode-map (kbd "M-u") 'backward-word)
+  (define-key im-keys-minor-mode-map (kbd "M-s") 'isearch-forward-regexp)
+  (define-key im-keys-minor-mode-map (kbd "M-[") 'forward-paragraph)
+  (define-key im-keys-minor-mode-map (kbd "M-]") 'backward-paragraph)
+  
+  (define-key im-keys-minor-mode-map (kbd "M-SPC") 'set-mark-command) ; was just-one-space
 
-;;ergoemacs-keybindings 
+
+  (define-minor-mode im-keys-minor-mode
+    "A minor mode so that im key settings override annoying major modes."
+    t " im-keys" 'im-keys-minor-mode-map)
+
+  (im-keys-minor-mode 1)
+
+  (defun im-minibuffer-setup-hook ()
+    (im-keys-minor-mode 0))
+
+  (add-hook 'minibuffer-setup-hook 'im-minibuffer-setup-hook))
+
+(defadvice load (after give-my-keybindings-priority)
+  "Try to ensure that my keybindings always have priority."
+  (if (not (eq (car (car minor-mode-map-alist)) 'im-keys-minor-mode))
+      (let ((mykeys (assq 'im-keys-minor-mode minor-mode-map-alist)))
+        (assq-delete-all 'im-keys-minor-mode minor-mode-map-alist)
+        (add-to-list 'minor-mode-map-alist mykeys))))
+(ad-activate 'load)
 
 (define-abbrev-table 'global-abbrev-table '(
                                             ("firend" "friend" nil 0)
@@ -775,8 +819,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq save-abbrevs nil)
 
 (global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
-(global-set-key (kbd "C-x f") 'find-file)
-(global-set-key (kbd "C-x C-f") 'find-file-in-project)
+(global-set-key (kbd "C-x f") 'find-file-in-project)
 (global-set-key (kbd "C-c l") 'goto-line)
 (global-set-key [(control prior)] 'enlarge-window)
 (global-set-key [(control next)] 'shrink-window)
