@@ -1,4 +1,3 @@
-
 (require 'cl)
 
 ;;(setq debug-on-error t)
@@ -57,8 +56,8 @@
 (when set-directories (message "Setting directories..")
       (if on-windows
           (progn
-            
-(setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
+
+            (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
         (setq dotfiles-dir "~/.emacs.d"))
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
       (add-to-list 'load-path imoryc-dir))
@@ -90,8 +89,8 @@
       (load-file (concat imoryc-dir "/matlab.el"))
 
       (require 'ido)
-      (ido-mode t)
-
+      (ido-mode 'both) ;; for buffers and files
+      
       (unless on-windows
         ;; Rinari
         (add-to-list 'load-path (concat dotfiles-dir "/rinari"))
@@ -175,14 +174,14 @@
   (setq inhibit-startup-message t))
 
 (when window-system
-  (when set-line-highlighting 
+  (when set-line-highlighting
     (global-hl-line-mode 1)
     (set-face-background 'hl-line "#333")
     ;;(set-face-background 'hl-line "#eee")
     (set-face-foreground 'highlight nil)
     (set-face-foreground 'hl-line nil)))
 
-(when set-java-paths-on-windows 
+(when set-java-paths-on-windows
   (when on-windows
     (setenv "JUNIT_HOME" "/home/ignacy/code/classpath")
     (setenv "JAVA_HOME" "c://jdk1.6.0_23")
@@ -456,7 +455,7 @@ instead."
   (let ((recent-buffer-name (buffer-name)))
     (ibuffer)
     (ibuffer-jump-to-buffer recent-buffer-name)))
-;; (global-set-key [(f12)] 'my-ibuffer)
+(global-set-key (kbd "C-x b") 'my-ibuffer)
 (global-set-key [f11] 'switch-full-screen)
 
 
@@ -685,7 +684,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-M-s") 'isearch-other-window)
 
 (condition-case nil
-    (set-face-attribute 'default nil :font "Inconsolata-g-12")      
+    (set-face-attribute 'default nil :font "Inconsolata-g-12")
   (error nil))
 ;;(set-face-attribute 'default nil :font "Consolas-12")
 ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
@@ -778,9 +777,20 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 
 (when use-im-mode-bindings
+  (global-unset-key (kbd "C-x 2"))
+  (global-unset-key (kbd "C-x 3"))
+  (global-unset-key (kbd "C-x 0"))
+  (global-unset-key (kbd "C-n"))
+  (global-unset-key (kbd "C-p"))
+  (global-unset-key (kbd "<up>"))
+  (global-unset-key (kbd "<down>"))
+  (global-unset-key (kbd "<left>"))
+  (global-unset-key (kbd "<right>"))
+
+
   (defvar im-keys-minor-mode-map (make-keymap) "im-keys-minor-mode keymap.")
   """ Some of my keuybindings placed in minor mode to make sure they are not overriden"
-  (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line) 
+  (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line)
   (define-key im-keys-minor-mode-map (kbd "M-j") 'backward-char) ; was indent-new-comment-line
   (define-key im-keys-minor-mode-map (kbd "M-k") 'next-line) ; was kill-sentence
   (define-key im-keys-minor-mode-map (kbd "M-l") 'forward-char) ; was downcase-word
@@ -790,7 +800,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (define-key im-keys-minor-mode-map (kbd "M-s") 'isearch-forward-regexp)
   (define-key im-keys-minor-mode-map (kbd "M-[") 'forward-paragraph)
   (define-key im-keys-minor-mode-map (kbd "M-]") 'backward-paragraph)
-  
+  (define-key im-keys-minor-mode-map (kbd "C-2") 'split-window-below)
+  (define-key im-keys-minor-mode-map (kbd "C-3") 'split-window-right)
+  (define-key im-keys-minor-mode-map (kbd "C-0") 'delete-window)
+  (define-key im-keys-minor-mode-map (kbd "C-x C-b") 'switch-to-buffer)
+
   (define-key im-keys-minor-mode-map (kbd "M-SPC") 'set-mark-command) ; was just-one-space
 
 
@@ -835,5 +849,3 @@ This is the same as using \\[set-mark-command] with the prefix argument."
               scroll-conservatively    most-positive-fixnum
               scroll-up-aggressively   0.0
               scroll-down-aggressively 0.0)
-
-                                
