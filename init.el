@@ -159,6 +159,7 @@
   (setq org-agenda-files (quote ("~/Dropbox/notes/deft")))
   (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d")
   (define-key global-map "\C-cc" 'org-capture)
+  (define-key global-map "\C-ca" 'org-agenda)
   (setq org-clock-persist 'history)
   (org-clock-persistence-insinuate))
 
@@ -804,6 +805,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (define-key im-keys-minor-mode-map (kbd "C-3") 'split-window-right)
   (define-key im-keys-minor-mode-map (kbd "C-0") 'delete-window)
   (define-key im-keys-minor-mode-map (kbd "C-x C-b") 'switch-to-buffer)
+  (define-key im-keys-minor-mode-map (kbd "C-h") 'backward-kill-word)
 
   (define-key im-keys-minor-mode-map (kbd "M-SPC") 'set-mark-command) ; was just-one-space
 
