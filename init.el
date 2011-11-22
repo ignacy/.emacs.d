@@ -1,6 +1,6 @@
 (require 'cl)
 
-(setq debug-on-error t)
+;;(setq debug-on-error t)
 
 ;; By setting any of the below to nil
 ;; you are dissabling the whole section
@@ -567,6 +567,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
        "Project file: " (tags-table-files) nil t)))))
 
 (when use-recentf-mode
+  (setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
   ;; enable recent files mode.
   (require 'recentf)
   (recentf-mode t)
