@@ -456,7 +456,7 @@ instead."
   (let ((recent-buffer-name (buffer-name)))
     (ibuffer)
     (ibuffer-jump-to-buffer recent-buffer-name)))
-(global-set-key (kbd "C-x b") 'my-ibuffer)
+(global-set-key (kbd "C-x b") 'ido-switch-buffer)
 (global-set-key [f11] 'switch-full-screen)
 
 
