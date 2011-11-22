@@ -17,7 +17,7 @@
 (defvar use-deft t)
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
-(defvar use-im-mode-bindings t)
+(defvar use-im-mode-bindings nil)
 (defvar use-recentf-mode t)
 
 ;; (when on-windows
@@ -840,9 +840,9 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key [(control prior)] 'enlarge-window)
 (global-set-key [(control next)] 'shrink-window)
 (windmove-default-keybindings 'meta)
-
+(global-set-key (kbd "M-h") 'backward-kill-word)
 (global-set-key (kbd "M-z") 'undo)
-
+(global-set-key (kbd "C-a") 'back-to-indentation)
 
 
 (setq-default fill-column 80)
@@ -851,3 +851,4 @@ This is the same as using \\[set-mark-command] with the prefix argument."
               scroll-conservatively    most-positive-fixnum
               scroll-up-aggressively   0.0
               scroll-down-aggressively 0.0)
+                                                                                                                              
