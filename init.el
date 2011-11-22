@@ -1,6 +1,6 @@
 (require 'cl)
 
-;;(setq debug-on-error t)
+(setq debug-on-error t)
 
 ;; By setting any of the below to nil
 ;; you are dissabling the whole section
@@ -23,13 +23,7 @@
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
-(defmacro bind (key fn)
-  "shortcut for global-set-key"
-  `(global-set-key (kbd ,key)
-                   ;; handle unquoted function names and lambdas
-                   ,(if (listp fn)
-                        fn
-                      `',fn)))
+
 
 (when set-use-marmelade
 
@@ -81,8 +75,7 @@
 
       (load-file (concat imoryc-dir "/iy-go-to-char.el"))
       (require 'iy-go-to-char)
-      (bind "M-m" iy-go-to-char)
-
+      
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
@@ -90,7 +83,7 @@
 
       (require 'ido)
       (ido-mode 'both) ;; for buffers and files
-      
+
       (unless on-windows
         ;; Rinari
         (add-to-list 'load-path (concat dotfiles-dir "/rinari"))
@@ -121,14 +114,14 @@
 
       (require 'perspective)
       (persp-mode)
-      (global-set-key [f12] 'persp-switch)
+      
 
       (add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
       (require 'coffee-mode)
 
       (require 'textmate)
       (textmate-mode)
-      (bind "<f2>" textmate-goto-file)2
+      
 
       (require 'keyfreq)
       (keyfreq-mode 1)
@@ -142,7 +135,6 @@
   (setq deft-extension "org")
   (setq deft-text-mode 'org-mode)
   (setq deft-auto-save-interval 2.3)
-  (global-set-key [f8] 'deft)
   (if on-windows
       (setq deft-directory "C:/Users/Ignacy/Dropbox/notes/deft/")
     (setq deft-directory "~/Dropbox/notes/deft/"))
@@ -158,13 +150,12 @@
            "* TODO %?\n  %i\n  %a")))
   (setq org-agenda-files (quote ("~/Dropbox/notes/deft")))
   (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d")
-  (define-key global-map "\C-cc" 'org-capture)
-  (define-key global-map "\C-ca" 'org-agenda)
   (setq org-clock-persist 'history)
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
-  (load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
+  (load-theme 'deeper-blue))
+  ;;(load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
 
 (when set-environment-settings
   (setq initial-scratch-message nil)
@@ -222,12 +213,10 @@
     "Run ant TASK in the project root directory."
     (interactive "sTask name: ")
     (cd bdj-root)
-    (compile (concat "ant " task)))
-  (global-set-key [f5] 'im/ant))
+    (compile (concat "ant " task))))
 
 (when set-remove-blinking-from-cursos
-  (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
-  )
+  (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*)))))
 
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun renamefile (new-name)
@@ -348,31 +337,19 @@ instead."
         (error "No symbol found")))))
 
 
-(global-set-key (kbd "M-n") 'smart-symbol-go-forward)
-(global-set-key (kbd "M-p") 'smart-symbol-go-backward)
-
-
 ;; '(setq visible-bell t)
 (show-paren-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
 (setq ido-create-new-buffer 'always)
 (setq backup-inhibited t)
 (global-linum-mode 1)
 (setq linum-format " %3d  ")
 
-;; insert current buffer name into minibuffer
-(define-key minibuffer-local-map [f3]
-  (lambda () (interactive)
-    (insert (buffer-name (window-buffer (minibuffer-selected-window))))))
-
-(global-set-key [(control backspace)] 'backward-kill-word)
-(global-set-key [(meta delete)] 'backward-kill-word)
-
 (setq x-select-enable-clipboard t)
-(global-set-key [(control v)] 'clipboard-yank)
-(global-set-key (kbd "C-x C-x") 'clipboard-kill-region)
+
 
 (defvar compile-command "rake ") ; set the default make command
 (make-variable-buffer-local 'compile-command)
@@ -434,28 +411,12 @@ instead."
       (shrink-window-if-larger-than-buffer))
     (toggle-read-only)))
 
-
-(global-unset-key [?\C-x ?\C-z])
-(global-set-key [f1] 'help)
-
-;;BOOKMARKS
-(define-key global-map [f9] 'bookmark-jump)
-(define-key global-map [f10] 'bookmark-set)
-(define-key global-map (kbd "C-+") 'text-scale-increase)
-(define-key global-map (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "M-,") 'comment-or-uncomment-region)
-(global-set-key (kbd "M-l") 'highlight-lines-matching-regexp)
-(global-set-key (kbd "M-o") 'occur)
 (defun my-ibuffer ()
   "Open ibuffer with cursour pointed to most recent buffer name"
   (interactive)
   (let ((recent-buffer-name (buffer-name)))
     (ibuffer)
     (ibuffer-jump-to-buffer recent-buffer-name)))
-(global-set-key (kbd "C-x b") 'ido-switch-buffer)
-(global-set-key [f11] 'switch-full-screen)
-
 
 (defun duplicate-line ()
   "*Insert a copy of the current line below the current line."
@@ -473,7 +434,7 @@ instead."
   (yank)
   (next-line 1)
   )
-(global-set-key (kbd "C-l") 'copy-line)
+
 
 ;; install wmctrl (sudo apt-get install wmctrl)
 (defun switch-full-screen ()
@@ -504,12 +465,11 @@ instead."
   (add-to-list 'ac-sources 'ac-source-rsense-constant)
   )
 
-(define-key isearch-mode-map (kbd "C-o")
-  (lambda ()
-    (interactive)
-    (let ((case-fold-search isearch-case-fold-search))
-      (occur (if isearch-regexp isearch-string
-               (regexp-quote isearch-string))))))
+(lambda ()
+  (interactive)
+  (let ((case-fold-search isearch-case-fold-search))
+    (occur (if isearch-regexp isearch-string
+             (regexp-quote isearch-string)))))
 
 
 (setq font-lock-maximum-decoration t)
@@ -520,7 +480,7 @@ instead."
       (list '("emacs ")
             '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 (setq cursor-in-non-selected-windows nil)
-(global-set-key [C-tab] 'bs-show)
+
 
 (defun ido-goto-symbol (&optional symbol-list)
   "Refresh imenu and jump to a place in the buffer using Ido."
@@ -571,35 +531,18 @@ instead."
           (add-to-list 'name-and-pos (cons name position))))))))
 
 
-(global-set-key (kbd "M-s") 'ido-goto-symbol)
-
 (defun push-mark-no-activate ()
   "Pushes `point' to `mark-ring' and does not activate the region
 Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (interactive)
   (push-mark (point) t nil)
   (message "Pushed mark to ring"))
-(global-set-key (kbd "C-\\") 'push-mark-no-activate)
 
 (defun jump-to-mark ()
   "Jumps to the local mark, respecting the `mark-ring' order.
 This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (set-mark-command 1))
-(global-set-key (kbd "M-\\") 'jump-to-mark)
-
-(defun im/find-note (note)
-  "Find note in org mode notes file"
-  (interactive "sWpisz szukane slowo: ")
-  (find-file "/home/ignacy/Dropbox/notes/notes.org")
-  (re-search-forward note)
-  (point))
-
-;; (defun im/clear-elc-files
-;;   "Clear all bytecompiled emacs files"
-;;   (shell-command "find ~/.emacs.d/ -name *.elc -exec rm {} \;"))
-
-
 
 (require 'etags)
 (defun ido-find-tag ()
@@ -623,27 +566,21 @@ This is the same as using \\[set-mark-command] with the prefix argument."
       (ido-completing-read
        "Project file: " (tags-table-files) nil t)))))
 
-(global-set-key [remap find-tag] 'ido-find-tag)
-(global-set-key (kbd "C-.") 'ido-find-file-in-tag-files)
-
-
 (when use-recentf-mode
   ;; enable recent files mode.
   (require 'recentf)
   (recentf-mode t)
-  (setq recentf-max-saved-items 100)
+  (setq recentf-max-saved-items 80)
+  (add-to-list 'recentf-exclude "\\.revive\\'")
+
   (defun ido-recentf-open ()
     "Use `ido-completing-read' to \\[find-file] a recent file"
     (interactive)
     (if (find-file (ido-completing-read "Find recent file: " recentf-list))
         (message "Opening file...")
-      (message "Aborting")))
-  ;; get rid of `find-file-read-only' and replace it with something
-  ;; more useful.
-  (global-set-key (kbd "C-x C-r") 'ido-recentf-open))
+      (message "Aborting"))))
 
 (add-hook 'java-mode-hook (lambda () (subword-mode)))
-
 
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
@@ -653,9 +590,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq ibuffer-expert t)
 (setq ibuffer-show-empty-filter-groups nil)
 
-(keyboard-translate ?\C-h ?\C-?)
-
-(global-set-key (kbd "M-%") 'replace-regexp)
 (defalias 'qrr 'query-replace-regexp)
 
 (defun create-tags (dir-name)
@@ -666,18 +600,14 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;;p find . -name "*.cpp" -print -or -name "*.h" -print | xargs etags
 (setq tags-revert-without-query t)
 
-(global-set-key (kbd "M-,") 'tags-search)
-(global-set-key (kbd "M-?") 'tags-loop-continue)
-(put 'set-goal-column 'disabled nil)
 
+(put 'set-goal-column 'disabled nil)
 (defun isearch-other-window ()
   """ Search in other window without movign there """
   (interactive)
   (save-selected-window
     (other-window 1)
     (isearch-forward)))
-
-(global-set-key (kbd "C-M-s") 'isearch-other-window)
 
 (condition-case nil
     (set-face-attribute 'default nil :font "Inconsolata-g-12")
@@ -750,12 +680,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
  '(diff-added ((t (:foreground "Green"))) 'now)
  '(diff-removed ((t (:foreground "Red"))) 'now)
  )
-(bind "<f6>" magit-status)
-(defun im/diff-current-buffer-with-disk ()
-  "Compare the current buffer with it's disk file."
-  (interactive)
-  (diff-buffer-with-file b(current-buffer)))
-(global-set-key (kbd "C-c C-d") 'im/diff-current-buffer-with-disk)
+
 
 (setq redisplay-dont-pause t)
 
@@ -767,89 +692,19 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (indent-region (point-min) (point-max) nil)
   (untabify (point-min) (point-max)))
 
-(global-set-key (kbd "C-x i") 'iwb)
-
-
-
-
-(when use-im-mode-bindings
-  (global-unset-key (kbd "C-x 2"))
-  (global-unset-key (kbd "C-x 3"))
-  (global-unset-key (kbd "C-x 0"))
-  (global-unset-key (kbd "C-n"))
-  (global-unset-key (kbd "C-p"))
-  (global-unset-key (kbd "<up>"))
-  (global-unset-key (kbd "<down>"))
-  (global-unset-key (kbd "<left>"))
-  (global-unset-key (kbd "<right>"))
-
-
-  (defvar im-keys-minor-mode-map (make-keymap) "im-keys-minor-mode keymap.")
-  """ Some of my keuybindings placed in minor mode to make sure they are not overriden"
-  (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line)
-  (define-key im-keys-minor-mode-map (kbd "M-j") 'backward-char) ; was indent-new-comment-line
-  (define-key im-keys-minor-mode-map (kbd "M-k") 'next-line) ; was kill-sentence
-  (define-key im-keys-minor-mode-map (kbd "M-l") 'forward-char) ; was downcase-word
-  (define-key im-keys-minor-mode-map (kbd "M-g") 'kill-line)
-  (define-key im-keys-minor-mode-map (kbd "M-o") 'forward-word)
-  (define-key im-keys-minor-mode-map (kbd "M-u") 'backward-word)
-  (define-key im-keys-minor-mode-map (kbd "M-s") 'isearch-forward-regexp)
-  (define-key im-keys-minor-mode-map (kbd "M-[") 'forward-paragraph)
-  (define-key im-keys-minor-mode-map (kbd "M-]") 'backward-paragraph)
-  (define-key im-keys-minor-mode-map (kbd "C-2") 'split-window-below)
-  (define-key im-keys-minor-mode-map (kbd "C-3") 'split-window-right)
-  (define-key im-keys-minor-mode-map (kbd "C-0") 'delete-window)
-  (define-key im-keys-minor-mode-map (kbd "C-x C-b") 'switch-to-buffer)
-  (define-key im-keys-minor-mode-map (kbd "C-h") 'backward-kill-word)
-
-  (define-key im-keys-minor-mode-map (kbd "M-SPC") 'set-mark-command) ; was just-one-space
-
-
-  (define-minor-mode im-keys-minor-mode
-    "A minor mode so that im key settings override annoying major modes."
-    t " im-keys" 'im-keys-minor-mode-map)
-
-  (im-keys-minor-mode 1)
-
-  (defun im-minibuffer-setup-hook ()
-    (im-keys-minor-mode 0))
-
-  (add-hook 'minibuffer-setup-hook 'im-minibuffer-setup-hook))
-
-(defadvice load (after give-my-keybindings-priority)
-  "Try to ensure that my keybindings always have priority."
-  (if (not (eq (car (car minor-mode-map-alist)) 'im-keys-minor-mode))
-      (let ((mykeys (assq 'im-keys-minor-mode minor-mode-map-alist)))
-        (assq-delete-all 'im-keys-minor-mode minor-mode-map-alist)
-        (add-to-list 'minor-mode-map-alist mykeys))))
-(ad-activate 'load)
-
 (define-abbrev-table 'global-abbrev-table '(
                                             ("firend" "friend" nil 0)
                                             ("Firend" "Friend" nil 0)))
 (setq save-abbrevs nil)
-
-(global-set-key (kbd "C-q") 'jw-run-test-or-spec-file)
-(global-set-key (kbd "C-x f") 'find-file-in-project)
-(global-set-key (kbd "C-c l") 'goto-line)
-(global-set-key [(control prior)] 'enlarge-window)
-(global-set-key [(control next)] 'shrink-window)
-(windmove-default-keybindings 'meta)
-(global-set-key (kbd "M-h") 'backward-kill-word)
-(global-set-key (kbd "M-z") 'undo)
-(global-set-key (kbd "C-a") 'back-to-indentation)
-(global-set-key (kbd "C-x C-f") 'ido-find-file)
-
 (setq-default fill-column 80)
 
 (setq-default scroll-step              1
               scroll-conservatively    most-positive-fixnum
               scroll-up-aggressively   0.0
               scroll-down-aggressively 0.0)
-                                                                                                                              
-(defun im/kill-current-buffer()
-  "Most of the times you just want to kill currently opened buffer"
-  (interactive)
-  (kill-buffer (current-buffer)))
-  
-(global-set-key (kbd "C-x k") 'im/kill-current-buffer)
+
+
+;; load key-bindings
+(load-file (concat imoryc-dir "/im-helpers.el"))
+(load-file (concat imoryc-dir "/im-keys.el"))
+
