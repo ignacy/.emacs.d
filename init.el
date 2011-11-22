@@ -443,13 +443,10 @@ instead."
 (define-key global-map [f10] 'bookmark-set)
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
-(global-set-key "\C-s" 'isearch-forward-regexp)
-(global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-,") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-l") 'highlight-lines-matching-regexp)
 (global-set-key (kbd "M-o") 'occur)
-(global-set-key "\C-a" 'beginning-of-line-text)
 (defun my-ibuffer ()
   "Open ibuffer with cursour pointed to most recent buffer name"
   (interactive)
@@ -468,8 +465,6 @@ instead."
           (end (progn (end-of-line) (point))))
       (insert ?\n)
       (insert-buffer-substring (current-buffer) start end))))
-
-(global-set-key (kbd "C-c d") 'duplicate-line)
 
 (defun copy-line()
   (interactive)
@@ -843,7 +838,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "M-h") 'backward-kill-word)
 (global-set-key (kbd "M-z") 'undo)
 (global-set-key (kbd "C-a") 'back-to-indentation)
-
+(global-set-key (kbd "C-x C-f") 'ido-find-file)
 
 (setq-default fill-column 80)
 
@@ -852,3 +847,9 @@ This is the same as using \\[set-mark-command] with the prefix argument."
               scroll-up-aggressively   0.0
               scroll-down-aggressively 0.0)
                                                                                                                               
+(defun im/kill-current-buffer()
+  "Most of the times you just want to kill currently opened buffer"
+  (interactive)
+  (kill-buffer (current-buffer)))
+  
+(global-set-key (kbd "C-x k") 'im/kill-current-buffer)
