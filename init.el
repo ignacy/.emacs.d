@@ -23,8 +23,6 @@
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
-
-
 (when set-use-marmelade
 
   (require 'package)
@@ -37,7 +35,7 @@
   (when (not package-archive-contents)
     (package-refresh-contents))
 
-  (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit
+  (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist
                                  fuzzy-match textmate autopair perspective
                                  yasnippet find-file-in-project android-mode
                                  deft auto-complete rvm yasnippet inf-ruby jump findr
@@ -75,7 +73,7 @@
 
       (load-file (concat imoryc-dir "/iy-go-to-char.el"))
       (require 'iy-go-to-char)
-      
+
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
@@ -114,14 +112,14 @@
 
       (require 'perspective)
       (persp-mode)
-      
+
 
       (add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
       (require 'coffee-mode)
 
       (require 'textmate)
       (textmate-mode)
-      
+
 
       (require 'keyfreq)
       (keyfreq-mode 1)
@@ -155,7 +153,7 @@
 
 (when set-use-color-theme
   (load-theme 'deeper-blue))
-  ;;(load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
+;;(load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
 
 (when set-environment-settings
   (setq initial-scratch-message nil)
@@ -709,3 +707,16 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (load-file (concat imoryc-dir "/im-helpers.el"))
 (load-file (concat imoryc-dir "/im-keys.el"))
 
+;; Make colours in Emacs' shell look normal
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; Don't auto-truncate lines in shell mode
+(add-hook 'shell-mode-hook '(lambda () (toggle-truncate-lines 1)))
+(set-face-background 'fringe "#0C1021")
+(setq explicit-shell-file-name "/bin/bash")
+(setq shell-file-name "bash")
+(fringe-mode '(1 . 0))
+
+(setq-default cursor-type '(bar . 1))
+
+(set-cursor-color '"#FFFFFF")
