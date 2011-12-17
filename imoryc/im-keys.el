@@ -32,6 +32,7 @@
 (bind "M-\\" 'jump-to-mark)
 (bind "C-\\" 'push-mark-no-activate)
 (bind "M-s" 'ido-goto-symbol)
+(bind "C-'" 'textmate-goto-symbol)
 (bind "C-<tab>" 'bs-show)
 (bind "C-x b" 'ido-switch-buffer)
 (bind "<f11>" 'switch-full-screen)
