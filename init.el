@@ -36,8 +36,8 @@
     (package-refresh-contents))
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist
-                                 fuzzy-match textmate autopair perspective
-                                 yasnippet find-file-in-project android-mode
+                                 fuzzy-match textmate autopair perspective haskell-mode
+                                 yasnippet find-file-in-project android-mode flymake-ruby
                                  deft auto-complete rvm yasnippet inf-ruby jump findr
                                  idle-highlight-mode feature-mode marmalade))
 
@@ -64,6 +64,13 @@
 
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
       (load-file (concat imoryc-dir "/ruby-setup.el"))
+      (load-file (concat imoryc-dir "/java-setup.el"))
+
+      (require 'flymake)
+      (global-set-key (kbd "C-c e") 'flymake-display-err-menu-for-current-line)
+      (global-set-key (kbd "C-c n") 'flymake-goto-next-error)
+      (add-hook 'find-file-hook 'flymake-find-file-hook)
+      (require 'flymake-ruby) (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
       (require 'autopair)
       (autopair-global-mode)
@@ -91,12 +98,16 @@
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
-      (defun my-coding-hook ()
+      (defun idle-coding-hook ()
         (idle-highlight-mode t))
-      (add-hook 'emacs-lisp-mode-hook 'my-coding-hook)
-      (add-hook 'ruby-mode-hook 'my-coding-hook)
-      (add-hook 'java-mode-hook 'my-coding-hook)
 
+      (add-hook 'emacs-lisp-mode-hook 'idle-coding-hook)
+      (add-hook 'ruby-mode-hook 'idle-coding-hook)
+      (add-hook 'javascript-mode-hook 'idle-coding-hook)
+      (add-hook 'matlab-mode-hook 'idle-coding-hook)
+      (add-hook 'rhtml-mode-hook 'idle-coding-hook)
+      (add-hook 'java-mode-hook 'idle-coding-hook)
+      
       (require 'epa)
       (epa-file-enable)
       (require 'git-blame)
@@ -163,13 +174,12 @@
   (display-time-mode -1)
   (setq inhibit-startup-message t))
 
-(when window-system
-  (when set-line-highlighting
-    (global-hl-line-mode 1)
-    (set-face-background 'hl-line "#333")
-    ;;(set-face-background 'hl-line "#eee")
-    (set-face-foreground 'highlight nil)
-    (set-face-foreground 'hl-line nil)))
+(when set-line-highlighting
+  (global-hl-line-mode 1)
+  (set-face-background 'hl-line "#333")
+  ;;(set-face-background 'hl-line "#eee")
+  (set-face-foreground 'highlight nil)
+  (set-face-foreground 'hl-line nil))
 
 (when set-java-paths-on-windows
   (when on-windows
@@ -720,3 +730,46 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq-default cursor-type '(bar . 1))
 
 (set-cursor-color '"#FFFFFF")
+
+
+;; use setq-default to set it for /all/ modes
+(setq-default mode-line-format
+  (list
+    ">> "
+    ;; relative position, size of file
+    '(:eval (when (vc-mode)
+              (propertize vc-mode 'face 'font-lock-constant-face)))
+    " "
+    ;;the buffer name; the file name as a tool tip
+    '(:eval (propertize "%b " 'face 'font-lock-keyword-face
+        'help-echo (buffer-file-name)))
+
+    ;; was this buffer modified since the last save?
+    '(:eval (when (buffer-modified-p)
+              (propertize "*" 'face 'font-lock-warning-face
+                             'help-echo "Buffer has been modified")))
+
+    ;; line and column
+    "(" ;; '%02' to set to 2 chars at least; prevents flickering
+      (propertize "%02l" 'face 'font-lock-type-face) ":"
+      (propertize "%02c" 'face 'font-lock-type-face) 
+    ") "
+
+
+    ;; add the time, with the date and the emacs uptime in the tooltip
+    '(:eval (propertize (format-time-string "%H:%M")
+              'help-echo
+              (concat (format-time-string "%c; ")
+                      (emacs-uptime "Uptime:%hh"))))
+    " --"
+    ;; i don't want to see minor-modes; but if you want, uncomment this:
+    minor-mode-alist  ;; list of minor modes
+    ))
+
+(set-face-background 'modeline "#222")
+(set-face-foreground 'modeline "#777")
+
+
+
+
+
