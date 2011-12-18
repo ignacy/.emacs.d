@@ -25,3 +25,6 @@
 [submodule "rinari"]
 	path = rinari
 	url = https://github.com/eschulte/rinari.git
+[submodule "deft"]
+	path = deft
+	url = git://jblevins.org/git/deft.git

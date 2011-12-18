@@ -1,3 +1,4 @@
+
 (require 'cl)
 
 ;;(setq debug-on-error t)
@@ -37,10 +38,10 @@
   (when (not package-archive-contents)
     (package-refresh-contents))
 
-  (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit
-                                 fuzzy-match textmate autopair perspective
-                                 yasnippet find-file-in-project android-mode
-                                 deft auto-complete rvm yasnippet inf-ruby jump findr
+  (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist
+                                 fuzzy-match textmate autopair perspective haskell-mode
+                                 yasnippet find-file-in-project android-mode flymake-ruby
+                                 auto-complete rvm yasnippet inf-ruby jump findr
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -66,6 +67,13 @@
 
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
       (load-file (concat imoryc-dir "/ruby-setup.el"))
+      (load-file (concat imoryc-dir "/java-setup.el"))
+
+      (require 'flymake)
+      (global-set-key (kbd "C-c e") 'flymake-display-err-menu-for-current-line)
+      (global-set-key (kbd "C-c n") 'flymake-goto-next-error)
+      (add-hook 'find-file-hook 'flymake-find-file-hook)
+      (require 'flymake-ruby) (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
       (require 'autopair)
       (autopair-global-mode)
@@ -75,7 +83,7 @@
 
       (load-file (concat imoryc-dir "/iy-go-to-char.el"))
       (require 'iy-go-to-char)
-      
+
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
@@ -93,12 +101,16 @@
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
-      (defun my-coding-hook ()
+      (defun idle-coding-hook ()
         (idle-highlight-mode t))
-      (add-hook 'emacs-lisp-mode-hook 'my-coding-hook)
-      (add-hook 'ruby-mode-hook 'my-coding-hook)
-      (add-hook 'java-mode-hook 'my-coding-hook)
 
+      (add-hook 'emacs-lisp-mode-hook 'idle-coding-hook)
+      (add-hook 'ruby-mode-hook 'idle-coding-hook)
+      (add-hook 'javascript-mode-hook 'idle-coding-hook)
+      (add-hook 'matlab-mode-hook 'idle-coding-hook)
+      (add-hook 'rhtml-mode-hook 'idle-coding-hook)
+      (add-hook 'java-mode-hook 'idle-coding-hook)
+      
       (require 'epa)
       (epa-file-enable)
       (require 'git-blame)
@@ -114,14 +126,14 @@
 
       (require 'perspective)
       (persp-mode)
-      
+
 
       (add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
       (require 'coffee-mode)
 
       (require 'textmate)
       (textmate-mode)
-      
+
 
       (require 'keyfreq)
       (keyfreq-mode 1)
@@ -131,7 +143,9 @@
       (require 'android-mode))
 
 (when use-deft
+  (add-to-list 'load-path (concat dotfiles-dir "/deft"))
   (require 'deft)
+  (setq deft-use-filename-as-title t)
   (setq deft-extension "org")
   (setq deft-text-mode 'org-mode)
   (setq deft-auto-save-interval 2.3)
@@ -155,7 +169,7 @@
 
 (when set-use-color-theme
   (load-theme 'deeper-blue))
-  ;;(load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
+;;(load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
 
 (when set-environment-settings
   (setq initial-scratch-message nil)
@@ -165,13 +179,12 @@
   (display-time-mode -1)
   (setq inhibit-startup-message t))
 
-(when window-system
-  (when set-line-highlighting
-    (global-hl-line-mode 1)
-    (set-face-background 'hl-line "#333")
-    ;;(set-face-background 'hl-line "#eee")
-    (set-face-foreground 'highlight nil)
-    (set-face-foreground 'hl-line nil)))
+(when set-line-highlighting
+  (global-hl-line-mode 1)
+  (set-face-background 'hl-line "#333")
+  ;;(set-face-background 'hl-line "#eee")
+  (set-face-foreground 'highlight nil)
+  (set-face-foreground 'hl-line nil))
 
 (when set-java-paths-on-windows
   (when on-windows
@@ -708,4 +721,20 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; load key-bindings
 (load-file (concat imoryc-dir "/im-helpers.el"))
 (load-file (concat imoryc-dir "/im-keys.el"))
+(load-file (concat imoryc-dir "/im-modeline.el"))
+
+;; Make colours in Emacs' shell look normal
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; Don't auto-truncate lines in shell mode
+(add-hook 'shell-mode-hook '(lambda () (toggle-truncate-lines 1)))
+(set-face-background 'fringe "#0C1021")
+(setq explicit-shell-file-name "/bin/bash")
+(setq shell-file-name "bash")
+(fringe-mode '(1 . 0))
+
+(setq-default cursor-type '(bar . 1))
+
+(set-cursor-color '"#FFFFFF")
+
 
