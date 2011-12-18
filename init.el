@@ -1,3 +1,4 @@
+
 (require 'cl)
 
 ;;(setq debug-on-error t)
@@ -38,7 +39,7 @@
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist
                                  fuzzy-match textmate autopair perspective haskell-mode
                                  yasnippet find-file-in-project android-mode flymake-ruby
-                                 deft auto-complete rvm yasnippet inf-ruby jump findr
+                                 auto-complete rvm yasnippet inf-ruby jump findr
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -140,7 +141,9 @@
       (require 'android-mode))
 
 (when use-deft
+  (add-to-list 'load-path (concat dotfiles-dir "/deft"))
   (require 'deft)
+  (setq deft-use-filename-as-title t)
   (setq deft-extension "org")
   (setq deft-text-mode 'org-mode)
   (setq deft-auto-save-interval 2.3)
@@ -716,6 +719,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; load key-bindings
 (load-file (concat imoryc-dir "/im-helpers.el"))
 (load-file (concat imoryc-dir "/im-keys.el"))
+(load-file (concat imoryc-dir "/im-modeline.el"))
 
 ;; Make colours in Emacs' shell look normal
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
@@ -730,46 +734,5 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq-default cursor-type '(bar . 1))
 
 (set-cursor-color '"#FFFFFF")
-
-
-;; use setq-default to set it for /all/ modes
-(setq-default mode-line-format
-  (list
-    ">> "
-    ;; relative position, size of file
-    '(:eval (when (vc-mode)
-              (propertize vc-mode 'face 'font-lock-constant-face)))
-    " "
-    ;;the buffer name; the file name as a tool tip
-    '(:eval (propertize "%b " 'face 'font-lock-keyword-face
-        'help-echo (buffer-file-name)))
-
-    ;; was this buffer modified since the last save?
-    '(:eval (when (buffer-modified-p)
-              (propertize "*" 'face 'font-lock-warning-face
-                             'help-echo "Buffer has been modified")))
-
-    ;; line and column
-    "(" ;; '%02' to set to 2 chars at least; prevents flickering
-      (propertize "%02l" 'face 'font-lock-type-face) ":"
-      (propertize "%02c" 'face 'font-lock-type-face) 
-    ") "
-
-
-    ;; add the time, with the date and the emacs uptime in the tooltip
-    '(:eval (propertize (format-time-string "%H:%M")
-              'help-echo
-              (concat (format-time-string "%c; ")
-                      (emacs-uptime "Uptime:%hh"))))
-    " --"
-    ;; i don't want to see minor-modes; but if you want, uncomment this:
-    minor-mode-alist  ;; list of minor modes
-    ))
-
-(set-face-background 'modeline "#222")
-(set-face-foreground 'modeline "#777")
-
-
-
 
 
