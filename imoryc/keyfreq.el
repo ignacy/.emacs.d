@@ -1,3 +1,4 @@
+
 ;; -*- coding: utf-8 -*-
 ;; keyfreq.el -- track command frequencies
 ;;

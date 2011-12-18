@@ -9,6 +9,8 @@
 
 (bind "<f8>" 'deft)
 (bind "<f5>" 'im/ant)
+(bind "M-]" 'forward-paragraph)
+(bind "M-[" 'backward-paragraph)
 (bind "C-x C-r" 'ido-recentf-open)
 (bind "C-c C-d" 'im/diff-current-buffer-with-disk)
 (bind "C-q" 'jw-run-test-or-spec-file)

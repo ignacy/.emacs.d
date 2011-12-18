@@ -23,7 +23,7 @@
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
-
+(setq explicit-shell-file-name "/bin/bash")
 
 (when set-use-marmelade
 
@@ -610,11 +610,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
     (other-window 1)
     (isearch-forward)))
 
-(condition-case nil
-    (set-face-attribute 'default nil :font "Inconsolata-g-12")
-  (error nil))
-;;(set-face-attribute 'default nil :font "Consolas-12")
-;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
+;; (condition-case nil
+;;     (set-face-attribute 'default nil :font "Inconsolata-g-12")
+;;   (error nil))
+;; ;;(set-face-attribute 'default nil :font "Consolas-12")
+;; ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
 
 
 
