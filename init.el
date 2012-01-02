@@ -24,7 +24,23 @@
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
-(setq explicit-shell-file-name "/bin/bash")
+(setq explicit-shell-file-name "/bin/zsh")
+
+
+(custom-set-variables
+ '(comint-scroll-to-bottom-on-input t)  ; always insert at the bottom
+ '(comint-scroll-to-bottom-on-output t) ; always add output at the bottom
+ '(comint-scroll-show-maximum-output t) ; scroll to show max possible output
+ '(comint-completion-autolist t)        ; show completion list when ambiguous
+ '(comint-input-ignoredups t)           ; no duplicates in command history
+ '(comint-completion-addsuffix t)       ; insert space/slash after file completion
+ )
+;; shell-mode
+(defun sh ()
+  (interactive)
+  (ansi-term "/bin/zsh"))
+
+
 
 (when set-use-marmelade
 
@@ -168,8 +184,10 @@
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
-  (load-theme 'deeper-blue))
-;;(load-file (concat imoryc-dir "/themes/zenburn-theme.el")))
+  (if window-system
+      (load-theme 'deeper-blue)
+    (load-theme 'tango-dark)))
+  ;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
 
 (when set-environment-settings
   (setq initial-scratch-message nil)
@@ -647,6 +665,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                                         ;(cygwin-mount-activate)
   )
 
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 (defadvice erase-buffer (around erase-buffer-noop)
   "make erase-buffer do nothing")
@@ -733,8 +752,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (setq shell-file-name "bash")
 (fringe-mode '(1 . 0))
 
-(setq-default cursor-type '(bar . 1))
+;;(setq-default cursor-type '(bar . 1))
 
-(set-cursor-color '"#FFFFFF")
+(set-cursor-color '"#00ff00")
 
 

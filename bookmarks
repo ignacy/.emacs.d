@@ -2,11 +2,16 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("todo"
- (filename . "c:/Users/Ignacy/Dropbox/notes/deft/deft-0.org")
- (front-context-string . "\n** TODO przenie")
- (rear-context-string . "end dla pakietow")
- (position . 743))
+(("t"
+ (filename . "~/Dropbox/notes/deft/todo.org")
+ (front-context-string . "* --- TODAY ---\n")
+ (rear-context-string . "\nMy to-do list\n\n")
+ (position . 35))
+("todo"
+ (filename . "~/Dropbox/notes/deft/todo.org")
+ (front-context-string . "* --- TODAY ---\n")
+ (rear-context-string)
+ (position . 16))
 ("notes"
  (filename . "~/Dropbox/org/notes.org")
  (front-context-string . "* Tasks\n** Moder")
@@ -40,7 +45,7 @@
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/notes.org")
  (front-context-string . "** TODO Obczaic ")
- (rear-context-string . "2011-08-31 ¶ro]\n")
+ (rear-context-string . "2011-08-31 Å›ro]\n")
  (position . 58010))
 ("init.el"
  (filename . "~/.emacs.d/init.el")

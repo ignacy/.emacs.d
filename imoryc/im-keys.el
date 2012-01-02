@@ -36,7 +36,8 @@
 (bind "M-s" 'ido-goto-symbol)
 (bind "C-'" 'textmate-goto-symbol)
 (bind "C-<tab>" 'bs-show)
-(bind "C-x b" 'ido-switch-buffer)
+(bind "C-x C-b" 'ido-switch-buffer)
+(bind "C-x b" 'list-buffers)
 (bind "<f11>" 'switch-full-screen)
 (bind "M-/" 'hippie-expand)
 (bind "M-," 'comment-or-uncomment-region)
@@ -64,6 +65,10 @@
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 (windmove-default-keybindings 'meta)
+(global-unset-key (kbd "<up>"))
+(global-unset-key (kbd "<down>"))
+(global-unset-key (kbd "<left>"))
+(global-unset-key (kbd "<right>"))
 
 
 
