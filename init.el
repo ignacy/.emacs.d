@@ -1,4 +1,3 @@
-
 (require 'cl)
 
 ;;(setq debug-on-error t)
@@ -126,7 +125,7 @@
       (add-hook 'matlab-mode-hook 'idle-coding-hook)
       (add-hook 'rhtml-mode-hook 'idle-coding-hook)
       (add-hook 'java-mode-hook 'idle-coding-hook)
-      
+
       (require 'epa)
       (epa-file-enable)
       (require 'git-blame)
@@ -187,7 +186,15 @@
   (if window-system
       (load-theme 'deeper-blue)
     (load-theme 'tango-dark)))
-  ;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
+;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
+
+(defun im/go ()
+  "Set settings on emacsclient"
+  (interactive)
+  (load-theme 'deeper-blue)
+  (im/set-fonts)
+  )
+
 
 (when set-environment-settings
   (setq initial-scratch-message nil)
@@ -641,9 +648,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
     (other-window 1)
     (isearch-forward)))
 
-;; (condition-case nil
-;;     (set-face-attribute 'default nil :font "Inconsolata-g-12")
-;;   (error nil))
+
+(defun im/set-fonts ()
+  (interactive)
+  (condition-case nil
+      (set-face-attribute 'default nil :font "Inconsolata-g-10")
+    (error nil)))
 ;; ;;(set-face-attribute 'default nil :font "Consolas-12")
 ;; ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
 
@@ -755,5 +765,3 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;;(setq-default cursor-type '(bar . 1))
 
 (set-cursor-color '"#00ff00")
-
-
