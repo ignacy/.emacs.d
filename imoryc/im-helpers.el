@@ -31,3 +31,39 @@
 
 ;; (defun figlet-region (&optional b e)
 ;;   (interactive "r")
+
+
+;; Display ido results vertically, rather than horizontally
+(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
+(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
+
+
+(defun im/goto-file ()
+  "Find file in git project"
+  (interactive)
+  (let ((root (im/find-project-root)))
+    (when (null root) 
+      (error "Can't find root"))
+    (ido-find-file-in-dir root)))
+     
+(defun im/find-project-root (&optional root)
+  "Recursively find .git dir"
+  (when (null root) (setq root default-directory))
+  (cond
+   ((root-matches root '(".git"))
+    (expand-file-name root))
+   ((equal (expand-file-name root) "/") nil)
+   (t (im/find-project-root (concat (file-name-as-directory root) "..")))))
+
+
+(defun root-match(root names)
+  (member (car names) (directory-files root)))
+
+(defun root-matches(root names)
+  (if (root-match root names)
+      (root-match root names)
+      (if (eq (length (cdr names)) 0)
+          'nil
+          (root-matches root (cdr names))
+          )))

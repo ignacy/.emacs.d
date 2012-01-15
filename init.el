@@ -54,7 +54,7 @@
     (package-refresh-contents))
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist
-                                 fuzzy-match textmate autopair perspective haskell-mode
+                                 fuzzy-match autopair perspective haskell-mode
                                  yasnippet find-file-in-project android-mode flymake-ruby
                                  auto-complete rvm yasnippet inf-ruby jump findr
                                  idle-highlight-mode feature-mode marmalade))
@@ -765,3 +765,4 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;;(setq-default cursor-type '(bar . 1))
 
 (set-cursor-color '"#00ff00")
+

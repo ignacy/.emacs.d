@@ -37,7 +37,7 @@
 (bind "C-'" 'textmate-goto-symbol)
 (bind "C-<tab>" 'bs-show)
 (bind "C-x C-b" 'ido-switch-buffer)
-(bind "C-x b" 'list-buffers)
+(bind "C-x b" 'ido-switch-buffer)
 (bind "<f11>" 'switch-full-screen)
 (bind "M-/" 'hippie-expand)
 (bind "M-," 'comment-or-uncomment-region)
@@ -48,9 +48,9 @@
 (bind "<f1>" 'help)
 (bind "C-v" 'clipboard-yank)
 (bind "C-x C-x" 'clipboard-kill-region)
-(bind "C-x C-f" 'textmate-goto-file)
 (bind "M-m" iy-go-to-char)
 (bind "<f12>" 'persp-switch)
+(bind "M-o" 'im/goto-file)
 
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))
@@ -69,7 +69,7 @@
 (global-unset-key (kbd "<down>"))
 (global-unset-key (kbd "<left>"))
 (global-unset-key (kbd "<right>"))
-
+(global-unset-key (kbd "C-x C-f"))
 
 
 
