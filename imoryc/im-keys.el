@@ -1,3 +1,5 @@
+(global-set-key [(control h)] 'delete-backward-char)
+
 ;; This are key bindings that I use
 (defmacro bind (key fn)
   "shortcut for global-set-key"
