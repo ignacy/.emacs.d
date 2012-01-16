@@ -52,8 +52,9 @@
 (bind "C-x C-x" 'clipboard-kill-region)
 (bind "M-m" iy-go-to-char)
 (bind "<f12>" 'persp-switch)
-(bind "M-o" 'im/goto-file)
+(bind "M-o" 'textmate-goto-file)
 
+      
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))
 (global-unset-key (kbd "C-x 2"))
@@ -72,13 +73,6 @@
 (global-unset-key (kbd "<left>"))
 (global-unset-key (kbd "<right>"))
 (global-unset-key (kbd "C-x C-f"))
-
-
-
-
-
-
-
 
 
 ;;; This is something I tried I'm not sure it is a good idea..

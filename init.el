@@ -53,7 +53,7 @@
   (when (not package-archive-contents)
     (package-refresh-contents))
 
-  (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist
+  (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
                                  fuzzy-match autopair perspective haskell-mode
                                  yasnippet find-file-in-project android-mode flymake-ruby
                                  auto-complete rvm yasnippet inf-ruby jump findr
