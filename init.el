@@ -25,6 +25,8 @@
 
 (setq explicit-shell-file-name "/bin/zsh")
 
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
 
 (custom-set-variables
  '(comint-scroll-to-bottom-on-input t)  ; always insert at the bottom
@@ -38,8 +40,6 @@
 (defun sh ()
   (interactive)
   (ansi-term "/bin/zsh"))
-
-
 
 (when set-use-marmelade
 
@@ -92,6 +92,9 @@
 
       (require 'autopair)
       (autopair-global-mode)
+
+      (require 'find-file-in-tags)
+      (global-set-key (read-kbd-macro "C-,") 'find-file-in-tags)
 
       (require 'highlight-indentation)
       (require 'auto-complete-config)
@@ -289,6 +292,8 @@
 (when window-system
   (scroll-bar-mode -1))
 
+(setq cua-enable-cua-keys nil)
+(cua-mode)
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
@@ -769,5 +774,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (fringe-mode '(1 . 0))
 
 ;;(setq-default cursor-type '(bar . 1))
-
 (set-cursor-color '"#00ff00")
+
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill
+                                         try-complete-file-name-partially try-complete-file-name
+                                         try-expand-all-abbrevs try-expand-list try-expand-line
+                                         try-complete-lisp-symbol-partially try-complete-lisp-symbol))
+(global-auto-revert-mode 1)

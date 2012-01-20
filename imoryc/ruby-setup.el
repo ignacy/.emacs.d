@@ -29,8 +29,14 @@
      (add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
      (setq tab-width 2)
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))
-     
-(global-set-key (kbd "C-h r") 'ri)
+
+
+(defadvice find-tag (before c-tag-file activate)
+  "Automatically create tags file."
+  (let ((tag-file (concat default-directory "TAGS")))
+    (unless (file-exists-p tag-file)
+      (shell-command "ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor 2>/dev/null"))
+    (visit-tags-table tag-file)))
 
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
