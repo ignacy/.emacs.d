@@ -93,6 +93,7 @@
       (require 'autopair)
       (autopair-global-mode)
 
+      (require 'highlight-indentation)
       (require 'auto-complete-config)
       (ac-config-default)
 
@@ -154,6 +155,12 @@
       (keyfreq-mode 1)
       (keyfreq-autosave-mode 1)
 
+
+      (require 'uniquify)
+      (setq
+       uniquify-buffer-name-style 'post-forward
+       uniquify-separator ":")
+
       (require 'magit)
       (require 'android-mode))
 
@@ -185,7 +192,7 @@
 (when set-use-color-theme
   (if window-system
       (load-theme 'deeper-blue)
-    (load-theme 'tango-dark)))
+    (load-theme 'wombat)))
 ;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
 
 (defun im/go ()
@@ -746,7 +753,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
               scroll-up-aggressively   0.0
               scroll-down-aggressively 0.0)
 
-
 ;; load key-bindings
 (load-file (concat imoryc-dir "/im-helpers.el"))
 (load-file (concat imoryc-dir "/im-keys.el"))
@@ -765,4 +771,3 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;;(setq-default cursor-type '(bar . 1))
 
 (set-cursor-color '"#00ff00")
-
