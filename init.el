@@ -762,7 +762,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (load-file (concat imoryc-dir "/im-helpers.el"))
 (load-file (concat imoryc-dir "/im-keys.el"))
 (load-file (concat imoryc-dir "/im-modeline.el"))
-
+(load-file (concat imoryc-dir "/im-abbrevs.el"))
 ;; Make colours in Emacs' shell look normal
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 

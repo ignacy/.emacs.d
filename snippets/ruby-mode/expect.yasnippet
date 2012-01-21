@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: expect
+# key: expect
+# --
+expect do
+  $0
+end.to change { $1 }.by($2)

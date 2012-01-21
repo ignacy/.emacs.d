@@ -55,7 +55,14 @@
 (bind "<f12>" 'persp-switch)
 (bind "M-o" 'textmate-goto-file)
 
-      
+;; (global-unset-key (kbd "C-n"))
+;; (global-unset-key (kbd "C-p"))
+;; (bind "M-i" 'previous-line) ; was tab-to-tab-stop
+;; (bind "M-j" 'backward-char) ; was indent-new-comment-line
+;; (bind "M-k" 'next-line) ; was kill-sentence
+;; (bind "M-l" 'forward-char)  ; was downcase-word
+;; (bind "M-SPC" 'set-mark-command) ; was just-one-space
+
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))
 (global-unset-key (kbd "C-x 2"))
