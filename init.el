@@ -201,7 +201,7 @@
 
 (when set-use-color-theme
   (if window-system
-      (load-theme 'deeper-blue)
+      (load-theme 'adwaita)
     (load-theme 'wombat)))
 ;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el"))
 
@@ -223,7 +223,7 @@
 
 (when set-line-highlighting
   (global-hl-line-mode 1)
-  (set-face-background 'hl-line "#333")
+  ;;(set-face-background 'hl-line "#333")
   ;;(set-face-background 'hl-line "#eee")
   (set-face-foreground 'highlight nil)
   (set-face-foreground 'hl-line nil))
