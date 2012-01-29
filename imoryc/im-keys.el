@@ -23,7 +23,8 @@
 (bind "M-h" 'backward-kill-word)
 (bind "M-z" 'undo)
 (bind "C-a" 'back-to-indentation)
-(bind "C-x f" 'ido-find-file)
+(bind "C-x C-f" 'ido-find-file)
+(bind "M-t" 'im/open-todo)
 (bind "C-x i" 'iwb)
 (bind "C-3" 'split-window-horizontally)
 (bind "C-2" 'split-window-vertically)
@@ -80,8 +81,7 @@
 (global-unset-key (kbd "<down>"))
 (global-unset-key (kbd "<left>"))
 (global-unset-key (kbd "<right>"))
-(global-unset-key (kbd "C-x C-f"))
-
+(global-unset-key (kbd "C-x f"))
 
 ;;; This is something I tried I'm not sure it is a good idea..
 (when use-im-mode-bindings

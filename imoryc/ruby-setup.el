@@ -4,6 +4,7 @@
 ;; (add-to-list 'load-path (concat dotfiles-dir "/ruby-debug-extra-0.10.1/emacs"))
 ;; (require 'rdebug)
 
+
 (add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
 (require 'rhtml-mode)
 
@@ -114,6 +115,13 @@
 (defvar rubydb-command-name ''rvm--emacs-ruby-binary
   "File name for executing ruby.")
 
+
+
+(add-to-list 'load-path (concat dotfiles-dir "/Enhanced-Ruby-Mode")) ; must be added after any path containing old ruby-mode
+(setq enh-ruby-program "/home/ignacy/.rvm/rubies/ruby-1.9.2-p290/bin/ruby") ; so that still works if ruby points to ruby1.8
+(load-file (concat dotfiles-dir "/Enhanced-Ruby-Mode/ruby-mode.el"))
+
+
 ;;;###autoload
 
 (defun rubydb (command-line)
@@ -152,3 +160,4 @@ and source-file directory for your debugger."
   (set (make-local-variable 'paragraph-start) comint-prompt-regexp)
   (run-hooks 'rubydb-mode-hook)
   )
+

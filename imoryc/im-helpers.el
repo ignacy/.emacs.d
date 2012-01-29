@@ -16,6 +16,13 @@
   (interactive)
   (kill-buffer (current-buffer)))
 
+
+(defun im/open-todo()
+  "opens my todo file"
+  (interactive)
+  (find-file (concat deft-directory "todo.org")))
+
+
 (defun im/reek-on-buffer()
   "Run reek on current buffer"
   (interactive)
@@ -99,3 +106,39 @@
  '(ido-only-match ((t (:foreground "#ffcc33")))) ;; Face used by ido for highlighting only match.
  '(ido-indicator ((t (:foreground "#ffffff")))) ;; Face used by ido for highlighting its indicators (don't actually use this)
  '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))) ;; Ido face for indicating incomplete regexps. (don't use this either)
+
+
+(defun run-current-file ()
+  "Execute or compile the current file.
+For example, if the current buffer is the file x.pl,
+then it'll call “perl x.pl” in a shell.
+The file can be PHP, Perl, Python, Ruby, javascript, Bash, ocaml, vb, elisp.
+File suffix is used to determine what program to run."
+  (interactive)
+  (let (suffixMap fName suffix progName cmdStr)
+
+    ;; a keyed list of file suffix to comand-line program path/name
+    (setq suffixMap
+          '(
+            ("rb" . "./rspec --drb")
+            ("js" . "js")
+            ("sh" . "bash")
+            ("ml" . "ocaml")
+            ("vbs" . "cscript")
+            )
+          )
+
+    (setq fName (buffer-file-name))
+    (setq suffix (file-name-extension fName))
+    (setq progName (cdr (assoc suffix suffixMap)))
+    (setq cmdStr (concat progName " \""   fName "\""))
+
+    (if (string-equal suffix "el") ; special case for emacs lisp
+        (load-file fName)
+      (if progName
+          (progn
+            (message "Running…")
+            (shell-command cmdStr "*run-current-file output*" )
+            )
+        (message "No recognized program file suffix for this file.")
+        ))))

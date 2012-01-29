@@ -56,7 +56,7 @@
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
                                  fuzzy-match autopair perspective haskell-mode
                                  yasnippet find-file-in-project android-mode flymake-ruby
-                                 auto-complete rvm yasnippet inf-ruby jump findr
+                                 auto-complete rvm yasnippet jump findr
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -64,11 +64,11 @@
       (package-install p))))
 
 (when set-directories (message "Setting directories..")
-      (if on-windows
-          (progn
-
-            (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
-        (setq dotfiles-dir "~/.emacs.d"))
+      ;; (if on-windows
+      ;;     (progn
+      ;;       (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
+      ;;   (setq dotfiles-dir "~/.emacs.d"))
+      (setq dotfiles-dir "~/.emacs.d")
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
       (add-to-list 'load-path imoryc-dir))
 
@@ -81,8 +81,6 @@
       (setq yas/trigger-key "TAB")
 
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
-      (load-file (concat imoryc-dir "/ruby-setup.el"))
-      (load-file (concat imoryc-dir "/java-setup.el"))
 
       (require 'flymake)
       (global-set-key (kbd "C-c e") 'flymake-display-err-menu-for-current-line)
@@ -92,6 +90,8 @@
 
       (require 'autopair)
       (autopair-global-mode)
+
+      (push '(font-backend xft x) default-frame-alist)
 
       (require 'find-file-in-tags)
       (global-set-key (read-kbd-macro "C-,") 'find-file-in-tags)
@@ -119,6 +119,8 @@
 
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+      (load-file (concat imoryc-dir "/ruby-setup.el"))
+      (load-file (concat imoryc-dir "/java-setup.el"))
 
       (defun idle-coding-hook ()
         (idle-highlight-mode t))
@@ -135,6 +137,7 @@
       (require 'git-blame)
       (require 'haml-mode)
       (require 'rvm)
+      (rvm-use "ruby-1.9.2" "jobandtalent")
       (require 'markdown-mode)
       (require 'find-file-in-project)
       (add-to-list 'ffip-patterns "*.java")
@@ -196,7 +199,7 @@
   (if window-system
       (load-theme 'deeper-blue)
     (load-theme 'wombat)))
-;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
+;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el"))
 
 (defun im/go ()
   "Set settings on emacsclient"

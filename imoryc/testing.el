@@ -29,13 +29,13 @@
   (concat (jw-project-env-file )))
 
 ;;; Name of the rake command ot run the rake based tests.
-(defconst jw-rake-command "rake")
+(defconst jw-rake-command "bundle exec rake")
 
 ;;; Options to be added to the ruby based test commands.
 (defconst jw-test-options "-Ilib:test:.")
 
 ;;; Options to be added to the spec command.
-(defconst jw-spec-options "")
+(defconst jw-spec-options "--drb")
 
 ;;; If true, run the tests with warnings turned on.
 (defvar jw-test-warnings t)
@@ -249,7 +249,7 @@
 (defun jw-spec-command (buffer)
   "Return the name of the appropriate spec command to run for the given buffer."
   (let* ((default-directory (jw-find-project-top (buffer-file-name buffer))))
-    "bundle exec spec --drb"))
+   "bundle exec rspec"))
     ;; (or (jw-find-existing-file
     ;;      (list (concat default-directory "rspec")
     ;;            (concat default-directory "script/spec")))

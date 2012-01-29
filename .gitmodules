@@ -28,3 +28,6 @@
 [submodule "deft"]
 	path = deft
 	url = git://jblevins.org/git/deft.git
+[submodule "Enhanced-Ruby-Mode"]
+	path = Enhanced-Ruby-Mode
+	url = https://github.com/jacott/Enhanced-Ruby-Mode.git
