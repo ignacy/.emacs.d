@@ -108,7 +108,6 @@
  '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))) ;; Ido face for indicating incomplete regexps. (don't use this either)
 
 
-<<<<<<< HEAD
 (defun run-current-file ()
   "Execute or compile the current file.
 For example, if the current buffer is the file x.pl,
@@ -143,7 +142,7 @@ File suffix is used to determine what program to run."
             )
         (message "No recognized program file suffix for this file.")
         ))))
-=======
+
 (defun toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
 Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
@@ -173,4 +172,3 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
      ((string= "all caps" (get this-command 'state))
       (downcase-region p1 p2) (put this-command 'state "all lower")) )
     ) )
->>>>>>> 9fdbf58... small changes
