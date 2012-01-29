@@ -81,12 +81,9 @@
       (setq yas/trigger-key "TAB")
 
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
-<<<<<<< HEAD
-=======
       
       (load-file (concat imoryc-dir "/ruby-setup.el"))
       (load-file (concat imoryc-dir "/java-setup.el"))
->>>>>>> 9fdbf58... small changes
 
 
       (require 'flymake)
