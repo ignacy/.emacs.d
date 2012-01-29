@@ -55,6 +55,7 @@
 (bind "M-m" iy-go-to-char)
 (bind "<f12>" 'persp-switch)
 (bind "M-o" 'textmate-goto-file)
+<<<<<<< HEAD
 
 ;; (global-unset-key (kbd "C-n"))
 ;; (global-unset-key (kbd "C-p"))
@@ -64,6 +65,10 @@
 ;; (bind "M-l" 'forward-char)  ; was downcase-word
 ;; (bind "M-SPC" 'set-mark-command) ; was just-one-space
 
+=======
+(bind "M-u" 'toggle-letter-case)
+      
+>>>>>>> 9fdbf58... small changes
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))
 (global-unset-key (kbd "C-x 2"))
