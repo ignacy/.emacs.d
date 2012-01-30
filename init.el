@@ -81,7 +81,7 @@
       (setq yas/trigger-key "TAB")
 
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
-      
+
       (load-file (concat imoryc-dir "/ruby-setup.el"))
       (load-file (concat imoryc-dir "/java-setup.el"))
 
@@ -197,13 +197,14 @@
   (setq org-agenda-files (quote ("~/Dropbox/notes/deft")))
   (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d")
   (setq org-clock-persist 'history)
+  (setq org-src-fontify-natively t)
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
-  (if window-system
-      (load-theme 'adwaita)
-    (load-theme 'wombat)))
-;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el"))
+  ;; (if window-system
+  ;;     (load-theme 'callouscrab)
+  ;;   (load-theme 'wombat)))
+  (load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
 
 (defun im/go ()
   "Set settings on emacsclient"
