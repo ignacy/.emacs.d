@@ -56,7 +56,7 @@
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
                                  fuzzy-match autopair perspective haskell-mode
                                  yasnippet find-file-in-project android-mode flymake-ruby
-                                 auto-complete rvm yasnippet jump findr
+                                 auto-complete rvm yasnippet jump findr color-theme
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -204,7 +204,9 @@
   ;; (if window-system
   ;;     (load-theme 'callouscrab)
   ;;   (load-theme 'wombat)))
-  (load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
+  ;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
+  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
+  (color-theme-tomorrow-night))
 
 (defun im/go ()
   "Set settings on emacsclient"
