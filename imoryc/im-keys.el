@@ -46,7 +46,6 @@
 (bind "M-/" 'hippie-expand)
 (bind "M-," 'comment-or-uncomment-region)
 (bind "M-l" 'highlight-lines-matching-regexp)
-(bind "M-o" 'occur)
 (bind "M-n" 'smart-symbol-go-forward)
 (bind "M-p" 'smart-symbol-go-backward)
 (bind "<f1>" 'help)
@@ -54,7 +53,7 @@
 (bind "C-x C-x" 'clipboard-kill-region)
 (bind "M-m" iy-go-to-char)
 (bind "<f12>" 'persp-switch)
-(bind "M-o" 'textmate-goto-file)
+(bind "C-x f" 'textmate-goto-file)
 
 ;; (global-unset-key (kbd "C-n"))
 ;; (global-unset-key (kbd "C-p"))

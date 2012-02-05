@@ -198,6 +198,8 @@
   (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d")
   (setq org-clock-persist 'history)
   (setq org-src-fontify-natively t)
+  (setq org-refile-use-outline-path 'file)
+  (setq org-refile-targets '((org-agenda-files . (:level . 1))))
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
