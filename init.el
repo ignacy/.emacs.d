@@ -64,10 +64,6 @@
       (package-install p))))
 
 (when set-directories (message "Setting directories..")
-      ;; (if on-windows
-      ;;     (progn
-      ;;       (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d"))
-      ;;   (setq dotfiles-dir "~/.emacs.d"))
       (setq dotfiles-dir "~/.emacs.d")
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
       (add-to-list 'load-path imoryc-dir))
@@ -94,7 +90,7 @@
 
       (require 'autopair)
       (autopair-global-mode)
-
+      
       (push '(font-backend xft x) default-frame-alist)
 
       (require 'find-file-in-tags)
@@ -304,11 +300,12 @@
 (when window-system
   (scroll-bar-mode -1))
 
-(setq cua-enable-cua-keys nil)
-(cua-mode)
-(setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
+;; (setq cua-enable-cua-keys nil)
+;; (cua-mode)
+;; (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
+;; (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
+
 (transient-mark-mode 1) ;; No region when it is not highlighted
-(setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
 (delete-selection-mode t)
 (set-default 'cursor-type 'box)
 

@@ -172,3 +172,15 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
      ((string= "all caps" (get this-command 'state))
       (downcase-region p1 p2) (put this-command 'state "all lower")) )
     ) )
+
+(defun find-org-markers (regexp)
+    (occur regexp)
+    (pop-to-buffer "*Occur*"))
+
+(defun find-top-org-headers ()
+  (interactive)
+  (find-org-markers "^\\*[^*]"))
+
+(defun find-all-org-headers ()
+  (interactive)
+  (find-org-markers "^\\*+"))

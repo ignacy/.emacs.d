@@ -11,8 +11,8 @@
 
 (bind "<f8>" 'deft)
 (bind "<f5>" 'im/ant)
-(bind "M-]" 'forward-paragraph)
-(bind "M-[" 'backward-paragraph)
+;;(bind "C-]" 'forward-paragraph)
+;;(bind "C-\[" 'backward-paragraph)
 (bind "C-x C-r" 'ido-recentf-open)
 (bind "C-c C-d" 'im/diff-current-buffer-with-disk)
 (bind "C-q" 'jw-run-test-or-spec-file)
@@ -54,15 +54,6 @@
 (bind "M-m" iy-go-to-char)
 (bind "<f12>" 'persp-switch)
 (bind "C-x f" 'textmate-goto-file)
-
-;; (global-unset-key (kbd "C-n"))
-;; (global-unset-key (kbd "C-p"))
-;; (bind "M-i" 'previous-line) ; was tab-to-tab-stop
-;; (bind "M-j" 'backward-char) ; was indent-new-comment-line
-;; (bind "M-k" 'next-line) ; was kill-sentence
-;; (bind "M-l" 'forward-char)  ; was downcase-word
-;; (bind "M-SPC" 'set-mark-command) ; was just-one-space
-
 (bind "M-u" 'toggle-letter-case)
       
 (keyboard-translate ?\C-h ?\C-?)
