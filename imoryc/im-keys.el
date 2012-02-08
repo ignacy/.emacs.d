@@ -73,7 +73,6 @@
 (global-unset-key (kbd "<down>"))
 (global-unset-key (kbd "<left>"))
 (global-unset-key (kbd "<right>"))
-(global-unset-key (kbd "C-x f"))
 
 ;;; This is something I tried I'm not sure it is a good idea..
 (when use-im-mode-bindings

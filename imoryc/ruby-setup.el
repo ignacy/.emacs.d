@@ -31,7 +31,6 @@
      (setq tab-width 2)
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))
 
-
 (defadvice find-tag (before c-tag-file activate)
   "Automatically create tags file."
   (let ((tag-file (concat default-directory "TAGS")))
@@ -115,49 +114,8 @@
 (defvar rubydb-command-name ''rvm--emacs-ruby-binary
   "File name for executing ruby.")
 
-
-
 (add-to-list 'load-path (concat dotfiles-dir "/Enhanced-Ruby-Mode")) ; must be added after any path containing old ruby-mode
 (setq enh-ruby-program "/home/ignacy/.rvm/rubies/ruby-1.9.2-p290/bin/ruby") ; so that still works if ruby points to ruby1.8
 (load-file (concat dotfiles-dir "/Enhanced-Ruby-Mode/ruby-mode.el"))
 
-
 ;;;###autoload
-
-(defun rubydb (command-line)
-  "Run rubydb on program FILE in buffer *gud-FILE*.
-The directory containing FILE becomes the initial working directory
-and source-file directory for your debugger."
-  (interactive
-   (list (read-from-minibuffer "Run rubydb (like this): "
-                               (if (consp gud-rubydb-history)
-                                   (car gud-rubydb-history)
-                                 (concat rubydb-command-name " "))
-                               nil nil
-                               '(gud-rubydb-history . 1))))
-
-  (if (not (fboundp 'gud-overload-functions))
-      (gud-common-init command-line 'gud-rubydb-massage-args
-                       'gud-rubydb-marker-filter 'gud-rubydb-find-file)
-    (gud-overload-functions '((gud-massage-args . gud-rubydb-massage-args)
-                              (gud-marker-filter . gud-rubydb-marker-filter)
-                              (gud-find-file . gud-rubydb-find-file)))
-    (gud-common-init command-line rubydb-command-name))
-
-  (gud-def gud-break  "b %l"         "\C-b" "Set breakpoint at current line.")
-                                        ;  (gud-def gud-remove "clear %l"     "\C-d" "Remove breakpoint at current line")
-  (gud-def gud-step   "s"            "\C-s" "Step one source line with display.")
-  (gud-def gud-next   "n"            "\C-n" "Step one line (skip functions).")
-  (gud-def gud-cont   "c"            "\C-r" "Continue with display.")
-  (gud-def gud-finish "finish"       "\C-f" "Finish executing current function.")
-  (gud-def gud-up     "up %p"        "<" "Up N stack frames (numeric arg).")
-  (gud-def gud-down   "down %p"      ">" "Down N stack frames (numeric arg).")
-  (gud-def gud-print  "p %e"         "\C-p" "Evaluate ruby expression at point.")
-
-  (setq comint-prompt-regexp "^(rdb:-) ")
-  (if (boundp 'comint-last-output-start)
-      (set-marker comint-last-output-start (point)))
-  (set (make-local-variable 'paragraph-start) comint-prompt-regexp)
-  (run-hooks 'rubydb-mode-hook)
-  )
-

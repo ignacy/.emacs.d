@@ -191,7 +191,6 @@
         '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
            "* TODO %?\n  %i\n  %a")))
   (setq org-agenda-files (quote ("~/Dropbox/notes/deft")))
-  (setq dotfiles-dir "C:/Users/Ignacy/.emacs.d")
   (setq org-clock-persist 'history)
   (setq org-src-fontify-natively t)
   (setq org-refile-use-outline-path 'file)
