@@ -55,7 +55,9 @@
 (bind "<f12>" 'persp-switch)
 (bind "C-x f" 'textmate-goto-file)
 (bind "M-u" 'toggle-letter-case)
-      
+(global-unset-key (kbd "C-n"))
+(global-unset-key (kbd "C-p"))
+
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))
 (global-unset-key (kbd "C-x 2"))
