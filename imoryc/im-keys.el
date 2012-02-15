@@ -28,6 +28,7 @@
 (bind "C-x i" 'iwb)
 (bind "C-3" 'split-window-horizontally)
 (bind "C-2" 'split-window-vertically)
+(bind "C-1" 'switch-to-zsh)
 (bind "C-M-s" 'isearch-other-window)
 (bind "M-," 'tags-search)
 (bind "M-?" 'tags-loop-continue)

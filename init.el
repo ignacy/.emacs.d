@@ -23,9 +23,6 @@
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
-(setq explicit-shell-file-name "/bin/zsh")
-
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 
 (custom-set-variables
@@ -36,10 +33,6 @@
  '(comint-input-ignoredups t)           ; no duplicates in command history
  '(comint-completion-addsuffix t)       ; insert space/slash after file completion
  )
-;; shell-mode
-(defun sh ()
-  (interactive)
-  (ansi-term "/bin/zsh"))
 
 (when set-use-marmelade
 
@@ -90,7 +83,7 @@
 
       (require 'autopair)
       (autopair-global-mode)
-      
+
       (push '(font-backend xft x) default-frame-alist)
 
       (require 'find-file-in-tags)
@@ -203,7 +196,7 @@
   ;;   (load-theme 'wombat)))
   ;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
   (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
-  (color-theme-tomorrow-night))
+  (color-theme-tomorrow-night-eighties))
 
 (defun im/go ()
   "Set settings on emacsclient"
@@ -695,8 +688,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                                         ;(cygwin-mount-activate)
   )
 
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
 (defadvice erase-buffer (around erase-buffer-noop)
   "make erase-buffer do nothing")
 
@@ -771,18 +762,17 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (load-file (concat imoryc-dir "/im-keys.el"))
 (load-file (concat imoryc-dir "/im-modeline.el"))
 (load-file (concat imoryc-dir "/im-abbrevs.el"))
-;; Make colours in Emacs' shell look normal
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; Don't auto-truncate lines in shell mode
-(add-hook 'shell-mode-hook '(lambda () (toggle-truncate-lines 1)))
+;;(add-hook 'shell-mode-hook '(lambda () (toggle-truncate-lines 1)))
 (set-face-background 'fringe "#0C1021")
-(setq explicit-shell-file-name "/bin/bash")
-(setq shell-file-name "bash")
 (fringe-mode '(1 . 0))
 
 ;;(setq-default cursor-type '(bar . 1))
 (set-cursor-color '"#00ff00")
+
+(setq-default show-trailing-whitespace t)
+(setq-default default-indicate-empty-lines t)
 
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev
                                          try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill
@@ -790,3 +780,31 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                                          try-expand-all-abbrevs try-expand-list try-expand-line
                                          try-complete-lisp-symbol-partially try-complete-lisp-symbol))
 (global-auto-revert-mode 1)
+
+
+
+(require 'ansi-color)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(setq explicit-shell-file-name "/bin/zsh")
+
+(defun im/shell-mode-hook ()
+  (setq show-trailing-whitespace nil)
+  (setq shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"))
+
+(add-hook 'shell-mode-hook 'im/shell-mode-hook)
+
+
+
+
+;;#show-trailing-whitespace t)
+
+;; shell-mode
+(defun sh (&optional name)
+  (interactive)
+  (shell name))
+
+;; Run some shells
+(sh "zsh")
+(defun switch-to-zsh ()
+  (interactive)
+  (switch-to-buffer "zsh"))
