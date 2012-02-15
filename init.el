@@ -187,6 +187,8 @@
   (setq org-clock-persist 'history)
   (setq org-src-fontify-natively t)
   (setq org-refile-use-outline-path 'file)
+  (org-babel-do-load-languages
+    'org-babel-load-languages '((ruby . t) (R . t)))
   (setq org-refile-targets '((org-agenda-files . (:level . 1))))
   (org-clock-persistence-insinuate))
 
