@@ -796,7 +796,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (add-hook 'shell-mode-hook 'im/shell-mode-hook)
 
 
-(set-face-background 'highlight-indentation-face "#333333")
+(set-face-background 'highlight-indentation-face "#232323")
 (set-face-background 'highlight-indentation-current-column-face "#f3f3f3")
 (highlight-indentation-mode)
 

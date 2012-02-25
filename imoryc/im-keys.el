@@ -56,6 +56,7 @@
 (bind "<f12>" 'persp-switch)
 (bind "C-x f" 'textmate-goto-file)
 (bind "M-u" 'toggle-letter-case)
+(bind "C-c h" 'highlight-indentation-mode)
 
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))
@@ -74,56 +75,3 @@
 (global-unset-key (kbd "<down>"))
 (global-unset-key (kbd "<left>"))
 (global-unset-key (kbd "<right>"))
-
-;;; This is something I tried I'm not sure it is a good idea..
-(when use-im-mode-bindings
-  (global-unset-key (kbd "C-x 2"))
-  (global-unset-key (kbd "C-x 3"))
-  (global-unset-key (kbd "C-x 0"))
-  (global-unset-key (kbd "C-n"))
-  (global-unset-key (kbd "C-p"))
-  (global-unset-key (kbd "<up>"))
-  (global-unset-key (kbd "<down>"))
-  (global-unset-key (kbd "<left>"))
-  (global-unset-key (kbd "<right>"))
-
-
-  (defvar im-keys-minor-mode-map (make-keymap) "im-keys-minor-mode keymap.")
-  """ Some of my keuybindings placed in minor mode to make sure they are not overriden"
-  (define-key im-keys-minor-mode-map (kbd "M-i") 'previous-line)
-  (define-key im-keys-minor-mode-map (kbd "M-j") 'backward-char) ; was indent-new-comment-line
-  (define-key im-keys-minor-mode-map (kbd "M-k") 'next-line) ; was kill-sentence
-  (define-key im-keys-minor-mode-map (kbd "M-l") 'forward-char) ; was downcase-word
-  (define-key im-keys-minor-mode-map (kbd "M-g") 'kill-line)
-  (define-key im-keys-minor-mode-map (kbd "M-o") 'forward-word)
-  (define-key im-keys-minor-mode-map (kbd "M-u") 'backward-word)
-  (define-key im-keys-minor-mode-map (kbd "M-s") 'isearch-forward-regexp)
-  (define-key im-keys-minor-mode-map (kbd "M-[") 'forward-paragraph)
-  (define-key im-keys-minor-mode-map (kbd "M-]") 'backward-paragraph)
-  (define-key im-keys-minor-mode-map (kbd "C-2") 'split-window-below)
-  (define-key im-keys-minor-mode-map (kbd "C-3") 'split-window-right)
-  (define-key im-keys-minor-mode-map (kbd "C-0") 'delete-window)
-  (define-key im-keys-minor-mode-map (kbd "C-x C-b") 'switch-to-buffer)
-  (define-key im-keys-minor-mode-map (kbd "C-h") 'backward-kill-word)
-
-  (define-key im-keys-minor-mode-map (kbd "M-SPC") 'set-mark-command) ; was just-one-space
-
-
-  (define-minor-mode im-keys-minor-mode
-    "A minor mode so that im key settings override annoying major modes."
-    t " im-keys" 'im-keys-minor-mode-map)
-
-  (im-keys-minor-mode 1)
-
-  (defun im-minibuffer-setup-hook ()
-    (im-keys-minor-mode 0))
-
-  (add-hook 'minibuffer-setup-hook 'im-minibuffer-setup-hook))
-
-(defadvice load (after give-my-keybindings-priority)
-  "Try to ensure that my keybindings always have priority."
-  (if (not (eq (car (car minor-mode-map-alist)) 'im-keys-minor-mode))
-      (let ((mykeys (assq 'im-keys-minor-mode minor-mode-map-alist)))
-        (assq-delete-all 'im-keys-minor-mode minor-mode-map-alist)
-        (add-to-list 'minor-mode-map-alist mykeys))))
-(ad-activate 'load)
