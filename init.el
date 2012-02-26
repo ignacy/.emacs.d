@@ -19,7 +19,7 @@
 (defvar on-windows (eq system-type 'windows-nt))
 (defvar use-im-mode-bindings nil)
 (defvar use-recentf-mode t)
-
+(defvar show-line-numbers nil)
 ;; (when on-windows
 ;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
@@ -188,7 +188,7 @@
   (setq org-src-fontify-natively t)
   (setq org-refile-use-outline-path 'file)
   (org-babel-do-load-languages
-    'org-babel-load-languages '((ruby . t) (R . t)))
+   'org-babel-load-languages '((ruby . t) (R . t)))
   (setq org-refile-targets '((org-agenda-files . (:level . 1))))
   (org-clock-persistence-insinuate))
 
@@ -349,6 +349,10 @@ is valid."
                              ((eq direction 'forward) ; forward
                               'search-forward)
                              ((eq direction 'backward) ; backward
+
+
+
+
                               'search-backward)
                              (t (error "Invalid direction"))) ; all others
                             smart-last-symbol-name nil t)
@@ -398,8 +402,10 @@ instead."
 (scroll-bar-mode -1)
 (setq ido-create-new-buffer 'always)
 (setq backup-inhibited t)
-(global-linum-mode 1)
-(setq linum-format " %3d  ")
+
+(when show-line-numbers
+  (global-linum-mode 1)
+  (setq linum-format " %3d  "))
 
 (setq x-select-enable-clipboard t)
 
