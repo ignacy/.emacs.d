@@ -193,12 +193,13 @@
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
+  (load-theme 'deeper-blue))
   ;; (if window-system
   ;;     (load-theme 'callouscrab)
   ;;   (load-theme 'wombat)))
-  ;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
-  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
-  (color-theme-tomorrow-night-eighties))
+  ;;(load-file (concat imoryc-dir "/themes/darkclean-theme.el")))
+  ;; (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
+  ;; (color-theme-tomorrow-night))
 
 (defun im/go ()
   "Set settings on emacsclient"
@@ -800,7 +801,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (setq shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"))
 
 (add-hook 'shell-mode-hook 'im/shell-mode-hook)
-
 
 (set-face-background 'highlight-indentation-face "#232323")
 (set-face-background 'highlight-indentation-current-column-face "#f3f3f3")

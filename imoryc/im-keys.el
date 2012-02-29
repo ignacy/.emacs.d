@@ -57,6 +57,7 @@
 (bind "C-x f" 'textmate-goto-file)
 (bind "M-u" 'toggle-letter-case)
 (bind "C-c h" 'highlight-indentation-mode)
+(bind "C-c t" 'my-ido-find-tag)
 
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))
