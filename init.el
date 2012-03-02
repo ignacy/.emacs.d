@@ -292,6 +292,10 @@
   (shell-command
    (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name))))
 
+
+ ;; ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor
+
+
 (when window-system
   (scroll-bar-mode -1))
 
