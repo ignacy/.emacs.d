@@ -58,6 +58,7 @@
 
 (when set-directories (message "Setting directories..")
       (setq dotfiles-dir "~/.emacs.d")
+      
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
       (add-to-list 'load-path imoryc-dir))
 
