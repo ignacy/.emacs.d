@@ -47,9 +47,9 @@
     (package-refresh-contents))
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
-                                 fuzzy-match autopair perspective haskell-mode
+                                 fuzzy-match autopair perspective haskell-mode rainbow-mode
                                  yasnippet find-file-in-project android-mode flymake-ruby
-                                 auto-complete rvm yasnippet jump findr color-theme
+                                 auto-complete rvm yasnippet jump findr color-theme rainbow-delimiters
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -58,7 +58,6 @@
 
 (when set-directories (message "Setting directories..")
       (setq dotfiles-dir "~/.emacs.d")
-      
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
       (add-to-list 'load-path imoryc-dir))
 
@@ -104,6 +103,12 @@
 
       (require 'ido)
       (ido-mode 'both) ;; for buffers and files
+
+      (require 'rainbow-delimiters)
+      (global-rainbow-delimiters-mode)
+
+      (require 'rainbow-mode)
+      (rainbow-mode)
 
       (unless on-windows
         ;; Rinari
@@ -811,7 +816,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (set-face-background 'highlight-indentation-current-column-face "#f3f3f3")
 (highlight-indentation-mode)
 
-;;#show-trailing-whitespace t)
 
 ;; shell-mode
 (defun sh (&optional name)

@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-refile-last-stored"
+(("test-file"
+ (filename . "~/code/bayes/bayes_test.rb")
+ (front-context-string . "require 'test/un")
+ (rear-context-string)
+ (position . 1))
+("org-refile-last-stored"
  (filename . "~/Dropbox/notes/deft/solutions.org")
  (front-context-string . "* TODO solutions")
  (rear-context-string)
