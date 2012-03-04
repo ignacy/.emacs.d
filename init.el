@@ -47,7 +47,8 @@
     (package-refresh-contents))
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
-                                 fuzzy-match autopair perspective haskell-mode rainbow-mode
+                                 fuzzy-match autopair haskell-mode rainbow-mode
+                                 anything anything-config
                                  yasnippet find-file-in-project android-mode flymake-ruby
                                  auto-complete rvm yasnippet jump findr color-theme rainbow-delimiters
                                  idle-highlight-mode feature-mode marmalade))
@@ -145,9 +146,6 @@
       (add-to-list 'ffip-patterns "*.css")
       (add-to-list 'ffip-patterns "*.yml")
 
-      (require 'perspective)
-      (persp-mode)
-
 
       (add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
       (require 'coffee-mode)
@@ -199,13 +197,13 @@
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
-  (load-theme 'deeper-blue))
+  ;;(load-theme 'deeper-blue))
   ;; (if window-system
   ;;     (load-theme 'callouscrab)
   ;;   (load-theme 'wombat)))
-  ;;(load-file (concat imoryc-dir "/themes/darkclean-theme.el")))
+  (load-file (concat imoryc-dir "/themes/color-theme-ps-warm.el"))
   ;; (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
-  ;; (color-theme-tomorrow-night))
+  (color-theme-ps-warm))
 
 (defun im/go ()
   "Set settings on emacsclient"
@@ -299,7 +297,7 @@
    (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name))))
 
 
- ;; ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor
+;; ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor
 
 
 (when window-system
