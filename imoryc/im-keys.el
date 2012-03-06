@@ -57,10 +57,11 @@
 (bind "C-v" 'clipboard-yank)
 (bind "C-x C-x" 'clipboard-kill-region)
 (bind "M-m" iy-go-to-char)
-(bind "C-x f" 'textmate-goto-file)
+(bind "C-x f" 'ido-find-file)
 (bind "M-u" 'toggle-letter-case)
 (bind "C-c h" 'highlight-indentation-mode)
 (bind "C-c t" 'my-ido-find-tag)
+(bind "C-i" 'indent-for-tab-command)
 
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))

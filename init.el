@@ -170,14 +170,13 @@
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
-  ;;(load-theme 'deeper-blue))
+  (load-theme 'deeper-blue))
   ;; (if window-system
   ;;     (load-theme 'callouscrab)
   ;;   (load-theme 'wombat)))
   ;; (load-file (concat imoryc-dir "/themes/color-theme-ps-warm.el"))
   (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
   (color-theme-tomorrow-night-bright))
-
 
 (when set-environment-settings
   (load-file (concat imoryc-dir "/im-basic-settings.el")))
