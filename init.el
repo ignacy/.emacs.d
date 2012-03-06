@@ -2,8 +2,6 @@
 
 ;;(setq debug-on-error t)
 
-;; By setting any of the below to nil
-;; you are dissabling the whole section
 (defvar set-directories t)
 (defvar set-loadpaths t)
 (defvar set-use-marmelade t)
@@ -20,29 +18,14 @@
 (defvar use-im-mode-bindings nil)
 (defvar use-recentf-mode t)
 (defvar show-line-numbers nil)
-;; (when on-windows
-;;   (setenv "HOME" "C:/Users/Ignacy/"))
 
-
-
-(custom-set-variables
- '(comint-scroll-to-bottom-on-input t)  ; always insert at the bottom
- '(comint-scroll-to-bottom-on-output t) ; always add output at the bottom
- '(comint-scroll-show-maximum-output t) ; scroll to show max possible output
- '(comint-completion-autolist t)        ; show completion list when ambiguous
- '(comint-input-ignoredups t)           ; no duplicates in command history
- '(comint-completion-addsuffix t)       ; insert space/slash after file completion
- )
 
 (when set-use-marmelade
-
   (require 'package)
   (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
   (add-to-list 'package-archives
                '("marmalade" . "http://marmalade-repo.org/packages/") t)
   (package-initialize)
-
-
   (when (not package-archive-contents)
     (package-refresh-contents))
 
@@ -94,9 +77,6 @@
       (require 'auto-complete-config)
       (ac-config-default)
 
-      (load-file (concat imoryc-dir "/iy-go-to-char.el"))
-      (require 'iy-go-to-char)
-
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
       (load-file (concat imoryc-dir "/testing.el"))
@@ -146,18 +126,15 @@
       (add-to-list 'ffip-patterns "*.css")
       (add-to-list 'ffip-patterns "*.yml")
 
-
       (add-to-list 'load-path (concat dotfiles-dir "/coffee-mode"))
       (require 'coffee-mode)
 
       (require 'textmate)
       (textmate-mode)
 
-
       (require 'keyfreq)
       (keyfreq-mode 1)
       (keyfreq-autosave-mode 1)
-
 
       (require 'uniquify)
       (setq
@@ -201,25 +178,14 @@
   ;; (if window-system
   ;;     (load-theme 'callouscrab)
   ;;   (load-theme 'wombat)))
-  (load-file (concat imoryc-dir "/themes/color-theme-ps-warm.el"))
-  ;; (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
-  (color-theme-ps-warm))
-
-(defun im/go ()
-  "Set settings on emacsclient"
-  (interactive)
-  (load-theme 'deeper-blue)
-  (im/set-fonts)
-  )
+  ;; (load-file (concat imoryc-dir "/themes/color-theme-ps-warm.el"))
+  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
+  (color-theme-tomorrow-night-bright))
 
 
 (when set-environment-settings
-  (setq initial-scratch-message nil)
-  (setq inhibit-splash-screen t)
-  (icomplete-mode t)
-  (setq font-lock-maximum-decoration t)
-  (display-time-mode -1)
-  (setq inhibit-startup-message t))
+  (load-file (concat imoryc-dir "/im-basic-settings.el")))
+
 
 (when set-line-highlighting
   (global-hl-line-mode 1)
@@ -227,48 +193,6 @@
   ;;(set-face-background 'hl-line "#eee")
   (set-face-foreground 'highlight nil)
   (set-face-foreground 'hl-line nil))
-
-(when set-java-paths-on-windows
-  (when on-windows
-    (setenv "JUNIT_HOME" "/home/ignacy/code/classpath")
-    (setenv "JAVA_HOME" "c://jdk1.6.0_23")
-    (setenv "CLASSPATH" "$CLASSPATH:$JUNIT_HOME:/home/ignacy/code/classpath:/home/ignacy/code/FyreTv/lib/test/testng-5.14.7.jar")))
-
-(unless on-windows
-  (defcustom android-mode-sdk-dir "~/android"
-    "Set to the directory containing the Android SDK."
-    :type 'string
-    :group 'android-mode))
-
-(when on-windows
-  (defcustom android-mode-sdk-dir "c:/Android/android-sdk/"
-    "Set to the directory containing the Android SDK."
-    :type 'string
-    :group 'android-mode))
-
-
-(defcustom android-mode-avd "@htc"
-  "Default AVD to use."
-  :type 'string
-  :group 'android-mode)
-
-(unless on-windows
-  (defun ant-compile ()
-    "Traveling up the path, find build.xml file and run compile."
-    (interactive)
-    (with-temp-buffer
-      (while (and (not (file-exists-p "build.xml"))
-                  (not (equal "/" default-directory)))
-        (cd ".."))
-      (call-interactively 'compile))))
-
-(when set-working-on-bdj
-  (defvar bdj-root "C://Users//Ignacy//code//FyreTv")
-  (defun im/ant (task)
-    "Run ant TASK in the project root directory."
-    (interactive "sTask name: ")
-    (cd bdj-root)
-    (compile (concat "ant " task))))
 
 (when set-remove-blinking-from-cursos
   (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*)))))
@@ -295,122 +219,7 @@
   (interactive "DDirectory: ")
   (shell-command
    (format "%s -f %s/TAGS -e -R %s" path-to-ctags dir-name (directory-file-name dir-name))))
-
-
 ;; ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor
-
-
-(when window-system
-  (scroll-bar-mode -1))
-
-;; (setq cua-enable-cua-keys nil)
-;; (cua-mode)
-;; (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
-;; (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
-
-(transient-mark-mode 1) ;; No region when it is not highlighted
-(delete-selection-mode t)
-(set-default 'cursor-type 'box)
-
-(setq comment-style 'indent)
-(setq comment-style 'indent)
-(setq frame-title-format
-      (list '("emacs ")
-            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
-(setq cursor-in-non-selected-windows nil)
-(setq-default indent-tabs-mode nil)
-(setq read-buffer-completion-ignore-case t)
-(setq read-file-name-completion-ignore-case t)
-
-(defvar smart-use-extended-syntax nil
-  "If t the smart symbol functionality will consider extended
-syntax in finding matches, if such matches exist.")
-
-(defvar smart-last-symbol-name ""
-  "Contains the current symbol name.
-
-This is only refreshed when `last-command' does not contain
-either `smart-symbol-go-forward' or `smart-symbol-go-backward'")
-
-(make-local-variable 'smart-use-extended-syntax)
-
-(defvar smart-symbol-old-pt nil
-  "Contains the location of the old point")
-
-(defun smart-symbol-goto (name direction)
-  "Jumps to the next NAME in DIRECTION in the current buffer.
-
-DIRECTION must be either `forward' or `backward'; no other option
-is valid."
-
-  ;; if `last-command' did not contain
-  ;; `smart-symbol-go-forward/backward' then we assume it's a
-  ;; brand-new command and we re-set the search term.
-  (unless (memq last-command '(smart-symbol-go-forward
-                               smart-symbol-go-backward))
-    (setq smart-last-symbol-name name))
-  (setq smart-symbol-old-pt (point))
-  (message (format "%s scan for symbol \"%s\""
-                   (capitalize (symbol-name direction))
-                   smart-last-symbol-name))
-  (unless (catch 'done
-            (while (funcall (cond
-                             ((eq direction 'forward) ; forward
-                              'search-forward)
-                             ((eq direction 'backward) ; backward
-
-
-
-
-                              'search-backward)
-                             (t (error "Invalid direction"))) ; all others
-                            smart-last-symbol-name nil t)
-              (unless (memq (syntax-ppss-context
-                             (syntax-ppss (point))) '(string comment))
-                (throw 'done t))))
-    (goto-char smart-symbol-old-pt)))
-
-(defun smart-symbol-go-forward ()
-  "Jumps forward to the next symbol at point"
-  (interactive)
-  (smart-symbol-goto (smart-symbol-at-pt 'end) 'forward))
-
-(defun smart-symbol-go-backward ()
-  "Jumps backward to the previous symbol at point"
-  (interactive)
-  (smart-symbol-goto (smart-symbol-at-pt 'beginning) 'backward))
-
-(defun smart-symbol-at-pt (&optional dir)
-  "Returns the symbol at point and moves point to DIR (either `beginning' or `end') of the symbol.
-
-If `smart-use-extended-syntax' is t then that symbol is returned
-instead."
-  (with-syntax-table (make-syntax-table)
-    (if smart-use-extended-syntax
-        (modify-syntax-entry ?. "w"))
-    (modify-syntax-entry ?_ "w")
-    (modify-syntax-entry ?- "w")
-    ;; grab the word and return it
-    (let ((word (thing-at-point 'word))
-          (bounds (bounds-of-thing-at-point 'word)))
-      (if word
-          (progn
-            (cond
-             ((eq dir 'beginning) (goto-char (car bounds)))
-             ((eq dir 'end) (goto-char (cdr bounds)))
-             (t (error "Invalid direction")))
-            word)
-        (error "No symbol found")))))
-
-
-;; '(setq visible-bell t)
-(show-paren-mode 1)
-(fset 'yes-or-no-p 'y-or-n-p)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(setq ido-create-new-buffer 'always)
-(setq backup-inhibited t)
 
 (when show-line-numbers
   (global-linum-mode 1)
@@ -418,17 +227,7 @@ instead."
 
 (setq x-select-enable-clipboard t)
 
-
 (defvar compile-command "rake ") ; set the default make command
-(make-variable-buffer-local 'compile-command)
-                                        ; make the compile command buffer local
-                                        ; (this allows each buffer to have its
-                                        ; own custom compile command)
-
-(setq-default indent-tabs-mode nil)
-(setq indent-tabs-mode nil)
-(setq tab-width 4)
-(setq default-indicate-empty-lines t)
 
 
 
@@ -479,70 +278,17 @@ instead."
       (shrink-window-if-larger-than-buffer))
     (toggle-read-only)))
 
-(defun my-ibuffer ()
-  "Open ibuffer with cursour pointed to most recent buffer name"
-  (interactive)
-  (let ((recent-buffer-name (buffer-name)))
-    (ibuffer)
-    (ibuffer-jump-to-buffer recent-buffer-name)))
-
-(defun duplicate-line ()
-  "*Insert a copy of the current line below the current line."
-  (interactive)
-  (save-excursion
-    (let ((start (progn (beginning-of-line) (point)))
-          (end (progn (end-of-line) (point))))
-      (insert ?\n)
-      (insert-buffer-substring (current-buffer) start end))))
-
-(defun copy-line()
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (next-line 1)
-  )
-
-
 ;; install wmctrl (sudo apt-get install wmctrl)
 (defun switch-full-screen ()
   "Switch emacs to full screen mode"
   (interactive)
   (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
 
-(setq
- bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
- bookmark-save-flag 1)                        ;; autosave each change)
-
-
-
-;; dirty fix for having AC everywhere
-(define-globalized-minor-mode real-global-auto-complete-mode
-  auto-complete-mode (lambda ()
-                       (if (not (minibufferp (current-buffer)))
-                           (auto-complete-mode 1))
-                       ))
-(real-global-auto-complete-mode t)
-
-
-(unless on-windows
-  (setq rsense-home "/home/ignacy/bin/rsense-0.3")
-  (add-to-list 'load-path (concat rsense-home "/etc"))
-  (require 'rsense)
-  (add-to-list 'ac-sources 'ac-source-rsense-method)
-  (add-to-list 'ac-sources 'ac-source-rsense-constant)
-  )
-
 (lambda ()
   (interactive)
   (let ((case-fold-search isearch-case-fold-search))
     (occur (if isearch-regexp isearch-string
              (regexp-quote isearch-string)))))
-
-
-(setq font-lock-maximum-decoration t)
-
-(icomplete-mode t)
 
 (setq frame-title-format
       (list '("emacs ")
@@ -639,7 +385,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   ;; enable recent files mode.
   (require 'recentf)
   (recentf-mode t)
-  (setq recentf-max-saved-items 80)
+  (setq recentf-max-saved-items 500)
   (add-to-list 'recentf-exclude "\\.revive\\'")
 
   (defun ido-recentf-open ()
@@ -648,16 +394,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
     (if (find-file (ido-completing-read "Find recent file: " recentf-list))
         (message "Opening file...")
       (message "Aborting"))))
-
-(add-hook 'java-mode-hook (lambda () (subword-mode)))
-
-(setq confirm-nonexistent-file-or-buffer nil)
-(setq kill-buffer-query-functions
-      (remq 'process-kill-buffer-query-function
-            kill-buffer-query-functions))
-
-(setq ibuffer-expert t)
-(setq ibuffer-show-empty-filter-groups nil)
 
 (defalias 'qrr 'query-replace-regexp)
 
@@ -669,16 +405,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;;p find . -name "*.cpp" -print -or -name "*.h" -print | xargs etags
 (setq tags-revert-without-query t)
 
-
-(put 'set-goal-column 'disabled nil)
-(defun isearch-other-window ()
-  """ Search in other window without movign there """
-  (interactive)
-  (save-selected-window
-    (other-window 1)
-    (isearch-forward)))
-
-
 (defun im/set-fonts ()
   (interactive)
   (condition-case nil
@@ -687,26 +413,13 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; ;;(set-face-attribute 'default nil :font "Consolas-12")
 ;; ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
 
-
-
 (when on-windows
   (add-hook 'comint-output-filter-functions
             'shell-strip-ctrl-m nil t)
   (add-hook 'comint-output-filter-functions
             'comint-watch-for-password-prompt nil t)
-  ;; (setq explicit-shell-file-name "zsh")
-  ;; (setq explicit-sh-args '("-l" "-i"))
-  ;; For subprocesses invoked via the shell
-  ;; (e.g., "shell -c command")
-  ;; (setq shell-file-name explicit-shell-file-name)
   (setenv "PATH" (concat "c:/bin;" (getenv "PATH")))
-  (setq exec-path (cons "c:/bin/" exec-path))
-  ;;(require 'cygwin-mount)
-                                        ;(cygwin-mount-activate)
-  )
-
-(defadvice erase-buffer (around erase-buffer-noop)
-  "make erase-buffer do nothing")
+  (setq exec-path (cons "c:/bin/" exec-path)))
 
 (defadvice shell-command (around shell-command-unique-buffer activate compile)
   (if (or current-prefix-arg
@@ -741,20 +454,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
       ad-do-it
       (ad-deactivate-regexp "erase-buffer-noop"))))
 
-(setq auto-save-default nil)
-
-
-;;(set-face-background 'modeline "#001A4C")
-
-;; Diff/git addons
-(custom-set-faces
- '(diff-added ((t (:foreground "Green"))) 'now)
- '(diff-removed ((t (:foreground "Red"))) 'now)
- )
-
-
-(setq redisplay-dont-pause t)
-
 ;; Make the whole buffer pretty and consistent
 (defun iwb()
   "Indent Whole Buffer"
@@ -763,46 +462,13 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (indent-region (point-min) (point-max) nil)
   (untabify (point-min) (point-max)))
 
-(define-abbrev-table 'global-abbrev-table '(
-                                            ("firend" "friend" nil 0)
-                                            ("Firend" "Friend" nil 0)))
-(setq save-abbrevs nil)
-(setq-default fill-column 80)
-
-(setq-default scroll-step              1
-              scroll-conservatively    most-positive-fixnum
-              scroll-up-aggressively   0.0
-              scroll-down-aggressively 0.0)
-
 ;; load key-bindings
 (load-file (concat imoryc-dir "/im-helpers.el"))
 (load-file (concat imoryc-dir "/im-keys.el"))
 (load-file (concat imoryc-dir "/im-modeline.el"))
 (load-file (concat imoryc-dir "/im-abbrevs.el"))
 
-;; Don't auto-truncate lines in shell mode
-;;(add-hook 'shell-mode-hook '(lambda () (toggle-truncate-lines 1)))
-(set-face-background 'fringe "#0C1021")
-(fringe-mode '(1 . 0))
-
-;;(setq-default cursor-type '(bar . 1))
-(set-cursor-color '"#00ff00")
-
-(setq-default show-trailing-whitespace t)
-(setq-default default-indicate-empty-lines t)
-
-(setq hippie-expand-try-functions-list '(try-expand-dabbrev
-                                         try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill
-                                         try-complete-file-name-partially try-complete-file-name
-                                         try-expand-all-abbrevs try-expand-list try-expand-line
-                                         try-complete-lisp-symbol-partially try-complete-lisp-symbol))
-(global-auto-revert-mode 1)
-
-
-
 (require 'ansi-color)
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(setq explicit-shell-file-name "/bin/zsh")
 
 (defun im/shell-mode-hook ()
   (setq show-trailing-whitespace nil)
@@ -810,18 +476,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (add-hook 'shell-mode-hook 'im/shell-mode-hook)
 
-(set-face-background 'highlight-indentation-face "#232323")
-(set-face-background 'highlight-indentation-current-column-face "#f3f3f3")
-(highlight-indentation-mode)
-
-
 ;; shell-mode
 (defun sh (&optional name)
   (interactive)
   (shell name))
 
-;; Run some shells
-(sh "zsh")
 (defun switch-to-zsh ()
   (interactive)
   (switch-to-buffer "zsh"))

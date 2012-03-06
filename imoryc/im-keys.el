@@ -42,9 +42,10 @@
 (bind "M-s" 'ido-goto-symbol)
 (bind "C-'" 'textmate-goto-symbol)
 (bind "C-<tab>" 'bs-show)
-;;(bind "C-x C-b" 'ido-switch-buffer)
-(bind "C-x C-b" 'anything-for-buffers)
-(bind "C-x b" 'ido-switch-buffer)
+(bind "C-x C-b" 'ido-switch-buffer)
+;;(bind "C-x C-b" 'anything-for-buffers)
+
+(bind "C-x b" 'ibuffer-bs-show)
 (bind "<f11>" 'switch-full-screen)
 (bind "M-/" 'hippie-expand)
 (bind "M-," 'comment-or-uncomment-region)
