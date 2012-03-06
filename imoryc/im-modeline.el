@@ -15,17 +15,12 @@
                '(:eval (when (vc-mode)
                          (propertize (substring vc-mode 5)
                                      'face 'font-lock-constant-face)))
-               " "
-
-               "col:"
-               (propertize "%02c " 'face 'font-lock-type-face)
-
-               " time: "
-               ;; add the time, with the date and the emacs uptime in the tooltip
-               '(:eval (propertize (format-time-string "%H:%M") 'face 'font-lock-constant-face))
-
-               ;; minor-mode-alist  ;; list of minor modes
+               "  line#"
+               (propertize " %02l" 'face 'font-lock-type-face)
+               " column#"
+               (propertize " %02c" 'face 'font-lock-type-face)
+               minor-mode-alist  ;; list of minor modes
                ))
 
-(set-face-background 'modeline "#222")
-(set-face-foreground 'modeline "#777")
+(set-face-background 'modeline "#1D1D25")
+(set-face-foreground 'modeline "#B4C5C5")

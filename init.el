@@ -19,7 +19,6 @@
 (defvar use-recentf-mode t)
 (defvar show-line-numbers nil)
 
-
 (when set-use-marmelade
   (require 'package)
   (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
@@ -91,11 +90,8 @@
       (require 'rainbow-mode)
       (rainbow-mode)
 
-      (unless on-windows
-        ;; Rinari
-        (add-to-list 'load-path (concat dotfiles-dir "/rinari"))
-        (require 'rinari)
-        (setq rinari-tags-file-name "TAGS"))
+      (require 'rinari)
+      (setq rinari-tags-file-name "TAGS")
 
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
@@ -192,7 +188,9 @@
   ;;(set-face-background 'hl-line "#333")
   ;;(set-face-background 'hl-line "#eee")
   (set-face-foreground 'highlight nil)
-  (set-face-foreground 'hl-line nil))
+  (set-face-attribute hl-line-face nil :overline nil)
+  (set-face-attribute hl-line-face nil :underline nil))
+
 
 (when set-remove-blinking-from-cursos
   (and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*)))))
@@ -454,6 +452,25 @@ This is the same as using \\[set-mark-command] with the prefix argument."
       ad-do-it
       (ad-deactivate-regexp "erase-buffer-noop"))))
 
+
+(setq auto-save-default nil)
+;;(set-face-background 'modeline "#001A4C")
+
+;; Diff/git addons
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(diff-added ((t (:foreground "Green"))))
+ '(diff-removed ((t (:foreground "Red"))))
+ '(ido-first-match ((t (:foreground "#ccff66"))))
+ '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))
+ '(ido-indicator ((t (:foreground "#ffffff"))))
+ '(ido-only-match ((t (:foreground "#ffcc33"))))
+ '(ido-subdir ((t (:foreground "#66ff00")))))
+(setq redisplay-dont-pause t)
+
 ;; Make the whole buffer pretty and consistent
 (defun iwb()
   "Indent Whole Buffer"
@@ -475,6 +492,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (setq shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"))
 
 (add-hook 'shell-mode-hook 'im/shell-mode-hook)
+(add-hook 'term-mode-hook 'im/shell-mode-hook)
 
 ;; shell-mode
 (defun sh (&optional name)
@@ -484,3 +502,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun switch-to-zsh ()
   (interactive)
   (switch-to-buffer "zsh"))
+
+(setq default-frame-alist
+       (append default-frame-alist
+              '((background-color . "#1D1D25")
+                (foreground-color . "#ffffff"))))
