@@ -30,9 +30,9 @@
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
                                  fuzzy-match autopair haskell-mode rainbow-mode
-                                 anything anything-config
+                                 anything anything-config rinari
                                  yasnippet find-file-in-project android-mode flymake-ruby
-                                 auto-complete rvm yasnippet jump findr color-theme rainbow-delimiters
+                                 rvm yasnippet jump findr color-theme rainbow-delimiters
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -73,8 +73,6 @@
       (global-set-key (read-kbd-macro "C-,") 'find-file-in-tags)
 
       (require 'highlight-indentation)
-      (require 'auto-complete-config)
-      (ac-config-default)
 
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
@@ -170,12 +168,13 @@
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
+  (load-theme 'deeper-blue))
   ;; (if window-system
   ;;     (load-theme 'callouscrab)
   ;;   (load-theme 'wombat)))
-  ;;  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
-  ;;(color-theme-tomorrow-night-eighties))
-  )
+  ;; (load-file (concat imoryc-dir "/themes/color-theme-ps-warm.el"))
+;;  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
+;;  (color-theme-tomorrow-night-bright))
 
 (when set-environment-settings
   (load-file (concat imoryc-dir "/im-basic-settings.el")))
