@@ -114,8 +114,13 @@
 (defvar rubydb-command-name ''rvm--emacs-ruby-binary
   "File name for executing ruby.")
 
-(add-to-list 'load-path (concat dotfiles-dir "/Enhanced-Ruby-Mode")) ; must be added after any path containing old ruby-mode
-(setq enh-ruby-program "/home/ignacy/.rvm/rubies/ruby-1.9.2-p290/bin/ruby") ; so that still works if ruby points to ruby1.8
-(load-file (concat dotfiles-dir "/Enhanced-Ruby-Mode/ruby-mode.el"))
+;; (add-to-list 'load-path (concat dotfiles-dir "/Enhanced-Ruby-Mode")) ; must be added after any path containing old ruby-mode
+;; (setq enh-ruby-program "/home/ignacy/.rvm/rubies/ruby-1.9.2-p290/bin/ruby") ; so that still works if ruby points to ruby1.8
+;; (load-file (concat dotfiles-dir "/Enhanced-Ruby-Mode/ruby-mode.el"))
+
+
+(font-lock-add-keywords
+ 'ruby-mode
+ '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
 
 ;;;###autoload

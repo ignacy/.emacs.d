@@ -249,11 +249,11 @@
 (defun jw-spec-command (buffer)
   "Return the name of the appropriate spec command to run for the given buffer."
   (let* ((default-directory (jw-find-project-top (buffer-file-name buffer))))
-   "bundle exec rspec"))
-    ;; (or (jw-find-existing-file
-    ;;      (list (concat default-directory "rspec")
-    ;;            (concat default-directory "script/spec")))
-    ;;     "rspec")))
+    "bundle exec rspec"))
+;; (or (jw-find-existing-file
+;;      (list (concat default-directory "rspec")
+;;            (concat default-directory "script/spec")))
+;;     "rspec")))
 
 (defun jw-find-spec-name ()
   "Return the name of the current test method."
@@ -277,13 +277,13 @@ The compilation buffer by default gets a mode line.  Remove it
 unless the jw-test-keep-mode-line variable is true.  Otherwise
 just skip past it and insert an extra line in preparation for the
 test headers."
-    (if (and (looking-at "-*-") (not jw-test-keep-mode-line))
-        (let
-            ((bol (save-excursion (beginning-of-line)(point)))
-             (eol (save-excursion (end-of-line)(point))))
-          (delete-region bol (+ eol 1)))
-      (forward-line)
-      (insert "\n")) )
+  (if (and (looking-at "-*-") (not jw-test-keep-mode-line))
+      (let
+          ((bol (save-excursion (beginning-of-line)(point)))
+           (eol (save-excursion (end-of-line)(point))))
+        (delete-region bol (+ eol 1)))
+    (forward-line)
+    (insert "\n")) )
 
 (defun jw-test-insert-headers (buffer-name &rest headers)
   "Insert the given strings into the test buffer."
@@ -325,7 +325,7 @@ Current buffer goes to first position."
     (jw-test-insert-headers
      jw-test-buffer-name
      "= Test Rake\n")))
-     
+
 (defun jw-run-test-units ()
   "Run the test:units rake command as a test."
   (interactive)
@@ -448,9 +448,9 @@ test file."
     (let ((invoke-given (save-excursion
                           (re-search-backward jw-test-all-pattern)
                           (looking-at (concat " *" jw-given-keywords-pattern)))))
-    (if invoke-given
-        (let ((line-marker (jw-find-given-line-marker)))
-          (jw-test-invoking-given-by-line arg file-name line-marker))
+      (if invoke-given
+          (let ((line-marker (jw-find-given-line-marker)))
+            (jw-test-invoking-given-by-line arg file-name line-marker))
         (let ((method-name (jw-find-test-method-name)))
           (jw-test-invoking-test-by-name arg
                                          file-name
@@ -621,7 +621,7 @@ test file."
   (window-at 0 0))
 
 (defun jw-neighbor-window (win)
-  "Return a neighboring window to WIN. 
+  "Return a neighboring window to WIN.
 Prefer windows on the right to those below.  Might return the minibuffer."
   (let* ((edges (window-edges win))
          (left (caddr edges))
@@ -644,30 +644,33 @@ Never returns the minibuffer."
     (set-window-buffer w2 buf2)
     (select-window w2)))
 
+;; (defun jw-push-buffer (buffer)
+;;   "Push a new buffer onto the screen.
+;; Current buffer goes to first position."
+;;   (if (= 2 (count-windows))
+;;       (jw-neighboring-windows
+;;        (window-buffer (selected-window))
+;;        buffer)
+;;     (switch-to-buffer buffer)))
 (defun jw-push-buffer (buffer)
-  "Push a new buffer onto the screen. 
-Current buffer goes to first position."
-  (if (= 2 (count-windows))
-      (jw-neighboring-windows
-       (window-buffer (selected-window))
-       buffer)
-    (switch-to-buffer buffer)))
+  (switch-to-buffer "*testing*"))
+
 
 ;; Courtesy of Steve Yegge (http://steve.yegge.googlepages.com/my-dot-emacs-file)
 (defun jw-swap-windows ()
- "If you have 2 windows, it swaps them."
- (interactive)
- (cond ((not (= (count-windows) 2))
-        (message "You need exactly 2 windows to do this."))
-       (t
-        (let* ((w1 (first (window-list)))
-               (w2 (second (window-list)))
-               (b1 (window-buffer w1))
-               (b2 (window-buffer w2))
-               (s1 (window-start w1))
-               (s2 (window-start w2)))
-          (set-window-buffer w1 b2)
-          (set-window-buffer w2 b1)
-          (set-window-start w1 s2)
-          (set-window-start w2 s1)
-          (other-window 1)))))
+  "If you have 2 windows, it swaps them."
+  (interactive)
+  (cond ((not (= (count-windows) 2))
+         (message "You need exactly 2 windows to do this."))
+        (t
+         (let* ((w1 (first (window-list)))
+                (w2 (second (window-list)))
+                (b1 (window-buffer w1))
+                (b2 (window-buffer w2))
+                (s1 (window-start w1))
+                (s2 (window-start w2)))
+           (set-window-buffer w1 b2)
+           (set-window-buffer w2 b1)
+           (set-window-start w1 s2)
+           (set-window-start w2 s1)
+           (other-window 1)))))

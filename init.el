@@ -170,13 +170,12 @@
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
-  (load-theme 'deeper-blue))
   ;; (if window-system
   ;;     (load-theme 'callouscrab)
   ;;   (load-theme 'wombat)))
-  ;; (load-file (concat imoryc-dir "/themes/color-theme-ps-warm.el"))
-  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
-  (color-theme-tomorrow-night-bright))
+  ;;  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
+  ;;(color-theme-tomorrow-night-eighties))
+  )
 
 (when set-environment-settings
   (load-file (concat imoryc-dir "/im-basic-settings.el")))
@@ -503,6 +502,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (switch-to-buffer "zsh"))
 
 (setq default-frame-alist
-       (append default-frame-alist
+      (append default-frame-alist
               '((background-color . "#1D1D25")
                 (foreground-color . "#ffffff"))))
