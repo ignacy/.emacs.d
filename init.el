@@ -29,8 +29,8 @@
     (package-refresh-contents))
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
-                                 fuzzy-match autopair haskell-mode rainbow-mode
-                                 anything anything-config rinari
+                                 fuzzy-match autopair haskell-mode rainbow-mode coffee-mode
+                                 rinari ruby-mode inf-ruby ruby-compilation rinari deft
                                  yasnippet find-file-in-project android-mode flymake-ruby
                                  rvm yasnippet jump findr color-theme rainbow-delimiters
                                  idle-highlight-mode feature-mode marmalade))
@@ -64,6 +64,7 @@
       (add-hook 'find-file-hook 'flymake-find-file-hook)
       (require 'flymake-ruby) (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
+      (require 'yaml-mode)
       (require 'autopair)
       (autopair-global-mode)
 
@@ -168,13 +169,9 @@
   (org-clock-persistence-insinuate))
 
 (when set-use-color-theme
-  (load-theme 'deeper-blue))
-  ;; (if window-system
-  ;;     (load-theme 'callouscrab)
-  ;;   (load-theme 'wombat)))
-  ;; (load-file (concat imoryc-dir "/themes/color-theme-ps-warm.el"))
-;;  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
-;;  (color-theme-tomorrow-night-bright))
+  ;;(load-theme 'deeper-blue))
+  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
+  (color-theme-tomorrow-night))
 
 (when set-environment-settings
   (load-file (concat imoryc-dir "/im-basic-settings.el")))
@@ -403,8 +400,9 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun im/set-fonts ()
   (interactive)
   (condition-case nil
-      (set-face-attribute 'default nil :font "Inconsolata-g-10")
+      (set-frame-font "Inconsolata-g-10")
     (error nil)))
+(im/set-fonts)
 ;; ;;(set-face-attribute 'default nil :font "Consolas-12")
 ;; ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
 
@@ -504,3 +502,13 @@ This is the same as using \\[set-mark-command] with the prefix argument."
       (append default-frame-alist
               '((background-color . "#1D1D25")
                 (foreground-color . "#ffffff"))))
+
+
+(defadvice switch-to-buffer (before existing-buffer
+                                    activate compile)
+  "When interactive, switch to existing buffers only,
+unless given a prefix argument."
+  (interactive
+   (list (read-buffer "Switch to buffer: "
+                      (other-buffer)
+                      (null current-prefix-arg)))))

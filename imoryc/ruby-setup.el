@@ -8,6 +8,19 @@
 (add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
 (require 'rhtml-mode)
 
+
+(defun css-mode-hook ()
+  (autoload 'css-mode "css-mode" nil t)
+  (add-hook 'css-mode-hook '(lambda ()
+                              (setq css-indent-level 2)
+                              (setq css-indent-offset 2))))
+(add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
+
+(defun yaml-mode-hook ()
+  (autoload 'yaml-mode "yaml-mode" nil t))
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+
 (defun ruby-interpolate ()
   "In a double quoted string, interpolate."
   (interactive)
@@ -24,7 +37,10 @@
 (eval-after-load 'ruby-mode
   '(progn
      (ignore-errors (require 'ruby-compilation))
+     (ignore-errors (require 'inf-ruby))
      (setq ruby-use-encoding-map nil)
+     (setq ruby-deep-arglist t)
+     (setq ruby-deep-indent-paren nil)
      (setq ruby-insert-encoding-magic-comment nil)
      (add-hook 'ruby-mode-hook 'inf-ruby-keys)
      ;;(add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))

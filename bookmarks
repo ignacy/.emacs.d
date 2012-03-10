@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("test-file"
+(("keys"
+ (filename . "~/.emacs.d/imoryc/im-keys.el")
+ (front-context-string . "(define-key glob")
+ (rear-context-string . "'bookmark-jump)\n")
+ (position . 2453))
+("test-file"
  (filename . "~/code/bayes/bayes_test.rb")
  (front-context-string . "require 'test/un")
  (rear-context-string)
@@ -59,7 +64,7 @@
  (position . 58010))
 ("init.el"
  (filename . "~/.emacs.d/init.el")
- (front-context-string . "(setq dotfiles-d")
+ (front-context-string . "(require 'cl)\n\n;")
  (rear-context-string)
  (position . 1))
 )

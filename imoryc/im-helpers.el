@@ -292,3 +292,56 @@ instead."
              (t (error "Invalid direction")))
             word)
         (error "No symbol found")))))
+
+
+(defun other-window-backwards ()
+  "Select the previous window."
+  (interactive)
+  (other-window -1))
+
+
+(defalias 'scroll-ahead  'scroll-up)
+(defalias 'scroll-behind  'scroll-down)
+
+(defun scroll-n-lines-ahead (&optional n)
+  "Scroll ahead N lines (1 by default)."
+  (interactive "P")
+  (scroll-ahead (prefix-numeric-value n)))
+(defun scroll-n-lines-behind (&optional n)
+  "Scroll behind N lines (1 by default)."
+  (interactive "P")
+  (scroll-behind (prefix-numeric-value n)))
+
+
+(defun is-rails-project ()
+  (when (textmate-project-root)
+    (file-exists-p (expand-file-name "config/environment.rb" (textmate-project-root)))))
+
+(defun run-rails-test-or-ruby-buffer ()
+  (interactive)
+  (if (is-rails-project)
+      (let* ((path (buffer-file-name))
+             (filename (file-name-nondirectory path))
+             (test-path (expand-file-name "test" (textmate-project-root)))
+             (command (list ruby-compilation-executable "-I" test-path path)))
+        (pop-to-buffer (ruby-compilation-do filename command)))
+    (ruby-compilation-this-buffer)))
+
+;; got ot bookmarks from ido?
+;; (setq enable-recursive-minibuffers t)
+;; (define-key ido-file-dir-completion-map [(meta control ?b)] 'ido-goto-bookmark)
+;; (defun ido-goto-bookmark (bookmark)
+;;   (interactive
+;;    (list (bookmark-completing-read "Jump to bookmark"
+;;                                    bookmark-current-bookmark)))
+;;   (unless bookmark
+;;     (error "No bookmark specified"))
+;;   (let ((filename (bookmark-get-filename bookmark)))
+;;     (ido-set-current-directory
+;;      (if (file-directory-p filename)
+;;          filename
+;;        (file-name-directory filename)))
+;;     (setq ido-exit        'refresh
+;;           ido-text-init   ido-text
+;;           ido-rotate-temp t)
+;;     (exit-minibuffer)))
