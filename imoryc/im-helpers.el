@@ -36,10 +36,6 @@
   (set-buffer (get-buffer-create "reekOut"))
   (other-window 0))
 
-;; (defun figlet-region (&optional b e)
-;;   (interactive "r")
-
-
 (require 'ido-hacks)
 
 ;; Display ido results vertically, rather than horizontally
@@ -101,47 +97,11 @@
 ;;     (find-file (gethash (ido-completing-read "Open: " ido-list) tbl)))))
 
 (custom-set-faces
- '(ido-subdir ((t (:foreground "#66ff00")))) ;; Face used by ido for highlighting subdirs in the alternatives.
- '(ido-first-match ((t (:foreground "#ccff66")))) ;; Face used by ido for highlighting first match.
- '(ido-only-match ((t (:foreground "#ffcc33")))) ;; Face used by ido for highlighting only match.
+ '(ido-subdir ((t (:foreground "PaleGreen")))) ;; Face used by ido for highlighting subdirs in the alternatives.
+ '(ido-first-match ((t (:foreground "DodgerBlue" :background "gray10")))) ;; Face used by ido for highlighting first match.
+  '(ido-only-match ((t (:foreground "#ffcc33")))) ;; Face used by ido for highlighting only match.
  '(ido-indicator ((t (:foreground "#ffffff")))) ;; Face used by ido for highlighting its indicators (don't actually use this)
  '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))) ;; Ido face for indicating incomplete regexps. (don't use this either)
-
-
-(defun run-current-file ()
-  "Execute or compile the current file.
-For example, if the current buffer is the file x.pl,
-then it'll call “perl x.pl” in a shell.
-The file can be PHP, Perl, Python, Ruby, javascript, Bash, ocaml, vb, elisp.
-File suffix is used to determine what program to run."
-  (interactive)
-  (let (suffixMap fName suffix progName cmdStr)
-
-    ;; a keyed list of file suffix to comand-line program path/name
-    (setq suffixMap
-          '(
-            ("rb" . "./rspec --drb")
-            ("js" . "js")
-            ("sh" . "bash")
-            ("ml" . "ocaml")
-            ("vbs" . "cscript")
-            )
-          )
-
-    (setq fName (buffer-file-name))
-    (setq suffix (file-name-extension fName))
-    (setq progName (cdr (assoc suffix suffixMap)))
-    (setq cmdStr (concat progName " \""   fName "\""))
-
-    (if (string-equal suffix "el") ; special case for emacs lisp
-        (load-file fName)
-      (if progName
-          (progn
-            (message "Running…")
-            (shell-command cmdStr "*run-current-file output*" )
-            )
-        (message "No recognized program file suffix for this file.")
-        ))))
 
 (defun toggle-letter-case ()
   "Toggle the letter case of current word or text selection.

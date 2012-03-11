@@ -22,5 +22,9 @@
                minor-mode-alist  ;; list of minor modes
                ))
 
-(set-face-background 'modeline "#1D1D25")
-(set-face-foreground 'modeline "#B4C5C5")
+(set-face-background 'modeline "gray12")
+(set-face-foreground 'modeline "azure1")
+(set-face-background 'modeline-inactive "SkyBlue4")
+(set-face-background 'fringe "DodgerBlue4")
+(custom-set-faces
+ '(mode-line ((t (:box (:line-width 2 :color "DodgerBlue4"))))))

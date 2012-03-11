@@ -29,10 +29,10 @@
     (package-refresh-contents))
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
-                                 fuzzy-match autopair haskell-mode rainbow-mode coffee-mode
+                                 autopair haskell-mode rainbow-mode coffee-mode
                                  rinari ruby-mode inf-ruby ruby-compilation rinari deft
                                  yasnippet find-file-in-project android-mode flymake-ruby
-                                 rvm yasnippet jump findr color-theme rainbow-delimiters
+                                 rvm yasnippet jump color-theme rainbow-delimiters
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -63,8 +63,6 @@
       (global-set-key (kbd "C-c n") 'flymake-goto-next-error)
       (add-hook 'find-file-hook 'flymake-find-file-hook)
       (require 'flymake-ruby) (add-hook 'ruby-mode-hook 'flymake-ruby-load)
-
-      (require 'yaml-mode)
       (require 'autopair)
       (autopair-global-mode)
 
@@ -74,12 +72,6 @@
       (global-set-key (read-kbd-macro "C-,") 'find-file-in-tags)
 
       (require 'highlight-indentation)
-
-      (load-file (concat imoryc-dir "/rake-setup.el"))
-      (load-file (concat imoryc-dir "/project-top.el"))
-      (load-file (concat imoryc-dir "/testing.el"))
-      (load-file (concat imoryc-dir "/matlab.el"))
-
       (require 'ido)
       (ido-mode 'both) ;; for buffers and files
 
@@ -134,7 +126,13 @@
       (require 'uniquify)
       (setq
        uniquify-buffer-name-style 'post-forward
-       uniquify-separator ":")
+       uniquify-separator "@")
+
+      (load-file (concat imoryc-dir "/rake-setup.el"))
+      (load-file (concat imoryc-dir "/project-top.el"))
+      (load-file (concat imoryc-dir "/testing.el"))
+      ;;(require 'matlab)
+
 
       (require 'magit)
       (require 'android-mode))
@@ -497,12 +495,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun switch-to-zsh ()
   (interactive)
   (switch-to-buffer "zsh"))
-
-(setq default-frame-alist
-      (append default-frame-alist
-              '((background-color . "#1D1D25")
-                (foreground-color . "#ffffff"))))
-
 
 (defadvice switch-to-buffer (before existing-buffer
                                     activate compile)
