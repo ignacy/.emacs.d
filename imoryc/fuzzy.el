@@ -20,7 +20,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -83,24 +83,24 @@
                 for c2 = (aref s2 j)
                 if (and (char-equal c1 c2)
                         (null (aref seen j))) do
-                  (push c1 cs1)
-                  (aset seen j c2)
-                  (incf m)
-                and return nil)
+                        (push c1 cs1)
+                        (aset seen j c2)
+                        (incf m)
+                        and return nil)
           finally
-            (setq cs1 (nreverse cs1)
-                  cs2 (loop for i below l2
-                            for c = (aref seen i)
-                            if c collect c)))
+          (setq cs1 (nreverse cs1)
+                cs2 (loop for i below l2
+                          for c = (aref seen i)
+                          if c collect c)))
     (loop for c1 in cs1
           for c2 in cs2
           if (not (char-equal c1 c2)) do
-            (incf tr))
+          (incf tr))
     (loop for i below (min m 5)
           for c1 across s1
           for c2 across s2
           while (char-equal c1 c2) do
-            (incf p))
+          (incf p))
     (if (eq m 0)
         0.0
       (setq m (float m))
@@ -191,11 +191,11 @@
             (goto-char (1+ (match-beginning 1)))))
         (unless match-data
           (goto-char begin)))
-    (if match-data
-        (progn
-          (store-match-data match-data)
-          (goto-char (match-beginning 1)))
-      (store-match-data nil)))))
+      (if match-data
+          (progn
+            (store-match-data match-data)
+            (goto-char (match-beginning 1)))
+        (store-match-data nil)))))
 
 (defvar fuzzy-isearch nil)
 (defvar fuzzy-isearch-failed-count 0)
@@ -226,7 +226,7 @@
                   (> (setq fuzzy-isearch-failed-count (1+ fuzzy-isearch-failed-count))
                      1)))
          (unless fuzzy-isearch
-           ;(goto-char isearch-opoint)
+                                        ;(goto-char isearch-opoint)
            (fuzzy-isearch-activate))
          (if isearch-forward 'fuzzy-search-forward 'fuzzy-search-backward))
         (t
