@@ -5,7 +5,6 @@
 ;;; ==================================================================
 
 (require 'compile)
-(require 'find-in-parent-dir)
 
 ;;; Name of the asynchronous test process.
 (defconst jw-test-process-name "*test-process*")
@@ -19,23 +18,17 @@
 ;;; Name of the ruby debugging command to run the tests in debug mode.
 (defconst jw-rdebug-command "rdebug")
 
-;;; Name of the command to remove ANSI terminal cruft
-(defconst jw-noansi-command  (concat imoryc-dir "/noansi"))
-
-;;; NOANSI option string (may be empty, or a pipe to the noansi command)
-(defconst jw-noansi-option  (concat " | " jw-noansi-command))
-
 (defun jw-shell-env-setup ()
   (concat (jw-project-env-file )))
 
 ;;; Name of the rake command ot run the rake based tests.
-(defconst jw-rake-command "bundle exec rake")
+(defconst jw-rake-command "rake")
 
 ;;; Options to be added to the ruby based test commands.
 (defconst jw-test-options "-Ilib:test:.")
 
 ;;; Options to be added to the spec command.
-(defconst jw-spec-options "--drb")
+(defconst jw-spec-options "")
 
 ;;; If true, run the tests with warnings turned on.
 (defvar jw-test-warnings t)
@@ -66,33 +59,65 @@
   (concat "\\(" jw-test-name-pattern "\\|\\(^ *" jw-given-keywords-pattern "\\)\\)") )
 ;;;   (concat jw-test-test-unit-pattern "\\|" jw-test-shoulda-pattern))
 
-(set-face-attribute (make-face 'test-heading1) nil
-                    :family "arial"
-                    :height 180
-                    :background "#000000"
-                    :foreground "#aaccff"
-                    :weight 'bold)
+(defun testing-dark-colors ()
+  (interactive)
+  (set-face-attribute (make-face 'test-heading1) nil
+                      :family "arial"
+                      :height 240
+                      :background "#000000"
+                      :foreground "#9999ff"
+                      :weight 'bold)
 
-(set-face-attribute (make-face 'test-heading2) nil
-                    :family "arial"
-                    :height 120
-                    :background "#000000"
-                    :foreground "#aaccff"
-                    :weight 'bold)
+  (set-face-attribute (make-face 'test-heading2) nil
+                      :family "arial"
+                      :height 180
+                      :background "#000000"
+                      :foreground "#9999ff"
+                      :weight 'bold)
 
-(set-face-attribute (make-face 'test-success) nil
-                    :family "arial"
-                    :height 120
-                    :background (if window-system "#33ff33" "#001100")
-                    :foreground (if window-system "black" "white")
-                    :weight 'bold)
+  (set-face-attribute (make-face 'test-success) nil
+                      :family "arial"
+                      :height 240
+                      :background (if window-system "black" "#001100")
+                      :foreground (if window-system "#00aa00" "white")
+                      :weight 'bold)
 
-(set-face-attribute (make-face 'test-failure) nil
-                    :family "arial"
-                    :height 120
-                    :background (if window-system "#ff3333" "#110000")
-                    :foreground (if window-system "black" "white")
-                    :weight 'bold)
+  (set-face-attribute (make-face 'test-failure) nil
+                      :family "arial"
+                      :height 240
+                      :background (if window-system "black" "#110000")
+                      :foreground (if window-system "ff3333" "white")
+                      :weight 'bold))
+
+(defun testing-light-colors ()
+  (interactive)
+  (set-face-attribute (make-face 'test-heading1) nil
+                      :family "arial"
+                      :height 240
+                      :background "#000000"
+                      :foreground "#9999ff"
+                      :weight 'bold)
+
+  (set-face-attribute (make-face 'test-heading2) nil
+                      :family "arial"
+                      :height 180
+                      :background "#000000"
+                      :foreground "#9999ff"
+                      :weight 'bold)
+
+  (set-face-attribute (make-face 'test-success) nil
+                      :family "arial"
+                      :height 240
+                      :background (if window-system "#00aa00" "white")
+                      :foreground (if window-system "black" "#001100")
+                      :weight 'bold)
+
+  (set-face-attribute (make-face 'test-failure) nil
+                      :family "arial"
+                      :height 240
+                      :background (if window-system "ff3333" "white")
+                      :foreground (if window-system "black" "#110000")
+                      :weight 'bold))
 
 (add-to-list 'compilation-mode-font-lock-keywords
              '("^\\([0-9]+ examples?, 0 failures?.*\n\\)"
@@ -155,8 +180,8 @@
   (let ((proj-env (jw-project-env-file default-directory))
         (command  (mapconcat (lambda (x) x) args " ")))
     (if proj-env
-        (concat ". " proj-env "; " command jw-noansi-option)
-      (concat command jw-noansi-option))))
+        (concat ". " proj-env "; " command)
+      (concat command))))
 
 (defun jw-test-start-process (&rest args)
   "Start the test process using the compilation package."
@@ -248,12 +273,7 @@
 
 (defun jw-spec-command (buffer)
   "Return the name of the appropriate spec command to run for the given buffer."
-  (let* ((default-directory (jw-find-project-top (buffer-file-name buffer))))
-    "bundle exec rspec"))
-;; (or (jw-find-existing-file
-;;      (list (concat default-directory "rspec")
-;;            (concat default-directory "script/spec")))
-;;     "rspec")))
+  "rspec")
 
 (defun jw-find-spec-name ()
   "Return the name of the current test method."
@@ -277,13 +297,13 @@ The compilation buffer by default gets a mode line.  Remove it
 unless the jw-test-keep-mode-line variable is true.  Otherwise
 just skip past it and insert an extra line in preparation for the
 test headers."
-  (if (and (looking-at "-*-") (not jw-test-keep-mode-line))
-      (let
-          ((bol (save-excursion (beginning-of-line)(point)))
-           (eol (save-excursion (end-of-line)(point))))
-        (delete-region bol (+ eol 1)))
-    (forward-line)
-    (insert "\n")) )
+    (if (and (looking-at "-*-") (not jw-test-keep-mode-line))
+        (let
+            ((bol (save-excursion (beginning-of-line)(point)))
+             (eol (save-excursion (end-of-line)(point))))
+          (delete-region bol (+ eol 1)))
+      (forward-line)
+      (insert "\n")) )
 
 (defun jw-test-insert-headers (buffer-name &rest headers)
   "Insert the given strings into the test buffer."
@@ -298,18 +318,11 @@ test headers."
     (if jw-test-single-window (delete-other-windows)) ))
 
 ;;; -- Test Run Commands ---------------------------------------------
-(defun jw-push-buffer (buffer)
-  "Push a new buffer onto the screen.
-Current buffer goes to first position."
-  (if (= 2 (count-windows))
-      (jw-neighboring-windows
-       (window-buffer (selected-window))
-       buffer)
-    (switch-to-buffer buffer)))
 
 (defun jw-run-test-rake ()
   "Run the default rake command as a test."
   (interactive)
+  (save-buffer)
   (jw-prep-test-buffer)
   (jw-test-start-process jw-rake-command)
   (jw-test-insert-headers
@@ -317,18 +330,10 @@ Current buffer goes to first position."
    "= Test Rake\n"
    "== Target: default\n\n") )
 
-(defun im/run-test-file-using-rake ()
-  (interactive)
-  (let ((file-name (buffer-file-name)))
-    (jw-prep-test-buffer)
-    (jw-test-start-process jw-rake-command (concat "spec SPEC=" file-name))
-    (jw-test-insert-headers
-     jw-test-buffer-name
-     "= Test Rake\n")))
-
 (defun jw-run-test-units ()
   "Run the test:units rake command as a test."
   (interactive)
+  (save-buffer)
   (jw-prep-test-buffer)
   (jw-test-start-process jw-rake-command "test:units")
   (jw-test-insert-headers
@@ -339,6 +344,7 @@ Current buffer goes to first position."
 (defun jw-run-test-functionals ()
   "Run the test:functionals rake command as a test."
   (interactive)
+  (save-buffer)
   (jw-prep-test-buffer)
   (jw-test-start-process jw-rake-command "test:functionals")
   (jw-test-insert-headers
@@ -448,9 +454,9 @@ test file."
     (let ((invoke-given (save-excursion
                           (re-search-backward jw-test-all-pattern)
                           (looking-at (concat " *" jw-given-keywords-pattern)))))
-      (if invoke-given
-          (let ((line-marker (jw-find-given-line-marker)))
-            (jw-test-invoking-given-by-line arg file-name line-marker))
+    (if invoke-given
+        (let ((line-marker (jw-find-given-line-marker)))
+          (jw-test-invoking-given-by-line arg file-name line-marker))
         (let ((method-name (jw-find-test-method-name)))
           (jw-test-invoking-test-by-name arg
                                          file-name
@@ -597,7 +603,13 @@ test file."
   (cond ((null n) (bookmark-jump "test"))
         (t (bookmark-set "test")) ))
 
-;;; -- Toggle Enhancements -------------------------------------------
+(defun jw-test-toggle-warnings ()
+  "Toggle the 'use warnings' flag for when testing"
+  (interactive)
+  (setq jw-test-warnings (not jw-test-warnings))
+  (if jw-test-warnings
+      (message "Warnings enabled in tests")
+    (message "Warnings disabled in tests") ))
 
 ;;; Add the toggle command to the compilation mode, just make it
 ;;; delete the test buffer.
@@ -609,68 +621,3 @@ test file."
       (pop-to-buffer jw-test-last-test-buffer) ))
 
 (define-key compilation-mode-map "\C-c\C-t" 'jw-test-kill-test-buffer)
-
-
-;;; Window Manaaging ==================================================
-
-(defun jw-minibuffer-window-p (win)
-  (and win
-       (string-match "Minibuf" (buffer-name (window-buffer win)))))
-
-(defun jw-window-at-origin ()
-  (window-at 0 0))
-
-(defun jw-neighbor-window (win)
-  "Return a neighboring window to WIN.
-Prefer windows on the right to those below.  Might return the minibuffer."
-  (let* ((edges (window-edges win))
-         (left (caddr edges))
-         (bottom (cadddr edges)))
-    (cond ((window-at left 0))
-          ((window-at 0 bottom)))))
-
-(defun jw-neighbor-edit-window (win)
-  "Return a neighboring edit window to WIN.
-Never returns the minibuffer."
-  (let ((neighbor (jw-neighbor-window win)))
-    (if (jw-minibuffer-window-p neighbor)
-        nil
-      neighbor)))
-
-(defun jw-neighboring-windows (buf1 buf2)
-  (let* ((w1 (jw-window-at-origin))
-         (w2 (jw-neighbor-edit-window w1)))
-    (set-window-buffer w1 buf1)
-    (set-window-buffer w2 buf2)
-    (select-window w2)))
-
-;; (defun jw-push-buffer (buffer)
-;;   "Push a new buffer onto the screen.
-;; Current buffer goes to first position."
-;;   (if (= 2 (count-windows))
-;;       (jw-neighboring-windows
-;;        (window-buffer (selected-window))
-;;        buffer)
-;;     (switch-to-buffer buffer)))
-(defun jw-push-buffer (buffer)
-  (switch-to-buffer "*testing*"))
-
-
-;; Courtesy of Steve Yegge (http://steve.yegge.googlepages.com/my-dot-emacs-file)
-(defun jw-swap-windows ()
-  "If you have 2 windows, it swaps them."
-  (interactive)
-  (cond ((not (= (count-windows) 2))
-         (message "You need exactly 2 windows to do this."))
-        (t
-         (let* ((w1 (first (window-list)))
-                (w2 (second (window-list)))
-                (b1 (window-buffer w1))
-                (b2 (window-buffer w2))
-                (s1 (window-start w1))
-                (s2 (window-start w2)))
-           (set-window-buffer w1 b2)
-           (set-window-buffer w2 b1)
-           (set-window-start w1 s2)
-           (set-window-start w2 s1)
-           (other-window 1)))))

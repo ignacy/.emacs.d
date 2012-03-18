@@ -54,10 +54,6 @@
 
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
 
-      (load-file (concat imoryc-dir "/ruby-setup.el"))
-      (load-file (concat imoryc-dir "/java-setup.el"))
-
-
       (require 'flymake)
       (global-set-key (kbd "C-c e") 'flymake-display-err-menu-for-current-line)
       (global-set-key (kbd "C-c n") 'flymake-goto-next-error)
@@ -87,6 +83,7 @@
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
       (load-file (concat imoryc-dir "/ruby-setup.el"))
+      (load-file (concat imoryc-dir "/mo-git-blame.el"))
       (load-file (concat imoryc-dir "/java-setup.el"))
 
       (defun idle-coding-hook ()
@@ -101,7 +98,6 @@
 
       (require 'epa)
       (epa-file-enable)
-      (require 'git-blame)
       (require 'haml-mode)
       (require 'rvm)
       (rvm-use "ruby-1.9.2" "jobandtalent")
@@ -130,6 +126,9 @@
 
       (load-file (concat imoryc-dir "/rake-setup.el"))
       (load-file (concat imoryc-dir "/project-top.el"))
+      (load-file (concat imoryc-dir "/compile-mode-options.el"))
+      (load-file (concat imoryc-dir "/window-manage.el"))
+      (load-file (concat imoryc-dir "/enhanced_toggle.el"))
       (load-file (concat imoryc-dir "/testing.el"))
       ;;(require 'matlab)
 

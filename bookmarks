@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("keys"
+(("test"
+ (filename . "~/code/new_jobandtalent/spec/models/candidate_spec.rb")
+ (front-context-string . "Factory(:candida")
+ (rear-context-string . "fb_id' do\n      ")
+ (position . 1125))
+("keys"
  (filename . "~/.emacs.d/imoryc/im-keys.el")
  (front-context-string . "(define-key glob")
  (rear-context-string . "'bookmark-jump)\n")
