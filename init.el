@@ -503,3 +503,8 @@ unless given a prefix argument."
    (list (read-buffer "Switch to buffer: "
                       (other-buffer)
                       (null current-prefix-arg)))))
+
+(defun run-spork ()
+  (interactive)
+  (shell-command "kill-spork &")
+  (start-process "spork" "spork" "/home/ignacy/.rvm/gems/ruby-1.9.2-p290@jobandtalent/bin/spork"))
