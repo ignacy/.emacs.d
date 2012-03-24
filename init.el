@@ -167,8 +167,8 @@
 
 (when set-use-color-theme
   ;;(load-theme 'deeper-blue))
-  (load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
-  (color-theme-tomorrow-night))
+  (load-file (concat imoryc-dir "/themes/color-theme-ir-black.el"))
+  (color-theme-dark-blue2))
 
 (when set-environment-settings
   (load-file (concat imoryc-dir "/im-basic-settings.el")))
@@ -176,7 +176,7 @@
 
 (when set-line-highlighting
   (global-hl-line-mode 1)
-  ;;(set-face-background 'hl-line "#333")
+  (set-face-background 'hl-line "#333")
   ;;(set-face-background 'hl-line "#eee")
   (set-face-foreground 'highlight nil)
   (set-face-attribute hl-line-face nil :overline nil)
@@ -490,6 +490,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun sh (&optional name)
   (interactive)
   (shell name))
+
+(defun zsh ()
+  (interactive)
+  (shell "zsh"))
 
 (defun switch-to-zsh ()
   (interactive)

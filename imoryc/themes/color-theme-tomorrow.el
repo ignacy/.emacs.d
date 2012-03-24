@@ -33,8 +33,8 @@ theme will be used."
         (purple "#8959a8"))
 
     (cond ((eq variant 'night)
-           (setq background "gray14"
-                 current-line "gray23"
+           (setq background "gray9"
+                 current-line "gray11"
                  selection "#373b41"
                  foreground "ivory"
                  comment "gray30"
