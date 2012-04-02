@@ -21,6 +21,7 @@
 (bind "M-h" 'backward-kill-word)
 (bind "M-z" 'undo)
 (bind "C-x C-o" 'other-window)
+(bind "C-x C-1" 'delete-other-windows)
 (bind "C-a" 'back-to-indentation)
 (bind "C-x C-f" 'ido-find-file)
 (bind "C-x f" 'textmate-goto-file)
