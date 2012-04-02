@@ -50,7 +50,6 @@
 (bind "M-," 'comment-or-uncomment-region)
 (bind "M-." 'anything-c-etags-select)
 (bind "M-l" 'highlight-lines-matching-regexp)
-(bind "M-n" 'smart-symbol-go-forward)
 (bind "M-p" 'smart-symbol-go-backward)
 (bind "<f1>" 'help)
 (bind "C-x C-x" 'clipboard-kill-region)

@@ -32,7 +32,7 @@
                                  autopair haskell-mode rainbow-mode coffee-mode
                                  rinari ruby-mode inf-ruby ruby-compilation rinari deft
                                  yasnippet find-file-in-project android-mode flymake-ruby
-                                 rvm yasnippet jump color-theme rainbow-delimiters
+                                 rvm yasnippet jump color-theme rainbow-delimiters ruby-end
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -45,6 +45,8 @@
       (add-to-list 'load-path imoryc-dir))
 
 (when set-loadpaths (message "Setting load paths for libraries")
+      (require 'ruby-end)
+
       (require 'yasnippet)
       (yas/initialize)
       (setq yas/root-directory (concat dotfiles-dir "/snippets"))
@@ -165,10 +167,11 @@
   (setq org-refile-targets '((org-agenda-files . (:level . 1))))
   (org-clock-persistence-insinuate))
 
+
 (when set-use-color-theme
   ;;(load-theme 'deeper-blue))
   (load-file (concat imoryc-dir "/themes/color-theme-ir-black.el"))
-  (color-theme-dark-blue2))
+  (color-theme-ir-black))
 
 (when set-environment-settings
   (load-file (concat imoryc-dir "/im-basic-settings.el")))
@@ -176,7 +179,7 @@
 
 (when set-line-highlighting
   (global-hl-line-mode 1)
-  (set-face-background 'hl-line "#333")
+  (set-face-background 'hl-line "#111")
   ;;(set-face-background 'hl-line "#eee")
   (set-face-foreground 'highlight nil)
   (set-face-attribute hl-line-face nil :overline nil)
@@ -460,7 +463,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
  '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))
  '(ido-indicator ((t (:foreground "#ffffff"))))
  '(ido-only-match ((t (:foreground "#ffcc33"))))
- '(ido-subdir ((t (:foreground "#66ff00")))))
+ '(ido-subdir ((t (:foreground "#66ff00"))))
+ '(mode-line ((t (:box (:line-width 2 :color "DodgerBlue4"))))))
 (setq redisplay-dont-pause t)
 
 ;; Make the whole buffer pretty and consistent
@@ -481,7 +485,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (defun im/shell-mode-hook ()
   (setq show-trailing-whitespace nil)
-  (setq shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"))
+  (hl-line-mode nil))
 
 (add-hook 'shell-mode-hook 'im/shell-mode-hook)
 (add-hook 'term-mode-hook 'im/shell-mode-hook)
@@ -489,7 +493,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; shell-mode
 (defun sh (&optional name)
   (interactive)
-  (shell name))
+ (shell name))
 
 (defun zsh ()
   (interactive)
@@ -510,5 +514,13 @@ unless given a prefix argument."
 
 (defun run-spork ()
   (interactive)
-  (shell-command "kill-spork &")
-  (start-process "spork" "spork" "/home/ignacy/.rvm/gems/ruby-1.9.2-p290@jobandtalent/bin/spork"))
+  (start-process "spork" "spork" "/home/ignacy/.rvm/gems/ruby-1.9.3p125@jobandtalent/bin/spork"))
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m))))
+(put 'narrow-to-region 'disabled nil)

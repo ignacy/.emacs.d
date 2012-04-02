@@ -45,8 +45,10 @@
      (setq ruby-insert-encoding-magic-comment nil)
      (add-hook 'ruby-mode-hook 'inf-ruby-keys)
      ;;(add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
-     (setq tab-width 2)
-     (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))
+     (setq tab-width 2)))
+
+;; (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))
+
 
 (defadvice find-tag (before c-tag-file activate)
   "Automatically create tags file."
