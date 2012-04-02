@@ -29,7 +29,7 @@
     (package-refresh-contents))
 
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
-                                 autopair haskell-mode rainbow-mode coffee-mode
+                                 autopair haskell-mode rainbow-mode coffee-mode js2-mode
                                  rinari ruby-mode inf-ruby ruby-compilation rinari deft
                                  yasnippet find-file-in-project android-mode flymake-ruby
                                  rvm yasnippet jump color-theme rainbow-delimiters ruby-end
@@ -56,6 +56,7 @@
 
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
 
+      (autoload 'espresso-mode "espresso")
       (require 'flymake)
       (global-set-key (kbd "C-c e") 'flymake-display-err-menu-for-current-line)
       (global-set-key (kbd "C-c n") 'flymake-goto-next-error)
@@ -91,12 +92,19 @@
       (defun idle-coding-hook ()
         (idle-highlight-mode t))
 
+      (defun set-javascript()
+        (setq autopair-mode nil))
+
       (add-hook 'emacs-lisp-mode-hook 'idle-coding-hook)
       (add-hook 'ruby-mode-hook 'idle-coding-hook)
-      (add-hook 'javascript-mode-hook 'idle-coding-hook)
+      (add-hook 'js2-mode-hook 'idle-coding-hook)
+      (add-hook 'js2-mode-hook 'set-javascript)
       (add-hook 'matlab-mode-hook 'idle-coding-hook)
       (add-hook 'rhtml-mode-hook 'idle-coding-hook)
       (add-hook 'java-mode-hook 'idle-coding-hook)
+
+      (autoload 'js2-mode "js2-mode" nil t)
+      (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
       (require 'epa)
       (epa-file-enable)
@@ -493,7 +501,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; shell-mode
 (defun sh (&optional name)
   (interactive)
- (shell name))
+  (shell name))
 
 (defun zsh ()
   (interactive)
@@ -512,15 +520,71 @@ unless given a prefix argument."
                       (other-buffer)
                       (null current-prefix-arg)))))
 
-(defun run-spork ()
+(defun my-js2-indent-function ()
   (interactive)
-  (start-process "spork" "spork" "/home/ignacy/.rvm/gems/ruby-1.9.3p125@jobandtalent/bin/spork"))
+  (save-restriction
+    (widen)
+    (let* ((inhibit-point-motion-hooks t)
+           (parse-status (save-excursion (syntax-ppss (point-at-bol))))
+           (offset (- (current-column) (current-indentation)))
+           (indentation (espresso--proper-indentation parse-status))
+           node)
 
+      (save-excursion
+
+        ;; I like to indent case and labels to half of the tab width
+        (back-to-indentation)
+        (if (looking-at "case\\s-")
+            (setq indentation (+ indentation (/ espresso-indent-level 2))))
+
+        ;; consecutive declarations in a var statement are nice if
+        ;; properly aligned, i.e:
+        ;;
+        ;; var foo = "bar",
+        ;;     bar = "foo";
+        (setq node (js2-node-at-point))
+        (when (and node
+                   (= js2-NAME (js2-node-type node))
+                   (= js2-VAR (js2-node-type (js2-node-parent node))))
+          (setq indentation (+ 4 indentation))))
+
+      (indent-line-to indentation)
+      (when (> offset 0) (forward-char offset)))))
+
+
+(defun my-js2-mode-hook ()
+  (require 'espresso)
+  (setq espresso-indent-level 2
+        indent-tabs-mode nil
+        c-basic-offset 2)
+  (c-toggle-auto-state 0)
+  (c-toggle-hungry-state 1)
+  (set (make-local-variable 'indent-line-function) 'my-js2-indent-function)
+  (define-key js2-mode-map [(meta control |)] 'cperl-lineup)
+  (define-key js2-mode-map [(meta control \;)] 
+    '(lambda()
+       (interactive)
+       (insert "/* -----[ ")
+       (save-excursion
+         (insert " ]----- */"))
+       ))
+  (define-key js2-mode-map [(return)] 'newline-and-indent)
+  (define-key js2-mode-map [(backspace)] 'c-electric-backspace)
+  (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
+  (define-key js2-mode-map [(control meta q)] 'my-indent-sexp)
+  (if (featurep 'js2-highlight-vars)
+    (js2-highlight-vars-mode))
+  (message "My JS2 hook"))
+
+(add-hook 'js2-mode-hook 'my-js2-mode-hook)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m))))
-(put 'narrow-to-region 'disabled nil)
+ '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
+ (put 'narrow-to-region 'disabled nil)
+ '(js2-auto-indent-p nil)
+ '(js2-basic-offset 2)
+ '(js2-cleanup-whitespace t))

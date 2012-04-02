@@ -20,6 +20,7 @@
 (bind "C-l" 'recenter)
 (bind "M-h" 'backward-kill-word)
 (bind "M-z" 'undo)
+(bind "C-x C-o" 'other-window)
 (bind "C-a" 'back-to-indentation)
 (bind "C-x C-f" 'ido-find-file)
 (bind "C-x f" 'textmate-goto-file)
