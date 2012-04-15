@@ -21,7 +21,6 @@
 (defvar show-line-numbers nil)
 
 (when set-use-marmelade
-  (load-file "~/.emacs.d/imoryc/package.el")
   (require 'package)
   (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
   (add-to-list 'package-archives
@@ -33,7 +32,7 @@
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
                                  autopair haskell-mode rainbow-mode coffee-mode js2-mode
                                  rinari ruby-mode inf-ruby ruby-compilation rinari deft
-                                 find-file-in-project android-mode flymake-ruby 
+                                 find-file-in-project android-mode flymake-ruby yasnippet
                                  rvm  jump color-theme rainbow-delimiters ruby-end
                                  idle-highlight-mode feature-mode marmalade))
 
@@ -56,12 +55,12 @@
 (when set-loadpaths (message "Setting load paths for libraries")
       (require 'ruby-end)
 
-      ;; (require 'yasnippet)
-      ;; (yas/initialize)
-      ;; (setq yas/root-directory (concat dotfiles-dir "/snippets"))
-      ;; (yas/load-directory yas/root-directory)
-      ;; (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
-      ;; (setq yas/trigger-key "TAB")
+      (require 'yasnippet)
+      (yas/initialize)
+      (setq yas/root-directory (concat dotfiles-dir "/snippets"))
+      (yas/load-directory yas/root-directory)
+      (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
+      (setq yas/trigger-key "TAB")
 
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
 
@@ -157,9 +156,8 @@
 
 
       (require 'magit)
-      ;; (require 'android-mode)
-			)
-
+      (require 'android-mode))
+			
 (when use-deft
   (add-to-list 'load-path (concat dotfiles-dir "/deft"))
   (require 'deft)
