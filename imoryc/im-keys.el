@@ -9,6 +9,12 @@
                         fn
                       `',fn)))
 
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
+
 (bind "<f8>" 'deft)
 ;;(bind "<f5>" 'im/ant)
 (bind "C-x C-r" 'ido-recentf-open)
@@ -52,7 +58,11 @@
 (bind "M-," 'comment-or-uncomment-region)
 (bind "M-." 'anything-c-etags-select)
 (bind "M-l" 'highlight-lines-matching-regexp)
-(bind "M-p" 'smart-symbol-go-backward)
+;; (bind "M-p" 'smart-symbol-go-backward)
+;; (bind "M-n" 'smart-symbol-go-forward)
+(bind "M-p" 'previous-line)
+(bind "M-n" 'next-line)
+
 (bind "<f1>" 'help)
 (bind "C-x C-x" 'clipboard-kill-region)
 (bind "M-m" iy-go-to-char)
@@ -64,7 +74,7 @@
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))
 (global-unset-key (kbd "C-x 2"))
-;m(global-unset-key [?\C-x ?\C-z])
+                                        ;m(global-unset-key [?\C-x ?\C-z])
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-ca" 'org-agenda)
 (global-set-key [(control backspace)] 'backward-kill-word)
@@ -73,6 +83,9 @@
 (bind "C-x g" 'bookmark-jump)
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
+
+(global-unset-key (kbd "<backspace>"))
+(global-unset-key (kbd "RET"))
 
 (global-unset-key (kbd "<up>"))
 (global-unset-key (kbd "<down>"))

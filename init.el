@@ -6,6 +6,7 @@
 (defvar set-loadpaths t)
 (defvar set-use-marmelade t)
 (defvar set-line-highlighting t)
+(defvar set-use-key-chords t)
 (defvar set-environment-settings t)
 (defvar set-java-paths-on-windows t)
 (defvar set-working-on-bdj t)
@@ -20,6 +21,7 @@
 (defvar show-line-numbers nil)
 
 (when set-use-marmelade
+  (load-file "~/.emacs.d/imoryc/package.el")
   (require 'package)
   (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
   (add-to-list 'package-archives
@@ -31,8 +33,8 @@
   (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
                                  autopair haskell-mode rainbow-mode coffee-mode js2-mode
                                  rinari ruby-mode inf-ruby ruby-compilation rinari deft
-                                 yasnippet find-file-in-project android-mode flymake-ruby
-                                 rvm yasnippet jump color-theme rainbow-delimiters ruby-end
+                                 find-file-in-project android-mode flymake-ruby 
+                                 rvm  jump color-theme rainbow-delimiters ruby-end
                                  idle-highlight-mode feature-mode marmalade))
 
   (dolist (p my-packages)
@@ -44,15 +46,22 @@
       (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
       (add-to-list 'load-path imoryc-dir))
 
+(when set-use-key-chords
+  (require 'key-chord)
+  (key-chord-mode 1)
+  (key-chord-define-global "uu"     'undo)
+  (key-chord-define-global "dp"     'defunkt-duplicate-line)
+  (key-chord-define-global ",b"     'switch-to-buffer))
+
 (when set-loadpaths (message "Setting load paths for libraries")
       (require 'ruby-end)
 
-      (require 'yasnippet)
-      (yas/initialize)
-      (setq yas/root-directory (concat dotfiles-dir "/snippets"))
-      (yas/load-directory yas/root-directory)
-      (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
-      (setq yas/trigger-key "TAB")
+      ;; (require 'yasnippet)
+      ;; (yas/initialize)
+      ;; (setq yas/root-directory (concat dotfiles-dir "/snippets"))
+      ;; (yas/load-directory yas/root-directory)
+      ;; (yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
+      ;; (setq yas/trigger-key "TAB")
 
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
 
@@ -88,6 +97,10 @@
       (load-file (concat imoryc-dir "/ruby-setup.el"))
       (load-file (concat imoryc-dir "/mo-git-blame.el"))
       (load-file (concat imoryc-dir "/java-setup.el"))
+
+
+      (require 'ace-jump-mode)
+      (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
       (defun idle-coding-hook ()
         (idle-highlight-mode t))
@@ -144,7 +157,8 @@
 
 
       (require 'magit)
-      (require 'android-mode))
+      ;; (require 'android-mode)
+			)
 
 (when use-deft
   (add-to-list 'load-path (concat dotfiles-dir "/deft"))
@@ -170,8 +184,8 @@
   (setq org-clock-persist 'history)
   (setq org-src-fontify-natively t)
   (setq org-refile-use-outline-path 'file)
-  (org-babel-do-load-languages
-   'org-babel-load-languages '((ruby . t) (R . t)))
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages '((ruby . t) (R . t)))
   (setq org-refile-targets '((org-agenda-files . (:level . 1))))
   (org-clock-persistence-insinuate))
 
@@ -408,7 +422,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun im/set-fonts ()
   (interactive)
   (condition-case nil
-      (set-frame-font "Inconsolata-g-10")
+      (set-frame-font "Monaco-14")
     (error nil)))
 (im/set-fonts)
 ;; ;;(set-face-attribute 'default nil :font "Consolas-12")
@@ -561,7 +575,7 @@ unless given a prefix argument."
   (c-toggle-hungry-state 1)
   (set (make-local-variable 'indent-line-function) 'my-js2-indent-function)
   (define-key js2-mode-map [(meta control |)] 'cperl-lineup)
-  (define-key js2-mode-map [(meta control \;)] 
+  (define-key js2-mode-map [(meta control \;)]
     '(lambda()
        (interactive)
        (insert "/* -----[ ")
@@ -573,7 +587,7 @@ unless given a prefix argument."
   (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
   (define-key js2-mode-map [(control meta q)] 'my-indent-sexp)
   (if (featurep 'js2-highlight-vars)
-    (js2-highlight-vars-mode))
+      (js2-highlight-vars-mode))
   (message "My JS2 hook"))
 
 (add-hook 'js2-mode-hook 'my-js2-mode-hook)
@@ -588,3 +602,9 @@ unless given a prefix argument."
  '(js2-auto-indent-p nil)
  '(js2-basic-offset 2)
  '(js2-cleanup-whitespace t))
+
+
+;;(tabbar-mode -1)                     ; no tabbar
+;;(one-buffer-one-frame-mode -1)       ; no one-buffer-per-frame
+;;(setq special-display-regexps nil)   ; do not open certain buffers in special windows/frames
+;; (aquamacs-autoface-mode -1)

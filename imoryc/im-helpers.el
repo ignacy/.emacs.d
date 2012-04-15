@@ -5,6 +5,16 @@
 ;;   "Clear all bytecompiled emacs files"
 ;;   (shell-command "find ~/.emacs.d/ -name *.elc -exec rm {} \;"))
 
+
+(defun defunkt-duplicate-line ()
+  (interactive)
+    (beginning-of-line)
+    (copy-region-as-kill (point) (progn (end-of-line) (point)))
+    (textmate-next-line)
+    (yank)
+    (beginning-of-line)
+    (indent-according-to-mode))
+
 (defun im/diff-current-buffer-with-disk ()
   "Compare the current buffer with it's disk file."
   (interactive)
