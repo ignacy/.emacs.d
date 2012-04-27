@@ -33,19 +33,19 @@ theme will be used."
         (purple "#8959a8"))
 
     (cond ((eq variant 'night)
-           (setq background "gray9"
-                 current-line "gray11"
+           (setq background "#1d1f21"
+                 current-line "#282a2e"
                  selection "#373b41"
-                 foreground "ivory"
-                 comment "gray30"
-                 cursor "SkyBlue3"
-                 red "IndianRed"
+                 foreground "#c5c8c6"
+                 comment "#969896"
+                 cursor "#aeafad"
+                 red "#cc6666"
                  orange "#de935f"
-                 yellow "khaki1"
-                 green "aquamarine3"
-                 aqua "aquamarine1"
-                 blue "SkyBlue"
-                 purple "orchid"))
+                 yellow "#f0c674"
+                 green "#b5bd68"
+                 aqua "#8abeb7"
+                 blue "#81a2be"
+                 purple "#b294bb"))
 
           ((eq variant 'night-eighties)
            (setq background "#2d2d2d"

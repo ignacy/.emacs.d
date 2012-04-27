@@ -71,6 +71,12 @@
 ;;(bind "C-c t" 'my-ido-find-tag)
 (bind "C-i" 'indent-for-tab-command)
 
+
+(bind "S-<left>" 'shrink-window-horizontally)
+(bind "S-<right>" 'enlarge-window-horizontally)
+(bind "S-<up>" 'shrink-window)
+(bind "S-<down>" 'enlarge-window)
+
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))
 (global-unset-key (kbd "C-x 2"))

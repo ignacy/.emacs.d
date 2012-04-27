@@ -12,8 +12,9 @@
 (defvar set-working-on-bdj t)
 (defvar set-indent-before-saving t)
 (defvar set-remove-blinking-from-cursos t)
-(defvar set-use-color-theme t)
-(defvar use-deft t)
+(defvar set-use-color-theme nil)
+(defvar use-deft nil)
+(defvar use-rsense t)
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
 (defvar use-im-mode-bindings nil)
@@ -68,17 +69,17 @@
       (require 'flymake)
       (global-set-key (kbd "C-c e") 'flymake-display-err-menu-for-current-line)
       (global-set-key (kbd "C-c n") 'flymake-goto-next-error)
-      (add-hook 'find-file-hook 'flymake-find-file-hook)
+      ;;(add-hook 'find-file-hook 'flymake-find-file-hook)
       (require 'flymake-ruby) (add-hook 'ruby-mode-hook 'flymake-ruby-load)
       (require 'autopair)
       (autopair-global-mode)
 
-      (push '(font-backend xft x) default-frame-alist)
+      ;;(push '(font-backend xft x) default-frame-alist)
 
       (require 'find-file-in-tags)
       (global-set-key (read-kbd-macro "C-,") 'find-file-in-tags)
 
-      (require 'highlight-indentation)
+      ;;(require 'highlight-indentation)
       (require 'ido)
       (ido-mode 'both) ;; for buffers and files
 
@@ -94,12 +95,8 @@
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
       (load-file (concat imoryc-dir "/ruby-setup.el"))
-      (load-file (concat imoryc-dir "/mo-git-blame.el"))
       (load-file (concat imoryc-dir "/java-setup.el"))
 
-
-      (require 'ace-jump-mode)
-      (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
       (defun idle-coding-hook ()
         (idle-highlight-mode t))
@@ -157,7 +154,13 @@
 
       (require 'magit)
       (require 'android-mode))
-			
+
+
+(when use-rsense
+  (setq rsense-home "~/bin/rsense-0.3")
+  (add-to-list 'load-path (concat rsense-home "/etc"))
+  (require 'rsense))
+
 (when use-deft
   (add-to-list 'load-path (concat dotfiles-dir "/deft"))
   (require 'deft)
@@ -190,8 +193,10 @@
 
 (when set-use-color-theme
   ;;(load-theme 'deeper-blue))
-  (load-file (concat imoryc-dir "/themes/color-theme-ir-black.el"))
-  (color-theme-ir-black))
+  (load-file (concat imoryc-dir "/themes/color-theme-molokai.el"))
+  ;;(load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
+  (color-theme-molokai))
+
 
 (when set-environment-settings
   (load-file (concat imoryc-dir "/im-basic-settings.el")))
@@ -199,7 +204,7 @@
 
 (when set-line-highlighting
   (global-hl-line-mode 1)
-  (set-face-background 'hl-line "#111")
+  (set-face-background 'hl-line "#ddd")
   ;;(set-face-background 'hl-line "#eee")
   (set-face-foreground 'highlight nil)
   (set-face-attribute hl-line-face nil :overline nil)
@@ -420,9 +425,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun im/set-fonts ()
   (interactive)
   (condition-case nil
-      (set-frame-font "Monaco-14")
+      (set-frame-font "Inconsolata-14")
     (error nil)))
-(im/set-fonts)
+;; (im/set-fonts)
+
 ;; ;;(set-face-attribute 'default nil :font "Consolas-12")
 ;; ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
 
@@ -469,7 +475,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 
 (setq auto-save-default nil)
-;;(set-face-background 'modeline "#001A4C")
 
 ;; Diff/git addons
 (custom-set-faces
@@ -478,27 +483,18 @@ This is the same as using \\[set-mark-command] with the prefix argument."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(diff-added ((t (:foreground "Green"))))
- '(diff-removed ((t (:foreground "Red"))))
- '(ido-first-match ((t (:foreground "#ccff66"))))
- '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))
- '(ido-indicator ((t (:foreground "#ffffff"))))
- '(ido-only-match ((t (:foreground "#ffcc33"))))
- '(ido-subdir ((t (:foreground "#66ff00"))))
- '(mode-line ((t (:box (:line-width 2 :color "DodgerBlue4"))))))
-(setq redisplay-dont-pause t)
+ '(diff-removed ((t (:foreground "Red")))))
+ (setq redisplay-dont-pause t)
 
 ;; Make the whole buffer pretty and consistent
 (defun iwb()
   "Indent Whole Buffer"
   (interactive)
-  (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max) nil)
-  (untabify (point-min) (point-max)))
+  (indent-region (point-min) (point-max)))
 
 ;; load key-bindings
 (load-file (concat imoryc-dir "/im-helpers.el"))
 (load-file (concat imoryc-dir "/im-keys.el"))
-(load-file (concat imoryc-dir "/im-modeline.el"))
 (load-file (concat imoryc-dir "/im-abbrevs.el"))
 
 (require 'ansi-color)
@@ -601,8 +597,4 @@ unless given a prefix argument."
  '(js2-basic-offset 2)
  '(js2-cleanup-whitespace t))
 
-
-;;(tabbar-mode -1)                     ; no tabbar
-;;(one-buffer-one-frame-mode -1)       ; no one-buffer-per-frame
-;;(setq special-display-regexps nil)   ; do not open certain buffers in special windows/frames
-;; (aquamacs-autoface-mode -1)
+(ns-toggle-fullscreen)

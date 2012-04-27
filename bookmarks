@@ -33,7 +33,7 @@
  (rear-context-string)
  (position . 16))
 ("notes"
- (filename . "~/Dropbox/org/notes.org")
+ (filename . "~/Dropbox/notes/mobileorg.org")
  (front-context-string . "* Tasks\n** Moder")
  (rear-context-string . "dManifest.xml]]\n")
  (position . 54743))

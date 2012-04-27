@@ -1,6 +1,0 @@
-cd code/new_jobandtalent/
-git st
-s
-s
-exit
-sudo apt-get install dwm-tools
