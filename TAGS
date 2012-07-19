@@ -113,7 +113,7 @@ elpa/android-mode-0.1/android-mode.el,1949
 
 elpa/android-mode-0.1/android-mode.el,0
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.SLEhTN,2015
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.WfSAO7,2015
 (defvar ac-imenu-index nil)ac-imenu-index39,991
 (defun ac-imenu-candidates ()ac-imenu-candidates43,1074
 (defface ac-gtags-candidate-faceac-gtags-candidate-face81,2424
@@ -427,7 +427,7 @@ elpa/autopair-0.3/autopair-pkg.el,114
 
 ,0
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.ec9kMp,102
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.KGc5Xs,102
 (define-package "clojure-mode" "1.11.5" "Major mode for Clojure code" (quote nil))"clojure-mode"1,0
 
 elpa/clojure-mode-1.11.5/clojure-mode.el,3192
@@ -718,7 +718,7 @@ elpa/color-theme-6.5.5/color-theme.el,11785
 (defun color-theme-matrix ()color-theme-matrix14432,849196
 (defun color-theme-feng-shui ()color-theme-feng-shui15102,876816
 
-๖J,0
+๖ค,0
 
 elpa/color-theme-sanityinc-tomorrow-1.2/color-theme-sanityinc-tomorrow-autoloads.el,0
 
@@ -825,7 +825,7 @@ elpa/deft-0.3/deft.el,3746
 (defun er/mark-clj-function-literal ()er/mark-clj-function-literal61,1997
 (defun er/add-clojure-mode-expansions ()er/add-clojure-mode-expansions75,2417
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.qifc5K,138
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.XdgJLC,138
 (defun er/mark-css-declaration ()er/mark-css-declaration31,1035
 (defun er/add-css-mode-expansions ()er/add-css-mode-expansions40,1312
 
@@ -834,7 +834,7 @@ elpa/deft-0.3/deft.el,3746
 
 elpa/expand-region-0.6.0/expand-region-autoloads.el,0
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.F78zBd,60
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.ilrSVW,60
 (define-package "expand-region" "0.6.0""expand-region"1,0
 
 elpa/expand-region-0.6.0/expand-region.el,1990
@@ -874,7 +874,7 @@ elpa/expand-region-0.6.0/expand-region.el,1990
 (defun er/mark-feature-step ()er/mark-feature-step53,1890
 (defun er/add-feature-mode-expansions ()er/add-feature-mode-expansions57,2051
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.UTRihW,0
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.Qe6tpM,0
 
 ,0
 
@@ -886,7 +886,7 @@ elpa/expand-region-0.6.0/html-mode-expansions.el,368
 (defun er/mark-inner-tag ()er/mark-inner-tag75,2393
 (defun er/add-html-mode-expansions ()er/add-html-mode-expansions85,2678
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.IjYqcq,465
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.eYK5K3,465
 (defun er/mark-js-function ()er/mark-js-function42,1438
 (defun er/mark-js-outer-return ()er/mark-js-outer-return57,1820
 (defun er/mark-js-inner-return ()er/mark-js-inner-return74,2292
@@ -912,7 +912,7 @@ elpa/expand-region-0.6.0/text-mode-expansions.el,200
 (defun er/mark-text-paragraph ()er/mark-text-paragraph42,1391
 (defun er/add-text-mode-expansions ()er/add-text-mode-expansions48,1523
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.APtzvn,0
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.cXm857,0
 
 elpa/feature-mode-0.1/feature-mode-pkg.el,131
 (define-package "feature-mode" "0.1" "Major mode for editing Gherkin (i.e. Cucumber) user stories" (quote nil))"feature-mode"1,0
@@ -979,9 +979,9 @@ elpa/find-file-in-project-3.0/find-file-in-project.el,670
 (defun find-file-in-project ()find-file-in-project137,5383
 (defalias 'ffip 'find-file-in-project)ffip152,6025
 
-qfy4zvjw0000gn/T//tags.j1dJE0,0
+qfy4zvjw0000gn/T//tags.kmUwdq,0
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.6lWjOx,106
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.3erdv7,106
 (define-package "findr" "0.7" "Breadth-first file-finding facility for (X)Emacs" (quote nil))"findr"1,0
 
 elpa/findr-0.7/findr.el,1332
@@ -1490,7 +1490,7 @@ elpa/haskell-mode-2.8.0/haskell-indentation.el,6397
 (defalias 'hayoo 'haskell-hayoo)hayoo234,7710
 (defalias 'run-haskell 'switch-to-haskell)run-haskell244,8069
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.KUQjrp,58
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.ewPbh1,58
 (define-package "haskell-mode" "2.8.0""haskell-mode"1,0
 
 elpa/haskell-mode-2.8.0/haskell-mode.el,1855
@@ -1530,7 +1530,7 @@ elpa/haskell-mode-2.8.0/haskell-mode.el,1855
 (defun turn-on-haskell-simple-indent ()turn-on-haskell-simple-indent129,4723
 (defun turn-off-haskell-simple-indent ()turn-off-haskell-simple-indent142,5286
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.PAFdky,252
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.bzkZ80,252
 (defalias 'turn-on-haskell-doc-mode 'haskell-doc-mode)turn-on-haskell-doc-mode106,3315
 (defalias 'hoogle 'haskell-hoogle)hoogle223,7506
 (defalias 'hayoo 'haskell-hayoo)hayoo230,7636
@@ -1611,12 +1611,12 @@ elpa/idle-highlight-mode-1.1.2/idle-highlight-mode.el,457
 (defsubst idle-highlight-unhighlight ()idle-highlight-unhighlight89,2944
 (define-minor-mode idle-highlight-modeidle-highlight-mode93,3073
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.1TnggE,0
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.NUrr0u,0
 
 elpa/inf-ruby-2.2.3/inf-ruby-pkg.el,96
 (define-package "inf-ruby" "2.2.3" "Run a ruby process in a buffer" (quote nil))"inf-ruby"1,0
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.ZBZTuX,2657
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.Bul8Iq,2657
 (defvar inf-ruby-default-implementation "ruby"inf-ruby-default-implementation36,1144
 (defvar inf-ruby-first-prompt-pattern "^irb(.*)[0-9:]+0> *"inf-ruby-first-prompt-pattern39,1252
 (defvar inf-ruby-prompt-pattern "^\\(irb(.*)[0-9:]+[>*\"'] *\\)+"inf-ruby-prompt-pattern42,1366
@@ -3349,7 +3349,8 @@ elpa/marmalade-0.0.4/marmalade.el,752
 (define-key-after menu-bar-options-menu [package]menu-bar-options-menu1480,55245
 (defun package-report-bug ()package-report-bug1489,55460
 
-P"ก,0
+P"A
+,0
 
 ,85
 (define-package "popup" "0.5" "Visual Popup User Interface" (quote nil))"popup"1,0
@@ -4405,29 +4406,30 @@ imoryc/im-basic-settings.el,96
 (defvar ash-mark-bolash-mark-bol73,2700
 (defun ash-mark-hook-fun ()ash-mark-hook-fun80,2870
 
-imoryc/im-helpers.el,1390
-(defun push-mark-no-activate ()push-mark-no-activate3,17
-(defun jump-to-mark ()jump-to-mark10,272
-(defun renamefile (new-name)renamefile20,612
-(defun my-ido-find-tag ()my-ido-find-tag36,1218
-(defun heroku-run-ask ()heroku-run-ask46,1507
-(defun defunkt-duplicate-line ()defunkt-duplicate-line53,1622
-(defun im/diff-current-buffer-with-disk ()im/diff-current-buffer-with-disk62,1840
-(defun im/kill-current-buffer()im/kill-current-buffer68,1998
-(defun im/reek-on-buffer()im/reek-on-buffer74,2150
-(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))ido-disable-line-trucation91,2784
-(defun toggle-letter-case ()toggle-letter-case110,4170
-(defun save-macro (name)save-macro140,5555
-(defun ido-find-tag ()ido-find-tag154,6230
-(defvar smart-use-extended-syntax nilsmart-use-extended-syntax168,6590
-(defvar smart-last-symbol-name ""smart-last-symbol-name172,6743
-(defvar smart-symbol-old-pt nilsmart-symbol-old-pt180,6991
-(defun smart-symbol-goto (name direction)smart-symbol-goto183,7068
-(defun smart-symbol-go-forward ()smart-symbol-go-forward216,8356
-(defun smart-symbol-go-backward ()smart-symbol-go-backward221,8511
-(defun smart-symbol-at-pt (&optional dir)smart-symbol-at-pt226,8679
-(defun other-window-backwards ()other-window-backwards249,9471
-(defun switch-to-previous-buffer ()switch-to-previous-buffer257,9604
+imoryc/im-helpers.el,1413
+(defun iwb()iwb4,64
+(defun push-mark-no-activate ()push-mark-no-activate9,161
+(defun jump-to-mark ()jump-to-mark16,416
+(defun renamefile (new-name)renamefile26,756
+(defun my-ido-find-tag ()my-ido-find-tag42,1362
+(defun heroku-run-ask ()heroku-run-ask52,1651
+(defun defunkt-duplicate-line ()defunkt-duplicate-line59,1766
+(defun im/diff-current-buffer-with-disk ()im/diff-current-buffer-with-disk68,1984
+(defun im/kill-current-buffer()im/kill-current-buffer74,2142
+(defun im/reek-on-buffer()im/reek-on-buffer80,2294
+(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))ido-disable-line-trucation97,2928
+(defun toggle-letter-case ()toggle-letter-case116,4314
+(defun save-macro (name)save-macro146,5699
+(defun ido-find-tag ()ido-find-tag160,6374
+(defvar smart-use-extended-syntax nilsmart-use-extended-syntax174,6734
+(defvar smart-last-symbol-name ""smart-last-symbol-name178,6887
+(defvar smart-symbol-old-pt nilsmart-symbol-old-pt186,7135
+(defun smart-symbol-goto (name direction)smart-symbol-goto189,7212
+(defun smart-symbol-go-forward ()smart-symbol-go-forward222,8500
+(defun smart-symbol-go-backward ()smart-symbol-go-backward227,8655
+(defun smart-symbol-at-pt (&optional dir)smart-symbol-at-pt232,8823
+(defun other-window-backwards ()other-window-backwards255,9615
+(defun switch-to-previous-buffer ()switch-to-previous-buffer263,9748
 
 imoryc/im-keys.el,186
 (defmacro bind (key fn)bind4,90
@@ -4819,7 +4821,7 @@ imoryc/matlab.el,26878
 ,23
 def emit(ch)emit3,21
 
-qfy4zvjw0000gn/T//tags.EOyU6H,740
+qfy4zvjw0000gn/T//tags.jNBDUm,740
 (defconst project-top-default-top-files '(".git" "Rakefile" "rakelib" "lib" "config"))project-top-default-top-files3,30
 (defun project-top (&rest top-files)project-top5,118
 (defun project-top-find-file (&rest args)project-top-find-file13,417
@@ -4996,7 +4998,7 @@ imoryc/themes/darkclean-theme.el,38
 ,29
 (deftheme nightnight20,734
 
-qfy4zvjw0000gn/T//tags.GvEOeR,0
+qfy4zvjw0000gn/T//tags.vTJ1Wc,0
 
 imoryc/themes/solarized-definitions.el,544
 (defconst solarized-descriptionsolarized-description4,37
@@ -5014,7 +5016,7 @@ imoryc/themes/solarized-light-theme.el,0
 imoryc/themes/tango-dark-theme.el,39
 (deftheme tango-darktango-dark20,756
 
-f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.AQTOAT,61
+f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.xoYT61,61
 (deftheme zenburn "The Zenburn color theme")zenburn47,1547
 
 imoryc/toggle.el,365
@@ -5161,6 +5163,10 @@ init-javascript-settings.el,114
 (defun my-js2-indent-function ()my-js2-indent-function6,131
 (defun my-js2-mode-hook ()my-js2-mode-hook38,1205
 
+init-markup-and-style-modes.el,92
+(defun css-mode-hook ()css-mode-hook13,176
+(defun yaml-mode-hook ()yaml-mode-hook21,473
+
 init-org-mode.el,63
 (define-key global-map "\C-cc" 'org-capture)global-map21,833
 
@@ -5186,7 +5192,7 @@ init-shell-mode.el,289
 
 init-yasnippet.el,0
 
-/Users/imoryc/.emacs.d/init.el,1331
+/Users/imoryc/.emacs.d/init.el,1208
 (defvar set-line-highlighting t)set-line-highlighting5,42
 (defvar set-java-paths-on-windows t)set-java-paths-on-windows6,75
 (defvar set-working-on-bdj t)set-working-on-bdj7,112
@@ -5194,21 +5200,18 @@ init-yasnippet.el,0
 (defvar use-rsense t)use-rsense9,178
 (defvar on-windows (eq system-type 'windows-nt))on-windows10,200
 (defvar use-recentf-mode t)use-recentf-mode11,249
-(define-key global-map (kbd "C-ยง") 'ace-jump-mode)global-map122,3093
-(defun css-mode-hook ()css-mode-hook124,3146
-(defun yaml-mode-hook ()yaml-mode-hook132,3443
-(defun create-tags (dir-name)create-tags150,4026
-(defvar compile-command "rake ") ; set the default make commandcompile-command159,4322
-(defun stop-using-minibuffer ()stop-using-minibuffer163,4389
-(defalias 'list-buffers 'ibuffer)list-buffers170,4620
-(defadvice ibuffer-update-title-and-summary (after remove-column-titles)ibuffer-update-title-and-summary198,5728
-(defun switch-full-screen ()switch-full-screen211,6143
-(defun ido-goto-symbol (&optional symbol-list)ido-goto-symbol228,6630
-(defalias 'qrr 'query-replace-regexp)qrr293,8908
-(defun create-tags (dir-name)create-tags295,8947
-(defun im/set-fonts ()im/set-fonts303,9229
-(defun iwb()iwb324,9879
-(defadvice switch-to-buffer (before existing-bufferswitch-to-buffer336,10170
+(define-key global-map (kbd "C-ยง") 'ace-jump-mode)global-map115,2960
+(defun create-tags (dir-name)create-tags129,3413
+(defvar compile-command "rake ") ; set the default make commandcompile-command138,3709
+(defun stop-using-minibuffer ()stop-using-minibuffer142,3776
+(defalias 'list-buffers 'ibuffer)list-buffers149,4007
+(defadvice ibuffer-update-title-and-summary (after remove-column-titles)ibuffer-update-title-and-summary177,5115
+(defun switch-full-screen ()switch-full-screen190,5530
+(defun ido-goto-symbol (&optional symbol-list)ido-goto-symbol207,6017
+(defalias 'qrr 'query-replace-regexp)qrr272,8295
+(defun create-tags (dir-name)create-tags274,8334
+(defun im/set-fonts ()im/set-fonts282,8616
+(defadvice switch-to-buffer (before existing-bufferswitch-to-buffer310,9414
 
 ,0
 
@@ -5299,7 +5302,7 @@ rhtml/rhtml-sgml-hacks.el,656
 ,66
 (defun inline-string-rectangle ()inline-string-rectangle39,1408
 
-/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.igtMVn,420
+site-lisp/mark-multiple/inline-string-rectangle.el,420
 (defun mark-next-like-this (arg)mark-next-like-this48,1805
 (defun mark-previous-like-this (arg)mark-previous-like-this74,2830
 (defun mark-all-like-this ()mark-all-like-this100,3874
@@ -5340,7 +5343,7 @@ site-lisp/mark-multiple/rename-sgml-tag.el,104
 (defun rst--inside-tag-p ()rst--inside-tag-p35,1167
 (defun rename-sgml-tag ()rename-sgml-tag39,1252
 
-,372
+f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.79JHz8,372
 (defun slime-changelog-date ()slime-changelog-date126,4311
 (defvar slime-protocol-version 'ignore)slime-protocol-version133,4520
 (defun slime-show-apropos (plists string package summary)slime-show-apropos4749,190595
@@ -5351,7 +5354,7 @@ swank/slime-eldoc-d8b3cf74.el,167
 (defun clojure-slime-eldoc-message ()clojure-slime-eldoc-message2,17
 (defun clojure-localize-documentation-function ()clojure-localize-documentation-function8,204
 
-Pก,103
+/var/folders/8r/f5bfswmj7_102v15qfy4zvjw0000gn/T//tags.x64j8G,103
 (defadvice sldb-insert-frame (around colorize-clj-trace (frame &optional face))sldb-insert-frame3,23
 
 ,13306

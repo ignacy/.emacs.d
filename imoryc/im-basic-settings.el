@@ -1,3 +1,4 @@
+(setq auto-save-default nil)
 (setq initial-scratch-message nil)
 (setq inhibit-splash-screen t)
 (icomplete-mode t)
@@ -29,11 +30,35 @@
 (setq
  bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
  bookmark-save-flag 1)                        ;; autosave each change)
+(setq x-select-enable-clipboard t)
 
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
+
+(set-frame-font "Menlo-14")
+(setq cursor-in-non-selected-windows nil)
+
+;; Diff/git addons
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(diff-added ((t (:foreground "Green"))))
+ '(diff-removed ((t (:foreground "Red")))))
+(setq redisplay-dont-pause t)
+
+
+(global-hl-line-mode 1)
+;;(set-face-background 'hl-line "light cyan")
+(set-face-background 'hl-line "#444")
+(set-face-foreground 'highlight nil)
+(set-face-foreground 'hl-line nil)
+(set-face-attribute hl-line-face nil :overline nil)
+(set-face-attribute hl-line-face nil :underline nil)
+
 
 (setq ibuffer-expert t)
 (setq ibuffer-show-empty-filter-groups nil)
