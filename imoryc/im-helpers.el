@@ -1,9 +1,36 @@
 ;; Moje funkcje
 
+(defun push-mark-no-activate ()
+  "Pushes `point' to `mark-ring' and does not activate the region
+Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
+  (interactive)
+  (push-mark (point) t nil)
+  (message "Pushed mark to ring"))
+
+(defun jump-to-mark ()
+  "Jumps to the local mark, respecting the `mark-ring' order.
+This is the same as using \\[set-mark-command] with the prefix argument."
+  (interactive)
+  (set-mark-command 1))
+
 
 ;; (defun im/clear-elc-files
 ;;   "Clear all bytecompiled emacs files"
 ;;   (shell-command "find ~/.emacs.d/ -name *.elc -exec rm {} \;"))
+(defun renamefile (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive (list (completing-read "New name: " nil nil nil (buffer-name))))
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+          (message "A buffer named '%s' already exists!" new-name)
+        (progn
+          (rename-file name new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil))))))
 
 
 (defun my-ido-find-tag ()

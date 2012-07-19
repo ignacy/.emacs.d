@@ -24,6 +24,7 @@
 (setq ido-create-new-buffer 'always)
 (setq backup-inhibited t)
 (setq font-lock-maximum-decoration t)
+(and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
 (display-time-mode -1)
 (setq
  bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
@@ -96,6 +97,6 @@
 (setq visible-bell t)
 
 
-
+(provide 'im-basic-settings)
 
 

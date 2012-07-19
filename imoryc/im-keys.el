@@ -16,11 +16,11 @@
 
 
 (bind "C-c d" 'deft)
+(bind "C-c g" 'vc-git-grep)
 ;;(bind "<f5>" 'im/ant)
 (bind "C-x C-r" 'ido-recentf-open)
 (bind "C-c C-d" 'im/diff-current-buffer-with-disk)
 (bind "C-q" 'jw-run-test-or-spec-file)
-(bind "<f2>" 'find-file-in-project)
 (bind "C-c l" 'goto-line)
 (bind "M-s-/" 'align)
 (bind "C-l" 'recenter)
@@ -38,7 +38,7 @@
 (bind "C-2" 'split-window-vertically)
 (bind "C-1" 'switch-to-zsh)
 (bind "C-M-s" 'isearch-other-window)
-(bind "M-," 'tags-loop-continues-search)
+(bind "M-," 'tagos-loop-continues-search)
 (bind "M-?" 'tags-loop-continue)
 (bind "C-x k" 'im/kill-current-buffer)
 (bind "M-%" 'replace-regexp)
