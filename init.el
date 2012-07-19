@@ -2,18 +2,15 @@
 
 ;;(setq debug-on-error t)
 
-(defvar set-directories t)
 (defvar set-loadpaths t)
-(defvar set-use-marmelade t)
 (defvar set-line-highlighting t)
-(defvar set-use-key-chords t)
 (defvar set-environment-settings t)
 (defvar set-java-paths-on-windows t)
 (defvar set-working-on-bdj t)
 (defvar set-indent-before-saving t)
 (defvar set-remove-blinking-from-cursos t)
 (defvar set-use-color-theme nil)
-(defvar use-deft nil)
+(defvar use-deft t)
 (defvar use-rsense t)
 (defvar use-org-mode t)
 (defvar on-windows (eq system-type 'windows-nt))
@@ -21,37 +18,38 @@
 (defvar use-recentf-mode t)
 (defvar show-line-numbers nil)
 
-(when set-use-marmelade
-  (require 'package)
-  (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
-  (add-to-list 'package-archives
-               '("marmalade" . "http://marmalade-repo.org/packages/") t)
-  (package-initialize)
-  (when (not package-archive-contents)
-    (package-refresh-contents))
+(setq dotfiles-dir "~/.emacs.d")
+(setq imoryc-dir (concat dotfiles-dir "/imoryc"))
+(add-to-list 'load-path imoryc-dir)
+(add-to-list 'load-path (concat imoryc-dir "/themes"))
+(require 'package)
+(add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
-  (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
-                                 autopair haskell-mode rainbow-mode coffee-mode js2-mode
-                                 rinari ruby-mode inf-ruby ruby-compilation rinari deft
-                                 find-file-in-project android-mode flymake-ruby yasnippet
-                                 rvm  jump color-theme rainbow-delimiters ruby-end
-                                 idle-highlight-mode feature-mode marmalade))
+(defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
+                               autopair haskell-mode rainbow-mode coffee-mode js2-mode
+                               rinari ruby-mode inf-ruby ruby-compilation rinari deft
+                               find-file-in-project android-mode flymake-ruby yasnippet
+                               rvm  jump color-theme rainbow-delimiters ruby-end
+                               idle-highlight-mode feature-mode marmalade))
 
-  (dolist (p my-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
 
-(when set-directories (message "Setting directories..")
-      (setq dotfiles-dir "~/.emacs.d")
-      (setq imoryc-dir (concat dotfiles-dir "/imoryc"))
-      (add-to-list 'load-path imoryc-dir))
 
-(when set-use-key-chords
-  (require 'key-chord)
-  (key-chord-mode 1)
-  (key-chord-define-global "uu"     'undo)
-  (key-chord-define-global "dp"     'defunkt-duplicate-line)
-  (key-chord-define-global ",b"     'switch-to-buffer))
+(require 'color-theme-sanityinc-tomorrow)
+(color-theme-sanityinc-tomorrow-blue)
+
+;;(load-file (concat imoryc-dir "/themes/color-theme-molokai.el"))
+;;(load-file (concat imoryc-dir "/themes/afterthought-theme.el")))
+;;  (color-theme-molokai))
+
+
 
 (when set-loadpaths (message "Setting load paths for libraries")
       (require 'ruby-end)
@@ -66,13 +64,9 @@
       (add-to-list 'load-path (concat imoryc-dir "/themes"))
 
       (autoload 'espresso-mode "espresso")
-      (require 'flymake)
-      (global-set-key (kbd "C-c e") 'flymake-display-err-menu-for-current-line)
-      (global-set-key (kbd "C-c n") 'flymake-goto-next-error)
-      ;;(add-hook 'find-file-hook 'flymake-find-file-hook)
-      (require 'flymake-ruby) (add-hook 'ruby-mode-hook 'flymake-ruby-load)
-      (require 'autopair)
-      (autopair-global-mode)
+
+      ;; (require 'autopair)
+      ;; (autopair-global-mode)
 
       ;;(push '(font-backend xft x) default-frame-alist)
 
@@ -94,7 +88,7 @@
 
       (require 'feature-mode)
       (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
-      (load-file (concat imoryc-dir "/ruby-setup.el"))
+
       (load-file (concat imoryc-dir "/java-setup.el"))
 
 
@@ -119,7 +113,7 @@
       (epa-file-enable)
       (require 'haml-mode)
       (require 'rvm)
-      (rvm-use "ruby-1.9.2" "jobandtalent")
+      (rvm-use "ruby-1.9.3" "jobandtalent")
       (require 'markdown-mode)
       (require 'find-file-in-project)
       (add-to-list 'ffip-patterns "*.java")
@@ -149,6 +143,7 @@
       (load-file (concat imoryc-dir "/window-manage.el"))
       (load-file (concat imoryc-dir "/enhanced_toggle.el"))
       (load-file (concat imoryc-dir "/testing.el"))
+      (load-file (concat imoryc-dir "/testowanie.el"))
       ;;(require 'matlab)
 
 
@@ -161,6 +156,23 @@
   (add-to-list 'load-path (concat rsense-home "/etc"))
   (require 'rsense))
 
+
+
+
+(global-set-key (kbd "M-[") 'smart-up)
+(global-set-key (kbd "M-]") 'smart-down)
+(global-set-key (kbd "M-<left>") 'smart-backward)
+(global-set-key (kbd "M-<right>") 'smart-forward)
+
+;; (require 'inline-string-rectangle)
+;; (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+
+;; (require 'mark-more-like-this)
+;; (global-set-key (kbd "C-<") 'mark-previous-like-this)
+;; (global-set-key (kbd "C->") 'mark-next-like-this)
+;; (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
+;; (global-set-key (kbd "C-*") 'mark-all-like-this)
+
 (when use-deft
   (add-to-list 'load-path (concat dotfiles-dir "/deft"))
   (require 'deft)
@@ -168,16 +180,47 @@
   (setq deft-extension "org")
   (setq deft-text-mode 'org-mode)
   (setq deft-auto-save-interval 2.3)
-  (if on-windows
-      (setq deft-directory "C:/Users/Ignacy/Dropbox/notes/deft/")
-    (setq deft-directory "~/Dropbox/notes/deft/"))
-  )
+  (setq deft-directory "~/Dropbox/notes/deft/"))
+
+(require 'auto-complete)
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+
+(define-key ac-completing-map (kbd "C-n") 'ac-next)
+(define-key ac-completing-map (kbd "C-p") 'ac-previous)
+
+(set-default 'ac-sources
+             '(ac-source-dictionary
+               ac-source-words-in-buffer
+               ac-source-words-in-same-mode-buffers
+               ac-source-words-in-all-buffer))
+
+(dolist (mode '(magit-log-edit-mode log-edit-mode org-mode text-mode haml-mode
+                                    sass-mode yaml-mode csv-mode espresso-mode haskell-mode
+                                    html-mode nxml-mode sh-mode clojure-mode
+                                    lisp-mode textile-mode markdown-mode
+                                    js3-mode css-mode less-css-mode))
+  (add-to-list 'ac-modes mode))
+
+
+(ac-config-default)
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'slime-repl-mode))
+
 
 (when use-org-mode
   (require 'org-install)
-  (if on-windows
-      (setq org-default-notes-file "C:/Users/Ignacy/Dropbox/notes/notes.org")
-    (setq org-default-notes-file "~/Dropbox/notes/notes.org"))
+  (setq org-directory "~/Dropbox/notes")
+  (setq org-default-notes-file "~/Dropbox/notes/notes.org")
+  ;; Set to the name of the file where new notes will be stored
+  (setq org-mobile-inbox-for-pull "~/Dropbox/notes/flagged.org")
+  ;; Set to <your Dropbox root directory>/MobileOrg.
+  (setq org-mobile-directory "~/Dropbox/MobileOrg")
+
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
            "* TODO %?\n  %i\n  %a")))
@@ -188,25 +231,126 @@
   ;; (org-babel-do-load-languages
   ;;  'org-babel-load-languages '((ruby . t) (R . t)))
   (setq org-refile-targets '((org-agenda-files . (:level . 1))))
-  (org-clock-persistence-insinuate))
+  (org-clock-persistence-insinuate)
+  (define-key global-map "\C-cc" 'org-capture))
 
 
-(when set-use-color-theme
-  ;;(load-theme 'deeper-blue))
-  (load-file (concat imoryc-dir "/themes/color-theme-molokai.el"))
-  ;;(load-file (concat imoryc-dir "/themes/color-theme-tomorrow.el"))
-  (color-theme-molokai))
+(setq inferior-lisp-program "lein repl")
+(add-hook 'sldb-mode-hook
+          #'(lambda ()
+              (setq autopair-dont-activate )))
+
+(add-hook 'slime-repl-mode-hook
+          #'(lambda ()
+              (setq autopair-dont-activate t)))
+
 
 
 (when set-environment-settings
   (load-file (concat imoryc-dir "/im-basic-settings.el")))
 
 
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-§") 'ace-jump-mode)
+
+(defun css-mode-hook ()
+  (autoload 'css-mode "css-mode" nil t)
+  (add-hook 'css-mode-hook '(lambda ()
+                              (setq css-indent-level 2)
+                              (setq css-indent-offset 2))))
+(add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
+
+(require 'yaml-mode)
+(defun yaml-mode-hook ()
+  (autoload 'yaml-mode "yaml-mode" nil t))
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+
+(defun ruby-interpolate ()
+  "In a double quoted string, interpolate."
+  (interactive)
+  (insert "#")
+  (let ((properties (text-properties-at (point))))
+    (when (and
+           (memq 'font-lock-string-face properties)
+           (save-excursion
+             (ruby-forward-string "\"" (line-end-position) t)))
+      (insert "{}")
+      (backward-char 1))))
+(define-key ruby-mode-map (kbd "#") 'ruby-interpolate)
+
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+
+(require 'ruby-compilation)
+(require 'ruby-end)
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
+(add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
+(require 'rhtml-mode)
+
+;; (flymake-ruby-load)
+;; (ruby-end-mode)
+
+;; (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(setq ruby-use-encoding-map nil)
+(setq ruby-deep-arglist t)
+(setq ruby-deep-indent-paren t)
+(setq ruby-insert-encoding-magic-comment nil)
+;;(add-hook 'ruby-mode-hook (lambda () (local-set-key "\r" 'newline-and-indent)))
+(setq tab-width 2)
+
+;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
+
+;; Ruby test unit patterns.
+(add-to-list 'compilation-error-regexp-alist
+             '("\\([^ \t:\\[]+\\):\\([0-9]+\\):in" 1 2))
+(add-to-list 'compilation-error-regexp-alist
+             '("test[a-zA-Z0-9_]*([A-Z][a-zA-Z0-9_]*) \\[\\(.*\\):\\([0-9]+\\)\\]:" 1 2))
+
+
+(defface erb-face
+  `((t (:background "grey")))
+  "Default inherited face for ERB tag body"
+  :group 'rhtml-faces)
+
+(defface erb-delim-face
+  `((t (:background "grey9")))
+  "Default inherited face for ERB tag delimeters"
+  :group 'rhtml-faces)
+
+(defface erb-out-delim-face
+  `((t (:inherit erb-delim-face :weight bold :foreground "yellow")))
+  "Basic face for Ruby embedded into HTML"
+  :group 'rhtml-faces)
+
+(defface erb-exec-delim-face
+  `((t (:inherit erb-delim-face :weight bold :foreground "yellow")))
+  "Basic face for Ruby embedded into HTML"
+  :group 'rhtml-faces)
+
+(require 'project-top)
+
+(defvar rubydb-command-name ''rvm--emacs-ruby-binary
+  "File name for executing ruby.")
+
+(font-lock-add-keywords
+ 'ruby-mode
+ '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
+
+
 (when set-line-highlighting
   (global-hl-line-mode 1)
-  (set-face-background 'hl-line "#ddd")
-  ;;(set-face-background 'hl-line "#eee")
+  ;;(set-face-background 'hl-line "light cyan")
+  (set-face-background 'hl-line "#444")
   (set-face-foreground 'highlight nil)
+  (set-face-foreground 'hl-line nil)
   (set-face-attribute hl-line-face nil :overline nil)
   (set-face-attribute hl-line-face nil :underline nil))
 
@@ -425,9 +569,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun im/set-fonts ()
   (interactive)
   (condition-case nil
-      (set-frame-font "Inconsolata-14")
+      ;; -apple-Menelo-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1
+      (set-frame-font "Menlo-14")
     (error nil)))
-;; (im/set-fonts)
+(im/set-fonts)
 
 ;; ;;(set-face-attribute 'default nil :font "Consolas-12")
 ;; ;;(set-face-attribute 'default nil :font "Mono Dyslexic-13")
@@ -484,7 +629,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
  ;; If there is more than one, they won't work right.
  '(diff-added ((t (:foreground "Green"))))
  '(diff-removed ((t (:foreground "Red")))))
- (setq redisplay-dont-pause t)
+(setq redisplay-dont-pause t)
 
 ;; Make the whole buffer pretty and consistent
 (defun iwb()
@@ -501,10 +646,14 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (defun im/shell-mode-hook ()
   (setq show-trailing-whitespace nil)
+  (make-local-variable 'global-hl-line-mode)
+  (setq global-hl-line-mode nil)
+  (message "Running im/shell mode hook")
   (hl-line-mode nil))
 
 (add-hook 'shell-mode-hook 'im/shell-mode-hook)
 (add-hook 'term-mode-hook 'im/shell-mode-hook)
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 ;; shell-mode
 (defun sh (&optional name)
@@ -515,9 +664,17 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (shell "zsh"))
 
+(defun spork ()
+  (interactive)
+  (shell "spork"))
+
 (defun switch-to-zsh ()
   (interactive)
   (switch-to-buffer "zsh"))
+
+
+
+(load-file (concat imoryc-dir "/shell-parse.el"))
 
 (defadvice switch-to-buffer (before existing-buffer
                                     activate compile)
@@ -586,6 +743,16 @@ unless given a prefix argument."
 
 (add-hook 'js2-mode-hook 'my-js2-mode-hook)
 
+;; (define-clojure-indent
+;;   (defroutes 'defun)
+;;   (GET 2)
+;;   (POST 2)
+;;   (PUT 2)
+;;   (DELETE 2)
+;;   (HEAD 2)
+;;   (ANY 2)
+;;   (context 2))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -596,5 +763,6 @@ unless given a prefix argument."
  '(js2-auto-indent-p nil)
  '(js2-basic-offset 2)
  '(js2-cleanup-whitespace t))
+
 
 (ns-toggle-fullscreen)

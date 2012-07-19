@@ -1,7 +1,7 @@
 (defun color-theme-ps-warm ()
   "A color theme based on Vim's PS Warm 2."
   (interactive)
-  (color-theme-install
+    (color-theme-install
    '(color-theme-ps-warm
      ((background-color . "#111111")
       (background-mode . dark)
@@ -57,8 +57,8 @@
 	 (diff-hunk-header ((t (:foreground "RoyalBlue3"))))
 	 (diff-header ((t (:foreground "SkyBlue3" :background "black"))))
 	 (diff-file-header ((t (:foreground "SkyBlue3" :background "black"))))
-	 ;; (magit-item-highlight ((t (:background "gray20"))))
-	 ;; (magit-section-title ((t (:foreground "SkyBlue3" :background "black"))))
+	 (magit-item-highlight ((t (:background "gray20"))))
+	 (magit-section-title ((t (:foreground "SkyBlue3" :background "black"))))
 	 (highline-face ((t (:background "#151533"))))
 	 (viper-minibuffer-insert ((t (:foreground "white" :background "black"))))
 	 (viper-minibuffer-emacs ((t (:foreground "white" :background "black"))))

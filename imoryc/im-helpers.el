@@ -6,14 +6,31 @@
 ;;   (shell-command "find ~/.emacs.d/ -name *.elc -exec rm {} \;"))
 
 
+(defun my-ido-find-tag ()
+  "Find a tag using ido"
+  (interactive)
+  (tags-completion-table)
+  (let (tag-names)
+    (mapatoms (lambda (x)
+                (push (prin1-to-string x t) tag-names))
+              tags-completion-table)
+    (find-tag (ido-completing-read "Tag: " tag-names))))
+
+(defun heroku-run-ask ()
+  "Runs heroku command and always asks for app name"
+  (interactive)
+  (heroku-run t))
+
+
+
 (defun defunkt-duplicate-line ()
   (interactive)
-    (beginning-of-line)
-    (copy-region-as-kill (point) (progn (end-of-line) (point)))
-    (textmate-next-line)
-    (yank)
-    (beginning-of-line)
-    (indent-according-to-mode))
+  (beginning-of-line)
+  (copy-region-as-kill (point) (progn (end-of-line) (point)))
+  (textmate-next-line)
+  (yank)
+  (beginning-of-line)
+  (indent-according-to-mode))
 
 (defun im/diff-current-buffer-with-disk ()
   "Compare the current buffer with it's disk file."
@@ -25,12 +42,6 @@
   "Most of the times you just want to kill currently opened buffer"
   (interactive)
   (kill-buffer (current-buffer)))
-
-
-(defun im/open-todo()
-  "opens my todo file"
-  (interactive)
-  (find-file (concat deft-directory "todo.org")))
 
 
 (defun im/reek-on-buffer()
@@ -53,65 +64,21 @@
 (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 
-;; (defun im/find-project-root (&optional root)
-;;   "Recursively find .git dir"
-;;   (when (null root) (setq root default-directory))
-;;   (cond
-;;    ((root-matches root '(".git"))
-;;     (expand-file-name root))
-;;    ((equal (expand-file-name root) "/") nil)
-;;    (t (im/find-project-root (concat (file-name-as-directory root) "..")))))
-
-;; (defun root-match(root names)
-;;   (member (car names) (directory-files root)))
-
-;; (defun root-matches(root names)
-;;   (if (root-match root names)
-;;       (root-match root names)
-;;     (if (eq (length (cdr names)) 0)
-;;         'nil
-;;       (root-matches root (cdr names))
-;;       )))
-
-;; (defun im/goto-file ()
-;;   "Use ido to select a file from the project."
-;;   (interactive)
-;;   (let ((root (im/find-project-root)))
-;;     (setq im/project-files
-;;           (split-string
-;;            (shell-command-to-string
-;;             (concat "find "
-;;                     root
-;;                     "-type f"
-;;                     )) "\n"))
-;;   ;; (shell-command-to-string
-;;   ;;  "git ls-files") "\n"))
-;;   ;; populate hash table (display repr => path)
-;;   (setq tbl (make-hash-table :test 'equal))
-;;   (let (ido-list)
-;;     (mapc (lambda (path)
-;;             ;; format path for display in ido list
-;;             ;; (setq key (replace-regexp-in-string "\\(.*?\\)\\([^/]+?\\)$" (lambda (v) (propertize v 'face 'bold))
-;;             ;;                                     path))
-;;             ;;                                     ;;"\\1\\2" path))
-;;             (setq key (replace-regexp-in-string "\\(.*?\\)\\([^/]+?\\)$" "\\1\\2" path))
-;;             ;; strip project root
-;;             (setq key (replace-regexp-in-string root "" key))
-;;             ;; remove trailing | or /
-;;             (setq key (replace-regexp-in-string "\\(|\\|/\\)$" "" key))
-;;             (puthash key path tbl)
-;;             (push key ido-list)
-;;             )
-;;           im/project-files
-;;           )
-;;     (find-file (gethash (ido-completing-read "Open: " ido-list) tbl)))))
+;; (custom-set-faces
+;;  '(ido-subdir ((t (:foreground "PaleGreen")))) ;; Face used by ido for highlighting subdirs in the alternatives.
+;;  '(ido-first-match ((t (:foreground "DodgerBlue" :background "#dff")))) ;; Face used by ido for highlighting first match.
+;;  '(ido-only-match ((t (:foreground "#ffcc33")))) ;; Face used by ido for highlighting only match.
+;;  '(ido-indicator ((t (:foreground "#ffffff")))) ;; Face used by ido for highlighting its indicators (don't actually use this)
+;;  '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))) ;; Ido face for indicating incomplete regexps. (don't use this either)
 
 (custom-set-faces
  '(ido-subdir ((t (:foreground "PaleGreen")))) ;; Face used by ido for highlighting subdirs in the alternatives.
- '(ido-first-match ((t (:foreground "DodgerBlue" :background "gray10")))) ;; Face used by ido for highlighting first match.
-  '(ido-only-match ((t (:foreground "#ffcc33")))) ;; Face used by ido for highlighting only match.
+ '(ido-first-match ((t (:foreground "SeaGreen1" :background "gray14")))) ;; Face used by ido for highlighting first match.
+ '(ido-only-match ((t (:foreground "#ffcc33")))) ;; Face used by ido for highlighting only match.
  '(ido-indicator ((t (:foreground "#ffffff")))) ;; Face used by ido for highlighting its indicators (don't actually use this)
  '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))) ;; Ido face for indicating incomplete regexps. (don't use this either)
+
+
 
 (defun toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
@@ -142,18 +109,6 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
      ((string= "all caps" (get this-command 'state))
       (downcase-region p1 p2) (put this-command 'state "all lower")) )
     ) )
-
-(defun find-org-markers (regexp)
-  (occur regexp)
-  (pop-to-buffer "*Occur*"))
-
-(defun find-top-org-headers ()
-  (interactive)
-  (find-org-markers "^\\*[^*]"))
-
-(defun find-all-org-headers ()
-  (interactive)
-  (find-org-markers "^\\*+"))
 
 (defun save-macro (name)
   "save a macro. Take a name as argument
@@ -270,85 +225,8 @@ instead."
   (other-window -1))
 
 
-(defalias 'scroll-ahead  'scroll-up)
-(defalias 'scroll-behind  'scroll-down)
+(setq line-move-visual nil)
 
-(defun scroll-n-lines-ahead (&optional n)
-  "Scroll ahead N lines (1 by default)."
-  (interactive "P")
-  (scroll-ahead (prefix-numeric-value n)))
-(defun scroll-n-lines-behind (&optional n)
-  "Scroll behind N lines (1 by default)."
-  (interactive "P")
-  (scroll-behind (prefix-numeric-value n)))
-
-
-(defun is-rails-project ()
-  (when (textmate-project-root)
-    (file-exists-p (expand-file-name "config/environment.rb" (textmate-project-root)))))
-
-(defun run-rails-test-or-ruby-buffer ()
+(defun switch-to-previous-buffer ()
   (interactive)
-  (if (is-rails-project)
-      (let* ((path (buffer-file-name))
-             (filename (file-name-nondirectory path))
-             (test-path (expand-file-name "test" (textmate-project-root)))
-             (command (list ruby-compilation-executable "-I" test-path path)))
-        (pop-to-buffer (ruby-compilation-do filename command)))
-    (ruby-compilation-this-buffer)))
-
-;; got ot bookmarks from ido?
-;; (setq enable-recursive-minibuffers t)
-;; (define-key ido-file-dir-completion-map [(meta control ?b)] 'ido-goto-bookmark)
-;; (defun ido-goto-bookmark (bookmark)
-;;   (interactive
-;;    (list (bookmark-completing-read "Jump to bookmark"
-;;                                    bookmark-current-bookmark)))
-;;   (unless bookmark
-;;     (error "No bookmark specified"))
-;;   (let ((filename (bookmark-get-filename bookmark)))
-;;     (ido-set-current-directory
-;;      (if (file-directory-p filename)
-;;          filename
-;;        (file-name-directory filename)))
-;;     (setq ido-exit        'refresh
-;;           ido-text-init   ido-text
-;;           ido-rotate-temp t)
-;;     (exit-minibuffer)))
-
-
-;;; Some basic navigation customizations.
-
-(setq line-move-visual nil)             ; Default to logical line movement
-
-;;; The following function are like previous-line/next-line, but move
-;;; visually (and do so without changing the default behaviour).
-
-(defun previous-visual-line ()
-  "Move to previous visual line, without effecting the default behavior."
-  (interactive)
-  (let ((line-move-visual t))
-    (previous-line)))
-
-(defun next-visual-line ()
-  "Move to next visual line, without effecting the default behavior."
-  (interactive)
-  (let ((line-move-visual t))
-    (next-line)))
-
-
-(defun jw-indent-block (n)
-  (interactive "p")
-  (indent-rigidly (region-beginning) (region-end) (* tab-width n)))
-
-(defun jw-outdent-block (n)
-  (interactive "p")
-  (jw-indent-block (* -1 n)))
-
-
-(defun run-bitlbee ()
-  "Connect to IM networks using bitlbee."
-  (interactive)
-  (erc :server "localhost" :port 6667 :nick "ignacy"))
-
-
+  (switch-to-buffer (other-buffer (current-buffer) 1)))

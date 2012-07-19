@@ -22,12 +22,13 @@
                minor-mode-alist  ;; list of minor modes
                ))
 
-;; (set-face-background 'modeline "gray12")
-;; (set-face-foreground 'modeline "azure1")
+;; (set-face-background 'modeline "#123")
+;; (set-face-foreground 'modeline "#fff")
 
 
-(set-face-background 'modeline "#4477aa")
-(set-face-background 'modeline-inactive "SkyBlue4")
-(set-face-background 'fringe "DodgerBlue4")
-(custom-set-faces
- '(mode-line ((t (:box (:line-width 2 :color "DodgerBlue4"))))))
+;;  (set-face-background 'modeline "#4477aa")
+;; ;; (set-face-background 'modeline-inactive "SkyBlue4")
+;; (set-face-background 'fringe "DodgerBlue4")
+;; (set-face-background 'modeline "DodgerBlue4")
+;; (custom-set-faces
+;;  '(mode-line ((t (:box (:line-width 2 :color "DodgerBlue4"))))))
