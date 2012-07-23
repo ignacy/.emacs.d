@@ -1,3 +1,5 @@
+(require 'ruby-end)
+
 (require 'rvm)
 (rvm-use "ruby-1.9.3" "jobandtalent")
 

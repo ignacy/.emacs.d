@@ -9,7 +9,7 @@
 (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
                                autopair haskell-mode rainbow-mode coffee-mode js2-mode
                                rinari ruby-mode inf-ruby ruby-compilation rinari deft
-                               find-file-in-project android-mode flymake-ruby yasnippet
+                               gist find-file-in-project android-mode flymake-ruby yasnippet
                                rvm jump color-theme rainbow-delimiters ruby-end
                                idle-highlight-mode feature-mode marmalade))
 
