@@ -57,6 +57,10 @@
  uniquify-buffer-name-style 'post-forward
  uniquify-separator "@")
 
+(setq frame-title-format
+      (list '("emacs ")
+            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
 (load-file (concat imoryc-dir "/project-top.el"))
 (load-file (concat imoryc-dir "/compile-mode-options.el"))
 (load-file (concat imoryc-dir "/testowanie.el"))
@@ -83,11 +87,6 @@
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 (require 'init-ruby-mode)
-
-(setq frame-title-format
-      (list '("emacs ")
-            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
-
 (require 'init-recentf)
 (require 'im-helpers)
 (require 'im-keys)
