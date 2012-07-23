@@ -1,5 +1,0 @@
-(defun improve (guess x)(average guess (/ x guess)))
-(imporve 10 2)
-(defun improve (guess x)(average guess (/ x guess)))
-(defun improve (guess x)(average guess (/ x guess)))
-exit
