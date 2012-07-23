@@ -1,8 +1,6 @@
 (require 'cl)
 ;;(setq debug-on-error t)
-(defvar set-java-paths-on-windows t)
-(defvar set-working-on-bdj t)
-(defvar set-indent-before-saving t)
+
 (defvar on-windows (eq system-type 'windows-nt))
 
 (setq dotfiles-dir "~/.emacs.d")
@@ -61,7 +59,6 @@
 
 (load-file (concat imoryc-dir "/project-top.el"))
 (load-file (concat imoryc-dir "/compile-mode-options.el"))
-(load-file (concat imoryc-dir "/window-manage.el"))
 (load-file (concat imoryc-dir "/testowanie.el"))
 ;;(require 'matlab)
 
@@ -92,9 +89,8 @@
             '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 (require 'init-recentf)
-(load-file (concat imoryc-dir "/im-helpers.el"))
-(load-file (concat imoryc-dir "/im-keys.el"))
-(load-file (concat imoryc-dir "/im-abbrevs.el"))
+(require 'im-helpers)
+(require 'im-keys)
 
 (require 'init-shell-mode)
 (require 'init-buffer-switching)
