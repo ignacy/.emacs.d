@@ -1,15 +1,6 @@
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 
-(eval-after-load 'clojure-mode
-  '(progn
-     (require 'clojure-test-mode)))
 
-;; Use technomancy's bag of fancy clojure/slime tricks
-(eval-after-load 'slime
-  '(progn
-     (require 'durendal)
-     (durendal-enable t)
-     (durendal-disable-slime-repl-font-lock)))
 
 (add-hook 'clojure-mode-hook 'sanityinc/lisp-setup)
 
@@ -44,7 +35,7 @@
                (("#?\\^?{\\|}"        . 'clojure-brackets))
                (("\\[\\|\\]"          . 'clojure-braces))
                ((":\\w+#?"            . 'clojure-keyword))
-               (("#?\""               0 'clojure-double-quote prepend))
+               ;;(("#?\""               0 'clojure-double-quote prepend))
                (("nil\\|true\\|false\\|%[1-9]?" . 'clojure-special))
                (("(\\(\\.[^ \n)]*\\|[^ \n)]+\\.\\|new\\)\\([ )\n]\\|$\\)" 1 'clojure-java-call))
                ))

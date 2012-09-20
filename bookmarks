@@ -64,9 +64,9 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/notes/notes.org")
- (front-context-string . "** TODO Add in t")
- (rear-context-string . "orrow-night))]]\n")
- (position . 101))
+ (front-context-string . "** TODO Addd err")
+ (rear-context-string . " \"Sign in\" form\n")
+ (position . 190))
 ("init.el"
  (filename . "~/.emacs.d/init.el")
  (front-context-string . "(require 'cl)\n\n;")

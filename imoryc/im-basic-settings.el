@@ -1,3 +1,11 @@
+;; Cursor
+(blink-cursor-mode t)
+(setq initial-frame-alist
+      (cons '(cursor-type . bar) (copy-alist initial-frame-alist)))
+(setq default-frame-alist
+      (cons '(cursor-type . bar) (copy-alist default-frame-alist)))
+
+
 (setq auto-save-default nil)
 (setq initial-scratch-message nil)
 (setq inhibit-splash-screen t)
@@ -25,7 +33,11 @@
 (setq ido-create-new-buffer 'always)
 (setq backup-inhibited t)
 (setq font-lock-maximum-decoration t)
-(and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
+;;(and (fboundp 'blink-cursor-mode) (blink-cursor-mode (- (*) (*) (*))))
+(setq-default
+ blink-cursor-delay 0
+ blink-cursor-interval 0.4)
+
 (display-time-mode -1)
 (setq
  bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
@@ -40,14 +52,6 @@
 (set-frame-font "Menlo-14")
 (setq cursor-in-non-selected-windows nil)
 
-;; Diff/git addons
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(diff-added ((t (:foreground "Green"))))
- '(diff-removed ((t (:foreground "Red")))))
 (setq redisplay-dont-pause t)
 
 
@@ -64,11 +68,6 @@
 (setq ibuffer-show-empty-filter-groups nil)
 (put 'set-goal-column 'disabled nil)
 (setq auto-save-default nil)
-;; Diff/git addons
-(custom-set-faces
- '(diff-added ((t (:foreground "Green"))) 'now)
- '(diff-removed ((t (:foreground "Red"))) 'now)
- )
 
 (setq-default fill-column 100)
 (setq-default scroll-step              1
@@ -82,9 +81,11 @@
 (fringe-mode '(1 . 0))
 (set-cursor-color '"#00ff00")
 
-(setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
+(require 'whitespace)
+(setq whitespace-style '(trailing lines lines-tail space-before-tab indentation empty space-after-tab))
 (setq-default show-trailing-whitespace t)
 (setq-default default-indicate-empty-lines t)
+(setq-default whitespace-line-column 80)
 
 ;; (setq hippie-expand-try-functions-list '(try-expand-dabbrev
 ;;                                          try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill
@@ -93,7 +94,6 @@
 ;;                                          try-complete-lisp-symbol-partially try-complete-lisp-symbol))
 (global-auto-revert-mode 1)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(setq explicit-shell-file-name "/bin/zsh")
 
 (defvar ash-mark-bol
   (save-excursion
@@ -121,6 +121,19 @@
 (load-file (concat imoryc-dir "/im-modeline.el"))
 (setq visible-bell t)
 
+
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+;; backwards compatibility as default-buffer-file-coding-system
+;; is deprecated in 23.2.
+(if (boundp buffer-file-coding-system)
+    (setq buffer-file-coding-system 'utf-8)
+  (setq default-buffer-file-coding-system 'utf-8))
+ 
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 (provide 'im-basic-settings)
 

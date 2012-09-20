@@ -22,6 +22,11 @@
                minor-mode-alist  ;; list of minor modes
                ))
 
+
+;; (require 'powerline)
+;; (powerline-default)
+
+
 ;; (set-face-background 'modeline "#123")
 ;; (set-face-foreground 'modeline "#fff")
 

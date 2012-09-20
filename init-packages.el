@@ -8,6 +8,8 @@
 
 (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
                                autopair haskell-mode rainbow-mode coffee-mode js2-mode
+                               color-theme-sanityinc-solarized elnode zencoding-mode
+                               expand-region
                                rinari ruby-mode inf-ruby ruby-compilation rinari deft
                                gist find-file-in-project android-mode flymake-ruby yasnippet
                                rvm jump color-theme rainbow-delimiters ruby-end
@@ -18,3 +20,4 @@
     (package-install p)))
 
 (provide 'init-packages)
+

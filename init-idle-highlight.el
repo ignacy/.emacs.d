@@ -1,4 +1,3 @@
-(require 'init-idle-highlight)
 (defun idle-coding-hook ()
   (idle-highlight-mode t))
 
@@ -14,4 +13,4 @@
 (add-hook 'rhtml-mode-hook 'idle-coding-hook)
 (add-hook 'java-mode-hook 'idle-coding-hook)
 
-(provide 'idle-highlight)
+(provide 'init-idle-highlight)

@@ -3,6 +3,10 @@
 (require 'rvm)
 (rvm-use "ruby-1.9.3" "jobandtalent")
 
+
+(add-to-list 'load-path (concat dotfiles-dir "/site-lisp/emacs-pry"))
+(require 'pry)
+
 (defun ruby-interpolate ()
   "In a double quoted string, interpolate."
   (interactive)

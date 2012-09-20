@@ -1,4 +1,3 @@
-
 (require 'org-install)
 (setq org-directory "~/Dropbox/notes")
 (setq org-default-notes-file "~/Dropbox/notes/notes.org")

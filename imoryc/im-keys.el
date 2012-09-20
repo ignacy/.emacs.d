@@ -15,8 +15,12 @@
 (setq mac-option-modifier nil)
 
 
+
+(bind "C-c f" 'ns-toggle-fullscreen)
 (bind "C-c d" 'deft)
-(bind "C-c g" 'vc-git-grep)
+(bind "C-c n" 'cleanup-buffer)
+(bind "C-c a" 'ack)
+(bind "C-c p" 'defunkt-duplicate-line)
 ;;(bind "<f5>" 'im/ant)
 (bind "C-x C-r" 'ido-recentf-open)
 (bind "C-c C-d" 'im/diff-current-buffer-with-disk)
@@ -31,7 +35,6 @@
 (bind "C-a" 'back-to-indentation)
 (bind "C-x C-f" 'ido-find-file)
 (bind "C-x f" 'textmate-goto-file)
-(bind "M-t" 'im/open-todo)
 (bind "C-x i" 'iwb)
 (bind "C-x C-p" 'find-file-at-point)
 (bind "C-3" 'split-window-horizontally)
@@ -46,7 +49,6 @@
 (bind "C-\\" 'push-mark-no-activate)
 (bind "M-s" 'tags-search)
 (bind "C-'" 'textmate-goto-symbol)
-(bind "C-c C-r" 'run-current-spec)
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x C-b" 'ido-switch-buffer)
 (bind "M-g" 'goto-line)
@@ -69,6 +71,13 @@
 (bind "S-<right>" 'enlarge-window-horizontally)
 (bind "S-<up>" 'shrink-window)
 (bind "S-<down>" 'enlarge-window)
+
+(global-set-key (kbd "C-w") 'kill-region-or-backward-kill-word)
+
+(add-hook 'sgml-mode-hook
+          (lambda ()
+            (require 'rename-sgml-tag)
+            (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)))
 
 (keyboard-translate ?\C-h ?\C-?)
 (global-unset-key (kbd "C-x 3"))

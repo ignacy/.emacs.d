@@ -56,10 +56,9 @@
   (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
   (define-key js2-mode-map [(control meta q)] 'my-indent-sexp)
   (if (featurep 'js2-highlight-vars)
-      (js2-highlight-vars-mode))
-  (message "My JS2 hook"))
+      (js2-highlight-vars-mode)))
 
-(add-hook 'js2-mode-hook 'my-js2-mode-hook)
+;;(add-hook 'js2-mode-hook 'my-js2-mode-hook)
 
 
 (provide 'init-javascript-settings)
