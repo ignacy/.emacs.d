@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("test"
+(("colors"
+ (filename . "~/.emacs.d/im-set-colors.el")
+ (front-context-string)
+ (rear-context-string . " 'im/set-colors)")
+ (position . 443))
+("test"
  (filename . "~/code/new_jobandtalent/spec/models/candidate_spec.rb")
  (front-context-string . "Factory(:candida")
  (rear-context-string . "fb_id' do\n      ")
@@ -64,9 +69,9 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/notes/notes.org")
- (front-context-string . "** TODO Addd err")
- (rear-context-string . " \"Sign in\" form\n")
- (position . 190))
+ (front-context-string . "** TODO Napisz C")
+ (rear-context-string)
+ (position . 9))
 ("init.el"
  (filename . "~/.emacs.d/init.el")
  (front-context-string . "(require 'cl)\n\n;")

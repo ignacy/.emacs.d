@@ -1,7 +1,20 @@
 (require 'ruby-end)
-
+(require 'inf-ruby)
 (require 'rvm)
 (rvm-use "ruby-1.9.3" "jobandtalent")
+
+(defun get-candidate-by-email (email)
+  (comint-send-string (inf-ruby-proc)
+                      (format "candidate = User.find_by_email('%s').try(:profile)" email)))
+
+(defun get-ls ()
+  (interactive)
+  (comint-send-string (get-buffer-process "zsh") "pwd \n ")
+  (switch-to-buffer "zsh"))
+
+(defun get-imoryc-candidate ()
+  (interactive)
+  (get-candidate-by-email "imoryc@gmail.com"))
 
 
 (add-to-list 'load-path (concat dotfiles-dir "/site-lisp/emacs-pry"))
@@ -28,13 +41,32 @@
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
+(require 'ruby-comint)
+;; You might also like to add some keybings:
+;;     C-C r -- ruby commands
+;; (global-set-key (kbd "C-C r f") 'ruby-compile-file)
+;; (global-set-key (kbd "C-C r r") 'ruby-compile-region)
+
+
 (require 'ruby-compilation)
 (require 'ruby-end)
 (require 'flymake-ruby)
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
-(add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
-(require 'rhtml-mode)
+
+(defun rails-root (&optional dir)
+  (or dir (setq dir default-directory))
+  (if (file-exists-p (concat dir "config/environment.rb"))
+      dir
+    (unless (equal dir "/")
+      (rails-root (expand-file-name (concat dir "../"))))))
+
+(defun rails-console ()
+  (interactive)
+  (run-ruby (concat (rails-root) "script/rails c")))
+
+;; (add-to-list 'load-path (concat dotfiles-dir "/rhtml"))
+;; (require 'rhtml-mode)
 
 ;; (flymake-ruby-load)
 ;; (ruby-end-mode)

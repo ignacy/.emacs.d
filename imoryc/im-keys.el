@@ -15,10 +15,10 @@
 (setq mac-option-modifier nil)
 
 
-
+(bind "C-=" 'er/expand-region)
 (bind "C-c f" 'ns-toggle-fullscreen)
 (bind "C-c d" 'deft)
-(bind "C-c n" 'cleanup-buffer)
+(bind "C-c n" 'clean-up-buffer-or-region)
 (bind "C-c a" 'ack)
 (bind "C-c p" 'defunkt-duplicate-line)
 ;;(bind "<f5>" 'im/ant)
@@ -32,10 +32,13 @@
 (bind "M-z" 'undo)
 (bind "C-x C-o" 'other-window)
 (bind "C-x C-1" 'delete-other-windows)
+(bind "C-o" 'newline-previous)
+(bind "C-j" 'newline-and-indent)
 (bind "C-a" 'back-to-indentation)
 (bind "C-x C-f" 'ido-find-file)
-(bind "C-x f" 'textmate-goto-file)
-(bind "C-x i" 'iwb)
+;;(bind "C-x f" 'textmate-goto-file)
+(bind "C-x f" 'projectile-find-file)
+;;(bind "C-x i" 'iwb) USE C-c n
 (bind "C-x C-p" 'find-file-at-point)
 (bind "C-3" 'split-window-horizontally)
 (bind "C-2" 'split-window-vertically)
@@ -52,7 +55,6 @@
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x C-b" 'ido-switch-buffer)
 (bind "M-g" 'goto-line)
-(bind "C-c h" 'heroku-run-ask)
 (bind "C-x b" 'ibuffer-bs-show)
 (bind "<f11>" 'switch-full-screen)
 (bind "M-/" 'hippie-expand)

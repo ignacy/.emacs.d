@@ -26,6 +26,19 @@
     (occur (if isearch-regexp isearch-string
              (regexp-quote isearch-string)))))
 
+
+(defun clean-up-buffer-or-region ()
+  "Untabifies, indents and deletes trailing whitespace from buffer or region."
+  (interactive)
+  (save-excursion
+    (unless (region-active-p)
+      (mark-whole-buffer))
+    (untabify (region-beginning) (region-end))
+    (indent-region (region-beginning) (region-end))
+    (save-restriction
+      (narrow-to-region (region-beginning) (region-end))
+      (delete-trailing-whitespace))))
+
 (defun ido-goto-symbol (&optional symbol-list)
   "Refresh imenu and jump to a place in the buffer using Ido."
   (interactive)
@@ -345,5 +358,21 @@ instead."
   (if region
       (kill-region (region-beginning) (region-end))
     (backward-kill-word arg)))
+
+
+(defun newline-previous ()
+  "Insert a blank line above the cursor and move the cursor up one line."
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (previous-line)
+  (indent-according-to-mode))
+
+;; From https://github.com/defunkt/textmate.el
+(defun newline-next ()
+  "Inserts an indented newline after the current line and moves the point to it."
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
 
 (provide 'im-helpers)

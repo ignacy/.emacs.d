@@ -11,7 +11,7 @@
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'im/shell-mode-hook)
 
-(setq explicit-shell-file-name "/bin/bash")
+(setq explicit-shell-file-name "/bin/zsh")
 
 ;; shell-mode
 (defun sh (&optional name)
@@ -20,10 +20,10 @@
 
 (defun zsh ()
   (interactive)
-  (shell "bash"))
+  (shell "zsh"))
 
 (defun switch-to-zsh ()
   (interactive)
-  (switch-to-buffer "bash"))
+  (switch-to-buffer "zsh"))
 
 (provide 'init-shell-mode)

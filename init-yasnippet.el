@@ -1,11 +1,9 @@
 (require 'yasnippet)
-(yas/initialize)
+(yas-global-mode 1)
 (setq yas/root-directory (concat dotfiles-dir "/snippets"))
 (yas/load-directory yas/root-directory)
-(yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
+;;(yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
 (setq yas/trigger-key "TAB")
-
-
 
 (defun  jp-load-yasnippets-hooks ()
   "Loads yasnippets."

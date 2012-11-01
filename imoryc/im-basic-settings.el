@@ -57,7 +57,7 @@
 
 (global-hl-line-mode 1)
 ;;(set-face-background 'hl-line "light cyan")
-(set-face-background 'hl-line "#444")
+;;(set-face-background 'hl-line "#444")
 (set-face-foreground 'highlight nil)
 (set-face-foreground 'hl-line nil)
 (set-face-attribute hl-line-face nil :overline nil)
@@ -131,10 +131,19 @@
 (if (boundp buffer-file-coding-system)
     (setq buffer-file-coding-system 'utf-8)
   (setq default-buffer-file-coding-system 'utf-8))
- 
+
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
+(require 'init-idle-highlight)
+(idle-highlight-mode)
+
+(require 'uniquify)
+(setq
+ uniquify-buffer-name-style 'post-forward
+ uniquify-separator "@")
+(setq frame-title-format
+      (list '("emacs ")
+            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
 (provide 'im-basic-settings)
-
-
