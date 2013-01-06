@@ -163,7 +163,6 @@
 (require 'init-recentf)
 (require 'im-helpers)
 (require 'im-keys)
-;;(require 'init-mu4e)
 (require 'gist)
 
 (winner-mode 1)
