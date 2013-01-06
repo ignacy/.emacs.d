@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("colors"
+(("reading_list.org"
+ (filename . "~/Dropbox/notes/deft/reading_list.org")
+ (front-context-string . " 700 languages\n ")
+ (rear-context-string . "iejscu.\n\n\n* Next")
+ (position . 191))
+("colors"
  (filename . "~/.emacs.d/im-set-colors.el")
  (front-context-string)
  (rear-context-string . " 'im/set-colors)")
@@ -38,10 +43,10 @@
  (rear-context-string)
  (position . 16))
 ("notes"
- (filename . "~/Dropbox/notes/mobileorg.org")
- (front-context-string . "* Tasks\n** Moder")
- (rear-context-string . "dManifest.xml]]\n")
- (position . 54743))
+ (filename . "~/Dropbox/notes/deft/deft-0.org")
+ (front-context-string)
+ (rear-context-string . "restart all apps")
+ (position . 75))
 ("notes_uncoded"
  (filename . "c:/Users/Ignacy/Dropbox/org/notes.org")
  (front-context-string . "* brain dump of ")

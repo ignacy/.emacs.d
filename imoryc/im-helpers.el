@@ -39,6 +39,19 @@
       (narrow-to-region (region-beginning) (region-end))
       (delete-trailing-whitespace))))
 
+
+(defun cleanup-buffer-safe ()
+  "Perform a bunch of safe operations on the whitespace content of a buffer.
+Does not indent buffer, because it is used for a before-save-hook, and that
+might be bad."
+  (interactive)
+  (untabify (point-min) (point-max))
+  (delete-trailing-whitespace)
+  (set-buffer-file-coding-system 'utf-8))
+
+;; Various superfluous white-space. Just say no.
+(add-hook 'before-save-hook 'cleanup-buffer-safe)
+
 (defun ido-goto-symbol (&optional symbol-list)
   "Refresh imenu and jump to a place in the buffer using Ido."
   (interactive)
@@ -107,23 +120,23 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (set-mark-command 1))
 
 
-;; (defun im/clear-elc-files
-;;   "Clear all bytecompiled emacs files"
-;;   (shell-command "find ~/.emacs.d/ -name *.elc -exec rm {} \;"))
-(defun renamefile (new-name)
-  "Renames both current buffer and file it's visiting to NEW-NAME."
-  (interactive (list (completing-read "New name: " nil nil nil (buffer-name))))
+(defun rename-current-buffer-file ()
+  "Renames current buffer and file it is visiting."
+  (interactive)
   (let ((name (buffer-name))
         (filename (buffer-file-name)))
-    (if (not filename)
-        (message "Buffer '%s' is not visiting a file!" name)
-      (if (get-buffer new-name)
-          (message "A buffer named '%s' already exists!" new-name)
-        (progn
-          (rename-file name new-name 1)
+    (if (not (and filename (file-exists-p filename)))
+        (error "Buffer '%s' is not visiting a file!" name)
+      (let ((new-name (read-file-name "New name: " filename)))
+        (if (get-buffer new-name)
+            (error "A buffer named '%s' already exists!" new-name)
+          (rename-file filename new-name 1)
           (rename-buffer new-name)
           (set-visited-file-name new-name)
-          (set-buffer-modified-p nil))))))
+          (set-buffer-modified-p nil)
+          (message "File '%s' successfully renamed to '%s'"
+                   name (file-name-nondirectory new-name)))))))
+
 
 
 (defun my-ido-find-tag ()
@@ -360,19 +373,54 @@ instead."
     (backward-kill-word arg)))
 
 
-(defun newline-previous ()
-  "Insert a blank line above the cursor and move the cursor up one line."
+(defun insert-random-color ()
+  "Insert a random color in CSS format"
+  (interactive)
+  (insert (format "#%d%d%d" (random 99) (random 99) (random 99))) )
+
+(defun jao-toggle-selective-display (column)
+  (interactive "P")
+  (set-selective-display
+   (if selective-display nil (or column 1))))
+
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+        (linum-mode 1)
+        (goto-line (read-number "Goto line: ")))
+    (linum-mode -1)))
+
+(defun open-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+(defun open-line-above ()
   (interactive)
   (beginning-of-line)
   (newline)
-  (previous-line)
-  (indent-according-to-mode))
+  (forward-line -1)
+  (indent-for-tab-command))
 
-;; From https://github.com/defunkt/textmate.el
-(defun newline-next ()
-  "Inserts an indented newline after the current line and moves the point to it."
+
+(defun move-line-down ()
   (interactive)
-  (end-of-line)
-  (newline-and-indent))
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+
+(defun move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (move-to-column col)))
 
 (provide 'im-helpers)

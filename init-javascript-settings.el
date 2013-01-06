@@ -29,13 +29,14 @@
         (when (and node
                    (= js2-NAME (js2-node-type node))
                    (= js2-VAR (js2-node-type (js2-node-parent node))))
-          (setq indentation (+ 4 indentation))))
+          (setq indentation (+ 2 indentation))))
 
       (indent-line-to indentation)
       (when (> offset 0) (forward-char offset)))))
 
 
 (defun my-js2-mode-hook ()
+  (interactive)
   (require 'espresso)
   (setq espresso-indent-level 2
         indent-tabs-mode nil
@@ -58,7 +59,7 @@
   (if (featurep 'js2-highlight-vars)
       (js2-highlight-vars-mode)))
 
-;;(add-hook 'js2-mode-hook 'my-js2-mode-hook)
+(add-hook 'js2-mode-hook 'my-js2-mode-hook)
 
 
 (provide 'init-javascript-settings)

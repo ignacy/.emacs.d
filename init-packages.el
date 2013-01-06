@@ -12,10 +12,11 @@
   (package-refresh-contents))
 
 (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
+                               exec-path-from-shell ido-ubiquitous rspec-mode
                                autopair haskell-mode rainbow-mode coffee-mode js2-mode
                                wgrep expand-region slime clojure-mode multiple-cursors
                                s projectile ruby-mode inf-ruby ruby-compilation deft
-                               web-mode
+                               web-mode paredit mustache-mode color-theme-sanityinc-tomorrow
                                gist find-file-in-project flymake-ruby yasnippet
                                rvm jump color-theme rainbow-delimiters ruby-end
                                idle-highlight-mode feature-mode))
@@ -25,4 +26,3 @@
     (package-install p)))
 
 (provide 'init-packages)
-

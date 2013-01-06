@@ -1,4 +1,4 @@
-(require 'org-install)
+(require 'org)
 (setq org-directory "~/Dropbox/notes")
 (setq org-default-notes-file "~/Dropbox/notes/notes.org")
 ;; Set to the name of the file where new notes will be stored
@@ -19,12 +19,22 @@
 (org-clock-persistence-insinuate)
 (define-key global-map "\C-cc" 'org-capture)
 
+(setq org-fontify-done-headline t)
+(custom-set-faces
+ '(org-done ((t (:foreground "PaleGreen"
+                             :weight normal
+                             :strike-through t))))
+ '(org-headline-done
+   ((((class color) (min-colors 16) (background dark))
+     (:foreground "LightSalmon" :strike-through t)))))
 
 (add-to-list 'load-path (concat dotfiles-dir "/deft"))
+
 (require 'deft)
 (setq deft-use-filename-as-title t)
 (setq deft-extension "org")
 (setq deft-text-mode 'org-mode)
 (setq deft-auto-save-interval 2.3)
 (setq deft-directory "~/Dropbox/notes/deft/")
+
 (provide 'init-org-mode)

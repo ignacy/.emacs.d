@@ -1,14 +1,15 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 (setq yas/root-directory (concat dotfiles-dir "/snippets"))
+
 (yas/load-directory yas/root-directory)
-;;(yas/load-directory "~/.emacs.d/elpa/yasnippet-0.6.1/snippets")
+(yas/load-directory "~/.emacs.d/elpa/yasnippet-20121116.1515/snippets")
+
 (setq yas/trigger-key "TAB")
 
 (defun  jp-load-yasnippets-hooks ()
   "Loads yasnippets."
   (interactive)
-
   (eval-after-load "yasnippet"
     '(progn
        (setq yas/prompt-functions '(yas/x-prompt yas/dropdown-prompt))
@@ -76,5 +77,10 @@
        (add-hook 'js2-mode-hook
                  '(lambda ()
                     (setq yas/mode-symbol 'espresso-mode))))))
+
+
+(setq yas/prompt-functions '(yas-ido-prompt
+                             yas/x-prompt
+                             yas/dropdown-prompt))
 
 (provide 'init-yasnippet)

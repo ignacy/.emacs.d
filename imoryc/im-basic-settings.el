@@ -5,7 +5,6 @@
 (setq default-frame-alist
       (cons '(cursor-type . bar) (copy-alist default-frame-alist)))
 
-
 (setq auto-save-default nil)
 (setq initial-scratch-message nil)
 (setq inhibit-splash-screen t)
@@ -87,11 +86,13 @@
 (setq-default default-indicate-empty-lines t)
 (setq-default whitespace-line-column 80)
 
-;; (setq hippie-expand-try-functions-list '(try-expand-dabbrev
-;;                                          try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill
-;;                                          try-complete-file-name-partially try-complete-file-name
-;;                                          try-expand-all-abbrevs try-expand-list try-expand-line
-;;                                          try-complete-lisp-symbol-partially try-complete-lisp-symbol))
+(custom-set-faces
+ '(trailing-whitespace
+   ((((class color)
+      (background light))
+     (:background "cyan")))))
+
+
 (global-auto-revert-mode 1)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
@@ -137,6 +138,17 @@
 
 (require 'init-idle-highlight)
 (idle-highlight-mode)
+
+
+;; Move to trash when deleting stuff
+(setq delete-by-moving-to-trash t
+      trash-directory "~/.Trash/emacs")
+
+;; Ignore .DS_Store files with ido mode
+(add-to-list 'ido-ignore-files "\\.DS_Store")
+
+;; Use aspell for spell checking: brew install aspell --lang=en
+(setq ispell-program-name "/usr/local/bin/aspell")
 
 (require 'uniquify)
 (setq

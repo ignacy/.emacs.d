@@ -1,21 +1,8 @@
 (require 'ruby-end)
 (require 'inf-ruby)
-(require 'rvm)
-(rvm-use "ruby-1.9.3" "jobandtalent")
-
-(defun get-candidate-by-email (email)
-  (comint-send-string (inf-ruby-proc)
-                      (format "candidate = User.find_by_email('%s').try(:profile)" email)))
-
-(defun get-ls ()
-  (interactive)
-  (comint-send-string (get-buffer-process "zsh") "pwd \n ")
-  (switch-to-buffer "zsh"))
-
-(defun get-imoryc-candidate ()
-  (interactive)
-  (get-candidate-by-email "imoryc@gmail.com"))
-
+;; (require 'rvm)
+;; (rvm-use "ruby-1.9.3" "jobandtalent")
+(require 'haml-mode)
 
 (add-to-list 'load-path (concat dotfiles-dir "/site-lisp/emacs-pry"))
 (require 'pry)
@@ -36,10 +23,12 @@
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.jbuilder$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 
 (require 'ruby-comint)
 ;; You might also like to add some keybings:
@@ -117,5 +106,9 @@
  'ruby-mode
  '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
 
+
+(setq rspec-use-rake-flag nil)
+(setq rspec-use-rvm nil)
+(setq rspec-use-bundler-when-possible nil)
 
 (provide 'init-ruby-mode)

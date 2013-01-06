@@ -10,7 +10,6 @@
 
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'im/shell-mode-hook)
-
 (setq explicit-shell-file-name "/bin/zsh")
 
 ;; shell-mode
@@ -25,5 +24,9 @@
 (defun switch-to-zsh ()
   (interactive)
   (switch-to-buffer "zsh"))
+
+(shell "server")
+(cdtmmserv)
+(zsh)
 
 (provide 'init-shell-mode)
