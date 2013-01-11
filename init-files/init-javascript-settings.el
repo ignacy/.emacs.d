@@ -1,6 +1,6 @@
 (autoload 'espresso-mode "espresso")
 
-(autoload 'js2-mode "js2-mode" nil t)
+(require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (defun my-js2-indent-function ()
@@ -34,6 +34,8 @@
       (indent-line-to indentation)
       (when (> offset 0) (forward-char offset)))))
 
+(require 'mustache-mode)
+
 
 (defun my-js2-mode-hook ()
   (interactive)
@@ -43,23 +45,20 @@
         c-basic-offset 2)
   (c-toggle-auto-state 0)
   (c-toggle-hungry-state 1)
-  (set (make-local-variable 'indent-line-function) 'my-js2-indent-function)
-  (define-key js2-mode-map [(meta control |)] 'cperl-lineup)
-  (define-key js2-mode-map [(meta control \;)]
-    '(lambda()
-       (interactive)
-       (insert "/* -----[ ")
-       (save-excursion
-         (insert " ]----- */"))
-       ))
-  (define-key js2-mode-map [(return)] 'newline-and-indent)
-  (define-key js2-mode-map [(backspace)] 'c-electric-backspace)
-  (define-key js2-mode-map [(control d)] 'c-electric-delete-forward)
-  (define-key js2-mode-map [(control meta q)] 'my-indent-sexp)
-  (if (featurep 'js2-highlight-vars)
-      (js2-highlight-vars-mode)))
+  (set (make-local-variable 'indent-line-function) 'my-js2-indent-function))
 
-(add-hook 'js2-mode-hook 'my-js2-mode-hook)
+(eval-after-load 'js2-mode
+  '(progn   (define-key js2-mode-map "{" 'paredit-open-curly)
+            (define-key js2-mode-map "}" 'paredit-close-curly-and-newline)
+            (add-hook 'js2-mode-hook 'esk-paredit-nonlisp)
+            (add-hook 'js2-mode-hook 'my-js2-mode-hook)
+            ;; fixes problem with pretty function font-lock
+            (define-key js2-mode-map (kbd ",") 'self-insert-command)
+            (font-lock-add-keywords
+             'js2-mode `(("\\(function *\\)("
+                          (0 (progn (compose-region (match-beginning 1)
+                                                    (match-end 1) "\u0192")
+                                    nil)))))))
 
-
+(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 (provide 'init-javascript-settings)

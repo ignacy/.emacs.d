@@ -25,8 +25,6 @@
   (interactive)
   (switch-to-buffer "zsh"))
 
-(shell "server")
-(cdtmmserv)
 (zsh)
 
 (provide 'init-shell-mode)

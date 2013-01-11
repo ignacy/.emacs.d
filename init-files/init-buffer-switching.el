@@ -1,4 +1,3 @@
-
 (defadvice switch-to-buffer (before existing-buffer
                                     activate compile)
   "When interactive, switch to existing buffers only,

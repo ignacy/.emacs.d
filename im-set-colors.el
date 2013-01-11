@@ -11,6 +11,6 @@
      (set-face-foreground 'diff-added "green4")
      (set-face-foreground 'diff-removed "red3")))
 
-(set-face-attribute 'default nil :font "Monaco-16")
+;;(set-face-attribute 'default nil :font "Monaco-14")
 
 (provide 'im-set-colors)
