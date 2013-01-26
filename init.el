@@ -84,8 +84,4 @@
 (global-set-key (kbd "M-i") 'change-inner)
 (global-set-key (kbd "M-o") 'change-outer)
 
-
 (slime-setup)
-
-(message "Emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
-                                 (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))
