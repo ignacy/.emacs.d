@@ -15,14 +15,26 @@
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 
 
+
+
 (eval-after-load 'ruby-mode
-    '(progn
-       ;; work around possible elpa bug
-       (ignore-errors (require 'ruby-compilation))
-       (setq ruby-use-encoding-map nil)
-       (add-hook 'ruby-mode-hook 'flymake-ruby-load)
-       (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
-       (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)))
+  '(progn
+     ;; work around possible elpa bug
+     (ignore-errors (require 'ruby-compilation))
+     (setq ruby-use-encoding-map nil)
+     (add-hook 'ruby-mode-hook
+               (lambda ()
+                 (add-to-list 'ac-sources 'ac-source-rsense-method)
+                 (add-to-list 'ac-sources 'ac-source-rsense-constant)))
+
+     ;; Complete by C-c .
+     (add-hook 'ruby-mode-hook
+               (lambda ()
+                 (local-set-key (kbd "C-c .") 'ac-complete-rsense)))
+
+     (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+     (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
+     (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)))
 
 
 (defun rails-root (&optional dir)

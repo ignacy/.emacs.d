@@ -5,7 +5,6 @@
 (yas/load-directory yas/root-directory)
 (yas/load-directory "~/.emacs.d/elpa/yasnippet-20121116.1515/snippets")
 
-(setq yas/trigger-key "TAB")
 
 (defun  jp-load-yasnippets-hooks ()
   "Loads yasnippets."
