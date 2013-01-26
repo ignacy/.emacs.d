@@ -13,7 +13,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(autopair markdown-mode yaml-mode haml-mode magit gist textmate
-                               exec-path-from-shell ido-ubiquitous rspec-mode
+                               exec-path-from-shell ido-ubiquitous rspec-mode smex
                                autopair haskell-mode rainbow-mode coffee-mode js2-mode
                                expand-region slime clojure-mode multiple-cursors
                                s projectile ruby-mode inf-ruby ruby-compilation deft

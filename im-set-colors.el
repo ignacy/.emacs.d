@@ -1,6 +1,6 @@
 (ignore-errors
- (load-file (concat imoryc-dir "/themes/im-dark-theme.el"))
- (load-theme 'im-dark-theme t))
+ (load-file (concat imoryc-dir "/themes/bubbleberry-theme.el"))
+ (load-theme 'bubbleberry t))
 
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode)

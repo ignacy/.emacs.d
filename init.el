@@ -1,5 +1,7 @@
 (require 'cl)
 
+(defvar *emacs-load-start* (current-time))
+
 (defvar on-windows (eq system-type 'windows-nt))
 
 (setq dotfiles-dir "~/.emacs.d")
@@ -29,6 +31,24 @@
 (require 'autopair)
 (autopair-global-mode)
 (require 'paredit)
+
+(autoload 'paredit-mode "paredit"
+  "Minor mode for pseudo-structurally editing Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
+(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
+
+(defun paredit-wrap-round-from-behind ()
+  (interactive)
+  (forward-sexp -1)
+  (paredit-wrap-round)
+  (insert " ")
+  (forward-char -1))
+
+(define-key paredit-mode-map (kbd "M-)")
+  'paredit-wrap-round-from-behind)
+
 (require 'repository-root)
 (require 'stuff-from-esk)
 (require 'im-helpers)
@@ -36,6 +56,10 @@
 (require 'gist)
 (require 'im-basic-settings)
 (require 'slime)
+
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 (require 'init-ack)
 (require 'init-buffer-switching)
@@ -55,4 +79,13 @@
 (require 'init-webjump)
 (require 'init-yasnippet)
 
+
+(require 'change-inner)
+(global-set-key (kbd "M-i") 'change-inner)
+(global-set-key (kbd "M-o") 'change-outer)
+
+
 (slime-setup)
+
+(message "Emacs loaded in %ds" (destructuring-bind (hi lo ms) (current-time)
+                                 (- (+ hi lo) (+ (first *emacs-load-start*) (second *emacs-load-start*)))))

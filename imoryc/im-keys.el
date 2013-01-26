@@ -39,7 +39,7 @@
 (bind "M-h" 'backward-kill-word)
 (bind "C-x C-o" 'other-window)
 (bind "C-x C-1" 'delete-other-windows)
-
+(bind "M-j" (lambda () (interactive) (join-line -1)))
 (bind "C-S-o" 'move-line-up)
 (bind "C-o" 'open-line-above)
 (bind "C-S-j" 'move-line-down)
@@ -104,14 +104,6 @@
 (bind "C-x g" 'magit-status)
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
-
-(global-unset-key (kbd "<backspace>"))
-(global-unset-key (kbd "RET"))
-
-(global-unset-key (kbd "<up>"))
-(global-unset-key (kbd "<down>"))
-(global-unset-key (kbd "<left>"))
-(global-unset-key (kbd "<right>"))
 
 (bind "<up>" 'scroll-n-lines-behind)
 (bind "<down>" 'scroll-n-lines-ahead)
