@@ -80,8 +80,8 @@
 (setq auto-save-default nil)
 
 (setq-default fill-column 100)
-(set-face-background 'fringe "SteelBlue4")
-(fringe-mode '(1 . 0))
+;;(set-face-background 'fringe "SteelBlue4")
+;;(fringe-mode '(1 . 0))
 (set-cursor-color '"#00ff00")
 
 (require 'whitespace)

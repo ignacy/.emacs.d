@@ -4,9 +4,9 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("reading_list.org"
  (filename . "~/Dropbox/notes/deft/reading_list.org")
- (front-context-string . " 700 languages\n ")
- (rear-context-string . "iejscu.\n\n\n* Next")
- (position . 191))
+ (front-context-string . "* Lista rzeczy d")
+ (rear-context-string)
+ (position . 1))
 ("colors"
  (filename . "~/.emacs.d/im-set-colors.el")
  (front-context-string)
