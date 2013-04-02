@@ -1,9 +1,0 @@
-[submodule "rhtml"]
-	path = rhtml
-	url = http://github.com/eschulte/rhtml.git
-[submodule "rinari"]
-	path = rinari
-	url = https://github.com/eschulte/rinari.git
-[submodule "site-lisp/mark-multiple"]
-	path = site-lisp/mark-multiple
-	url = https://github.com/magnars/mark-multiple.el.git
