@@ -1,8 +1,8 @@
 auto-save-list
 ac-comphist.dat
 *.elc
-elpa/
-url/
+elpa
+url
 org-clock-save.el
 anything-c-adaptive-history
 session*

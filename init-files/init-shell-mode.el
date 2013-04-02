@@ -25,6 +25,7 @@
   (interactive)
   (switch-to-buffer "zsh"))
 
-(zsh)
+;;(zsh)
+(dired "~/code/")
 
 (provide 'init-shell-mode)

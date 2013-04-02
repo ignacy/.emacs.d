@@ -15,6 +15,9 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete-mode/ac-dict")
 (ac-config-default)
 
+
+(setq completion-cycle-threshold 5)
+
 (ac-set-trigger-key "TAB")
 (ac-set-trigger-key "<tab>")
 

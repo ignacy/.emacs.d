@@ -2,10 +2,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 
-
-
-(add-hook 'clojure-mode-hook 'sanityinc/lisp-setup)
-
 (defun slime-clojure-repl-setup ()
   "Some REPL setup additional to that in durendal."
   (when (string-equal (slime-lisp-implementation-name) "clojure")
@@ -20,6 +16,8 @@
 
 (add-hook 'slime-repl-mode-hook 'slime-clojure-repl-setup)
 
+(require 'midje-mode)
+(add-hook 'clojure-mode-hook 'midje-mode)
 
 (defmacro defclojureface (name color desc &optional others)
   `(defface ,name '((((class color)) (:foreground ,color ,@others))) ,desc :group 'faces))
@@ -49,7 +47,8 @@
 (eval-after-load 'gist
   '(add-to-list 'gist-supported-modes-alist '(clojure-mode . ".clj")))
 
-
+(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'nrepl-mode-hook 'subword-mode)
 
 (setq inferior-lisp-program "lein repl")
 (add-hook 'sldb-mode-hook

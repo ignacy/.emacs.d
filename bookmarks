@@ -74,9 +74,9 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/notes/todo.org")
- (front-context-string . "** TODO Przejdz ")
- (rear-context-string . "kt testowy woda\n")
- (position . 288))
+ (front-context-string . "** TODO Usluga: ")
+ (rear-context-string . "socket z emacsa\n")
+ (position . 173))
 ("init.el"
  (filename . "~/.emacs.d/init.el")
  (front-context-string . "(require 'cl)\n\n;")

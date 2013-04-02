@@ -3,6 +3,11 @@
 (winner-mode 1)
 (windmove-default-keybindings)
 
+;;(set-face-attribute 'default nil :family "Inconsolata" :height 160)
+
+(set-face-attribute 'default nil
+    :family "Source Code Pro"
+    :height 150)
 
 (require 'ido)
 (ido-mode 'both)
@@ -39,6 +44,15 @@
 
 (set-default 'imenu-auto-rescan t)
 
+;; allow scroll-down/up-command to move point to buffer end/beginning
+(setq scroll-error-top-bottom 'true)
+
+(setq scroll-step 1)
+(setq auto-window-vscroll nil)
+(setq
+  scroll-margin 0
+  scroll-conservatively 100000
+  scroll-preserve-screen-position 1)
 
 (setq auto-save-default nil)
 (setq initial-scratch-message nil)
@@ -81,7 +95,7 @@
 
 (setq-default fill-column 100)
 ;;(set-face-background 'fringe "SteelBlue4")
-;;(fringe-mode '(1 . 0))
+(fringe-mode '(0 . 0))
 (set-cursor-color '"#00ff00")
 
 (require 'whitespace)

@@ -100,11 +100,23 @@ might be bad."
           (add-to-list 'symbol-names name)
           (add-to-list 'name-and-pos (cons name position))))))))
 
-;; Make the whole buffer pretty and consistent
-(defun iwb()
-  "Indent Whole Buffer"
+(defun indent-buffer ()
+  "Indent the currently visited buffer."
   (interactive)
   (indent-region (point-min) (point-max)))
+
+(defun indent-region-or-buffer ()
+  "Indent a region if selected, otherwise the whole buffer."
+  (interactive)
+  (save-excursion
+    (if (region-active-p)
+        (progn
+          (indent-region (region-beginning) (region-end))
+          (message "Indented selected region."))
+      (progn
+        (indent-buffer)
+        (message "Indented buffer.")))))
+
 
 (defun push-mark-no-activate ()
   "Pushes `point' to `mark-ring' and does not activate the region
@@ -139,22 +151,14 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 
 
-(defun my-ido-find-tag ()
-  "Find a tag using ido"
+(defun find-tag-at-point ()
   (interactive)
-  (tags-completion-table)
-  (let (tag-names)
-    (mapatoms (lambda (x)
-                (push (prin1-to-string x t) tag-names))
-              tags-completion-table)
-    (find-tag (ido-completing-read "Tag: " tag-names))))
+  (find-tag (thing-at-point 'symbol)))
 
 (defun heroku-run-ask ()
   "Runs heroku command and always asks for app name"
   (interactive)
   (heroku-run t))
-
-
 
 (defun defunkt-duplicate-line ()
   (interactive)
@@ -190,27 +194,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (set-buffer (get-buffer-create "reekOut"))
   (other-window 0))
 
-(require 'ido-hacks)
-
 ;; Display ido results vertically, rather than horizontally
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
-
-;; (custom-set-faces
-;;  '(ido-subdir ((t (:foreground "PaleGreen")))) ;; Face used by ido for highlighting subdirs in the alternatives.
-;;  '(ido-first-match ((t (:foreground "DodgerBlue" :background "#dff")))) ;; Face used by ido for highlighting first match.
-;;  '(ido-only-match ((t (:foreground "#ffcc33")))) ;; Face used by ido for highlighting only match.
-;;  '(ido-indicator ((t (:foreground "#ffffff")))) ;; Face used by ido for highlighting its indicators (don't actually use this)
-;;  '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))) ;; Ido face for indicating incomplete regexps. (don't use this either)
-
-(custom-set-faces
- '(ido-subdir ((t (:foreground "PaleGreen")))) ;; Face used by ido for highlighting subdirs in the alternatives.
- '(ido-first-match ((t (:foreground "SeaGreen1" :background "gray14")))) ;; Face used by ido for highlighting first match.
- '(ido-only-match ((t (:foreground "#ffcc33")))) ;; Face used by ido for highlighting only match.
- '(ido-indicator ((t (:foreground "#ffffff")))) ;; Face used by ido for highlighting its indicators (don't actually use this)
- '(ido-incomplete-regexp ((t (:foreground "#ffffff"))))) ;; Ido face for indicating incomplete regexps. (don't use this either)
-
+;; (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+;; (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
+;; (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 
 
 (defun toggle-letter-case ()
@@ -448,5 +435,28 @@ instead."
              (set-window-start w1 s2)
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
+
+(defun rgc-show-ruby-tags ()
+  (interactive)
+  (occur "^\\s-*\\\(class \\\|module \\\|def \\\|[^:]include \\\|private\\b\\\|protected\\b\\\)"))
+
+(defun djcb-find-file-as-root ()
+  "Like `ido-find-file, but automatically edit the file with
+root-privileges (using tramp/sudo), if the file is not writable by
+user."
+  (interactive)
+  (let ((file (ido-read-file-name "Edit as root: ")))
+    (unless (file-writable-p file)
+      (setq file (concat "/sudo:root@localhost:" file)))
+    (find-file file)))
+;; or some other keybinding...
+(global-set-key (kbd "C-x F") 'djcb-find-file-as-root)
+
+;; (defun move-mode-line ()
+;;   (setq header-line-format mode-line-format mode-line-format nil))
+
+;; (add-hook 'lisp-mode-hook 'move-mode-line)
+;; (add-hook 'shell-mode-hook 'move-mode-line)
+;; (add-hook 'ruby-mode-hook 'move-mode-line)
 
 (provide 'im-helpers)

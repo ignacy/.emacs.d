@@ -3,6 +3,8 @@
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+(require 'js2-refactor)
+
 (defun my-js2-indent-function ()
   (interactive)
   (save-restriction
@@ -33,9 +35,6 @@
 
       (indent-line-to indentation)
       (when (> offset 0) (forward-char offset)))))
-
-(require 'mustache-mode)
-
 
 (defun my-js2-mode-hook ()
   (interactive)

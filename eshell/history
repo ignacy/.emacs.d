@@ -5,3 +5,7 @@ ls
 rm init-completition.el\~
 rm init-autocomplete.el 
 exit
+ll
+ls
+git st
+exit

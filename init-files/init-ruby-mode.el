@@ -15,8 +15,6 @@
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 
 
-
-
 (eval-after-load 'ruby-mode
   '(progn
      ;; work around possible elpa bug
@@ -32,8 +30,13 @@
                (lambda ()
                  (local-set-key (kbd "C-c .") 'ac-complete-rsense)))
 
+     (add-hook 'ruby-mode-hook
+               (lambda ()
+                 (local-set-key (kbd "C-c r") 'xmp)))
+
      (add-hook 'ruby-mode-hook 'flymake-ruby-load)
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
+     (define-key ruby-mode-map (kbd "C-c t") 'rgc-show-ruby-tags)
      (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)))
 
 
@@ -49,9 +52,10 @@
   (run-ruby (concat (rails-root) "script/rails c")))
 
 (setq ruby-use-encoding-map nil)
-(setq ruby-deep-arglist t)
-(setq ruby-deep-indent-paren t)
+(setq ruby-deep-arglist nil)
+(setq ruby-deep-indent-paren nil)
 (setq ruby-insert-encoding-magic-comment nil)
+(setq ruby-deep-indent-paren-style nil)
 (setq tab-width 2)
 
 (font-lock-add-keywords
@@ -62,6 +66,21 @@
 (setq rspec-use-rake-flag nil)
 (setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible nil)
+
+(defadvice ruby-indent-line (after unindent-closing-paren activate)
+  (let ((column (current-column))
+        indent offset)
+    (save-excursion
+      (back-to-indentation)
+      (let ((state (syntax-ppss)))
+        (setq offset (- column (current-column)))
+        (when (and (eq (char-after) ?\))
+                   (not (zerop (car state))))
+          (goto-char (cadr state))
+          (setq indent (current-indentation)))))
+    (when indent
+      (indent-line-to indent)
+      (when (> offset 0) (forward-char offset)))))
 
 (defadvice rspec-compile (around rspec-compile-around)
   "Use BASH shell for running the specs because of ZSH issues."

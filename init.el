@@ -1,4 +1,6 @@
 (require 'cl)
+(setq debug-on-error t)
+
 
 (defvar *emacs-load-start* (current-time))
 
@@ -16,9 +18,11 @@
 
 (require 'my-packages)
 
+
+(electric-indent-mode +1)
 (setq default-frame-alist
-      '((width . 80)
-        (height . 40)
+      '((width . 120)
+        (height . 50)
         (menu-bar-lines . 1)
         (vertical-scroll-bar . -1)))
 
@@ -34,16 +38,13 @@
 
 (require 'im-set-colors)
 
-(require 'autopair)
-(autopair-global-mode)
+(electric-pair-mode +1)
 
 (require 'repository-root)
-(require 'stuff-from-esk)
 (require 'im-helpers)
 (require 'im-keys)
 (require 'gist)
 (require 'im-basic-settings)
-(require 'slime)
 
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
@@ -52,6 +53,7 @@
 (require 'init-ack)
 (require 'init-buffer-switching)
 (require 'init-clojure-mode)
+(require 'init-yasnippet)
 (require 'init-completition)
 (require 'init-eshell)
 (require 'init-idle-highlight)
@@ -65,7 +67,18 @@
 (require 'init-scala-mode-setup)
 (require 'init-shell-mode)
 (require 'init-webjump)
-(require 'init-yasnippet)
+
+(require 'rcodetools)
+(require 'quickrun)
+
+(require 'ag)
+
+(setq load-path (cons  "/usr/local/Cellar/erlang/R15B03-1/lib/erlang/lib/tools-2.6.8/emacs/"
+      load-path))
+      (setq erlang-root-dir "/usr/local/Cellar/erlang")
+      (setq exec-path (cons "/usr/local/Cellar/erlang/bin" exec-path))
+(require 'erlang-start)
+(defvar inferior-erlang-prompt-timeout t)
 
 (global-git-gutter-mode t)
-(slime-setup)
+;;(slime-setup)

@@ -3,7 +3,6 @@
 (setq yas/root-directory (concat dotfiles-dir "/snippets"))
 
 (yas/load-directory yas/root-directory)
-(yas/load-directory "~/.emacs.d/elpa/yasnippet-20121116.1515/snippets")
 
 
 (defun  jp-load-yasnippets-hooks ()
