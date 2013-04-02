@@ -6,6 +6,6 @@ url
 org-clock-save.el
 anything-c-adaptive-history
 session*
-DB_Store
+.DS_Store
 projectile.cache
 projectile-bookmarks.eld
