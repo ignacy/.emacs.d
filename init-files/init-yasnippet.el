@@ -77,8 +77,4 @@
                     (setq yas/mode-symbol 'espresso-mode))))))
 
 
-(setq yas/prompt-functions '(yas-ido-prompt
-                             yas/x-prompt
-                             yas/dropdown-prompt))
-
 (provide 'init-yasnippet)

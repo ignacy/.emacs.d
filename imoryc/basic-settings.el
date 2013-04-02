@@ -1,13 +1,8 @@
-(blink-cursor-mode t)
-
 (winner-mode 1)
-(windmove-default-keybindings)
-
-;;(set-face-attribute 'default nil :family "Inconsolata" :height 160)
 
 (set-face-attribute 'default nil
-    :family "Source Code Pro"
-    :height 150)
+                    :family "Source Code Pro"
+                    :height 150)
 
 (require 'ido)
 (ido-mode 'both)
@@ -23,8 +18,6 @@
         (let ((ido-ubiquitous-enable-compatibility nil))
           ad-do-it))))
 
-
-
 (require 'epa)
 (epa-file-enable)
 (require 'textmate)
@@ -35,12 +28,12 @@
 
 (require 'inline-string-rectangle)
 (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+
 (require 'mark-more-like-this)
 (global-set-key (kbd "C-<") 'mark-previous-like-this)
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this)
 (global-set-key (kbd "C-*") 'mark-all-like-this)
-
 
 (set-default 'imenu-auto-rescan t)
 
@@ -50,9 +43,9 @@
 (setq scroll-step 1)
 (setq auto-window-vscroll nil)
 (setq
-  scroll-margin 0
-  scroll-conservatively 100000
-  scroll-preserve-screen-position 1)
+ scroll-margin 0
+ scroll-conservatively 100000
+ scroll-preserve-screen-position 1)
 
 (setq auto-save-default nil)
 (setq initial-scratch-message nil)
@@ -68,59 +61,37 @@
 (delete-selection-mode t)
 (setq ido-create-new-buffer 'always)
 (setq backup-inhibited t)
-(setq font-lock-maximum-decoration t)
+(setq make-backup-files nil)
 (display-time-mode -1)
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
 
 (setq
- bookmark-default-file "~/.emacs.d/bookmarks" ;; keep my ~/ clean
+ bookmark-default-file "~/.bookmarks_emacs" ;; keep my ~/ clean
  bookmark-save-flag 1)                        ;; autosave each change)
 
 (setq x-select-enable-clipboard t)
-
 (setq confirm-nonexistent-file-or-buffer nil)
-
 (global-hl-line-mode 1)
 ;;(set-face-background 'hl-line "light cyan")
 ;;(set-face-background 'hl-line "#444")
+
 (set-face-foreground 'highlight nil)
 (set-face-foreground 'hl-line nil)
-(set-face-attribute hl-line-face nil :overline nil)
-(set-face-attribute hl-line-face nil :underline nil)
 
-(setq ibuffer-expert t)
-(setq auto-save-default nil)
 
 (setq-default fill-column 100)
-;;(set-face-background 'fringe "SteelBlue4")
 (fringe-mode '(0 . 0))
-(set-cursor-color '"#00ff00")
-
-(require 'whitespace)
-(setq whitespace-style '(trailing lines lines-tail space-before-tab indentation empty space-after-tab))
-(setq-default show-trailing-whitespace t)
-(setq-default default-indicate-empty-lines t)
-(setq-default whitespace-line-column 80)
-
-(custom-set-faces
- '(trailing-whitespace
-   ((((class color)
-      (background light))
-     (:background "cyan")))))
-
 
 (global-auto-revert-mode 1)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (setq visible-bell t)
-(load-file (concat imoryc-dir "/im-modeline.el"))
 
 (require 'init-idle-highlight)
 (idle-highlight-mode)
 
 (setq delete-by-moving-to-trash t trash-directory "~/.Trash/emacs")
-;; Ignore .DS_Store files with ido mode
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 ;; Use aspell for spell checking: brew install aspell --lang=en
 (setq ispell-program-name "/usr/local/bin/aspell")
@@ -133,4 +104,4 @@
       (list '("emacs ")
             '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
-(provide 'im-basic-settings)
+(provide 'basic-settings)

@@ -33,4 +33,5 @@
 
 ;;(set-face-attribute 'default nil :font "Monaco-14")
 
+(require 'custom-modeline)
 (provide 'im-set-colors)

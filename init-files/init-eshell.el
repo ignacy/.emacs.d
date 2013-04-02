@@ -1,6 +1,3 @@
-(require 'shell-command)
-(shell-command-completion-mode)
-
 (defun comint-delchar-or-eof-or-kill-buffer (arg)
   (interactive "p")
   (if (null (get-buffer-process (current-buffer)))

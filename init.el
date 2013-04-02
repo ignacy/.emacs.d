@@ -1,8 +1,4 @@
 (require 'cl)
-(setq debug-on-error t)
-
-
-(defvar *emacs-load-start* (current-time))
 
 (defvar on-windows (eq system-type 'windows-nt))
 
@@ -39,18 +35,17 @@
 (require 'im-set-colors)
 
 (electric-pair-mode +1)
+(electric-indent-mode +1)
 
-(require 'repository-root)
-(require 'im-helpers)
-(require 'im-keys)
+(require 'helpers)
+(require 'keys)
 (require 'gist)
-(require 'im-basic-settings)
+(require 'basic-settings)
 
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-(require 'init-ack)
 (require 'init-buffer-switching)
 (require 'init-clojure-mode)
 (require 'init-yasnippet)
@@ -68,17 +63,13 @@
 (require 'init-shell-mode)
 (require 'init-webjump)
 
-(require 'rcodetools)
 (require 'quickrun)
-
-(require 'ag)
 
 (setq load-path (cons  "/usr/local/Cellar/erlang/R15B03-1/lib/erlang/lib/tools-2.6.8/emacs/"
       load-path))
       (setq erlang-root-dir "/usr/local/Cellar/erlang")
       (setq exec-path (cons "/usr/local/Cellar/erlang/bin" exec-path))
-(require 'erlang-start)
-(defvar inferior-erlang-prompt-timeout t)
 
+;; (require 'erlang-start)
+;; (defvar inferior-erlang-prompt-timeout t)
 (global-git-gutter-mode t)
-;;(slime-setup)

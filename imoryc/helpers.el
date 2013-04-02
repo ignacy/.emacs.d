@@ -459,4 +459,4 @@ user."
 ;; (add-hook 'shell-mode-hook 'move-mode-line)
 ;; (add-hook 'ruby-mode-hook 'move-mode-line)
 
-(provide 'im-helpers)
+(provide 'helpers)

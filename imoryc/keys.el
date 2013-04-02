@@ -85,4 +85,4 @@
 (bind "<up>" 'scroll-n-lines-behind)
 (bind "<down>" 'scroll-n-lines-ahead)
 
-(provide 'im-keys)
+(provide 'keys)
