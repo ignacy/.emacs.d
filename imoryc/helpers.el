@@ -452,6 +452,16 @@ user."
 ;; or some other keybinding...
 (global-set-key (kbd "C-x F") 'djcb-find-file-as-root)
 
+(defun google ()
+  "Google the selected region if any, display a query prompt otherwise."
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
+    (url-hexify-string (if mark-active
+         (buffer-substring (region-beginning) (region-end))
+       (read-string "Google: "))))))
+
 ;; (defun move-mode-line ()
 ;;   (setq header-line-format mode-line-format mode-line-format nil))
 
