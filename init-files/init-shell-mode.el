@@ -17,9 +17,9 @@
   (interactive)
   (shell name))
 
-(defun zsh ()
-  (interactive)
-  (shell "zsh"))
+;; (defun zsh ()
+;;   (interactive)
+;;   (shell "zsh"))
 
 (defun switch-to-zsh ()
   (interactive)

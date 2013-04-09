@@ -35,6 +35,8 @@
 (global-set-key (kbd "C-M-m") 'mark-more-like-this)
 (global-set-key (kbd "C-*") 'mark-all-like-this)
 
+(setq blink-matching-paren t)
+(show-paren-mode 1)
 (set-default 'imenu-auto-rescan t)
 
 ;; allow scroll-down/up-command to move point to buffer end/beginning
