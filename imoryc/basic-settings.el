@@ -37,6 +37,12 @@
 
 (setq blink-matching-paren t)
 (show-paren-mode 1)
+(setq show-paren-delay 0)
+
+(require 'paren)
+(set-face-background 'show-paren-match-face (face-background 'default))
+(set-face-foreground 'show-paren-match-face "brightred")
+(set-face-attribute 'show-paren-match-face nil :weight 'extra-bold)
 (set-default 'imenu-auto-rescan t)
 
 ;; allow scroll-down/up-command to move point to buffer end/beginning
@@ -54,7 +60,6 @@
 (setq inhibit-splash-screen t)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
-(show-paren-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (tool-bar-mode -1)
 (menu-bar-mode -1)

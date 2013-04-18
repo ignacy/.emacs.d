@@ -22,11 +22,10 @@
         (menu-bar-lines . 1)
         (vertical-scroll-bar . -1)))
 
-;; rbenv
-(setq exec-path (cons "~/.rbenv/bin" exec-path))
-(setenv "PATH" (concat "~/.rbenv/bin:" (getenv "PATH")))
-(setq exec-path (cons "~/.rbenv/shims" exec-path))
-(setenv "PATH" (concat "~/.rbenv/shims:" (getenv "PATH")))
+
+;; Setting rbenv path
+(setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
+(setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims") (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
 
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))

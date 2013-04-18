@@ -1,4 +1,5 @@
-;; Moje funkcje
+(defalias 'spell 'ispell-buffer)
+
 (setq path-to-ctags "/usr/local/bin/ctags")
 (defun create-tags (dir-name)
   "Create tags file."

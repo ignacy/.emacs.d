@@ -26,6 +26,5 @@
   (switch-to-buffer "zsh"))
 
 ;;(zsh)
-(dired "~/code/")
 
 (provide 'init-shell-mode)

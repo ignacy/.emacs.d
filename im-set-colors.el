@@ -1,6 +1,6 @@
 (ignore-errors
-;;  (load-file (concat imoryc-dir "/themes/purple-haze-theme.el"))
-  (load-theme 'tango-2 t))
+  ;;  (load-file (concat imoryc-dir "/themes/purple-haze-theme.el"))
+  (load-theme 'deeper-blue t))
 ;;  (load-theme 'ir-black t))
 
 (require 'rainbow-delimiters)
@@ -33,5 +33,6 @@
 
 ;;(set-face-attribute 'default nil :font "Monaco-14")
 
-(require 'custom-modeline)
+(ignore-errors
+  (require 'custom-modeline))
 (provide 'im-set-colors)
