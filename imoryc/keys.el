@@ -17,6 +17,7 @@
 (bind "C-c f" 'ns-toggle-fullscreen)
 (bind "M-z" 'undo)
 ;; (bind "C-c n" 'clean-up-buffer-or-region)
+(bind "C-c q" 'whitespace-mode)
 (bind "C-M-\\" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-i" 'imenu)

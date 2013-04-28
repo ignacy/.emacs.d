@@ -61,7 +61,7 @@
 (require 'init-scala-mode-setup)
 (require 'init-shell-mode)
 (require 'init-webjump)
-
+(require 'init-whitespace-mode)
 (require 'quickrun)
 
 (setq load-path (cons  "/usr/local/Cellar/erlang/R15B03-1/lib/erlang/lib/tools-2.6.8/emacs/"
