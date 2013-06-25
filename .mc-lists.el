@@ -3,9 +3,14 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        end-of-buffer
+        smarter-move-beginning-of-line
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        beginning-of-buffer
         mouse-set-region
+        ruby-electric-close-matching-char
+        ruby-electric-space
         ))

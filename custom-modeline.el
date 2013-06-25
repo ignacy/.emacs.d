@@ -24,13 +24,12 @@
 
 
 ;;(set-face-background 'mode-line "#123")
-(set-face-foreground 'mode-line "#fff")
+;; (set-face-foreground 'mode-line "#fff")
 
 
 ;;(set-face-background 'mode-line "#4477aa")
-(set-face-background 'mode-line-inactive "SkyBlue4")
 ;;(set-face-background 'fringe "DodgerBlue4")
-(set-face-background 'mode-line "DodgerBlue4")
+;;(set-face-background 'mode-line "DodgerBlue4")
 ;; (custom-set-faces
 ;;  '(mode-line ((t (:box (:line-width 2 :color "DodgerBlue4"))))))
 

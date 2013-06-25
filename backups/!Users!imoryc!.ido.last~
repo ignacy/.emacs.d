@@ -1,0 +1,690 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/imoryc/code/slearn2/spec/" . "features/")
+ ("/Users/imoryc/code/octopres/sass/" . "base/")
+ ("/Users/imoryc/code/octopres/.themes/slash/sass/" . "base/")
+ ("/Users/imoryc/code/octopres/.themes/slash/" . "source/")
+ ("/Users/imoryc/code/octopres/.themes/" . "oct2/")
+ ("/Users/imoryc/code/axle/app/views/users/" . "registrations/")
+ ("/Users/imoryc/code/todo/spec/" . "controllers/")
+ ("/Users/imoryc/code/todo/features/" . "step_definitions/")
+ ("/Users/imoryc/code/todo/app/views/" . "tasks/")
+ ("/Users/imoryc/code/todo/app/" . "models/")
+ ("/Users/imoryc/code/todo/" . "app/")
+ ("/Users/imoryc/code/chromedriver/" . "bin/")
+ ("/Users/imoryc/code/octopres/source/" . "_posts/")
+ ("/Users/imoryc/code/octopres/" . "sass/")
+ ("/Users/imoryc/code/axle/app/views/premium_recipients/" . "registrations/")
+ ("/Users/imoryc/code/slearn2/.bundle/gems/prawn-0.12.0/data/" . "fonts/")
+ ("/Users/imoryc/code/slearn2/.bundle/gems/prawn-0.12.0/" . "data/")
+ ("/Users/imoryc/code/slearn2/.bundle/gems/" . "prawn-0.12.0/")
+ ("/Users/imoryc/code/slearn2/.bundle/" . "gems/")
+ ("/Users/imoryc/code/conjury-ocr/segmentation/CMakeFiles/" . "swt.dir/")
+ ("/Users/imoryc/code/conjury-ocr/segmentation/" . "ccv/")
+ ("/Users/imoryc/code/joyofclojure/src/" . "joyofclojure/")
+ ("/Users/imoryc/code/joyofclojure/" . "src/")
+ ("/Users/imoryc/code/cshello/resources/" . "public/")
+ ("/Users/imoryc/code/cshello/src/cljs/" . "hello_world/")
+ ("/Users/imoryc/code/cshello/src/" . "cljs/")
+ ("/Users/imoryc/code/cshello/" . "resources/")
+ ("/Users/imoryc/code/conjury-ocr/builds/" . "bin/")
+ ("/Users/imoryc/code/conjury-ocr/" . "builds/")
+ ("/Users/imoryc/code/fortis_invoices/src/fortis_invoices/" . "examples/")
+ ("/Users/imoryc/code/fortis_invoices/bin/" . "tesseract/")
+ ("/Users/imoryc/code/conv/LibreOffice4.0_SDK/classes/com/sun/star/lib/" . "loader/")
+ ("/Users/imoryc/code/conv/LibreOffice4.0_SDK/classes/com/sun/star/" . "lib/")
+ ("/Users/imoryc/code/conv/LibreOffice4.0_SDK/classes/com/sun/" . "star/")
+ ("/Users/imoryc/code/conv/LibreOffice4.0_SDK/classes/com/" . "sun/")
+ ("/Users/imoryc/code/conv/LibreOffice4.0_SDK/classes/" . "com/")
+ ("/Users/imoryc/code/conv/LibreOffice4.0_SDK/" . "classes/")
+ ("/Users/imoryc/code/conv/" . "LibreOffice4.0_SDK/")
+ ("/Users/imoryc/code/fortis_invoices/test/midje/" . "test/")
+ ("/Users/imoryc/code/fortis_invoices/test/" . "fortis_invoices/")
+ ("/Users/imoryc/code/fortis_invoices/src/" . "fortis_invoices/")
+ ("/Users/imoryc/code/fortis_invoices/" . "src/")
+ ("/Users/imoryc/code/axle/app/models/" . "perspectives/")
+ ("/Users/imoryc/code/axle/app/controllers/" . "premium_recipients/")
+ ("/usr/local/Cellar/erlang/R15B03-1/lib/erlang/lib/tools-2.6.8/" . "emacs/")
+ ("/usr/local/Cellar/erlang/R15B03-1/lib/erlang/lib/" . "tools-2.6.8/")
+ ("/usr/local/Cellar/erlang/R15B03-1/lib/erlang/erts-5.9.3.1/" . "include/")
+ ("/usr/local/Cellar/erlang/R15B03-1/lib/erlang/" . "lib/")
+ ("/usr/local/Cellar/erlang/R15B03-1/lib/" . "erlang/")
+ ("/usr/local/Cellar/erlang/R15B03-1/" . "lib/")
+ ("/usr/local/Cellar/erlang/" . "R15B03-1/")
+ ("/usr/local/lib/erlang/" . "misc/")
+ ("/usr/local/lib/" . "erlang/")
+ ("/Users/imoryc/code/bifrost/" . "src/")
+ ("/Users/imoryc/code/axle/spec/controllers/" . "api/")
+ ("/Users/imoryc/code/eleos/conjury/src/" . "conjury/")
+ ("/Users/imoryc/Dropbox/notes/" . "deft/")
+ ("/Users/imoryc/code/axle/db/" . "migrate/")
+ ("/Users/imoryc/code/axle/app/assets/javascripts/" . "lib/")
+ ("/Users/imoryc/code/axle/app/assets/" . "javascripts/")
+ ("/Users/imoryc/code/axle/lib/" . "services/")
+ ("/Users/imoryc/code/axle/spec/" . "features/")
+ ("/Users/imoryc/code/tesseract-ocr-read-only/" . "api/")
+ ("/Users/imoryc/code/axle/app/views/" . "premium_recipients/")
+ ("/Users/imoryc/code/axle/config/" . "environments/")
+ ("/Users/imoryc/code/axle/app/" . "mailers/")
+ ("/Users/imoryc/code/axle/" . "app/")
+ ("/Users/imoryc/code/eleos/axle/app/models/" . "perspectives/")
+ ("/Users/imoryc/code/eleos/axle/spec/controllers/" . "api/")
+ ("/Users/imoryc/code/eleos/axle/spec/" . "models/")
+ ("/Users/imoryc/code/eleos/axle/vendor/" . "plugins/")
+ ("/Users/imoryc/code/eleos/axle/.bundle/" . "bin/")
+ ("/Users/imoryc/code/eleos/axle/app/assets/images/" . "edit/")
+ ("/Users/imoryc/code/eleos/axle/config/" . "initializers/")
+ ("/Users/imoryc/code/eleos/conjury/" . "src/")
+ ("/Users/imoryc/code/eleos/axle/app/views/" . "documents/")
+ ("/Users/imoryc/code/eleos/axle/lib/" . "tasks/")
+ ("/Users/imoryc/code/eleos/axle/app/assets/javascripts/" . "lib/")
+ ("/Users/imoryc/code/eleos/axle/public/assets/" . "lib/")
+ ("/Users/imoryc/code/eleos/axle/public/" . "assets/")
+ ("/Users/imoryc/code/eleos/axle/app/assets/" . "stylesheets/")
+ ("/Users/imoryc/code/eleos/axle/app/" . "views/")
+ ("/Users/imoryc/code/eleos/axle/" . "spec/")
+ ("/Users/imoryc/code/Stockfish/" . "src/")
+ ("/Users/imoryc/code/slearn2/db/" . "migrate/")
+ ("/Users/imoryc/code/archive/" . "jobandtalent/")
+ ("/Users/imoryc/code/slearn2/config/" . "initializers/")
+ ("/Users/imoryc/code/slearn2/app/views/devise/" . "mailer/")
+ ("/Users/imoryc/code/slearn2/lib/assets/" . "css/")
+ ("/Users/imoryc/code/slearn2/lib/" . "assets/")
+ ("/Users/imoryc/code/slearn2/app/assets/" . "javascripts/")
+ ("/Users/imoryc/code/slearn2/app/views/" . "action_traces/")
+ ("/Users/imoryc/code/slearn2/app/" . "views/")
+ ("/Users/imoryc/code/slearn2/" . "app/")
+ ("/Users/imoryc/code/slearn/lib/" . "css/")
+ ("/Users/imoryc/code/slearn/components/requirejs/" . "dist/")
+ ("/Users/imoryc/code/slearn/components/" . "bootstrap/")
+ ("/Users/imoryc/code/eleos/newsit-backend/app/views/tmm_dashboard/" . "story_threads/")
+ ("/Users/imoryc/code/eleos/newsit-backend/app/views/" . "tmm_dashboard/")
+ ("/Users/imoryc/.emacs.d/site-lisp/auto-complete-1.3.1/" . "etc/")
+ ("/Users/imoryc/code/peepcode-081-emberjs-code/peepcode-ember-starter-app/" . "js/")
+ ("/Users/imoryc/code/woda-example/test/woda_example/" . "test/")
+ ("/Users/imoryc/code/woda-example/test/" . "woda_example/")
+ ("/Users/imoryc/code/woda-example/src/" . "woda_example/")
+ ("/Users/imoryc/code/woda-example/" . "test/")
+ ("/Users/imoryc/code/scoring_predictions_kata/" . "spec/")
+ ("/Users/imoryc/code/woda/test/woda/" . "test/")
+ ("/Users/imoryc/code/woda/test/" . "woda/")
+ ("/Users/imoryc/code/woda/src/" . "woda/")
+ ("/Users/imoryc/code/woda/" . "test/")
+ ("/Users/imoryc/code/for_clojure_115/test/for_clojure_115/" . "test/")
+ ("/Users/imoryc/code/for_clojure_115/test/" . "for_clojure_115/")
+ ("/Users/imoryc/code/for_clojure_115/src/" . "for_clojure_115/")
+ ("/Users/imoryc/code/for_clojure_115/" . "test/")
+ ("/Users/imoryc/code/archive/jobandtalent/app/extensions/" . "models/")
+ ("/Users/imoryc/code/archive/jobandtalent/app/cells/" . "referrer_faces/")
+ ("/Users/imoryc/code/archive/jobandtalent/app/" . "models/")
+ ("/Users/imoryc/code/archive/jobandtalent/" . "app/")
+ ("/Users/imoryc/code/word_wrap_cata_clojure/src/" . "word_wrap_cata_clojure/")
+ ("/Users/imoryc/code/word_wrap_cata_clojure/test/word_wrap_cata_clojure/" . "test/")
+ ("/Users/imoryc/code/word_wrap_cata_clojure/test/" . "word_wrap_cata_clojure/")
+ ("/Users/imoryc/code/word_wrap_cata_clojure/" . "test/")
+ ("/Users/imoryc/code/word_wrap_cata_ruby/" . "spec/")
+ ("/Users/imoryc/code/testis/lib/" . "testis/")
+ ("/Users/imoryc/code/testis/" . "spec/")
+ ("/Users/imoryc/code/tabsel/util/" . "ecukes/")
+ ("/Users/imoryc/code/tabsel/features/" . "support/")
+ ("/Users/imoryc/code/tabsel/" . "util/")
+ ("/Users/imoryc/code/gnip_rule/lib/" . "gnip_rule/")
+ ("/Users/imoryc/code/gnip_rule/" . "lib/")
+ ("/Users/imoryc/code/eleos/newsit-mm/.bundle/gems/jasmine-1.2.1/lib/" . "jasmine/")
+ ("/Users/imoryc/code/eleos/newsit-mm/.bundle/gems/jasmine-1.2.1/" . "lib/")
+ ("/Users/imoryc/code/eleos/newsit-mm/.bundle/gems/" . "jasmine-1.2.1/")
+ ("/Users/imoryc/code/eleos/newsit-mm/.bundle/bundler/" . "gems/")
+ ("/Users/imoryc/code/better-chess/" . "lib/")
+ ("/Users/imoryc/code/jobandtalent/" . "spec/")
+ ("/Users/imoryc/code/scoring_predictions_kata_clojure/test/scoring_predictions_kata_clojure/" . "test/")
+ ("/Users/imoryc/code/scoring_predictions_kata_clojure/test/" . "scoring_predictions_kata_clojure/")
+ ("/Users/imoryc/code/scoring_predictions_kata_clojure/src/" . "scoring_predictions_kata_clojure/")
+ ("/Users/imoryc/code/scoring_predictions_kata_clojure/" . "src/")
+ ("/usr/local/Cellar/mu/0.9.9/share/" . "man/")
+ ("/usr/local/Cellar/mu/0.9.9/" . "share/")
+ ("/usr/local/Cellar/mu/" . "0.9.9/")
+ ("/usr/local/Cellar/" . "erlang/")
+ ("/Users/imoryc/code/eleos/newsit-twitter-backend/test/newsit/test/" . "classify/")
+ ("/Users/imoryc/code/eleos/newsit-twitter-backend/test/newsit/" . "test/")
+ ("/Users/imoryc/code/eleos/newsit-twitter-backend/test/" . "newsit/")
+ ("/Users/imoryc/code/eleos/newsit-mm/.bundle/" . "binstubs/")
+ ("/Users/imoryc/code/ccv/" . "lib/")
+ ("/Users/imoryc/code/eleos/clearcreek-taxliens/resources/" . "vision/")
+ ("/Users/imoryc/code/eleos/clearcreek-taxliens/" . "resources/")
+ ("/usr/local/" . "Cellar/")
+ ("/usr/" . "local/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/views/admin/" . "previews/")
+ ("/Users/imoryc/code/eleos/newsit-mm/lib/assets/" . "javascripts/")
+ ("/Users/imoryc/code/eleos/newsit-mm/vendor/assets/" . "javascripts/")
+ ("/Users/imoryc/code/eleos/newsit-mm/vendor/" . "plugins/")
+ ("/Users/imoryc/Dropbox/tmm dashboard (1)/TMM-12.04.2012-17.27/assets/" . "css/")
+ ("/Users/imoryc/Dropbox/tmm dashboard (1)/TMM-12.04.2012-17.27/" . "assets/")
+ ("/Users/imoryc/Dropbox/tmm dashboard (1)/" . "TMM-12.04.2012-17.27/")
+ ("/Users/imoryc/code/record/src/" . "record/")
+ ("/Users/imoryc/code/record/" . "src/")
+ ("/Users/imoryc/.emacs.d/elpa/yasnippet-20121116.1515/" . "snippets/")
+ ("/Users/imoryc/code/kocer/src/" . "kocer/")
+ ("/Users/imoryc/code/kocer/" . "src/")
+ ("/Users/imoryc/code/eleos/newsit-mm/public/" . "assets/")
+ ("/Users/imoryc/code/eleos/clearcreek-taxliens/src/com/clearcreektax/" . "crawler/")
+ ("/Users/imoryc/code/eleos/clearcreek-taxliens/src/com/" . "clearcreektax/")
+ ("/Users/imoryc/code/eleos/clearcreek-taxliens/src/" . "com/")
+ ("/Users/imoryc/code/eleos/newsit-mm/.git/" . "hooks/")
+ ("/Users/imoryc/code/eleos/newsit-backend/lib/" . "tasks/")
+ ("/Users/imoryc/code/eleos/newsit-backend/config/" . "initializers/")
+ ("/Users/imoryc/code/eleos/newsit-backend/app/controllers/" . "tmm_dashboard/")
+ ("/Users/imoryc/code/eleos/newsit-backend/db/" . "migrate/")
+ ("/Users/imoryc/code/eleos/newsit-backend/spec/" . "controllers/")
+ ("/Users/imoryc/code/eleos/newsit-twitter-backend/src/newsit/" . "classify/")
+ ("/Users/imoryc/code/eleos/newsit-mm/db/" . "migrate/")
+ ("/Users/imoryc/code/eleos/" . "newsit-mm/")
+ ("/Users/imoryc/code/eleos/faketweetserver/test/" . "faketweetserver/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/assets/javascripts/model/" . "rule/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/assets/javascripts/view/" . "admin/")
+ ("/Users/imoryc/code/eleos/faketweetserver/src/" . "faketweetserver/")
+ ("/Users/imoryc/code/eleos/faketweetserver/" . "src/")
+ ("/Users/imoryc/code/eleos/newsit-twitter-backend/src/" . "newsit/")
+ ("/Users/imoryc/code/eleos/newsit-twitter-backend/" . "src/")
+ ("/Users/imoryc/code/eleos/newsit-backend/app/" . "views/")
+ ("/Users/imoryc/code/eleos/newsit-backend/" . "app/")
+ ("/Users/imoryc/code/eleos/newsit-mm/spec/javascripts/" . "support/")
+ ("/Users/imoryc/code/eleos/newsit-mm/lib/" . "assets/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/views/story_threads/" . "top_links/")
+ ("/Users/imoryc/code/eleos/newsit-mm/config/" . "environments/")
+ ("/Users/imoryc/code/eleos/newsit-mm/spec/controllers/" . "admin/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/controllers/" . "admin/")
+ ("/Users/imoryc/code/eleos/newsit-mm/spec/" . "acceptance/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/models/" . "redis/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/views/layouts/" . "templates/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/views/" . "layouts/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/assets/javascripts/" . "view/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/assets/" . "javascripts/")
+ ("/Users/imoryc/code/eleos/newsit-mm/app/" . "views/")
+ ("/Users/imoryc/code/eleos/newsit-mm/" . "app/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/streams/src/test/scala/" . "streams/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/streams/src/test/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/streams/src/main/scala/" . "streams/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/streams/src/main/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/streams/src/" . "main/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/streams/" . "src/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/forcomp/src/main/scala/" . "forcomp/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/forcomp/src/main/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/forcomp/src/" . "main/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/forcomp/" . "src/")
+ ("/Users/imoryc/code/jspoker/" . "src/")
+ ("/Users/imoryc/code/simple_compojure_form/src/" . "simple_compojure_form/")
+ ("/Users/imoryc/code/simple_compojure_form/" . "src/")
+ ("/Users/imoryc/code/moustache_test/src/" . "moustache_test/")
+ ("/Users/imoryc/code/moustache_test/" . "src/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/patmat/src/test/scala/" . "patmat/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/patmat/src/test/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/patmat/src/main/scala/" . "patmat/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/patmat/src/main/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/patmat/src/" . "main/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/patmat/" . "src/")
+ ("/Users/imoryc/code/new_jobandtalent/vendor/" . "assets/")
+ ("/Users/imoryc/code/slearn/db/" . "migrate/")
+ ("/Users/imoryc/code/slearn/app/assets/" . "stylesheets/")
+ ("/Users/imoryc/code/slearn/app/views/" . "tests/")
+ ("/Users/imoryc/code/slearn/config/" . "locales/")
+ ("/Users/imoryc/code/new_jobandtalent/spec/support/" . "fixtures/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/objsets/src/test/scala/" . "objsets/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/objsets/src/test/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/objsets/src/main/scala/" . "objsets/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/objsets/src/main/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/objsets/src/" . "main/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/objsets/" . "src/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/funsets/src/test/scala/" . "funsets/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/funsets/src/test/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/funsets/src/main/scala/" . "funsets/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/funsets/src/main/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/funsets/src/" . "main/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/funsets/" . "src/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/recfun/src/test/scala/" . "recfun/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/recfun/src/test/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/recfun/src/main/scala/" . "recfun/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/recfun/src/main/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/recfun/src/" . "main/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/recfun/" . "src/")
+ ("/Users/imoryc/code/new_jobandtalent/app/assets/javascripts/public/" . "signup_funnel/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/example/src/main/scala/" . "common/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/example/src/main/" . "scala/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/example/src/" . "main/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/example/" . "src/")
+ ("/Users/imoryc/Dropbox/FunctionalScala/" . "funsets/")
+ ("/Users/imoryc/code/euler/src/" . "euler/")
+ ("/Users/imoryc/code/euler/" . "src/")
+ ("/Users/imoryc/.config/" . "fish/")
+ ("/Users/imoryc/code/conways/" . "js/")
+ ("/Users/imoryc/code/nerchio/app/assets/" . "javascripts/")
+ ("/Users/imoryc/code/nerchio/app/views/" . "editors/")
+ ("/Users/imoryc/code/nerchio/app/" . "controllers/")
+ ("/Users/imoryc/code/nerchio/" . "app/")
+ ("/Users/imoryc/code/sicp/src/" . "sicp/")
+ ("/Users/imoryc/code/sicp/" . "src/")
+ ("/Users/imoryc/code/new_jobandtalent/lib/assets/" . "javascripts/")
+ ("/Users/imoryc/code/imerra/config/" . "locales/")
+ ("/Users/imoryc/code/imerra/app/views/" . "welcome/")
+ ("/Users/imoryc/code/imerra/app/" . "views/")
+ ("/Users/imoryc/code/new_jobandtalent/app/assets/stylesheets/" . "landing/")
+ ("/Users/imoryc/Library/Application Support/Google/Chrome/Default/" . "User StyleSheets/")
+ ("/Users/imoryc/Library/Application Support/Google/Chrome/" . "Default/")
+ ("/Users/imoryc/Library/Application Support/Google/" . "Chrome/")
+ ("/Users/imoryc/Library/Application Support/" . "Google/")
+ ("/Users/imoryc/Library/" . "Application Support/")
+ ("/" . "etc/")
+ ("/Users/imoryc/code/fp-oo/src/" . "fp_oo/")
+ ("/Users/imoryc/code/fp-oo/" . "src/")
+ ("/sudo:root@localhost:/etc/" . "postfix/")
+ ("/sudo:root@localhost:/" . "etc/")
+ ("/Users/imoryc/Downloads/google-indexer/google-indexer-newfiles/src/org/python/" . "indexer/")
+ ("/Users/imoryc/Downloads/google-indexer/google-indexer-newfiles/src/org/" . "python/")
+ ("/Users/imoryc/Downloads/google-indexer/google-indexer-newfiles/src/" . "org/")
+ ("/Users/imoryc/Downloads/google-indexer/google-indexer-newfiles/" . "src/")
+ ("/Users/imoryc/code/camper/src/" . "camper/")
+ ("/Users/imoryc/code/camper/test/camper/" . "test/")
+ ("/Users/imoryc/code/camper/test/" . "camper/")
+ ("/Users/imoryc/code/camper/" . "src/")
+ ("/Users/imoryc/code/for_clojure/src/" . "for_clojure/")
+ ("/Users/imoryc/code/for_clojure/" . "src/")
+ ("/Users/imoryc/Dropbox/" . "notes/")
+ ("/Users/imoryc/.emacs.d/site-lisp/" . "auto-complete-1.3.1/")
+ ("/Users/imoryc/code/fbwhere/public/" . "stylesheets/")
+ ("/Users/imoryc/code/fbwhere/src/fbwhere/" . "views/")
+ ("/Users/imoryc/code/fbwhere/src/" . "fbwhere/")
+ ("/Users/imoryc/code/fbwhere/" . "src/")
+ ("/Users/imoryc/code/ring_fun/src/" . "ring_fun/")
+ ("/Users/imoryc/code/ring_fun/" . "src/")
+ ("/Users/imoryc/code/facebook-template-clojure/www/public/" . "javascripts/")
+ ("/Users/imoryc/code/facebook-template-clojure/www/" . "public/")
+ ("/Users/imoryc/code/facebook-template-clojure/src/" . "facebook_template_clojure/")
+ ("/Users/imoryc/code/facebook-template-clojure/" . "src/")
+ ("/Users/imoryc/code/fb_demo/src/" . "fb_demo/")
+ ("/Users/imoryc/code/fb_demo/" . "src/")
+ ("/Users/imoryc/code/shouter/src/" . "shouter/")
+ ("/Users/imoryc/code/clojure-koans/" . "src/")
+ ("/Users/imoryc/code/clojure-koans/src/" . "koans/")
+ ("/Users/imoryc/Downloads/" . "elisp-tutorial-2.04/")
+ ("/Users/imoryc/code/new_jobandtalent/app/models/" . "contexts/")
+ ("/Users/imoryc/code/new_jobandtalent/spec/models/" . "contexts/")
+ ("/Users/imoryc/code/new_jobandtalent/spec/requests/" . "job_openings/")
+ ("/Users/imoryc/code/gittrack/config/" . "initializers/")
+ ("/Users/imoryc/code/gittrack/spec/" . "acceptance/")
+ ("/Users/imoryc/code/gittrack/app/views/" . "github/")
+ ("/Users/imoryc/code/gittrack/app/" . "views/")
+ ("/Users/imoryc/code/gittrack/" . "app/")
+ ("/Users/imoryc/code/whatidid/src/" . "whatidid/")
+ ("/Users/imoryc/code/whatidid/" . "src/")
+ ("/Users/imoryc/code/stuff/src/" . "stuff/")
+ ("/Users/imoryc/code/stuff/" . "src/")
+ ("/Users/imoryc/code/clojure-fun/src/" . "clojure_fun/")
+ ("/Users/imoryc/code/clojure-fun/" . "src/")
+ ("/Users/imoryc/code/clojure_jam/classes/" . "clojure_jam/")
+ ("/Users/imoryc/.emacs.d/snippets/" . "js2-mode/")
+ ("/Users/imoryc/code/clojure_jam/src/" . "clojure_jam/")
+ ("/Users/imoryc/code/clojure_jam/" . "src/")
+ ("/Users/imoryc/code/new_jobandtalent/spec/controllers/" . "companies/")
+ ("/Users/imoryc/code/new_jobandtalent/app/views/search_engines/" . "trovit/")
+ ("/Users/imoryc/code/coding_interview/" . "spec/")
+ ("/Users/imoryc/code/new_jobandtalent/app/cells/" . "referrer_faces/")
+ ("/Users/imoryc/code/new_jobandtalent/app/views/candidates/" . "email_contacts/")
+ ("/Users/imoryc/code/new_jobandtalent/app/views/shared/" . "tracking_codes/")
+ ("/Users/imoryc/code/robot-fruit-hunt/assets/" . "js/")
+ ("/Users/imoryc/code/robot-fruit-hunt/" . "spec/")
+ ("/Users/imoryc/code/somefu/app/views/devise/" . "registrations/")
+ ("/Users/imoryc/code/new_jobandtalent/spec/lib/" . "social_importer/")
+ ("/Users/imoryc/code/insidefb/" . "config/")
+ ("/Users/imoryc/code/somefu/db/" . "migrate/")
+ ("/Users/imoryc/code/somefu/public/" . "stylesheets/")
+ ("/Users/imoryc/code/somefu/app/assets/" . "stylesheets/")
+ ("/Users/imoryc/code/somefu/app/views/" . "streams/")
+ ("/Users/imoryc/code/somefu/spec/" . "integration/")
+ ("/Users/imoryc/code/somefu/app/" . "models/")
+ ("/Users/imoryc/code/somefu/config/" . "initializers/")
+ ("/Users/imoryc/code/somefu/" . "spec/")
+ ("/Users/imoryc/code/imerra_inside/public/javascripts/" . "vendor/")
+ ("/Users/imoryc/code/imerra_inside/public/" . "javascripts/")
+ ("/Users/imoryc/code/imerra_inside/tmp/" . "isolate/")
+ ("/Users/imoryc/code/new_jobandtalent/app/services/" . "social_importer/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/9-complete/lib/" . "isolate-2.1.2/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/9-complete/app/coffeescripts/" . "time_log/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/9-complete/app/" . "coffeescripts/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/3-undo/app/coffeescripts/" . "time_log/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/3-undo/app/" . "coffeescripts/")
+ ("/Users/imoryc/code/imerra_inside/app/coffeescripts/" . "time_log/")
+ ("/Users/imoryc/code/imerra_inside/app/" . "coffeescripts/")
+ ("/Users/imoryc/code/imerra_inside/" . "lib/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/1-models/app/coffeescripts/" . "time_log/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/1-models/app/" . "coffeescripts/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/1-models/public/javascripts/" . "time_log/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/1-models/public/" . "javascripts/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/1-models/" . "public/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/9-complete/public/javascripts/" . "time_log/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/9-complete/public/" . "javascripts/")
+ ("/Users/imoryc/code/imerra/javascripts/" . "imerra/")
+ ("/Users/imoryc/code/imerra/" . "config/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/9-complete/" . "app/")
+ ("/Users/imoryc/code/baseapp/app/assets/" . "stylesheets/")
+ ("/Users/imoryc/code/baseapp/app/views/" . "welcomes/")
+ ("/Users/imoryc/code/baseapp/app/" . "assets/")
+ ("/Users/imoryc/code/baseapp/config/" . "environments/")
+ ("/Users/imoryc/code/baseapp/" . "config/")
+ ("/Users/imoryc/code/new_jobandtalent/app/assets/javascripts/application/" . "candidates/")
+ ("/sudo:localhost:/" . "private/")
+ ("/Users/imoryc/code/iwantto/js/" . "libs/")
+ ("/Users/imoryc/code/iwantto/less/" . "bootstrap/")
+ ("/Users/imoryc/code/iwantto/" . "js/")
+ ("/Users/imoryc/bin/rsense-0.3/" . "etc/")
+ ("/Users/imoryc/bin/" . "rsense-0.3/")
+ ("/Users/imoryc/code/new_jobandtalent/app/views/admin/" . "candidates/")
+ ("/Users/imoryc/code/copycopter-jt/" . "config/")
+ ("/Users/imoryc/code/new_jobandtalent/app/decorators/" . "base/")
+ ("/Users/imoryc/code/new_jobandtalent/spec/integration/" . "social_import/")
+ ("/Users/imoryc/code/new_jobandtalent/db/" . "migrate/")
+ ("/Users/imoryc/code/new_jobandtalent/lib/tasks/" . "job_openings_import/")
+ ("/Users/imoryc/code/new_jobandtalent/lib/" . "tasks/")
+ ("/Users/imoryc/code/new_jobandtalent/spec/" . "controllers/")
+ ("/Users/imoryc/code/new_jobandtalent/config/" . "environments/")
+ ("/Users/imoryc/code/new_jobandtalent/app/assets/javascripts/" . "utils/")
+ ("/Users/imoryc/code/new_jobandtalent/app/assets/" . "javascripts/")
+ ("/Users/imoryc/.emacs.d/elpa/" . "grandshell-theme-20130415.1827/")
+ ("/Users/imoryc/code/new_jobandtalent/app/controllers/" . "admin/")
+ ("/Users/imoryc/.emacs.d/imoryc/" . "themes/")
+ ("/Users/imoryc/.emacs.d/" . "init-files/")
+ ("/Users/" . "imoryc/")
+ ("/Users/imoryc/code/new_jobandtalent/app/views/companies/" . "job_openings/")
+ ("/Users/imoryc/code/new_jobandtalent/app/views/" . "layouts/")
+ ("/Users/imoryc/code/new_jobandtalent/app/extensions/" . "controllers/")
+ ("/Users/imoryc/code/new_jobandtalent/app/" . "controllers/")
+ ("/Users/imoryc/code/new_jobandtalent/" . "lib/")
+ ("/Users/imoryc/code/errbit/" . "config/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/3-undo/" . "app/")
+ ("/Users/imoryc/code/slearn/public/" . "stylesheets/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/2-form/app/coffeescripts/" . "time_log/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/2-form/app/" . "coffeescripts/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/2-form/" . "app/")
+ ("/Users/imoryc/code/peepcode-064-backbone-iii-1-code/" . "9-complete/")
+ ("/Users/imoryc/" . ".emacs.d/")
+ ("/Users/imoryc/code/old_sllearn/" . "public/")
+ ("/Users/imoryc/code/" . "javaconcurrencyinpractice/")
+ ("/Users/imoryc/code/slearn/app/coffeescripts/" . "slearn/")
+ ("/Users/imoryc/code/slearn/app/" . "assets/")
+ ("/Users/imoryc/code/slearn/" . "lib/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/imoryc/.emacs.d/"
+ "/Users/imoryc/.emacs.d/init-files/"
+ "/Users/imoryc/code/fortis_invoices/src/fortis_invoices/"
+ "/Users/imoryc/code/javaconcurrencyinpractice/"
+ "/Users/imoryc/code/fortis_invoices/test/fortis_invoices/"
+ "/Users/imoryc/code/chromedriver/bin/"
+ "/Users/imoryc/code/chromedriver/"
+ "/Users/imoryc/.emacs.d/imoryc/"
+ "/Users/imoryc/code/axle/app/mailers/"
+ "/Users/imoryc/code/fortis_invoices/"
+ "/Users/imoryc/code/slearn2/app/controllers/"
+ "/Users/imoryc/code/slearn2/config/"
+ "/Users/imoryc/code/slearn2/app/views/layouts/"
+ "/Users/imoryc/code/slearn2/db/migrate/"
+ "/Users/imoryc/code/slearn2/app/models/"
+ "/Users/imoryc/code/slearn2/app/mailers/"
+ "/Users/imoryc/code/slearn2/app/views/users/"
+ "/Users/imoryc/code/slearn2/app/views/quizes/"
+ "/Users/imoryc/code/slearn2/app/views/user_mailer/"
+ "/Users/imoryc/code/slearn2/app/views/test_invitations/"
+ "/Users/imoryc/code/slearn2/app/assets/javascripts/"
+ "/Users/imoryc/code/slearn2/app/assets/stylesheets/"
+ "/Users/imoryc/code/slearn2/"
+ "/Users/imoryc/code/slearn2/lib/assets/css/"
+ "/Users/imoryc/code/eleos/newsit-mm/app/views/layouts/"
+ "/Users/imoryc/code/slearn2/spec/features/"
+ "/Users/imoryc/code/slearn2/spec/integration/"
+ "/Users/imoryc/bin/"
+ "/Users/imoryc/code/axle/app/controllers/"
+ "/Users/imoryc/code/axle/spec/"
+ "/Users/imoryc/code/axle/"
+ "/Users/imoryc/code/axle/spec/features/"
+ "/Users/imoryc/code/slearn2/config/initializers/"
+ "/Users/imoryc/code/octopres/sass/base/"
+ "/Users/imoryc/code/octopres/sass/custom/"
+ "/Users/imoryc/code/octopres/.themes/oct2/"
+ "/Users/imoryc/code/octopres/.themes/slash/sass/base/"
+ "/Users/imoryc/code/octopres/.themes/slash/sass/"
+ "/Users/imoryc/code/axle/app/views/premium_recipients/registrations/"
+ "/Users/imoryc/code/axle/spec/support/"
+ "/Users/imoryc/code/axle/app/models/"
+ "/Users/imoryc/code/axle/lib/services/"
+ "/Users/imoryc/code/axle/db/migrate/"
+ "/Users/imoryc/code/axle/app/controllers/premium_recipients/"
+ "/Users/imoryc/code/axle/app/assets/javascripts/"
+ "/Users/imoryc/code/axle/app/views/users/registrations/"
+ "/Users/imoryc/code/fortis_invoices/bin/"
+ "/Users/imoryc/code/fortis_invoices/src/fortis_invoices/examples/"
+ "/Users/imoryc/.tmuxinator/"
+ "/Users/imoryc/code/axle/app/views/premium_recipients/subscriptions/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init.el"
+ "init-yasnippet.el"
+ "my-packages.el"
+ "im-set-colors.el"
+ "startup.el"
+ "sendgrid_client.clj"
+ "converter.clj"
+ "image_processing.clj"
+ "ConcurentPrimeFinder.java"
+ "RaceCondition.java"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/imoryc/.emacs.d/init-files/" (20883 9357 0 0) "init-whitespace-mode.el" "init-shell-mode.el" "init-ruby-mode.el" "init-recentf.el" "init-projectile.el" "init-org-mode.el" "init-markup-and-style-modes.el" "init-magit.el" "init-javascript-settings.el" "init-idle-highlight.el" "init-completition.el" "init-clojure-mode.el" "init-buffer-switching.el" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/.emacs.d/" (20883 9527 0 0) "var/" "startup.el~" "startup.el" "snippets/" "README.org" "projectile.cache" "org-clock-save.el" "init.el" "init-files/" "imoryc/" "elpa/" "auto-save-list/" "ac-comphist.dat" ".org-id-locations" ".mc-lists.el" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/" (20882 44923 0 0) "VirtualBox VMs/" "target/" "something.png" "resp" "range.clj" "Public/" "Pictures/" "pgadmin.log" "PdaNetUninstall.sh" "News/" "Music/" "Movies/" "Maildir/" "Mail/" "logg" "LibreOffice4.0_SDK/" "Library/" "glyphicons-halflings.png" "glyphicons-halflings-white.png" "fun.py" "fsjdalksjakdlsfa.rb" "fasdfasd.rb" "erb" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "code/" "cloud-search-tools-1.0.1.4-2013.01.11/" "Chess Database/" "brew" "bin/" "aws-account-keys" "Applications/" ".zshrc" ".zsh_history" ".zlogin" ".zcompdump" ".Xauthority" ".vimrc" ".viminfo" ".vim/" ".Trash/" ".tmuxinator/" ".tmux.conf" ".TaskCoach/" ".subversion_IDEA/" ".subversion/" ".ssh/" ".smex-items" ".slime-history.eld" ".sh_history" ".serverauth.928" ".serverauth.77211" ".serverauth.7320" ".serverauth.576" ".serverauth.564" ".serverauth.534" ".serverauth.532" ".serverauth.517" ".serverauth.490" ".serverauth.472" ".serverauth.461" ".serverauth.419" ".serverauth.355" ".serverauth.352" ".serverauth.333" ".serverauth.290" ".serverauth.285" ".serverauth.225" ".serverauth.181" ".serverauth.1777" ".serverauth.1740" ".serverauth.160" ".serverauth.156" ".serverauth.1548" ".serverauth.1401" ".serverauth.1362" ".serverauth.1358" ".serverauth.1337" ".serverauth.1296" ".serverauth.11496" ".serverauth.1091" ".serverauth.10876" ".scala_history" ".sbt/" ".rvm/" ".rstudio-desktop/" ".rspec" ".rsense" ".rnd" ".Rhistory" ".rediscli_history" ".recentf~" ".recentf" ".RData" ".rbenv/" ".Rapp.history" ".railsrc" ".psql_history" ".pry_history" ".pow/" ".pgpass" ".pgadmin_histoqueries" ".osx" ".offlineimaprc" ".offlineimap/" ".npm/" ".node-gyp/" ".newsrc.eld" ".newsrc-dribble" ".newsrc" ".netrc" ".mu/" ".m2/" ".lighttable/" ".libreoffice-alt/" ".lesshst" ".lein/" ".kontomierz/" ".jline-clojure.main.history" ".ivy2/" ".irclogs/" ".irbrc" ".irb_history" ".irb-history" ".io_history" ".internet_chess_club/" ".ido.last~" ".ido.last" ".idea/" ".history" ".hgignore_global" ".heroku/" ".guard_history" ".gnupg/" ".gitignore_global" ".gitconfig" ".git-completition.bash" ".gem/" ".fonts/" ".fontconfig/" ".erlang.cookie" ".emacs~" ".emacs.keyfreq" ".emacs.d/" ".emacs" ".elnodelogs/" ".DS_Store" ".dropbox/" ".dbshell" ".cups/" ".ctags" ".config/" ".codeintel/" ".CFUserTextEncoding" ".cache/" ".bundle/" ".bower/" ".bookmarks_emacs" ".bashrc" ".bash_profile" ".bash_login" ".bash_history" ".authinfo" "../" "./")
+
+ ("/Users/imoryc/.emacs.d/imoryc/" (20873 14176 0 0) "trampki.el" "TAGS" "ruby-mode-indent-fix.el" "noansi" "matlab.el" "keys.el" "keyfreq.el" "helpers.el" "espresso.el" "custom-modeline.el" "basic-settings.el" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/fortis_invoices/src/fortis_invoices/" (20875 43721 0 0) "sendgrid_client.clj" "s3_storage.clj" "image_processing.clj" "fortis_service.clj" "examples/" "document_tools.clj" "core.clj" "converter.clj" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/javaconcurrencyinpractice/" (20875 39947 0 0) "RaceCondition.java" "RaceCondition.class" "RaceCondition$1.class" "NaivelyConcurrentTotalFileSize.java" "ConcurentPrimeFinder.java" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/fortis_invoices/src/" (20809 35034 0 0) "fortis_invoices/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/" (20875 22893 0 0) "word_wrap_cata_ruby/" "word_wrap_cata_clojure/" "woda/" "validations.rb" "unoconv/" "system.gems" "slearn2/" "sicp/" "scoring_predictions_kata_clojure/" "scoring_predictions_kata/" "record/" "octopres/" "norvig/" "kocer/" "kite/" "javaconcurrencyinpractice/" "ios/" "fp-oo/" "fortis_invoices/" "for_clojure/" "fbwhere/" "eleos/" "ebot/" "conjury-ocr/" "code_jam/" "chromedriver/" "chessshare/" "axle/" "archive/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/fortis_invoices/" (20872 45953 0 0) "test/" "target/" "TAGS" "src/" "script/" "README.org" "project.clj" "invoice_examples/" "generate_tags" "fixtures/" "deploy/" "bin/" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/chromedriver/" (20873 18790 0 0) "chromedriver.el" "bin/" ".git/" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/mailers/" (20871 38034 0 0) "system_alert.rb" "receipts.rb" "invitations.rb" "account_notices.rb" ".gitkeep" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/" (20762 25908 0 0) "views/" "validators/" "models/" "mailers/" "helpers/" "errors/" "controllers/" "assets/" ".DS_Store" "../" "./")
+
+ ("/etc/" (20872 917 0 0) "zshenv" "zprofile" "xtab" "ttys" "syslog.conf" "sudoers" "sshd_config~orig" "sshd_config" "ssh_host_rsa_key.pub" "ssh_host_rsa_key" "ssh_host_key.pub" "ssh_host_key" "ssh_host_dsa_key.pub" "ssh_host_dsa_key" "ssh_config" "snmp/" "shells" "services" "security/" "rtadvd.conf" "rpc" "rmtab" "resolver/" "resolv.conf" "rc.netboot" "rc.imaging" "rc.common" "raddb/" "racoon/" "protocols" "profile" "ppp/" "postfix/" "php.ini.default-5.2-previous" "php.ini.default" "php-fpm.conf.default" "pf.os" "pf.conf" "pf.anchors/" "periodic/" "paths.d/" "paths" "passwd~orig" "passwd" "pam.d/" "openldap/" "ntp_opendirectory.conf" "ntp.conf" "ntp-restrict.conf" "notify.conf" "nfs.conf" "newsyslog.d/" "newsyslog.conf" "networks" "nanorc" "named.conf" "moduli" "master.passwd~orig" "master.passwd" "manpaths.d/" "manpaths" "man.conf" "mail.rc" "mach_init_per_user.d/" "mach_init_per_login_session.d/" "mach_init.d/" "locate.rc" "localtime" "krb5.keytab" "kern_loader.conf" "irbrc" "ip6addrctl.conf" "hosts~orig" "hosts.equiv" "hosts" "hostconfig" "group~previous" "group" "gettytab" "ftpusers" "ftpd.conf.default" "ftpd.conf" "fstab.hd" "find.codes" "emond.d/" "efax.rc" "dnsextd.conf" "defaults/" "cups/" "csh.logout" "csh.login" "csh.cshrc" "com.apple.screensharing.agent.launchd" "bind.keys" "bashrc" "autofs.conf" "auto_master~orig" "auto_master" "auto_home" "authorization" "asl.conf" "apache2/" "aliases.db" "aliases" "afpovertcp.cfg" "AFP.conf" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/views/action_traces/" (20871 56109 0 0) "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/views/" (20871 56109 0 0) "users/" "user_mailer/" "test_invitations/" "quizes/" "questions/" "layouts/" "devise/" "answers/" "action_traces/" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/controllers/" (20871 56098 0 0) "users_controller.rb" "test_invitations_controller.rb" "quizes_controller.rb" "quiz_attempts_controller.rb" "questions_controller.rb" "application_controller.rb" "answers_controller.rb" "action_traces_controller.rb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/config/" (20871 56055 0 0) "unicorn.rb" "routes.rb" "locales/" "initializers/" "environments/" "environment.rb" "database.yml" "boot.rb" "application.rb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/views/layouts/" (20871 56035 0 0) "application.html.erb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/db/migrate/" (20871 55931 0 0) "20130506162823_create_action_traces.rb" "20130202144209_devise_invitable_add_to_users.rb" "20130202141648_add_devise_to_users.rb" "20130202140408_create_test_invitations.rb" "20130202103837_add_progress_to_quiz_attempt.rb" "20130202000127_add_correct_to_answer.rb" "20130201234335_add_answer_reference_to_user_answer.rb" "20130201232811_add_user_reference_to_user_answer.rb" "20130201232647_create_user_answers.rb" "20130201232350_create_quiz_attempts.rb" "20130201232241_create_users.rb" "20130201231855_create_possible_answers.rb" "20130201231644_create_questions.rb" "20130201225858_create_quizzes.rb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/db/" (20748 18641 0 0) "seeds.rb" "schema.rb" "migrate/" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/" (20871 55295 0 0) "vendor/" "tmp/" "spec/" "script/" "README.rdoc" "Rakefile" "public/" "Procfile" "log/" "lib/" "Gemfile.lock" "Gemfile" "doc/" "db/" "config.ru" "config/" "app/" ".rspec" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/models/" (20871 55867 0 0) "user_answer.rb" "user.rb" "test_invitation.rb" "quiz_attempt.rb" "quiz.rb" "question.rb" "possible_answer.rb" "attempt_pdf.rb" "action_trace.rb" ".gitkeep" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/mailers/" (20839 42773 0 0) "user_mailer.rb" ".gitkeep" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/" (20871 55274 0 0) "views/" "models/" "mailers/" "helpers/" "controllers/" "assets/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/views/quizes/" (20871 54925 0 0) "show.html.erb" "new.html.erb" "index.html.erb" "edit.html.erb" "_quiz_in_progress.html.erb" "_quiz_finished.html.erb" "_question.html.erb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/views/users/" (20871 54343 0 0) "show.html.erb" "index.html.erb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/views/user_mailer/" (20833 32161 0 0) "attempt_finished_email.html.erb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/views/test_invitations/" (20871 53480 0 0) "new.html.erb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/assets/javascripts/" (20837 40333 0 0) "users.js.coffee" "test_invitations.js.coffee" "questions.js.coffee" "application.js" "answers.js.coffee" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/assets/stylesheets/" (20871 52035 0 0) "users.css.scss" "test_invitations.css.scss" "quizes.css.scss" "questions.css.scss" "font-awesome.min.css" "font-awesome-ie7.min.css" "application.css" "answers.css.scss" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/public/" (20871 51722 0 0) "robots.txt" "fonts/" "favicon.ico" "500.html" "422.html" "404.html" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/lib/assets/css/" (20816 44865 0 0) "docs.css" "bootstrap.min.css" "bootstrap.css" "bootstrap-responsive.min.css" "bootstrap-responsive.css" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/lib/assets/" (20833 27240 0 0) "js/" "img/" "ico/" "css/" ".gitkeep" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/lib/" (20833 27239 0 0) "tasks/" "assets/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/eleos/newsit-mm/app/views/layouts/" (20771 14991 0 0) "templates/" "application.html.haml" "_view_templates.haml" "_messages.html.haml" "_header.html.haml" "../" "./")
+
+ ("/Users/imoryc/code/eleos/newsit-mm/app/views/" (20771 14991 0 0) "widgets/" "users/" "user_mailer/" "tweets/" "topics/" "story_threads/" "plugin/" "layouts/" "iphone_apps/" "interests/" "home/" "features/" "categories/" "admin/" "../" "./")
+
+ ("/Users/imoryc/code/eleos/newsit-mm/app/" (20685 64427 0 0) "views/" "presenters/" "models/" "mailers/" "helpers/" "controllers/" "assets/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/eleos/newsit-mm/" (20771 15027 0 0) "vendor/" "tmp/" "test/" "spec/" "script/" "rspec" "README.md" "Rakefile" "public/" "Procfile" "log/" "lib/" "Gemfile.lock" "Gemfile" "doc/" "db/" "config.ru" "config/" "bin/" "app/" ".rspec" ".projectile" ".gitignore" ".git/" ".env" ".DS_Store" ".bundle/" "../" "./")
+
+ ("/Users/imoryc/code/eleos/" (20772 38546 0 0) "newsit-twitter-mm/" "newsit-twitter-backend/" "newsit-mm/" "newsit-backend/" "faketweetserver/" "Error" "conjury/" "clearcreek-taxliens/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/app/assets/" (20816 45324 0 0) "stylesheets/" "javascripts/" "images/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/spec/integration/" (20871 49491 0 0) "wrong_answers_spec.rb" "../" "./")
+
+ ("/Users/imoryc/code/axle/config/environments/" (20871 38034 0 0) "test.rb" "staging.rb" "production.rb" "development.rb" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/views/premium_recipients/accounts/" (20871 38034 0 0) "show.html.erb" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/views/documents/" (20871 38034 0 0) "welcome/" "wait_for_pdf.html.haml" "view.html.haml" "show.html.haml" "share.html.haml" "search.html.haml" "index.html.haml" "_welcome_screen.html.haml" "_tabs.html.haml" "_results.html.haml" "_result.html.haml" "_preview.html.haml" "_list.html.haml" "_documents_pagination.html.haml" "_document_preview.html.haml" "_details.html.haml" "../" "./")
+
+ ("/Users/imoryc/code/axle/spec/controllers/" (20871 38034 0 0) "stripe/" "inbound/" "documents_controller_spec.rb" "api/" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/axle/config/" (20871 38034 0 0) "unicorn.rb" "routes.rb" "rapns/" "locales/" "initializers/" "environments/" "environment.rb" "database.yml" "chargify.yml" "boot.rb" "application.rb" "../" "./")
+
+ ("/Users/imoryc/code/axle/.git/" (20871 45231 0 0) "sourcetreeconfig" "refs/" "packed-refs" "ORIG_HEAD" "objects/" "logs/" "info/" "index" "hooks/" "HEAD" "FETCH_HEAD" "description" "config" "COMMIT_EDITMSG" "branches/" "../" "./")
+
+ ("/Users/imoryc/code/axle/db/" (20871 45231 0 0) "test.sqlite3" "seeds.rb" "schema.rb" "migrate/" "../" "./")
+
+ ("/Users/imoryc/code/axle/spec/models/" (20871 38034 0 0) "user_spec.rb" "product_plan_spec.rb" "premium_recipient_registration_spec.rb" "pdf_generating_job_spec.rb" "download_pdf_routing_service_spec.rb" "document_spec.rb" "document_share_spec.rb" "cloudsearch_update_spec.rb" "app_store_receipt_spec.rb" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/helpers/" (20871 38034 0 0) "users_helper.rb" "upload_tokens_helper.rb" "stripe/" "send_grid/" "s3_helper.rb" "push_helper.rb" "premium_recipient_helper.rb" "payment_information_helper.rb" "password_reset_helper.rb" "login_helper.rb" "inbound/" "home_helper.rb" "emails_helper.rb" "document_shares_helper.rb" "customers_helper.rb" "customer_relationships_helper.rb" "custom_devise_helper.rb" "clicky_helper.rb" "chargify/" "application_helper.rb" "api/" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/views/premium_recipients/subscriptions/" (20871 38034 0 0) "new.html.erb" "../" "./")
+
+ ("/Users/imoryc/.tmuxinator/" (20871 37979 0 0) "slearn2.yml" "joyofclojure.yml" "fortis.yml" "codejam.yml" "chromedriver.yml" "blog.yml" "axle.yml" "../" "./")
+
+ ("/Users/imoryc/code/fortis_invoices/src/fortis_invoices/examples/" (20862 30270 0 0) "setup_debug.clj" "process_example_invoices.clj" "../" "./")
+
+ ("/Users/imoryc/code/fortis_invoices/bin/" (20862 30270 0 0) "unoconv" "system_check" "email_example.rb" "colors_p001.jpg" "check_env.rb" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/assets/javascripts/" (20871 38034 0 0) "users.js.coffee" "transmission_event.js" "stripe/" "sessions.js.coffee" "resizer.js.coffee" "premium_recipients.js.str" "payment_information.js.coffee" "password_reset.js" "login.js" "lib/" "inbound/" "home.js.coffee" "drivers.js.coffee" "documents.js.coffee" "document_shares.js.coffee" "customers.js.coffee" "customer_relationships.js.coffee" "chargify/" "application.js" "api/" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/controllers/premium_recipients/" (20871 38034 0 0) "subscriptions_controller.rb" "sessions_controller.rb" "registrations_controller.rb" "confirmations_controller.rb" "accounts_controller.rb" "../" "./")
+
+ ("/Users/imoryc/code/axle/db/migrate/" (20871 38034 0 0) "20130502155107_add_currency_to_charges.rb" "20130502154633_add_index_to_target_emails_email.rb" "20130502153249_add_invoice_information_to_charges.rb" "20130501140029_add_premium_product_plans.rb" "20130429104737_create_target_emails.rb" "20130426230759_create_charges.rb" "20130426101746_create_new_product_plans_and_cleanup_old_data.rb" "20130418150016_stripe_customer_id_to_premium_recipient.rb" "20130417163804_add_custom_metadata_to_document_shares.rb" "20130417154340_add_document_type_association_index.rb" "20130417152604_add_performance_indices_to_documents.rb" "20130417145853_add_missing_indices_to_document_shares.rb" "20130417140333_add_not_null_constraints_to_timestamps.rb" "20130417134719_add_customs_document_types_for_prime.rb" "20130416195914_add_ftp_filename_to_document_shares.rb" "20130416195658_add_ftp_filename_template_to_customers.rb" "20130415162738_add_error_retry_count_to_uploads.rb" "20130414012604_devise_create_premium_recipients.rb" "20130411191959_add_upload_id_to_documents.rb" "20130411191704_create_uploads.rb" "20130411145738_rename_ftp_to_allow_ftp_downloads_on_users.rb" "20130411141118_add_allow_ftp_uploads_flag_to_users.rb" "20130411091211_add_source_type_id_to_documents.rb" "20130411090309_create_document_sources.rb" "20130411085419_create_qualcomm_document_types.rb" "20130411083448_add_ftp_username_to_users.rb" "20130315204154_add_document_format_id_to_customers.rb" "20130315203407_create_document_formats.rb" "20130315123619_add_pdf_generated_cols_to_documents.rb" "20130315123615_add_pdf_sizes_to_documents.rb" "20130312173249_add_normal_xml_metadata_format.rb" "20130227172738_add_allow_nag_to_interstitial_recipients.rb" "20130227170153_allow_null_nag_delay.rb" "20130225215111_add_passthrough_to_email_routings.rb" "20130213174550_add_inspection_type_for_prime.rb" "20130208191930_add_auto_rotate_to_customers.rb" "20130131185326_add_test_flag_to_customers.rb" "20130131173032_add_hidden_at_to_document_shares.rb" "20130114214450_add_delay_to_interstitial_recipients.rb" "20130110145301_add_analyzed_to_documents.rb" "20130109154304_create_interstitial_recipients.rb" "20130104165343_add_processing_time_to_documents.rb" "20121213204123_add_document_types_for_prime.rb" "20121213204122_create_prime_customer.rb" "20121206212422_add_customer_id_to_document_types.rb" "20121206154314_add_trip_sheet_document_type.rb" "20121206150823_add_sdk_device_id_to_user.rb" "20121130203024_add_integration_metadata_format_to_customers.rb" "20121130200435_create_integration_metadata_formats.rb" "20121128205907_add_unique_index_to_users_on_sdk_user_token.rb" "20121121214224_add_uuid_index_to_document_pages.rb" "20121121005530_add_sdk_user_id_to_users.rb" "20121119163611_add_type_to_users.rb" "20121109122929_add_sdk_user_token_to_users.rb" "20121108201255_add_sdk_client_token_to_customers.rb" "20121017173702_add_no_metadata_in_zip_to_customers.rb" "20120502194144_add_hidden_at_to_documents.rb" "20120501131825_add_indices_to_improve_sent_documents.rb" "20120413134000_add_uploads_enabled_to_customers.rb" "20120411194721_add_alert_is_json_to_rapns_notifications.rb" "20120411194720_create_rapns_feedback.rb" "20120411194719_create_rapns_notifications.rb" "20120410194107_add_send_notification_email_on_new_documents_to_customers.rb" "20120410190515_add_index_to_email_routings.rb" "20120410185601_create_email_routings.rb" "20120405175110_add_delivery_notifications_enabled_to_users.rb" "20120404205523_add_tiff_size_to_documents.rb" "20120404195023_add_downloaded_via_ftp_at_to_document_shares.rb" "20120404194545_add_ftp_flag_to_users.rb" "20120403044028_backfill_email_domains.rb" "20120403044008_add_email_domain_trigger.rb" "20120403043959_add_email_domain.rb" "20120402200018_make_device_token_index_nonunique.rb" "20120402200010_alter_apn_devices.rb" "20120402200008_create_apn_devices.rb" "20120328184138_add_tiff_download_available_to_documents.rb" "20120326145226_rename_transmission_event_event.rb" "20120322205256_add_viewed_flag_to_transmission_event_event.rb" "20120322163203_rename_transmission_event.rb" "20120322145212_add_c2_dm_info_to_user.rb" "20120315204505_create_transmission_event_events.rb" "20120315194349_add_last_email_status_to_transmission_events.rb" "20120309152046_migrate_document_share_transmissions.rb" "20120309151138_create_transmission_events.rb" "20120223153730_add_ts_vector_triggers.rb" "20120223153244_add_ts_vectors_to_documents.rb" "20120206214028_change_probabilities_to_text_field.rb" "20120202220834_create_bayesian_models.rb" "20120202214013_create_image_analyses.rb" "20111223201820_add_app_store_last_warned_at_to_customers.rb" "20111223164020_add_app_store_subscription_expires_at_to_customers.rb" "20111219153249_create_document_pages.rb" "20111213003536_add_ios_subscription_fields_to_customers.rb" "20111206161238_add_unit_name_to_customers.rb" "20111202190029_add_storage_schema_to_documents.rb" "20111202185728_add_number_of_pages_to_documents.rb" "20111123221055_add_watermark_bit_to_documents.rb" "20111123191243_set_legacy_trial_on_all_existing_customers.rb" "20111123191158_add_legacy_trial_bit_to_customers.rb" "20111122213304_add_pricing_information_to_product_plans.rb" "20111122212650_create_product_plans.rb" "20111102131737_add_device_info_to_user.rb" "20111022141319_add_phone_info_to_users.rb" "20111022141221_add_next_billing_period_info_to_customers.rb" "20111013193439_add_test_flag_to_users.rb" "20111013005237_default_customer_type_descriptions.rb" "20111013004610_add_description_to_customer_types.rb" "20111013004454_rename_owner_operator_to_individual.rb" "20111012174209_add_marked_for_cancellation_to_customers.rb" "20111011124921_add_notification_flags_to_customers.rb" "20111008030527_create_chargify_customers.rb" "20111005222637_set_product_handles.rb" "20111005210051_add_user_count_to_customers.rb" "20111005193529_set_all_current_users_to_mobile.rb" "20111005192825_add_exempt_flag_to_customers.rb" "20111005151613_add_chargify_product_handle_to_customer_types.rb" "20111005150836_add_chargify_stuff_to_customers.rb" "20110929211928_add_new_document_types.rb" "20110929210246_add_sort_to_document_types.rb" "20110927032552_generate_gateway_addresses.rb" "20110927032534_add_email_gateway_to_customers.rb" "20110926234945_add_error_retry_count_to_documents.rb" "20110926212527_add_converted_to_documents.rb" "20110926201657_add_file_format_to_documents.rb" "20110921222133_add_ocr_blob_to_documents.rb" "20110915014731_add_active_to_users.rb" "20110913213109_create_customer_relationships.rb" "20110913022400_add_customer_type_to_customers.rb" "20110913004416_create_customer_types.rb" "20110912234041_add_administrator_flag_to_users.rb" "20110910153547_set_default_to_enhanced_on_enhanced_documents.rb" "20110910153417_add_default_to_enhanced_to_documents.rb" "20110906134523_add_enhancement_flags_to_documents.rb" "20110831204605_add_uploaded_and_processor_checked_out_at_to_documents.rb" "20110826193310_add_transformation_to_documents.rb" "20110819190750_add_notified_to_document_shares.rb" "20110818211556_create_qr_references.rb" "20110722213721_create_delayed_jobs.rb" "20110722135310_add_ready_flag_to_documents.rb" "20110722133437_add_searchable_blob_to_documents.rb" "20110722001718_add_document_share_to_document_type_association.rb" "20110721210522_add_attributes_to_document_share.rb" "20110713005828_create_document_shares.rb" "20110712012821_devise_invitable_add_to_users.rb" "20110704145427_create_customers.rb" "20110704145409_devise_create_users.rb" "20110625192113_add_pdf_flag_to_documents.rb" "20110622170843_create_document_type_associations.rb" "20110622170741_create_document_types.rb" "20110615222915_create_document_statuses.rb" "20110615222611_create_documents.rb" "../" "./")
+
+ ("/Users/imoryc/code/axle/spec/support/" (20871 38034 0 0) "test_seeds.rb" "simulated_premium_recipient_site.rb" "simulated_axle.rb" "model_examples.rb" "helper_methods.rb" "deferred_garbage_collection.rb" "capybara_wait_until.rb" "capybara_assets.rb" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/views/premium_recipients/registrations/" (20871 38034 0 0) "new.html.erb" "edit.html.erb" "../" "./")
+
+ ("/Users/imoryc/code/octopres/sass/base/" (20870 36500 0 0) "_utilities.scss" "_typography.scss" "_theme.scss" "_solarized.scss" "_layout.scss" "_font.scss" "_color.scss" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/config/initializers/" (20870 38871 0 0) "wrap_parameters.rb" "session_store.rb" "secret_token.rb" "mime_types.rb" "mail.rb" "inflections.rb" "devise.rb" "backtrace_silencers.rb" "../" "./")
+
+ ("/Users/imoryc/code/fortis_invoices/test/fortis_invoices/" (20871 29770 0 0) "t_sendgrid_client.clj" "t_processor.clj" "t_fortis_service.clj" "t_core.clj" "t_converter.clj" "../" "./")
+
+ ("/Users/imoryc/bin/" (20871 45460 0 0) "xfvb-run.sh" "workhorse" "work.csv" "upload_sdf_files" "unoconv" "test_box.rb" "swap_caps.sh" "sublime_text" "sublime_rspec.rb" "subl" "start_emacs" "split-em.rb" "spark" "soffice" "single_spec" "run-fakte-tweeter" "ruby_for_sublime.rb" "rsense-0.3/" "restore_db" "repeat_command.sh" "refresh-staging" "rebar" "postgres-start" "Markdown.pl" "make_peace.rb" "kill-spork" "jt_dump.sh" "imemacs" "im_autotest.rb" "git-wtf" "git-undo" "git-minutes.rb" "git-dude" "git-cwd-info.rb" "git-current-branch" "git-count-changes" "git-before-push" "get_dump.rb" "generate-rails-tags" "gbrt.rb" "eshell" "emacs_deamon.sh" "emacs" "downaload_dump" "ditaa0_9.jar" "curl-ttfb.sh" "count-changes-command" "connect-to-doc-matching-devel" "compiler.jar" "branches.rb" "axle-test-console" "app_template_rails.rb" "ab_test_server.sh" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/spec/" (20871 49159 0 0) "spec_helper.rb" "models/" "integration/" "features/" "../" "./")
+
+ ("/Users/imoryc/code/axle/lib/" (20871 38034 0 0) "upload_controller.rb" "templates/" "tasks/" "services/" "pdf_generating_job.rb" "middleware/" "httparty_instrument.rb" "has_single_sign_on.rb" "has_pdf.rb" "has_cloud_search.rb" "download_pdf_routing_service.rb" "document_storage.rb" "document_paginator.rb" "data_factories.rb" "cloud_search_service.rb" "batch_sdf.rb" "authentication_helpers.rb" "assigns_with.rb" "app_store_verifier.rb" "api_cloud_search_service.rb" "acts_as_s3.rb" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/axle/lib/services/" (20871 38034 0 0) "stripe_payment_service.rb" "premium_recipient_after_registration_service.rb" "document_viewer_service.rb" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/controllers/" (20871 38034 0 0) "users_controller.rb" "user_authentication_controller.rb" "upload_tokens_controller.rb" "upload_pages_controller.rb" "transmission_statuses_controller.rb" "support_controller.rb" "stripe/" "send_grid/" "registrations_controller.rb" "premium_recipients/" "password_reset_controller.rb" "login_controller.rb" "information_controller.rb" "inbound/" "home_controller.rb" "documents_controller.rb" "document_uploads_controller.rb" "document_shares_controller.rb" "customers_controller.rb" "customer_relationships_controller.rb" "confirmations_controller.rb" "chargify/" "application_controller.rb" "api/" "agreements_controller.rb" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/models/" (20871 45226 0 0) "user.rb" "upload.rb" "transmission_status.rb" "transmission.rb" "target_email.rb" "scopes/" "qualcomm_document_type.rb" "qr_reference.rb" "product_plan.rb" "premium_recipient_registration.rb" "premium_recipient.rb" "perspectives/" "parameters/" "interstitial_recipient.rb" "integrations/" "integration_metadata_format.rb" "image_analysis.rb" "email_routing.rb" "document_type_association.rb" "document_type.rb" "document_status.rb" "document_source.rb" "document_share.rb" "document_page.rb" "document_format.rb" "document.rb" "customer_type.rb" "customer_relationship.rb" "customer.rb" "charge.rb" "bayesian_model.rb" "app_store_subscription_period.rb" "app_store_subscription.rb" "app_store_receipt.rb" "apn_device.rb" ".gitkeep" "../" "./")
+
+ ("/Users/imoryc/code/axle/spec/features/" (20871 38034 0 0) "premium_recipient_account_spec.rb" "nag_screen_rules_spec.rb" "login_spec.rb" "downloading_documents_spec.rb" "../" "./")
+
+ ("/Users/imoryc/code/axle/spec/" (20871 38034 0 0) "support/" "stripe_payment_service_spec.rb" "spec_helper.rb" "models/" "mailers/" "lib/" "fixtures/" "features/" "factories.rb" "document_paginator_spec.rb" "controllers/" "cloud_search_service_spec.rb" "api_cloud_search_service_spec.rb" ".DS_Store" "../" "./")
+
+ ("/Users/imoryc/code/axle/" (20871 38034 0 0) "vendor/" "tmp/" "TAGS" "spec/" "script/" "README.md" "Rakefile" "public/" "Procfile" "log/" "lib/" "generate_tags" "Gemfile.lock" "Gemfile" "features/" "doc/" "db/" "config.ru" "config/" "certs/" "art/" "app/" ".ruby-version" ".rspec" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
+
+ ("/Users/imoryc/code/fortis_invoices/test/" (20800 24464 0 0) "fortis_invoices/" "../" "./")
+
+ ("/Users/imoryc/code/for_clojure/" (20633 14793 0 0) "test/" "target/" "src/" "README" "project.clj" "lib/" "classes/" ".lein-deps-sum" ".gitignore" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/spec/features/" (20871 18420 0 0) "scoring_quiz_attempt_spec.rb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/spec/models/" (20871 17217 0 0) "quiz_attempt_spec.rb" "../" "./")
+
+ ("/Users/imoryc/code/slearn2/config/environments/" (20870 37886 0 0) "test.rb" "production.rb" "development.rb" "../" "./")
+
+ ("/Users/imoryc/code/octopres/sass/custom/" (20870 36393 0 0) "_styles.scss" "_layout.scss" "_fonts.scss" "_colors.scss" "_color.scss" "../" "./")
+
+ ("/Users/imoryc/code/octopres/sass/" (20838 63433 0 0) "screen.scss" "plugins/" "parts/" "partials/" "custom/" "base/" "_plugins.scss" "_parts.scss" "_partials.scss" "_base.scss" "../" "./")
+
+ ("/Users/imoryc/code/octopres/.themes/" (20870 35831 0 0) "slash/" "../" "./")
+
+ ("/Users/imoryc/code/octopres/.themes/oct2/" (20844 14760 0 0) "source/" "sass/" "README.markdown" "oct2.png" ".git/" "../" "./")
+
+ ("/Users/imoryc/code/octopres/.themes/slash/source/" (20845 28422 0 0) "javascripts/" "index.html" "images/" "font/" "blog/" "atom.xml" "_layouts/" "_includes/" "../" "./")
+
+ ("/Users/imoryc/code/octopres/.themes/slash/sass/base/" (20870 35810 0 0) "_utilities.scss" "_typography.scss" "_layout.scss" "_font.scss" "_color.scss" "../" "./")
+
+ ("/Users/imoryc/code/octopres/.themes/slash/sass/" (20845 28422 0 0) "screen.scss" "plugins/" "parts/" "custom/" "base/" "_plugins.scss" "_parts.scss" "_base.scss" "../" "./")
+
+ ("/Users/imoryc/code/octopres/.themes/slash/" (20845 28422 0 0) "source/" "sass/" "README.md" ".git/" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/views/users/registrations/" (20789 60096 0 0) "new.html.haml" "edit.html.haml" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/views/users/" (20761 64225 0 0) "unlocks/" "shared/" "sessions/" "registrations/" "passwords/" "new.html.haml" "mailer/" "index.html.haml" "confirmations/" "../" "./")
+
+ ("/Users/imoryc/code/chromedriver/bin/" (20848 15497 0 0) "launch-chrome" "../" "./")
+
+ ("/Users/imoryc/code/todo/app/views/tasks/" (20849 11187 0 0) "show.html.haml" "new.html.haml" "index.html.haml" "index.html.erb" "edit.html.haml" "_form.html.haml" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/views/layouts/" (20862 4322 0 0) "external.html.haml" "emailed.html.haml" "application.html.haml" "_nav_link.html.haml" "_head.html.haml" "_flash.html.haml" "_clicky.html.haml" "../" "./")
+
+ ("/Users/imoryc/code/todo/features/" (20849 9790 0 0) "support/" "step_definitions/" "search_todo.feature" "new_todo.feature" "../" "./")
+
+ ("/Users/imoryc/code/todo/app/models/" (20849 11134 0 0) "task.rb" ".gitkeep" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/assets/stylesheets/" (20862 4322 0 0) "users.css.sass" "transmission_event.css.scss" "support.css.sass" "shared_email.css.sass" "sessions.css.sass" "send_grid/" "registrations.css.sass" "premium_recipient.css.sass" "payment_information.css.scss" "payment_information.css.sass" "navigation.css.sass" "lib/" "jquery-ui.css" "invitations.css.sass" "inbound/" "email.css.sass" "documents_viewer.css.sass" "documents_common.css.sass" "documents.css.sass" "document_uploads.css.sass" "document_shares.css.sass" "customers.css.scss" "customers.css.sass" "customer_relationships.css.sass" "customer_relationships.css.css" "confirmations.css.sass" "chargify/" "bootstrap-customizations.css.scss" "application.css.sass" "api/" "agreements.css.scss" "_hacks.css.sass" "_external.css.sass" "_common.css.sass" "_administrative.css.sass" "../" "./")
+
+ ("/Users/imoryc/Dropbox/notes/deft/" (20861 9015 0 0) "ember-notes.org" "eleos.org" "clojure.org" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/views/premium_recipients/" (20862 4322 0 0) "unlocks/" "subscriptions/" "sessions/" "registrations/" "passwords/" "mailer/" "confirmations/" "accounts/" "_links.erb" "../" "./")
+
+ ("/Users/imoryc/code/axle/app/views/" (20862 4322 0 0) "users/" "system_alert/" "support/" "sdf_exports/" "receipts/" "premium_recipients/" "layouts/" "kaminari/" "invitations/" "home/" "documents/" "document_uploads/" "document_shares/" "devise/" "customer_relationships/" "agreements/" "account_notices/" "../" "./")
+
+ ("/Users/" (20497 31472 0 0) "Shared/" "imoryc/" ".localized" "../" "./")
+
+ ("/Users/imoryc/Dropbox/notes/" (20861 8928 0 0) "deft/" "../" "./")
+
+ ("/Users/imoryc/Dropbox/" (20860 50913 0 0) "tmm dashboard (1)/" "TMM Dashboard/" "Read books/" "Rails_4_in_Action_v4_MEAP.pdf" "Public/" "products_WB0068X47.zip" "Pragmatic Bookshelf/" "octave/" "notes/" "machine_learing_notes.zip" "IgnacyMorycCV.pdf" "Icon
+" "FunctionalScala/" "Camera Uploads/" "bin/" "bilet_6666742.pdf" ".zshrc-skrót" ".zshrc" ".Xresources" ".xmonad/" ".xmobarrc" ".vimrc" ".tmux.conf" ".ssh/" ".screenrc" ".irbrc" ".inputrc" ".gnupg/" ".gitk" ".gitignore_global" ".gitconfig" ".gemrc" ".DS_Store" ".dropbox.cache/" ".bashrc" ".autotest" "../" "./")
+
+ ("/Users/imoryc/code/conjury-ocr/builds/bin/" (20810 62280 0 0) "yuvtest" "xvdisp" "xtractprotos" "xformbox_reg" "writetext_reg" "writemtiff" "wordsinorder" "wordlist2dawg" "watershedtest" "warpertest" "warper_reg" "viewertest" "unicharset_extractor" "trctest" "translate_reg" "threshnorm_reg" "textlinemask" "tesseract" "swt-ocr" "swt" "sudokutest" "subpixel_reg" "string_reg" "splitimage2pdf" "splitcomp_reg" "sorttest" "snapcolortest" "smoothedge_reg" "smallpix_reg" "skewtest" "skew_reg" "showedges" "sheartest" "shear_reg" "shear2_reg" "sharptest" "shapeclustering" "selio_reg" "seedspread_reg" "seedfilltest" "scaletest2" "scaletest1" "scaleandtile" "scale_reg" "runlengthtest" "rotatetest1" "rotateorthtest1" "rotateorth_reg" "rotatefastalt" "rotate2_reg" "rotate1_reg" "renderfonts" "removecmap" "reducetest" "rasteropip_reg" "rasterop_reg" "ranktest" "rankhisto_reg" "rankbin_reg" "rank_reg" "quadtreetest" "ptra2_reg" "ptra1_reg" "pta_reg" "psioseg_reg" "psio_reg" "projective_reg" "projection_reg" "printtiff" "printsplitimage" "printimage" "pngio_reg" "plottest" "pixtile_reg" "pixserial_reg" "pixmem_reg" "pixcomp_reg" "pixalloc_reg" "pixadisp_reg" "pixaatest" "pixa2_reg" "pixa1_reg" "pdfseg_reg" "pdfiotest" "partitiontest" "paintmask_reg" "paint_reg" "pagesegtest2" "pagesegtest1" "overlap_reg" "otsutest2" "otsutest1" "orientation" "numaranktest" "numa_reg" "mtifftest" "morphtest1" "morphseq_reg" "modifyhuesat" "misctest1" "mftraining" "maze_reg" "maketile" "lowaccess_reg" "logicops_reg" "locminmax_reg" "livre_tophat" "livre_seedgen" "livre_pageseg" "livre_orient" "livre_makefigs" "livre_hmt" "livre_adapt" "listtest" "lineremoval" "kernel_reg" "jbwords" "jbrankhaus" "jbcorrelation" "iotest" "ioformats_reg" "inserttest" "histotest" "heap_reg" "hardlight_reg" "grayquant_reg" "graymorphtest" "graymorph2_reg" "graymorph1_reg" "grayfill_reg" "graphicstest" "gifio_reg" "genfonts" "gammatest" "fpixcontours" "fpix_reg" "fmorphautogen" "fmorphauto_reg" "flipselgen" "flipdetect_reg" "findpattern_reg" "findpattern3" "findpattern2" "findpattern1" "fileinfo" "fhmtautogen" "fhmtauto_reg" "fcombautogen" "falsecolortest" "extrema_reg" "expand_reg" "equal_reg" "enhance_reg" "edgetest" "dwamorph2_reg" "dwamorph1_reg" "dwalineargen" "dna_reg" "dithertest" "distance_reg" "digitprep1" "dewarptest3" "dewarptest2" "dewarptest1" "dewarp_reg" "dawg2wordlist" "croptext" "cornertest" "convolvetest" "convolve_reg" "converttops" "converttogray" "convertsegfilestops" "convertsegfilestopdf" "convertformat" "convertfilestops" "convertfilestopdf" "conversion_reg" "contrasttest" "conncomp_reg" "compfilter_reg" "comparetest" "comparepages" "compare_reg" "combine_tessdata" "colorspacetest" "colorsegtest" "colorseg_reg" "colorquant_reg" "colormorphtest" "colormask_reg" "coloring_reg" "cntraining" "cmapquant_reg" "classifier_tester" "ccthin2_reg" "ccthin1_reg" "cctest1" "ccbordtest" "byteatest" "buffertest" "blendtest1" "blendcmaptest" "blend_reg" "blend2_reg" "binmorph5_reg" "binmorph4_reg" "binmorph3_reg" "binmorph2_reg" "binmorph1_reg" "bincompare" "binarize_reg" "bilinear_reg" "baselinetest" "barcodetest" "arithtest" "ambiguous_words" "alphaxform_reg" "alphaops_reg" "alltests_reg" "affine_reg" "adaptnorm_reg" "adaptmaptest" "../" "./")
+
+ ("/Users/imoryc/code/conjury-ocr/builds/" (20857 15404 0 0) "share/" "README.md" "libs-prod.tar.gz" "lib/" "include/" "bin/" ".DS_Store" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

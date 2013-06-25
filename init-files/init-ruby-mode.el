@@ -1,7 +1,6 @@
 (require 'inf-ruby)
 (require 'haml-mode)
 (require 'ruby-end)
-(require 'flymake-ruby)
 (require 'rspec-mode)
 
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
@@ -15,41 +14,41 @@
 (add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 
 
+(add-hook 'inf-ruby-mode-hook (lambda () (require 'inf-ruby-company)))
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+
 (eval-after-load 'ruby-mode
   '(progn
      ;; work around possible elpa bug
      (ignore-errors (require 'ruby-compilation))
+     (setq yas/mode-symbol 'ruby-mode)
+     (setq yas/mode-symbol 'rails-mode)
+     (require 'rbenv)
+     (global-rbenv-mode)
+     (rbenv-use-global)
+     (require 'ruby-mode-indent-fix)
+     (require 'ruby-end)
      (setq ruby-use-encoding-map nil)
-     (add-hook 'ruby-mode-hook
-               (lambda ()
-                 (add-to-list 'ac-sources 'ac-source-rsense-method)
-                 (add-to-list 'ac-sources 'ac-source-rsense-constant)))
-
-     ;; Complete by C-c .
-     (add-hook 'ruby-mode-hook
-               (lambda ()
-                 (local-set-key (kbd "C-c .") 'ac-complete-rsense)))
 
      (add-hook 'ruby-mode-hook
                (lambda ()
-                 (local-set-key (kbd "C-c r") 'xmp)))
+                 (ruby-electric-mode)
+                 (ruby-end-mode)))
 
-     (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+     (add-hook 'ruby-mode-hook
+               (lambda ()
+                 (inf-ruby-minor-mode)))
+
      (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
      (define-key ruby-mode-map (kbd "C-c t") 'rgc-show-ruby-tags)
      (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)))
 
-
-(defun rails-root (&optional dir)
-  (or dir (setq dir default-directory))
-  (if (file-exists-p (concat dir "config/environment.rb"))
-      dir
-    (unless (equal dir "/")
-      (rails-root (expand-file-name (concat dir "../"))))))
-
 (defun rails-console ()
-  (interactive)
-  (run-ruby (concat (rails-root) "script/rails c")))
+   "Runs inf-ruby process with a rails console loaded inside"
+   (interactive)
+   (run-ruby "rails console"))
 
 (setq ruby-use-encoding-map nil)
 (setq ruby-deep-arglist nil)
@@ -61,7 +60,6 @@
 (font-lock-add-keywords
  'ruby-mode
  '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
-
 
 (setq rspec-use-rake-flag nil)
 (setq rspec-use-rvm nil)

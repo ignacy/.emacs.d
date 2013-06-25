@@ -57,4 +57,4 @@
                        ("writer" "PrintWriter writer = null;\ntry {\n    writer =\n        new PrintWriter(\n            new BufferedWriter(\n                new OutputStreamWriter(out, ${1:\"UTF-8\"})), true);\n    $2\n    writer.flush();\n} catch (IOException ex) {\n    $3\n} finally {\n    try {\n        writer.close();\n    } catch (Exception ignore) { }\n}\n" "PrintWriter" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Fri Jan 11 22:10:20 2013
+;;; Do not edit! File generated at Mon Jun 24 20:09:34 2013

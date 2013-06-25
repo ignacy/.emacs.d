@@ -1,5 +1,20 @@
 (defalias 'spell 'ispell-buffer)
 
+(defun find-user-init-file ()
+  "Edit the `user-init-file', in another window."
+  (interactive)
+  (find-file-other-window "~/.emacs.d/init.el"))
+
+(defun cd-conjury ()
+  (interactive)
+  (cd "/Users/imoryc/code/eleos/conjury"))
+
+(defun json-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)))
+
+
 (setq path-to-ctags "/usr/local/bin/ctags")
 (defun create-tags (dir-name)
   "Create tags file."
@@ -195,12 +210,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (set-buffer (get-buffer-create "reekOut"))
   (other-window 0))
 
-;; Display ido results vertically, rather than horizontally
-;; (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-;; (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
-;; (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
-
-
 (defun toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
 Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
@@ -340,6 +349,23 @@ instead."
         (error "No symbol found")))))
 
 
+
+;; (global-set-key (kbd "M-n") 'smart-symbol-go-forward)
+;; (global-set-key (kbd "M-p") 'smart-symbol-go-backward)
+
+
+
+(defun rails-api (query)
+  "search rails api"
+  (interactive
+   (list (read-from-minibuffer "Method/Class: "
+                               (smart-symbol-at-pt 'beginning) nil nil nil)))
+  (browse-url (concat "http://apidock.com/rails/search?query=" query)))
+
+
+
+
+
 (defun other-window-backwards ()
   "Select the previous window."
   (interactive)
@@ -460,14 +486,44 @@ user."
    (concat
     "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
     (url-hexify-string (if mark-active
-         (buffer-substring (region-beginning) (region-end))
-       (read-string "Google: "))))))
+                           (buffer-substring (region-beginning) (region-end))
+                         (read-string "Google: "))))))
 
-;; (defun move-mode-line ()
-;;   (setq header-line-format mode-line-format mode-line-format nil))
+(defun shell-execute ()
+  (interactive)
+  (let ((file-buffer (or (buffer-file-name) ""))
+        (command (read-shell-command "Shell command: " nil nil nil)))
+    (shell-command (replace-regexp-in-string "%" file-buffer command))))
 
-;; (add-hook 'lisp-mode-hook 'move-mode-line)
-;; (add-hook 'shell-mode-hook 'move-mode-line)
-;; (add-hook 'ruby-mode-hook 'move-mode-line)
+(global-set-key (kbd "M-!") 'shell-execute)
+
+
+(defun smarter-move-beginning-of-line (arg)
+  "Move point back to indentation of beginning of line.
+
+Move point to the first non-whitespace character on this line.
+If point is already there, move to the beginning of the line.
+Effectively toggle between the first non-whitespace character and
+the beginning of the line.
+
+If ARG is not nil or 1, move forward ARG - 1 lines first.  If
+point reaches the beginning or end of the buffer, stop there."
+  (interactive "^p")
+  (setq arg (or arg 1))
+
+  ;; Move lines first
+  (when (/= arg 1)
+    (let ((line-move-visual nil))
+      (forward-line (1- arg))))
+
+  (let ((orig-point (point)))
+    (back-to-indentation)
+    (when (= orig-point (point))
+      (move-beginning-of-line 1))))
+
+;; remap C-a to `smarter-move-beginning-of-line'
+(global-set-key [remap move-beginning-of-line]
+                'smarter-move-beginning-of-line)
+
 
 (provide 'helpers)

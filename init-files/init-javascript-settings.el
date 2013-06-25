@@ -47,9 +47,7 @@
   (set (make-local-variable 'indent-line-function) 'my-js2-indent-function))
 
 (eval-after-load 'js2-mode
-  '(progn   (define-key js2-mode-map "{" 'paredit-open-curly)
-            (define-key js2-mode-map "}" 'paredit-close-curly-and-newline)
-            (add-hook 'js2-mode-hook 'my-js2-mode-hook)
+  '(progn   (add-hook 'js2-mode-hook 'my-js2-mode-hook)
             ;; fixes problem with pretty function font-lock
             (define-key js2-mode-map (kbd ",") 'self-insert-command)
             (font-lock-add-keywords
