@@ -1,8 +1,7 @@
-(require 'projectile)
-(projectile-global-mode)
-
-(setq projectile-enable-caching t)
-
+(after 'projectile-autoloads
+  (setq projectile-completion-system 'grizzl)
+  (projectile-global-mode)
+  (setq projectile-enable-caching t))
 
 
 (defadvice find-tag-at-point (before auto-visti-tags)

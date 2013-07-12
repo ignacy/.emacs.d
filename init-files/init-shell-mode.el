@@ -1,5 +1,3 @@
-(require 'ansi-color)
-
 (defun im/shell-mode-hook ()
   (setq show-trailing-whitespace nil)
   (make-local-variable 'global-hl-line-mode)
@@ -17,14 +15,12 @@
   (interactive)
   (shell name))
 
-;; (defun zsh ()
-;;   (interactive)
-;;   (shell "zsh"))
+(defun zsh ()
+  (interactive)
+  (shell "zsh"))
 
 (defun switch-to-zsh ()
   (interactive)
   (switch-to-buffer "zsh"))
-
-;;(zsh)
 
 (provide 'init-shell-mode)

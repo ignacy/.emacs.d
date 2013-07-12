@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: heroku_run
+# key: hr
+# --
+heroku run $1 --app $2 $0

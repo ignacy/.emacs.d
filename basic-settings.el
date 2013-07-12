@@ -1,9 +1,15 @@
-(require 'epa)
+(autoload 'epa "epa-file-mode" t)
 (epa-file-enable)
 
+(set-frame-parameter (selected-frame) 'alpha '(96 50))
+(add-to-list 'default-frame-alist '(alpha 96 50))
+
 (setq blink-matching-paren t)
-(show-paren-mode 1)
-(setq show-paren-delay 0)
+
+(show-paren-mode t)
+(setq show-paren-style 'expression)
+
+
 ;; allow scroll-down/up-command to move point to buffer end/beginning
 (setq scroll-error-top-bottom 'true)
 (setq scroll-step 1)
@@ -25,29 +31,34 @@
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
 
-;;;; GUI settings
-(when (display-graphic-p)
-  (fringe-mode 1)
-  (mouse-wheel-mode t)
-  ;;(menu-bar-mode t)
-  (setq-default mac-option-modifier 'super)
-  (setq-default mac-pass-command-to-system nil)
+(defun setup-fonts-and-size ()
+  (interactive)
+  ;;;; GUI settings
+  (when (display-graphic-p)
+    (fringe-mode 1)
+    (mouse-wheel-mode t)
+    ;;(menu-bar-mode t)
+    (setq-default mac-option-modifier 'super)
+    (setq-default mac-pass-command-to-system nil)
 
-  (set-face-attribute 'default nil
-                      :family "Source Code Pro"
-                      :height 145)
-  ;; specify a unicode font : MENLO (forced normal)
-  ;; for the height, subtract a couple hundred pixels
-  ;; from the screen height (for panels, menubars and
-  ;; whatnot), then divide by the height of a char to
-  ;; get the height we want
-  ;; (set-frame-size (selected-frame) 0 0)
-  ;; (add-to-list 'initial-frame-alist '(top . 10))
-  ;; (add-to-list 'initial-frame-alist '(left . 30))
-  ;; (set-frame-size (selected-frame))
-  ;; (set-frame-size (selected-frame) )
-  (add-to-list 'initial-frame-alist '(left . 1))
-  (add-to-list 'initial-frame-alist '(top . 1)))
+    (set-face-attribute 'default nil
+                        :family "Source Code Pro"
+                        :height 145)
+    ;; specify a unicode font : MENLO (forced normal)
+    ;; for the height, subtract a couple hundred pixels
+    ;; from the screen height (for panels, menubars and
+    ;; whatnot), then divide by the height of a char to
+    ;; get the height we want
+    ;; (set-frame-size (selected-frame) 0 0)
+    ;; (add-to-list 'initial-frame-alist '(top . 10))
+    ;; (add-to-list 'initial-frame-alist '(left . 30))
+    ;; (set-frame-size (selected-frame))
+    ;; (set-frame-size (selected-frame) )
+    (add-to-list 'initial-frame-alist '(left . 1))
+    (add-to-list 'initial-frame-alist '(top . 1))))
+
+(setup-fonts-and-size)
+
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-startup-screen t)

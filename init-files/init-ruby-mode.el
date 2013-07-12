@@ -1,7 +1,7 @@
-(require 'inf-ruby)
-(require 'haml-mode)
-(require 'ruby-end)
-(require 'rspec-mode)
+(autoload 'inf-ruby-mode-hook "inf-ruby" t)
+(autoload 'haml-mode "haml-mode" t)
+(autoload 'ruby-end-mode "ruby-end" t)
+(autoload 'rspec-mode "rspec-mode" t)
 
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
@@ -15,8 +15,10 @@
 
 
 (add-hook 'inf-ruby-mode-hook (lambda () (require 'inf-ruby-company)))
+;;(add-hook 'ruby-mode-hook 'robe-mode)
+;;(push 'company-robe company-backends)
 
-(require 'web-mode)
+(autoload 'web-mode "web-mode" t)
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 
 (eval-after-load 'ruby-mode
@@ -29,7 +31,6 @@
      (global-rbenv-mode)
      (rbenv-use-global)
      (require 'ruby-mode-indent-fix)
-     (require 'ruby-end)
      (setq ruby-use-encoding-map nil)
 
      (add-hook 'ruby-mode-hook
@@ -46,9 +47,14 @@
      (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)))
 
 (defun rails-console ()
-   "Runs inf-ruby process with a rails console loaded inside"
-   (interactive)
-   (run-ruby "rails console"))
+  "Runs inf-ruby process with a rails console loaded inside"
+  (interactive)
+  (run-ruby "rails console"))
+
+(defun rails-server ()
+  "Runs rails server for the current project"
+  (interactive)
+  (ruby-compilation-run "rails server" nil "server"))
 
 (setq ruby-use-encoding-map nil)
 (setq ruby-deep-arglist nil)
@@ -64,6 +70,14 @@
 (setq rspec-use-rake-flag nil)
 (setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible nil)
+
+(defun inf-previous-command-fixed ()
+  "Inf comint mode previous command doesn't work with rvm or rbenv, this is a simple fix"
+  (interactive)
+  (save-excursion
+    (move-line-up)
+    (re-search-backward "^irb")
+    (kill-ring-save (+ (line-beginning-position) 5) (line-end-position))))
 
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))

@@ -9,13 +9,18 @@
 (require 'basic-settings)
 (require 'startup) ;; Load packages
 
-;;(load-theme 'sea-before-storm t)
-(load-theme 'subatomic t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'fogus t)
+
 (require 'custom-modeline)
+
+(load "im-abbrev")
 
 (require 'helpers)
 (require 'keys)
 (require 'gist)
+
+(setq locate-command "mdfind")
 
 ;;;; Customize some packages
 (require 'init-clojure-mode)
@@ -26,3 +31,12 @@
 (require 'init-recentf)
 (require 'init-ruby-mode)
 (require 'init-shell-mode)
+
+;;;; smex
+(after 'smex-autoloads
+  (smex-initialize)
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands))
+
+(load "server")
+(unless (server-running-p) (server-start))

@@ -14,6 +14,7 @@
                       textmate
                       exec-path-from-shell
                       ido-hacks
+                      wrap-region
                       smex
                       rspec-mode
                       quickrun
@@ -176,30 +177,22 @@
 (after 'inline-string-rectangle-autoloads
   (global-set-key (kbd "C-x r t") 'inline-string-rectangle))
 
-(after 'quickrun-autoloads
-  (require 'quickrun))
-
-(after 'paren
+(after 'paren-autoloads
   (set-face-background 'show-paren-match-face (face-background 'default))
   (set-face-foreground 'show-paren-match-face "red")
   (set-face-attribute 'show-paren-match-face nil :weight 'extra-bold)
   (set-default 'imenu-auto-rescan t))
-(require 'paren)
 
-(after 'uniquify
-  (setq
-   uniquify-buffer-name-style 'post-forward
-   uniquify-separator "@")
-  (setq frame-title-format
-        (list '("emacs ")
-              '(buffer-file-name "%f" (dired-directory dired-directory "%b")))))
-(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward uniquify-separator "@")
+(setq frame-title-format
+      (list '("emacs ")
+            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
-;; (after 'magit
-;;   (set-face-background 'magit-item-highlight "#121212")
-;;   (set-face-foreground 'diff-context "#666666")
-;;   (set-face-foreground 'diff-added "#00cc33")
-;;   (set-face-foreground 'diff-removed "#ff0000"))
+(after 'magit
+  (set-face-background 'magit-item-highlight "#121212")
+  (set-face-foreground 'diff-context "#666666")
+  (set-face-foreground 'diff-added "#00cc33")
+  (set-face-foreground 'diff-removed "#ff0000"))
 
 
 ;;;; IDO-MODE
@@ -218,35 +211,24 @@
   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
 (add-hook 'ido-setup-hook 'ido-define-keys)
 
-;;; sort ido filelist by mtime instead of alphabetically
-(add-hook 'ido-make-file-list-hook 'ido-sort-mtime)
-(add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
-(defun ido-sort-mtime ()
-  (setq ido-temp-list
-        (sort ido-temp-list
-              (lambda (a b)
-                (time-less-p
-                 (sixth (file-attributes (concat ido-current-directory b)))
-                 (sixth (file-attributes (concat ido-current-directory a)))))))
-  (ido-to-end  ;; move . files to end (again)
-   (delq nil (mapcar
-              (lambda (x) (and (char-equal (string-to-char x) ?.) x))
-              ido-temp-list))))
-
-(require 'ido-hacks)
+(autoload 'ido-hacks-mode "ido-hacks" t)
 (ido-hacks-mode)
 
-(require 'flx-ido)
+(autoload 'flx-ido-mode "flx-ido" t)
 (flx-ido-mode 1)
+
 ;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
 
+;;;; wrap region
+(wrap-region-global-mode t)
 
-;;;; smex
-(after 'smex-autoloads
-  (smex-initialize)
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands))
-
+;;;; deft and org mode
+(after 'deft-autoloads
+  (setq deft-extension "org")
+  (setq deft-text-mode 'org-mode)
+  (setq deft-directory "~/Dropbox/notes/deft")
+  (setq deft-use-filename-as-title t)
+  (setq deft-auto-save-interval 10))
 
 (provide 'startup)

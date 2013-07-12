@@ -1,7 +1,8 @@
 ;; interactive name completion for describe-function, describe-variable, etc.
 (icomplete-mode 1)
 
-(require 'company)
+(autoload 'global-company-mode "company" t)
+(global-company-mode)
 
 (defun check-expansion ()
   (save-excursion
@@ -29,7 +30,6 @@
 (setq company-begin-commands '(self-insert-command))
 (setq company-idle-delay 0.2)
 (setq company-minimum-prefix-length 4)
-(global-company-mode)
 
 (yas-global-mode 1)
 

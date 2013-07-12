@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         end-of-buffer
+        ruby-electric-matching-char
         smarter-move-beginning-of-line
         ))
 

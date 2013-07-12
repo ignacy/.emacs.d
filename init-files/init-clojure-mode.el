@@ -1,12 +1,10 @@
-(require 'clojure-mode)
-
+(autoload 'clojure-mode "clojure-mode" t)
 (add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
-
-(require 'midje-mode)
+(autoload 'midje-mode "midje-mode" t)
 (add-hook 'clojure-mode-hook 'midje-mode)
 
-(eval-after-load 'gist
-  '(add-to-list 'gist-supported-modes-alist '(clojure-mode . ".clj")))
+(after 'gist-autoloads
+  (add-to-list 'gist-supported-modes-alist '(clojure-mode . ".clj")))
 
 (add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'nrepl-mode-hook 'subword-mode)
