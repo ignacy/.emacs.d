@@ -19,7 +19,7 @@
                       rspec-mode
                       quickrun
                       key-chord
-                      git-gutter
+                      git-gutter+
                       rainbow-mode
                       coffee-mode
                       js2-mode
@@ -63,6 +63,8 @@
 
 ;;;; multiple-cursors
 (after 'multiple-cursors-autoloads
+  (require 'inline-string-rectangle)
+  (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
   (global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
   (global-set-key (kbd "C-S-c C-a") 'mc/edit-beginnings-of-lines)
@@ -110,6 +112,7 @@
      )))
 
 
+(winner-mode 1)
 
 ;;;; elisp
 (defun imenu-elisp-sections ()
@@ -136,8 +139,8 @@
 
 ;;;; change inner
 (after 'change-inner-autoloads
-  (global-set-key (kbd "M-i") 'change-inner)
-  (global-set-key (kbd "M-o") 'change-outer))
+  (global-set-key (kbd "M-I") 'change-inner)
+  (global-set-key (kbd "M-O") 'change-outer))
 
 
 ;;;; jump-char
@@ -150,8 +153,12 @@
 
 
 ;;;; git-gutter
-(after 'git-gutter-autoloads
-  (global-git-gutter-mode t))
+(after 'git-gutter+-autoloads
+  (global-git-gutter+-mode t)
+  (global-set-key (kbd "C-x t") 'git-gutter+-stage-hunks)
+  (global-set-key (kbd "C-x c") 'git-gutter+-commit))
+;;(global-git-gutter-mode t))
+
 
 ;;;; idle-highlight
 (after 'idle-highlight-mode-autoloads
@@ -190,6 +197,7 @@
 
 (after 'magit
   (set-face-background 'magit-item-highlight "#121212")
+  (set-face-background 'diff-file-header "#121212")
   (set-face-foreground 'diff-context "#666666")
   (set-face-foreground 'diff-added "#00cc33")
   (set-face-foreground 'diff-removed "#ff0000"))
@@ -199,13 +207,12 @@
 ;; Display ido results vertically, rather than horizontally
 (ido-mode t)
 (ido-everywhere t)
-(setq ido-enable-flex-matching t)
 (setq ido-create-new-buffer 'always)
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 
+(setq ido-file-extensions-order '(".rb" ".clj" ".el" ".md" ".conf" ".org"))
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-(defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
+
 (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
   (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
@@ -225,10 +232,35 @@
 
 ;;;; deft and org mode
 (after 'deft-autoloads
-  (setq deft-extension "org")
-  (setq deft-text-mode 'org-mode)
+  (setq deft-extension "markdown")
+  (setq deft-text-mode 'markdown-mode)
   (setq deft-directory "~/Dropbox/notes/deft")
   (setq deft-use-filename-as-title t)
   (setq deft-auto-save-interval 10))
+
+(after 'markdown-mode-autoloads
+  (setq markdown-imenu-generic-expression
+        '(("title"  "^\\(.*\\)[\n]=+$" 1)
+          ("h2-"    "^\\(.*\\)[\n]-+$" 1)
+          ("h1"   "^# \\(.*\\)$" 1)
+          ("h2"   "^## \\(.*\\)$" 1)
+          ("h3"   "^### \\(.*\\)$" 1)
+          ("h4"   "^#### \\(.*\\)$" 1)
+          ("h5"   "^##### \\(.*\\)$" 1)
+          ("h6"   "^###### \\(.*\\)$" 1)
+          ("fn"   "^\\[\\^\\(.*\\)\\]" 1)
+          ))
+  (setq imenu-generic-expression markdown-imenu-generic-expression))
+
+(after 'undo-tree-autoloads
+  (global-undo-tree-mode))
+
+;; ;;;; Guide-key
+;; (require 'guide-key)
+;; (setq guide-key/guide-key-sequence '("C-x r" "C-x 4"))
+;; (guide-key-mode 1)  ; Enable guide-key-mode
+
+(after 'paredit-autoloads
+  (paredit-mode))
 
 (provide 'startup)

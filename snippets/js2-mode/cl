@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: cl
+# key: cl
+# type: command
+# --
+
+console.log($1);
+$0

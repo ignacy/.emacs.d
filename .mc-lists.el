@@ -4,6 +4,10 @@
 (setq mc/cmds-to-run-for-all
       '(
         end-of-buffer
+        isearch-abort
+        isearch-forward-regexp
+        isearch-printing-char
+        kill-rectangle
         ruby-electric-matching-char
         smarter-move-beginning-of-line
         ))

@@ -9,8 +9,7 @@
 (require 'basic-settings)
 (require 'startup) ;; Load packages
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'fogus t)
+(load-theme 'dorsey t)
 
 (require 'custom-modeline)
 
@@ -31,6 +30,7 @@
 (require 'init-recentf)
 (require 'init-ruby-mode)
 (require 'init-shell-mode)
+;;(require 'make-mark-visible)
 
 ;;;; smex
 (after 'smex-autoloads
