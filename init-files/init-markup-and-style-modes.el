@@ -1,9 +1,4 @@
-(require 'rainbow-mode)
-(rainbow-mode)
-
-
 (require 'haml-mode)
-
 (require 'markdown-mode)
 
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))

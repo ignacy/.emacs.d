@@ -582,4 +582,9 @@ point reaches the beginning or end of the buffer, stop there."
    (get-buffers-matching-mode major-mode)
    (car (occur-read-primary-args))))
 
+(defun run-qrtest ()
+  (interactive)
+  (shell-command (concat "ruby -I test " buffer-file-name)))
+
+
 (provide 'helpers)

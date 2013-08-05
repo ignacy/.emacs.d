@@ -1,5 +1,7 @@
 (require 'cl)
 
+(setq debug-on-error t)
+
 (setq dotfiles-dir "~/.emacs.d")
 (setq init-files-dir (concat dotfiles-dir "/init-files"))
 
@@ -9,7 +11,7 @@
 (require 'basic-settings)
 (require 'startup) ;; Load packages
 
-(load-theme 'dorsey t)
+(load-theme 'spolsky t)
 
 (require 'custom-modeline)
 
@@ -28,15 +30,21 @@
 (require 'init-markup-and-style-modes)
 (require 'init-projectile)
 (require 'init-recentf)
+(require 'init-magit)
 (require 'init-ruby-mode)
 (require 'init-shell-mode)
-;;(require 'make-mark-visible)
+(require 'init-file-associations)
+
+
+(require 'rvm)
+(rvm-use-default)
 
 ;;;; smex
-(after 'smex-autoloads
-  (smex-initialize)
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands))
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-(load "server")
-(unless (server-running-p) (server-start))
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)

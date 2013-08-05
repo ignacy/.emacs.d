@@ -18,4 +18,5 @@
         mouse-set-region
         ruby-electric-close-matching-char
         ruby-electric-space
+        yaml-electric-backspace
         ))
