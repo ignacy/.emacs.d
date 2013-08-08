@@ -40,16 +40,15 @@
   (setq-default mac-option-modifier 'super)
   (setq-default mac-pass-command-to-system nil))
 
-;; mac friendly font
-(when window-system
-  (setq im/default-font "-apple-Monaco-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1")
-  (set-face-attribute 'default nil :font im/default-font))
+
+(setq im/default-font "-apple-Source_Code_Pro-medium-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+(set-face-attribute 'default nil :font im/default-font)
 
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-;;(global-hl-line-mode 1)
+(global-hl-line-mode 1)
 ;;(set-face-background 'hl-line "light cyan")
 ;; (set-face-background 'hl-line "#333")
 ;; (set-face-foreground 'highlight nil)

@@ -11,7 +11,23 @@
 (require 'basic-settings)
 (require 'startup) ;; Load packages
 
-(load-theme 'spolsky t)
+
+(require 'key-chord)
+(key-chord-mode 1)
+(setq key-chord-two-keys-delay 0.2)
+(key-chord-define-global ",w" 'save-buffer)
+(key-chord-define-global ",b" 'ido-switch-buffer)
+(key-chord-define-global ",o" 'other-window)
+(key-chord-define-global ",f" 'ido-find-file)
+
+(load-theme 'grandshell t)
+
+(defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
+(add-to-list 'load-path "~/.emacs.d/auto-complete")
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
 
 (require 'custom-modeline)
 

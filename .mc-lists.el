@@ -15,6 +15,8 @@
 (setq mc/cmds-to-run-once
       '(
         beginning-of-buffer
+        compile-goto-error
+        ido-find-file
         mouse-set-region
         ruby-electric-close-matching-char
         ruby-electric-space

@@ -48,12 +48,7 @@
 
 
 ;;;; path
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-
-(exec-path-from-shell-copy-env "FORTIS_BACKEND_URL")
-(exec-path-from-shell-copy-env "FORTIS_ACCESS_ID")
-(exec-path-from-shell-copy-env "FORTIS_ACCESS_KEY")
+(exec-path-from-shell-initialize)
 
 ;;;; multiple-cursors
 (require 'multiple-cursors)

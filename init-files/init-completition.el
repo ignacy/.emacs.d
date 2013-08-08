@@ -1,7 +1,6 @@
 ;; interactive name completion for describe-function, describe-variable, etc.
 (icomplete-mode 1)
 
-
 (defvar he-search-loc-backward (make-marker))
 (defvar he-search-loc-forward (make-marker))
 

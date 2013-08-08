@@ -2,8 +2,17 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/sudo:root@localhost:/" . "etc/")
+ ("/Users/ignacymoryc/code/clojurefun/assets/" . "js/")
+ ("/Users/ignacymoryc/code/clojurefun/src/" . "clojurefun/")
+ ("/Users/ignacymoryc/code/clojurefun/" . "assets/")
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/api/v2/" . "app_custom_datas/")
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/api/" . "v2/")
+ ("/Users/ignacymoryc/Downloads/auto-complete-1.3.1/" . "etc/")
+ ("/Users/ignacymoryc/Downloads/" . "auto-complete-1.3.1/")
+ ("/Users/ignacymoryc/code/ignacy.github.com/" . "_posts/")
  ("/Users/ignacymoryc/code/slearn2/app/views/devise/" . "shared/")
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/" . "admin_users/")
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/" . "client_users/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/db/" . "migrate/")
  ("/Users/ignacymoryc/code/tokenizer/" . "lib/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/helpers/" . "admin/")
@@ -24,106 +33,226 @@
  ("/Users/ignacymoryc/code/archive/" . "axle/")
  ("/Users/ignacymoryc/code/word_wrap/" . "lib/")
  ("/Users/ignacymoryc/.emacs.d/elpa/" . "rspec-mode-1.7/")
- ("/Users/ignacymoryc/code/slearn2/app/assets/" . "javascripts/")
+ ("/Users/ignacymoryc/code/slearn2/app/assets/" . "stylesheets/")
  ("/Users/ignacymoryc/code/slearn2/spec/" . "features/")
- ("/Users/ignacymoryc/code/slearn2/app/views/" . "devise/")
+ ("/Users/ignacymoryc/code/slearn2/app/views/" . "layouts/")
  ("/Users/ignacymoryc/code/slearn2/app/" . "views/")
  ("/Users/ignacymoryc/code/slearn2/" . "app/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/api/" . "v2/")
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/" . "admin/")
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/" . "api/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/api/" . "v2/")
- ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/" . "admin/")
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/" . "api/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/lib/" . "tasks/")
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/" . "controllers/")
- ("/Users/ignacymoryc/code/qrcodepay-backend/test/" . "functional/")
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/" . "models/")
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/" . "unit/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/config/" . "initializers/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/cookbooks/collectd/" . "recipes/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/cookbooks/" . "main/")
- ("/Users/ignacymoryc/code/qrcodepay-backend/" . "app/")
+ ("/Users/ignacymoryc/code/qrcodepay-backend/" . "test/")
  ("/Users/ignacymoryc/code/" . "slearn2/")
- ("/Users/ignacymoryc/.emacs.d/" . "init-files/")
+ ("/Users/ignacymoryc/.emacs.d/" . "auto-complete/")
  ("/Users/ignacymoryc/" . ".emacs.d/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/Users/ignacymoryc/.emacs.d/init-files/"
+ "/Users/ignacymoryc/.emacs.d/auto-complete/"
  "/Users/ignacymoryc/.emacs.d/"
+ "/Users/ignacymoryc/.emacs.d/init-files/"
+ "/Users/ignacymoryc/code/slearn2/app/views/layouts/"
+ "/Users/ignacymoryc/code/slearn2/app/assets/stylesheets/"
+ "/Users/ignacymoryc/bin/"
+ "/Users/ignacymoryc/code/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/test/unit/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/test/functional/api/v2/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/models/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/services/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/test/factories/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/api/v2/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/users/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/helpers/admin/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/admin_users/"
+ "/Users/ignacymoryc/"
+ "/sudo:root@localhost:/etc/"
+ "/etc/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/config/initializers/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/test/functional/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/test/integration/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/lib/tasks/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/config/app_configs/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/test/"
+ "/Users/ignacymoryc/code/word_wrap/spec/"
+ "/Users/ignacymoryc/code/clojurefun/src/clojurefun/"
+ "/Users/ignacymoryc/code/clojurefun/assets/js/"
+ "/Users/ignacymoryc/code/clojurefun/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/admin/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/api/v1/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/config/environments/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/workers/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/lib/authenticator/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/lib/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/test/functional/sign_up/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/sign_up/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/app/views/api/v2/app_custom_datas/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/test/functional/merchant/"
+ "/Users/ignacymoryc/code/qrcodepay-backend/db/migrate/"
+ "/Users/ignacymoryc/code/ignacy.github.com/_posts/"
  "/Users/ignacymoryc/code/slearn2/app/views/devise/shared/"
  "/Users/ignacymoryc/code/slearn2/app/views/devise/sessions/"
- "/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/admin/"
  "/Users/ignacymoryc/code/qrcodepay-backend/db/"
- "/Users/ignacymoryc/code/qrcodepay-backend/app/models/"
- "/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/admin_users/"
  "/Users/ignacymoryc/code/qrcodepay-backend/test/functional/admin/"
- "/Users/ignacymoryc/code/qrcodepay-backend/test/functional/"
- "/Users/ignacymoryc/code/qrcodepay-backend/test/"
- "/Users/ignacymoryc/code/qrcodepay-backend/"
  "/Users/ignacymoryc/code/qrcodepay-backend/config/"
- "/Users/ignacymoryc/code/qrcodepay-backend/config/initializers/"
- "/Users/ignacymoryc/code/qrcodepay-backend/db/migrate/"
- "/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/"
- "/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/api/v2/"
  "/Users/ignacymoryc/code/tokenizer/lib/"
- "/Users/ignacymoryc/code/tokenizer/"
- "/Users/ignacymoryc/code/qrcodepay-backend/app/helpers/admin/"
- "/Users/ignacymoryc/code/qrcodepay-backend/cookbooks/main/recipes/"
- "/Users/ignacymoryc/code/qrcodepay-backend/deploy/"
- "/Users/ignacymoryc/code/qrcodepay-backend/cookbooks/resque/"
- "/Users/ignacymoryc/code/qrcodepay-backend/cookbooks/resque/recipes/"
- "/Users/ignacymoryc/code/qrcodepay-backend/cookbooks/papertrail/recipes/"
- "/Users/ignacymoryc/code/qrcodepay-backend/test/support/"
- "/Users/ignacymoryc/code/qrcodepay-backend/test/unit/"
- "/Users/ignacymoryc/code/qrcodepay-backend/app/views/payments/"
- "/Users/ignacymoryc/code/qrcodepay-backend/test/unit/workers/"
- "/Users/ignacymoryc/code/qrcodepay-backend/lib/tasks/"
- "/Users/ignacymoryc/code/qrcodepay-backend/test/tarantula/"
- "/Users/ignacymoryc/code/slearn2/.git/"
- "/Users/ignacymoryc/code/qrcodepay-backend/app/services/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/decorators/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/views/candidates/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/controllers/"
- "/Users/ignacymoryc/code/archive/somefu/app/controllers/"
- "/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/playback/"
- "/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/tools/"
- "/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/enviroment/"
- "/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/core/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/services/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/services/social_importer/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/services/facebook_subscriptions/"
- "/Users/ignacymoryc/code/archive/jobandtalent/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/models/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/helpers/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/cells/"
- "/Users/ignacymoryc/code/archive/jobandtalent/app/cells/referrer_faces/"
- "/Users/ignacymoryc/code/archive/fortis_invoices/src/fortis_invoices/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "init-ruby-mode.el"
- "init-recentf.el"
- "init-projectile.el"
- "init-markup-and-style-modes.el"
- "init-magit.el"
- "init-javascript-settings.el"
- "init-file-associations.el"
+ "auto-complete.el"
+ "init.el"
+ "custom.el"
  "init-completition.el"
- "init-clojure-mode.el"
- "basic-settings.el"
+ "startup.el"
+ "inti-compilation.el"
+ "keys.el"
+ "projectile-bookmarks.eld"
+ "application.html.erb"
+ "application.css"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/Users/ignacymoryc/.emacs.d/init-files/" (20991 57902 0 0) "init-shell-mode.el" "init-ruby-mode.el" "init-recentf.el" "init-projectile.el" "init-markup-and-style-modes.el" "init-magit.el" "init-javascript-settings.el" "init-file-associations.el" "init-completition.el" "init-clojure-mode.el" "../" "./")
+ ("/Users/ignacymoryc/.emacs.d/" (20995 16232 0 0) "var/" "tramp" "startup.el" "snippets/" "ruby-mode-indent-fix.el" "request/" "recentf" "README.org" "projectile.cache" "projectile-bookmarks.eld" "noansi" "keys.el" "init.el" "init-files/" "im-abbrev.el" "ido.last" "helpers.el" "elpa/" "custom.el" "custom-modeline.el" "basic-settings.el" "backups/" "auto-save-list/" "auto-complete/" "ac-comphist.dat" ".places" ".mc-lists.el" ".gitignore" ".git/" "../" "./")
 
- ("/Users/ignacymoryc/.emacs.d/" (20991 57872 0 0) "var/" "startup.el" "snippets/" "ruby-mode-indent-fix.el" "recentf" "README.org" "projectile.cache" "projectile-bookmarks.eld" "noansi" "keys.el" "init.el" "init-files/" "im-abbrev.el" "ido.last" "helpers.el" "elpa/" "custom.el" "custom-modeline.el" "basic-settings.el" "backups/" "auto-save-list/" ".places" ".mc-lists.el" ".gitignore" ".git/" "../" "./")
+ ("/Users/ignacymoryc/" (20995 15870 0 0) "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "coverage/" "code/" "bin/" "Applications/" ".zshrc" ".zsh_history" ".zprofile" ".zcompdump" ".viminfo" ".vim/" ".Trash/" ".tmuxinator/" ".tmux.conf" ".subversion/" ".ssh/" ".smex-items" ".sh_history" ".rvm/" ".rnd" ".pry_history" ".netrc" ".mysql_history" ".m2/" ".lein/" ".irb-history" ".heroku/" ".gitignore_global" ".gitconfig" ".gem/" ".eyrc" ".emacs.d/" ".DS_Store" ".dropbox/" ".CFUserTextEncoding" ".bookmarks_emacs" ".bashrc" ".bash_profile" ".bash_history" "../" "./")
 
- ("/Users/ignacymoryc/" (20991 57872 0 0) "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "code/" "bin/" "Applications/" ".zshrc" ".zsh_history" ".zprofile" ".zcompdump" ".viminfo" ".vim/" ".Trash/" ".tmux.conf" ".subversion/" ".ssh/" ".smex-items" ".rvm/" ".rnd" ".pry_history" ".netrc" ".mysql_history" ".irb-history" ".heroku/" ".gitignore_global" ".gitconfig" ".gem/" ".eyrc" ".emacs.d/" ".DS_Store" ".dropbox/" ".CFUserTextEncoding" ".bashrc" ".bash_profile" ".bash_history" "../" "./")
+ ("/Users/ignacymoryc/.emacs.d/auto-complete/" (20992 42012 0 0) "popup.elc" "popup.el" "fuzzy.elc" "fuzzy.el" "auto-complete.elc" "auto-complete.el" "auto-complete-config.elc" "auto-complete-config.el" "ac-dict/" "../" "./")
+
+ ("/Users/ignacymoryc/.emacs.d/init-files/" (20995 15676 0 0) "init-shell-mode.el" "init-ruby-mode.el" "init-recentf.el" "init-projectile.el" "init-markup-and-style-modes.el" "init-magit.el" "init-javascript-settings.el" "init-file-associations.el" "init-completition.el" "init-clojure-mode.el" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/views/layouts/" (20989 64598 0 0) "application.html.erb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/assets/stylesheets/" (20994 41985 0 0) "font-awesome.min.css" "font-awesome-ie7.min.css" "bootstrap.min.css" "bootstrap-responsive.min.css" "bootstrap-responsive.css" "application.css" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/assets/" (20989 61989 0 0) "stylesheets/" "javascripts/" "img/" "images/" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/bin/" (20994 33999 0 0) "xfvb-run.sh" "workhorse" "work.csv" "upload_sdf_files" "tester.rb" "test_box.rb" "swap_caps.sh" "sublime_text" "sublime_rspec.rb" "subl" "start_emacs" "split-em.rb" "spark" "soffice" "single_spec" "run_helper.sh" "run-fakte-tweeter" "ruby_for_sublime.rb" "rsense-0.3/" "restore_db" "repeat_command.sh" "refresh-staging" "rebar" "postgres-start" "Markdown.pl" "make_peace.rb" "kill-spork" "jt_dump.sh" "imemacs" "im_autotest.rb" "git-wtf" "git-undo" "git-minutes.rb" "git-dude" "git-cwd-info.rb" "git-current-branch" "git-count-changes" "git-before-push" "get_dump.rb" "generate-rails-tags" "gbrt.rb" "eshell" "emacs_deamon.sh" "emacs" "downaload_dump" "ditaa0_9.jar" "curl-ttfb.sh" "count-changes-command" "connect-to-doc-matching-devel" "compiler.jar" "branches.rb" "axle-test-console" "app_template_rails.rb" "ab_test_server.sh" "../" "./")
+
+ ("/Users/ignacymoryc/code/" (20994 33999 0 0) "zephyros.rb" "word_wrap/" "tokenizer/" "slearn2/" "qrcodepay-client-ios/" "qrcodepay-backend/" "json.md" "ignacy.github.com/" "gierki/" "coverage/" "clojurefun/" "archive/" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/api/v2/" (20994 31626 0 0) "users_controller_test.rb" "static_pages_controller_test.rb" "payments_controller_test.rb" "payment_requests_controller_test.rb" "orders_controller_test.rb" "offers_controller_test.rb" "mobile_apps_controller_test.rb" "merchants_controller_test.rb" "firmwares_controller_test.rb" "devices_controller_test.rb" "custom_logs_controller_test.rb" "credit_cards_controller_test.rb" "coverage/" "app_custom_datas_controller_test.rb" "analytics_controller_test.rb" "aids_controller_test.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/db/" (20994 3834 0 0) "seeds.rb" "schema.rb" "migrate/" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/db/migrate/" (20994 3834 0 0) "20130806063356_delete_device_configurations.rb" "20130805124140_remove_card_reader.rb" "20130730153613_add_missing_qr_indexes.rb" "20130729145813_add_payment_to_orders.rb" "20130729112145_add_state_to_order.rb" "20130729085443_add_quantity_to_offer_items.rb" "20130726143206_add_currency_code_to_offers.rb" "20130726125511_create_orders.rb" "20130724101916_add_offer_item_id_to_payment_items.rb" "20130722135131_add_device_to_redemptions.rb" "20130722133340_add_otp_to_redemptions.rb" "20130719113133_add_image_to_offers.rb" "20130716123841_rename_user_offers.rb" "20130715081611_create_user_offers.rb" "20130711152255_create_offer_items.rb" "20130711151216_create_offers.rb" "20130711112947_add_external_payment_callback_url_to_users.rb" "20130710120719_make_email_unique_again.rb" "20130709155413_make_email_not_unique.rb" "20130709080230_add_deleted_at_to_users.rb" "20130702112456_add_info_to_merchant.rb" "20130702091548_add_logo_to_merchants.rb" "20130626152134_fix_precision_of_payment_items.rb" "20130617135521_add_ccp_to_users.rb" "20130611103653_add_otp_to_payments.rb" "20130610084229_remove_pin_from_users.rb" "20130607140353_make_payment_items_quantity_decimal.rb" "20130606150758_merge_credit_card_card_holder_name.rb" "20130529114530_add_credit_card_unique_id_to_payment.rb" "20130528142732_make_push_token_column_longer.rb" "20130527132729_add_facebook_oauth_token_to_users.rb" "20130524073317_add_note_to_payment_items.rb" "20130522134827_rename_card_holder_columns.rb" "20130522132340_split_card_holder_name_into_first_and_last_name.rb" "20130522124941_add_card_holder_name_to_credit_card.rb" "20130521132842_move_shared_secret_to_device.rb" "20130517111326_add_pin_to_user.rb" "20130516132923_fix_device_columns.rb" "20130513152702_add_push_notification_receipt_sent_to_payments.rb" "20130513151955_add_device_id_to_payment.rb" "20130508083556_add_user_to_device.rb" "20130507151848_create_devices.rb" "20130506124938_add_blocked_to_credit_card.rb" "20130429132920_add_merchant_category_code_to_merchants.rb" "20130426153721_add_merchant_email_receipt_sent_to_payments.rb" "20130423135649_add_shared_secret_to_user.rb" "20130418142251_add_ssl_to_activity_logs.rb" "20130418124942_create_credit_cards.rb" "20130417082916_adding_lexware.rb" "20130415111028_create_activity_logs.rb" "20130411123915_adding_oauth_locking_account.rb" "20130409143549_add_old_passwords_to_user.rb" "20130405101853_create_device_configurations.rb" "20130404121135_add_wcd_transaction_type_to_payment.rb" "20130404111451_create_firmwares.rb" "20130403142848_rename_swiper_type_to_device_type.rb" "20130328093918_add_swiper_type_to_payments.rb" "20130327122811_make_currency_column_not_null.rb" "20130320145641_add_app_custom_regexes.rb" "20130320113846_add_missing_columns_to_payment_requests.rb" "20130315113530_add_currency_to_reversals_and_refunds.rb" "20130312130255_set_default_minimal_amount.rb" "20130312095323_set_default_lekkerland_locale_to_de.rb" "20130311140711_adding_inc_retail.rb" "20130311105144_add_locale_to_white_label_apps.rb" "20130306133031_add_gratuity_type_to_payments.rb" "20130306115154_add_customer_support_phone_number.rb" "20130228153526_adding_new_eft_regex.rb" "20130228123032_drop_products_table.rb" "20130227161711_extend_technical_message_length_in_payments.rb" "20130227113934_add_new_eft_recognition_regex.rb" "20130227084343_renaming_data_type_to_key_in_app_custom_data.rb" "20130226151323_add_eft_recognition_regex_to_db.rb" "20130226123624_add_unique_id_to_custom_logs.rb" "20130225152012_encrypt_merchant_user_gateway.rb" "20130225150436_add_app_custom_data.rb" "20130225133531_create_custom_logs.rb" "20130215150408_change_default_merchant_user_make_creation_callback.rb" "20130215103313_add_creation_callback_made_to_merchant_user.rb" "20130215102146_update_unique_id_column_in_payments.rb" "20130207185847_adding_send_email_receipt_and_send_sms_receipt.rb" "20130206150024_drop_test_from_payments.rb" "20130206130438_remove_aids.rb" "20130205123745_setup_varchar_fields_length.rb" "20130205102327_add_indexes_on_payment_search.rb" "20130204142236_add_missing_indexes.rb" "20130204120110_add_demo_white_label_app.rb" "20130201123725_add_white_label_app_fasttrack.rb" "20130131192649_rename_payment_email_receipt_to_receipt_requested.rb" "20130128121029_remove_merchant_from_merchant_notification.rb" "20130128112138_add_white_label_app_to_merchant_notification.rb" "20130125135707_add_business_case_to_user.rb" "20130125105757_add_index_on_user_phone_number.rb" "20130124113651_allow_user_nullable_email.rb" "20130124113331_add_phone_number_to_user.rb" "20130116211140_add_callback_url_to_payment.rb" "20130114111127_add_external_id_to_merchant.rb" "20130114111110_add_external_id_to_merchant_user.rb" "20130107104955_change_state_of_existing_payments.rb" "20130107104508_change_default_payment_state.rb" "20121224114218_white_label_app_country_should_not_be_null.rb" "20121221144059_add_tip_tax_rate_to_payments.rb" "20121220091042_add_white_label_to_mobile_apps.rb" "20121219160356_change_mobile_app_version_type_to_integer.rb" "20121219114231_moving_tax_rates_to_country.rb" "20121217102945_rename_net_price_to_gross_price_in_payment_items.rb" "20121212142728_add_service_charge_hidden_to_payments.rb" "20121208190942_add_country_to_white_label_app.rb" "20121129155116_add_attachment_to_mobile_apps.rb" "20121129110825_rename_excluded_merchants_to_included_merchants_in_merchant_notifications.rb" "20121128113754_add_good_delivery_to_bijli_merchant_forms.rb" "20121128112526_add_time_zone_to_white_label_app.rb" "20121127163328_set_default_tax_value_to_zero_in_payments.rb" "20121127092132_remove_tax_percentage_from_white_label_app.rb" "20121126174534_create_tax_rates.rb" "20121122172224_move_merchants_to_orderbird.rb" "20121122150552_add_email_from_to_white_label_app.rb" "20121122133002_add_excluded_merchants_to_merchant_notifications.rb" "20121120140602_add_service_charge_to_payment.rb" "20121120131733_add_tax_amount_to_white_label_app.rb" "20121116104200_add_merchant_id_to_bijli_merchant_forms.rb" "20121114115153_rename_last_status_to_last_state.rb" "20121113150005_split_documents_submitted_fields_in_bijli_merchant_forms.rb" "20121113132627_bijli_merchant_form_country_as_association.rb" "20121113113439_rename_merchant_status_to_state.rb" "20121109160709_rename_status_to_state.rb" "20121109154554_add_error_code_to_payments.rb" "20121109123744_add_rgts_to_bijli_merchant_form.rb" "20121109092303_remove_reconciled_from_payments.rb" "20121108084559_set_payments_tip_to_zero_by_default.rb" "20121107150204_adding_tx_number_to_payment.rb" "20121107103318_replace_merchant_user_with_merchant_in_merchant_notification.rb" "20121106120010_add_finalized_to_bijli_merchant_forms.rb" "20121030150457_create_card_readers.rb" "20121030140353_create_bijli_merchant_form_attachments.rb" "20121029154020_add_scan_to_bijli_merchant_forms.rb" "20121026111634_create_bijli_merchant_forms.rb" "20121024144411_create_mobile_apps.rb" "20121023072407_add_daily_limit_to_white_label_apps.rb" "20121022102932_add_status_to_merchant.rb" "20121018111940_make_setting_name_unique.rb" "20121017135504_create_settings.rb" "20121017090302_add_min_and_max_transaction_amount_to_white_label_apps.rb" "20121016121146_set_default_value_for_payment_status.rb" "20121016080611_encrypt_merchant_gateway_credentials.rb" "20121011105920_add_default_currency_to_white_label_app.rb" "20121003123543_add_payment_request_id_to_payment_items.rb" "20121003113625_add_tip_to_payment_requests.rb" "20121002103201_add_last_status_column_to_payments.rb" "20121002090502_remove_notification_received_from_payments.rb" "20120928132938_confirm_existing_bijli_users.rb" "20120928092936_create_reconciliation_logs.rb" "20120928082125_add_locale_to_merchants.rb" "20120927103757_set_default_user_roles.rb" "20120926114152_create_payment_items.rb" "20120926100834_create_sms_confirmations.rb" "20120926090342_add_phone_to_payment_request.rb" "20120926080837_add_phone_to_customer.rb" "20120921143936_create_payment_requests.rb" "20120914095503_add_authentication_token_to_user.rb" "20120910122847_add_merchant_id_to_payments.rb" "20120907083103_add_control_digits_size_to_aids.rb" "20120907080802_move_gateway_live_to_merchant.rb" "20120906143051_add_gateway_live_to_users.rb" "20120905085250_move_gateway_signature_to_merchant.rb" "20120904120638_add_gateway_signature_to_users.rb" "20120904093101_create_aids.rb" "20120904081301_add_aid_to_payments.rb" "20120904070842_create_merchants.rb" "20120903144933_add_gateway_credentials_to_users.rb" "20120903092922_add_index_to_german_bank_infos.rb" "20120903091612_create_german_bank_infos.rb" "20120830124036_add_reference_id_to_payments.rb" "20120820123615_add_additional_info_to_payments.rb" "20120818103226_create_doorkeeper_tables.rb" "20120802125609_add_ref_payment_id_to_payments.rb" "20120615095536_add_white_label_app_id_to_users.rb" "20120615095125_create_white_label_apps.rb" "20120611102908_add_currency_to_users.rb" "20120523094650_add_customer_id_to_payments.rb" "20120523094336_add_merchant_user_id_to_customers.rb" "20120514131947_change_cc_number_type.rb" "20120511140110_add_avatar_to_users.rb" "20120510132858_create_products.rb" "20120510110339_create_merchant_notifications.rb" "20120504112152_remove_sms_receipt_from_payments.rb" "20120430102711_add_roles_to_users.rb" "20120427094520_add_confirmable_to_users.rb" "20120426160122_add_country_code_to_users.rb" "20120423113304_clean_up_payments.rb" "20120421125510_add_card_holder_name_to_payments.rb" "20120421102657_add_type_to_payments.rb" "20120420140750_remove_address_columns_from_payments.rb" "20120420140051_create_customers.rb" "20120420122725_remove_hypercharge_columns_from_users.rb" "20120420104605_add_carrier_wave_columns_to_payments.rb" "20120419140422_create_devise_oauth2_providable_schema.devise_oauth2_providable.rb" "20120412105201_drop_delayed_jobs.rb" "20120406085654_add_codes_to_countries.rb" "20120405115339_add_type_to_users.rb" "20120404100205_add_printable_name_to_countries.rb" "20120403091552_devise_create_users.rb" "20120403090826_create_payments.rb" "20120403090405_create_delayed_jobs.rb" "20120403085737_create_countries.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/workers/" (20994 3830 0 0) "notification_jobs.rb" "merchant_notification_job.rb" "facebook_jobs.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/api/v1/" (20994 3830 0 0) "users_controller.rb" "static_pages_controller.rb" "payments_controller.rb" "payment_requests_controller.rb" "mobile_apps_controller.rb" "merchants_controller.rb" "base_controller.rb" "analytics_controller.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/admin/" (20994 3834 0 0) "white_label_apps_controller.rb" "users_controller.rb" "transaction_analytics_controller.rb" "payments_controller.rb" "mobile_apps_controller.rb" "merchants_controller.rb" "merchant_users_controller.rb" "merchant_notifications_controller.rb" "devices_controller.rb" "dashboards_controller.rb" "client_users_controller.rb" "base_controller.rb" "admin_users_controller.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/config/app_configs/" (20994 3834 0 0) "white_labels.yml" "reconciliation.yml.example" "app_config.yml.example" "app_config.yml" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/lib/tasks/" (20994 3834 0 0) "test.rake" "resque.rake" "import_bank_data.rake" "import_aids.rake" ".gitkeep" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/integration/" (20994 3834 0 0) "oauth_test.rb" ".gitkeep" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/config/initializers/" (20994 3830 0 0) "wrap_parameters.rb" "wirecard_ccp.rb" "wicked_pdf.rb" "time_formats.rb" "simple_form.rb" "setup_mail.rb" "session_store.rb" "secret_token.rb" "rack_throttle.rb" "mobile_terminal.rb" "mime_types.rb" "doorkeeper.rb" "disable_ssl.rb" "devise.rb" "date_time.rb" "custom_errors.rb" "clickatell.rb" "carrierwave.rb" "apns.rb" "../" "./")
+
+ ("/etc/" (20994 2351 0 0) "zshenv" "xtab" "ttys" "syslog.conf" "sudoers" "sshd_config" "ssh_config" "snmp/" "shells" "services" "security/" "rtadvd.conf" "rpc" "rmtab" "resolv.conf" "rc.netboot" "rc.imaging" "rc.common" "raddb/" "racoon/" "protocols" "profile" "ppp/" "postfix/" "php.ini.default-5.2-previous" "php.ini.default" "php-fpm.conf.default" "pf.os" "pf.conf" "pf.anchors/" "periodic/" "paths.d/" "paths" "passwd" "pam.d/" "openldap/" "ntp_opendirectory.conf" "ntp.conf" "ntp-restrict.conf" "notify.conf" "nfs.conf" "newsyslog.d/" "newsyslog.conf" "networks" "nanorc" "named.conf" "moduli" "master.passwd" "manpaths.d/" "manpaths" "man.conf" "mail.rc" "mach_init_per_user.d/" "mach_init_per_login_session.d/" "mach_init.d/" "locate.rc" "localtime" "krb5.keytab" "kern_loader.conf" "irbrc" "ip6addrctl.conf" "hosts.equiv" "hosts" "hostconfig" "group" "gettytab" "ftpusers" "ftpd.conf.default" "ftpd.conf" "fstab.hd" "find.codes" "emond.d/" "efax.rc" "dnsextd.conf" "defaults/" "cups/" "csh.logout" "csh.login" "csh.cshrc" "com.apple.screensharing.agent.launchd" "bind.keys" "bashrc" "autofs.conf" "auto_master~orig" "auto_master" "auto_home" "authorization.merge" "authorization" "asl.conf" "apache2/" "aliases.db" "aliases" "afpovertcp.cfg" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/admin_users/" (20994 10065 0 0) "new.html.erb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/helpers/admin/" (20994 10065 0 0) "users_helper.rb" "transaction_analytics_helper.rb" "payments_helper.rb" "merchant_notifications_helper.rb" "dashboards_helper.rb" "bijli_merchant_forms_helper.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/users/" (20994 10065 0 0) "show.html.erb" "new.html.erb" "index.html.erb" "edit.html.erb" "_rows.html.erb" "_index.html.erb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/api/v2/" (20994 20577 0 0) "users_controller.rb" "static_pages_controller.rb" "payments_controller.rb" "payment_requests_controller.rb" "orders_controller.rb" "offers_controller.rb" "mobile_apps_controller.rb" "merchants_controller.rb" "german_bank_infos_controller.rb" "firmwares_controller.rb" "devices_controller.rb" "custom_logs_controller.rb" "credit_cards_controller.rb" "app_custom_datas_controller.rb" "analytics_controller.rb" "aids_controller.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/unit/" (20994 17394 0 0) "workers/" "wirecard/" "white_label_app_test.rb" "utils/" "user_test.rb" "user_roles_test.rb" "tax_rate_test.rb" "stateable_test.rb" "sms_confirmation_test.rb" "sms_api_test.rb" "sms_api/" "setting_test.rb" "reversible_test.rb" "reversal_test.rb" "refundable_test.rb" "refund_test.rb" "redemption_test.rb" "reconciliation_log_test.rb" "reconciliation/" "qr_code_payment_test.rb" "payment_test.rb" "payment_request_test.rb" "payment_item_test.rb" "order_test.rb" "offer_test.rb" "offer_item_test.rb" "offer/" "mobile_app_test.rb" "merchant_user_test.rb" "merchant_test.rb" "merchant_notification_test.rb" "merchant_notification_job_test.rb" "helpers/" "german_bank_info_test.rb" "gateway_owner_test.rb" "firmware_test.rb" "doorkeeper_test.rb" "device_test.rb" "customer_test.rb" "custom_log_test.rb" "cron_jobs/" "credit_card_type_test.rb" "credit_card_test.rb" "credit_card_payment_test.rb" "coverage/" "country_test.rb" "client_user_test.rb" "ccp_payment_test.rb" "cash_payment_test.rb" "card_payment_test.rb" "bijli_merchant_form_test.rb" "bijli_merchant_form_attachment_test.rb" "authenticator_test.rb" "authenticator/" "app_custom_data_test.rb" "aid_test.rb" "activity_log_test.rb" "ability_test.rb" ".gitkeep" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/services/" (20994 23530 0 0) "create_payment_service.rb" "card_updating_service.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/models/" (20994 21958 0 0) "white_label_app.rb" "user.rb" "tax_rate.rb" "sms_confirmation.rb" "setting.rb" "reversal.rb" "refund.rb" "redemption.rb" "reconciliation_log.rb" "qr_code_payment.rb" "payment_request.rb" "payment_item.rb" "payment_filters/" "payment_filter.rb" "payment.rb" "order.rb" "offer_item.rb" "offer.rb" "offer/" "mobile_app.rb" "merchant_user.rb" "merchant_notification.rb" "merchant.rb" "german_bank_info.rb" "firmware.rb" "eft_payment.rb" "device.rb" "customer.rb" "custom_log.rb" "credit_card_payment.rb" "credit_card.rb" "country.rb" "client_user.rb" "chargeback.rb" "ccp_payment.rb" "cash_payment.rb" "card_payment.rb" "bijli/" "app_custom_data.rb" "admin_user.rb" "activity_log.rb" "ability.rb" ".gitkeep" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/" (20994 20010 0 0) "sign_up/" "registrations_controller_test.rb" "payments_controller_test.rb" "payment_requests_controller_test.rb" "merchant/" "home_controller_test.rb" "custom_logs_controller_test.rb" "coverage/" "bijli/" "application_controller_test.rb" "api/" "admin/" ".gitkeep" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/concerns/" (20994 10065 0 0) "user_roles.rb" "stateable.rb" "reversible.rb" "refundable.rb" "payment_stats.rb" "password_archive.rb" "has_payment_items.rb" "gateway_owner.rb" "encrypted_attribute.rb" "eft_reversible.rb" "eft_refundable.rb" "currencies_iso4217.rb" "credit_card_reversible.rb" "credit_card_refundable.rb" "chargebackable.rb" "cash_reversible.rb" "cash_refundable.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/helpers/" (20992 64527 0 0) "white_label_helper.rb" "sign_up/" "registrations_helper.rb" "payments_helper.rb" "payment_requests_helper.rb" "merchant/" "layout_helper.rb" "home_helper.rb" "error_messages_helper.rb" "devise_helper.rb" "bijli/" "application_helper.rb" "api/" "admin/" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/client_users/" (20986 32121 0 0) "show.html.erb" "index.html.erb" "edit.html.erb" "_rows.html.erb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/" (20994 3830 0 0) "unit/" "test_helper.rb" "tarantula/" "support/" "stubs.rb" "performance/" "integration/" "fundamental/" "functional/" "fixtures/" "fakes.rb" "factories/" "../" "./")
+
+ ("/Users/" (20986 46635 0 0) "Shared/" "ignacymoryc/" "Guest/" ".localized" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/support/" (20994 810 0 0) "wirecard/" "signature.jpg" "resque_test_helper.rb" "file.txt" "constant_redefining_helper.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/" (20993 63900 0 0) "vendor/" "tmp/" "test/" "TAGS" "script/" "README.md" "Rakefile" "public/" "log/" "lib/" "Gemfile.lock" "Gemfile" "doc/" "deploy/" "db/" "coverage/" "cookbooks/" "config.ru" "config/" "bin/" "app/" ".rvmrc" ".rbenv-vars" ".gitignore" ".git/" ".bundle/" "../" "./")
+
+ ("/Users/ignacymoryc/code/clojurefun/src/clojurefun/" (20993 12566 0 0) "responsive_design.clj" "processes.clj" "core.clj" "../" "./")
+
+ ("/Users/ignacymoryc/code/word_wrap/spec/" (20993 60182 0 0) "word_wrap_spec.rb" "word_wrap2_spec.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/word_wrap/" (20990 22434 0 0) "spec/" "Rakefile" "lib/" ".git/" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/factories/" (20992 51161 0 0) "white_label_apps.rb" "users.rb" "user_offers.rb" "tax_rates.rb" "sms_confirmations.rb" "settings.rb" "sequences.rb" "reconciliation_logs.rb" "payments.rb" "payment_requests.rb" "payment_items.rb" "orders.rb" "offers.rb" "offer_items.rb" "mobile_apps.rb" "merchants.rb" "merchant_notifications.rb" "german_bank_infos.rb" "firmwares.rb" "doorkeeper.rb" "devices.rb" "device_configurations.rb" "customers.rb" "custom_logs.rb" "credit_cards.rb" "countries.rb" "card_readers.rb" "bijli_merchant_forms.rb" "bijli_merchant_form_attachments.rb" "app_custom_data.rb" "aids.rb" "activity_logs.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/admin/" (20992 48730 0 0) "white_label_apps_controller_test.rb" "users_controller_test.rb" "transaction_analytics_controller_test.rb" "payments_controller_test.rb" "mobile_apps_controller_test.rb" "merchants_controller_test.rb" "merchant_users_controller_test.rb" "merchant_notifications_controller_test.rb" "dashboards_controller_test.rb" "base_controller_test.rb" "admin_users_controller_test.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/clojurefun/assets/js/" (20992 63062 0 0) "resp.js" "../" "./")
+
+ ("/Users/ignacymoryc/code/clojurefun/assets/" (20992 63061 0 0) "js/" "../" "./")
+
+ ("/Users/ignacymoryc/code/clojurefun/" (20992 63061 0 0) "test/" "target/" "src/" "resources/" "README.md" "project.clj" "doc/" "assets/" ".lein-failures" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/ignacymoryc/code/clojurefun/src/" (20992 60190 0 0) "clojurefun/" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/config/environments/" (20987 28876 0 0) "test.rb" "staging.rb" "production.rb" "development.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/lib/authenticator/" (20986 32121 0 0) "phone_number_or_email.rb" "mytaxi.rb" "default.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/sign_up/" (20986 32121 0 0) "business_details_controller_test.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/fixtures/" (20986 32121 0 0) "settings.yml" "files/" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/sign_up/" (20986 32121 0 0) "business_details_controller.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/" (20992 46922 0 0) "sign_up/" "registrations_controller.rb" "payments_controller.rb" "payment_requests_controller.rb" "merchant/" "home_controller.rb" "custom_logs_controller.rb" "confirmations_controller.rb" "bijli/" "application_controller.rb" "api/" "admin/" "../" "./")
+
+ ("/Users/ignacymoryc/code/archive/jobandtalent/app/controllers/" (20919 1417 0 0) "welcomes_controller.rb" "users_controller.rb" "users/" "sitemap_controller.rb" "signup_funnel_controller.rb" "search_engines/" "registrations_controller.rb" "provinces_controller.rb" "pages_controller.rb" "locales_controller.rb" "linked_in_connections_controller.rb" "jt_invitations_controller.rb" "job_openings_controller.rb" "job_openings/" "job_application_statuses_controller.rb" "facebook_connections_controller.rb" "employers_controller.rb" "dashboard_controller.rb" "companies_controller.rb" "companies/" "candidates_controller.rb" "candidates/" "candidate_pdf_controller.rb" "campaigns_controller.rb" "autocomplete_controller.rb" "apply_interaction_controller.rb" "application_controller.rb" "admin/" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/api/v2/app_custom_datas/" (20992 44117 0 0) "show.json.jbuilder" "index.json.jbuilder" "_app_data.json.jbuilder" ".#show.json.jbuilder" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/api/v2/" (20992 43485 0 0) "payments/" "app_custom_datas/" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/api/v2/app_custom_data/" (20992 43387 0 0) "index.json.jbuilder" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/api/" (20986 32121 0 0) "v2/" "v1/" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/merchant/" (20992 42076 0 0) "users_controller_test.rb" "transaction_analytics_controller_test.rb" "payments_controller_test.rb" "merchants_users_controller_test.rb" "merchants_controller_test.rb" "dashboards_controller_test.rb" "../" "./")
+
+ ("/Users/ignacymoryc/Downloads/auto-complete-1.3.1/etc/" (19685 17110 0 0) "test.txt" "install.el" "../" "./")
+
+ ("/Users/ignacymoryc/Downloads/auto-complete-1.3.1/" (20992 41826 0 0) "TODO.txt" "README.txt" "popup.el" "Makefile" "fuzzy.el" "etc/" "doc/" "dict/" "COPYING.GPLv3.txt" "COPYING.FDL.txt" "auto-complete.el" "auto-complete-config.el" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/Downloads/" (20992 41821 0 0) "The.Daily.Show.2013.07.31.Hank.Azaria.HDTV.x264-EVOLVE.mp4" "The Big Wedding[2013]BRRip XviD-ETRG/" "Dexter.S08E06.PROPER.HDTV.x264-ASAP.mp4" "Continuum.S02E13.HDTV.x264-KILLERS.mp4" "Burn.Notice.S07E08.HDTV.x264-EVOLVE.mp4" "auto-complete-1.3.1/" ".localized" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/.git/" (20991 54620 0 0) "refs/" "ORIG_HEAD" "objects/" "logs/" "info/" "index" "hooks/" "HEAD" "FETCH_HEAD" "description" "config" "COMMIT_EDITMSG" "branches/" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/views/devise/sessions/" (20991 54572 0 0) "new.html.erb" "../" "./")
+
+ ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/api/" (20986 32121 0 0) "v2/" "v1/" "../" "./")
+
+ ("/Users/ignacymoryc/code/ignacy.github.com/" (20991 60681 0 0) "index.html" "css/" "_site/" "_posts/" "_layouts/" "_config.yml" ".gitignore" ".git/" "../" "./")
+
+ ("/Users/ignacymoryc/code/ignacy.github.com/_posts/" (20991 60641 0 0) "2013-06-26-simple-rules-for-writing-good-code.markdown" "../" "./")
 
  ("/Users/ignacymoryc/code/slearn2/app/views/devise/shared/" (20966 32274 0 0) "_links.erb" "../" "./")
-
- ("/Users/ignacymoryc/code/slearn2/app/views/devise/sessions/" (20966 32602 0 0) "new.html.erb" "../" "./")
 
  ("/Users/ignacymoryc/code/slearn2/app/views/" (20990 1549 0 0) "users/" "user_mailer/" "test_invitations/" "quizes/" "quiz_materials/" "quiz_attempts/" "questions/" "layouts/" "groups/" "devise/" "answers/" "action_traces/" "../" "./")
 
@@ -135,37 +264,9 @@
 
  ("/Users/ignacymoryc/code/slearn2/" (20989 62368 0 0) "vendor/" "tmp/" "TAGS" "spec/" "script/" "README.rdoc" "Rakefile" "public/" "Procfile" "log/" "lib/" "Guardfile" "generate_tags" "Gemfile.lock" "Gemfile" "doc/" "db/" "config.ru" "config/" "bin/" "app/" ".ruby-version" ".rspec" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/admin/" (20991 44644 0 0) "white_label_apps_controller.rb" "users_controller.rb" "transaction_analytics_controller.rb" "payments_controller.rb" "mobile_apps_controller.rb" "merchants_controller.rb" "merchant_users_controller.rb" "merchant_notifications_controller.rb" "devices_controller.rb" "dashboards_controller.rb" "client_users_controller.rb" "base_controller.rb" "admin_users_controller.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/concerns/" (20991 45948 0 0) "user_roles.rb" "stateable.rb" "reversible.rb" "refundable.rb" "payment_stats.rb" "password_archive.rb" "has_payment_items.rb" "gateway_owner.rb" "encrypted_attribute.rb" "eft_reversible.rb" "eft_refundable.rb" "currencies_iso4217.rb" "credit_card_reversible.rb" "credit_card_refundable.rb" "chargebackable.rb" "cash_reversible.rb" "cash_refundable.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/test/" (20991 45845 0 0) "unit/" "test_helper.rb" "tarantula/" "support/" "stubs.rb" "performance/" "integration/" "fundamental/" "functional/" "fixtures/" "fakes.rb" "factories/" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/admin_users/" (20991 45884 0 0) "new.html.erb" "../" "./")
-
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/" (20991 44644 0 0) "white_label_apps/" "users/" "transaction_analytics/" "payments/" "mobile_apps/" "merchants/" "merchant_users/" "merchant_notifications/" "dashboards/" "client_users/" "admin_users/" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcodepay-backend/" (20991 45836 0 0) "vendor/" "tmp/" "test/" "TAGS" "script/" "README.md" "Rakefile" "public/" "log/" "lib/" "Gemfile.lock" "Gemfile" "doc/" "deploy/" "db/" "coverage/" "cookbooks/" "config.ru" "config/" "bin/" "app/" ".rvmrc" ".rbenv-vars" ".gitignore" ".git/" ".bundle/" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/admin/" (20991 44644 0 0) "white_label_apps_controller_test.rb" "users_controller_test.rb" "transaction_analytics_controller_test.rb" "payments_controller_test.rb" "mobile_apps_controller_test.rb" "merchants_controller_test.rb" "merchant_users_controller_test.rb" "merchant_notifications_controller_test.rb" "dashboards_controller_test.rb" "base_controller_test.rb" "admin_users_controller_test.rb" "../" "./")
-
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/payments/" (20991 44644 0 0) "receipt.pdf.erb" "receipt.html.erb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/test/unit/" (20991 44644 0 0) "workers/" "wirecard/" "white_label_app_test.rb" "utils/" "user_test.rb" "user_roles_test.rb" "tax_rate_test.rb" "stateable_test.rb" "sms_confirmation_test.rb" "sms_api_test.rb" "sms_api/" "setting_test.rb" "reversible_test.rb" "reversal_test.rb" "refundable_test.rb" "refund_test.rb" "redemption_test.rb" "reconciliation_log_test.rb" "reconciliation/" "qr_code_payment_test.rb" "payment_test.rb" "payment_request_test.rb" "payment_item_test.rb" "order_test.rb" "offer_test.rb" "offer_item_test.rb" "offer/" "mobile_app_test.rb" "merchant_user_test.rb" "merchant_test.rb" "merchant_notification_test.rb" "merchant_notification_job_test.rb" "helpers/" "german_bank_info_test.rb" "gateway_owner_test.rb" "firmware_test.rb" "doorkeeper_test.rb" "device_test.rb" "device_configuration_test.rb" "customer_test.rb" "custom_log_test.rb" "cron_jobs/" "credit_card_type_test.rb" "credit_card_test.rb" "credit_card_payment_test.rb" "country_test.rb" "client_user_test.rb" "ccp_payment_test.rb" "cash_payment_test.rb" "card_payment_test.rb" "bijli_merchant_form_test.rb" "bijli_merchant_form_attachment_test.rb" "authenticator_test.rb" "authenticator/" "app_custom_data_test.rb" "aid_test.rb" "activity_log_test.rb" "ability_test.rb" ".gitkeep" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/" (20991 44644 0 0) "sign_up/" "registrations_controller.rb" "payments_controller.rb" "payment_requests_controller.rb" "merchant/" "home_controller.rb" "custom_logs_controller.rb" "confirmations_controller.rb" "bijli/" "application_controller.rb" "api/" "admin/" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/db/migrate/" (20991 44644 0 0) "20130805124140_remove_card_reader.rb" "20130730153613_add_missing_qr_indexes.rb" "20130729145813_add_payment_to_orders.rb" "20130729112145_add_state_to_order.rb" "20130729085443_add_quantity_to_offer_items.rb" "20130726143206_add_currency_code_to_offers.rb" "20130726125511_create_orders.rb" "20130724101916_add_offer_item_id_to_payment_items.rb" "20130722135131_add_device_to_redemptions.rb" "20130722133340_add_otp_to_redemptions.rb" "20130719113133_add_image_to_offers.rb" "20130716123841_rename_user_offers.rb" "20130715081611_create_user_offers.rb" "20130711152255_create_offer_items.rb" "20130711151216_create_offers.rb" "20130711112947_add_external_payment_callback_url_to_users.rb" "20130710120719_make_email_unique_again.rb" "20130709155413_make_email_not_unique.rb" "20130709080230_add_deleted_at_to_users.rb" "20130702112456_add_info_to_merchant.rb" "20130702091548_add_logo_to_merchants.rb" "20130626152134_fix_precision_of_payment_items.rb" "20130617135521_add_ccp_to_users.rb" "20130611103653_add_otp_to_payments.rb" "20130610084229_remove_pin_from_users.rb" "20130607140353_make_payment_items_quantity_decimal.rb" "20130606150758_merge_credit_card_card_holder_name.rb" "20130529114530_add_credit_card_unique_id_to_payment.rb" "20130528142732_make_push_token_column_longer.rb" "20130527132729_add_facebook_oauth_token_to_users.rb" "20130524073317_add_note_to_payment_items.rb" "20130522134827_rename_card_holder_columns.rb" "20130522132340_split_card_holder_name_into_first_and_last_name.rb" "20130522124941_add_card_holder_name_to_credit_card.rb" "20130521132842_move_shared_secret_to_device.rb" "20130517111326_add_pin_to_user.rb" "20130516132923_fix_device_columns.rb" "20130513152702_add_push_notification_receipt_sent_to_payments.rb" "20130513151955_add_device_id_to_payment.rb" "20130508083556_add_user_to_device.rb" "20130507151848_create_devices.rb" "20130506124938_add_blocked_to_credit_card.rb" "20130429132920_add_merchant_category_code_to_merchants.rb" "20130426153721_add_merchant_email_receipt_sent_to_payments.rb" "20130423135649_add_shared_secret_to_user.rb" "20130418142251_add_ssl_to_activity_logs.rb" "20130418124942_create_credit_cards.rb" "20130417082916_adding_lexware.rb" "20130415111028_create_activity_logs.rb" "20130411123915_adding_oauth_locking_account.rb" "20130409143549_add_old_passwords_to_user.rb" "20130405101853_create_device_configurations.rb" "20130404121135_add_wcd_transaction_type_to_payment.rb" "20130404111451_create_firmwares.rb" "20130403142848_rename_swiper_type_to_device_type.rb" "20130328093918_add_swiper_type_to_payments.rb" "20130327122811_make_currency_column_not_null.rb" "20130320145641_add_app_custom_regexes.rb" "20130320113846_add_missing_columns_to_payment_requests.rb" "20130315113530_add_currency_to_reversals_and_refunds.rb" "20130312130255_set_default_minimal_amount.rb" "20130312095323_set_default_lekkerland_locale_to_de.rb" "20130311140711_adding_inc_retail.rb" "20130311105144_add_locale_to_white_label_apps.rb" "20130306133031_add_gratuity_type_to_payments.rb" "20130306115154_add_customer_support_phone_number.rb" "20130228153526_adding_new_eft_regex.rb" "20130228123032_drop_products_table.rb" "20130227161711_extend_technical_message_length_in_payments.rb" "20130227113934_add_new_eft_recognition_regex.rb" "20130227084343_renaming_data_type_to_key_in_app_custom_data.rb" "20130226151323_add_eft_recognition_regex_to_db.rb" "20130226123624_add_unique_id_to_custom_logs.rb" "20130225152012_encrypt_merchant_user_gateway.rb" "20130225150436_add_app_custom_data.rb" "20130225133531_create_custom_logs.rb" "20130215150408_change_default_merchant_user_make_creation_callback.rb" "20130215103313_add_creation_callback_made_to_merchant_user.rb" "20130215102146_update_unique_id_column_in_payments.rb" "20130207185847_adding_send_email_receipt_and_send_sms_receipt.rb" "20130206150024_drop_test_from_payments.rb" "20130206130438_remove_aids.rb" "20130205123745_setup_varchar_fields_length.rb" "20130205102327_add_indexes_on_payment_search.rb" "20130204142236_add_missing_indexes.rb" "20130204120110_add_demo_white_label_app.rb" "20130201123725_add_white_label_app_fasttrack.rb" "20130131192649_rename_payment_email_receipt_to_receipt_requested.rb" "20130128121029_remove_merchant_from_merchant_notification.rb" "20130128112138_add_white_label_app_to_merchant_notification.rb" "20130125135707_add_business_case_to_user.rb" "20130125105757_add_index_on_user_phone_number.rb" "20130124113651_allow_user_nullable_email.rb" "20130124113331_add_phone_number_to_user.rb" "20130116211140_add_callback_url_to_payment.rb" "20130114111127_add_external_id_to_merchant.rb" "20130114111110_add_external_id_to_merchant_user.rb" "20130107104955_change_state_of_existing_payments.rb" "20130107104508_change_default_payment_state.rb" "20121224114218_white_label_app_country_should_not_be_null.rb" "20121221144059_add_tip_tax_rate_to_payments.rb" "20121220091042_add_white_label_to_mobile_apps.rb" "20121219160356_change_mobile_app_version_type_to_integer.rb" "20121219114231_moving_tax_rates_to_country.rb" "20121217102945_rename_net_price_to_gross_price_in_payment_items.rb" "20121212142728_add_service_charge_hidden_to_payments.rb" "20121208190942_add_country_to_white_label_app.rb" "20121129155116_add_attachment_to_mobile_apps.rb" "20121129110825_rename_excluded_merchants_to_included_merchants_in_merchant_notifications.rb" "20121128113754_add_good_delivery_to_bijli_merchant_forms.rb" "20121128112526_add_time_zone_to_white_label_app.rb" "20121127163328_set_default_tax_value_to_zero_in_payments.rb" "20121127092132_remove_tax_percentage_from_white_label_app.rb" "20121126174534_create_tax_rates.rb" "20121122172224_move_merchants_to_orderbird.rb" "20121122150552_add_email_from_to_white_label_app.rb" "20121122133002_add_excluded_merchants_to_merchant_notifications.rb" "20121120140602_add_service_charge_to_payment.rb" "20121120131733_add_tax_amount_to_white_label_app.rb" "20121116104200_add_merchant_id_to_bijli_merchant_forms.rb" "20121114115153_rename_last_status_to_last_state.rb" "20121113150005_split_documents_submitted_fields_in_bijli_merchant_forms.rb" "20121113132627_bijli_merchant_form_country_as_association.rb" "20121113113439_rename_merchant_status_to_state.rb" "20121109160709_rename_status_to_state.rb" "20121109154554_add_error_code_to_payments.rb" "20121109123744_add_rgts_to_bijli_merchant_form.rb" "20121109092303_remove_reconciled_from_payments.rb" "20121108084559_set_payments_tip_to_zero_by_default.rb" "20121107150204_adding_tx_number_to_payment.rb" "20121107103318_replace_merchant_user_with_merchant_in_merchant_notification.rb" "20121106120010_add_finalized_to_bijli_merchant_forms.rb" "20121030150457_create_card_readers.rb" "20121030140353_create_bijli_merchant_form_attachments.rb" "20121029154020_add_scan_to_bijli_merchant_forms.rb" "20121026111634_create_bijli_merchant_forms.rb" "20121024144411_create_mobile_apps.rb" "20121023072407_add_daily_limit_to_white_label_apps.rb" "20121022102932_add_status_to_merchant.rb" "20121018111940_make_setting_name_unique.rb" "20121017135504_create_settings.rb" "20121017090302_add_min_and_max_transaction_amount_to_white_label_apps.rb" "20121016121146_set_default_value_for_payment_status.rb" "20121016080611_encrypt_merchant_gateway_credentials.rb" "20121011105920_add_default_currency_to_white_label_app.rb" "20121003123543_add_payment_request_id_to_payment_items.rb" "20121003113625_add_tip_to_payment_requests.rb" "20121002103201_add_last_status_column_to_payments.rb" "20121002090502_remove_notification_received_from_payments.rb" "20120928132938_confirm_existing_bijli_users.rb" "20120928092936_create_reconciliation_logs.rb" "20120928082125_add_locale_to_merchants.rb" "20120927103757_set_default_user_roles.rb" "20120926114152_create_payment_items.rb" "20120926100834_create_sms_confirmations.rb" "20120926090342_add_phone_to_payment_request.rb" "20120926080837_add_phone_to_customer.rb" "20120921143936_create_payment_requests.rb" "20120914095503_add_authentication_token_to_user.rb" "20120910122847_add_merchant_id_to_payments.rb" "20120907083103_add_control_digits_size_to_aids.rb" "20120907080802_move_gateway_live_to_merchant.rb" "20120906143051_add_gateway_live_to_users.rb" "20120905085250_move_gateway_signature_to_merchant.rb" "20120904120638_add_gateway_signature_to_users.rb" "20120904093101_create_aids.rb" "20120904081301_add_aid_to_payments.rb" "20120904070842_create_merchants.rb" "20120903144933_add_gateway_credentials_to_users.rb" "20120903092922_add_index_to_german_bank_infos.rb" "20120903091612_create_german_bank_infos.rb" "20120830124036_add_reference_id_to_payments.rb" "20120820123615_add_additional_info_to_payments.rb" "20120818103226_create_doorkeeper_tables.rb" "20120802125609_add_ref_payment_id_to_payments.rb" "20120615095536_add_white_label_app_id_to_users.rb" "20120615095125_create_white_label_apps.rb" "20120611102908_add_currency_to_users.rb" "20120523094650_add_customer_id_to_payments.rb" "20120523094336_add_merchant_user_id_to_customers.rb" "20120514131947_change_cc_number_type.rb" "20120511140110_add_avatar_to_users.rb" "20120510132858_create_products.rb" "20120510110339_create_merchant_notifications.rb" "20120504112152_remove_sms_receipt_from_payments.rb" "20120430102711_add_roles_to_users.rb" "20120427094520_add_confirmable_to_users.rb" "20120426160122_add_country_code_to_users.rb" "20120423113304_clean_up_payments.rb" "20120421125510_add_card_holder_name_to_payments.rb" "20120421102657_add_type_to_payments.rb" "20120420140750_remove_address_columns_from_payments.rb" "20120420140051_create_customers.rb" "20120420122725_remove_hypercharge_columns_from_users.rb" "20120420104605_add_carrier_wave_columns_to_payments.rb" "20120419140422_create_devise_oauth2_providable_schema.devise_oauth2_providable.rb" "20120412105201_drop_delayed_jobs.rb" "20120406085654_add_codes_to_countries.rb" "20120405115339_add_type_to_users.rb" "20120404100205_add_printable_name_to_countries.rb" "20120403091552_devise_create_users.rb" "20120403090826_create_payments.rb" "20120403090405_create_delayed_jobs.rb" "20120403085737_create_countries.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/db/" (20991 44644 0 0) "seeds.rb" "schema.rb" "migrate/" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/models/" (20991 44644 0 0) "white_label_app.rb" "user.rb" "tax_rate.rb" "sms_confirmation.rb" "setting.rb" "reversal.rb" "refund.rb" "redemption.rb" "reconciliation_log.rb" "qr_code_payment.rb" "payment_request.rb" "payment_item.rb" "payment_filters/" "payment_filter.rb" "payment.rb" "order.rb" "offer_item.rb" "offer.rb" "offer/" "mobile_app.rb" "merchant_user.rb" "merchant_notification.rb" "merchant.rb" "german_bank_info.rb" "firmware.rb" "eft_payment.rb" "device_configuration.rb" "device.rb" "customer.rb" "custom_log.rb" "credit_card_payment.rb" "credit_card.rb" "country.rb" "client_user.rb" "chargeback.rb" "ccp_payment.rb" "cash_payment.rb" "card_payment.rb" "bijli/" "app_custom_data.rb" "admin_user.rb" "activity_log.rb" "ability.rb" ".gitkeep" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/config/initializers/" (20991 44644 0 0) "wrap_parameters.rb" "wirecard_ccp.rb" "wicked_pdf.rb" "time_formats.rb" "simple_form.rb" "setup_mail.rb" "session_store.rb" "secret_token.rb" "rack_throttle.rb" "mobile_terminal.rb" "mime_types.rb" "doorkeeper.rb" "disable_ssl.rb" "devise.rb" "date_time.rb" "custom_errors.rb" "clickatell.rb" "carrierwave.rb" "apns.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/" (20991 38068 0 0) "sign_up/" "registrations_controller_test.rb" "payments_controller_test.rb" "payment_requests_controller_test.rb" "merchant/" "home_controller_test.rb" "custom_logs_controller_test.rb" "bijli/" "application_controller_test.rb" "api/" "admin/" ".gitkeep" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/workers/" (20991 29248 0 0) "notification_jobs.rb" "merchant_notification_job.rb" "facebook_jobs.rb" "../" "./")
 
  ("/Users/ignacymoryc/code/qrcodepay-backend/lib/" (20991 20126 0 0) "wirecard.rb" "wirecard/" "white_label_mailer.rb" "utils.rb" "utils/" "tokenizer_client.rb" "templates/" "tasks/" "sms_api/" "reconciliation/" "payments_stats_extension.rb" "payment_type.rb" "motp.rb" "motp/" "mobile_terminal.rb" "mobile_terminal/" "middleware/" "locales_iso639.rb" "json_cache.rb" "cron_jobs/" "credit_card_type.rb" "authenticator.rb" "authenticator/" "assets/" "../" "./")
 
@@ -177,17 +278,7 @@
 
  ("/Users/ignacymoryc/code/tokenizer/" (20991 35319 0 0) "spec/" "sinatra.log" "routes/" "README.md" "Rakefile" "models/" "makedoc.sh" "lib/" "Gemfile.lock" "Gemfile" "doc/" "db/" "config.ru" "config/" "app.rb" ".rvmrc" ".gitignore" ".git/" "../" "./")
 
- ("/Users/ignacymoryc/code/" (20991 35317 0 0) "word_wrap/" "tokenizer/" "slearn2/" "qrcodepay-backend/" "gierki/" "archive/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/helpers/admin/" (20986 32121 0 0) "users_helper.rb" "transaction_analytics_helper.rb" "payments_helper.rb" "merchant_notifications_helper.rb" "dashboards_helper.rb" "bijli_merchant_forms_helper.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/helpers/" (20986 32121 0 0) "white_label_helper.rb" "sign_up/" "registrations_helper.rb" "payments_helper.rb" "payment_requests_helper.rb" "merchant/" "layout_helper.rb" "home_helper.rb" "error_messages_helper.rb" "devise_helper.rb" "bijli/" "application_helper.rb" "api/" "admin/" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/lib/tasks/" (20991 23865 0 0) "test.rake" "resque.rake" "import_bank_data.rake" "import_aids.rake" ".gitkeep" "../" "./")
-
  ("/Users/ignacymoryc/code/qrcodepay-backend/test/unit/workers/" (20991 29248 0 0) "make_callback_job_test.rb" "facebook_jobs_test.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/test/support/" (20991 29248 0 0) "wirecard/" "signature.jpg" "resque_test_helper.rb" "file.txt" "../" "./")
 
  ("/Users/ignacymoryc/code/qrcodepay-backend/cookbooks/papertrail/recipes/" (20991 28956 0 0) "default.rb" "../" "./")
 
@@ -205,10 +296,6 @@
 
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/" (20986 32121 0 0) "sign_up/" "shared/" "registrations/" "payments/" "payment_requests/" "notifier/" "merchant/" "layouts/" "home/" "devise/" "developer_notifier/" "custom_logs/" "bijli/" "api/" "admin_notifier/" "admin/" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/services/" (20991 20126 0 0) "card_updating_service.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/api/v2/" (20991 20126 0 0) "users_controller.rb" "static_pages_controller.rb" "payments_controller.rb" "payment_requests_controller.rb" "orders_controller.rb" "offers_controller.rb" "mobile_apps_controller.rb" "merchants_controller.rb" "german_bank_infos_controller.rb" "firmwares_controller.rb" "devices_controller.rb" "device_configurations_controller.rb" "custom_logs_controller.rb" "credit_cards_controller.rb" "app_custom_datas_controller.rb" "analytics_controller.rb" "aids_controller.rb" "../" "./")
-
  ("/Users/ignacymoryc/code/qrcodepay-backend/config/" (20991 20126 0 0) "schedule.rb" "routes.rb" "reconciliation.yml.example" "locales/" "initializers/" "exceptional.yml" "environments/" "environment.rb" "database.yml.example" "database.yml" "boot.rb" "application.rb" "app_configs/" "amazon_s3.yml" "../" "./")
 
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/" (20991 20126 0 0) "workers/" "views/" "uploaders/" "services/" "models/" "mailers/" "helpers/" "controllers/" "concerns/" "assets/" "../" "./")
@@ -219,13 +306,7 @@
 
  ("/Users/ignacymoryc/code/qrcodepay-backend/.git/" (20990 43046 0 0) "refs/" "packed-refs" "ORIG_HEAD" "objects/" "logs/" "info/" "index" "hooks/" "HEAD" "FETCH_HEAD" "description" "config" "COMMIT_EDITMSG" "branches/" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/api/v2/" (20990 36512 0 0) "users_controller_test.rb" "static_pages_controller_test.rb" "payments_controller_test.rb" "payment_requests_controller_test.rb" "orders_controller_test.rb" "offers_controller_test.rb" "mobile_apps_controller_test.rb" "merchants_controller_test.rb" "firmwares_controller_test.rb" "devices_controller_test.rb" "device_configurations_controller_test.rb" "custom_logs_controller_test.rb" "credit_cards_controller_test.rb" "app_custom_datas_controller_test.rb" "analytics_controller_test.rb" "aids_controller_test.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/word_wrap/spec/" (20990 22559 0 0) "word_wrap_spec.rb" "../" "./")
-
  ("/Users/ignacymoryc/code/word_wrap/lib/" (20990 22543 0 0) "wrapper.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/slearn2/.git/" (20990 40630 0 0) "refs/" "ORIG_HEAD" "objects/" "logs/" "info/" "index" "hooks/" "HEAD" "FETCH_HEAD" "description" "config" "COMMIT_EDITMSG" "branches/" "../" "./")
 
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/assets/" (20986 32121 0 0) "stylesheets/" "javascripts/" "images/" "../" "./")
 
@@ -242,78 +323,6 @@
  ("/Users/ignacymoryc/code/archive/eleos/newsit-twitter-mm/" (20989 62004 0 0) "worker.rb" "views/" "vendor/" "tasks/" "spec/" "Rakefile" "public/" "Procfile" "lib/" "Gemfile.lock" "Gemfile" "config.ru" "config.rb" "app.rb" ".sass-cache/" ".gitignore" ".git/" ".env" ".bundle/" ".#.env" "../" "./")
 
  ("/Users/ignacymoryc/code/archive/eleos/newsit-mm/" (20989 61965 0 0) "vendor/" "tmp/" "test/" "spec/" "script/" "rspec" "README.md" "Rakefile" "public/" "Procfile" "log/" "lib/" "Gemfile.lock" "Gemfile" "doc/" "db/" "config.ru" "config/" "bin/" "app/" ".rspec" ".projectile" ".gitignore" ".git/" ".env" ".DS_Store" ".bundle/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/somefu/" (20989 61994 0 0) "vendor/" "tmp/" "test/" "TAGS" "spec/" "script/" "README" "Rakefile" "public/" "Procfile" "log/" "lib/" "Gemfile.lock" "Gemfile" "doc/" "db/" "config.ru" "config/" "app/" ".rspec" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/somefu/app/" (20989 61994 0 0) "workers/" "views/" "services/" "models/" "mailers/" "helpers/" "extensions/" "decorators/" "controllers/" "assets/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/somefu/app/controllers/" (20555 43876 0 0) "users_controller.rb" "unaproved_posts_controller.rb" "streams_controller.rb" "stream_invitations_controller.rb" "roles_controller.rb" "registrations_controller.rb" "posts_controller.rb" "notifications_controller.rb" "channels_controller.rb" "authentications_controller.rb" "application_controller.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/" (20989 61974 0 0) "test/" "templates/" "src/" "scripts/" "RakeFile" "production.properties" "lib/" "javadoc.css" "devel.properties.default" "build_tests.xml" "build_loadtests.xml" "build.xml" "build.properties.defaults" "bdmv/" "app.rb" ".gitignore" ".git/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/src/" (20989 61974 0 0) "net/" "error.messages" "com/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/src/com/" (20989 61974 0 0) "hdcookbook/" "cubiware/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/" (20989 61974 0 0) "fyretv/" "bdj/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/playback/" (20989 61974 0 0) "PlaybackXlet.java" "gui/" "controller/" "bluray.PlaybackXlet.perm" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/tools/" (20990 31187 0 0) "worker/" "ViewMetadata.java" "service/" "PropertyKeyBuilder.java" "PropertiesReader.java" "Pager.java" "MenuItemPropertiesReader.java" "collections/" "BDJContentLoader.java" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/enviroment/" (20989 61974 0 0) "PlaybackEnviroment.java" "FyreTVEnviroment.java" "CoreEnviroment.java" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/core/" (20989 61974 0 0) "CoreXlet.java" "bluray.CoreXlet.perm" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/" (20989 61974 0 0) "tools/" "playback/" "enviroment/" "core/" "assets/" "application/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/FyreTv/src/com/cubiware/fyretv/application/" (20989 61974 0 0) "model/" "HaviBackgroundController.java" "gui/" "FyreTvXlet.java" "controller/" "bluray.FyreTvXlet.perm" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/services/social_importer/" (20919 1417 0 0) "personal_info.rb" "linked_in.rb" "language_info.rb" "employment_info.rb" "education_info.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/services/facebook_subscriptions/" (20624 3162 0 0) "request_validator.rb" "real_time_updater.rb" "friends_updater.rb" "base.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/services/" (20919 1417 0 0) "url_normalizer.rb" "update_elastic_search.rb" "tags_stripper.rb" "suggestions.rb" "suggestions/" "social_importer.rb" "social_importer/" "sales_service/" "salary_difference.rb" "pdfprofile.rb" "merge_candidate_skills.rb" "job_opening_service/" "job_application_state_changer.rb" "job_aggregators_proxy.rb" "folder_manager.rb" "fb_invitation_tracer.rb" "facebook_subscriptions/" "external_job_openings.rb" "external_job_openings/" "email_contacts/" "company_logo_finder.rb" "company_logo_finder/" "candidate_profile_updater.rb" "area_of_activity_duplication_remover.rb" "after_invite_partial.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/models/" (20919 1417 0 0) "years_of_experience_calculator.rb" "user_to_facebook_connection.rb" "user.rb" "suggestion.rb" "social_import/" "skill_requirement.rb" "skill.rb" "sign_up_report.rb" "secure_password_generator.rb" "sector_translation.rb" "sector_membership.rb" "sector.rb" "search.rb" "search/" "school_requirement.rb" "school.rb" "sale.rb" "salary_preference.rb" "review_notification.rb" "reveal_notification.rb" "requirement.rb" "relocation_preference.rb" "redis_connection.rb" "redis_cache.rb" "province.rb" "product.rb" "period.rb" "notification.rb" "normalized_location.rb" "location_setter.rb" "language_locale.rb" "language_level_normalizer.rb" "language_level.rb" "language_degree_presenter.rb" "language.rb" "job_opening_stats.rb" "job_opening_language_locale.rb" "job_opening_invitation.rb" "job_opening_import_source.rb" "job_opening.rb" "job_application.rb" "inline_input_renderer.rb" "imported_company_observer.rb" "impersonation_log.rb" "grade.rb" "friendship.rb" "friend_skipper.rb" "folder_assignement.rb" "folder.rb" "fitting_opening_story.rb" "filterable/" "field_of_studies_translation.rb" "field_of_studies_requirement.rb" "field_of_studies.rb" "fb_invitation_trace_report.rb" "fb_invitation_trace.rb" "fb_import_status.rb" "fb_access_token_extender.rb" "fake_email_generator.rb" "facebook_user_factory.rb" "facebook_user.rb" "facebook_importer.rb" "facebook_credentials.rb" "facebook/" "employment.rb" "employer.rb" "email_setter.rb" "email_contact_report.rb" "email_contact.rb" "email_availability_checker.rb" "elastic_search_configuration.rb" "education_type_normalizer.rb" "education_type.rb" "education.rb" "disguised_company.rb" "disguised_avatar.rb" "currency.rb" "country_translation.rb" "country.rb" "contract_type.rb" "contexts/" "company_contact.rb" "company.rb" "candidate_stats_presenter.rb" "candidate_skill.rb" "candidate_resume_observer.rb" "candidate_profile_type.rb" "candidate_profile_observer.rb" "candidate_location_line.rb" "candidate_email_contact.rb" "candidate_area.rb" "candidate.rb" "cached_attribute.rb" "areas_assoc.rb" "area_of_activity_translation.rb" "area_of_activity_requirement.rb" "area_of_activity_index_data_extractor.rb" "area_of_activity_candidate.rb" "area_of_activity.rb" "admin/" "additional_information.rb" "account_merger.rb" "accents_remover.rb" ".gitkeep" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/helpers/" (20919 1417 0 0) "users_helper.rb" "social_plugins_helper.rb" "pages_helper.rb" "my_network_helper.rb" "landing_helper.rb" "job_openings_helper.rb" "job_applications_helper.rb" "filters/" "email_contact_helper.rb" "dashboards_helper.rb" "companies/" "candidates_helper.rb" "candidates/" "area_of_activity_helper.rb" "apply_interaction_helper.rb" "application_helper.rb" "admin/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/" (20989 61985 0 0) "vendor/" "var/" "tmp/" "TAGS" "spec/" "script/" "Rakefile" "public/" "Procfile" "log/" "lib/" "Guardfile" "Gemfile.lock" "Gemfile" "db/" "config.ru" "config/" "bin/" "app/" ".slugignore" ".rvmrc.default" ".rvmrc" ".rspec.example" ".rspec" ".gitignore" ".git/" ".env.test.example" ".env.test" ".env.example" ".env.development.example" ".env.development" ".env" ".DS_Store" ".bundle/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/decorators/" (20919 1417 0 0) "user_decorator.rb" "suggestion_decorator.rb" "review_notification_decorator.rb" "reveal_notification_decorator.rb" "publish_job_opening_decorator.rb" "province_decorator.rb" "period_formatter.rb" "occupation_decorator.rb" "notification_decorator.rb" "my_network_decorator.rb" "language_decorator.rb" "job_opening_stats_decorator.rb" "job_opening_list_item_decorator.rb" "job_opening_from_aggregator_decorator.rb" "job_opening_decorator.rb" "job_application_decorator.rb" "friend_to_send_suggestion_to_decorator.rb" "employment_decorator.rb" "education_period_formatter.rb" "education_decorator.rb" "company_popover_decorator.rb" "company_decorator.rb" "candidate_stats_decorator.rb" "candidate_social_status_decorator.rb" "candidate_skill_decorator.rb" "candidate_decorator.rb" "candidate_db_decorator.rb" "base/" "area_of_activity_requirement_decorator.rb" "application_decorator.rb" "admin/" "additional_information_decorator.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/cells/referrer_faces/" (20586 52137 0 0) "display.html.erb" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/cells/" (20549 48446 0 0) "social_status_cell.rb" "social_status/" "referrer_faces_cell.rb" "referrer_faces/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/" (20989 61984 0 0) "workers/" "views/" "services/" "models/" "mailers/" "helpers/" "extensions/" "decorators/" "controllers/" "cells/" "assets/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/jobandtalent/app/controllers/" (20919 1417 0 0) "welcomes_controller.rb" "users_controller.rb" "users/" "sitemap_controller.rb" "signup_funnel_controller.rb" "search_engines/" "registrations_controller.rb" "provinces_controller.rb" "pages_controller.rb" "locales_controller.rb" "linked_in_connections_controller.rb" "jt_invitations_controller.rb" "job_openings_controller.rb" "job_openings/" "job_application_statuses_controller.rb" "facebook_connections_controller.rb" "employers_controller.rb" "dashboard_controller.rb" "companies_controller.rb" "companies/" "candidates_controller.rb" "candidates/" "candidate_pdf_controller.rb" "campaigns_controller.rb" "autocomplete_controller.rb" "apply_interaction_controller.rb" "application_controller.rb" "admin/" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/fortis_invoices/src/fortis_invoices/" (20989 61973 0 0) "sendgrid_client.clj" "s3_storage.clj" "image_processing.clj" "fortis_service.clj" "examples/" "document_tools.clj" "core.clj" "converter.clj" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/fortis_invoices/src/" (20989 61973 0 0) "fortis_invoices/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/fortis_invoices/" (20989 61973 0 0) "test/" "target/" "TAGS" "src/" "script/" "README.org" "project.clj" "invoice_examples/" "generate_tags" "fixtures/" "deploy/" "binaries/" "bin/" ".lein-repl-history" ".gitignore" ".git/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/archive/eleos/" (20989 61967 0 0) "newsit-twitter-mm/" "newsit-twitter-backend/" "newsit-mm/" "newsit-backend/" "localthresh/" "faketweetserver/" "edgefill/" "conjury/" "clearcreek-taxliens/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/word_wrap/" (20990 22434 0 0) "spec/" "Rakefile" "lib/" ".git/" "../" "./")
-
- ("/Users/ignacymoryc/.emacs.d/elpa/rspec-mode-1.7/" (20990 21935 0 0) "rspec-mode.elc" "rspec-mode.el" "rspec-mode-pkg.elc" "rspec-mode-pkg.el" "rspec-mode-autoloads.el" "../" "./")
-
- ("/Users/ignacymoryc/.emacs.d/elpa/" (20990 21934 0 0) "yasnippet-20130722.1832/" "yaml-mode-20130311.1301/" "wrap-region-20130529.728/" "web-mode-20130730.21/" "textmate-20110816.1446/" "tabulated-list-20120406.2251/" "sublime-themes-20130727.1028/" "smex-20130707.1255/" "s-20130617.1851/" "rvm-20130521.902/" "ruby-test-mode-20121120.1052/" "ruby-end-20130426.909/" "ruby-electric-20130127.1902/" "ruby-compilation-20130429.1411/" "rspec-mode-1.7/" "rhtml-mode-20130421.1008/" "request-20130526.1915/" "rainbow-mode-0.8/" "rainbow-delimiters-20130307.340/" "quickrun-20130730.1513/" "projectile-20130725.1224/" "pcache-20120408.1206/" "paredit-20130722.1324/" "multiple-cursors-20130730.2211/" "markdown-mode-20130726.2142/" "mark-multiple-20121118.1654/" "magit-20130804.315/" "logito-20120225.2155/" "key-chord-20080915.2156/" "js2-mode-20130725.125/" "inf-ruby-20130726.149/" "ido-hacks-20130411.1859/" "idle-highlight-mode-20120920.1848/" "haml-mode-20130130.1622/" "grizzl-20130713.1943/" "git-gutter-20130613.2232/" "git-gutter+-20130803.2130/" "gist-20130315.2306/" "gh-20130612.253/" "flx-ido-20130728.820/" "flx-20130728.2028/" "expand-region-20130710.1104/" "exec-path-from-shell-20130618.1825/" "emamux-ruby-test-20130722.1942/" "emamux-20130331.2353/" "dash-20130712.2307/" "coffee-mode-20130618.1418/" "clojure-mode-20130801.726/" "browse-kill-ring-20130729.1607/" "autopair-20121123.1829/" "archives/" "../" "./")
-
- ("/Users/ignacymoryc/code/slearn2/app/assets/javascripts/" (20990 56 0 0) "effects.js" "bootstrap.min.js" "bootstrap.js" "application.js" "../" "./")
-
- ("/Users/ignacymoryc/code/slearn2/app/models/" (20990 1106 0 0) "user_group.rb" "user_answer.rb" "user.rb" "test_invitation.rb" "quiz_material.rb" "quiz_attempt.rb" "quiz.rb" "question.rb" "possible_answer.rb" "group_assignement.rb" "group.rb" "company.rb" "attempt_pdf.rb" "action_trace.rb" ".gitkeep" "../" "./")
-
- ("/Users/ignacymoryc/code/slearn2/app/views/quizes/" (20990 1902 0 0) "show.html.erb" "new.html.erb" "index.html.erb" "edit.html.erb" "_quiz_line.html.erb" "_quiz_in_progress.html.erb" "_quiz_finished.html.erb" "_question.html.erb" "../" "./")
-
- ("/Users/ignacymoryc/code/slearn2/app/views/action_traces/" (20990 2074 0 0) "index.html.erb" "../" "./")
-
- ("/Users/ignacymoryc/code/slearn2/app/controllers/" (20990 2139 0 0) "users_controller.rb" "test_invitations_controller.rb" "quizes_controller.rb" "quiz_materials_controller.rb" "quiz_attempts_controller.rb" "questions_controller.rb" "groups_controller.rb" "application_controller.rb" "answers_controller.rb" "action_traces_controller.rb" "../" "./")
 )
 
 ;; ----- ido-unc-hosts-cache -----
