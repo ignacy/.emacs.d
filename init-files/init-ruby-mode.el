@@ -42,14 +42,12 @@
 (set-face-attribute (make-face 'test-success) nil
                     :family "arial"
                     :height 240
-                    :background (if window-system "black" "#001100")
                     :foreground (if window-system "#00aa00" "white")
                     :weight 'bold)
 
 (set-face-attribute (make-face 'test-failure) nil
                     :family "arial"
                     :height 240
-                    :background (if window-system "black" "#110000")
                     :foreground (if window-system "ff3333" "white")
                     :weight 'bold)
 

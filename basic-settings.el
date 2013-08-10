@@ -48,10 +48,12 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-(global-hl-line-mode 1)
-;;(set-face-background 'hl-line "light cyan")
+
+(hl-line-mode nil)
+;; (global-hl-line-mode 1)
+;; (set-face-background 'hl-line "light cyan")
+;; (set-face-attribute hl-line-face nil :underline t)
 ;; (set-face-background 'hl-line "#333")
-;; (set-face-foreground 'highlight nil)
 ;; (set-face-foreground 'hl-line nil)
 (fringe-mode '(0 . 0))
 

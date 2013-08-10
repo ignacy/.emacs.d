@@ -1,6 +1,6 @@
 (require 'cl)
 
-(setq debug-on-error t)
+;;(setq debug-on-error t)
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq init-files-dir (concat dotfiles-dir "/init-files"))
@@ -19,8 +19,10 @@
 (key-chord-define-global ",b" 'ido-switch-buffer)
 (key-chord-define-global ",o" 'other-window)
 (key-chord-define-global ",f" 'ido-find-file)
+(key-chord-define-global ",c" 'compile)
+(key-chord-define-global ",r" 'im/reek-on-buffer)
 
-(load-theme 'grandshell t)
+(load-theme 'espresso t)
 
 (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
 (add-to-list 'load-path "~/.emacs.d/auto-complete")

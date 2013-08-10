@@ -32,25 +32,18 @@
                   (join-line -1)))
 
 ;; Move more quickly
-(global-set-key (kbd "C-S-n")
+(global-set-key (kbd "C-n")
                 (lambda ()
                   (interactive)
                   (ignore-errors (next-line 5))))
 
-(global-set-key (kbd "C-S-p")
+(global-set-key (kbd "C-p")
                 (lambda ()
                   (interactive)
                   (ignore-errors (previous-line 5))))
 
-(global-set-key (kbd "C-S-f")
-                (lambda ()
-                  (interactive)
-                  (ignore-errors (forward-char 5))))
-
-(global-set-key (kbd "C-S-b")
-                (lambda ()
-                  (interactive)
-                  (ignore-errors (backward-char 5))))
+(global-set-key (kbd "C-S-n") 'next-line)
+(global-set-key (kbd "C-S-p") 'previous-line)
 
 (bind "M-r" 'emamux:send-command)
 (bind "M-z" 'undo)

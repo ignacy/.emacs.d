@@ -221,10 +221,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                            ;; output buffer
                            "reekOut" nil
                            "*reekErrors*" nil)
-  (split-window-horizontally)
-  (other-window 0)
-  (set-buffer (get-buffer-create "reekOut"))
-  (other-window 0))
+;;  (split-window-horizontally)
+;;(other-window 0)
+  (set-buffer (get-buffer-create "reekOut")))
+  ;;(other-window 0))
 
 (defun toggle-letter-case ()
   "Toggle the letter case of current word or text selection.

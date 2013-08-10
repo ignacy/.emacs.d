@@ -20,5 +20,6 @@
         mouse-set-region
         ruby-electric-close-matching-char
         ruby-electric-space
+        switch-to-previous-buffer
         yaml-electric-backspace
         ))
