@@ -1,5 +1,13 @@
 ;; interactive name completion for describe-function, describe-variable, etc.
+
 (icomplete-mode 1)
+
+(defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
+(add-to-list 'load-path "~/.emacs.d/auto-complete")
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
 
 (defvar he-search-loc-backward (make-marker))
 (defvar he-search-loc-forward (make-marker))

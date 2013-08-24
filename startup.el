@@ -14,7 +14,6 @@
                       textmate
                       exec-path-from-shell
                       ido-hacks
-                      wrap-region
                       rspec-mode
                       smex
                       flx-ido
@@ -24,6 +23,7 @@
                       key-chord
                       git-gutter
                       rainbow-mode
+                      ace-jump-mode
                       coffee-mode
                       js2-mode
                       expand-region
@@ -32,11 +32,11 @@
                       magit
                       mark-multiple
                       projectile
+                      org
                       ruby-mode
                       inf-ruby
                       browse-kill-ring
-                      paredit
-                      deft
+                      smartparens
                       gist
                       yasnippet
                       rainbow-delimiters
@@ -69,19 +69,9 @@
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode-enable)
 
-
-;;;; global keybindings
-(global-set-key (kbd "M-p") 'backward-paragraph)
-(global-set-key (kbd "M-n") 'forward-paragraph)
-(global-set-key (kbd "C-x C-i") 'imenu)
-(global-set-key (kbd "C-.") 'repeat)
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-M-/") 'hippie-expand-line)
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-o") 'open-line-indent)
-(global-set-key (kbd "M-o") 'open-previous-line)
-
+;;;; ace-jump-mode
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;;;; faces
 (make-face 'font-lock-number-face)
@@ -137,12 +127,8 @@
 
 
 ;;;; git-gutter
-(require 'git-gutter+)
-(global-git-gutter+-mode t)
-(global-set-key (kbd "C-x t") 'git-gutter+-stage-hunks)
-(global-set-key (kbd "C-x c") 'git-gutter+-commit)
-;;(global-git-gutter-mode t))
-
+(require 'git-gutter)
+(global-git-gutter-mode t)
 
 ;;;; idle-highlight
 (require 'idle-highlight-mode)
@@ -188,22 +174,30 @@
 (autoload 'ido-hacks-mode "ido-hacks" t)
 (ido-hacks-mode)
 
-(autoload 'flx-ido-mode "flx-ido" t)
+(require 'flx-ido)
 (flx-ido-mode 1)
-
 ;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
+(flx-ido-mode 1)
 
-;;;; wrap region
-(wrap-region-global-mode t)
+;; ;;;; ORG mode
+(setq org-return-follows-link t)
+(setq org-directory "~/Dropbox/notes")
+(setq org-mobile-inbox-for-pull "~/Dropbox/notes/notes.org")
+(setq org-mobile-directory "~/Dropbox/Aplikacje/MobileOrg")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
+         "* TODO %?\n  %i\n ")
+        ("n" "Note" entry (file+datetree org-default-notes-file)
+         "* %?\nEntered on %U\n  %i\n  ")))
 
-;;;; deft and org mode
-(require 'deft)
-(setq deft-extension "markdown")
-(setq deft-text-mode 'markdown-mode)
-(setq deft-directory "~/Dropbox/notes/deft")
-(setq deft-use-filename-as-title t)
-(setq deft-auto-save-interval 10)
+(org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . nil)
+        (clojure . t)
+        (ruby . t)))
 
 (require 'markdown-mode)
 (setq markdown-imenu-generic-expression

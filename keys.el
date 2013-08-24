@@ -32,23 +32,21 @@
                   (join-line -1)))
 
 ;; Move more quickly
-(global-set-key (kbd "C-n")
+(global-set-key (kbd "C-S-n")
                 (lambda ()
                   (interactive)
                   (ignore-errors (next-line 5))))
 
-(global-set-key (kbd "C-p")
+(global-set-key (kbd "C-S-p")
                 (lambda ()
                   (interactive)
                   (ignore-errors (previous-line 5))))
 
-(global-set-key (kbd "C-S-n") 'next-line)
-(global-set-key (kbd "C-S-p") 'previous-line)
 
 (bind "M-r" 'emamux:send-command)
 (bind "M-z" 'undo)
 (bind "M-s m" 'multi-occur-in-this-mode)
-;; (bind "C-c n" 'clean-up-buffer-or-region)
+
 (bind "C-c q" 'whitespace-mode)
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
@@ -58,7 +56,7 @@
 (bind "C-x C-o" 'other-window)
 (bind "C-x C-1" 'delete-other-windows)
 (bind "C-," 'find-tag-at-point)
-(bind "M-," 'find-tag-at-point)
+(bind "C-c t" 'find-tag-at-point)
 (bind "C-S-o" 'move-line-up)
 (bind "C-o" 'open-line-above)
 (bind "C-S-j" 'move-line-down)
@@ -106,6 +104,11 @@
 (bind "S-<right>" 'enlarge-window-horizontally)
 (bind "S-<up>" 'shrink-window)
 (bind "S-<down>" 'enlarge-window)
+
+
+(bind "C-c d" (lambda()
+                (interactive)
+                (find-file "~/Dropbox/notes/index.org")))
 
 (global-set-key (kbd "C-w") 'kill-region-or-backward-kill-word)
 

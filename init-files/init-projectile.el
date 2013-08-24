@@ -12,8 +12,6 @@
   (visit-tags-table (concat (projectile-project-root) "TAGS")))
 (ad-activate 'find-tag-at-point)
 
-
-
 (eval-after-load "grep"
   '(progn
      (add-to-list 'grep-find-ignored-directories ".bundle")

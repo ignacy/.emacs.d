@@ -29,27 +29,24 @@
                     :family "arial"
                     :height 240
                     :background "#000000"
-                    :foreground "#9999ff"
-                    :weight 'bold)
+                    :foreground "#9999ff")
 
 (set-face-attribute (make-face 'test-heading2) nil
                     :family "arial"
                     :height 180
                     :background "#000000"
-                    :foreground "#9999ff"
-                    :weight 'bold)
+                    :foreground "#9999ff")
+
 
 (set-face-attribute (make-face 'test-success) nil
                     :family "arial"
                     :height 240
-                    :foreground (if window-system "#00aa00" "white")
-                    :weight 'bold)
+                    :foreground (if window-system "#00aa00" "white"))
 
 (set-face-attribute (make-face 'test-failure) nil
                     :family "arial"
                     :height 240
-                    :foreground (if window-system "ff3333" "white")
-                    :weight 'bold)
+                    :foreground (if window-system "ff3333" "white"))
 
 (add-to-list 'compilation-mode-font-lock-keywords
              '("^\\([0-9]+ examples?, 0 failures?.*\n\\)"

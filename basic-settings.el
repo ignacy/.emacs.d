@@ -27,6 +27,11 @@
 ;; (set-frame-parameter (selected-frame) 'alpha '(99 90))
 ;; (add-to-list 'default-frame-alist '(alpha 99 90))
 
+(setq frame-title-format
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))))
+
 (show-paren-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (transient-mark-mode 1) ;; No region when it is not highlighted
@@ -41,20 +46,27 @@
   (setq-default mac-pass-command-to-system nil))
 
 
-(setq im/default-font "-apple-Source_Code_Pro-medium-normal-normal-*-15-*-*-*-m-0-iso10646-1")
-(set-face-attribute 'default nil :font im/default-font)
+(defun font-when-not-connected ()
+  """ This font settings are supposed to be used when I am not connected
+      to a separate display"""
+      (interactive)
+      (when (display-graphic-p)
+        (setq im/default-font "-apple-Source_Code_Pro-medium-normal-normal-*-13-*-*-*-m-0-iso10646-1")
+        (set-face-attribute 'default nil :font im/default-font)))
+
+(defun font-when-connected ()
+  (interactive)
+  (when (display-graphic-p)
+    (setq im/default-font "-apple-Source_Code_Pro-medium-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+    (set-face-attribute 'default nil :font im/default-font)))
+
+(font-when-connected)
+
 
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-
-(hl-line-mode nil)
-;; (global-hl-line-mode 1)
-;; (set-face-background 'hl-line "light cyan")
-;; (set-face-attribute hl-line-face nil :underline t)
-;; (set-face-background 'hl-line "#333")
-;; (set-face-foreground 'hl-line nil)
 (fringe-mode '(0 . 0))
 
 ;;(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)

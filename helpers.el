@@ -281,7 +281,9 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
           tags-completion-table)
     (find-tag (ido-completing-read "Tag: " tag-names))))
 
-(global-set-key [remap find-tag] 'ido-find-tag)
+;;(global-set-key [remap find-tag] 'ido-find-tag)
+(global-set-key (kbd "C-.") 'ido-find-tag)
+
 
 (defun find-file-upwards (file-to-find)
   "Recursively searches each parent directory starting from the default-directory.
@@ -391,8 +393,8 @@ instead."
 
 
 
-;; (global-set-key (kbd "M-n") 'smart-symbol-go-forward)
-;; (global-set-key (kbd "M-p") 'smart-symbol-go-backward)
+(global-set-key (kbd "M-n") 'smart-symbol-go-forward)
+(global-set-key (kbd "M-p") 'smart-symbol-go-backward)
 
 
 

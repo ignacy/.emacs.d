@@ -4,32 +4,27 @@
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq init-files-dir (concat dotfiles-dir "/init-files"))
-
 (add-to-list 'load-path dotfiles-dir)
 (add-to-list 'load-path init-files-dir)
+
+
+
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
 
 (require 'basic-settings)
 (require 'startup) ;; Load packages
 
 
-(require 'key-chord)
-(key-chord-mode 1)
-(setq key-chord-two-keys-delay 0.2)
-(key-chord-define-global ",w" 'save-buffer)
-(key-chord-define-global ",b" 'ido-switch-buffer)
-(key-chord-define-global ",o" 'other-window)
-(key-chord-define-global ",f" 'ido-find-file)
-(key-chord-define-global ",c" 'compile)
-(key-chord-define-global ",r" 'im/reek-on-buffer)
+(if (display-graphic-p)
+    (load-theme 'mccarthy)
+  (load-theme 'base16-default))
 
-(load-theme 'espresso t)
-
-(defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
-(require 'auto-complete)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
-(require 'auto-complete-config)
-(ac-config-default)
+(global-hl-line-mode 1)
+(set-face-attribute hl-line-face nil :underline nil)
+;;(set-face-background 'hl-line "#333")
+(set-face-background 'hl-line "light cyan")
 
 (require 'custom-modeline)
 
@@ -38,8 +33,6 @@
 (require 'helpers)
 (require 'keys)
 (require 'gist)
-
-(setq locate-command "mdfind")
 
 ;;;; Customize some packages
 (require 'init-clojure-mode)
@@ -63,6 +56,6 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+;; (smartparens-global-mode t)
+;; (require 'smartparens-config)
+;; (put 'set-goal-column 'disabled nil)
