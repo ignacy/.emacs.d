@@ -46,14 +46,6 @@
 
 ;;(require 'custom-modeline)
 
-(require 'typing-speed)
-(define-globalized-minor-mode global-typing-speed-mode
-  typing-speed-mode typing-speed-mode)
-
-(global-typing-speed-mode 1)
-
-(load "im-abbrev")
-
 (require 'helpers)
 (require 'keys)
 (require 'gist)

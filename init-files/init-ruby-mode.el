@@ -9,7 +9,6 @@
 (ignore-errors (require 'ruby-compilation))
 (setq yas/mode-symbol 'ruby-mode)
 (setq yas/mode-symbol 'rails-mode)
-(require 'ruby-mode-indent-fix)
 (setq ruby-use-encoding-map nil)
 
 (add-hook 'ruby-mode-hook
@@ -63,31 +62,6 @@
 (add-to-list 'compilation-mode-font-lock-keywords
              '("^==+ \\(.*\n\\)"
                (1 'test-heading2)))
-
-
-;; (defun jw-test-remove-stupid-messages ()
-;;   (save-excursion
-;;     (goto-char (max (- (point) 10) (point-min)))
-;;     (while (re-search-forward "\\(WARNING\\|CONTEXT\\|NOTICE\\):.*
-;; " nil t)
-;;       (replace-match "_"))))
-
-
-;; (defun jw-test-compilation-buffer-hook-function ()
-;;   "Remove carriage returns that occasionally pollute the compile buffer."
-;;   (save-current-buffer
-;;     (set-buffer (get-buffer "*compilation*"))
-;;     (let ((buffer-read-only nil))
-;;       (jw-test-remove-stupid-messages))))
-
-;; (add-hook 'compilation-filter-hook 'jw-test-compilation-buffer-hook-function)
-
-
-(define-key ruby-mode-map (kbd "C-c C-,") 'compile)
-
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (inf-ruby-minor-mode)))
 
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
 
