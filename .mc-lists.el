@@ -10,6 +10,7 @@
         kill-rectangle
         ruby-electric-matching-char
         smarter-move-beginning-of-line
+        sp--self-insert-command
         ))
 
 (setq mc/cmds-to-run-once

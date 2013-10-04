@@ -14,6 +14,11 @@
 (define-key input-decode-map "\e[1;5C" [C-right])
 (define-key input-decode-map "\e[1;5D" [C-left])
 
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
+
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
@@ -43,7 +48,7 @@
                   (ignore-errors (previous-line 5))))
 
 
-(bind "M-r" 'emamux:send-command)
+(bind "M-r" 'ag-project-regexp)
 (bind "M-z" 'undo)
 (bind "M-s m" 'multi-occur-in-this-mode)
 
@@ -52,6 +57,7 @@
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-i" 'imenu)
 (bind "C-x C-r" 'ido-recentf-open)
+
 (bind "M-h" 'backward-kill-word)
 (bind "C-x C-o" 'other-window)
 (bind "C-x C-1" 'delete-other-windows)
@@ -63,21 +69,20 @@
 (bind "C-j" 'newline-and-indent)
 (bind "C-@" 'er/expand-region)
 
-;; Smart M-x
-(bind "M-x" 'smex)
-
 (bind "C-x C-f" 'ido-find-file)
 (bind "C-x C-p" 'find-file-at-point)
 (bind "C-1" 'switch-to-zsh)
 (bind "C-M-s" 'isearch-other-window)
 (bind "C-x k" 'im/kill-current-buffer)
 (bind "M-%" 'replace-regexp)
-
+(bind "C-c C-d" 'dash-at-point)
 (bind "M-\\" 'jump-to-mark)
 (bind "C-\\" 'push-mark-no-activate)
 
 (require 'textmate)
-(bind "C-'" 'textmate-goto-symbol)
+;;(bind "C-'" 'textmate-goto-symbol)
+(bind "C-'" 'ido-goto-symbol)
+
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x b" 'ido-switch-buffer)
 (bind "M-g" 'goto-line-with-feedback)
@@ -119,7 +124,7 @@
 
 (keyboard-translate ?\C-h ?\C-?)
 
-(global-set-key [(control backspace)] 'backward-kill-word)
+(global-set-key [(control obackspace)] 'backward-kill-word)
 (global-set-key [(meta delete)] 'backward-kill-word)
 (bind "C-x g" 'magit-status)
 (bind "<up>" 'scroll-n-lines-behind)

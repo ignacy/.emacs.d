@@ -9,7 +9,7 @@
                                      'help-echo "Buffer has been modified")))
 
                ;;the buffer name; the file name as a tool tip
-               '(:eval (propertize "%b " 'face 'font-lock-keyword-face
+               '(:eval (propertize "%b " 'face 'font-lock-variable-name-face
                                    'help-echo (buffer-file-name)))
                ;; relative position, size of file
                '(:eval (when (vc-mode)
@@ -23,8 +23,8 @@
                ))
 
 
-;;(set-face-background 'mode-line "#123")
-;; (set-face-foreground 'mode-line "#fff")
+;;(set-face-background 'mode-line "#222222")
+;;(set-face-foreground 'mode-line "#fff")
 
 
 ;;(set-face-background 'mode-line "#4477aa")

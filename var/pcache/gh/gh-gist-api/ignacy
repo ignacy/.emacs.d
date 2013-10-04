@@ -1,0 +1,779 @@
+;; Object gh/gh-gist-api/ignacy
+;; EIEIO PERSISTENT OBJECT
+(gh-cache "gh/gh-gist-api/ignacy"
+  :file "ignacy"
+  :entries #s(hash-table size 65 test equal rehash-size 1.5 rehash-threshold 0.8 data (("/users/ignacy/gists" "GET" "518961b9e53cab492b8a913ae8ba7382d4306545") [object pcache-entry "pcache-entry" 1379704390.277004 nil ([object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "results" 57301 "https://gist.github.com/raw/077736bd0faf456e6fe7/15faf09b9c8949f18897aab55b6a570a5c7630b2/results" nil] [object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.rb" 1055 "https://gist.github.com/raw/077736bd0faf456e6fe7/428f9ed421ef0eac3f9dec0f454b5496e7142df5/gistfile1.rb" nil]) :json-false "" "2013-09-05T12:51:06Z" "2013-09-05T12:54:08Z" "https://gist.github.com/077736bd0faf456e6fe7.git" "https://gist.github.com/077736bd0faf456e6fe7.git" "https://gist.github.com/077736bd0faf456e6fe7" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "077736bd0faf456e6fe7" "https://api.github.com/gists/077736bd0faf456e6fe7" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "using_jbuilder_for_json.rb" 681 "https://gist.github.com/raw/2fe564a87aa92f68b00d/4d1fee75dea2935b3853b2168d7d060b82600947/using_jbuilder_for_json.rb" nil]) nil "" "2013-08-01T08:08:45Z" "2013-08-01T08:10:22Z" "https://gist.github.com/2fe564a87aa92f68b00d.git" "https://gist.github.com/2fe564a87aa92f68b00d.git" "https://gist.github.com/2fe564a87aa92f68b00d" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "2fe564a87aa92f68b00d" "https://api.github.com/gists/2fe564a87aa92f68b00d" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "stuff_api.rb" 285 "https://gist.github.com/raw/ba9db657633c5fa71cd3/6099d8bb07bed09fb4eb8ebdc92b23594546d52b/stuff_api.rb" nil]) nil "" "2013-07-29T08:39:54Z" "2013-07-29T08:39:54Z" "https://gist.github.com/ba9db657633c5fa71cd3.git" "https://gist.github.com/ba9db657633c5fa71cd3.git" "https://gist.github.com/ba9db657633c5fa71cd3" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "ba9db657633c5fa71cd3" "https://api.github.com/gists/ba9db657633c5fa71cd3" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.txt" 4810 "https://gist.github.com/raw/19558154d2751f678ed6/7f907bd01857958a9c85114a285bd3d2bea1cf5b/gistfile1.txt" nil]) :json-false "" "2013-07-15T10:43:39Z" "2013-07-15T10:43:40Z" "https://gist.github.com/19558154d2751f678ed6.git" "https://gist.github.com/19558154d2751f678ed6.git" "https://gist.github.com/19558154d2751f678ed6" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "19558154d2751f678ed6" "https://api.github.com/gists/19558154d2751f678ed6" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "ebot.el" 967 "https://gist.github.com/raw/5984355/eb9fccbb0e0e37439a1ad7caf498e1dc8d3507b1/ebot.el" nil]) t "" "2013-07-12T13:10:34Z" "2013-07-12T13:10:35Z" "https://gist.github.com/5984355.git" "https://gist.github.com/5984355.git" "https://gist.github.com/5984355" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "5984355" "https://api.github.com/gists/5984355" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "testing_results.md" 4218 "https://gist.github.com/raw/7a5f3d6d30544d5df82b/eb35651a15db642cf018e2b0dbb0418a19a84b5f/testing_results.md" nil]) nil "" "2013-05-30T09:53:22Z" "2013-05-30T09:53:22Z" "https://gist.github.com/7a5f3d6d30544d5df82b.git" "https://gist.github.com/7a5f3d6d30544d5df82b.git" "https://gist.github.com/7a5f3d6d30544d5df82b" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "7a5f3d6d30544d5df82b" "https://api.github.com/gists/7a5f3d6d30544d5df82b" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "testing_results.md" 4053 "https://gist.github.com/raw/9b164c6fc90f09012908/1f2ef701df919400d67924fa25c609f2b0cdb459/testing_results.md" nil]) nil "" "2013-05-30T09:51:26Z" "2013-05-30T09:51:26Z" "https://gist.github.com/9b164c6fc90f09012908.git" "https://gist.github.com/9b164c6fc90f09012908.git" "https://gist.github.com/9b164c6fc90f09012908" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "9b164c6fc90f09012908" "https://api.github.com/gists/9b164c6fc90f09012908" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "helpers.el" 259 "https://gist.github.com/raw/5641455/b9508cb8be42a49887f78cb6563987b53afa1d04/helpers.el" nil]) t "" "2013-05-24T05:32:35Z" "2013-05-24T05:32:35Z" "https://gist.github.com/5641455.git" "https://gist.github.com/5641455.git" "https://gist.github.com/5641455" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "5641455" "https://api.github.com/gists/5641455" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "pr.md" 1042 "https://gist.github.com/raw/5566985/8ccee1c0c30e34765f66880fe565dbc80b1ab803/pr.md" nil]) t nil "2013-05-13T08:45:30Z" "2013-05-13T08:45:30Z" "https://gist.github.com/5566985.git" "https://gist.github.com/5566985.git" "https://gist.github.com/5566985" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "5566985" "https://api.github.com/gists/5566985" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.sh" 2006 "https://gist.github.com/raw/90d94fb7da23f5b56b52/ecaa700041d104c9be73c519223e69114ed7bd13/gistfile1.sh" nil]) :json-false "Deploy Fortis Invoices" "2013-05-07T11:00:03Z" "2013-05-07T11:00:04Z" "https://gist.github.com/90d94fb7da23f5b56b52.git" "https://gist.github.com/90d94fb7da23f5b56b52.git" "https://gist.github.com/90d94fb7da23f5b56b52" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "90d94fb7da23f5b56b52" "https://api.github.com/gists/90d94fb7da23f5b56b52" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "solrsetup.sh" 1063 "https://gist.github.com/raw/5530985/c858001113ca2d7558a18f2d6a4734bd94efe993/solrsetup.sh" nil]) t nil "2013-05-07T08:02:44Z" "2013-05-07T08:02:44Z" "https://gist.github.com/5530985.git" "https://gist.github.com/5530985.git" "https://gist.github.com/5530985" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "5530985" "https://api.github.com/gists/5530985" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "sublime-text-2.el" 1056 "https://gist.github.com/raw/5459086/ab7a174efc736acf8b27a11cabd6ea8622310876/sublime-text-2.el" nil]) t nil "2013-04-25T11:29:49Z" "2013-04-25T11:29:49Z" "https://gist.github.com/5459086.git" "https://gist.github.com/5459086.git" "https://gist.github.com/5459086" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "5459086" "https://api.github.com/gists/5459086" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "converter..clj" 277 "https://gist.github.com/raw/d27c392bc82863c63fbe/2d1e0d6f549ebcba2563557068faed5195fbb01d/converter..clj" nil]) nil "" "2013-04-10T12:51:20Z" "2013-04-10T12:51:20Z" "https://gist.github.com/d27c392bc82863c63fbe.git" "https://gist.github.com/d27c392bc82863c63fbe.git" "https://gist.github.com/d27c392bc82863c63fbe" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "d27c392bc82863c63fbe" "https://api.github.com/gists/d27c392bc82863c63fbe" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "a_star.rb" 2990 "https://gist.github.com/raw/11204707aab538924d2f/2437223b803c57ea76928d56bb29607596569669/a_star.rb" nil]) nil "" "2013-04-10T09:39:56Z" "2013-04-10T09:39:56Z" "https://gist.github.com/11204707aab538924d2f.git" "https://gist.github.com/11204707aab538924d2f.git" "https://gist.github.com/11204707aab538924d2f" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "11204707aab538924d2f" "https://api.github.com/gists/11204707aab538924d2f" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "init-projectile.el" 209 "https://gist.github.com/raw/5278148/4968f24b7d2f483881bb5e29b3dae64cf82a8995/init-projectile.el" nil]) t "" "2013-03-30T20:07:01Z" "2013-03-30T20:07:01Z" "https://gist.github.com/5278148.git" "https://gist.github.com/5278148.git" "https://gist.github.com/5278148" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "5278148" "https://api.github.com/gists/5278148" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "im-keys.el" 331 "https://gist.github.com/raw/5115560/80e5c86a371ff1f27f6fce6627e4a095b5467344/im-keys.el" nil]) t "" "2013-03-08T10:25:30Z" "2013-03-08T10:25:30Z" "https://gist.github.com/5115560.git" "https://gist.github.com/5115560.git" "https://gist.github.com/5115560" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "5115560" "https://api.github.com/gists/5115560" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "template_view.js" 271 "https://gist.github.com/raw/0fcc17ed55d7c6f92f3d/be589bd48ab17bf3642aaacef7b873302a2d3970/template_view.js" nil]) nil "" "2013-02-08T09:05:50Z" "2013-02-08T09:05:50Z" "https://gist.github.com/0fcc17ed55d7c6f92f3d.git" "https://gist.github.com/0fcc17ed55d7c6f92f3d.git" "https://gist.github.com/0fcc17ed55d7c6f92f3d" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "0fcc17ed55d7c6f92f3d" "https://api.github.com/gists/0fcc17ed55d7c6f92f3d" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "fft.rb" 1135 "https://gist.github.com/raw/ab578c6782f97a7c74f4/32246feed362f43f919756ea74cf6ca659922959/fft.rb" nil]) nil "" "2013-01-10T11:09:09Z" "2013-01-10T11:09:09Z" "https://gist.github.com/ab578c6782f97a7c74f4.git" "https://gist.github.com/ab578c6782f97a7c74f4.git" "https://gist.github.com/ab578c6782f97a7c74f4" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "ab578c6782f97a7c74f4" "https://api.github.com/gists/ab578c6782f97a7c74f4" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "core..clj" 370 "https://gist.github.com/raw/4476370/291e71f4cb3a69c8a20315914661b5571562f9ca/core..clj" nil]) t "" "2013-01-07T16:34:23Z" "2013-01-07T16:34:23Z" "https://gist.github.com/4476370.git" "https://gist.github.com/4476370.git" "https://gist.github.com/4476370" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "4476370" "https://api.github.com/gists/4476370" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.el" 243 "https://gist.github.com/raw/3951226/84c93c44c9207de94c2bb0ba115022fb9adf074e/gistfile1.el" nil]) t "" "2012-10-25T07:42:10Z" "2012-10-25T07:42:10Z" "https://gist.github.com/3951226.git" "https://gist.github.com/3951226.git" "https://gist.github.com/3951226" 1 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "3951226" "https://api.github.com/gists/3951226" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "whole_page.el" 1062 "https://gist.github.com/raw/3313271/c79320a4f735be10eabed8253c9469b00a983650/whole_page.el" nil]) t "" "2012-08-10T10:34:12Z" "2012-08-10T10:34:12Z" "https://gist.github.com/3313271.git" "https://gist.github.com/3313271.git" "https://gist.github.com/3313271" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "3313271" "https://api.github.com/gists/3313271" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "page_generation.el" 526 "https://gist.github.com/raw/3313259/9e5d794c5f834594205831e54b99bfa2c0953a46/page_generation.el" nil]) t "" "2012-08-10T10:30:32Z" "2012-08-10T10:30:32Z" "https://gist.github.com/3313259.git" "https://gist.github.com/3313259.git" "https://gist.github.com/3313259" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "3313259" "https://api.github.com/gists/3313259" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "html.el" 492 "https://gist.github.com/raw/3313246/0027dd989bb6e5b43fdf4ec907b2eff4356d2788/html.el" nil]) t "" "2012-08-10T10:26:33Z" "2012-08-10T10:26:33Z" "https://gist.github.com/3313246.git" "https://gist.github.com/3313246.git" "https://gist.github.com/3313246" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "3313246" "https://api.github.com/gists/3313246" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "basic_elnode.el" 255 "https://gist.github.com/raw/3313187/f7013d8317247fd2c9450fc46c8c1809f8710110/basic_elnode.el" nil]) t "" "2012-08-10T10:17:09Z" "2012-08-10T10:17:09Z" "https://gist.github.com/3313187.git" "https://gist.github.com/3313187.git" "https://gist.github.com/3313187" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "3313187" "https://api.github.com/gists/3313187" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.clj" 172 "https://gist.github.com/raw/4271ebda3c9f005e72d3/d33177ea3c14b60eb6137427f171cfd5e279359f/gistfile1.clj" nil]) :json-false "" "2012-07-13T08:08:59Z" "2012-07-13T08:08:59Z" "https://gist.github.com/4271ebda3c9f005e72d3.git" "https://gist.github.com/4271ebda3c9f005e72d3.git" "https://gist.github.com/4271ebda3c9f005e72d3" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "4271ebda3c9f005e72d3" "https://api.github.com/gists/4271ebda3c9f005e72d3" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "firneds_locations.clj" 3960 "https://gist.github.com/raw/020dddd18ab1f7965663/ebb166c8e8162cbce7d942ba60845a380ed41e6b/firneds_locations.clj" nil]) :json-false "" "2012-07-12T13:14:50Z" "2012-07-12T13:14:50Z" "https://gist.github.com/020dddd18ab1f7965663.git" "https://gist.github.com/020dddd18ab1f7965663.git" "https://gist.github.com/020dddd18ab1f7965663" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "020dddd18ab1f7965663" "https://api.github.com/gists/020dddd18ab1f7965663" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "facebook_example.clj" 3336 "https://gist.github.com/raw/5d0233dcfe75eaf4f632/75839bc3e8f7965d7624d5f5e7c84c8b5d5d3661/facebook_example.clj" nil]) :json-false "" "2012-07-11T08:23:25Z" "2012-07-11T08:23:25Z" "https://gist.github.com/5d0233dcfe75eaf4f632.git" "https://gist.github.com/5d0233dcfe75eaf4f632.git" "https://gist.github.com/5d0233dcfe75eaf4f632" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "5d0233dcfe75eaf4f632" "https://api.github.com/gists/5d0233dcfe75eaf4f632" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.scm" 803 "https://gist.github.com/raw/3071779/7237ce463607ab212b11cc0a313fa63d33d87d14/gistfile1.scm" nil]) t "bisekcja" "2012-07-08T17:01:01Z" "2012-07-08T17:01:01Z" "https://gist.github.com/3071779.git" "https://gist.github.com/3071779.git" "https://gist.github.com/3071779" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "3071779" "https://api.github.com/gists/3071779" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "reek.el" 409 "https://gist.github.com/raw/1739648/61d6053e3e6b9d273514d63bc01b05e7fe05bf1e/reek.el" nil]) t "reek on a buffer" "2012-02-04T19:34:54Z" "2012-02-04T19:34:54Z" "https://gist.github.com/1739648.git" "https://gist.github.com/1739648.git" "https://gist.github.com/1739648" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "1739648" "https://api.github.com/gists/1739648" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "page.html.erb" 655 "https://gist.github.com/raw/272c6dd2b5d4364d5b02/96e66f524e43b32a902404cfc00f59838ccc1bd3/page.html.erb" "    <span class=\"avatar\">
+      <%= facebook_image_link(person) %>
+    </span>
+    <div class=\"item_content\">
+      <strong class=\"title\">
+        <span class=\"name\"><%= h person.name %></span>
+        <span class=\"e_icon fb_icon\"></span>
+      </strong>
+      <ul class=\"request_endorsement\">
+        <li><a title=\"<%= t('people.index.request') %>\" href=\"#\" data-event-type=\"request-endorsement\" data-fb-id=\"<%= person.fb_id %>\"><%= t('people.index.request') %></a></li>
+      </ul>
+      <%# old way of requesting for endorsement via e-mail %>
+      <%#= render :partial => 'people/fb_actions', :locals => {:fb => person} if own_profile?(@candidate) %>
+"] [object gh-gist-gist-file "gh-gist-gist-file" "invite.js" 3773 "https://gist.github.com/raw/272c6dd2b5d4364d5b02/5113ee2844e0b51ce3190ae82a25142e465e8914/invite.js" "
+var FbActions;
+
+(function(){
+  
+  FbActions = this.FbActions = new Class({
+    
+    Implements: [Options, Events],
+    
+    options: {},
+    
+    initialize: function(selector, options){
+      this.selector = selector;
+      this.setOptions(options);
+      this.mainCont = document.id('content');
+      if (this.mainCont){
+        this.attach();
+      }
+    },
+    
+    attach: function(){
+      this.mainCont.addEvent('click:relay(' + this.selector + ')', this.trigger.bind(this));
+    },
+    
+    trigger: function(event, element){
+      event.stop();
+      this[element.get('data-event-type').camelCase()].call(this, element);
+    },
+    
+    showConfirmation: function(){
+      this.empty();
+      Elements.from('<li class=\"requested\">Request sent</li>').inject(this);
+    },
+    
+    requestEndorsement: function(element){
+      this.endorseWith[JT_config.fb.post_type.camelCase()].call(this, element);
+    },
+    
+    endorseWith: {
+      
+      wallPost: function(element){
+        var request_endorsement = element.getParent('.request_endorsement');
+        new Request.JSON({
+          url: element.get('href'),
+          method: 'post',
+          data: {
+            fb_id: element.data('fb-id'),
+            post_type: JT_config.fb.post_type
+          },
+          onRequest: function(){
+            request_endorsement.getElement('li').hide();
+          },
+          onComplete: function(response){
+            this.showConfirmation.call(request_endorsement);
+            this.fireEvent('onRequestedEndorsement', element, response);
+          }.bind(this)
+        }).send();
+      },
+      
+      privateMessage: function(element){
+        var request_endorsement = element.getParent('.request_endorsement');
+        if (request_endorsement){
+          request_endorsement.getElement('li').hide();
+        }
+        FB.ui({
+            method: 'send',
+            to: element.data('fb-id'),
+            name: 'Jobandtalent',
+            link: 'http://jobandtalent.com',
+            picture: 'http://fbrell.com/f8.jpg',
+            description: 'Hi, {name} would like you to endorse him at Jobandtalent'
+          },
+          function(response){
+            if (response && response.post_id){
+              this.fireEvent('onRequestedEndorsement', element);
+              this.showConfirmation.call(request_endorsement);
+            } else {
+              request_endorsement.getElement('li').show();
+            }
+          }.bind(this)
+        );
+      }
+    },
+    
+    request: function(opt){
+      new Request({
+        url: opt.element.get('href'),
+        method: 'post',
+        data: {
+          displayed_ids: opt.cont.getParent('ul').getElements('.skip a').get('data-relationship-id')
+        },
+        onRequest: function(){
+          opt.element.getParent('.fbf_actions').getElements('a').hide();
+        },
+        onComplete: function(response){
+          this.skip(opt.element, {
+            templateString: response,
+            templateNodes: Elements.from(response)
+          });
+        }.bind(this)
+      }).send();
+    },
+    
+    fetch: function(element){
+      this.request.call(this, {
+        element: element,
+        cont: element.getParent('.fbf_cont')
+      });
+    },
+    
+    skip: function(element, response){
+      var cont = element.getParent('.fbf_cont');
+      if (response.templateString === ''){
+        cont.getParent().dispose();
+      } else {
+        new Fx.Tween(cont, {
+          onComplete: this.showNext.bind(this, element, response)
+        }).start('left', [0, -285]);
+      }
+    },
+    
+    showNext: function(element, response){
+      var cont = element.getParent('.fbf_cont');
+      cont.empty();
+      cont.adopt(response.templateNodes);
+      cont.tween('left', [285, 0]);
+    }
+    
+  });
+  
+}).call();
+"]) :json-false "Html layout" "2011-12-01T14:23:05Z" "2011-12-01T14:23:05Z" "https://gist.github.com/272c6dd2b5d4364d5b02.git" "https://gist.github.com/272c6dd2b5d4364d5b02.git" "https://gist.github.com/272c6dd2b5d4364d5b02" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "272c6dd2b5d4364d5b02" "https://api.github.com/gists/272c6dd2b5d4364d5b02" (((url . "https://api.github.com/gists/272c6dd2b5d4364d5b02/38435f403829636ca2d8700e5fa9166336363a02") (change_status (deletions . 0) (additions . 144) (total . 144)) (committed_at . "2011-12-01T14:23:05Z") (version . "38435f403829636ca2d8700e5fa9166336363a02") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://1.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "Idea.java" 1072 "https://gist.github.com/raw/a24b6129ec35dc5d6339/2c5587b931d76d03ed946e3b890d003754291404/Idea.java" "public class SimpleFrame extends ArrayList {
+
+    public void dump() {
+        // 1. save current state (Serialize action)
+        // 2. draw some custom view  - screen with text:
+        Iterator it = this.iterator();
+        while(it.hasNext()) {
+            // draw some view for showing
+            // objects class, and debug info
+        }
+    }
+
+    public void resume() {
+        // Bind this to xlet keys as some combination
+        // 3. clear info screen and resum the serialized action
+    }
+}
+
+public abstract class BDJObject {
+    public BDJObject() {
+       simpleFrameInstance.add(this);
+    }
+
+    // if we're in Model then show fields
+    // if we're in Container/Component show size, img, colors, text
+    // if we're in Controller show, view name, params, method name
+    // if we're in View show, partials, data
+    // if we're in Partial show some kind of static report
+    public abstract String debugInfo();
+  
+    // we can count this for every object, if we know what
+    // type of object it is
+    private abstract int showUsedMem();
+        
+}"]) :json-false "Debug data on BDJ" "2011-11-28T16:37:02Z" "2011-11-28T16:37:02Z" "https://gist.github.com/a24b6129ec35dc5d6339.git" "https://gist.github.com/a24b6129ec35dc5d6339.git" "https://gist.github.com/a24b6129ec35dc5d6339" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "a24b6129ec35dc5d6339" "https://api.github.com/gists/a24b6129ec35dc5d6339" (((url . "https://api.github.com/gists/a24b6129ec35dc5d6339/e80efeca450fe5dbb13bf3a24662e7004a2c2849") (change_status (deletions . 0) (additions . 3) (total . 3)) (committed_at . "2011-11-28T16:38:38Z") (version . "e80efeca450fe5dbb13bf3a24662e7004a2c2849") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://1.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy"))) ((url . "https://api.github.com/gists/a24b6129ec35dc5d6339/ff793f7995235f22d843589160b1a671ea5284fd") (change_status (deletions . 0) (additions . 32) (total . 32)) (committed_at . "2011-11-28T16:37:02Z") (version . "ff793f7995235f22d843589160b1a671ea5284fd") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://1.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.sh" 65 "https://gist.github.com/raw/1327470/641880ed4e0991d619f954059cdfe472eafcd509/gistfile1.sh" nil]) t "poor man's autotest" "2011-10-31T13:18:03Z" "2011-10-31T13:18:03Z" "https://gist.github.com/1327470.git" "https://gist.github.com/1327470.git" "https://gist.github.com/1327470" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "1327470" "https://api.github.com/gists/1327470" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "multiple.rb" 174 "https://gist.github.com/raw/8d0050e9f6221f8b874c/ee3b6f92e476ab07ddef27397d707dd9e7fc82f5/multiple.rb" nil]) :json-false "Methods taking multiple blocks" "2011-10-11T10:52:20Z" "2011-10-11T10:52:20Z" "https://gist.github.com/8d0050e9f6221f8b874c.git" "https://gist.github.com/8d0050e9f6221f8b874c.git" "https://gist.github.com/8d0050e9f6221f8b874c" 2 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "8d0050e9f6221f8b874c" "https://api.github.com/gists/8d0050e9f6221f8b874c" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gettersetter.yasnippet" 280 "https://gist.github.com/raw/1258780/4dce3ced5c7ce2fcd50078f94184f34c41e8eb0f/gettersetter.yasnippet" nil]) t "yasnippet getter/setter method for java" "2011-10-03T09:35:16Z" "2011-10-03T09:35:16Z" "https://gist.github.com/1258780.git" "https://gist.github.com/1258780.git" "https://gist.github.com/1258780" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "1258780" "https://api.github.com/gists/1258780" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.rb" 434 "https://gist.github.com/raw/9df4f422e22d34de2133/1ae456391a6fa7fcc6cdb00718f6d55b8d9a3ffa/gistfile1.rb" nil]) :json-false "solution.rb" "2011-09-12T11:54:42Z" "2011-09-12T11:54:42Z" "https://gist.github.com/9df4f422e22d34de2133.git" "https://gist.github.com/9df4f422e22d34de2133.git" "https://gist.github.com/9df4f422e22d34de2133" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "9df4f422e22d34de2133" "https://api.github.com/gists/9df4f422e22d34de2133" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "scene.rb" 636 "https://gist.github.com/raw/ec0c1acca147bfe78afc/5f1f3246e043def6764edf0faca26966ec6b4bf6/scene.rb" nil]) :json-false "" "2011-07-25T13:53:08Z" "2011-07-25T13:53:08Z" "https://gist.github.com/ec0c1acca147bfe78afc.git" "https://gist.github.com/ec0c1acca147bfe78afc.git" "https://gist.github.com/ec0c1acca147bfe78afc" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "ec0c1acca147bfe78afc" "https://api.github.com/gists/ec0c1acca147bfe78afc" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "controller.rb" 19390 "https://gist.github.com/raw/611c36c14cca82df869e/6dc454e3378e166c50d1651387c7971cca666bb5/controller.rb" nil]) :json-false "kontroller" "2011-07-22T06:38:24Z" "2011-07-22T06:38:24Z" "https://gist.github.com/611c36c14cca82df869e.git" "https://gist.github.com/611c36c14cca82df869e.git" "https://gist.github.com/611c36c14cca82df869e" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "611c36c14cca82df869e" "https://api.github.com/gists/611c36c14cca82df869e" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "playlist.java" 911 "https://gist.github.com/raw/fee59c6ebe96c6a3aedf/98dc48992958812c8b27aacadfdc5f8ca8e9b285/playlist.java" nil]) :json-false "Start playlist" "2011-06-22T10:09:51Z" "2011-06-22T10:09:51Z" "https://gist.github.com/fee59c6ebe96c6a3aedf.git" "https://gist.github.com/fee59c6ebe96c6a3aedf.git" "https://gist.github.com/fee59c6ebe96c6a3aedf" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "fee59c6ebe96c6a3aedf" "https://api.github.com/gists/fee59c6ebe96c6a3aedf" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "RestartTitle.java" 666 "https://gist.github.com/raw/a868dceffa71adc737b9/7b0191e55f57a18a466bedbb1bd2de4fd6499a4e/RestartTitle.java" nil]) :json-false "" "2011-06-21T12:05:33Z" "2011-06-21T12:05:33Z" "https://gist.github.com/a868dceffa71adc737b9.git" "https://gist.github.com/a868dceffa71adc737b9.git" "https://gist.github.com/a868dceffa71adc737b9" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "a868dceffa71adc737b9" "https://api.github.com/gists/a868dceffa71adc737b9" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "xlet.java" 662 "https://gist.github.com/raw/f42c3146c80a136c2548/e33785a6df1ad038ffb7973e1f0d40419a5bb0c2/xlet.java" nil]) :json-false "Xlet flow" "2011-06-20T09:08:08Z" "2011-06-20T09:08:08Z" "https://gist.github.com/f42c3146c80a136c2548.git" "https://gist.github.com/f42c3146c80a136c2548.git" "https://gist.github.com/f42c3146c80a136c2548" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "f42c3146c80a136c2548" "https://api.github.com/gists/f42c3146c80a136c2548" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "VFSOperationsManager.java" 4396 "https://gist.github.com/raw/f29d0f8e73fce183553b/50416be727c60b8eee1a5efee6bdea530e940321/VFSOperationsManager.java" nil]) :json-false "" "2011-06-17T08:17:42Z" "2011-06-17T08:17:42Z" "https://gist.github.com/f29d0f8e73fce183553b.git" "https://gist.github.com/f29d0f8e73fce183553b.git" "https://gist.github.com/f29d0f8e73fce183553b" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "f29d0f8e73fce183553b" "https://api.github.com/gists/f29d0f8e73fce183553b" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "ProgresivePlaylist.java" 2078 "https://gist.github.com/raw/fb402f81f2dc89fda05a/6fdc6ea44842787dabff31e790f30bf0d9b9b994/ProgresivePlaylist.java" nil]) :json-false "" "2011-06-17T07:37:11Z" "2011-06-17T07:37:11Z" "https://gist.github.com/fb402f81f2dc89fda05a.git" "https://gist.github.com/fb402f81f2dc89fda05a.git" "https://gist.github.com/fb402f81f2dc89fda05a" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "fb402f81f2dc89fda05a" "https://api.github.com/gists/fb402f81f2dc89fda05a" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "handleStreamPlayback.java" 1297 "https://gist.github.com/raw/014cdf6036ea6232f062/043f3afe7e1d637f3ca2ae717dbc1428827de6fc/handleStreamPlayback.java" nil]) :json-false "" "2011-06-17T07:31:17Z" "2011-06-17T07:31:17Z" "https://gist.github.com/014cdf6036ea6232f062.git" "https://gist.github.com/014cdf6036ea6232f062.git" "https://gist.github.com/014cdf6036ea6232f062" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "014cdf6036ea6232f062" "https://api.github.com/gists/014cdf6036ea6232f062" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "handleStreamPlayback.java" 1297 "https://gist.github.com/raw/1031015/043f3afe7e1d637f3ca2ae717dbc1428827de6fc/handleStreamPlayback.java" nil]) t "" "2011-06-17T07:31:16Z" "2011-06-17T07:31:16Z" "https://gist.github.com/1031015.git" "https://gist.github.com/1031015.git" "https://gist.github.com/1031015" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "1031015" "https://api.github.com/gists/1031015" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "pogresive_playlist.java" 917 "https://gist.github.com/raw/4bcf5054846fff324864/ca425b20e205c21c319fb6f6755bc3e776e2547a/pogresive_playlist.java" nil]) :json-false "BDJ run playlist" "2011-06-17T06:55:30Z" "2011-06-17T06:55:30Z" "https://gist.github.com/4bcf5054846fff324864.git" "https://gist.github.com/4bcf5054846fff324864.git" "https://gist.github.com/4bcf5054846fff324864" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "4bcf5054846fff324864" "https://api.github.com/gists/4bcf5054846fff324864" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" ".Xdefaults" 305 "https://gist.github.com/raw/1018364/85ef4d895897398c9cb4ac7735995a40622604a6/.Xdefaults" nil]) t "Setting 256 colors and other basic options for xterm " "2011-06-10T06:59:49Z" "2011-06-10T06:59:58Z" "https://gist.github.com/1018364.git" "https://gist.github.com/1018364.git" "https://gist.github.com/1018364" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "1018364" "https://api.github.com/gists/1018364" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "git-minutes.rb" 804 "https://gist.github.com/raw/973028/6b01a9963e692234858eca753c07a29f2d6399ce/git-minutes.rb" nil]) t "Get git commit timmings" "2011-05-15T10:19:41Z" "2011-05-15T10:20:40Z" "https://gist.github.com/973028.git" "https://gist.github.com/973028.git" "https://gist.github.com/973028" 2 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "973028" "https://api.github.com/gists/973028" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "jrubytest.rb" 240 "https://gist.github.com/raw/906109/8341c9e30213185cea812d72f9a1c2c8616458b1/jrubytest.rb" nil]) t "Test java code with jruby" "2011-04-06T17:38:12Z" "2011-04-06T17:39:12Z" "https://gist.github.com/906109.git" "https://gist.github.com/906109.git" "https://gist.github.com/906109" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "906109" "https://api.github.com/gists/906109" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.sls" 1036 "https://gist.github.com/raw/811945/c3eac70062bf9cbd121bdc1195628cf73534bc2a/gistfile1.sls" nil]) t "color-theme-im3.el" "2011-02-04T22:53:43Z" "2011-02-04T22:53:43Z" "https://gist.github.com/811945.git" "https://gist.github.com/811945.git" "https://gist.github.com/811945" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "811945" "https://api.github.com/gists/811945" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.rb" 753 "https://gist.github.com/raw/9d1b26d49ada91c52253/7229bf35922f6eb6b52b0e31dee35a93d7ced827/gistfile1.rb" nil]) :json-false "" "2010-12-31T09:26:15Z" "2010-12-31T09:26:16Z" "https://gist.github.com/9d1b26d49ada91c52253.git" "https://gist.github.com/9d1b26d49ada91c52253.git" "https://gist.github.com/9d1b26d49ada91c52253" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "9d1b26d49ada91c52253" "https://api.github.com/gists/9d1b26d49ada91c52253" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.js" 683 "https://gist.github.com/raw/754832/b02f69da435fad89e5835855e013168c6165b5cc/gistfile1.js" nil]) t "module pattern" "2010-12-25T11:18:34Z" "2010-12-25T11:18:52Z" "https://gist.github.com/754832.git" "https://gist.github.com/754832.git" "https://gist.github.com/754832" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "754832" "https://api.github.com/gists/754832" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.js" 340 "https://gist.github.com/raw/754828/b051c5b47d12da6780a597b946f6043d951de057/gistfile1.js" nil]) t "" "2010-12-25T11:09:30Z" "2010-12-25T11:09:30Z" "https://gist.github.com/754828.git" "https://gist.github.com/754828.git" "https://gist.github.com/754828" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "754828" "https://api.github.com/gists/754828" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.rb" 235 "https://gist.github.com/raw/754827/cd09e5e0e3839b51a5ff926ebcaf850b8d32d3e2/gistfile1.rb" nil]) t "" "2010-12-25T11:08:09Z" "2010-12-25T11:08:10Z" "https://gist.github.com/754827.git" "https://gist.github.com/754827.git" "https://gist.github.com/754827" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "754827" "https://api.github.com/gists/754827" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.rb" 446 "https://gist.github.com/raw/754825/e8430698c792c808ee6bd7cab4233389273fcfbb/gistfile1.rb" nil]) t "Useless fibers example" "2010-12-25T11:06:48Z" "2010-12-25T11:06:48Z" "https://gist.github.com/754825.git" "https://gist.github.com/754825.git" "https://gist.github.com/754825" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "754825" "https://api.github.com/gists/754825" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.rb" 290 "https://gist.github.com/raw/754824/d7fcb7a49bbeb09e30d098f319f85d6275dbed4e/gistfile1.rb" nil]) t "" "2010-12-25T11:03:38Z" "2010-12-25T11:03:38Z" "https://gist.github.com/754824.git" "https://gist.github.com/754824.git" "https://gist.github.com/754824" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "754824" "https://api.github.com/gists/754824" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.js" 161 "https://gist.github.com/raw/752875/8d6d455ffa9c9f4f908b0382516e607baa035cc2/gistfile1.js" nil]) t "" "2010-12-23T11:51:12Z" "2010-12-23T11:51:12Z" "https://gist.github.com/752875.git" "https://gist.github.com/752875.git" "https://gist.github.com/752875" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "752875" "https://api.github.com/gists/752875" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.js" 174 "https://gist.github.com/raw/752871/9c95a90d02705eb75b1db40fc983b8aed03fe51e/gistfile1.js" nil]) t "loadandlive" "2010-12-23T11:48:54Z" "2010-12-23T11:48:54Z" "https://gist.github.com/752871.git" "https://gist.github.com/752871.git" "https://gist.github.com/752871" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "752871" "https://api.github.com/gists/752871" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "memory.js" 6353 "https://gist.github.com/raw/a83adef8eb7fc39697e6/4bb26ee6edae246a8444411a78599b633da503f9/memory.js" nil]) :json-false nil "2010-09-22T12:30:59Z" "2010-09-22T12:30:59Z" "https://gist.github.com/a83adef8eb7fc39697e6.git" "https://gist.github.com/a83adef8eb7fc39697e6.git" "https://gist.github.com/a83adef8eb7fc39697e6" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "a83adef8eb7fc39697e6" "https://api.github.com/gists/a83adef8eb7fc39697e6" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "module_extend_self.rb" 165 "https://gist.github.com/raw/464611/4ffece94903e288903eeef4fe2f3de448b668024/module_extend_self.rb" nil]) t nil "2010-07-05T19:09:18Z" "2010-07-05T19:09:18Z" "https://gist.github.com/464611.git" "https://gist.github.com/464611.git" "https://gist.github.com/464611" 1 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "464611" "https://api.github.com/gists/464611" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "*scratch*" 192 "https://gist.github.com/raw/10fec0bd032282577070/84a3b2398233758464763f1699c9fc7721def1e9/*scratch*" nil]) :json-false nil "2010-07-01T09:48:58Z" "2010-07-01T09:48:58Z" "https://gist.github.com/10fec0bd032282577070.git" "https://gist.github.com/10fec0bd032282577070.git" "https://gist.github.com/10fec0bd032282577070" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "10fec0bd032282577070" "https://api.github.com/gists/10fec0bd032282577070" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "web_steps.rb" 174 "https://gist.github.com/raw/458522/90b4855c19e19a0be407bc403537403f1839ff5b/web_steps.rb" nil]) t nil "2010-06-30T11:03:04Z" "2010-06-30T11:03:04Z" "https://gist.github.com/458522.git" "https://gist.github.com/458522.git" "https://gist.github.com/458522" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "458522" "https://api.github.com/gists/458522" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "dsl_in_ruby.rb" 1507 "https://gist.github.com/raw/0389af30806d26e0ef2b/4eccb98e87705ee0da70864f74cced59ff7608b7/dsl_in_ruby.rb" nil]) :json-false nil "2010-06-28T11:16:15Z" "2010-06-28T11:16:16Z" "https://gist.github.com/0389af30806d26e0ef2b.git" "https://gist.github.com/0389af30806d26e0ef2b.git" "https://gist.github.com/0389af30806d26e0ef2b" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "0389af30806d26e0ef2b" "https://api.github.com/gists/0389af30806d26e0ef2b" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "notes.js" 160 "https://gist.github.com/raw/3048d88b819c04b977b0/9e23bbb2d0c02020826f13e1274414716f4e084f/notes.js" nil]) :json-false nil "2010-06-28T08:43:55Z" "2010-06-28T08:44:36Z" "https://gist.github.com/3048d88b819c04b977b0.git" "https://gist.github.com/3048d88b819c04b977b0.git" "https://gist.github.com/3048d88b819c04b977b0" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "3048d88b819c04b977b0" "https://api.github.com/gists/3048d88b819c04b977b0" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "solution.rb" 3082 "https://gist.github.com/raw/49d8b5f4af5d9186011c/34b467114147003fedb27368c36d5ca5a2dd9742/solution.rb" nil]) :json-false nil "2010-06-12T18:15:14Z" "2010-06-12T18:15:14Z" "https://gist.github.com/49d8b5f4af5d9186011c.git" "https://gist.github.com/49d8b5f4af5d9186011c.git" "https://gist.github.com/49d8b5f4af5d9186011c" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "49d8b5f4af5d9186011c" "https://api.github.com/gists/49d8b5f4af5d9186011c" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.rb" 1089 "https://gist.github.com/raw/326476/4c3d4d83e452eaa3e32abb11f5a71efca8d546d8/gistfile1.rb" nil]) t "" "2010-03-09T10:46:18Z" "2010-04-16T14:01:58Z" "https://gist.github.com/326476.git" "https://gist.github.com/326476.git" "https://gist.github.com/326476" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "326476" "https://api.github.com/gists/326476" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "Dzielenie_dlugiego.js" 514 "https://gist.github.com/raw/799acf04fc17d5f82670/4bd57e244a01977e60b674a6a0b9d0f4ab5a90c6/Dzielenie_dlugiego.js" nil]) :json-false "spliting log js tasks into fragments" "2010-01-31T18:26:55Z" "2010-06-28T08:26:37Z" "https://gist.github.com/799acf04fc17d5f82670.git" "https://gist.github.com/799acf04fc17d5f82670.git" "https://gist.github.com/799acf04fc17d5f82670" 1 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "799acf04fc17d5f82670" "https://api.github.com/gists/799acf04fc17d5f82670" nil nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.js" 466 "https://gist.github.com/raw/6f432e7895502ac473a7/3794573bab75c4037d3a0f769808e9f19c5a8162/gistfile1.js" "Function.prototype.memoize = function(){
+   var fn = this;
+   return function(){
+      return fn.memoized.apply( fn, arguments );
+   };
+};
+var isPrime = (function( num ) {
+   var prime = num != 1;
+   for ( var i = 2; i < num; i++ ) {
+    if ( num % i == 0 ) {
+      prime = false;
+      break;
+    }
+  }
+  return prime;
+}).memoize();
+assert( isPrime(5), \"Make sure the function works, 5 is prime.\" );
+assert( isPrime._values[5], \"Make sure the answer is cached.\" );
+"]) :json-false nil "2010-01-22T11:19:07Z" "2010-01-22T11:19:08Z" "https://gist.github.com/6f432e7895502ac473a7.git" "https://gist.github.com/6f432e7895502ac473a7.git" "https://gist.github.com/6f432e7895502ac473a7" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "6f432e7895502ac473a7" "https://api.github.com/gists/6f432e7895502ac473a7" (((url . "https://api.github.com/gists/6f432e7895502ac473a7/15d74df0c37231b4abff765ac4c6f6306bd441b5") (change_status (deletions . 0) (additions . 18) (total . 18)) (committed_at . "2010-01-22T11:19:07Z") (version . "15d74df0c37231b4abff765ac4c6f6306bd441b5") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://2.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.js" 660 "https://gist.github.com/raw/86e3cc49676a9672b433/31bd408599d9b083b2a02323869ae5a2ce9ccf3c/gistfile1.js" "function assert (what, message) {
+
+  if (what) { console.info(\"PASS\", message); 
+  } else {
+  console.error(\"FAIL\", message);
+  }
+}
+Function.prototype.memoized = function(key){
+   this._values = this._values || {};
+   return this._values[key] !== undefined ?
+     this._values[key] :
+     this._values[key] = this.apply(this, arguments);
+};
+function isPrime( num ) {
+   var prime = num != 1;
+
+  for ( var i = 2; i < num; i++ ) {
+    if ( num % i == 0 ) {
+      prime = false;
+      break;
+    }
+  }
+  return prime;
+}
+assert( isPrime.memoized(5),
+  \"Make sure the function works, 5 is prime.\" );
+assert( isPrime._values[5], \"Make sure the answer is cached.\" );
+"]) :json-false nil "2010-01-22T10:40:21Z" "2010-01-22T10:40:21Z" "https://gist.github.com/86e3cc49676a9672b433.git" "https://gist.github.com/86e3cc49676a9672b433.git" "https://gist.github.com/86e3cc49676a9672b433" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "86e3cc49676a9672b433" "https://api.github.com/gists/86e3cc49676a9672b433" (((url . "https://api.github.com/gists/86e3cc49676a9672b433/77f8e1fce1fc047fd970df969ea335859aa110e1") (change_status (deletions . 0) (additions . 27) (total . 27)) (committed_at . "2010-01-22T10:40:21Z") (version . "77f8e1fce1fc047fd970df969ea335859aa110e1") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://2.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "nginx.conf test" 1871 "https://gist.github.com/raw/d4c323b4e74b24b41e5c/b98c68f8f194927503c29f3ede7dd68ea3f41dd7/nginx.conf%20test" "#user  nobody;
+worker_processes  2;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    passenger_root /opt/ruby-enterprise-1.8.7-20090928/lib/ruby/gems/1.8/gems/passenger-2.2.5;
+    passenger_ruby /opt/ruby-enterprise-1.8.7-20090928/bin/ruby;
+
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\" '
+    #                  '$status $body_bytes_sent \"$http_referer\" '
+    #                  '\"$http_user_agent\" \"$http_x_forwarded_for\"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    server {
+        listen       80;
+        server_name  192.168.1.245:80;
+        root /var/www/rails/bidimp/current/public;
+        passenger_enabled on;
+        client_max_body_size 24M;
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443;
+    #    server_name  localhost;
+
+    #    ssl                  on;
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_timeout  5m;
+
+    #    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    #    ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    #    ssl_prefer_server_ciphers   on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}
+"]) :json-false nil "2009-12-29T10:09:32Z" "2009-12-29T10:09:33Z" "https://gist.github.com/d4c323b4e74b24b41e5c.git" "https://gist.github.com/d4c323b4e74b24b41e5c.git" "https://gist.github.com/d4c323b4e74b24b41e5c" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "d4c323b4e74b24b41e5c" "https://api.github.com/gists/d4c323b4e74b24b41e5c" (((url . "https://api.github.com/gists/d4c323b4e74b24b41e5c/9dfbc2139d7e57b2a07815aa8ed28065301ff242") (change_status (deletions . 0) (additions . 80) (total . 80)) (committed_at . "2009-12-29T10:09:33Z") (version . "9dfbc2139d7e57b2a07815aa8ed28065301ff242") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://0.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil] [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "nginx.conf" 2821 "https://gist.github.com/raw/f4ef760e93e7b36e7272/fb877a77202f8f651b36d0fe541780b60c9a7f73/nginx.conf" "#user  nobody;
+worker_processes  2;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    passenger_root /opt/ruby-enterprise-1.8.7-2009.10/lib/ruby/gems/1.8/gems/passenger-2.2.7;
+    passenger_ruby /opt/ruby-enterprise-1.8.7-2009.10/bin/ruby;
+
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\" '
+    #                  '$status $body_bytes_sent \"$http_referer\" '
+    #                  '\"$http_user_agent\" \"$http_x_forwarded_for\"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+    ignore_invalid_headers on;
+    send_timeout 10;
+    client_header_timeout 5;
+    client_body_timeout 10;
+
+    #gzip  on;
+
+    server {
+        listen       80;
+        server_name www.bidimp.pl;
+	root /var/www/bidimp/current/public;
+	passenger_enabled on;
+	client_max_body_size 24M;
+   }
+   server {
+       server_name  bidimp.pl;
+       rewrite ^(.*) http://www.bidimp.pl$1 permanent;
+       client_max_body_size 24M;
+    }
+     # HTTPS server
+    server {
+        listen       443;
+        server_name  www.bidimp.pl;
+        root /var/www/bidimp/current/public;   # <--- be sure to point to 'public'!
+        passenger_enabled on;
+
+        ssl                  on;
+        ssl_certificate      /etc/ssl/www_bidimp_pl.crt;
+        ssl_certificate_key  /etc/ssl/www_bidimp_pl.key;
+
+        ssl_session_timeout  5m;
+
+        ssl_protocols  SSLv3 TLSv1;
+        ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+        ssl_prefer_server_ciphers   on;
+	client_max_body_size 24M;
+
+    # 403 forbidden based on http referer
+    if ($http_referer ~* \"tramadol|viagra|levitra|adipex|virex|antispysoft2005\\.com|mydivx\\.info|my-pills\\.be|cameralover\\.net|credit-dreams\\.com|the-discount-store\\.com|bayfronthomes\\.net|casino|poker|hackerssupply\\.com|hydrocodone|cafexml\\.com|yelucie\\.com|crescentarian\\.net|andrewsaluk\\.com|tigerspice|doobu\\.com|camfun24|latinonakedgirl|ronnieazza\\.com|highprofitclub|dvdsqueeze\\.com|sexsearchcom\\.com|6q\\.org|d4f\\.de|adultactioncam|seventwentyfour\\.com|genaholincorporated\\.com|firsthorizonmtg\\.com|personalsites\\.info|bukakke-bukake-bukkake-bukkakke\\.com|camgirlslive\\.com|dvd-copy\\.com|shaffelrecords\\.com|mcr8\\.com|dating\\.blogs\\.com|online-casino-pops|8thstreetlatinas|boysfirsttime\\.com|gofordgo\\.com|chile-online\\.com|buy-hgh-human-growth-hormone\\.net\") {
+      return 403;
+    }
+    #location / {
+    #  if ($request_uri ~* (^\\/|\\.html|\\.jpg|\\.org|\\.png|\\.css|favicon\\.ico|robots\\.txt)$ ) {
+    #    break;
+    #  }
+    #  return 444;
+    #}
+   } 
+
+}
+"]) :json-false "" "2009-12-29T09:54:47Z" "2009-12-29T09:55:02Z" "https://gist.github.com/f4ef760e93e7b36e7272.git" "https://gist.github.com/f4ef760e93e7b36e7272.git" "https://gist.github.com/f4ef760e93e7b36e7272" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "f4ef760e93e7b36e7272" "https://api.github.com/gists/f4ef760e93e7b36e7272" (((url . "https://api.github.com/gists/f4ef760e93e7b36e7272/1cd5639192212cd84ab304de43863c8a12b4108a") (change_status (deletions . 0) (additions . 83) (total . 83)) (committed_at . "2009-12-29T09:54:47Z") (version . "1cd5639192212cd84ab304de43863c8a12b4108a") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://2.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil])] ("/gists/a24b6129ec35dc5d6339" "GET" "012991ef7242198a1e8e75daf6c4a7c17d5d2196") [object pcache-entry "pcache-entry" 1379704396.416796 nil [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "Idea.java" 1072 "https://gist.github.com/raw/a24b6129ec35dc5d6339/2c5587b931d76d03ed946e3b890d003754291404/Idea.java" "public class SimpleFrame extends ArrayList {
+
+    public void dump() {
+        // 1. save current state (Serialize action)
+        // 2. draw some custom view  - screen with text:
+        Iterator it = this.iterator();
+        while(it.hasNext()) {
+            // draw some view for showing
+            // objects class, and debug info
+        }
+    }
+
+    public void resume() {
+        // Bind this to xlet keys as some combination
+        // 3. clear info screen and resum the serialized action
+    }
+}
+
+public abstract class BDJObject {
+    public BDJObject() {
+       simpleFrameInstance.add(this);
+    }
+
+    // if we're in Model then show fields
+    // if we're in Container/Component show size, img, colors, text
+    // if we're in Controller show, view name, params, method name
+    // if we're in View show, partials, data
+    // if we're in Partial show some kind of static report
+    public abstract String debugInfo();
+  
+    // we can count this for every object, if we know what
+    // type of object it is
+    private abstract int showUsedMem();
+        
+}"]) :json-false "Debug data on BDJ" "2011-11-28T16:37:02Z" "2011-11-28T16:37:02Z" "https://gist.github.com/a24b6129ec35dc5d6339.git" "https://gist.github.com/a24b6129ec35dc5d6339.git" "https://gist.github.com/a24b6129ec35dc5d6339" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "a24b6129ec35dc5d6339" "https://api.github.com/gists/a24b6129ec35dc5d6339" (((url . "https://api.github.com/gists/a24b6129ec35dc5d6339/e80efeca450fe5dbb13bf3a24662e7004a2c2849") (change_status (deletions . 0) (additions . 3) (total . 3)) (committed_at . "2011-11-28T16:38:38Z") (version . "e80efeca450fe5dbb13bf3a24662e7004a2c2849") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://1.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy"))) ((url . "https://api.github.com/gists/a24b6129ec35dc5d6339/ff793f7995235f22d843589160b1a671ea5284fd") (change_status (deletions . 0) (additions . 32) (total . 32)) (committed_at . "2011-11-28T16:37:02Z") (version . "ff793f7995235f22d843589160b1a671ea5284fd") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://1.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil]] ("/gists/272c6dd2b5d4364d5b02" "GET" "d4967da6c1d2b69aeeebb1fdbdc711bf208007a9") [object pcache-entry "pcache-entry" 1379704430.113608 nil [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "page.html.erb" 655 "https://gist.github.com/raw/272c6dd2b5d4364d5b02/96e66f524e43b32a902404cfc00f59838ccc1bd3/page.html.erb" "    <span class=\"avatar\">
+      <%= facebook_image_link(person) %>
+    </span>
+    <div class=\"item_content\">
+      <strong class=\"title\">
+        <span class=\"name\"><%= h person.name %></span>
+        <span class=\"e_icon fb_icon\"></span>
+      </strong>
+      <ul class=\"request_endorsement\">
+        <li><a title=\"<%= t('people.index.request') %>\" href=\"#\" data-event-type=\"request-endorsement\" data-fb-id=\"<%= person.fb_id %>\"><%= t('people.index.request') %></a></li>
+      </ul>
+      <%# old way of requesting for endorsement via e-mail %>
+      <%#= render :partial => 'people/fb_actions', :locals => {:fb => person} if own_profile?(@candidate) %>
+"] [object gh-gist-gist-file "gh-gist-gist-file" "invite.js" 3773 "https://gist.github.com/raw/272c6dd2b5d4364d5b02/5113ee2844e0b51ce3190ae82a25142e465e8914/invite.js" "
+var FbActions;
+
+(function(){
+  
+  FbActions = this.FbActions = new Class({
+    
+    Implements: [Options, Events],
+    
+    options: {},
+    
+    initialize: function(selector, options){
+      this.selector = selector;
+      this.setOptions(options);
+      this.mainCont = document.id('content');
+      if (this.mainCont){
+        this.attach();
+      }
+    },
+    
+    attach: function(){
+      this.mainCont.addEvent('click:relay(' + this.selector + ')', this.trigger.bind(this));
+    },
+    
+    trigger: function(event, element){
+      event.stop();
+      this[element.get('data-event-type').camelCase()].call(this, element);
+    },
+    
+    showConfirmation: function(){
+      this.empty();
+      Elements.from('<li class=\"requested\">Request sent</li>').inject(this);
+    },
+    
+    requestEndorsement: function(element){
+      this.endorseWith[JT_config.fb.post_type.camelCase()].call(this, element);
+    },
+    
+    endorseWith: {
+      
+      wallPost: function(element){
+        var request_endorsement = element.getParent('.request_endorsement');
+        new Request.JSON({
+          url: element.get('href'),
+          method: 'post',
+          data: {
+            fb_id: element.data('fb-id'),
+            post_type: JT_config.fb.post_type
+          },
+          onRequest: function(){
+            request_endorsement.getElement('li').hide();
+          },
+          onComplete: function(response){
+            this.showConfirmation.call(request_endorsement);
+            this.fireEvent('onRequestedEndorsement', element, response);
+          }.bind(this)
+        }).send();
+      },
+      
+      privateMessage: function(element){
+        var request_endorsement = element.getParent('.request_endorsement');
+        if (request_endorsement){
+          request_endorsement.getElement('li').hide();
+        }
+        FB.ui({
+            method: 'send',
+            to: element.data('fb-id'),
+            name: 'Jobandtalent',
+            link: 'http://jobandtalent.com',
+            picture: 'http://fbrell.com/f8.jpg',
+            description: 'Hi, {name} would like you to endorse him at Jobandtalent'
+          },
+          function(response){
+            if (response && response.post_id){
+              this.fireEvent('onRequestedEndorsement', element);
+              this.showConfirmation.call(request_endorsement);
+            } else {
+              request_endorsement.getElement('li').show();
+            }
+          }.bind(this)
+        );
+      }
+    },
+    
+    request: function(opt){
+      new Request({
+        url: opt.element.get('href'),
+        method: 'post',
+        data: {
+          displayed_ids: opt.cont.getParent('ul').getElements('.skip a').get('data-relationship-id')
+        },
+        onRequest: function(){
+          opt.element.getParent('.fbf_actions').getElements('a').hide();
+        },
+        onComplete: function(response){
+          this.skip(opt.element, {
+            templateString: response,
+            templateNodes: Elements.from(response)
+          });
+        }.bind(this)
+      }).send();
+    },
+    
+    fetch: function(element){
+      this.request.call(this, {
+        element: element,
+        cont: element.getParent('.fbf_cont')
+      });
+    },
+    
+    skip: function(element, response){
+      var cont = element.getParent('.fbf_cont');
+      if (response.templateString === ''){
+        cont.getParent().dispose();
+      } else {
+        new Fx.Tween(cont, {
+          onComplete: this.showNext.bind(this, element, response)
+        }).start('left', [0, -285]);
+      }
+    },
+    
+    showNext: function(element, response){
+      var cont = element.getParent('.fbf_cont');
+      cont.empty();
+      cont.adopt(response.templateNodes);
+      cont.tween('left', [285, 0]);
+    }
+    
+  });
+  
+}).call();
+"]) :json-false "Html layout" "2011-12-01T14:23:05Z" "2011-12-01T14:23:05Z" "https://gist.github.com/272c6dd2b5d4364d5b02.git" "https://gist.github.com/272c6dd2b5d4364d5b02.git" "https://gist.github.com/272c6dd2b5d4364d5b02" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "272c6dd2b5d4364d5b02" "https://api.github.com/gists/272c6dd2b5d4364d5b02" (((url . "https://api.github.com/gists/272c6dd2b5d4364d5b02/38435f403829636ca2d8700e5fa9166336363a02") (change_status (deletions . 0) (additions . 144) (total . 144)) (committed_at . "2011-12-01T14:23:05Z") (version . "38435f403829636ca2d8700e5fa9166336363a02") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://1.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil]] ("/gists/f4ef760e93e7b36e7272" "GET" "4442a4cdc9f27cf6aa87ef8e2f71bad9730fbdde") [object pcache-entry "pcache-entry" 1379704448.353493 nil [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "nginx.conf" 2821 "https://gist.github.com/raw/f4ef760e93e7b36e7272/fb877a77202f8f651b36d0fe541780b60c9a7f73/nginx.conf" "#user  nobody;
+worker_processes  2;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    passenger_root /opt/ruby-enterprise-1.8.7-2009.10/lib/ruby/gems/1.8/gems/passenger-2.2.7;
+    passenger_ruby /opt/ruby-enterprise-1.8.7-2009.10/bin/ruby;
+
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\" '
+    #                  '$status $body_bytes_sent \"$http_referer\" '
+    #                  '\"$http_user_agent\" \"$http_x_forwarded_for\"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+    ignore_invalid_headers on;
+    send_timeout 10;
+    client_header_timeout 5;
+    client_body_timeout 10;
+
+    #gzip  on;
+
+    server {
+        listen       80;
+        server_name www.bidimp.pl;
+	root /var/www/bidimp/current/public;
+	passenger_enabled on;
+	client_max_body_size 24M;
+   }
+   server {
+       server_name  bidimp.pl;
+       rewrite ^(.*) http://www.bidimp.pl$1 permanent;
+       client_max_body_size 24M;
+    }
+     # HTTPS server
+    server {
+        listen       443;
+        server_name  www.bidimp.pl;
+        root /var/www/bidimp/current/public;   # <--- be sure to point to 'public'!
+        passenger_enabled on;
+
+        ssl                  on;
+        ssl_certificate      /etc/ssl/www_bidimp_pl.crt;
+        ssl_certificate_key  /etc/ssl/www_bidimp_pl.key;
+
+        ssl_session_timeout  5m;
+
+        ssl_protocols  SSLv3 TLSv1;
+        ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+        ssl_prefer_server_ciphers   on;
+	client_max_body_size 24M;
+
+    # 403 forbidden based on http referer
+    if ($http_referer ~* \"tramadol|viagra|levitra|adipex|virex|antispysoft2005\\.com|mydivx\\.info|my-pills\\.be|cameralover\\.net|credit-dreams\\.com|the-discount-store\\.com|bayfronthomes\\.net|casino|poker|hackerssupply\\.com|hydrocodone|cafexml\\.com|yelucie\\.com|crescentarian\\.net|andrewsaluk\\.com|tigerspice|doobu\\.com|camfun24|latinonakedgirl|ronnieazza\\.com|highprofitclub|dvdsqueeze\\.com|sexsearchcom\\.com|6q\\.org|d4f\\.de|adultactioncam|seventwentyfour\\.com|genaholincorporated\\.com|firsthorizonmtg\\.com|personalsites\\.info|bukakke-bukake-bukkake-bukkakke\\.com|camgirlslive\\.com|dvd-copy\\.com|shaffelrecords\\.com|mcr8\\.com|dating\\.blogs\\.com|online-casino-pops|8thstreetlatinas|boysfirsttime\\.com|gofordgo\\.com|chile-online\\.com|buy-hgh-human-growth-hormone\\.net\") {
+      return 403;
+    }
+    #location / {
+    #  if ($request_uri ~* (^\\/|\\.html|\\.jpg|\\.org|\\.png|\\.css|favicon\\.ico|robots\\.txt)$ ) {
+    #    break;
+    #  }
+    #  return 444;
+    #}
+   } 
+
+}
+"]) :json-false "" "2009-12-29T09:54:47Z" "2009-12-29T09:55:02Z" "https://gist.github.com/f4ef760e93e7b36e7272.git" "https://gist.github.com/f4ef760e93e7b36e7272.git" "https://gist.github.com/f4ef760e93e7b36e7272" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "f4ef760e93e7b36e7272" "https://api.github.com/gists/f4ef760e93e7b36e7272" (((url . "https://api.github.com/gists/f4ef760e93e7b36e7272/1cd5639192212cd84ab304de43863c8a12b4108a") (change_status (deletions . 0) (additions . 83) (total . 83)) (committed_at . "2009-12-29T09:54:47Z") (version . "1cd5639192212cd84ab304de43863c8a12b4108a") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://2.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil]] ("/gists/d4c323b4e74b24b41e5c" "GET" "f08a078d59609739dfee5834e74817bcf4e1d3e9") [object pcache-entry "pcache-entry" 1379704453.191665 nil [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "nginx.conf test" 1871 "https://gist.github.com/raw/d4c323b4e74b24b41e5c/b98c68f8f194927503c29f3ede7dd68ea3f41dd7/nginx.conf%20test" "#user  nobody;
+worker_processes  2;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    passenger_root /opt/ruby-enterprise-1.8.7-20090928/lib/ruby/gems/1.8/gems/passenger-2.2.5;
+    passenger_ruby /opt/ruby-enterprise-1.8.7-20090928/bin/ruby;
+
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] \"$request\" '
+    #                  '$status $body_bytes_sent \"$http_referer\" '
+    #                  '\"$http_user_agent\" \"$http_x_forwarded_for\"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    server {
+        listen       80;
+        server_name  192.168.1.245:80;
+        root /var/www/rails/bidimp/current/public;
+        passenger_enabled on;
+        client_max_body_size 24M;
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443;
+    #    server_name  localhost;
+
+    #    ssl                  on;
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_timeout  5m;
+
+    #    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    #    ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    #    ssl_prefer_server_ciphers   on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}
+"]) :json-false nil "2009-12-29T10:09:32Z" "2009-12-29T10:09:33Z" "https://gist.github.com/d4c323b4e74b24b41e5c.git" "https://gist.github.com/d4c323b4e74b24b41e5c.git" "https://gist.github.com/d4c323b4e74b24b41e5c" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "d4c323b4e74b24b41e5c" "https://api.github.com/gists/d4c323b4e74b24b41e5c" (((url . "https://api.github.com/gists/d4c323b4e74b24b41e5c/9dfbc2139d7e57b2a07815aa8ed28065301ff242") (change_status (deletions . 0) (additions . 80) (total . 80)) (committed_at . "2009-12-29T10:09:33Z") (version . "9dfbc2139d7e57b2a07815aa8ed28065301ff242") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://0.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil]] ("/gists/86e3cc49676a9672b433" "GET" "f779a91537df05989428b51268f70a8a296992ef") [object pcache-entry "pcache-entry" 1379704455.734249 nil [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.js" 660 "https://gist.github.com/raw/86e3cc49676a9672b433/31bd408599d9b083b2a02323869ae5a2ce9ccf3c/gistfile1.js" "function assert (what, message) {
+
+  if (what) { console.info(\"PASS\", message); 
+  } else {
+  console.error(\"FAIL\", message);
+  }
+}
+Function.prototype.memoized = function(key){
+   this._values = this._values || {};
+   return this._values[key] !== undefined ?
+     this._values[key] :
+     this._values[key] = this.apply(this, arguments);
+};
+function isPrime( num ) {
+   var prime = num != 1;
+
+  for ( var i = 2; i < num; i++ ) {
+    if ( num % i == 0 ) {
+      prime = false;
+      break;
+    }
+  }
+  return prime;
+}
+assert( isPrime.memoized(5),
+  \"Make sure the function works, 5 is prime.\" );
+assert( isPrime._values[5], \"Make sure the answer is cached.\" );
+"]) :json-false nil "2010-01-22T10:40:21Z" "2010-01-22T10:40:21Z" "https://gist.github.com/86e3cc49676a9672b433.git" "https://gist.github.com/86e3cc49676a9672b433.git" "https://gist.github.com/86e3cc49676a9672b433" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "86e3cc49676a9672b433" "https://api.github.com/gists/86e3cc49676a9672b433" (((url . "https://api.github.com/gists/86e3cc49676a9672b433/77f8e1fce1fc047fd970df969ea335859aa110e1") (change_status (deletions . 0) (additions . 27) (total . 27)) (committed_at . "2010-01-22T10:40:21Z") (version . "77f8e1fce1fc047fd970df969ea335859aa110e1") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://2.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil]] ("/gists/6f432e7895502ac473a7" "GET" "13ba16d5599186b026618b24af95b6fee90418a4") [object pcache-entry "pcache-entry" 1379704462.317549 nil [object gh-gist-gist "gh-gist-gist" ([object gh-gist-gist-file "gh-gist-gist-file" "gistfile1.js" 466 "https://gist.github.com/raw/6f432e7895502ac473a7/3794573bab75c4037d3a0f769808e9f19c5a8162/gistfile1.js" "Function.prototype.memoize = function(){
+   var fn = this;
+   return function(){
+      return fn.memoized.apply( fn, arguments );
+   };
+};
+var isPrime = (function( num ) {
+   var prime = num != 1;
+   for ( var i = 2; i < num; i++ ) {
+    if ( num % i == 0 ) {
+      prime = false;
+      break;
+    }
+  }
+  return prime;
+}).memoize();
+assert( isPrime(5), \"Make sure the function works, 5 is prime.\" );
+assert( isPrime._values[5], \"Make sure the answer is cached.\" );
+"]) :json-false nil "2010-01-22T11:19:07Z" "2010-01-22T11:19:08Z" "https://gist.github.com/6f432e7895502ac473a7.git" "https://gist.github.com/6f432e7895502ac473a7.git" "https://gist.github.com/6f432e7895502ac473a7" 0 [object gh-user "gh-user" "ignacy" 25693 nil "https://api.github.com/users/ignacy"] "6f432e7895502ac473a7" "https://api.github.com/gists/6f432e7895502ac473a7" (((url . "https://api.github.com/gists/6f432e7895502ac473a7/15d74df0c37231b4abff765ac4c6f6306bd441b5") (change_status (deletions . 0) (additions . 18) (total . 18)) (committed_at . "2010-01-22T11:19:07Z") (version . "15d74df0c37231b4abff765ac4c6f6306bd441b5") (user (type . "User") (received_events_url . "https://api.github.com/users/ignacy/received_events") (events_url . "https://api.github.com/users/ignacy/events{/privacy}") (repos_url . "https://api.github.com/users/ignacy/repos") (organizations_url . "https://api.github.com/users/ignacy/orgs") (subscriptions_url . "https://api.github.com/users/ignacy/subscriptions") (starred_url . "https://api.github.com/users/ignacy/starred{/owner}{/repo}") (gists_url . "https://api.github.com/users/ignacy/gists{/gist_id}") (following_url . "https://api.github.com/users/ignacy/following{/other_user}") (followers_url . "https://api.github.com/users/ignacy/followers") (html_url . "https://github.com/ignacy") (url . "https://api.github.com/users/ignacy") (gravatar_id . "dc7c8f093ddaadd4acffe55d682be471") (avatar_url . "https://2.gravatar.com/avatar/dc7c8f093ddaadd4acffe55d682be471?d=https%3A%2F%2Fidenticons.github.com%2F0feccde63fa107fadd9e5d43a5ae60ef.png") (id . 25693) (login . "ignacy")))) nil]]))
+  :timestamp 1379704485.229273
+  )

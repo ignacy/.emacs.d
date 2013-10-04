@@ -1,10 +1,8 @@
 (require 'projectile)
-;;(setq projectile-completion-system 'grizzl)
+
 (projectile-global-mode)
 (setq projectile-enable-caching t)
-(global-set-key (kbd "C-x C-b") 'projectile-switch-to-buffer)
 (global-set-key (kbd "C-x f") 'projectile-find-file)
-(global-set-key (kbd "C-M-f") 'toggle-frame-fullscreen)
 
 
 (defadvice find-tag-at-point (before auto-visti-tags)

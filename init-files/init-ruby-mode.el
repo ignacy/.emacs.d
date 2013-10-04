@@ -1,23 +1,16 @@
 (autoload 'inf-ruby-mode-hook "inf-ruby" t)
 (autoload 'haml-mode "haml-mode" t)
-(autoload 'ruby-end-mode "ruby-end" t)
-(autoload 'rspec-mode "rspec-mode" t)
 (autoload 'web-mode "web-mode" t)
 
 (require 'ruby-mode)
+(require 'rspec-mode)
+
 ;; work around possible elpa bug
 (ignore-errors (require 'ruby-compilation))
 (setq yas/mode-symbol 'ruby-mode)
 (setq yas/mode-symbol 'rails-mode)
 (require 'ruby-mode-indent-fix)
 (setq ruby-use-encoding-map nil)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(push 'ac-source-robe ac-sources)
-
-;; (require 'ruby-test-mode)
-;; (setq ruby-test-ruby-executables '("/Users/ignacymoryc/.rvm/rubies/ruby-1.9.3-p125/bin/ruby"))
-;; (ruby-test-mode)
-
 
 (add-hook 'ruby-mode-hook
           (lambda ()
@@ -94,9 +87,7 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (ruby-electric-mode)
-            (inf-ruby-minor-mode)
-            (ruby-end-mode)))
+            (inf-ruby-minor-mode)))
 
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
 
@@ -117,8 +108,11 @@
 (setq ruby-deep-indent-paren-style nil)
 (setq tab-width 2)
 (setq rspec-use-rake-when-possible nil)
-(setq rspec-use-rvm t)
+(setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible t)
+
+
+(require 'rubocop)
 
 (font-lock-add-keywords
  'ruby-mode
