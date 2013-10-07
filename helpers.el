@@ -588,12 +588,14 @@ point reaches the beginning or end of the buffer, stop there."
   (interactive)
   (shell-command (concat "ruby -I test " buffer-file-name)))
 
-(defun seeing-is-believing ()
-  "Replace the current region (or the whole buffer, if none) with the output
-of seeing_is_believing."
+;; C-c C-a to amend without any prompt
+(defun magit-just-amend ()
   (interactive)
-  (let ((beg (if (region-active-p) (region-beginning) (point-min)))
-        (end (if (region-active-p) (region-end) (point-max))))
-    (shell-command-on-region beg end "seeing_is_believing" nil 'replace)))
+  (save-window-excursion
+    (magit-with-refresh
+      (shell-command "git --no-pager commit --amend --reuse-message=HEAD"))))
+
+(eval-after-load "magit"
+  '(define-key magit-status-mode-map (kbd "C-c C-a") 'magit-just-amend))
 
 (provide 'helpers)

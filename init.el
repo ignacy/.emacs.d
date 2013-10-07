@@ -17,9 +17,8 @@
 (setq slime-net-coding-system 'utf-8-unix)
 
 ;;(load-theme 'ir-black)
-;; (load-theme 'tommyh)
-(load-theme 'ample-zen)
-
+;;(load-theme 'tommyh)
+(load-theme 'noctilux)
 
 (require 'ag)
 (setq ag-highlight-search nil)
@@ -41,10 +40,10 @@
 (global-hl-line-mode 1)
 (set-face-attribute hl-line-face nil :underline nil)
 
-(set-face-background 'hl-line "#222")
+;;(set-face-background 'hl-line "#222")
 ;;(set-face-background 'hl-line "#ddd")
 
-;;(require 'custom-modeline)
+(require 'custom-modeline)
 
 (require 'helpers)
 (require 'keys)
@@ -74,11 +73,8 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cursor ((t (:background "orange red" :foreground "#141b23"))))
- '(magit-item-highlight ((t nil)))
- '(vertical-border ((t (:foreground "black")))))
+;; go fullscreen
+(set-frame-parameter nil 'fullscreen
+                     (if (frame-parameter nil 'fullscreen)
+                         nil
+                       'fullboth))

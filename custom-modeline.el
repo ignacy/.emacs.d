@@ -23,7 +23,7 @@
                ))
 
 
-;;(set-face-background 'mode-line "#222222")
+(set-face-background 'mode-line "#444")
 ;;(set-face-foreground 'mode-line "#fff")
 
 
