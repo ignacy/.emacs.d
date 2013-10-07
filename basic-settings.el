@@ -63,7 +63,7 @@
 ;;(setq-default cursor-type 'bar)
 ;;(font-when-not-connected)
 ;;(set-frame-font "OpenDyslexicMono 14")
-(set-frame-font "Anonymous Pro Minus 16")
+(set-frame-font "Anonymous Pro Minus 15")
 ;;(set-frame-font "Hermit 14")
 
 
