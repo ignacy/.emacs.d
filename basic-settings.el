@@ -12,6 +12,7 @@
       bookmark-save-flag 1
       x-select-enable-clipboard t
       confirm-nonexistent-file-or-buffer nil
+      slime-net-coding-system 'utf-8-unix
       delete-by-moving-to-trash t
       trash-directory "~/.Trash/emacs"
       ispell-program-name "/usr/local/bin/aspell"
@@ -20,12 +21,12 @@
 (setq-default indent-tabs-mode nil)
 ;;(setq-default tab-width 2
 
+(set-language-environment "UTF-8")
+(setenv "LC_LOCALE" "en_US.UTF-8")
+(setenv "LC_CTYPE" "en_US.UTF-8")
 
 (autoload 'epa "epa-file-mode" t)
 (epa-file-enable)
-
-;; (set-frame-parameter (selected-frame) 'alpha '(99 90))
-;; (add-to-list 'default-frame-alist '(alpha 99 90))
 
 (setq frame-title-format
       '((:eval (if (buffer-file-name)
@@ -34,10 +35,17 @@
 
 (show-paren-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
+
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (delete-selection-mode t)
 (display-time-mode -1)
 (global-subword-mode 1)
+
+;;(global-hl-line-mode 1)
+;;(set-face-attribute hl-line-face nil :underline nil)
+
+;;(set-face-background 'hl-line "#222")
+;;(set-face-background 'hl-line "#ddd")
 
 (when (display-graphic-p)
   (mouse-wheel-mode t)
@@ -63,8 +71,8 @@
 ;;(setq-default cursor-type 'bar)
 ;;(font-when-not-connected)
 ;;(set-frame-font "OpenDyslexicMono 14")
-(set-frame-font "Anonymous Pro Minus 15")
-;;(set-frame-font "Hermit 14")
+(set-frame-font "Anonymous Pro 15")
+;;(set-frame-font "Hermit 15")
 
 
 (require 'uniquify)
@@ -306,11 +314,11 @@ This functions should be added to the hooks of major modes for programming."
          "* %?\nEntered on %U\n  %i\n  ")))
 
 (org-babel-do-load-languages
-      'org-babel-load-languages
-      '((emacs-lisp . t)
-        (clojure . t)
-        (scala . t)
-        (ruby . t)))
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (clojure . t)
+   (scala . t)
+   (ruby . t)))
 
 (require 'markdown-mode)
 (setq markdown-imenu-generic-expression

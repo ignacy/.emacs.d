@@ -221,10 +221,10 @@ This is the same as using \\[set-mark-command] with the prefix argument."
                            ;; output buffer
                            "reekOut" nil
                            "*reekErrors*" nil)
-;;  (split-window-horizontally)
-;;(other-window 0)
+  ;;  (split-window-horizontally)
+  ;;(other-window 0)
   (set-buffer (get-buffer-create "reekOut")))
-  ;;(other-window 0))
+;;(other-window 0))
 
 (defun toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
@@ -571,11 +571,11 @@ point reaches the beginning or end of the buffer, stop there."
 (defun get-buffers-matching-mode (mode)
   "Returns a list of buffers where their major-mode is equal to MODE"
   (let ((buffer-mode-matches '()))
-   (dolist (buf (buffer-list))
-     (with-current-buffer buf
-       (if (eq mode major-mode)
-           (add-to-list 'buffer-mode-matches buf))))
-   buffer-mode-matches))
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+        (if (eq mode major-mode)
+            (add-to-list 'buffer-mode-matches buf))))
+    buffer-mode-matches))
 
 (defun multi-occur-in-this-mode ()
   "Show all lines matching REGEXP in buffers with this major mode."
@@ -597,5 +597,29 @@ point reaches the beginning or end of the buffer, stop there."
 
 (eval-after-load "magit"
   '(define-key magit-status-mode-map (kbd "C-c C-a") 'magit-just-amend))
+
+(defun layout-for-cobol ()
+  "Lay out the frame as two 80-column windows across"
+  (interactive)
+  (when window-system
+    (require 'frame-cmds)
+    (set-frame-width (selected-frame) 160)
+    (with-selected-window (get-mru-window)
+      (delete-other-windows)
+      (split-window-right 80))))
+
+(defadvice other-window (after other-window-now activate)
+  (when (< (window-width) 80)
+    (enlarge-window (- 80 (window-width)) t)))
+
+(defun set-window-width (n)
+  "Set the selected window's width."
+  (adjust-window-trailing-edge (selected-window) (- n (window-width)) t))
+
+(defun ns-get-pasteboard ()
+  "Returns the value of the pasteboard, or nil for unsupported formats."
+  (condition-case nil
+      (ns-get-selection-internal 'CLIPBOARD)
+    (quit nil)))
 
 (provide 'helpers)
