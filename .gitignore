@@ -9,3 +9,5 @@ session*
 .DS_Store
 projectile.cache
 projectile-bookmarks.eld
+.places
+tramp
