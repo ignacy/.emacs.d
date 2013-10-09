@@ -159,7 +159,13 @@ This functions should be added to the hooks of major modes for programming."
     (package-install p)))
 
 ;;;; path
+(when (equal system-type 'darwin)
+  (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
+  (push "/opt/local/bin" exec-path)
+  (push "~/bin" exec-path))
+
 (exec-path-from-shell-initialize)
+
 
 ;;;; multiple-cursors
 (require 'multiple-cursors)

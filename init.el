@@ -11,7 +11,7 @@
 (require 'basic-settings)
 
 ;;(load-theme 'ir-black)
-(load-theme 'fogus)
+(load-theme 'graham)
 
 (require 'ag)
 (setq ag-highlight-search nil)
@@ -46,3 +46,6 @@
                      (if (frame-parameter nil 'fullscreen)
                          nil
                        'fullboth))
+
+(load "server")
+(unless (server-running-p) (server-start))
