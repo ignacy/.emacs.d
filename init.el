@@ -11,7 +11,7 @@
 (require 'basic-settings)
 
 ;;(load-theme 'ir-black)
-(load-theme 'deeper-blue)
+(load-theme 'fogus)
 
 (require 'ag)
 (setq ag-highlight-search nil)

@@ -69,9 +69,9 @@
     (set-face-attribute 'default nil :font im/default-font)))
 
 ;;(setq-default cursor-type 'bar)
-;;(font-when-not-connected)
+(font-when-connected)
 ;;(set-frame-font "OpenDyslexicMono 14")
-(set-frame-font "Anonymous Pro 15")
+;;(set-frame-font "Anonymous Pro 16")
 ;;(set-frame-font "Hermit 15")
 
 
@@ -223,31 +223,13 @@ This functions should be added to the hooks of major modes for programming."
 (require 'browse-kill-ring)
 (global-set-key (kbd "C-c y") 'browse-kill-ring)
 
-
-
-;;;; change inner
-;;(require 'change-inner)
-;;(global-set-key (kbd "M-I") 'change-inner)
-;;(global-set-key (kbd "M-O") 'change-outer)
-
-
-;;;; jump-char
-;;(after 'jump-char-autoloads
-;;  (global-set-key (kbd "M-m") 'jump-char-forward)
-;;  (global-set-key (kbd "M-M") 'jump-char-backward))
-
-;;(after 'jump-char
-;;  (setq jump-char-lazy-highlight-face nil))
-
-
 ;;;; git-gutter
 (require 'git-gutter)
 (global-git-gutter-mode t)
 
 ;;;; idle-highlight
 (require 'idle-highlight-mode)
-
-(setq idle-highlight-idle-time 2)
+(setq idle-highlight-idle-time 1)
 
 (defun idle-coding-hook ()
   (idle-highlight-mode t))
@@ -262,17 +244,11 @@ This functions should be added to the hooks of major modes for programming."
 
 (require 'paren)
 (set-face-background 'show-paren-match-face (face-background 'default))
-(set-face-foreground 'show-paren-match-face "red")
+(set-face-foreground 'show-paren-match-face "green")
 (set-face-attribute 'show-paren-match-face nil :weight 'extra-bold)
 (show-paren-mode 1)
 
 (set-default 'imenu-auto-rescan t)
-
-(setq uniquify-buffer-name-style 'post-forward uniquify-separator "@")
-(setq frame-title-format
-      (list '("emacs ")
-            '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
-
 ;;;; IDO-MODE
 ;; Display ido results vertically, rather than horizontally
 (ido-mode t)
@@ -281,7 +257,7 @@ This functions should be added to the hooks of major modes for programming."
 (setq ido-create-new-buffer 'always)
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 
-(setq ido-file-extensions-order '(".rb" ".clj" ".el" ".md" ".conf" ".org"))
+(setq ido-file-extensions-order '(".rb" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 
 (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
@@ -290,9 +266,6 @@ This functions should be added to the hooks of major modes for programming."
   (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
   (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
 (add-hook 'ido-setup-hook 'ido-define-keys)
-
-(autoload 'ido-hacks-mode "ido-hacks" t)
-(ido-hacks-mode)
 
 (require 'flx-ido)
 (flx-ido-mode 1)
@@ -334,35 +307,17 @@ This functions should be added to the hooks of major modes for programming."
         ))
 (setq imenu-generic-expression markdown-imenu-generic-expression)
 
-;;(require 'undo-tree-autoloads)
-;;(global-undo-tree-mode)
-
 ;; Save point position between sessions
 (require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
-
-(setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
-;; enable recent files mode.
-
 (require 'recentf)
+(setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
 (recentf-mode t)
-
 (setq recentf-max-saved-items 500)
 (add-to-list 'recentf-exclude "\\.revive\\'")
 (add-to-list 'recentf-exclude "elpa")
-
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
-
-(recentf-cleanup)
-
-
 ;;(add-hook 'after-init-hook #'global-flycheck-mode)
 
 (require 'smartparens)
@@ -371,6 +326,12 @@ This functions should be added to the hooks of major modes for programming."
 (show-smartparens-global-mode nil)
 (smartparens-global-mode t)
 
-(global-anzu-mode)
+
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
 
 (provide 'basic-settings)
