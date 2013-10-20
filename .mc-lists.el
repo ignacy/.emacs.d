@@ -6,6 +6,7 @@
         end-of-buffer
         isearch-abort
         isearch-forward-regexp
+        isearch-other-control-char
         isearch-printing-char
         kill-rectangle
         ruby-electric-matching-char

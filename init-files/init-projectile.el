@@ -2,8 +2,10 @@
 
 (projectile-global-mode)
 (setq projectile-enable-caching t)
-(global-set-key (kbd "C-x f") 'projectile-find-file)
 
+(require 'fiplr)
+(setq fiplr-ignored-globs '((directories (".git" ".svn" "log" "tmp"))
+                            (files ("*.jpg" "*.png" "*.zip" "*~"))))
 
 (defadvice find-tag-at-point (before auto-visti-tags)
   "Load default TAGS file from home directory if needed"

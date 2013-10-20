@@ -59,7 +59,7 @@
       to a separate display"""
       (interactive)
       (when (display-graphic-p)
-        (setq im/default-font "-apple-Source_Code_Pro-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+        (setq im/default-font "-apple-Source_Code_Pro-medium-normal-normal-*-13-*-*-*-m-0-iso10646-1")
         (set-face-attribute 'default nil :font im/default-font)))
 
 (defun font-when-connected ()
@@ -69,7 +69,7 @@
     (set-face-attribute 'default nil :font im/default-font)))
 
 ;;(setq-default cursor-type 'bar)
-(font-when-connected)
+(font-when-not-connected)
 ;;(set-frame-font "OpenDyslexicMono 14")
 ;;(set-frame-font "Anonymous Pro 16")
 ;;(set-frame-font "Hermit 15")
@@ -124,11 +124,17 @@ This functions should be added to the hooks of major modes for programming."
                       haml-mode
                       autopair
                       textmate
+                      colorsarenice-theme
+                      diminish
                       exec-path-from-shell
                       ido-hacks
                       rspec-mode
+                      ag
+                      scala-mode2
                       smex
                       flx-ido
+                      fiplr
+                      rubocop
                       ruby-end
                       rspec-mode
                       quickrun
@@ -166,6 +172,19 @@ This functions should be added to the hooks of major modes for programming."
 
 (exec-path-from-shell-initialize)
 
+
+
+(when (require 'diminish nil 'noerror)
+  (eval-after-load "company"
+      '(diminish 'company-mode "Cmp"))
+  (eval-after-load "abbrev"
+    '(diminish 'abbrev-mode "Ab"))
+  (eval-after-load "projectile"
+    '(diminish 'abbrev-mode "Prj")))
+
+(add-hook 'emacs-lisp-mode-hook
+  (lambda()
+    (setq mode-name "el")))
 
 ;;;; multiple-cursors
 (require 'multiple-cursors)
@@ -339,5 +358,6 @@ This functions should be added to the hooks of major modes for programming."
   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
       (message "Opening file...")
     (message "Aborting")))
+
 
 (provide 'basic-settings)

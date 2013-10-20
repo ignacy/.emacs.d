@@ -11,7 +11,8 @@
 (require 'basic-settings)
 
 ;;(load-theme 'ir-black)
-(load-theme 'graham)
+;;(load-theme 'tsdh-dark)
+(load-theme 'colorsarenice-dark)
 
 (require 'ag)
 (setq ag-highlight-search nil)
@@ -47,5 +48,8 @@
                          nil
                        'fullboth))
 
-(load "server")
-(unless (server-running-p) (server-start))
+(require 'chruby)
+(chruby "jruby-1.7.4")
+
+;; (load "server")
+;; (unless (server-running-p) (server-start))

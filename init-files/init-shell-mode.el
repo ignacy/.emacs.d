@@ -11,6 +11,17 @@
 (add-hook 'shell-mode-hook 'im/shell-mode-hook)
 (setq explicit-shell-file-name "/bin/zsh")
 
+;; make a face
+(make-face 'font-lock-small-face)
+(set-face-attribute 'font-lock-small-face nil :height 0.8)
+
+;; add this setting to all shell-mode buffers
+(add-hook 'shell-mode-hook
+       '(lambda ()
+          (font-lock-mode t)
+          (buffer-face-mode t) ; only in emacs 23
+          (buffer-face-set 'font-lock-small-face)))
+
 ;; shell-mode
 (defun sh (&optional name)
   (interactive)

@@ -52,6 +52,10 @@
 (bind "M-z" 'undo)
 (bind "M-s m" 'multi-occur-in-this-mode)
 
+
+;;(bind "C-x f" 'projectile-find-file)
+(bind "C-x f" 'fiplr-find-file)
+
 (bind "C-c q" 'whitespace-mode)
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)

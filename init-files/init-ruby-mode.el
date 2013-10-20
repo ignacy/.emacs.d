@@ -16,6 +16,7 @@
             (set (make-local-variable 'compile-command)
                  (concat "ruby -Ilib:test:. " buffer-file-name))))
 
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
 
 (set-face-attribute (make-face 'test-heading1) nil
                     :family "arial"
@@ -68,7 +69,7 @@
 (defun rails-console ()
   "Runs inf-ruby process with a rails console loaded inside"
   (interactive)
-  (run-ruby "rails console"))
+  (run-ruby "bundle exec rails console"))
 
 (defun rails-server ()
   "Runs rails server for the current project"
@@ -85,8 +86,6 @@
 (setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible t)
 
-
-(require 'rubocop)
 
 (font-lock-add-keywords
  'ruby-mode
