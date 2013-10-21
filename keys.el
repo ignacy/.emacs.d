@@ -133,5 +133,7 @@
 (bind "C-x g" 'magit-status)
 (bind "<up>" 'scroll-n-lines-behind)
 (bind "<down>" 'scroll-n-lines-ahead)
+(global-set-key [mode-line mouse-2] 'ignore)
+
 
 (provide 'keys)

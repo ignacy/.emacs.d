@@ -11,6 +11,8 @@
 (setq yas/mode-symbol 'rails-mode)
 (setq ruby-use-encoding-map nil)
 
+(require 'ruby-hash-syntax)
+
 (add-hook 'ruby-mode-hook
           (lambda ()
             (set (make-local-variable 'compile-command)

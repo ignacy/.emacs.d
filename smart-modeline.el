@@ -1,45 +1,68 @@
 
 (defface sm-column-overflow-face
   '((t :inherit mode-line :foreground "red"))
-  "SmartModelineFaces" :group 'smart-modeline-faces)
+  "Smart modeline " :group 'smart-modeline-faces)
+
+
+(defface sm-project-name-face
+  '((t :inherit font-lock-function-name-face))
+  "Smart modeline " :group 'smart-modeline-faces)
+
+(defface sm-branch-face
+  '((t :inherit font-lock-string-face))
+  "Smart modeline " :group 'smart-modeline-faces)
+
+(defun git-repo-name (dir)
+  (if (string= "/" dir)
+      "-"
+    (if (file-exists-p (expand-file-name ".git/" dir))
+        dir
+      (git-repo-name (expand-file-name "../" dir)))))
+
+(defun sm-clean-directory-name ()
+  (car (last (butlast (split-string (git-repo-name default-directory) "/")))))
+
 
 (setq-default mode-line-format
               (list
-               "> "
-               ;; was this buffer modified since the last save?
+               (propertize "> " 'face 'sm-branch-face)
+
                '(:eval (if (buffer-modified-p)
                            (propertize "*" 'face 'font-lock-warning-face
                                        'help-echo "Buffer has been modified")
                          " "))
 
-               ;;the buffer name; the file name as a tool tip
                '(:eval (propertize "%b " 'face 'font-lock-variable-name-face
                                    'help-echo (buffer-file-name)))
 
-               " @ "
-               ;; relative position, size of file
-               '(:eval (when (vc-mode)
-                         (propertize (substring vc-mode 5)
-                                     'face 'font-lock-constant-face)))
+               (propertize "  %03l," 'face 'sm-branch-face)
 
-               '(:eval (when (vc-mode)
-                         (vs-state (buffer-file-name))))
-
-               "  %03l,"
                '(:eval (propertize "%02c" 'face
                                    (if (>= (current-column) 80)
                                        'sm-column-overflow-face
-                                     nil)))
+                                     'sm-branch-face)))
                " "
-               ;; "  line#"
-               ;; (propertize " %02l" 'face 'font-lock-type-face)
-               ;; " column#"
-               ;; (propertize " %02c" 'face 'font-lock-type-face)
-               ))
+               '(:eval (when (vc-mode)
+                         (propertize (sm-clean-directory-name)
+                                     'face 'sm-project-name-face)))
 
+               " "
+               '(:eval (when (vc-mode)
+                         (propertize (concat "(" (substring vc-mode 5) ")")
+                                     'face 'sm-branch-face)))
+
+
+               ))
 
 ;;(force-mode-line-update)
 
 
+
+;; (set-face-background 'mode-line "black")
+;; (set-face-foreground 'mode-line "white")
+;; (set-face-background 'mode-line-inactive "black")
+;; (set-face-foreground 'mode-line-inactive "#eee")
+(custom-set-faces '(mode-line ((t (:box nil)))))
+(custom-set-faces '(mode-line-inactive ((t (:box nil)))))
 
 (provide 'smart-modeline)

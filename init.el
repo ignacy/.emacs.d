@@ -17,7 +17,7 @@
 (require 'ag)
 (setq ag-highlight-search nil)
 
-(require 'custom-modeline)
+(require 'smart-modeline)
 
 (require 'helpers)
 (require 'keys)
