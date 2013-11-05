@@ -56,7 +56,7 @@
 ;;(bind "C-x f" 'projectile-find-file)
 (bind "C-x f" 'fiplr-find-file)
 
-(bind "C-c q" 'whitespace-mode)
+(bind "C-c q" 'toggle-quotes)
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-i" 'imenu)
@@ -89,6 +89,7 @@
 
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x b" 'ido-switch-buffer)
+(bind "C-x C-b" 'helm-buffers-list)
 (bind "M-g" 'goto-line-with-feedback)
 
 (bind "M-i" 'back-to-indentation)
@@ -102,6 +103,8 @@
       (quickrun))))
 
 (bind "M-/" 'hippie-expand)
+
+(bind "M-t" 'project-explorer-open)
 
 (bind "<f14>" 'run-file-or-spec)
 (bind "<f13>" 'projectile-grep)

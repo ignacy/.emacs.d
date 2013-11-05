@@ -10,9 +10,13 @@
 
 (require 'basic-settings)
 
+(add-to-list 'custom-theme-load-path
+             (concat dotfiles-dir "/themes/"))
 ;;(load-theme 'ir-black)
-;;(load-theme 'tsdh-dark)
-(load-theme 'colorsarenice-dark)
+;;(load-theme 'obsidian)
+
+;;(load-theme 'occidental) -- great light theme
+(load-theme 'flatland)
 
 (require 'ag)
 (setq ag-highlight-search nil)
@@ -21,6 +25,7 @@
 
 (require 'helpers)
 (require 'keys)
+;;(require 'setup-evil)
 (require 'gist)
 
 ;;;; Customize some packages
@@ -35,21 +40,10 @@
 (require 'init-shell-mode)
 (require 'init-file-associations)
 
-;;;; smex
-(require 'smex)
-(smex-initialize)
-
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
 ;; go fullscreen
 (set-frame-parameter nil 'fullscreen
                      (if (frame-parameter nil 'fullscreen)
                          nil
                        'fullboth))
-
-(require 'chruby)
-(chruby "jruby-1.7.4")
-
-;; (load "server")
-;; (unless (server-running-p) (server-start))
+(require 'rbenv)
+(global-rbenv-mode)

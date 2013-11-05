@@ -93,11 +93,11 @@
  'ruby-mode
  '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
 
-;; (defadvice rspec-compile (around rspec-compile-around)
-;;   "Use BASH shell for running the specs because of ZSH issues."
-;;   (let ((shell-file-name "/bin/bash"))
-;;     ad-do-it))
-;; (ad-activate 'rspec-compile)
+(defadvice rspec-compile (around rspec-compile-around)
+  "Use BASH shell for running the specs because of ZSH issues."
+  (let ((shell-file-name "/bin/bash"))
+    ad-do-it))
+(ad-activate 'rspec-compile)
 
 (setq explicit-shell-file-name "/bin/zsh")
 

@@ -19,6 +19,8 @@
         beginning-of-buffer
         compile-goto-error
         ido-find-file
+        ido-recentf-open
+        magit-status
         mouse-set-region
         ruby-electric-close-matching-char
         ruby-electric-space

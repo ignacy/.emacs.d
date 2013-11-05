@@ -1,7 +1,62 @@
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar my-packages '(markdown-mode
+                      yaml-mode
+                      haml-mode
+                      autopair
+                      textmate
+                      undo-tree
+                      colorsarenice-theme
+                      diminish
+                      exec-path-from-shell
+                      ido-hacks
+                      rspec-mode
+                      ag
+                      scala-mode2
+                      smex
+                      flx-ido
+                      fiplr
+                      rubocop
+                      ruby-end
+                      quickrun
+                      git-gutter
+                      rainbow-mode
+                      ace-jump-mode
+                      coffee-mode
+                      js2-mode
+                      company
+                      expand-region
+                      clojure-mode
+                      multiple-cursors
+                      magit
+                      mark-multiple
+                      projectile
+                      org
+                      ruby-mode
+                      inf-ruby
+                      browse-kill-ring
+                      smartparens
+                      gist
+                      yasnippet
+                      rainbow-delimiters
+                      idle-highlight-mode))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
+
 (setq visible-bell t
       show-paren-style 'mixed
-      scroll-margin 0
-      croll-conservatively 100000
+      scroll-margin 1
+      croll-conservatively 10000
       scroll-preserve-screen-position 1
       auto-save-default nil
       initial-scratch-message nil
@@ -53,13 +108,23 @@
   (setq-default mac-option-modifier 'super)
   (setq-default mac-pass-command-to-system nil))
 
+(setq mouse-wheel-follow-mouse 't)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq git-messenger:show-detail 't)
+
+
+(require 'helm-config)
+(helm-mode 1)
+
+(require 'git-messenger)
+(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
 
 (defun font-when-not-connected ()
   """ This font settings are supposed to be used when I am not connected
       to a separate display"""
       (interactive)
       (when (display-graphic-p)
-        (setq im/default-font "-apple-Source_Code_Pro-medium-normal-normal-*-13-*-*-*-m-0-iso10646-1")
+        (setq im/default-font "-apple-Source_Code_Pro-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1")
         (set-face-attribute 'default nil :font im/default-font)))
 
 (defun font-when-connected ()
@@ -69,17 +134,21 @@
     (set-face-attribute 'default nil :font im/default-font)))
 
 ;;(setq-default cursor-type 'bar)
-(font-when-not-connected)
+;;(font-when-not-connected)
 ;;(set-frame-font "OpenDyslexicMono 14")
-;;(set-frame-font "Anonymous Pro 16")
+(set-frame-font "Monaco 15")
 ;;(set-frame-font "Hermit 15")
 
+;;(set-face-attribute 'default nil :family "Anonymous Pro" :height 148)
+
+(setq show-trailing-whitespace t)
+
+(require 'quack)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-
 
 
 (setq x-select-enable-clipboard t
@@ -109,61 +178,6 @@ This functions should be added to the hooks of major modes for programming."
 
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
-
-(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-
-(package-initialize)
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-(defvar my-packages '(markdown-mode
-                      yaml-mode
-                      haml-mode
-                      autopair
-                      textmate
-                      colorsarenice-theme
-                      diminish
-                      exec-path-from-shell
-                      ido-hacks
-                      rspec-mode
-                      ag
-                      scala-mode2
-                      smex
-                      flx-ido
-                      fiplr
-                      rubocop
-                      ruby-end
-                      rspec-mode
-                      quickrun
-                      git-gutter
-                      rainbow-mode
-                      ace-jump-mode
-                      coffee-mode
-                      js2-mode
-                      company
-                      expand-region
-                      clojure-mode
-                      multiple-cursors
-                      magit
-                      mark-multiple
-                      projectile
-                      org
-                      ruby-mode
-                      inf-ruby
-                      browse-kill-ring
-                      smartparens
-                      gist
-                      yasnippet
-                      rainbow-delimiters
-                      idle-highlight-mode))
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-
 ;;;; path
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
@@ -172,19 +186,20 @@ This functions should be added to the hooks of major modes for programming."
 
 (exec-path-from-shell-initialize)
 
+(require 'project-explorer)
 
 
 (when (require 'diminish nil 'noerror)
   (eval-after-load "company"
-      '(diminish 'company-mode "Cmp"))
+    '(diminish 'company-mode "Cmp"))
   (eval-after-load "abbrev"
     '(diminish 'abbrev-mode "Ab"))
   (eval-after-load "projectile"
     '(diminish 'abbrev-mode "Prj")))
 
 (add-hook 'emacs-lisp-mode-hook
-  (lambda()
-    (setq mode-name "el")))
+          (lambda()
+            (setq mode-name "el")))
 
 ;;;; multiple-cursors
 (require 'multiple-cursors)
@@ -251,10 +266,11 @@ This functions should be added to the hooks of major modes for programming."
 ;;;; git-gutter
 (require 'git-gutter)
 (global-git-gutter-mode t)
-
+(setq-default indicate-buffer-boundaries 'left)
+(setq-default indicate-empty-lines +1)
 ;;;; idle-highlight
 (require 'idle-highlight-mode)
-(setq idle-highlight-idle-time 1)
+(setq idle-highlight-idle-time 2)
 
 (defun idle-coding-hook ()
   (idle-highlight-mode t))
@@ -267,11 +283,11 @@ This functions should be added to the hooks of major modes for programming."
 (require 'textmate)
 (textmate-mode)
 
-(require 'paren)
-(set-face-background 'show-paren-match-face (face-background 'default))
-(set-face-foreground 'show-paren-match-face "green")
-(set-face-attribute 'show-paren-match-face nil :weight 'extra-bold)
-(show-paren-mode 1)
+;; (require 'paren)
+;; (set-face-background 'show-paren-match-face (face-background 'default))
+;; (set-face-foreground 'show-paren-match-face "green")
+;; (set-face-attribute 'show-paren-match-face nil :weight 'extra-bold)
+;; (show-paren-mode 1)
 
 (set-default 'imenu-auto-rescan t)
 ;;;; IDO-MODE
@@ -348,9 +364,11 @@ This functions should be added to the hooks of major modes for programming."
 (require 'smartparens)
 (require 'smartparens-config)
 ;; highlights matching pairs
-(show-smartparens-global-mode nil)
 (smartparens-global-mode t)
-
+(show-smartparens-global-mode +1)
+(sp-with-modes '(rhtml-mode)
+  (sp-local-pair "<" ">")
+  (sp-local-pair "<%" "%>"))
 
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"

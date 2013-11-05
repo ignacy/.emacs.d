@@ -54,11 +54,12 @@
 
                ))
 
+
 ;;(force-mode-line-update)
 
 
 
-;; (set-face-background 'mode-line "black")
+(set-face-background 'mode-line "black")
 ;; (set-face-foreground 'mode-line "white")
 ;; (set-face-background 'mode-line-inactive "black")
 ;; (set-face-foreground 'mode-line-inactive "#eee")

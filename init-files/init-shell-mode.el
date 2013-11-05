@@ -13,7 +13,7 @@
 
 ;; make a face
 (make-face 'font-lock-small-face)
-(set-face-attribute 'font-lock-small-face nil :height 0.8)
+(set-face-attribute 'font-lock-small-face nil :height 0.9)
 
 ;; add this setting to all shell-mode buffers
 (add-hook 'shell-mode-hook
@@ -21,6 +21,10 @@
           (font-lock-mode t)
           (buffer-face-mode t) ; only in emacs 23
           (buffer-face-set 'font-lock-small-face)))
+
+(add-hook 'term-mode-hook
+          (lambda ()
+            (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
 ;; shell-mode
 (defun sh (&optional name)
