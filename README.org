@@ -1,6 +1,0 @@
-* my .emacs.d
-
-  This is my "current" setup. It changes a lot, and since 2006 when I started to use Emacs
-  I deleted and then recreated my setup a couple of times. It's and it probably always will
-  be a work in progress as I like to play with it a lot. Still I hope you'll find something
-  helpful here.

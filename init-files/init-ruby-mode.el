@@ -11,12 +11,10 @@
 (setq yas/mode-symbol 'rails-mode)
 (setq ruby-use-encoding-map nil)
 
-(require 'ruby-hash-syntax)
-
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (set (make-local-variable 'compile-command)
-                 (concat "ruby -Ilib:test:. " buffer-file-name))))
+;; (add-hook 'ruby-mode-hook
+;;           (lambda ()
+;;             (set (make-local-variable 'compile-command)
+;;                  (concat "ruby -Ilib:test:. " buffer-file-name))))
 
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 

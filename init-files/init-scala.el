@@ -6,6 +6,7 @@
 (require 'flymake)
 (add-hook 'java-mode-hook 'flymake-mode-on)
 (add-hook 'scala-mode2-hook 'flymake-mode-on)
+(require 'sbt-mode)
 
 (add-hook 'scala-mode-hook
           (lambda ()

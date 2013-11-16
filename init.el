@@ -12,10 +12,9 @@
 
 (add-to-list 'custom-theme-load-path
              (concat dotfiles-dir "/themes/"))
-;;(load-theme 'ir-black)
-;;(load-theme 'obsidian)
 
-;;(load-theme 'occidental) -- great light theme
+;;(load-theme 'occidental) ;;-- great light theme
+;;(load-theme 'leuven)
 (load-theme 'flatland)
 
 (require 'ag)
@@ -39,6 +38,7 @@
 (require 'init-ruby-mode)
 (require 'init-shell-mode)
 (require 'init-file-associations)
+;;(require 'init-evil)
 
 ;; go fullscreen
 (set-frame-parameter nil 'fullscreen

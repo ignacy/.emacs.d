@@ -13,7 +13,6 @@
                       scala-mode2 smex flx-ido fiplr rubocop ruby-end
                       git-gutter rainbow-mode flycheck
                       coffee-mode expand-region helm sbt-mode
-                      rbenv
                       clojure-mode multiple-cursors magit
                       mark-multiple git-messenger flatland-theme
                       projectile org ruby-mode inf-ruby
@@ -26,10 +25,16 @@
 
 
 (setq visible-bell t
+      show-paren-style 'mixed
+      scroll-margin 1
       x-select-enable-clipboard t
       x-select-enable-primary t
+      save-interprogram-paste-before-kill t
+      apropos-do-all t
       mouse-yank-at-point t
       backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
+      croll-conservatively 10000
+      scroll-preserve-screen-position 1
       auto-save-default nil
       initial-scratch-message nil
       make-backup-files nil
@@ -50,6 +55,7 @@
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 (fringe-mode '(0 . 0))
+
 
 (setq-default indent-tabs-mode nil)
 (set-language-environment "UTF-8")
@@ -152,7 +158,8 @@ This functions should be added to the hooks of major modes for programming."
 ;;;; git-gutter
 (require 'git-gutter)
 (global-git-gutter-mode t)
-
+(setq-default indicate-buffer-boundaries 'left)
+(setq-default indicate-empty-lines +1)
 ;;;; idle-highlight
 (require 'idle-highlight-mode)
 (setq idle-highlight-idle-time 2)

@@ -7,10 +7,6 @@
 (setq fiplr-ignored-globs '((directories (".git" ".svn" "log" "tmp"))
                             (files ("*.jpg" "*.png" "*.zip" "*~"))))
 
-
-(require 'helm-projectile)
-(global-set-key (kbd "C-c h") 'helm-projectile)
-
 (defadvice find-tag-at-point (before auto-visti-tags)
   "Load default TAGS file from home directory if needed"
   (visit-tags-table (concat (projectile-project-root) "TAGS")))

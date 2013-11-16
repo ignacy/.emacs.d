@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         end-of-buffer
+        evil-change
         isearch-abort
         isearch-forward-regexp
         isearch-other-control-char
@@ -20,10 +21,12 @@
         compile-goto-error
         ido-find-file
         ido-recentf-open
+        kill-region-or-backward-kill-word
         magit-status
         mouse-set-region
         ruby-electric-close-matching-char
         ruby-electric-space
         switch-to-previous-buffer
         yaml-electric-backspace
+        yas-expand
         ))
