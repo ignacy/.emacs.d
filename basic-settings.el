@@ -4,21 +4,23 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (package-initialize)
+(setq package-enable-at-startup nil)
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(markdown-mode yaml-mode haml-mode
-                      textmate undo-tree colorsarenice-theme diminish
-                      exec-path-from-shell ido-hacks rspec-mode ag
-                      scala-mode2 smex flx-ido fiplr rubocop ruby-end
-                      git-gutter rainbow-mode flycheck
-                      coffee-mode expand-region helm sbt-mode
-                      rbenv
-                      clojure-mode multiple-cursors magit
-                      mark-multiple git-messenger flatland-theme
-                      projectile org ruby-mode inf-ruby
-                      smartparens gist yasnippet
-                      rainbow-delimiters idle-highlight-mode))
+(defvar my-packages '(use-package markdown-mode yaml-mode haml-mode
+                                  textmate undo-tree colorsarenice-theme diminish
+                                  exec-path-from-shell ido-hacks rspec-mode ag
+                                  scala-mode2 smex flx-ido fiplr rubocop ruby-end
+                                  git-gutter rainbow-mode flycheck
+                                  coffee-mode expand-region helm sbt-mode
+                                  rbenv rhtml-mode perspective
+                                  clojure-mode multiple-cursors magit
+                                  mark-multiple git-messenger flatland-theme
+                                  projectile org ruby-mode inf-ruby
+                                  smartparens gist yasnippet
+                                  rainbow-delimiters idle-highlight-mode
+                                  evil evil-leader))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -82,15 +84,21 @@
 (setq mouse-wheel-follow-mouse 't)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
-(require 'helm-config)
-(helm-mode 1)
+(require 'use-package)
+(use-package helm-mode
+  :init
+  (progn (require 'helm-config)
+         (helm-mode 1)))
 
 (require 'git-messenger)
-(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
 (setq git-messenger:show-detail 't)
+(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
+
 
 ;;(set-frame-font "OpenDyslexicMono 14")
-(set-frame-font "Monaco 15")
+;;(set-frame-font "Monaco 13")
+;;(set-frame-font "Menelo 14")
+(set-frame-font "Inconsolata 17")
 ;;(set-frame-font "Hermit 15")
 ;;(set-frame-font "Source Code Pro 15")
 
@@ -104,7 +112,7 @@
   "Highlight a bunch of well known comment annotations.
 This functions should be added to the hooks of major modes for programming."
   (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):"
+   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|NOTE\\|HACK\\|REFACTOR\\):"
           1 font-lock-warning-face t))))
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
@@ -117,24 +125,23 @@ This functions should be added to the hooks of major modes for programming."
 (exec-path-from-shell-initialize)
 
 ;;;; multiple-cursors
-(require 'multiple-cursors)
-(require 'inline-string-rectangle)
-(global-set-key (kbd "C-x r t") 'inline-string-rectangle)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
-(global-set-key (kbd "C-S-c C-a") 'mc/edit-beginnings-of-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-<return>") 'mc/mark-more-like-this-extended)
-(global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
-(global-set-key (kbd "C-M-=") 'mc/insert-numbers)
-(global-set-key (kbd "C-*") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+(use-package multiple-cursors
+  :init (progn (require 'inline-string-rectangle)
+               (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+               (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+               (global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
+               (global-set-key (kbd "C-S-c C-a") 'mc/edit-beginnings-of-lines)
+               (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+               (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+               (global-set-key (kbd "C-<return>") 'mc/mark-more-like-this-extended)
+               (global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
+               (global-set-key (kbd "C-M-=") 'mc/insert-numbers)
+               (global-set-key (kbd "C-*") 'mc/mark-all-like-this)
+               (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)))
 
 ;;;; rainbow-delimeters
-(require 'rainbow-delimiters)
-(global-rainbow-delimiters-mode)
-;;(add-hook 'prog-mode-hook 'rainbow-delimiters-mode-enable)
+(use-package rainbow-delimiters
+  :init (global-rainbow-delimiters-mode))
 
 ;;;; faces
 (make-face 'font-lock-number-face)
@@ -150,15 +157,15 @@ This functions should be added to the hooks of major modes for programming."
      )))
 
 ;;;; git-gutter
-(require 'git-gutter)
-(global-git-gutter-mode t)
+(use-package git-gutter
+  :init (global-git-gutter-mode t))
 
 ;;;; idle-highlight
-(require 'idle-highlight-mode)
-(setq idle-highlight-idle-time 2)
-(defun idle-coding-hook ()
-  (idle-highlight-mode t))
-(add-hook 'prog-mode-hook 'idle-coding-hook)
+(use-package idle-highlight-mode
+  :init (progn (setq idle-highlight-idle-time 2)
+               (defun idle-coding-hook ()
+                 (idle-highlight-mode t))
+               (add-hook 'prog-mode-hook 'idle-coding-hook)))
 
 (set-default 'imenu-auto-rescan t)
 
@@ -176,23 +183,27 @@ This functions should be added to the hooks of major modes for programming."
   (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
   (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
 (add-hook 'ido-setup-hook 'ido-define-keys)
-(require 'flx-ido)
-(setq ido-use-faces nil)
-(flx-ido-mode 1)
+
+(use-package flx-ido
+  :init (progn
+          (setq ido-use-faces nil)
+          (flx-ido-mode 1)))
 
 ;; ;;;; ORG mode
 (setq org-return-follows-link t)
 (setq org-directory "~/Dropbox/notes")
-(setq org-mobile-inbox-for-pull "~/Dropbox/notes/notes.org")
-(setq org-mobile-directory "~/Dropbox/Aplikacje/MobileOrg")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-default-todo-file (concat org-directory "/todo.org"))
 (setq org-default-bug-journal-file (concat org-directory "/bugs.org"))
+(setq org-default-book-notes-file (concat org-directory "/book_notes.org"))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
+      '(("t" "Todo" entry (file org-default-todo-file "Tasks")
          "* TODO %?\n  %i\n ")
         ("b" "Bug Journal" entry (file+datetree org-default-bug-journal-file)
          "* %?\nEntered on %U\n  %i\n  ")
+        ("o" "Book note" entry (file org-default-book-notes-file)
+         "* %^{Book title}\n %?\n")
         ("n" "Note" entry (file+datetree org-default-notes-file)
          "* %?\nEntered on %U\n  %i\n  ")))
 
@@ -205,42 +216,33 @@ This functions should be added to the hooks of major modes for programming."
    (scala . t)
    (ruby . t)))
 
-(require 'markdown-mode)
-(setq markdown-imenu-generic-expression
-      '(("title"  "^\\(.*\\)[\n]=+$" 1)
-        ("h2-"    "^\\(.*\\)[\n]-+$" 1)
-        ("h1"   "^# \\(.*\\)$" 1)
-        ("h2"   "^## \\(.*\\)$" 1)
-        ("h3"   "^### \\(.*\\)$" 1)
-        ("h4"   "^#### \\(.*\\)$" 1)
-        ("h5"   "^##### \\(.*\\)$" 1)
-        ("h6"   "^###### \\(.*\\)$" 1)
-        ("fn"   "^\\[\\^\\(.*\\)\\]" 1)
-        ))
-(setq imenu-generic-expression markdown-imenu-generic-expression)
+(use-package markdown-mode
+  :init (progn
+          (setq markdown-imenu-generic-expression
+                '(("title"  "^\\(.*\\)[\n]=+$" 1)
+                  ("h2-"    "^\\(.*\\)[\n]-+$" 1)
+                  ("h1"   "^# \\(.*\\)$" 1)
+                  ("h2"   "^## \\(.*\\)$" 1)
+                  ("h3"   "^### \\(.*\\)$" 1)
+                  ("h4"   "^#### \\(.*\\)$" 1)
+                  ("h5"   "^##### \\(.*\\)$" 1)
+                  ("h6"   "^###### \\(.*\\)$" 1)
+                  ("fn"   "^\\[\\^\\(.*\\)\\]" 1)
+                  ))
+          (setq imenu-generic-expression markdown-imenu-generic-expression)))
 
-;; Save point position between sessions
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+(use-package saveplace
+  :init (progn (setq-default save-place t)
+               (setq save-place-file (expand-file-name ".places" user-emacs-directory))))
 
-(require 'recentf)
-(setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
-(recentf-mode t)
-(setq recentf-max-saved-items 500)
-(setq recentf-max-menu-items 30)
-(add-to-list 'recentf-exclude "\\.revive\\'")
-(add-to-list 'recentf-exclude "elpa")
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
-(require 'smartparens)
-(require 'smartparens-config)
-;; highlights matching pairs
-(smartparens-global-mode t)
-(show-smartparens-global-mode +1)
-(sp-with-modes '(rhtml-mode)
-  (sp-local-pair "<" ">")
-  (sp-local-pair "<%" "%>"))
+(use-package recentf
+  :init (progn
+          (setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
+          (recentf-mode t)
+          (setq recentf-max-saved-items 500)
+          (setq recentf-max-menu-items 30)
+          (add-to-list 'recentf-exclude "\\.revive\\'")
+          (add-to-list 'recentf-exclude "elpa")))
 
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
@@ -249,6 +251,17 @@ This functions should be added to the hooks of major modes for programming."
       (message "Opening file...")
     (message "Aborting")))
 
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(use-package smartparens)
+(use-package smartparens-config
+  :init (progn
+          (smartparens-global-mode t)
+          (show-smartparens-global-mode +1)
+          (sp-with-modes '(rhtml-mode)
+            (sp-local-pair "<" ">")
+            (sp-local-pair "<%" "%>"))))
 
 ;;;; Cider
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
@@ -261,5 +274,7 @@ This functions should be added to the hooks of major modes for programming."
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 
+(use-package perspective
+  :init (persp-mode))
 
 (provide 'basic-settings)

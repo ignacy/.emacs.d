@@ -50,10 +50,10 @@
                '(:eval (when (vc-mode)
                          (propertize (concat "(" (substring vc-mode 5) ")")
                                      'face 'sm-branch-face)))
-
+               ;; " "
+               ;; '(:eval (propertize persp-modestring 'face 'sm-project-name-face))
 
                ))
-
 
 ;;(force-mode-line-update)
 

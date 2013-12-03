@@ -48,7 +48,8 @@
                   (ignore-errors (previous-line 5))))
 
 
-(bind "M-r" 'ag-project-regexp)
+;;(bind "M-r" 'ag-project-regexp)
+(bind "M-r" 'helm-ag-r-from-git-repo)
 (bind "M-z" 'undo)
 (bind "M-s m" 'multi-occur-in-this-mode)
 
@@ -85,13 +86,17 @@
 
 (require 'textmate)
 ;;(bind "C-'" 'textmate-goto-symbol)
-(bind "C-'" 'ido-goto-symbol)
+;;(bind "C-'" 'ido-goto-symbol)
+(bind "C-'" 'helm-imenu)
 
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x b" 'ido-switch-buffer)
 (bind "C-x C-b" 'helm-buffers-list)
 (bind "M-g" 'goto-line-with-feedback)
 
+
+(bind "M-o" 'run-shell)
+(bind "C-x p" 'persp-switch)
 (bind "M-i" 'back-to-indentation)
 
 (defun run-file-or-spec ()

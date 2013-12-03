@@ -1,9 +1,6 @@
-(autoload 'inf-ruby-mode-hook "inf-ruby" t)
-(autoload 'haml-mode "haml-mode" t)
-(autoload 'web-mode "web-mode" t)
-
-(require 'ruby-mode)
-(require 'rspec-mode)
+(use-package inf-ruby-mode-hook)
+(use-package ruby-mode)
+(use-package rspec-mode)
 
 ;; work around possible elpa bug
 (ignore-errors (require 'ruby-compilation))

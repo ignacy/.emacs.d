@@ -2,6 +2,146 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/deploy@dev:/" . "u/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/test/scala/" . "actorbintree/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/test/" . "scala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/main/scala/" . "common/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/main/" . "scala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/" . "test/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/" . "src/")
+ ("/Users/ignacymoryc/code/wallet_server/app/serializers/" . "proxycard/")
+ ("/Users/ignacymoryc/code/slearn2/app/views/companies/" . "preferences/")
+ ("/Users/ignacymoryc/code/slearn2/app/controllers/" . "companies/")
+ ("/Users/ignacymoryc/code/slearn2/db/" . "migrate/")
+ ("/Users/ignacymoryc/code/adapter_server/spec/lib/adapter_server/" . "receipt/")
+ ("/Users/ignacymoryc/code/adapter_server/spec/lib/" . "adapter_server/")
+ ("/Users/ignacymoryc/code/adapter_server/spec/" . "fixtures/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/target/classes/com/wirecard/nds/" . "factory/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/target/classes/com/wirecard/" . "nds/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/target/classes/com/" . "wirecard/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/target/classes/" . "com/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/target/" . "generated-sources/")
+ ("/Users/ignacymoryc/code/nds_source/nds-docs/src/site/" . "apt/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/suggestions/src/main/scala/suggestions/" . "search/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/suggestions/src/main/scala/" . "suggestions/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/suggestions/src/main/resources/" . "suggestions/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/suggestions/src/main/" . "scala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/suggestions/src/" . "main/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/suggestions/" . "src/")
+ ("/Users/ignacymoryc/code/nds_source/nds-failure-metrics/src/main/java/com/wirecard/nds/" . "jms/")
+ ("/Users/ignacymoryc/code/nds_source/nds-failure-metrics/src/main/java/com/wirecard/" . "nds/")
+ ("/Users/ignacymoryc/code/nds_source/nds-failure-metrics/src/main/java/com/" . "wirecard/")
+ ("/Users/ignacymoryc/code/nds_source/nds-failure-metrics/src/main/java/" . "com/")
+ ("/Users/ignacymoryc/code/nds_source/nds-failure-metrics/src/main/" . "java/")
+ ("/Users/ignacymoryc/code/nds_source/nds-failure-metrics/src/" . "main/")
+ ("/Users/ignacymoryc/code/nds_source/nds-failure-metrics/" . "src/")
+ ("/Users/ignacymoryc/code/nds_source/nds-docs/src/" . "site/")
+ ("/Users/ignacymoryc/code/nds_source/nds-docs/" . "src/")
+ ("/Users/ignacymoryc/code/nds_source/nds-push/src/main/java/com/wirecard/nds/" . "service/")
+ ("/Users/ignacymoryc/code/nds_source/nds-push/src/main/java/com/wirecard/" . "nds/")
+ ("/Users/ignacymoryc/code/nds_source/nds-push/src/main/java/com/" . "wirecard/")
+ ("/Users/ignacymoryc/code/nds_source/nds-push/src/main/java/" . "com/")
+ ("/Users/ignacymoryc/code/nds_source/nds-push/src/main/" . "java/")
+ ("/Users/ignacymoryc/code/nds_source/nds-push/src/" . "main/")
+ ("/Users/ignacymoryc/code/nds_source/nds-push/" . "src/")
+ ("/Users/ignacymoryc/code/nds_source/nds-common/src/main/java/com/wirecard/nds/" . "jms/")
+ ("/Users/ignacymoryc/code/nds_source/nds-common/src/main/java/com/wirecard/" . "nds/")
+ ("/Users/ignacymoryc/code/nds_source/nds-common/src/main/java/com/" . "wirecard/")
+ ("/Users/ignacymoryc/code/nds_source/nds-common/src/main/java/" . "com/")
+ ("/Users/ignacymoryc/code/nds_source/nds-common/src/main/" . "java/")
+ ("/Users/ignacymoryc/code/nds_source/nds-common/src/" . "main/")
+ ("/Users/ignacymoryc/code/nds_source/nds-common/" . "src/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/src/main/java/com/wirecard/nds/" . "factory/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/src/main/java/com/wirecard/" . "nds/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/src/main/java/com/" . "wirecard/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/src/main/java/" . "com/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/src/main/" . "java/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/src/" . "main/")
+ ("/Users/ignacymoryc/code/nds_source/nds-model/" . "src/")
+ ("/Users/ignacymoryc/code/nds_source/nds-canonical-id/src/main/java/com/wirecard/nds/" . "service/")
+ ("/Users/ignacymoryc/code/nds_source/nds-canonical-id/src/main/java/com/wirecard/" . "nds/")
+ ("/Users/ignacymoryc/code/nds_source/nds-canonical-id/src/main/java/com/" . "wirecard/")
+ ("/Users/ignacymoryc/code/nds_source/nds-canonical-id/src/main/java/" . "com/")
+ ("/Users/ignacymoryc/code/nds_source/nds-canonical-id/src/main/" . "java/")
+ ("/Users/ignacymoryc/code/nds_source/nds-canonical-id/src/" . "main/")
+ ("/Users/ignacymoryc/code/nds_source/nds-canonical-id/" . "src/")
+ ("/Users/ignacymoryc/code/nds_source/nds-assembly/src/main/" . "assembly/")
+ ("/Users/ignacymoryc/code/nds_source/nds-assembly/src/" . "main/")
+ ("/Users/ignacymoryc/code/nds_source/nds-assembly/" . "src/")
+ ("/Users/ignacymoryc/code/nds_source/" . "nds-model/")
+ ("/Users/ignacymoryc/code/archive/axle/spec/" . "support/")
+ ("/Users/ignacymoryc/code/archive/axle/" . "spec/")
+ ("/Users/ignacymoryc/code/modern-cljs/resources/" . "public/")
+ ("/Users/ignacymoryc/code/modern-cljs/src/cljs/" . "modern_cljs/")
+ ("/Users/ignacymoryc/code/modern-cljs/src/" . "cljs/")
+ ("/Users/ignacymoryc/code/modern-cljs/" . "resources/")
+ ("/Users/ignacymoryc/code/dcell_messaging/lib/" . "server_b/")
+ ("/Users/ignacymoryc/code/dcell_messaging/" . "lib/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/example/src/test/scala/" . "example/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/example/src/test/" . "scala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/example/src/main/scala/" . "example/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/example/src/main/" . "scala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/example/src/" . "test/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/example/" . "src/")
+ ("/Users/ignacymoryc/code/wallet_server/config/" . "initializers/")
+ ("/deploy@dev:/u/apps/wallet_server/current/" . "config/")
+ ("/deploy@dev:/u/apps/wallet_server/" . "current/")
+ ("/deploy@dev:/u/apps/" . "wallet_server/")
+ ("/Users/ignacymoryc/code/wallet_server/app/services/" . "qr_application/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/nodescala/src/test/scala/" . "nodescala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/nodescala/src/test/" . "scala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/nodescala/src/main/scala/" . "nodescala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/nodescala/src/main/" . "scala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/nodescala/src/" . "test/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/nodescala/" . "src/")
+ ("/Users/ignacymoryc/code/adapter_server/lib/adapter_server/" . "receipt/")
+ ("/Users/ignacymoryc/code/adapter_server/lib/" . "adapter_server/")
+ ("/Users/ignacymoryc/code/adapter_server/" . "spec/")
+ ("/Users/ignacymoryc/code/wallet_server/spec/controllers/proxycard/v1/" . "cards/")
+ ("/Users/ignacymoryc/code/wallet_server/spec/controllers/proxycard/" . "v1/")
+ ("/Users/ignacymoryc/code/wallet_server/spec/controllers/api/v1/" . "cards/")
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/proxycard/v1/" . "cards/")
+ ("/deploy@dev:/u/tomcats/wallet_server/" . "logs/")
+ ("/deploy@dev:/u/tomcats/" . "wallet_server/")
+ ("/deploy@dev:/u/" . "apps/")
+ ("/Users/ignacymoryc/code/nds/conf/" . "nds1/")
+ ("/Users/ignacymoryc/code/nds/nds-common/" . "src/")
+ ("/Users/ignacymoryc/code/event_processor/app/" . "models/")
+ ("/Users/ignacymoryc/code/event_processor/" . "app/")
+ ("/Users/ignacymoryc/code/nds/nds-web/src/main/java/com/wirecard/nds/" . "jms/")
+ ("/Users/ignacymoryc/code/nds/nds-web/src/main/java/com/wirecard/" . "nds/")
+ ("/Users/ignacymoryc/code/nds/nds-web/src/main/java/com/" . "wirecard/")
+ ("/Users/ignacymoryc/code/nds/nds-web/src/main/java/" . "com/")
+ ("/Users/ignacymoryc/code/nds/nds-web/src/main/" . "java/")
+ ("/Users/ignacymoryc/code/nds/nds-web/src/" . "main/")
+ ("/Users/ignacymoryc/code/nds/nds-web/" . "src/")
+ ("/Users/ignacymoryc/code/nds/nds-push/src/main/java/com/wirecard/nds/" . "service/")
+ ("/Users/ignacymoryc/code/nds/nds-push/src/main/java/com/wirecard/" . "nds/")
+ ("/Users/ignacymoryc/code/nds/nds-push/src/main/java/com/" . "wirecard/")
+ ("/Users/ignacymoryc/code/nds/nds-push/src/main/java/" . "com/")
+ ("/Users/ignacymoryc/code/nds/nds-push/src/main/" . "java/")
+ ("/Users/ignacymoryc/code/nds/nds-push/src/" . "main/")
+ ("/Users/ignacymoryc/code/nds/nds-push/" . "src/")
+ ("/Users/ignacymoryc/code/nds/" . "conf/")
+ ("/ssh:deploy@dev:/u/apps/wallet_server/current/" . "config/")
+ ("/ssh:deploy@dev:/u/apps/wallet_server/" . "current/")
+ ("/ssh:deploy@dev:/u/apps/" . "wallet_server/")
+ ("/ssh:deploy@dev:/u/" . "apps/")
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/proxycard/" . "v1/")
+ ("/Users/ignacymoryc/code/wallet_server/lib/" . "push_notifications/")
+ ("/Users/ignacymoryc/code/wallet_server/app/models/concerns/" . "user/")
+ ("/Users/ignacymoryc/code/wallet_server/db/" . "migrate/")
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/api/v1/" . "cards/")
+ ("/Users/ignacymoryc/code/wallet_server/spec/controllers/api/" . "v1/")
+ ("/Users/ignacymoryc/code/wallet_server/spec/controllers/" . "proxycard/")
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/api/" . "v1/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/simulations/src/main/scala/simulations/" . "gui/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/simulations/src/test/scala/" . "simulations/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/simulations/src/test/" . "scala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/simulations/src/main/scala/" . "simulations/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/simulations/src/main/" . "scala/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/simulations/src/" . "main/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/simulations/" . "src/")
  ("/Users/ignacymoryc/code/server/app/models/" . "app_version/")
  ("/Users/ignacymoryc/code/server/app/" . "models/")
  ("/Users/ignacymoryc/code/server/db/" . "migrate/")
@@ -18,22 +158,22 @@
  ("/Users/ignacymoryc/code/adaptivepress/ap-publisher/lib/" . "assembly_tool/")
  ("/Users/ignacymoryc/code/adaptivepress/ap-publisher/public/" . "js/")
  ("/Users/ignacymoryc/code/adaptivepress/ap-publisher/" . "lib/")
- ("/Users/ignacymoryc/code/wallet_server/app/models/" . "concerns/")
- ("/Users/ignacymoryc/code/wallet_server/spec/" . "models/")
+ ("/Users/ignacymoryc/code/wallet_server/app/models/" . "cards/")
+ ("/Users/ignacymoryc/code/wallet_server/spec/" . "factories/")
  ("/Users/ignacymoryc/code/wallet_server/app/controllers/" . "admin/")
- ("/Users/ignacymoryc/code/wallet_server/app/views/admin/" . "upnexts/")
+ ("/Users/ignacymoryc/code/wallet_server/app/views/admin/" . "users/")
  ("/Users/ignacymoryc/code/wallet_server/app/views/" . "admin/")
- ("/Users/ignacymoryc/code/wallet_server/app/" . "controllers/")
- ("/Users/ignacymoryc/code/wallet_server/" . "config/")
+ ("/Users/ignacymoryc/code/wallet_server/app/" . "serializers/")
+ ("/Users/ignacymoryc/code/wallet_server/" . "app/")
  ("/Users/ignacymoryc/code/katas/word_wrap/" . "lib/")
  ("/Users/ignacymoryc/code/katas/" . "word_wrap/")
  ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/test/scala/" . "quickcheck/")
  ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/test/" . "scala/")
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/main/scala/" . "common/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/main/scala/" . "quickcheck/")
  ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/main/" . "scala/")
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/" . "test/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/" . "main/")
  ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/" . "src/")
- ("/Users/ignacymoryc/code/coursea_scala_2/" . "quickcheck/")
+ ("/Users/ignacymoryc/code/coursea_scala_2/" . "actorbintree/")
  ("/Users/ignacymoryc/code/tokenizer/lib/motp/lib/" . "motp/")
  ("/Users/ignacymoryc/code/tokenizer_next/app/models/" . "concerns/")
  ("/Users/ignacymoryc/code/tokenizer_next/lib/" . "request_builders/")
@@ -63,8 +203,8 @@
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/api/" . "v2/")
  ("/Users/ignacymoryc/Downloads/auto-complete-1.3.1/" . "etc/")
  ("/Users/ignacymoryc/Downloads/" . "auto-complete-1.3.1/")
- ("/Users/ignacymoryc/code/ignacy.github.com/" . "_posts/")
- ("/Users/ignacymoryc/code/slearn2/app/views/devise/" . "shared/")
+ ("/Users/ignacymoryc/code/ignacy.github.com/" . "_layouts/")
+ ("/Users/ignacymoryc/code/slearn2/app/views/devise/" . "sessions/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/admin/" . "client_users/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/db/" . "migrate/")
  ("/Users/ignacymoryc/code/tokenizer/" . "models/")
@@ -83,14 +223,14 @@
  ("/Users/ignacymoryc/code/archive/jobandtalent/app/" . "decorators/")
  ("/Users/ignacymoryc/code/archive/fortis_invoices/src/" . "fortis_invoices/")
  ("/Users/ignacymoryc/code/archive/fortis_invoices/" . "src/")
- ("/Users/ignacymoryc/code/archive/" . "fortis_invoices/")
+ ("/Users/ignacymoryc/code/archive/" . "axle/")
  ("/Users/ignacymoryc/code/word_wrap/" . "lib/")
  ("/Users/ignacymoryc/.emacs.d/elpa/" . "rspec-mode-1.7/")
- ("/Users/ignacymoryc/code/slearn2/app/assets/" . "stylesheets/")
- ("/Users/ignacymoryc/code/slearn2/spec/" . "features/")
- ("/Users/ignacymoryc/code/slearn2/app/views/" . "groups/")
- ("/Users/ignacymoryc/code/slearn2/app/" . "controllers/")
- ("/Users/ignacymoryc/code/slearn2/" . "config/")
+ ("/Users/ignacymoryc/code/slearn2/app/assets/" . "javascripts/")
+ ("/Users/ignacymoryc/code/slearn2/spec/" . "support/")
+ ("/Users/ignacymoryc/code/slearn2/app/views/" . "preferences/")
+ ("/Users/ignacymoryc/code/slearn2/app/" . "views/")
+ ("/Users/ignacymoryc/code/slearn2/" . "app/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/api/" . "v2/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/app/controllers/" . "api/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/api/" . "v2/")
@@ -102,280 +242,268 @@
  ("/Users/ignacymoryc/code/qrcodepay-backend/cookbooks/collectd/" . "recipes/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/cookbooks/" . "papertrail/")
  ("/Users/ignacymoryc/code/qrcodepay-backend/" . "lib/")
- ("/Users/ignacymoryc/code/" . "coursea_programming_languages/")
+ ("/Users/ignacymoryc/code/" . "coursea_scala_2/")
  ("/Users/ignacymoryc/.emacs.d/" . "init-files/")
- ("/Users/ignacymoryc/" . ".emacs.d/")
+ ("/Users/ignacymoryc/" . "code/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/Users/ignacymoryc/.emacs.d/init-files/"
- "/Users/ignacymoryc/.emacs.d/"
- "/Users/ignacymoryc/code/coursea_programming_languages/"
- "/Users/ignacymoryc/Downloads/"
- "/Users/ignacymoryc/code/server/app/models/"
- "/Users/ignacymoryc/code/server/lib/tasks/"
- "/Users/ignacymoryc/code/wallet_server/.git/"
- "/Users/ignacymoryc/code/server/.git/"
- "/Users/ignacymoryc/code/capistrano_configuration/config/"
- "/Users/ignacymoryc/code/server/config/"
- "/Users/ignacymoryc/code/server/db/migrate/"
- "/Users/ignacymoryc/code/server/"
- "/Users/ignacymoryc/code/server/app/models/app_version/"
- "/Users/ignacymoryc/code/wallet_server/"
- "/Users/ignacymoryc/code/wallet_server/config/"
- "/Users/ignacymoryc/code/adaptivepress/ap-publisher/lib/assembly_tool/"
- "/Users/ignacymoryc/code/capistrano_configuration/config/deploy/"
- "/Users/ignacymoryc/code/capistrano_configuration/"
- "/Users/ignacymoryc/.ssh/"
- "/Users/ignacymoryc/code/qrcode/qrcodepay-backend/lib/wirecard/"
- "/Users/ignacymoryc/code/qrcode/qrcodepay-backend/"
- "/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/controllers/api/v2/"
- "/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/controllers/"
- "/Users/ignacymoryc/code/qrcode/qrcodepay-backend/lib/cron_jobs/"
- "/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/models/"
- "/Users/ignacymoryc/"
- "/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/controllers/merchant/"
- "/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/controllers/api/v1/"
- "/Users/ignacymoryc/code/adaptivepress/ap-publisher/public/js/"
- "/Users/ignacymoryc/code/adaptivepress/ap-publisher/"
- "/Users/ignacymoryc/code/adaptivepress/ap-publisher/lib/"
- "/Users/ignacymoryc/code/wallet_server/app/controllers/admin/"
+ "/deploy@dev:/u/apps/wallet_server/current/config/"
+ "/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/test/scala/actorbintree/"
+ "/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/main/scala/common/"
+ "/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/main/scala/actorbintree/"
+ "/Users/ignacymoryc/code/coursea_scala_2/actorbintree/"
+ "/Users/ignacymoryc/code/wallet_server/lib/push_notifications/"
+ "/Users/ignacymoryc/code/wallet_server/app/serializers/"
  "/Users/ignacymoryc/code/wallet_server/app/models/"
- "/Users/ignacymoryc/code/wallet_server/app/models/concerns/"
+ "/Users/ignacymoryc/"
+ "/Users/ignacymoryc/code/wallet_server/app/controllers/admin/"
+ "/Users/ignacymoryc/code/wallet_server/app/controllers/proxycard/v1/"
+ "/Users/ignacymoryc/code/wallet_server/app/controllers/api/v1/"
+ "/Users/ignacymoryc/code/adapter_server/lib/adapter_server/"
+ "/Users/ignacymoryc/code/adapter_server/spec/fixtures/"
+ "/Users/ignacymoryc/code/wallet_server/db/"
+ "/Users/ignacymoryc/code/wallet_server/app/serializers/proxycard/"
+ "/Users/ignacymoryc/code/adapter_server/lib/adapter_server/receipt/"
+ "/Users/ignacymoryc/code/wallet_server/spec/factories/"
  "/Users/ignacymoryc/code/wallet_server/spec/models/"
- "/Users/ignacymoryc/code/wallet_server/app/views/admin/upnexts/"
- "/Users/ignacymoryc/code/katas/word_wrap/spec/"
- "/Users/ignacymoryc/code/katas/word_wrap/"
- "/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/test/scala/quickcheck/"
- "/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/main/scala/common/"
- "/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/main/scala/quickcheck/"
- "/Users/ignacymoryc/code/tokenizer_next/config/templates/"
- "/Users/ignacymoryc/code/tokenizer_next/spec/acceptance/"
- "/Users/ignacymoryc/code/tokenizer_next/"
- "/Users/ignacymoryc/code/tokenizer/models/"
- "/Users/ignacymoryc/code/tokenizer/routes/"
- "/Users/ignacymoryc/code/tokenizer/lib/motp/lib/"
- "/Users/ignacymoryc/code/tokenizer/lib/motp/lib/motp/"
- "/Users/ignacymoryc/code/tokenizer/lib/motp/"
- "/Users/ignacymoryc/code/tokenizer_next/spec/models/"
+ "/Users/ignacymoryc/code/slearn2/app/views/preferences/"
+ "/Users/ignacymoryc/code/slearn2/config/"
+ "/Users/ignacymoryc/code/slearn2/app/models/"
+ "/Users/ignacymoryc/code/slearn2/app/controllers/"
+ "/Users/ignacymoryc/code/slearn2/app/views/quizes/"
+ "/Users/ignacymoryc/code/slearn2/app/presenters/"
+ "/Users/ignacymoryc/code/slearn2/app/views/users/"
+ "/Users/ignacymoryc/code/slearn2/app/inputs/"
+ "/Users/ignacymoryc/code/slearn2/app/assets/javascripts/"
+ "/Users/ignacymoryc/code/slearn2/"
+ "/Users/ignacymoryc/code/slearn2/app/assets/stylesheets/"
+ "/Users/ignacymoryc/code/slearn2/app/views/action_traces/"
+ "/Users/ignacymoryc/code/slearn2/db/migrate/"
+ "/Users/ignacymoryc/code/slearn2/app/views/groups/"
+ "/Users/ignacymoryc/code/slearn2/app/helpers/"
+ "/Users/ignacymoryc/code/slearn2/spec/support/"
+ "/Users/ignacymoryc/code/slearn2/spec/models/"
+ "/Users/ignacymoryc/code/slearn2/app/views/layouts/"
+ "/Users/ignacymoryc/code/slearn2/app/controllers/companies/"
+ "/Users/ignacymoryc/code/slearn2/spec/features/"
+ "/Users/ignacymoryc/code/slearn2/spec/integration/"
+ "/Users/ignacymoryc/code/wallet_server/spec/controllers/proxycard/v1/"
+ "/Users/ignacymoryc/code/adapter_server/lib/adapter_server/transaction/"
+ "/Users/ignacymoryc/code/adapter_server/spec/lib/adapter_server/receipt/"
+ "/Users/ignacymoryc/code/adapter_server/"
+ "/Users/ignacymoryc/code/adapter_server/spec/lib/adapter_server/integration/"
+ "/Users/ignacymoryc/code/adapter_server/spec/support/"
+ "/Users/ignacymoryc/code/adapter_server/spec/lib/adapter_server/transaction/"
+ "/Users/ignacymoryc/code/adapter_server/spec/"
+ "/Users/ignacymoryc/code/wallet_server/config/"
+ "/Users/ignacymoryc/code/wallet_server/db/migrate/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "init-ruby-mode.el"
- "init-projectile.el"
- "init.el"
- "basic-settings.el"
- "json_validator.rkt"
- "2c1489784237a460c8334525bbbbcdc3.rkt"
- "app_version.rb"
- "warify.rake"
- "curl.rake"
- "config"
+ "config.yml"
+ "BinaryTreeSuite.scala"
+ "package.scala"
+ "BinaryTreeSet.scala"
+ "build.sbt"
+ "transaction.rb"
+ "transaction_serializer.rb"
+ "merchant_location.rb"
+ "event.rb"
+ "enriched_transaction_list.rb"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/Users/ignacymoryc/.emacs.d/init-files/" (21127 56064 0 0) "init-window-manager.elc" "init-window-manager.el" "init-shell-mode.el" "init-scala.el" "init-ruby-mode.el" "init-projectile.el" "init-markup-and-style-modes.elc" "init-markup-and-style-modes.el" "init-magit.elc" "init-magit.el" "init-javascript-settings.elc" "init-javascript-settings.el" "init-file-associations.elc" "init-file-associations.el" "init-evil.el" "init-completition.el" "init-clojure-mode.elc" "init-clojure-mode.el" "../" "./")
+ ("/Users/" (21095 27287 0 0) "Shared/" "ignacymoryc/" "Guest/" ".localized" "../" "./")
 
- ("/Users/ignacymoryc/.emacs.d/" (21127 56039 0 0) "var/" "url/" "tramp" "themes/" "snippets/" "smart-modeline.el" "recentf" "projectile.cache" "projectile-bookmarks.eld" "noansi" "keys.el" "init.el" "init-files/" "ido.last" "helpers.el" "flycheck-basic-settings.el" "elpa/" "custom.el" "basic-settings.el" "backups/" "auto-save-list/" ".places" ".org-id-locations" ".mc-lists.el" ".gitignore" ".git/" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/" (21148 35448 0 0) "VirtualBox VMs/" "src/" "saves/" "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Dysk Google/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "date_list" "code/" "ChessBase/" "Calibre Library/" "bin/" "Applications/" ".zshrc" ".zsh_history" ".zprofile" ".zcompdump" ".wine/" ".vimrc" ".viminfo" ".vim/" ".vagrant.d/" ".Trash/" ".toe-scores" ".tmuxinator/" ".tmux.conf" ".subversion/" ".ssh/" ".smex-items" ".slate.js" ".sh_history" ".scala_history" ".sbtconfig" ".sbt/" ".rstudio-desktop/" ".rspec" ".rnd" ".Rhistory" ".rediscli_history" ".recentf" ".rbenv/" ".pryrc" ".pry_history" ".profile" ".pig_history" ".npm/" ".node-gyp/" ".netrc" ".mysql_history" ".mongorc.js" ".m2/" ".local/" ".lein/" ".joe_state" ".ivy2/" ".irbrc" ".irb_history" ".irb-history" ".ido.last" ".heroku/" ".gitignore_global" ".gitconfig" ".gemrc" ".gem/" ".geiser_history.racket" ".eyrc" ".exercism" ".erc/" ".emacstiny" ".emacs.d/" ".emacs-theme" ".DS_Store" ".dropbox/" ".dbshell" ".cups/" ".ctags" ".config/" ".cocoapods/" ".CFUserTextEncoding" ".cache/" ".bzr.log" ".bundler/" ".bundle/" ".bookmarks_emacs" ".bashrc" ".bash_profile" ".bash_history" "../" "./")
 
- ("/Users/ignacymoryc/" (21127 55658 0 0) "VirtualBox VMs/" "src/" "saves/" "Public/" "Pictures/" "Music/" "Movies/" "Library/" "Dropbox/" "Downloads/" "Documents/" "Desktop/" "date_list" "code/" "ChessBase/" "Calibre Library/" "bin/" "Applications/" ".zshrc" ".zsh_history" ".zprofile" ".zcompdump" ".wine/" ".vimrc" ".viminfo" ".vim/" ".vagrant.d/" ".Trash/" ".toe-scores" ".tmuxinator/" ".tmux.conf" ".subversion/" ".ssh/" ".smex-items" ".slate.js" ".sh_history" ".scala_history" ".sbt/" ".rstudio-desktop/" ".rspec" ".rnd" ".Rhistory" ".rediscli_history" ".recentf" ".rbenv/" ".pryrc" ".pry_history" ".profile" ".pig_history" ".npm/" ".node-gyp/" ".netrc" ".mysql_history" ".mongorc.js" ".m2/" ".local/" ".lein/" ".joe_state" ".ivy2/" ".irbrc" ".irb_history" ".irb-history" ".ido.last" ".heroku/" ".gitignore_global" ".gitconfig" ".gem/" ".geiser_history.racket" ".eyrc" ".exercism" ".erc/" ".emacstiny" ".emacs.d/" ".emacs-theme" ".DS_Store" ".dropbox/" ".dbshell" ".cups/" ".ctags" ".config/" ".cocoapods/" ".CFUserTextEncoding" ".cache/" ".bzr.log" ".bundler/" ".bundle/" ".bookmarks_emacs" ".bashrc" ".bash_profile" ".bash_history" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/test/scala/actorbintree/" (21148 32805 0 0) "BinaryTreeSuite.scala" "../" "./")
 
- ("/Users/ignacymoryc/.emacs.d/elpa/" (21127 55052 0 0) "yasnippet-20131031.628/" "yaml-mode-20130311.1301/" "waher-theme-20130917.7/" "undo-tree-20130812.1224/" "tronesque-theme-20130823.36/" "textmate-20110816.1446/" "tabulated-list-20120406.2251/" "surround-20130927.837/" "sublime-themes-20130911.1404/" "subatomic-theme-20131011.1948/" "subatomic-enhanced-theme-20130226.2229/" "sml-mode-6.4/" "smex-20130707.1255/" "smartparens-20131116.1323/" "smart-mode-line-20131115.2103/" "scala-mode2-20131116.947/" "scala-mode-20131018.1110/" "sbt-mode-20131115.1315/" "s-20130905.558/" "ruby-hash-syntax-20131113.1832/" "ruby-end-20131016.937/" "rubocop-20131101.1338/" "rspec-mode-20130910.1956/" "rhtml-mode-20130421.1008/" "remember-theme-20130807.1251/" "rbenv-20130807.907/" "rainbow-mode-0.9/" "rainbow-delimiters-20131015.1304/" "quickrun-20131104.1116/" "quack-0.42/" "projectile-20131116.923/" "project-explorer-20131101.1936/" "popup-20130708.2245/" "pkg-info-20131101.1208/" "pcache-20120408.1206/" "occidental-theme-20130312.2058/" "obsidian-theme-20130920.1737/" "nzenburn-theme-20130513/" "mustang-theme-20130920.1739/" "multiple-cursors-20131031.2138/" "markdown-mode-20131005.1155/" "mark-multiple-20121118.1654/" "magit-20131115.1444/" "logito-20120225.2155/" "jujube-theme-0.1/" "js2-mode-20131106.333/" "ir-black-theme-20130303.255/" "inf-ruby-20131113.2130/" "ido-hacks-20130411.1859/" "idle-highlight-mode-20120920.1848/" "helm-projectile-20131111.2052/" "helm-20131109.938/" "haml-mode-20131015.1106/" "grizzl-20130810.1902/" "git-rebase-mode-20131005.1730/" "git-messenger-20130718.659/" "git-gutter-20131002.1856/" "git-commit-training-wheels-mode-readme.txt" "git-commit-mode-readme.txt" "git-commit-mode-20131031.1351/" "gist-20131109.2155/" "gh-20131110.1521/" "geiser-20130930.515/" "gandalf-theme-20130809.1147/" "flycheck-20131115.1440/" "flx-ido-20131030.1243/" "flx-20130728.2028/" "flatland-theme-20131104.1422/" "fiplr-20130810.1841/" "f-20131025.2156/" "expand-region-20131106.1343/" "exec-path-from-shell-20131002.1124/" "evil-matchit-20131111.1529/" "evil-leader-20130921.1354/" "evil-20131023.2315/" "espresso-theme-20130301.1148/" "es-lib-20131029.807/" "epl-20131101.1205/" "diminish-20091203.1912/" "dash-at-point-20131112.1952/" "dash-20131030.2119/" "company-20131101.302/" "colorsarenice-theme-20131106.1916/" "coffee-mode-20130618.1418/" "clojure-mode-20131101.1441/" "cider-20131115.1836/" "browse-kill-ring-20131031.2124/" "autopair-20131101.144/" "archives/" "ample-theme-20131114.1352/" "alect-themes-20131022.1107/" "ag-20131103.1957/" "ace-jump-mode-20130720.1153/" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/test/scala/" (21148 22810 0 0) "actorbintree/" "../" "./")
 
- ("/Users/ignacymoryc/code/coursea_programming_languages/" (21126 28349 0 0) "week5notes.rkt" "proglang-002-lecture_slides-section7-section7sum.pdf" "proglang-002-lecture_slides-section6-section6sum.pdf" "proglang-002-lecture_slides-section5-section5sum.pdf" "proglang-002-lecture_slides-section3-section3sum.pdf" "letexpressions.sml" "lecture_slides-section6-section6sum.pdf" "lecture_slides-section4-section4sum.pdf" "lecture_slides-section2-section2sum.pdf" "lecture_slides-section1-section1sum.pdf" "lecture_pattern_match.sml" "json_validator.rkt" "interpreter_assumptions.rkt" "hw6runner.rb" "hw6provided.rb" "hw6graphics.rb" "hw6assignment.rb" "hw6.pdf" "hw5test.rkt" "hw5.rkt" "hw5.pdf" "hw4test.rkt" "hw4combined_tests_with_graphics.rkt" "hw4.rkt" "hw4.pdf" "hw3test.sml" "hw3provided.sml" "hw3.pdf" "hw2test.sml" "hw2provided.sml" "hw2.pdf" "hw1test.sml" "hw1.sml" "hw1.pdf" "first.sml" "example.json" "dog2.jpg" "dog.jpg" "dan.jpg" "curry.jpg" "compiled/" ".git/" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/test/" (21148 22810 0 0) "scala/" "../" "./")
 
- ("/Users/ignacymoryc/Downloads/" (21126 12416 0 0) "wez.itermcolors" "top.png" "The.Daily.Show.2013.11.13.Key.and.Peele.HDTV.x264-2HD[rarbg]/" "Prisoners [2013] HDRip XviD -ETRG/" "Prime Factors Kata.ppt" "Person.of.Interest.S03E08.HDTV.x264-LOL.mp4" "peepcode-089-pbp-kytrinyx-mov.zip" "peepcode-083-pbp-benorenstein-mov.zip" "peepcode-074-pbp-creationix-mov.zip" "peepcode-071-pbp-kneath-1-mov.zip" "peepcode-067-pbp-tenderlove-2-mov.zip" "peepcode-056-pbp-zed-shaw-1-mov.zip" "peepcode-055-pbp-fhwang-mov.zip" "peepcode-054-pbp-jbarnette-2-mov.zip" "peepcode-051-pbp-bernhardt-mov.zip" "peepcode-047-vim-ii-mov.zip" "peepcode-046-vim-i-mov.zip" "PBS Frontline - Breaking the Bank (2009.HDTV.SoS)/" "okasaki.pdf" "Louis_CK_OhMyGod_EXT_HD1280.mp4" "Louis_CK_Beacon_800x448_2997.mp4" "Hyperpass_Buytickets.jpg" "Greys.Anatomy.S10E09.HDTV.x264-LOL.mp4" "Github.itermcolors" "Food Matters.avi" "eclipse/" "e4fb8eb8619f6902cf64f59c2987d1aa.rkt" "download (1)" "download" "cdaff41480bfdbb853a6d702ba7ee3a3.rkt" "Capitalism.A.Love.Story.DOCU.DVDRip.XviD-SAPHiRE/" "BRICS-RS-96-37.pdf" "Arnold Schwarzenegger - The New Encyclopedia Of Modern Bodybuilding.pdf" "5ba2906898613608576b794870ac2f71.rkt" "2c1489784237a460c8334525bbbbcdc3.rkt" "032ClinstixBook.pdf" ".localized" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/main/scala/common/" (21148 32805 0 0) "package.scala" "../" "./")
 
- ("/Users/ignacymoryc/code/server/app/models/" (21126 8821 0 0) "version.rb" "update.rb" "translate_info.rb" "number.rb" "app_version.rb" "app.rb" "admin_user.rb" ".gitkeep" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/main/scala/actorbintree/" (21148 32805 0 0) "BinaryTreeSet.scala" "../" "./")
 
- ("/Users/ignacymoryc/code/server/lib/tasks/" (21126 8368 0 0) "warify.rake" "test_seed.rake" "split_app_version_number_into_columns.rake" "curl.rake" ".gitkeep" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/main/scala/" (21148 33654 0 0) "common/" "actorbintree/" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/.git/" (21124 33637 0 0) "refs/" "packed-refs" "ORIG_HEAD" "objects/" "logs/" "info/" "index" "hooks/" "HEAD" "FETCH_HEAD" "description" "config" "COMMIT_EDITMSG" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/main/" (21148 33654 0 0) "scala/" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/server/.git/" (21126 7371 0 0) "refs/" "packed-refs" "objects/" "logs/" "info/" "index" "hooks/" "HEAD" "description" "config" "COMMIT_EDITMSG" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/src/" (21148 32837 0 0) "test/" "main/" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/" (21126 1219 0 0) "tmp/" "TAGS" "spec/" "README.markdown" "Rakefile" "public/" "log/" "lib/" "Gemfile.lock" "Gemfile" "db/" "config.ru" "config/" "bin/" "app/" ".rvmrc.example" ".ruby-version" ".jrubyrc" ".jruby-rvmrc.example" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/actorbintree/" (21148 33659 0 0) "target/" "submission/" "src/" "project/" "lib_managed/" "build.sbt" ".settings/" ".project" ".DS_Store" ".classpath" "../" "./")
 
- ("/Users/ignacymoryc/code/server/config/" (21126 6356 0 0) "warble.rb" "routes.rb" "locales/" "initializers/" "environments/" "environment.rb" "deploy.rb" "database.yml" "database.example.yml" "boot.rb" "application.rb" "app_config.rb" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/" (21148 32807 0 0) "target/" "TAGS" "suggestions/" "simulations/" "quickcheck/" "nodescala/" "example/" "actorbintree/" ".git/" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/server/app/models/app_version/" (21126 3225 0 0) "update.rb" "translate_info.rb" "number.rb" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/lib/push_notifications/" (21148 33541 0 0) "transaction.rb" "push_notification.rb" "basket.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/server/" (21126 1221 0 0) "warbler-exec" "vendor/" "test/" "script/" "README.md" "Rakefile" "public/" "log/" "lib/" "Gemfile.lock" "Gemfile" "db/" "config.ru" "config/" "Capfile" "app/" ".ruby-version" ".gitignore" ".git/" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/app/models/" (21148 31284 0 0) "user.rb" "transaction_update.rb" "transaction.rb" "share.rb" "redemption.rb" "punch.rb" "passbook.rb" "mobile_device.rb" "merchant_location.rb" "merchant_credit_use.rb" "loading_number.rb" "event.rb" "enriched_transaction_list.rb" "enriched_transaction.rb" "credit_grants.rb" "concerns/" "cards/" "card_pin.rb" "card.rb" "campaign.rb" "bin_list.rb" "basket_item.rb" ".keep" "../" "./")
 
- ("/Users/ignacymoryc/code/server/app/" (21126 334 0 0) "views/" "serializers/" "models/" "mailers/" "helpers/" "controllers/" "assets/" "admin/" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/app/serializers/" (21148 26931 0 0) "user_serializer.rb" "transaction_serializer.rb" "receipt_callback_serializer.rb" "proxycard/" "passbook_serializer.rb" "mobile_device_serializer.rb" "cards/" "card_serializer.rb" "bin_list_serializer.rb" "basket_item_serializer.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/server/db/migrate/" (21126 334 0 0) "20131114110535_split_app_version_number_into_columns.rb" "20130930064939_add_client_id_column_to_app_versions.rb" "20130927091429_add_requires_deinstallation_column_to_app_versions.rb" "20130920081310_add_default_info_to_app_versions.rb" "20130828104826_add_url_field_to_app.rb" "20130628153858_move_admin_notes_to_comments.rb" "20130628153857_create_admin_notes.rb" "20130628082137_drop_app_version_translation_table_use_globalize3.rb" "20121114150448_create_app_version_translations.rb" "20121112105745_create_app_versions.rb" "20121112105549_create_apps.rb" "20121112105413_devise_create_admin_users.rb" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/lib/" (21148 23458 0 0) "tasks/" "redeem_passbook.rb" "push_notifications.rb" "push_notifications/" "processing_group.rb" "ccp/" "authenticator/" "assets/" "amount_parser.rb" "aes_256.rb" "actors.rb" "actors/" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/server/db/" (21126 334 0 0) "seeds.rb" "schema.rb" "migrate/" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/proxycard/v1/" (21148 24142 0 0) "transactions_controller.rb" "receipts_controller.rb" "cards/" "base_controller.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/server/lib/" (21126 334 0 0) "tasks/" "database_connection.rb" "core_ext/" "assets/" "application_config.rb" "api/" "active_admin_views_pages_base.rb" "../" "./")
+ ("/Users/ignacymoryc/Dropbox/notes/" (21148 28341 0 0) "notes.org" "notes.html" "index.org" "ember-notes.org" "bugs.org" "book_notes.org" "blog.org" "../" "./")
 
- ("/Users/ignacymoryc/code/" (21126 202 0 0) "wirespring/" "wallet_server/" "slearn2/" "server/" "qrcode/" "puppet_configuration/" "proto-listener/" "pig_in_action/" "node_modules/" "ninety-nine-clojure-problems/" "katas/" "ignacy.github.com/" "exercism/" "dev/" "coursea_scala_2/" "coursea_programming_languages/" "clojurefun/" "capistrano_configuration/" "archive/" "algorithms_sedgewick/" "adaptivepress/" "adapter_server/" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/admin/" (21148 23477 0 0) "users_controller.rb" "upnexts_controller.rb" "transactions_controller.rb" "simulators_controller.rb" "shares_controller.rb" "passbooks_controller.rb" "loading_numbers_controller.rb" "cards_controller.rb" "base_controller.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/capistrano_configuration/" (21125 53692 0 0) "README.md" "Gemfile.lock" "Gemfile" "config/" "Capfile" "bin/" ".git/" ".bundle/" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/api/v1/" (21148 23649 0 0) "users_controller.rb" "transactions_controller.rb" "shares_controller.rb" "passbooks_controller.rb" "mobile_devices_controller.rb" "cards_controller.rb" "cards/" "canonical_mobile_devices_controller.rb" "base_controller.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/capistrano_configuration/config/" (21125 56764 0 0) "deploy.rb" "deploy/" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/" (21148 23458 0 0) "tmp/" "TAGS" "spec/" "README.markdown" "Rakefile" "public/" "log/" "lib/" "Gemfile.lock" "Gemfile" "db/" "config.ru" "config/" "bin/" "app/" ".rvmrc.example" ".ruby-version" ".jrubyrc" ".jruby-rvmrc.example" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
 
- ("/Users/ignacymoryc/code/capistrano_configuration/config/deploy/" (21125 56131 0 0) "staging_wallet.rb" "staging_te.rb" "staging_proxycard_icls.rb" "staging_nds.rb" "staging_mm_wallet.rb" "staging_icls_web.rb" "staging_ep.rb" "staging_apps_wd.rb" "staging_adapter.rb" "prod_te.rb" "prod_nds.rb" "prod_lodown.rb" "prod_icls_web.rb" "prod_ep.rb" "dev_wallet.rb" "dev_te.rb" "dev_nds.rb" "dev_icls_web.rb" "dev_ep.rb" "dev_apps_wd.rb" "dev_adapter.rb" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/spec/factories/" (21148 23458 0 0) "users.rb" "transactions.rb" "perks.rb" "passbooks.rb" "mobile_devices.rb" "loading_numbers.rb" "cards.rb" "bin_lists.rb" "basket_items.rb" ".keep" "../" "./")
 
- ("/Users/ignacymoryc/.ssh/" (21124 57567 0 0) "ubuntu_mongo" "pig_rsa" "known_hosts" "id_rsa.pub" "id_rsa" "id_imoryc_rsa.pub" "id_imoryc_rsa" "config" "../" "./")
+ ("/Users/ignacymoryc/code/adapter_server/lib/adapter_server/" (21148 22712 0 0) "wallet_server.rb" "user.rb" "transaction_params.rb" "transaction.rb" "transaction/" "response.rb" "request_handler.rb" "receipt_handler.rb" "receipt_endpoint.rb" "receipt/" "payment_engine.rb" "payment.rb" "payment/" "notification_params.rb" "logger.rb" "event_processor.rb" "endpoint.rb" "discount.rb" "card_params.rb" "card.rb" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/clojurefun/" (21003 18383 0 0) "test/" "target/" "src/" "resources/" "README.md" "project.clj" "index.html" "doc/" "assets/" ".lein-failures" ".gitignore" ".git/" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/code/adapter_server/spec/fixtures/" (21148 22281 0 0) "test.xml" "live_test.xml" "high_test.xml" "capture.xml" "../" "./")
 
- ("/Users/ignacymoryc/code/adaptivepress/ap-publisher/lib/assembly_tool/" (21123 22417 0 0) "has_uploaded_and_temp_files.rb" "has_storage.rb" "article.rb" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/db/" (21148 22155 0 0) "seeds.rb" "schema.rb" "migrate/" "bin_db.xml" "../" "./")
 
- ("/Users/ignacymoryc/code/adaptivepress/ap-publisher/public/js/" (21123 23285 0 0) "publisher.js" "jquery.sortable.min.js" "jq1.9.min.js" "bootstrap.min.js" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/proxycard/v1/cards/" (21148 17408 0 0) "active_controller.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/lib/wirecard/" (21123 23899 0 0) "utils.rb" "utils/" "gateways.rb" "gateways/" "cron_jobs/" "../" "./")
+ ("/Users/ignacymoryc/code/adapter_server/lib/adapter_server/transaction/" (21148 20451 0 0) "wallet_callback.rb" "processor.rb" "payment.rb" "gateway_operation.rb" "eft_capture.rb" "eft_authorize.rb" "credit_card_reversal.rb" "credit_card_capture.rb" "credit_card_authorize.rb" "callback.rb" "batch_processor.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/controllers/api/v2/" (21123 23899 0 0) "users_controller.rb" "payments_controller.rb" "orders_controller.rb" "offers_controller.rb" "mobile_apps_controller.rb" "merchants_controller.rb" "german_bank_infos_controller.rb" "devices_controller.rb" "custom_logs_controller.rb" "credit_cards_controller.rb" "app_custom_datas_controller.rb" "analytics_controller.rb" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/app/serializers/proxycard/" (21105 5597 0 0) "transaction_serializer.rb" "card_serializer.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/lib/cron_jobs/" (21123 23899 0 0) "transactions_report.rb" "callbacks.rb" "../" "./")
+ ("/Users/ignacymoryc/code/adapter_server/lib/adapter_server/receipt/" (21148 14887 0 0) "wirespring_request.rb" "wallet_request.rb" "event_processor_request.rb" "cast_request.rb" "callback.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/lib/" (21123 23899 0 0) "wirecard.rb" "wirecard/" "white_label_mailer.rb" "utils.rb" "utils/" "tokenizer_client.rb" "templates/" "tasks/" "sms_api/" "reconciliation/" "payments_stats_extension.rb" "payment_type.rb" "payment_callback_params.rb" "motp.rb" "motp/" "mobile_terminal.rb" "mobile_terminal/" "middleware/" "locales_iso639.rb" "json_cache.rb" "http_payment_callback.rb" "cron_jobs/" "credit_card_type.rb" "authenticator.rb" "authenticator/" "assets/" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/spec/models/" (21148 15884 0 0) "user_spec.rb" "transaction_spec.rb" "share_spec.rb" "passbook_spec.rb" "loading_number_spec.rb" "concerns/" "card_spec.rb" "card_pin_spec.rb" "bin_list_spec.rb" ".keep" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/services/" (21123 23899 0 0) "create_payment_service.rb" "client_user_builder.rb" "card_updating_service.rb" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/views/preferences/" (21147 14228 0 0) "index.html.erb" "_preference.html.erb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/models/" (21124 53971 0 0) "white_label_app.rb" "user.rb" "tax_rate.rb" "setting.rb" "reversal.rb" "refund.rb" "redemption.rb" "reconciliation_log.rb" "qr_code_payment.rb" "payment_item.rb" "payment_filters/" "payment_filter.rb" "payment_callback.rb" "payment.rb" "order.rb" "offer_item.rb" "offer.rb" "offer/" "mobile_app.rb" "merchant_user.rb" "merchant.rb" "german_bank_info.rb" "eft_payment.rb" "eft.rb" "device.rb" "customer.rb" "custom_log.rb" "credit_card_payment.rb" "credit_card.rb" "country.rb" "client_user.rb" "chargeback.rb" "ccp_payment.rb" "card_payment.rb" "card.rb" "app_custom_data.rb" "admin_user.rb" "activity_log.rb" "ability.rb" ".gitkeep" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/config/" (21147 18617 0 0) "unicorn.rb" "routes.rb" "newrelic.yml" "locales/" "initializers/" "environments/" "environment.rb" "database.yml" "boot.rb" "application.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/adaptivepress/" (21124 37015 0 0) "magazines/" "assembly_tool.zip" "ap-scripts/" "ap-publisher/" "ap-ad-server/" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/controllers/" (21147 17773 0 0) "welcome_controller.rb" "users_controller.rb" "test_invitations_controller.rb" "rename_users_controller.rb" "quizes_controller.rb" "quiz_materials_controller.rb" "quiz_attempts_controller.rb" "questions_controller.rb" "preferences_controller.rb" "groups_controller.rb" "application_controller.rb" "answers_controller.rb" "action_traces_controller.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/adaptivepress/ap-publisher/" (21124 53396 0 0) "views/" "README.markdown" "publisher.rb" "public/" "lib/" "Gemfile.lock" "Gemfile" "config.ru" "bin/" ".ruby-version" ".gitignore" ".git/" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/views/questions/" (21064 10696 0 0) "update.html.erb" "new.html.erb" "edit.html.erb" "create.html.erb" "_form.html.erb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/controllers/merchant/" (21123 23899 0 0) "users_controller.rb" "transaction_analytics_controller.rb" "payments_controller.rb" "merchants_controller.rb" "merchant_users_controller.rb" "dashboards_controller.rb" "base_controller.rb" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/models/" (21147 17684 0 0) "user_group.rb" "user_answer.rb" "user.rb" "test_invitation.rb" "quiz_material.rb" "quiz_attempt.rb" "quiz.rb" "question.rb" "preference.rb" "possible_answer.rb" "group_assignement.rb" "group.rb" "company.rb" "attempt_pdf.rb" "action_trace.rb" ".gitkeep" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/controllers/api/v1/" (21123 23899 0 0) "users_controller.rb" "payments_controller.rb" "mobile_apps_controller.rb" "merchants_controller.rb" "base_controller.rb" "analytics_controller.rb" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/presenters/" (20960 22298 0 0) "quiz_presenter.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/controllers/api/" (20986 32121 0 0) "v2/" "v1/" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/views/quizes/" (21147 16835 0 0) "show.html.erb" "new.html.erb" "index.html.erb" "edit.html.erb" "_quiz_line.html.erb" "_quiz_in_progress.html.erb" "_quiz_finished.html.erb" "_question.html.erb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/controllers/" (21123 23899 0 0) "sign_up/" "registrations_controller.rb" "payments_controller.rb" "merchant/" "home_controller.rb" "custom_logs_controller.rb" "confirmations_controller.rb" "application_controller.rb" "api/" "admin/" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/views/users/" (21147 14228 0 0) "show.html.erb" "index.html.erb" "_group.html.erb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/app/" (20991 20126 0 0) "workers/" "views/" "uploaders/" "services/" "models/" "mailers/" "helpers/" "controllers/" "concerns/" "assets/" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/inputs/" (21147 14889 0 0) "time_picker_input.rb" "datetime_picker_input.rb" "date_picker_input.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/qrcodepay-backend/" (21086 29727 0 0) "vendor/" "tmp/" "test/" "TAGS" "script/" "README.md" "Rakefile" "public/" "log/" "lib/" "Gemfile.lock" "Gemfile" "doc/" "deploy/" "db/" "coverage/" "cookbooks/" "config.ru" "config/" "bin/" "app/" ".rvmrc" ".rbenv-vars" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/" (21147 15164 0 0) "vendor/" "tmp/" "TAGS" "spec/" "script/" "README.rdoc" "Rakefile" "public/" "Procfile" "log/" "lib/" "Guardfile" "generate_tags" "Gemfile.lock" "Gemfile" "doc/" "db/" "config.ru" "config/" "bin/" "app/" ".ruby-version" ".rspec" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
 
- ("/Users/ignacymoryc/code/qrcode/" (21086 29727 0 0) "tokenizer_next/" "tokenizer/" "qrcodepay-client-ios/" "qrcodepay-backend/" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/assets/javascripts/" (21147 14928 0 0) "jvfloat.min.js" "effects.js" "bootstrap.min.js" "bootstrap.js" "application.js" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/adaptivepress/ap-publisher/lib/" (21123 22085 0 0) "assembly_tool.rb" "assembly_tool/" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/" (21147 14889 0 0) "views/" "services/" "presenters/" "models/" "mailers/" "inputs/" "helpers/" "controllers/" "assets/" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/main/scala/quickcheck/" (21122 18272 0 0) "QuickCheck.scala" "Heap.scala" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/assets/stylesheets/" (21147 14834 0 0) "welcome.css.scss" "jvfloat.css" "green_stuff.css" "font-awesome.min.css" "font-awesome-ie7.min.css" "bootstrap.min.css" "bootstrap.css" "application.css" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/app/models/" (21123 20431 0 0) "user.rb" "transaction.rb" "share.rb" "redemption.rb" "punch.rb" "passbook.rb" "merchant_location.rb" "merchant_credit_use.rb" "loading_number.rb" "event.rb" "enriched_transaction_list.rb" "enriched_transaction.rb" "credit_grants.rb" "concerns/" "cards/" "card_pin.rb" "card.rb" "campaign.rb" "bin_list.rb" "basket_item.rb" ".keep" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/views/action_traces/" (20990 2074 0 0) "index.html.erb" "../" "./")
 
- ("/Users/ignacymoryc/code/adaptivepress/ap-publisher/public/uploads/" (21114 9228 0 0) "VOL3_02-03_adidas.apm.zip" "VOL3_01_cover.apm.zip" "latest_issue/" "current_issue.pstore" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/views/" (21147 14228 0 0) "welcome/" "users/" "user_mailer/" "test_invitations/" "rename_users/" "quizes/" "quiz_materials/" "quiz_attempts/" "questions/" "preferences/" "layouts/" "groups/" "devise/" "answers/" "action_traces/" "../" "./")
 
- ("/Users/ignacymoryc/code/adaptivepress/ap-publisher/public/" (21112 64351 0 0) "uploads/" "js/" "img/" "css/" ".DS_Store" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/db/migrate/" (21147 14296 0 0) "20131201132052_add_deadline_to_quiz.rb" "20131201125004_group_belongs_to_company.rb" "20131201105928_is_admin_flag.rb" "20130930110521_create_preferences.rb" "20130712185850_create_companies.rb" "20130625140915_create_quiz_materials.rb" "20130625131741_change_default_value_for_attempt_question_count.rb" "20130606133709_create_groups.rb" "20130506162823_create_action_traces.rb" "20130202144209_devise_invitable_add_to_users.rb" "20130202141648_add_devise_to_users.rb" "20130202140408_create_test_invitations.rb" "20130202103837_add_progress_to_quiz_attempt.rb" "20130202000127_add_correct_to_answer.rb" "20130201234335_add_answer_reference_to_user_answer.rb" "20130201232811_add_user_reference_to_user_answer.rb" "20130201232647_create_user_answers.rb" "20130201232350_create_quiz_attempts.rb" "20130201232241_create_users.rb" "20130201231855_create_possible_answers.rb" "20130201231644_create_questions.rb" "20130201225858_create_quizzes.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/clojurefun/src/clojurefun/" (21053 62259 0 0) "walkthrough.clj" "responsive_design.clj" "processes.clj" "macros.clj" "ex-async.clj" "core.clj" "concurrency.clj" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/db/" (21147 14228 0 0) "seeds.rb" "schema.rb" "migrate/" "../" "./")
 
- ("/Users/ignacymoryc/code/proto-listener/" (21012 30595 0 0) "listener.rb" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/views/rename_users/" (21147 13932 0 0) "edit.html.erb" "../" "./")
 
- ("/Users/ignacymoryc/code/katas/word_wrap/spec/" (21121 57487 0 0) "word_wrap_spec.rb" "word_wrap9_spec.rb" "word_wrap8_spec.rb" "word_wrap7_spec.rb" "word_wrap6_spec.rb" "word_wrap5_spec.rb" "word_wrap4_spec.rb" "word_wrap3_spec.rb" "word_wrap2_spec.rb" "../" "./")
+ ("/Users/ignacymoryc/code/slearn2/app/helpers/" (21147 11390 0 0) "welcome_helper.rb" "users_helper.rb" "test_invitations_helper.rb" "quizes_helper.rb" "questions_helper.rb" "application_helper.rb" "answers_helper.rb" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/app/views/admin/upnexts/" (21121 57790 0 0) "index.html.erb" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/simulations/" (21128 40345 0 0) "target/" "submission/" "src/" "project/" "lib_managed/" "build.sbt" ".settings/" ".project" ".classpath" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/config/" (21121 58490 0 0) "warble.rb" "routes.rb" "newrelic.yml" "locales/" "initializers/" "environments/" "environment.rb" "database.yml" "database.example.yml" "config.yml.example" "config.yml" "boot.rb" "application.rb" "../" "./")
+ ("/Users/ignacymoryc/code/coursea_scala_2/simulations/src/test/scala/simulations/" (21128 47769 0 0) "EpidemySuite.scala" "CircuitSuite.scala" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/app/models/concerns/" (21116 45224 0 0) "user/" "response_configurable.rb" "currencies_iso4217.rb" "card/" "api_errors.rb" ".keep" "../" "./")
+ ("/Users/ignacymoryc/.emacs.d/" (21147 10555 0 0) "var/" "url/" "tramp" "themes/" "surround.el" "snippets/" "smart-modeline.el" "recentf" "projectile.cache" "projectile-bookmarks.eld" "noansi" "keys.el" "init.el" "init-files/" "ido.last" "helpers.el" "elpa/" "custom.el" "basic-settings.el" "backups/" "auto-save-list/" ".places" ".org-id-locations" ".mc-lists.el" ".gitignore" ".git/" ".DS_Store" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/spec/models/" (21116 56433 0 0) "user_spec.rb" "transaction_spec.rb" "share_spec.rb" "passbook_spec.rb" "loading_number_spec.rb" "concerns/" "card_spec.rb" "card_pin_spec.rb" "bin_list_spec.rb" ".keep" "../" "./")
+ ("/Users/ignacymoryc/code/nds_source/" (21140 41784 0 0) "scripts/" "README.md" "pom.xml" "nds-web/" "nds-test/" "nds-push/" "nds-model/" "nds-failure-metrics/" "nds-docs/" "nds-common/" "nds-canonical-id/" "nds-assembly/" "etc/" "binaries/" ".hgtags" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/code/coursea_scala_2/suggestions/src/main/scala/suggestions/gui/" (21141 60489 0 0) "WikipediaSuggest.scala" "WikipediaApi.scala" "SwingApi.scala" "package.scala" "../" "./")
+
+ ("/Users/ignacymoryc/code/ignacy.github.com/_layouts/" (21136 57443 0 0) "post.html" "default.html" "../" "./")
+
+ ("/Users/ignacymoryc/code/ignacy.github.com/css/" (21143 2588 0 0) "syntax.css" "main.css" "../" "./")
+
+ ("/Users/ignacymoryc/code/adapter_server/config/" (21143 3504 0 0) "warble.rb" "schedule.rb" "newrelic.yml" "config.yml.example" "config.yml" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/spec/features/" (21147 7864 0 0) "account_settings_spec.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/views/layouts/" (21147 7853 0 0) "application.html.erb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/spec/support/" (21147 10499 0 0) "simulated_application.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/spec/models/" (21147 10546 0 0) "user_spec.rb" "quiz_attempt_spec.rb" "preference_spec.rb" "company_spec.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/controllers/companies/" (21147 8199 0 0) "preferences_controller.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/views/companies/preferences/" (21147 7844 0 0) "index.html.erb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/views/groups/" (21064 10689 0 0) "new.html.erb" "edit.html.erb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/views/companies/" (21147 7401 0 0) "preferences/" "../" "./")
+
+ ("/Users/ignacymoryc/code/adapter_server/spec/support/" (21144 35398 0 0) "request_examples.rb" "rack_app.rb" "card_handleable.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/adapter_server/spec/lib/adapter_server/integration/" (21144 35526 0 0) "reversal_spec.rb" "interceptor_spec.rb" "authorize_spec.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/adapter_server/spec/lib/adapter_server/receipt/" (21144 43084 0 0) "callback_spec.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/app/assets/" (20989 61989 0 0) "stylesheets/" "javascripts/" "img/" "images/" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/spec/integration/" (21096 51624 0 0) "wrong_answers_spec.rb" "scoring_quiz_attempt_spec.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/slearn2/spec/" (21137 8827 0 0) "support/" "spec_helper.rb" "services/" "presenters/" "models/" "integration/" "helpers/" "features/" "controllers/" "../" "./")
+
+ ("/Users/ignacymoryc/code/adapter_server/spec/lib/adapter_server/transaction/" (21142 4940 0 0) "callback_spec.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/adapter_server/spec/lib/adapter_server/" (21143 12484 0 0) "transaction_spec.rb" "transaction_processor_spec.rb" "transaction/" "response_spec.rb" "request_handler_spec.rb" "receipt/" "payment_spec.rb" "integration/" "endpoint_spec.rb" "eft_capture_spec.rb" "eft_authorize_spec.rb" "discount_spec.rb" "credit_card_capture_spec.rb" "credit_card_atuhorize_spec.rb" "card_spec.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/wallet_server/config/" (21143 20698 0 0) "warble.rb" "routes.rb" "newrelic.yml" "locales/" "initializers/" "environments/" "environment.rb" "database.yml" "database.example.yml" "config.yml.example" "config.yml" "boot.rb" "application.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/wallet_server/spec/controllers/proxycard/v1/" (21143 22319 0 0) "transactions_controller_spec.rb" "receipts_controller_spec.rb" "cards/" "../" "./")
+
+ ("/Users/ignacymoryc/code/wallet_server/db/migrate/" (21143 20912 0 0) "20131128142051_add_terminal_id_to_basket_items.rb" "20131031121513_add_user_fields_back_to_share.rb" "20131031095720_adjust_shares.rb" "20131030122126_create_loading_numbers.rb" "20131024161655_change_amount_column_type_in_basket_items_to_float.rb" "20131024160443_change_amount_column_type_in_basket_items.rb" "20131024122012_change_column_names_for_basket_items.rb" "20131021121608_add_multi_step_status_to_transactions.rb" "20131014161038_create_basket_items.rb" "20131014160249_add_terminal_id_to_transactions.rb" "20131014135716_add_deleted_at_to_cards.rb" "20131007175546_add_sender_details_to_transactions.rb" "20131003140349_create_passbook_shares.rb" "20131003105920_create_passbooks.rb" "20130923135139_add_last_ccp_date_to_cards.rb" "20130906113321_add_related_event_id_to_transactions.rb" "20130722153259_add_active_card_id_to_users.rb" "20130721174614_change_durations_to_float.rb" "20130720131015_add_details_fields_to_transaction.rb" "20130718133257_create_versions.rb" "20130718113453_add_first_name_and_last_name_to_users.rb" "20130715203034_add_balance_for_cards.rb" "20130715174450_add_perk_fields_to_transactions.rb" "20130715163948_add_ec_cards.rb" "20130715163520_add_brand_to_bin_lists.rb" "20130714090912_add_icls_access_token.rb" "20130712134824_add_master_to_cards.rb" "20130711141516_create_transactions.rb" "20130711134614_add_qr_shared_secret_to_user.rb" "20130711131634_add_qr_unique_id_and_qr_card_type_to_cards.rb" "20130710131702_add_color_to_cards.rb" "20130709105608_create_bin_lists.rb" "20130708115340_add_loading_number_to_users.rb" "20130704113001_add_active_to_cards.rb" "20130704110722_create_cards.rb" "20130703153944_create_doorkeeper_tables.rb" "20130703132948_add_decrypted_password_to_users.rb" "20130703131836_add_brand_to_users.rb" "20130703131823_add_login_to_users.rb" "20130703131001_devise_create_users.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/wirespring/" (21132 32865 0 0) "wirespring-frontend/" "TAGS" "statistics.rb" "receipt_analyser/" "pig-jobs/" "old_merchant_trn/" "merchant_macher/" "fluentd_services/" "domain/" "apiserver/" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/code/wirespring/receipt_analyser/" (21112 64019 0 0) "spec/" "README.md" "lib/" "Gemfile.lock" "Gemfile" "extract" "config.ru" "app.rb" ".ruby-version" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
+
+ ("/Users/ignacymoryc/code/adaptivepress/" (21132 32746 0 0) "TAGS" "magazines/" "assembly_tool.zip" "ap-scripts/" "ap-publisher/" "ap-ad-server/" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/code/capistrano_configuration/config/deploy/" (21143 17440 0 0) "staging_wallet.rb" "staging_te.rb" "staging_proxycard_icls.rb" "staging_nds.rb" "staging_mm_wallet.rb" "staging_icls_web.rb" "staging_ep.rb" "staging_apps_wd.rb" "staging_adapter.rb" "prod_te.rb" "prod_nds.rb" "prod_icls_web.rb" "prod_ep.rb" "dev_wallet.rb" "dev_te.rb" "dev_nds.rb" "dev_icls_web.rb" "dev_ep.rb" "dev_apps_wd.rb" "dev_adapter.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/capistrano_configuration/config/" (21131 42136 0 0) "deploy.rb" "deploy/" "../" "./")
+
+ ("/Users/ignacymoryc/code/capistrano_configuration/" (21132 32851 0 0) "TAGS" "README.md" "Gemfile.lock" "Gemfile" "config/" "Capfile" ".git/" "../" "./")
+
+ ("/Users/ignacymoryc/code/" (21143 12674 0 0) "ws_changes.diff" "wirespring/" "wallet_server/" "version_check_server/" "slearn2/" "qrcode/" "puppet_configuration/" "proto-listener/" "pig_in_action/" "node_modules/" "ninety-nine-clojure-problems/" "nds_source/" "nds/" "katas/" "ignacy.github.com/" "exercism/" "event_processor/" "dev/" "dcell_messaging/" "coursea_scala_2/" "coursea_programming_languages/" "clojurefun/" "capistrano_configuration/" "archive/" "algorithms_sedgewick/" "adaptivepress/" "adapter_server/" ".DS_Store" "../" "./")
+
+ ("/Users/ignacymoryc/code/wallet_server/spec/controllers/proxycard/" (21069 11754 0 0) "v1/" "../" "./")
+
+ ("/Users/ignacymoryc/code/wallet_server/spec/controllers/" (21116 45224 0 0) "proxycard/" "concerns/" "api/" "admin/" ".keep" "../" "./")
 
  ("/Users/ignacymoryc/code/wallet_server/spec/" (21105 5597 0 0) "support/" "spec_helper.rb" "services/" "models/" "mailers/" "lib/" "integration/" "factories/" "controllers/" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/app/controllers/admin/" (21121 58417 0 0) "users_controller.rb" "upnexts_controller.rb" "transactions_controller.rb" "simulators_controller.rb" "shares_controller.rb" "passbooks_controller.rb" "loading_numbers_controller.rb" "cards_controller.rb" "base_controller.rb" "../" "./")
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/proxycard/" (21069 11754 0 0) "v1/" "../" "./")
+
+ ("/Users/ignacymoryc/code/wallet_server/app/controllers/api/" (21069 11754 0 0) "v1/" "../" "./")
 
  ("/Users/ignacymoryc/code/wallet_server/app/controllers/" (21121 57626 0 0) "status_controller.rb" "proxycard/" "concerns/" "application_controller.rb" "api/" "admin/" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/app/views/admin/" (21116 45224 0 0) "users/" "upnexts/" "transactions/" "simulators/" "shares/" "passbooks/" "loading_numbers/" "cards/" "../" "./")
+ ("/Users/ignacymoryc/code/adapter_server/" (21143 387 0 0) "TAGS" "spec/" "README.md" "Rakefile" "log/" "lib/" "Gemfile.lock" "Gemfile" "console.rb" "config.ru" "config/" ".ruby-version" ".gitignore" ".git/" ".DS_Store" ".bundle/" "../" "./")
 
- ("/Users/ignacymoryc/code/wallet_server/app/views/" (21116 45551 0 0) "layouts/" "api/" "admin/" "../" "./")
+ ("/Users/ignacymoryc/code/adapter_server/spec/lib/" (21142 4940 0 0) "redirect_transactions_spec.rb" "perform_capture_spec.rb" "adapter_server/" "../" "./")
+
+ ("/Users/ignacymoryc/code/adapter_server/spec/" (21142 4940 0 0) "wirecard/" "support/" "spec_helper.rb" "lib/" "fixtures/" "card_gateway.rb" "../" "./")
+
+ ("/Users/ignacymoryc/code/adapter_server/lib/" (21142 4940 0 0) "wirecard/" "utilities/" "redirect_transactions.rb" "perform_capture.rb" "currencies_iso4217.rb" "application_status.rb" "app_config.rb" "adapter_server.rb" "adapter_server/" ".DS_Store" "../" "./")
 
  ("/Users/ignacymoryc/code/wallet_server/app/" (21116 45224 0 0) "views/" "uploaders/" "services/" "serializers/" "responders/" "models/" "mailers/" "helpers/" "controllers/" "assets/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/wallet_server/lib/" (21116 45224 0 0) "tasks/" "redeem_passbook.rb" "processing_group.rb" "ccp/" "authenticator/" "assets/" "amount_parser.rb" "aes_256.rb" "actors.rb" "actors/" "../" "./")
-
- ("/Users/ignacymoryc/code/katas/word_wrap/lib/" (21117 22825 0 0) "wrapper8.rb" "wrapper6.rb" "wrapper5.rb" "wrapper4.rb" "wrapper3.rb" "wrapper2.rb" "wrapper.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/katas/word_wrap/" (20990 22434 0 0) "spec/" "Rakefile" "lib/" ".git/" "../" "./")
-
- ("/Users/ignacymoryc/code/katas/" (21030 8923 0 0) "word_wrap_scala/" "word_wrap/" "../" "./")
-
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/test/scala/quickcheck/" (21116 50906 0 0) "QuickCheckSuite.scala" "../" "./")
-
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/test/scala/" (21106 20526 0 0) "quickcheck/" "../" "./")
-
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/test/" (21106 20526 0 0) "scala/" "../" "./")
-
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/main/scala/common/" (21116 50906 0 0) "package.scala" "../" "./")
-
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/main/scala/" (21106 20526 0 0) "quickcheck/" "common/" "../" "./")
-
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/main/" (21106 20526 0 0) "scala/" "../" "./")
-
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/src/" (21106 20526 0 0) "test/" "main/" "../" "./")
-
- ("/Users/ignacymoryc/code/coursea_scala_2/quickcheck/" (21106 20526 0 0) "src/" "project/" "lib_managed/" "build.sbt" ".settings/" ".project" ".classpath" "../" "./")
-
- ("/Users/ignacymoryc/code/coursea_scala_2/" (21116 51237 0 0) "target/" "quickcheck/" ".git/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/" (21012 35912 0 0) "vendor/" "tmp/" "TAGS" "spec/" "README.markdown" "Rakefile" "public/" "log/" "lib/" "Gemfile.lock" "Gemfile" "doc/" "db/" "coverage/" "config.ru" "config/" "bin/" "app/" ".rvmrc" ".rspec" ".gitignore" ".git/" ".DS_Store" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/spec/acceptance/" (21012 38617 0 0) "template_feature_spec.rb" "records_feature_spec.rb" "old_tokenizer_functionality_spec.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/app/controllers/" (21012 37228 0 0) "templates_controller.rb" "resources_controller.rb" "concerns/" "application_controller.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/spec/models/" (21012 32924 0 0) "template_spec.rb" "resource_spec.rb" "http_client_service_spec.rb" "hash_with_indifferent_access_extenssions_spec.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer/lib/motp/lib/motp/" (20991 35319 0 0) "version.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/db/" (21011 6069 0 0) "structure.sql" "seeds.rb" "migrate/" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/app/models/" (21012 31398 0 0) "template_collection.rb" "template.rb" "resource.rb" "concerns/" ".keep" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/config/templates/" (21012 29963 0 0) "wirecard_template.yml" "test_template.yml" "google.yml" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/app/services/" (21012 29317 0 0) "http_client_service.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/.git/" (21011 33370 0 0) "refs/" "ORIG_HEAD" "objects/" "logs/" "info/" "index" "hooks/" "HEAD" "FETCH_HEAD" "description" "config" "COMMIT_EDITMSG" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/app/" (21011 32827 0 0) "views/" "services/" "models/" "mailers/" "helpers/" "controllers/" "assets/" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/models/" (21011 7349 0 0) "white_label_app.rb" "user.rb" "tax_rate.rb" "setting.rb" "reversal.rb" "refund.rb" "redemption.rb" "reconciliation_log.rb" "qr_code_payment.rb" "payment_item.rb" "payment_filters/" "payment_filter.rb" "payment_callback.rb" "payment.rb" "order.rb" "offer_item.rb" "offer.rb" "offer/" "mobile_app.rb" "merchant_user.rb" "merchant.rb" "german_bank_info.rb" "eft_payment.rb" "device.rb" "customer.rb" "custom_log.rb" "credit_card_payment.rb" "credit_card.rb" "country.rb" "client_user.rb" "chargeback.rb" "ccp_payment.rb" "card_payment.rb" "app_custom_data.rb" "admin_user.rb" "activity_log.rb" "ability.rb" ".gitkeep" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/db/migrate/" (21011 6069 0 0) "20130816072200_create_resources.rb" "20130816071827_setup_hstore.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/.git/" (21011 7349 0 0) "refs/" "packed-refs" "ORIG_HEAD" "objects/" "logs/" "info/" "index" "hooks/" "HEAD" "FETCH_HEAD" "description" "config" "COMMIT_EDITMSG" "branches/" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer/spec/" (21011 9367 0 0) "validate_otp_spec.rb" "spec_helper.rb" "payment_spec.rb" "credit_cards_spec.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer/models/" (21011 9367 0 0) "credit_card.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer/" (21011 9355 0 0) "spec/" "sinatra.log" "routes/" "README.md" "Rakefile" "models/" "makedoc.sh" "lib/" "Gemfile.lock" "Gemfile" "doc/" "db/" "config.ru" "config/" "app.rb" ".rvmrc" ".gitignore" ".git/" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/config/" (21011 25006 0 0) "templates/" "routes.rb" "locales/" "initializers/" "environments/" "environment.rb" "database.yml.sample" "database.yml" "boot.rb" "application.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/app/models/concerns/" (21003 37320 0 0) ".keep" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/lib/" (21011 16965 0 0) "tasks/" "hash_with_indifferent_access_extenssions.rb" "assets/" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/spec/" (21011 24813 0 0) "support/" "spec_helper.rb" "models/" "acceptance/" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/lib/request_builders/" (21011 16430 0 0) "wirecard_xml.rb" "hash.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer/lib/wirecard/gateways/" (21011 9586 0 0) "state.rb" "card.rb" "base.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/lib/" (21009 55582 0 0) "wirecard.rb" "wirecard/" "white_label_mailer.rb" "utils.rb" "utils/" "tokenizer_client.rb" "templates/" "tasks/" "sms_api/" "reconciliation/" "payments_stats_extension.rb" "payment_type.rb" "payment_callback_params.rb" "motp.rb" "motp/" "mobile_terminal.rb" "mobile_terminal/" "middleware/" "locales_iso639.rb" "json_cache.rb" "http_payment_callback.rb" "cron_jobs/" "credit_card_type.rb" "authenticator.rb" "authenticator/" "assets/" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/app/views/developer_notifier/" (21009 55582 0 0) "transactions_report.html.erb" "notify.html.erb" "_transactions_summary.html.erb" "_error_codes_table.html.erb" "../" "./")
-
- ("/Users/ignacymoryc/code/tokenizer_next/config/initializers/" (21009 59754 0 0) "wrap_parameters.rb" "session_store.rb" "secret_token.rb" "mime_types.rb" "inflections.rb" "filter_parameter_logging.rb" "extend_hash_functionality.rb" "backtrace_silencers.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/config/environments/" (20987 28876 0 0) "test.rb" "staging.rb" "production.rb" "development.rb" "../" "./")
-
- ("/Users/ignacymoryc/code/qrcodepay-backend/test/functional/api/v2/" (21003 36496 0 0) "users_controller_test.rb" "payments_controller_test.rb" "orders_controller_test.rb" "offers_controller_test.rb" "mobile_apps_controller_test.rb" "merchants_controller_test.rb" "devices_controller_test.rb" "custom_logs_controller_test.rb" "credit_cards_controller_test.rb" "coverage/" "app_custom_datas_controller_test.rb" "analytics_controller_test.rb" "../" "./")
 )
 
 ;; ----- ido-unc-hosts-cache -----

@@ -31,6 +31,11 @@
   (interactive)
   (shell name))
 
+(defun run-shell (shell-buffer-name)
+  "Runs shell in a buffer named shell-buffer-name"
+  (interactive "sEnter new shell buffer name: ")
+  (shell shell-buffer-name))
+
 (defun zsh ()
   (interactive)
   (shell "zsh"))

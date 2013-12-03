@@ -15,17 +15,27 @@
 
 ;;(load-theme 'occidental) ;;-- great light theme
 ;;(load-theme 'leuven)
-(load-theme 'flatland)
+;;(load-theme 'flatland)
+;;(load-theme 'colorsarenice-dark)
+(require 'color-theme-sanityinc-tomorrow)
 
-(require 'ag)
-(setq ag-highlight-search nil)
+;;(color-theme-sanityinc-tomorrow-day)
+;;(color-theme-sanityinc-tomorrow-night)
+(color-theme-sanityinc-tomorrow-blue)
+;;(load-theme 'tronesque) ;; -- night
+;;(color-theme-sanityinc-tomorrow-bright)
+;;(color-theme-sanityinc-tomorrow-eighties)
 
-(require 'smart-modeline)
 
-(require 'helpers)
-(require 'keys)
-;;(require 'setup-evil)
-(require 'gist)
+
+(use-package ag
+  :init (setq ag-highlight-search nil))
+
+(use-package smart-modeline)
+
+(use-package helpers)
+(use-package keys)
+(use-package gist)
 
 ;;;; Customize some packages
 (require 'init-clojure-mode)
@@ -45,5 +55,5 @@
                      (if (frame-parameter nil 'fullscreen)
                          nil
                        'fullboth))
-(require 'rbenv)
-(global-rbenv-mode)
+(use-package rbenv
+  :init (global-rbenv-mode))
