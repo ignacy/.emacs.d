@@ -13,18 +13,14 @@
 (add-to-list 'custom-theme-load-path
              (concat dotfiles-dir "/themes/"))
 
-;;(load-theme 'occidental) ;;-- great light theme
-;;(load-theme 'leuven)
-;;(load-theme 'flatland)
-;;(load-theme 'colorsarenice-dark)
-(require 'color-theme-sanityinc-tomorrow)
+;;(load-theme 'underwater)
 
-;;(color-theme-sanityinc-tomorrow-day)
-;;(color-theme-sanityinc-tomorrow-night)
-(color-theme-sanityinc-tomorrow-blue)
-;;(load-theme 'tronesque) ;; -- night
-;;(color-theme-sanityinc-tomorrow-bright)
-;;(color-theme-sanityinc-tomorrow-eighties)
+;;(require 'moe-theme-switcher)
+;;(load-theme 'moe-dark)
+(load-theme 'gruvbox)
+
+;;(load-theme 'afternoon)
+;; (load-theme 'bubbleberry)
 
 
 
@@ -51,9 +47,10 @@
 ;;(require 'init-evil)
 
 ;; go fullscreen
-(set-frame-parameter nil 'fullscreen
-                     (if (frame-parameter nil 'fullscreen)
-                         nil
-                       'fullboth))
+;; (set-frame-parameter nil 'fullscreen
+;;                      (if (frame-parameter nil 'fullscreen)
+;;                          nil
+;;                        'fullboth))
+
 (use-package rbenv
   :init (global-rbenv-mode))

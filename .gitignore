@@ -11,3 +11,6 @@ projectile.cache
 projectile-bookmarks.eld
 .places
 tramp
+/.places
+/ido.last
+/recentf

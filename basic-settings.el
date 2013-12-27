@@ -9,18 +9,14 @@
   (package-refresh-contents))
 
 (defvar my-packages '(use-package markdown-mode yaml-mode haml-mode
-                                  textmate undo-tree colorsarenice-theme diminish
-                                  exec-path-from-shell ido-hacks rspec-mode ag
-                                  scala-mode2 smex flx-ido fiplr rubocop ruby-end
-                                  git-gutter rainbow-mode flycheck
-                                  coffee-mode expand-region helm sbt-mode
-                                  rbenv rhtml-mode perspective
-                                  clojure-mode multiple-cursors magit
-                                  mark-multiple git-messenger flatland-theme
-                                  projectile org ruby-mode inf-ruby
-                                  smartparens gist yasnippet
-                                  rainbow-delimiters idle-highlight-mode
-                                  evil evil-leader))
+                       colorsarenice-theme diminish exec-path-from-shell
+                       ido-hacks rspec-mode scala-mode2 smex flx-ido fiplr rubocop ruby-end
+                       git-gutter rainbow-mode coffee-mode expand-region helm sbt-mode
+                       rbenv rhtml-mode clojure-mode multiple-cursors magit
+                       mark-multiple git-messenger flatland-theme
+                       projectile org ruby-mode inf-ruby
+                       smartparens gist yasnippet rainbow-delimiters
+                       idle-highlight-mode evil evil-leader))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -66,16 +62,18 @@
                  "%b"))))
 
 (show-paren-mode t)
+(setq show-paren-style 'expression)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (delete-selection-mode t)
 (display-time-mode -1)
 (global-subword-mode 1)
+(blink-cursor-mode 1)
 
 ;;(global-hl-line-mode 1)
 ;;(set-face-attribute hl-line-face nil :underline nil)
 ;;(set-face-background 'hl-line "#222")
-;;(set-face-background 'hl-line "#ddd")
+;;(set-face-background 'hl-line "#6E6E6E")
 
 (mouse-wheel-mode t)
 ;;(menu-bar-mode t)
@@ -97,17 +95,22 @@
 
 ;;(set-frame-font "OpenDyslexicMono 14")
 ;;(set-frame-font "Monaco 13")
-;;(set-frame-font "Menelo 14")
-(set-frame-font "Inconsolata 17")
-;;(set-frame-font "Hermit 15")
-;;(set-frame-font "Source Code Pro 15")
+;;(set-frame-font "Menelo 12")
+
+;;(set-frame-font "Inconsolata 16")
+(set-frame-font "Source Code Pro 15")
 
 (setq show-trailing-whitespace t)
+
+
+;;(use-package 'pomodoro)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
 (global-auto-revert-mode 1)
+(global-font-lock-mode t)
+(setq font-lock-maximum-decoration t)
 (defun font-lock-comment-annotations ()
   "Highlight a bunch of well known comment annotations.
 This functions should be added to the hooks of major modes for programming."
@@ -120,6 +123,7 @@ This functions should be added to the hooks of major modes for programming."
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
   (push "/opt/local/bin" exec-path)
+  (push "~/.rbenv/shims" exec-path)
   (push "~/bin" exec-path))
 
 (exec-path-from-shell-initialize)
@@ -169,6 +173,7 @@ This functions should be added to the hooks of major modes for programming."
 
 (set-default 'imenu-auto-rescan t)
 
+
 ;;;; IDO-MODE
 ;; Display ido results vertically, rather than horizontally
 (ido-mode t)
@@ -216,21 +221,6 @@ This functions should be added to the hooks of major modes for programming."
    (scala . t)
    (ruby . t)))
 
-(use-package markdown-mode
-  :init (progn
-          (setq markdown-imenu-generic-expression
-                '(("title"  "^\\(.*\\)[\n]=+$" 1)
-                  ("h2-"    "^\\(.*\\)[\n]-+$" 1)
-                  ("h1"   "^# \\(.*\\)$" 1)
-                  ("h2"   "^## \\(.*\\)$" 1)
-                  ("h3"   "^### \\(.*\\)$" 1)
-                  ("h4"   "^#### \\(.*\\)$" 1)
-                  ("h5"   "^##### \\(.*\\)$" 1)
-                  ("h6"   "^###### \\(.*\\)$" 1)
-                  ("fn"   "^\\[\\^\\(.*\\)\\]" 1)
-                  ))
-          (setq imenu-generic-expression markdown-imenu-generic-expression)))
-
 (use-package saveplace
   :init (progn (setq-default save-place t)
                (setq save-place-file (expand-file-name ".places" user-emacs-directory))))
@@ -252,8 +242,6 @@ This functions should be added to the hooks of major modes for programming."
     (message "Aborting")))
 
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
 (use-package smartparens)
 (use-package smartparens-config
   :init (progn
@@ -274,7 +262,10 @@ This functions should be added to the hooks of major modes for programming."
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 
-(use-package perspective
-  :init (persp-mode))
+(require 'helm-swoop)
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+;; When doing isearch, hand the word over to helm-swoop
+(define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
 
 (provide 'basic-settings)

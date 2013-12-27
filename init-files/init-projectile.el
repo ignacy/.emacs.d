@@ -7,9 +7,9 @@
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
           (ad-activate 'find-tag-at-point)))
 
-(use-package fiplr
-  :init (setq fiplr-ignored-globs '((directories (".git" ".svn" "log" "tmp"))
-                                    (files ("*.jpg" "*.png" "*.zip" "*~")))))
+;; (use-package fiplr
+;;   :init (setq fiplr-ignored-globs '((directories (".git" ".svn" "log" "tmp"))
+;;                                     (files ("*.jpg" "*.png" "*.zip" "*~")))))
 
 (eval-after-load "grep"
   '(progn

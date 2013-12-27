@@ -81,7 +81,7 @@
 (setq tab-width 2)
 (setq rspec-use-rake-when-possible nil)
 (setq rspec-use-rvm nil)
-(setq rspec-use-bundler-when-possible t)
+(setq rspec-use-bundler-when-possible nil)
 
 
 (font-lock-add-keywords
