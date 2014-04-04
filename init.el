@@ -1,11 +1,13 @@
 ;;; init -- my emacs configuration
 (require 'cl)
+
+
 ;;(setq debug-on-error t)
+
 (setq dotfiles-dir "~/.emacs.d")
-(setq init-files-dir (concat dotfiles-dir "/init-files"))
-(add-to-list 'load-path dotfiles-dir)
-(add-to-list 'load-path init-files-dir)
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq configuration-files-dir (concat dotfiles-dir "/elisp"))
+(add-to-list 'load-path configuration-files-dir)
+(setq custom-file (expand-file-name "custom.el" configuration-files-dir))
 (load custom-file)
 
 (require 'basic-settings)
@@ -14,14 +16,6 @@
              (concat dotfiles-dir "/themes/"))
 
 ;;(load-theme 'underwater)
-
-;;(require 'moe-theme-switcher)
-;;(load-theme 'moe-dark)
-(load-theme 'gruvbox)
-
-;;(load-theme 'afternoon)
-;; (load-theme 'bubbleberry)
-
 
 
 (use-package ag

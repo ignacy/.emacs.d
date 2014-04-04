@@ -8,10 +8,19 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(use-package markdown-mode yaml-mode haml-mode
-                       colorsarenice-theme diminish exec-path-from-shell
-                       ido-hacks rspec-mode scala-mode2 smex flx-ido fiplr rubocop ruby-end
-                       git-gutter rainbow-mode coffee-mode expand-region helm sbt-mode
+(defvar my-packages '(use-package markdown-mode
+                       colorsarenice-theme
+                       diminish
+                       exec-path-from-shell
+                       helm-swoop
+                       ido-hacks
+                       rspec-mode
+                       smex
+                       flx-ido
+                       fiplr
+                       rubocop
+                       ruby-end
+                       git-gutter expand-region helm sbt-mode
                        rbenv rhtml-mode clojure-mode multiple-cursors magit
                        mark-multiple git-messenger flatland-theme
                        projectile org ruby-mode inf-ruby
@@ -70,11 +79,6 @@
 (global-subword-mode 1)
 (blink-cursor-mode 1)
 
-;;(global-hl-line-mode 1)
-;;(set-face-attribute hl-line-face nil :underline nil)
-;;(set-face-background 'hl-line "#222")
-;;(set-face-background 'hl-line "#6E6E6E")
-
 (mouse-wheel-mode t)
 ;;(menu-bar-mode t)
 (setq-default mac-option-modifier 'super)
@@ -96,7 +100,6 @@
 ;;(set-frame-font "OpenDyslexicMono 14")
 ;;(set-frame-font "Monaco 13")
 ;;(set-frame-font "Menelo 12")
-
 ;;(set-frame-font "Inconsolata 16")
 (set-frame-font "Source Code Pro 15")
 
@@ -182,12 +185,6 @@ This functions should be added to the hooks of major modes for programming."
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (setq ido-file-extensions-order '(".rb" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-(defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
-  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
-  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
-  (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
-  (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
-(add-hook 'ido-setup-hook 'ido-define-keys)
 
 (use-package flx-ido
   :init (progn

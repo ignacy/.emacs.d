@@ -619,7 +619,7 @@ point reaches the beginning or end of the buffer, stop there."
   (interactive)
   (save-window-excursion
     (magit-with-refresh
-      (shell-command "git --no-pager commit --amend --reuse-message=HEAD"))))
+     (shell-command "git --no-pager commit --amend --reuse-message=HEAD"))))
 
 (eval-after-load "magit"
   '(define-key magit-status-mode-map (kbd "C-c C-a") 'magit-just-amend))
@@ -647,5 +647,15 @@ point reaches the beginning or end of the buffer, stop there."
   (condition-case nil
       (ns-get-selection-internal 'CLIPBOARD)
     (quit nil)))
+
+
+(defun byte-compile-current-buffer ()
+  "`byte-compile' current buffer if it's emacs-lisp-mode and compiled file exists."
+  (interactive)
+  (when (and (eq major-mode 'emacs-lisp-mode)
+             (file-exists-p (byte-compile-dest-file buffer-file-name)))
+    (byte-compile-file buffer-file-name)))
+
+(add-hook 'after-save-hook 'byte-compile-current-buffer)
 
 (provide 'helpers)
