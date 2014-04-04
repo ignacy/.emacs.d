@@ -9,28 +9,41 @@
   (package-refresh-contents))
 
 (defvar my-packages '(use-package markdown-mode
+                       clojure-mode
                        colorsarenice-theme
-                       diminish
+                       evil
+                       evil-leader
                        exec-path-from-shell
-                       helm-swoop
-                       ido-hacks
-                       rspec-mode
-                       smex
-                       flx-ido
+                       expand-region
                        fiplr
-                       rubocop
+                       flatland-theme
+                       flx-ido
+                       gist
+                       git-gutter
+                       git-messenger
+                       helm
+                       helm-swoop
+                       idle-highlight-mode
+                       ido-hacks
+                       inf-ruby
+                       magit
+                       mark-multiple
+                       multiple-cursors
+                       org
+                       projectile
+                       rainbow-delimiters
+                       rbenv
+                       rhtml-mode
+                       rspec-mode
                        ruby-end
-                       git-gutter expand-region helm sbt-mode
-                       rbenv rhtml-mode clojure-mode multiple-cursors magit
-                       mark-multiple git-messenger flatland-theme
-                       projectile org ruby-mode inf-ruby
-                       smartparens gist yasnippet rainbow-delimiters
-                       idle-highlight-mode evil evil-leader))
+                       ruby-mode
+                       smartparens
+                       smex
+                       yasnippet))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
-
 
 (setq visible-bell t
       x-select-enable-clipboard t
@@ -44,7 +57,6 @@
       inhibit-startup-screen t
       bookmark-default-file "~/.bookmarks_emacs"
       bookmark-save-flag 1
-      x-select-enable-clipboard t
       confirm-nonexistent-file-or-buffer nil
       slime-net-coding-system 'utf-8-unix
       delete-by-moving-to-trash t
@@ -56,7 +68,24 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
+
 (fringe-mode '(0 . 0))
+
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
+(global-auto-revert-mode 1)
+(global-font-lock-mode t)
+(setq font-lock-maximum-decoration t)
+(defun font-lock-comment-annotations ()
+  "Highlight a bunch of well known comment annotations.
+This functions should be added to the hooks of major modes for programming."
+  (font-lock-add-keywords
+   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|NOTE\\|HACK\\|REFACTOR\\):"
+          1 font-lock-warning-face t))))
+(add-hook 'prog-mode-hook 'font-lock-comment-annotations)
+
 
 (setq-default indent-tabs-mode nil)
 (set-language-environment "UTF-8")
@@ -65,13 +94,9 @@
 (autoload 'epa "epa-file-mode" t)
 (epa-file-enable)
 
-(setq frame-title-format
-      '((:eval (if (buffer-file-name)
-                   (abbreviate-file-name (buffer-file-name))
-                 "%b"))))
 
 (show-paren-mode t)
-(setq show-paren-style 'expression)
+(setq show-paren-style 'paranthesis)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (delete-selection-mode t)
@@ -87,10 +112,6 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 (require 'use-package)
-(use-package helm-mode
-  :init
-  (progn (require 'helm-config)
-         (helm-mode 1)))
 
 (require 'git-messenger)
 (setq git-messenger:show-detail 't)
@@ -104,23 +125,6 @@
 (set-frame-font "Source Code Pro 15")
 
 (setq show-trailing-whitespace t)
-
-
-;;(use-package 'pomodoro)
-
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-
-(global-auto-revert-mode 1)
-(global-font-lock-mode t)
-(setq font-lock-maximum-decoration t)
-(defun font-lock-comment-annotations ()
-  "Highlight a bunch of well known comment annotations.
-This functions should be added to the hooks of major modes for programming."
-  (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|NOTE\\|HACK\\|REFACTOR\\):"
-          1 font-lock-warning-face t))))
-(add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
 ;;;; path
 (when (equal system-type 'darwin)
@@ -148,20 +152,23 @@ This functions should be added to the hooks of major modes for programming."
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
-  :init (global-rainbow-delimiters-mode))
+  :init
+  (progn
+    (require 'cl-lib)
+    (require 'color)
+    (cl-loop
+     for index from 1 to rainbow-delimiters-max-face-count
+     do
+     (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+       (cl-callf color-saturate-name (face-foreground face) 30)))
 
-;;;; faces
-(make-face 'font-lock-number-face)
-(set-face-attribute 'font-lock-number-face nil :inherit font-lock-constant-face)
-(setq font-lock-number-face 'font-lock-number-face)
-(defvar font-lock-number "[0-9-.]+\\([eE][+-]?[0-9]*\\)?")
-(defvar font-lock-hexnumber "0[xX][0-9a-fA-F]+")
-(defun add-font-lock-numbers (mode)
-  (font-lock-add-keywords
-   mode
-   `((,(concat "\\<\\(" font-lock-number "\\)\\>" ) 0 font-lock-number-face)
-     (,(concat "\\<\\(" font-lock-hexnumber "\\)\\>" ) 0 font-lock-number-face)
-     )))
+    (require 'paren) ; show-paren-mismatch is defined in paren.el
+    (set-face-attribute 'rainbow-delimiters-unmatched-face nil
+                        :foreground 'unspecified
+                        :strike-through t
+                        :inherit 'show-paren-mismatch)
+
+    (global-rainbow-delimiters-mode)))
 
 ;;;; git-gutter
 (use-package git-gutter
@@ -169,7 +176,7 @@ This functions should be added to the hooks of major modes for programming."
 
 ;;;; idle-highlight
 (use-package idle-highlight-mode
-  :init (progn (setq idle-highlight-idle-time 2)
+  :init (progn (setq idle-highlight-idle-time 1.5)
                (defun idle-coding-hook ()
                  (idle-highlight-mode t))
                (add-hook 'prog-mode-hook 'idle-coding-hook)))
@@ -191,32 +198,6 @@ This functions should be added to the hooks of major modes for programming."
           (setq ido-use-faces nil)
           (flx-ido-mode 1)))
 
-;; ;;;; ORG mode
-(setq org-return-follows-link t)
-(setq org-directory "~/Dropbox/notes")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
-(setq org-default-todo-file (concat org-directory "/todo.org"))
-(setq org-default-bug-journal-file (concat org-directory "/bugs.org"))
-(setq org-default-book-notes-file (concat org-directory "/book_notes.org"))
-(define-key global-map "\C-cc" 'org-capture)
-(setq org-capture-templates
-      '(("t" "Todo" entry (file org-default-todo-file "Tasks")
-         "* TODO %?\n  %i\n ")
-        ("b" "Bug Journal" entry (file+datetree org-default-bug-journal-file)
-         "* %?\nEntered on %U\n  %i\n  ")
-        ("o" "Book note" entry (file org-default-book-notes-file)
-         "* %^{Book title}\n %?\n")
-        ("n" "Note" entry (file+datetree org-default-notes-file)
-         "* %?\nEntered on %U\n  %i\n  ")))
-
-(setq make-backup-files nil)
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (clojure . t)
-   (scala . t)
-   (ruby . t)))
 
 (use-package saveplace
   :init (progn (setq-default save-place t)
@@ -226,17 +207,10 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
           (recentf-mode t)
-          (setq recentf-max-saved-items 500)
-          (setq recentf-max-menu-items 30)
+          (setq recentf-max-saved-items 700)
+          (setq recentf-max-menu-items 50)
           (add-to-list 'recentf-exclude "\\.revive\\'")
           (add-to-list 'recentf-exclude "elpa")))
-
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
 
 
 (use-package smartparens)

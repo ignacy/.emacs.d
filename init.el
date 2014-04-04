@@ -38,6 +38,7 @@
 (require 'init-ruby-mode)
 (require 'init-shell-mode)
 (require 'init-file-associations)
+(require 'init-org)
 ;;(require 'init-evil)
 
 ;; go fullscreen

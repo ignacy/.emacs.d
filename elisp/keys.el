@@ -53,7 +53,7 @@
 (bind "M-z" 'undo)
 (bind "M-s m" 'multi-occur-in-this-mode)
 
-(bind "C-x f" 'helm-projectile)
+(bind "C-x f" 'fiplr-find-file)
 
 (bind "C-c q" 'toggle-quotes)
 (bind "C-x i" 'indent-region-or-buffer)

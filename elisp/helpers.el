@@ -295,6 +295,13 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
   (newline)                             ; insert a newline
   (switch-to-buffer nil))               ; return to the initial buffer
 
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
 (require 'etags)
 (defun ido-find-tag ()
   "Find a tag using ido"
