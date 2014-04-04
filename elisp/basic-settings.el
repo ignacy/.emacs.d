@@ -94,7 +94,6 @@ This functions should be added to the hooks of major modes for programming."
 (autoload 'epa "epa-file-mode" t)
 (epa-file-enable)
 
-
 (show-paren-mode t)
 (setq show-paren-style 'paranthesis)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -192,6 +191,13 @@ This functions should be added to the hooks of major modes for programming."
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (setq ido-file-extensions-order '(".rb" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
+  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
+  (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
+  (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
+(add-hook 'ido-setup-hook 'ido-define-keys)
+
 
 (use-package flx-ido
   :init (progn
