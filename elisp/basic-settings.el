@@ -22,6 +22,7 @@
                        git-gutter
                        git-messenger
                        helm
+                       helm-git-grep
                        helm-swoop
                        idle-highlight-mode
                        ido-hacks
@@ -112,6 +113,19 @@ This functions should be added to the hooks of major modes for programming."
 
 (require 'use-package)
 
+;; Invoke `helm-git-grep' from other helm.
+(eval-after-load 'helm
+  '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
+
+
+(which-function-mode)
+(setq-default header-line-format
+              '((which-func-mode ("" which-func-format " "))))
+(setq mode-line-misc-info
+            ;; We remove Which Function Mode from the mode line, because it's mostly
+            ;; invisible here anyway.
+            (assq-delete-all 'which-func-mode mode-line-misc-info))
+
 (require 'git-messenger)
 (setq git-messenger:show-detail 't)
 (global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
@@ -183,6 +197,7 @@ This functions should be added to the hooks of major modes for programming."
 (set-default 'imenu-auto-rescan t)
 
 
+
 ;;;; IDO-MODE
 ;; Display ido results vertically, rather than horizontally
 (ido-mode t)
@@ -238,6 +253,10 @@ This functions should be added to the hooks of major modes for programming."
 (setq cider-repl-display-in-current-window t)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
+
+(use-package helm
+  :init
+  (helm-mode 1))
 
 (require 'helm-swoop)
 (global-set-key (kbd "M-i") 'helm-swoop)
