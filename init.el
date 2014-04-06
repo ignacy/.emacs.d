@@ -41,11 +41,5 @@
 (require 'init-org)
 ;;(require 'init-evil)
 
-;; go fullscreen
-;; (set-frame-parameter nil 'fullscreen
-;;                      (if (frame-parameter nil 'fullscreen)
-;;                          nil
-;;                        'fullboth))
-
 (use-package rbenv
   :init (global-rbenv-mode))

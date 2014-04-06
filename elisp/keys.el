@@ -49,7 +49,9 @@
 
 (bind "C-=" 'er/expand-region)
 
-(bind "M-r" 'projectile-ack)
+(bind "M-r" 'helm-git-grep)
+(define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+
 (bind "M-z" 'undo)
 (bind "M-s m" 'multi-occur-in-this-mode)
 
