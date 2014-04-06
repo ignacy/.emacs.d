@@ -1,0 +1,30 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: rest_controller
+# key: rest_controller
+# --
+
+class $1sController < ApplicationController
+
+  def index
+    respond_with $1s
+  end
+
+  def create
+    @$1 = $1.create(params[:$1])
+    respond_with @$1
+  end
+
+  def show
+    respond_with @$1
+  end
+
+  def update
+    @$1.update_attributes(params[:$1])
+    respond_with @$1
+  end
+
+  def destroy
+    @$1.destroy
+    respond_with @$1
+  end
+end
