@@ -15,7 +15,6 @@
                        evil
                        evil-leader
                        exec-path-from-shell
-                       expand-region
                        fancy-narrow
                        fiplr
                        flatland-theme
@@ -259,6 +258,12 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package fancy-narrow
   :init (fancy-narrow-mode))
+
+
+(use-package easy-kill
+  :init (progn
+          (global-set-key [remap mark-sexp] 'easy-mark)
+          (global-set-key [remap kill-ring-save] 'easy-kill)))
 
 (use-package helm
   :init

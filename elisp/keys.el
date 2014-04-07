@@ -47,7 +47,7 @@
                   (interactive)
                   (ignore-errors (previous-line 5))))
 
-(bind "C-=" 'er/expand-region)
+;;(bind "C-=" 'er/expand-region)
 
 (bind "M-r" 'helm-git-grep)
 (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
@@ -72,7 +72,6 @@
 (bind "C-o" 'open-line-above)
 (bind "C-S-j" 'move-line-down)
 (bind "C-j" 'newline-and-indent)
-;;(bind "C-@" 'er/expand-region)
 
 (bind "C-x C-f" 'ido-find-file)
 (bind "C-x C-p" 'find-file-at-point)
