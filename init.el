@@ -1,7 +1,6 @@
 ;;; init -- my emacs configuration
 (require 'cl)
 
-
 ;;(setq debug-on-error t)
 
 (setq dotfiles-dir "~/.emacs.d")
@@ -12,11 +11,11 @@
 
 (require 'basic-settings)
 
+
 (add-to-list 'custom-theme-load-path
              (concat dotfiles-dir "/themes/"))
 
 ;;(load-theme 'underwater)
-
 
 (use-package ag
   :init (setq ag-highlight-search nil))

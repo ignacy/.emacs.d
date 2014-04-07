@@ -11,10 +11,12 @@
 (defvar my-packages '(use-package markdown-mode
                        clojure-mode
                        colorsarenice-theme
+                       company
                        evil
                        evil-leader
                        exec-path-from-shell
                        expand-region
+                       fancy-narrow
                        fiplr
                        flatland-theme
                        flx-ido
@@ -72,6 +74,11 @@
 
 (fringe-mode '(0 . 0))
 
+(require 'elscreen)
+(setq elscreen-tab-display-control nil)
+(setq elscreen-tab-display-kill-screen 'right)
+(elscreen-start)
+
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
@@ -117,15 +124,6 @@ This functions should be added to the hooks of major modes for programming."
 (eval-after-load 'helm
   '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
 
-
-(which-function-mode)
-(setq-default header-line-format
-              '((which-func-mode ("" which-func-format " "))))
-(setq mode-line-misc-info
-            ;; We remove Which Function Mode from the mode line, because it's mostly
-            ;; invisible here anyway.
-            (assq-delete-all 'which-func-mode mode-line-misc-info))
-
 (require 'git-messenger)
 (setq git-messenger:show-detail 't)
 (global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
@@ -147,6 +145,12 @@ This functions should be added to the hooks of major modes for programming."
   (push "~/bin" exec-path))
 
 (exec-path-from-shell-initialize)
+
+
+(use-package rbenv
+  :init (progn
+          (setq rbenv-show-active-ruby-in-modeline nil)
+          (global-rbenv-mode)))
 
 ;;;; multiple-cursors
 (use-package multiple-cursors
@@ -253,6 +257,8 @@ This functions should be added to the hooks of major modes for programming."
 (setq cider-repl-display-in-current-window t)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
+(use-package fancy-narrow
+  :init (fancy-narrow-mode))
 
 (use-package helm
   :init

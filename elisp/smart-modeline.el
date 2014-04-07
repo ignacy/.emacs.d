@@ -22,6 +22,14 @@
 (defun sm-clean-directory-name ()
   (car (last (butlast (split-string (git-repo-name default-directory) "/")))))
 
+(which-function-mode t)
+;; (setq-default header-line-format
+;;               '((which-func-mode ("" which-func-format " "))))
+;; (setq mode-line-misc-info
+;;             ;; We remove Which Function Mode from the mode line, because it's mostly
+;;             ;; invisible here anyway.
+;;             (assq-delete-all 'which-func-mode mode-line-misc-info))
+
 
 (setq-default mode-line-format
               (list
@@ -42,6 +50,9 @@
                                        'sm-column-overflow-face
                                      'sm-branch-face)))
                " "
+               '(:eval mode-line-misc-info)
+
+               " "
                '(:eval (when (vc-mode)
                          (propertize (sm-clean-directory-name)
                                      'face 'sm-project-name-face)))
@@ -50,6 +61,7 @@
                '(:eval (when (vc-mode)
                          (propertize (concat "(" (substring vc-mode 5) ")")
                                      'face 'sm-branch-face)))
+
                ;; " "
                ;; '(:eval (propertize persp-modestring 'face 'sm-project-name-face))
 
@@ -57,9 +69,7 @@
 
 ;;(force-mode-line-update)
 
-
-
-(set-face-background 'mode-line "black")
+;;(set-face-background 'mode-line "black")
 ;; (set-face-foreground 'mode-line "white")
 ;; (set-face-background 'mode-line-inactive "black")
 ;; (set-face-foreground 'mode-line-inactive "#eee")
