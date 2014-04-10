@@ -1,0 +1,48 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: rest_controller_spec
+# key: rest_controller_spec
+# --
+require 'spec_helper'
+
+describe $1sController do
+  let!(:$1) { $0 }
+
+  context '#index' do
+    it "should list $1s" do
+      get :index
+      expect(json_response[""]).to eq([])
+    end
+  end
+
+  context '#create' do
+    it 'should not be possible to create $1' do
+      post :create
+    end
+
+    it 'should create $1 with valid attributes' do
+       post :create
+    end
+  end
+
+  context '#update' do
+    it 'should update merchants name' do
+       put :update
+    end
+
+    it 'should return error when attributes are not valid' do
+      put :update
+    end
+  end
+
+  context '#show' do
+    it 'should present merchant through the API' do
+      get :show
+    end
+  end
+
+  context '#destroy' do
+    it 'should be possible to destroy merchant through the API' do
+      delete :destroy
+    end
+  end
+end
