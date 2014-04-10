@@ -27,8 +27,8 @@
 (bind "C-c f" 'ns-toggle-fullscreen)
 
 ;; Completion that uses many different methods to find options.
-(bind "C-;" 'hippie-expand-no-case-fold)
-(bind "C-:" 'hippie-expand-lines)
+(bind "C-:" 'hippie-expand-no-case-fold)
+(bind "C-;" 'hippie-expand-lines)
 (bind "C-," 'completion-at-point)
 
 (global-set-key (kbd "M-j")
@@ -88,13 +88,13 @@
 (bind "C-'" 'helm-imenu)
 
 (bind "C-<tab>" 'switch-to-previous-buffer)
-(bind "C-x C-b" 'ido-switch-buffer)
-(bind "C-x b" 'helm-buffers-list)
+(bind "C-x b" 'ido-switch-buffer)
+(bind "C-x C-b" 'helm-buffers-list)
 (bind "M-g" 'goto-line-with-feedback)
 
 (bind "C-c h" 'helm-projectile)
 
-(bind "M-o" 'run-shell)
+;;(bind "M-o" 'run-shell)
 (bind "C-x p" 'persp-switch)
 
 (defun run-file-or-spec ()

@@ -15,7 +15,7 @@
 (add-to-list 'custom-theme-load-path
              (concat dotfiles-dir "/themes/"))
 
-;;(load-theme 'underwater)
+;;(load-theme 'flatland t)
 
 (use-package ag
   :init (setq ag-highlight-search nil))
@@ -33,6 +33,7 @@
 (require 'init-javascript-settings)
 (require 'init-markup-and-style-modes)
 (require 'init-projectile)
+(require 'init-ibuffer)
 (require 'init-magit)
 (require 'init-ruby-mode)
 (require 'init-shell-mode)
