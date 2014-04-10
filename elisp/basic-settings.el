@@ -73,12 +73,6 @@
 
 (fringe-mode '(0 . 0))
 
-(require 'elscreen)
-(setq elscreen-tab-display-control nil)
-(setq elscreen-tab-display-kill-screen 'right)
-(elscreen-start)
-
-
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
@@ -267,7 +261,16 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package helm
   :init
-  (helm-mode 1))
+  (progn
+    (require 'helm-files)
+    (setq helm-idle-delay 0.1)
+    (setq helm-input-idle-delay 0.1)
+    (setq helm-locate-command "locate-with-mdfind %.0s %s")
+    (loop for ext in '("\\.swf$" "\\.elc$" "\\.pyc$")
+          do (add-to-list 'helm-boring-file-regexp-list ext))
+    (define-key global-map (kbd "M-o") 'helm-for-files)
+  (helm-mode 1)))
+
 
 (require 'helm-swoop)
 (global-set-key (kbd "M-i") 'helm-swoop)

@@ -63,6 +63,10 @@
 
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
 
+
+(require 'ruby-dev)
+(add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
+
 (defun rails-console ()
   "Runs inf-ruby process with a rails console loaded inside"
   (interactive)

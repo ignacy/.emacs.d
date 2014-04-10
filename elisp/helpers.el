@@ -302,6 +302,15 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
       (message "Opening file...")
     (message "Aborting")))
 
+(defun disable-all-themes ()
+  "disable all active themes."
+  (dolist (i custom-enabled-themes)
+    (disable-theme i)))
+
+(defadvice load-theme (before disable-themes-first activate)
+  (disable-all-themes))
+
+
 (require 'etags)
 (defun ido-find-tag ()
   "Find a tag using ido"

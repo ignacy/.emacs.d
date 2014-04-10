@@ -15,7 +15,7 @@
 (add-to-list 'custom-theme-load-path
              (concat dotfiles-dir "/themes/"))
 
-;;(load-theme 'flatland t)
+(load-theme 'tsdh-light t)
 
 (use-package ag
   :init (setq ag-highlight-search nil))

@@ -22,6 +22,19 @@
 (defun sm-clean-directory-name ()
   (car (last (butlast (split-string (git-repo-name default-directory) "/")))))
 
+(display-time-mode 1)
+(defface egoge-display-time
+  '((((type x w32 mac))
+     ;; #060525 is the background colour of my default face.
+     (:foreground "#060525" :inherit bold))
+    (((type tty))
+     (:foreground "blue")))
+  "Face used to display the time in the mode line.")
+
+(setq display-time-string-forms
+      '((propertize (concat " " 24-hours ":" minutes " ")
+                    'face 'egoge-display-time)))
+
 (which-function-mode t)
 ;; (setq-default header-line-format
 ;;               '((which-func-mode ("" which-func-format " "))))
@@ -33,7 +46,7 @@
 
 (setq-default mode-line-format
               (list
-               (propertize "> " 'face 'sm-branch-face)
+               '(:eval mode-line-misc-info)
 
                '(:eval (if (buffer-modified-p)
                            (propertize "*" 'face 'font-lock-warning-face
@@ -49,9 +62,6 @@
                                    (if (>= (current-column) 80)
                                        'sm-column-overflow-face
                                      'sm-branch-face)))
-               " "
-               '(:eval mode-line-misc-info)
-
                " "
                '(:eval (when (vc-mode)
                          (propertize (sm-clean-directory-name)
