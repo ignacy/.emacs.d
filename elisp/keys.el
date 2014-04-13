@@ -79,7 +79,9 @@
 (bind "C-M-s" 'isearch-other-window)
 (bind "C-x k" 'im/kill-current-buffer)
 (bind "M-%" 'replace-regexp)
-(bind "C-c C-d" 'dash-at-point)
+
+(bind "C-c e" 'replace-string)
+
 (bind "M-\\" 'jump-to-mark)
 (bind "C-\\" 'push-mark-no-activate)
 

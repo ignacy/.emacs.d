@@ -35,7 +35,7 @@
       '((propertize (concat " " 24-hours ":" minutes " ")
                     'face 'egoge-display-time)))
 
-(which-function-mode t)
+;;(which-function-mode t)
 ;; (setq-default header-line-format
 ;;               '((which-func-mode ("" which-func-format " "))))
 ;; (setq mode-line-misc-info

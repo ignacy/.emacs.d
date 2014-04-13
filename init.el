@@ -15,7 +15,7 @@
 (add-to-list 'custom-theme-load-path
              (concat dotfiles-dir "/themes/"))
 
-(load-theme 'tsdh-light t)
+(load-theme 'ir-black t)
 
 (use-package ag
   :init (setq ag-highlight-search nil))
@@ -39,6 +39,7 @@
 (require 'init-shell-mode)
 (require 'init-file-associations)
 (require 'init-org)
+(require 'init-confluence)
 ;;(require 'init-evil)
 
 (use-package rbenv

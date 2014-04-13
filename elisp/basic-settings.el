@@ -126,7 +126,7 @@ This functions should be added to the hooks of major modes for programming."
 ;;(set-frame-font "Monaco 13")
 ;;(set-frame-font "Menelo 12")
 ;;(set-frame-font "Inconsolata 16")
-(set-frame-font "Source Code Pro 15")
+(set-frame-font "Source Code Pro 14")
 
 (setq show-trailing-whitespace t)
 
@@ -180,7 +180,7 @@ This functions should be added to the hooks of major modes for programming."
 
     (global-rainbow-delimiters-mode)))
 
-;;;; git-gutter
+;;;; Git-Gutter
 (use-package git-gutter
   :init (global-git-gutter-mode t))
 
@@ -194,6 +194,17 @@ This functions should be added to the hooks of major modes for programming."
 (set-default 'imenu-auto-rescan t)
 
 
+(use-package zop-to-char
+  :init (progn
+          (global-set-key (kbd "M-c") 'zop-to-char)))
+
+
+(use-package iregister
+  :init (progn
+          (global-set-key (kbd "M-m") 'iregister-jump-to-next-marker)
+          (global-set-key (kbd "M-b") 'iregister-jump-to-previous-marker)
+          (global-set-key (kbd "M-u") 'iregister-point-or-text-to-register)
+          (global-set-key (kbd "M-l") 'iregister-text)))
 
 ;;;; IDO-MODE
 ;; Display ido results vertically, rather than horizontally
@@ -269,7 +280,40 @@ This functions should be added to the hooks of major modes for programming."
     (loop for ext in '("\\.swf$" "\\.elc$" "\\.pyc$")
           do (add-to-list 'helm-boring-file-regexp-list ext))
     (define-key global-map (kbd "M-o") 'helm-for-files)
-  (helm-mode 1)))
+    (helm-mode 1)))
+
+
+(use-package smartscan
+  :init
+
+  (progn (global-smartscan-mode 1)))
+
+
+(use-package artbollocks-mode
+  :init
+  (progn
+    (setq artbollocks-weasel-words-regex
+          (concat "\\b" (regexp-opt
+                         '("one of the"
+                           "should"
+                           "just"
+                           "sort of"
+                           "a lot"
+                           "probably"
+                           "maybe"
+                           "perhaps"
+                           "I think"
+                           "really"
+                           "pretty"
+                           "nice"
+                           "action"
+                           "utilize"
+                           "leverage") t) "\\b"))
+    (add-hook 'text-mode-hook 'artbollocks-mode)
+    ;; Don't show the art critic words, or at least until I figure
+    ;; out my own jargon
+    (setq artbollocks-jargon nil)))
+
 
 
 (require 'helm-swoop)
