@@ -22,12 +22,14 @@
   :init
   (progn
     (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
-    (yas-global-mode 1)
-    (require 'dropdown-list)
-    (setq yas-prompt-functions '(yas-dropdown-prompt
-                                 yas-ido-prompt
-                                 yas-completing-prompt))))
+    (yas-global-mode 1)))
 
 (require 'setup-hippie)
+
+
+ (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
+(setq default-abbrev-mode t)
+ (if (file-exists-p abbrev-file-name)
+        (quietly-read-abbrev-file))
 
 (provide 'init-completition)

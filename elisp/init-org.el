@@ -6,15 +6,49 @@
 (setq org-default-bug-journal-file (concat org-directory "/tickets.org"))
 (setq org-default-book-notes-file (concat org-directory "/book_notes.org"))
 (define-key global-map "\C-cc" 'org-capture)
+
+(setq org-agenda-files '("~/Dropbox/notes"))
+
+;;(setq org-agenda-files (quote (org-default-todo-file org-default-notes-file)))
+
 (setq org-capture-templates
       '(("t" "Todo" entry (file org-default-todo-file "Tasks")
          "* TODO %?\n  %i\n ")
-        ("b" "Bug/Tickets Journal" entry (file+datetree org-default-bug-journal-file)
-         "* %?\nEntered on %U\n  %i\n  ")
+        ("b" "Bug/Tickets Journal" entry (file org-default-bug-journal-file)
+         "* %^{Description}\n %?\n on %U\n  %i\n  ")
         ("o" "Book note" entry (file org-default-book-notes-file)
          "* %^{Book title}\n %?\n")
-        ("n" "Note" entry (file+datetree org-default-notes-file)
-         "* %?\nEntered on %U\n  %i\n  ")))
+        ("n" "Note" entry (file org-default-notes-file)
+         "* %^{Title}\n %?\non %U\n  %i\n  ")))
+
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "|" "DONE(d)")
+              (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)"))))
+
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "red" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("WAITING" :foreground "orange" :weight bold)
+              ("HOLD" :foreground "magenta" :weight bold)
+              ("CANCELLED" :foreground "forest green" :weight bold))))
+
+(setq org-todo-state-tags-triggers
+      (quote (("CANCELLED" ("CANCELLED" . t))
+              ("WAITING" ("WAITING" . t))
+              ("HOLD" ("WAITING") ("HOLD" . t))
+              (done ("WAITING") ("HOLD"))
+              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
+
+
+
+;; Do not dim blocked tasks
+(setq org-agenda-dim-blocked-tasks nil)
+
+;; Compact the block agenda view
+(setq org-agenda-compact-blocks t)
+
+(setq org-use-fast-todo-selection t)
 
 (setq make-backup-files nil)
 

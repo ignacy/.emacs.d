@@ -69,8 +69,7 @@
 
                " "
                '(:eval (when (vc-mode)
-                         (propertize (concat "(" (substring vc-mode 5) ")")
-                                     'face 'sm-branch-face)))
+                         (concat "(" (substring vc-mode 5) ")")))
 
                ;; " "
                ;; '(:eval (propertize persp-modestring 'face 'sm-project-name-face))
@@ -82,8 +81,8 @@
 ;;(set-face-background 'mode-line "black")
 ;; (set-face-foreground 'mode-line "white")
 ;; (set-face-background 'mode-line-inactive "black")
-;; (set-face-foreground 'mode-line-inactive "#eee")
-(custom-set-faces '(mode-line ((t (:box nil)))))
-(custom-set-faces '(mode-line-inactive ((t (:box nil)))))
+;;(set-face-foreground 'mode-line-inactive "#eee")
+;;(custom-set-faces '(mode-line ((t (:box nil)))))
+;;(custom-set-faces '(mode-line-inactive ((t (:box nil)))))
 
 (provide 'smart-modeline)

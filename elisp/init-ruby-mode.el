@@ -1,4 +1,4 @@
-(use-package inf-ruby-mode-hook)
+(use-package inf-ruby)
 (use-package ruby-mode)
 (use-package rspec-mode)
 
@@ -64,8 +64,8 @@
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
 
 
-(require 'ruby-dev)
-(add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
+;; (require 'ruby-dev)
+;; (add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
 
 (defun rails-console ()
   "Runs inf-ruby process with a rails console loaded inside"
@@ -86,6 +86,8 @@
 (setq rspec-use-rake-when-possible nil)
 (setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible nil)
+
+(setq rspec-command-options "--drb --format progress --order random")
 
 
 (font-lock-add-keywords

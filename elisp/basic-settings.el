@@ -8,6 +8,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;;(eval-buffer)
+
 (defvar my-packages '(use-package markdown-mode
                        clojure-mode
                        colorsarenice-theme
@@ -33,6 +35,7 @@
                        multiple-cursors
                        org
                        projectile
+                       perspective
                        rainbow-delimiters
                        rbenv
                        rhtml-mode
@@ -46,6 +49,12 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 
 (setq visible-bell t
       x-select-enable-clipboard t
@@ -70,8 +79,6 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-
-(fringe-mode '(0 . 0))
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
@@ -122,15 +129,39 @@ This functions should be added to the hooks of major modes for programming."
 (global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
 
 
-;;(set-frame-font "OpenDyslexicMono 14")
-;;(set-frame-font "Monaco 13")
-;;(set-frame-font "Menelo 12")
-;;(set-frame-font "Inconsolata 16")
-(set-frame-font "Source Code Pro 14")
-
 (setq show-trailing-whitespace t)
 
-;;;; path
+; make carriage returns blue and tabs green
+(custom-set-faces
+ '(my-carriage-return-face ((((class color)) (:background "blue"))) t)
+ '(my-tab-face ((((class color)) (:background "green"))) t)
+ )
+; add custom font locks to all buffers and all files
+(add-hook
+ 'font-lock-mode-hook
+ (function
+  (lambda ()
+    (setq
+     font-lock-keywords
+     (append
+      font-lock-keywords
+      '(
+        ("\r" (0 'my-carriage-return-face t))
+        ("\t" (0 'my-tab-face t))
+        ))))))
+
+; make characters after column 80 purple
+(setq whitespace-style (quote (face trailing tab-mark lines-tail)))
+(add-hook 'find-file-hook 'whitespace-mode)
+
+; transform literal tabs into a right-pointing triangle
+(setq whitespace-display-mappings ;http://ergoemacs.org/emacs/whitespace-mode.html
+ '(
+   (tab-mark 9 [9654 9] [92 9])
+   ;others substitutions...
+   ))
+
+
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
   (push "/opt/local/bin" exec-path)
@@ -159,6 +190,7 @@ This functions should be added to the hooks of major modes for programming."
                (global-set-key (kbd "C-M-=") 'mc/insert-numbers)
                (global-set-key (kbd "C-*") 'mc/mark-all-like-this)
                (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)))
+
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
@@ -194,17 +226,16 @@ This functions should be added to the hooks of major modes for programming."
 (set-default 'imenu-auto-rescan t)
 
 
-(use-package zop-to-char
-  :init (progn
-          (global-set-key (kbd "M-c") 'zop-to-char)))
+;; (use-package zop-to-char
+;;   :init (progn
+;;           (global-set-key (kbd "M-c") 'zop-to-char)))
 
 
 (use-package iregister
   :init (progn
-          (global-set-key (kbd "M-m") 'iregister-jump-to-next-marker)
-          (global-set-key (kbd "M-b") 'iregister-jump-to-previous-marker)
-          (global-set-key (kbd "M-u") 'iregister-point-or-text-to-register)
-          (global-set-key (kbd "M-l") 'iregister-text)))
+          (global-set-key (kbd "C-\\") 'iregister-jump-to-next-marker)
+          (global-set-key (kbd "M-|") 'iregister-jump-to-previous-marker)
+          (global-set-key (kbd "M-\\") 'iregister-point-or-text-to-register)))
 
 ;;;; IDO-MODE
 ;; Display ido results vertically, rather than horizontally
@@ -212,6 +243,7 @@ This functions should be added to the hooks of major modes for programming."
 (ido-everywhere t)
 (setq ido-create-new-buffer 'always)
 (add-to-list 'ido-ignore-files "\\.DS_Store")
+(add-to-list 'ido-ignore-files "\\.keep")
 (setq ido-file-extensions-order '(".rb" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
@@ -270,18 +302,19 @@ This functions should be added to the hooks of major modes for programming."
           (global-set-key [remap mark-sexp] 'easy-mark)
           (global-set-key [remap kill-ring-save] 'easy-kill)))
 
-(use-package helm
+;;(use-package helm
+;;  :init
+;;  (progn
+;;    (helm-mode 1)
+;;    ))
+
+
+(use-package smex
   :init
   (progn
-    (require 'helm-files)
-    (setq helm-idle-delay 0.1)
-    (setq helm-input-idle-delay 0.1)
-    (setq helm-locate-command "locate-with-mdfind %.0s %s")
-    (loop for ext in '("\\.swf$" "\\.elc$" "\\.pyc$")
-          do (add-to-list 'helm-boring-file-regexp-list ext))
-    (define-key global-map (kbd "M-o") 'helm-for-files)
-    (helm-mode 1)))
-
+    (smex-initialize)
+    (global-set-key (kbd "M-x") 'smex)
+    (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
 
 (use-package smartscan
   :init
@@ -289,37 +322,15 @@ This functions should be added to the hooks of major modes for programming."
   (progn (global-smartscan-mode 1)))
 
 
-(use-package artbollocks-mode
-  :init
-  (progn
-    (setq artbollocks-weasel-words-regex
-          (concat "\\b" (regexp-opt
-                         '("one of the"
-                           "should"
-                           "just"
-                           "sort of"
-                           "a lot"
-                           "probably"
-                           "maybe"
-                           "perhaps"
-                           "I think"
-                           "really"
-                           "pretty"
-                           "nice"
-                           "action"
-                           "utilize"
-                           "leverage") t) "\\b"))
-    (add-hook 'text-mode-hook 'artbollocks-mode)
-    ;; Don't show the art critic words, or at least until I figure
-    ;; out my own jargon
-    (setq artbollocks-jargon nil)))
-
-
+(use-package bookmark+)
 
 (require 'helm-swoop)
 (global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
 ;; When doing isearch, hand the word over to helm-swoop
 (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+
+(fringe-mode '(0 . 0))
+
 
 (provide 'basic-settings)
