@@ -60,7 +60,7 @@
 (bind "S-<right>" 'enlarge-window-horizontally)
 (bind "S-<up>" 'shrink-window)
 (bind "S-<down>" 'enlarge-window)
-
+(bind "C-j" 'newline-and-indent)
 (bind "C-o" 'open-line-below)
 (bind "C-S-o" 'open-line-above)
 

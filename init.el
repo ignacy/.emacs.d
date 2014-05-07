@@ -1,11 +1,11 @@
 ;;; init -- my emacs configuration
 (require 'cl)
-(setq debug-on-error t)
+(setq debug-on-error nil)
 
 ;;(set-frame-font "OpenDyslexicMono 14")
 ;;(set-frame-font "Monaco 13")
 ;;(set-frame-font "Menelo 12")
-(set-frame-font "Inconsolata 16")
+(set-frame-font "Inconsolata 15")
 ;;(set-frame-font "Inconsolata-g 13")
 ;;(set-frame-font "Source Code Pro 15")
 
@@ -17,7 +17,7 @@
 
 (require 'basic-settings)
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-(load-theme 'ujelly t)
+(load-theme 'grandshell2 t)
 
 (use-package smart-modeline)
 (use-package helpers)

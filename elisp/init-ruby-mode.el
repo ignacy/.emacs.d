@@ -87,7 +87,7 @@
 (setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible nil)
 
-(setq rspec-command-options "--drb --format progress --order random")
+(setq rspec-command-options "--format progress --order random")
 
 
 (font-lock-add-keywords

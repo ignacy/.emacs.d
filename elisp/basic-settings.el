@@ -10,41 +10,45 @@
 
 ;;(eval-buffer)
 
-(defvar my-packages '(use-package markdown-mode
-                       clojure-mode
-                       colorsarenice-theme
-                       company
-                       evil
-                       evil-leader
-                       exec-path-from-shell
-                       fancy-narrow
-                       fiplr
-                       flatland-theme
-                       flx-ido
-                       gist
-                       git-gutter
-                       git-messenger
-                       helm
-                       helm-git-grep
-                       helm-swoop
-                       idle-highlight-mode
-                       ido-hacks
-                       inf-ruby
-                       magit
-                       mark-multiple
-                       multiple-cursors
-                       org
-                       projectile
-                       perspective
-                       rainbow-delimiters
-                       rbenv
-                       rhtml-mode
-                       rspec-mode
-                       ruby-end
-                       ruby-mode
-                       smartparens
-                       smex
-                       yasnippet))
+(defvar my-packages '(
+                      use-package
+                      markdown-mode
+                      cider
+                      clojure-mode
+                      colorsarenice-theme
+                      company
+                      evil
+                      evil-leader
+                      exec-path-from-shell
+                      fancy-narrow
+                      fiplr
+                      flatland-theme
+                      flx-ido
+                      gist
+                      git-gutter
+                      git-messenger
+                      helm
+                      helm-git-grep
+                      helm-swoop
+                      idle-highlight-mode
+                      ido-hacks
+                      inf-ruby
+                      magit
+                      mark-multiple
+                      multiple-cursors
+                      org
+                      projectile
+                      perspective
+                      persp-projectile
+                      rainbow-delimiters
+                      rbenv
+                      rhtml-mode
+                      rspec-mode
+                      ruby-end
+                      ruby-mode
+                      smartparens
+                      smex
+                      yasnippet))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -131,35 +135,16 @@ This functions should be added to the hooks of major modes for programming."
 
 (setq show-trailing-whitespace t)
 
-; make carriage returns blue and tabs green
-(custom-set-faces
- '(my-carriage-return-face ((((class color)) (:background "blue"))) t)
- '(my-tab-face ((((class color)) (:background "green"))) t)
- )
-; add custom font locks to all buffers and all files
-(add-hook
- 'font-lock-mode-hook
- (function
-  (lambda ()
-    (setq
-     font-lock-keywords
-     (append
-      font-lock-keywords
-      '(
-        ("\r" (0 'my-carriage-return-face t))
-        ("\t" (0 'my-tab-face t))
-        ))))))
-
-; make characters after column 80 purple
+                                        ; make characters after column 80 purple
 (setq whitespace-style (quote (face trailing tab-mark lines-tail)))
 (add-hook 'find-file-hook 'whitespace-mode)
 
-; transform literal tabs into a right-pointing triangle
+                                        ; transform literal tabs into a right-pointing triangle
 (setq whitespace-display-mappings ;http://ergoemacs.org/emacs/whitespace-mode.html
- '(
-   (tab-mark 9 [9654 9] [92 9])
-   ;others substitutions...
-   ))
+      '(
+        (tab-mark 9 [9654 9] [92 9])
+                                        ;others substitutions...
+        ))
 
 
 (when (equal system-type 'darwin)
@@ -279,13 +264,21 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (smartparens-global-mode t)
           (show-smartparens-global-mode +1)
+          (define-key sp-keymap (kbd "C-M-f") 'sp-forward-sexp)
+          (define-key sp-keymap (kbd "C-M-b") 'sp-backward-sexp)
+          (define-key sp-keymap (kbd "C-M-n") 'sp-next-sexp)
+          (define-key sp-keymap (kbd "C-M-p") 'sp-previous-sexp)
+          (define-key sp-keymap (kbd "C-S-a") 'sp-beginning-of-sexp)
+          (define-key sp-keymap (kbd "C-S-d") 'sp-end-of-sexp)
+          (sp-with-modes sp--lisp-modes
+            (sp-local-pair "(" nil :bind "C-("))
           (sp-with-modes '(rhtml-mode)
             (sp-local-pair "<" ">")
             (sp-local-pair "<%" "%>"))))
 
 ;;;; Cider
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(setq nrepl-hide-special-buffers t)
+(setq nrepl-hide-special-buffers nil)
 (setq cider-repl-pop-to-buffer-on-connect nil)
 (setq cider-popup-stacktraces nil)
 (setq cider-repl-popup-stacktraces t)
@@ -302,12 +295,7 @@ This functions should be added to the hooks of major modes for programming."
           (global-set-key [remap mark-sexp] 'easy-mark)
           (global-set-key [remap kill-ring-save] 'easy-kill)))
 
-;;(use-package helm
-;;  :init
-;;  (progn
-;;    (helm-mode 1)
-;;    ))
-
+(use-package helm :init (helm-mode 1))
 
 (use-package smex
   :init
