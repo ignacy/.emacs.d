@@ -61,8 +61,8 @@
 (bind "S-<up>" 'shrink-window)
 (bind "S-<down>" 'enlarge-window)
 (bind "C-j" 'newline-and-indent)
-(bind "C-o" 'open-line-below)
-(bind "C-S-o" 'open-line-above)
+(bind "C-S-o" 'open-line-below)
+(bind "C-o" 'open-line-above)
 
 (bind "C-c d" (lambda()
                 (interactive)
@@ -72,10 +72,23 @@
 (global-set-key (kbd "M-j")
                 (lambda ()
                   (interactive)
-                  (join-line -1))) 
+                  (join-line -1)))
+
+;; Move more quickly
+(global-set-key (kbd "C-S-n")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (next-line 5))))
+
+(global-set-key (kbd "C-S-p")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (previous-line 5))))
 
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [mode-line mouse-2] 'ignore)
 (global-set-key [(meta delete)] 'backward-kill-word)
+
+(global-set-key "\C-w" (make-backward-kill-word-fn backward-kill-word (1)))
 
 (provide 'keys)

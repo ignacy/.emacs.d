@@ -1,6 +1,10 @@
 (use-package inf-ruby)
 (use-package ruby-mode)
 (use-package rspec-mode)
+(use-package rinari :init
+  (progn
+    (setq rinari-tags-file-name "TAGS")))
+
 
 ;; work around possible elpa bug
 (ignore-errors (require 'ruby-compilation))
@@ -70,12 +74,14 @@
 (defun rails-console ()
   "Runs inf-ruby process with a rails console loaded inside"
   (interactive)
-  (run-ruby "bundle exec rails console"))
+  (let ((shell-file-name "/bin/bash"))
+    (run-ruby "bundle exec rails console")))
 
 (defun rails-server ()
   "Runs rails server for the current project"
   (interactive)
-  (ruby-compilation-run "rails server" nil "server"))
+  (let ((shell-file-name "/bin/bash"))
+    (ruby-compilation-run "./bin/rails server" nil "server")))
 
 (setq ruby-use-encoding-map nil)
 (setq ruby-deep-arglist nil)

@@ -3,11 +3,11 @@
 (setq debug-on-error nil)
 
 ;;(set-frame-font "OpenDyslexicMono 14")
-;;(set-frame-font "Monaco 13")
-;;(set-frame-font "Menelo 12")
-(set-frame-font "Inconsolata 15")
+;;(set-frame-font "Monaco 14")
+(set-frame-font "Menelo 13")
+;;(set-frame-font "Inconsolata 15")
 ;;(set-frame-font "Inconsolata-g 13")
-;;(set-frame-font "Source Code Pro 15")
+;;(set-frame-font "Source Code Pro 14")
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))
@@ -17,7 +17,12 @@
 
 (require 'basic-settings)
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-(load-theme 'grandshell2 t)
+;;(load-theme 'monochrome-bright t)
+(load-theme 'phoenix-dark-mono t)
+
+(use-package color-identifiers-mode
+  :init (global-color-identifiers-mode t))
+
 
 (use-package smart-modeline)
 (use-package helpers)
@@ -39,3 +44,11 @@
 ;;(require 'init-evil)
 
 (use-package rbenv :init (global-rbenv-mode))
+
+(autoload 'typing-test "typing-test" nil t)
+
+(require 'server)
+(if (server-running-p)
+    (message "Server already running")
+  (message "Starting server")
+  (server-start))

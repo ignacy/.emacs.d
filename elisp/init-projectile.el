@@ -10,11 +10,15 @@
 
 (use-package perspective
   :init (persp-mode))
-(use-package persp-projectile)
+(use-package persp-projectile
+  :init
+  (define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project))
 
 (use-package fiplr
-  :init (setq fiplr-ignored-globs '((directories (".git" ".svn" "log" "tmp"))
-                                    (files ("*.jpg" "*.elc" "*.png" "*.zip" "*~")))))
+  :init (progn
+          (setq fiplr-root-markers '(".git"))
+          (setq fiplr-ignored-globs '((directories (".git" ".svn" "log" "tmp"))
+                                      (files (".keep" ".DS_Store" "TAGS*" "*.jpg" "*.elc" "*.png" "*.zip" "*~"))))))
 
 (eval-after-load "grep"
   '(progn

@@ -112,7 +112,8 @@ This functions should be added to the hooks of major modes for programming."
 
 (delete-selection-mode t)
 (display-time-mode -1)
-(global-subword-mode 1)
+;;(global-subword-mode 1)
+(global-superword-mode 1)
 (blink-cursor-mode 1)
 
 (mouse-wheel-mode t)
@@ -128,6 +129,9 @@ This functions should be added to the hooks of major modes for programming."
 (eval-after-load 'helm
   '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
 
+(eval-after-load 'helm
+  '(define-key helm-map (kbd "C-e") 'helm-etags-select))
+
 (require 'git-messenger)
 (setq git-messenger:show-detail 't)
 (global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
@@ -135,9 +139,9 @@ This functions should be added to the hooks of major modes for programming."
 
 (setq show-trailing-whitespace t)
 
-                                        ; make characters after column 80 purple
-(setq whitespace-style (quote (face trailing tab-mark lines-tail)))
-(add-hook 'find-file-hook 'whitespace-mode)
+;; make characters after column 80 purple
+;; (setq whitespace-style (quote (face trailing tab-mark lines-tail)))
+;; (add-hook 'find-file-hook 'whitespace-mode)
 
                                         ; transform literal tabs into a right-pointing triangle
 (setq whitespace-display-mappings ;http://ergoemacs.org/emacs/whitespace-mode.html
@@ -176,6 +180,8 @@ This functions should be added to the hooks of major modes for programming."
                (global-set-key (kbd "C-*") 'mc/mark-all-like-this)
                (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)))
 
+(use-package ace-jump-mode
+  :init (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
@@ -241,8 +247,9 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package flx-ido
   :init (progn
-          (setq ido-use-faces nil)
-          (flx-ido-mode 1)))
+          (flx-ido-mode 1)
+          (setq gc-cons-threshold 20000000)
+          (setq ido-use-faces nil)))
 
 
 (use-package saveplace
@@ -264,12 +271,18 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (smartparens-global-mode t)
           (show-smartparens-global-mode +1)
-          (define-key sp-keymap (kbd "C-M-f") 'sp-forward-sexp)
-          (define-key sp-keymap (kbd "C-M-b") 'sp-backward-sexp)
-          (define-key sp-keymap (kbd "C-M-n") 'sp-next-sexp)
-          (define-key sp-keymap (kbd "C-M-p") 'sp-previous-sexp)
-          (define-key sp-keymap (kbd "C-S-a") 'sp-beginning-of-sexp)
-          (define-key sp-keymap (kbd "C-S-d") 'sp-end-of-sexp)
+
+          (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
+          (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
+
+          (define-key sp-keymap (kbd "C-M-a") 'sp-beginning-of-sexp)
+          (define-key sp-keymap (kbd "C-M-e") 'sp-end-of-sexp)
+          ;; To free C-M-d in OS X, see
+          ;; http://superuser.com/questions/326223/how-do-i-disable-the-command-control-d-word-definition-keyboard-shortcut-in-os-x
+          (define-key sp-keymap (kbd "C-M-d") 'sp-kill-sexp)
+          ;; Emulate paredit in smartparens-mode
+          (define-key sp-keymap (kbd "M-J") 'sp-join-sexp)
+          (define-key sp-keymap (kbd "<M-up>") 'sp-splice-sexp-killing-backward)
           (sp-with-modes sp--lisp-modes
             (sp-local-pair "(" nil :bind "C-("))
           (sp-with-modes '(rhtml-mode)
@@ -295,7 +308,10 @@ This functions should be added to the hooks of major modes for programming."
           (global-set-key [remap mark-sexp] 'easy-mark)
           (global-set-key [remap kill-ring-save] 'easy-kill)))
 
-(use-package helm :init (helm-mode 1))
+;; (use-package helm :init
+;;   (progn
+;;     (require 'helm-config)
+;;     (helm-mode 1)))
 
 (use-package smex
   :init
@@ -305,9 +321,7 @@ This functions should be added to the hooks of major modes for programming."
     (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
 
 (use-package smartscan
-  :init
-
-  (progn (global-smartscan-mode 1)))
+  :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
 
 (use-package bookmark+)

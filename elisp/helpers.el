@@ -37,6 +37,22 @@ might be bad."
 ;; Various superfluous white-space. Just say no.
 (add-hook 'before-save-hook 'cleanup-buffer-safe)
 
+
+(defun prompt-quit-emacs ()
+  "Prompt before quitting Emacs."
+  (interactive)
+  (if (y-or-n-p (format "Really quit Emacs? "))
+      (if (< emacs-major-version 22)
+          (save-buffers-kill-terminal)
+        (save-buffers-kill-emacs))
+    (message "Canceled exit")))
+(when window-system
+  (global-set-key (kbd "C-x C-c") 'prompt-quit-emacs))
+
+(defun find-tag-at-point ()
+  (interactive)
+  (find-tag (thing-at-point 'symbol)))
+
 (defun json-format ()
   (interactive)
   (save-excursion
@@ -204,5 +220,50 @@ point reaches the beginning or end of the buffer, stop there."
              (file-exists-p (byte-compile-dest-file buffer-file-name)))
     (byte-compile-file buffer-file-name)))
 (add-hook 'after-save-hook 'byte-compile-current-buffer)
+
+
+(define-minor-mode focus-on-buffer-mode
+  "Minor mode to center the buffer onscreen and display it in a narrow column.
+Currently only supports doing this in one frame at a time."
+  :init-value nil
+  :lighter " Focus"
+  (message "focus-on-buffer-mode is %s" (prin1-to-string focus-on-buffer-mode))
+  (if focus-on-buffer-mode
+      (progn
+        ;; (setq focus-on-buffer-mode:fullscreen (frame-parameter nil 'fullscreen))
+        ;; TODO: make focus-on-buffer-mode:config a set of configurations, one
+        ;; per frame
+        ;; (setq focus-on-buffer-mode:config (current-window-configuration))
+        (setq focus-on-buffer-mode:fringe fringe-mode)
+        (setq focus-on-buffer-mode:indicators fringe-indicator-alist)
+        (delete-other-windows)
+        ;; TODO: uncomment this once the Emacs bug is fixed where
+        ;; (frame-pixel-width) is unreliable in full screen
+        ;; (set-frame-parameter nil 'fullscreen 'fullboth)
+        (set-fringe-mode
+         (/ (- (frame-pixel-width)
+               (* 100 (frame-char-width)))
+            2))
+        (setq fringe-indicator-alist nil))
+    ;; (set-frame-parameter nil 'fullscreen focus-on-buffer-mode:fullscreen)
+    (setq fringe-indicator-alist focus-on-buffer-mode:indicators)
+    ;; (set-window-configuration focus-on-buffer-mode:config)
+    (set-fringe-mode focus-on-buffer-mode:fringe)))
+
+
+(defmacro make-backward-kill-word-fn (backward-kill-word-fn
+                                      &optional backward-kill-word-args)
+  "Construct a function that kills the region if active,
+otherwise invokes BACKWARD-KILL-WORD-FN, which must be an unquoted symbol."
+  (let* ((bkwf-name (symbol-name backward-kill-word-fn))
+         (defun-name (intern (concat "kill-region-or-" bkwf-name)))
+         (docstring (format "Kill the region if active, otherwise invoke %s."
+                            bkwf-name)))
+    `(defun ,defun-name ()
+       ,docstring
+       (interactive)
+       (if (region-active-p)
+          (kill-region (region-beginning) (region-end))
+         (apply (quote ,backward-kill-word-fn) (quote ,backward-kill-word-args))))))
 
 (provide 'helpers)
