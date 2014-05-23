@@ -112,9 +112,15 @@ This functions should be added to the hooks of major modes for programming."
 
 (delete-selection-mode t)
 (display-time-mode -1)
-;;(global-subword-mode 1)
-(global-superword-mode 1)
+(global-subword-mode 1)
+;;(global-superword-mode 1)
 (blink-cursor-mode 1)
+
+(defadvice kill-buffer (around kill-buffer-around-advice activate)
+  (let ((buffer-to-kill (ad-get-arg 0)))
+    (if (or (equal buffer-to-kill "*scratch*") (equal buffer-to-kill "*Messages*"))
+        (bury-buffer)
+      ad-do-it)))
 
 (mouse-wheel-mode t)
 ;;(menu-bar-mode t)
@@ -181,7 +187,7 @@ This functions should be added to the hooks of major modes for programming."
                (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)))
 
 (use-package ace-jump-mode
-  :init (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
+  :init (define-key global-map (kbd "C-;") 'ace-jump-mode))
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
@@ -277,6 +283,9 @@ This functions should be added to the hooks of major modes for programming."
 
           (define-key sp-keymap (kbd "C-M-a") 'sp-beginning-of-sexp)
           (define-key sp-keymap (kbd "C-M-e") 'sp-end-of-sexp)
+
+          (define-key sp-keymap (kbd "C-)") 'sp-forward-slurp-sexp)
+          (define-key sp-keymap (kbd "C-(") 'sp-backward-slurp-sexp)
           ;; To free C-M-d in OS X, see
           ;; http://superuser.com/questions/326223/how-do-i-disable-the-command-control-d-word-definition-keyboard-shortcut-in-os-x
           (define-key sp-keymap (kbd "C-M-d") 'sp-kill-sexp)
@@ -308,8 +317,9 @@ This functions should be added to the hooks of major modes for programming."
           (global-set-key [remap mark-sexp] 'easy-mark)
           (global-set-key [remap kill-ring-save] 'easy-kill)))
 
-;; (use-package helm :init
-;;   (progn
+(use-package helm :init
+  (progn
+    (global-set-key (kbd "M-\.") 'helm-etags-select)))
 ;;     (require 'helm-config)
 ;;     (helm-mode 1)))
 
@@ -331,8 +341,5 @@ This functions should be added to the hooks of major modes for programming."
 (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
 ;; When doing isearch, hand the word over to helm-swoop
 (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-
-(fringe-mode '(0 . 0))
-
-
+(setq dired-listing-switches "-alh")
 (provide 'basic-settings)

@@ -18,11 +18,6 @@
 (bind "C-s" 'isearch-forward-regexp)
 (bind "C-r" 'isearch-backward-regexp)
 
-;; Completion that uses many different methods to find options.
-(bind "C-:" 'hippie-expand-no-case-fold)
-(bind "C-;" 'hippie-expand-lines)
-(bind "C-," 'completion-at-point)
-
 (bind "M-r" 'helm-git-grep)
 (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
 
@@ -40,8 +35,7 @@
 (bind "C-x C-o" 'other-window)
 (bind "C-x C-1" 'delete-other-windows)
 (bind "C-," 'find-tag-at-point)
-(bind "C-c t" 'find-tag-at-point)
-
+(bind "C-c b" 'bookmark-ido-quick-jump)
 (bind "C-x C-f" 'ido-find-file)
 (bind "C-x C-p" 'find-file-at-point)
 (bind "C-1" 'switch-to-zsh)
@@ -52,18 +46,29 @@
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x C-b" 'ido-switch-buffer)
 (bind "C-x b" 'helm-buffers-list)
-(bind "M-g" 'goto-line-with-feedback)
+;;(bind "M-g" 'goto-line-with-feedback)
+(bind "M-g" 'helm-google-suggest)
 (bind "C-c h" 'helm-projectile)
-(bind "M-/" 'hippie-expand)
+(bind "M-/" 'hippie-expand-no-case-fold)
+(bind "M-?" 'hippie-expand-lines)
 (bind "M-u" 'toggle-letter-case)
+
+
+
 (bind "S-<left>" 'shrink-window-horizontally)
 (bind "S-<right>" 'enlarge-window-horizontally)
 (bind "S-<up>" 'shrink-window)
 (bind "S-<down>" 'enlarge-window)
 (bind "C-j" 'newline-and-indent)
-(bind "C-S-o" 'open-line-below)
-(bind "C-o" 'open-line-above)
+(bind "C-S-o" 'move-line-up)
 
+(defun my-multi-occur-in-matching-buffers (regexp &optional allbufs)
+  "Show all lines matching REGEXP in all buffers."
+  (interactive (occur-read-primary-args))
+  (multi-occur-in-matching-buffers ".*" regexp))
+(global-set-key (kbd "M-s /") 'my-multi-occur-in-matching-buffers)
+
+(bind "C-o" 'open-line-above)
 (bind "C-c d" (lambda()
                 (interactive)
                 (find-file "~/Dropbox/notes/index.org")))

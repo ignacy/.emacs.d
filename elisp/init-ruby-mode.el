@@ -77,11 +77,17 @@
   (let ((shell-file-name "/bin/bash"))
     (run-ruby "bundle exec rails console")))
 
+(defun spork ()
+  "Runs inf-ruby process with a rails console loaded inside"
+  (interactive)
+  (let ((shell-file-name "/bin/bash"))
+    (run-ruby "bundle exec spork")))
+
 (defun rails-server ()
   "Runs rails server for the current project"
   (interactive)
   (let ((shell-file-name "/bin/bash"))
-    (ruby-compilation-run "./bin/rails server" nil "server")))
+    (ruby-compilation-run (concat (projectile-project-root) "bin/rails server") nil "server")))
 
 (setq ruby-use-encoding-map nil)
 (setq ruby-deep-arglist nil)
@@ -93,7 +99,7 @@
 (setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible nil)
 
-(setq rspec-command-options "--format progress --order random")
+(setq rspec-command-options "--format documentation --order random")
 
 
 (font-lock-add-keywords

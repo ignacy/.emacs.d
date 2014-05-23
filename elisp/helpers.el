@@ -116,6 +116,14 @@ might be bad."
   (dolist (i custom-enabled-themes)
     (disable-theme i)))
 
+(setq deployable-apps '("dev_locator" "dev_nds" ))
+
+(defun deploy ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployable-apps)))
+    (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
+
+
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
