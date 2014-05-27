@@ -6,7 +6,7 @@
 ;;(set-frame-font "Monaco 12")
 ;;(set-frame-font "Menelo 13")
 ;;(set-frame-font "Inconsolata 16")
-(set-frame-font "Inconsolata-g 13")
+(set-frame-font "Inconsolata-g 12")
 ;;(set-frame-font "Source Code Pro 12")
 
 (setq dotfiles-dir "~/.emacs.d")
@@ -17,9 +17,8 @@
 
 (require 'basic-settings)
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-;;(load-theme 'monochrome t)
-;;(load-theme 'bubbleberry t)
-(load-theme 'sanityinc-tomorrow-blue t)
+(load-theme 'ritchie t)
+;;(load-theme 'firebelly t)
 
 (use-package color-identifiers-mode
   :init (global-color-identifiers-mode t))
@@ -47,6 +46,7 @@
 (use-package rbenv :init (global-rbenv-mode))
 
 (fringe-mode '(0 . 0))
+
 
 (autoload 'typing-test "typing-test" nil t)
 

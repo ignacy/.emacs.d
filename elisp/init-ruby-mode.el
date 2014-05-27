@@ -94,6 +94,7 @@
 (setq ruby-deep-indent-paren nil)
 (setq ruby-insert-encoding-magic-comment nil)
 (setq ruby-deep-indent-paren-style nil)
+(setq ruby-deep-indent-paren nil)
 (setq tab-width 2)
 (setq rspec-use-rake-when-possible nil)
 (setq rspec-use-rvm nil)

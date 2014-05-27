@@ -16,7 +16,7 @@
     (define-key company-active-map "\t" 'company-yasnippet-or-completion)
     (global-company-mode)))
 
-(add-hook 'after-init-hook 'global-company-mode)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 (use-package yasnippet
   :init

@@ -33,15 +33,19 @@
 
 (add-hook 'term-mode-hook
           (lambda ()
-            (setq ansi-color-names-vector ; better contrast colors
-                  ["black" "red4" "green4" "yellow4"
-                   "blue3" "magenta4" "cyan4" "white"])
-            (ansi-color-for-comint-mode-on)
+            ;; (setq ansi-color-names-vector ; better contrast colors
+            ;;       ["black" "red4" "green4" "yellow4"
+            ;;        "blue3" "magenta4" "cyan4" "white"])
+            ;; (ansi-color-for-comint-mode-on)
             (setq show-trailing-whitespace nil)
             (make-local-variable 'global-hl-line-mode)
             (setq global-hl-line-mode nil)
             (hl-line-mode nil)
             (define-key term-raw-map (kbd "C-y") 'term-paste)))
+
+;; (defadvice ansi-term (after advise-ansi-term-coding-system)
+;;     (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+;; (ad-activate 'ansi-term)
 
 ;; shell-mode
 (defun sh (&optional name)
