@@ -6,7 +6,7 @@
 ;;(set-frame-font "Monaco 12")
 ;;(set-frame-font "Menelo 13")
 ;;(set-frame-font "Inconsolata 16")
-(set-frame-font "Inconsolata-g 12")
+(set-frame-font "Inconsolata-g 14")
 ;;(set-frame-font "Source Code Pro 12")
 
 (setq dotfiles-dir "~/.emacs.d")
@@ -17,8 +17,9 @@
 
 (require 'basic-settings)
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-(load-theme 'ritchie t)
-;;(load-theme 'firebelly t)
+(load-theme 'tango-plus t)
+;;(load-theme 'badger t)
+;;(load-theme 'tango-dark t)
 
 (use-package color-identifiers-mode
   :init (global-color-identifiers-mode t))

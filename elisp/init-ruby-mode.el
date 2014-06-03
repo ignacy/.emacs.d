@@ -1,6 +1,8 @@
 (use-package inf-ruby)
 (use-package ruby-mode)
 (use-package rspec-mode)
+(use-package ruby-refactor
+  :init (add-hook 'ruby-mode-hook 'ruby-refactor-mode-launch))
 (use-package rinari :init
   (progn
     (setq rinari-tags-file-name "TAGS")))

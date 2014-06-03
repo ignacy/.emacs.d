@@ -123,23 +123,38 @@ might be bad."
   (let ((app (ido-completing-read "Which app?: " deployable-apps)))
     (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
 
+(defun deploy-nds-local ()
+  (interactive)
+  (compile "~/bin/local_nds_deploy"))
+
+(add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-tail-mode))
+
+(defun tail-nds-local ()
+  (interactive)
+  (shell-command "tail -f /usr/local/Cellar/tomcat/7.0.53/libexec/logs/pnds1.log"))
+
+
+(defun node-repl ()
+  (interactive)
+  (pop-to-buffer (make-comint "node-repl" "node" nil "--interactive")))
 
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
 (defun swap-windows ()
- "If you have 2 windows, it swaps them." (interactive) (cond ((not (= (count-windows) 2)) (message "You need exactly 2 windows to do this."))
- (t
- (let* ((w1 (first (window-list)))
-         (w2 (second (window-list)))
-         (b1 (window-buffer w1))
-         (b2 (window-buffer w2))
-         (s1 (window-start w1))
-         (s2 (window-start w2)))
- (set-window-buffer w1 b2)
- (set-window-buffer w2 b1)
- (set-window-start w1 s2)
- (set-window-start w2 s1)))))
+  "If you have 2 windows, it swaps them." (interactive)
+  (cond ((not (= (count-windows) 2)) (message "You need exactly 2 windows to do this."))
+        (t
+         (let* ((w1 (first (window-list)))
+                (w2 (second (window-list)))
+                (b1 (window-buffer w1))
+                (b2 (window-buffer w2))
+                (s1 (window-start w1))
+                (s2 (window-start w2)))
+           (set-window-buffer w1 b2)
+           (set-window-buffer w2 b1)
+           (set-window-start w1 s2)
+           (set-window-start w2 s1)))))
 
 (defun other-window-backwards ()
   "Select the previous window."
@@ -271,7 +286,7 @@ otherwise invokes BACKWARD-KILL-WORD-FN, which must be an unquoted symbol."
        ,docstring
        (interactive)
        (if (region-active-p)
-          (kill-region (region-beginning) (region-end))
+           (kill-region (region-beginning) (region-end))
          (apply (quote ,backward-kill-word-fn) (quote ,backward-kill-word-args))))))
 
 (provide 'helpers)

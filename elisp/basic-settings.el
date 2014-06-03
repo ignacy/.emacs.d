@@ -26,7 +26,6 @@
                       flx-ido
                       gist
                       git-gutter
-                      git-messenger
                       helm
                       helm-git-grep
                       helm-swoop
@@ -59,6 +58,10 @@
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
+(setq-default mac-option-modifier 'super)
+(setq-default mac-pass-command-to-system nil)
+(setq mouse-wheel-follow-mouse 't)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 (setq visible-bell t
       x-select-enable-clipboard t
@@ -83,13 +86,10 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-
 (global-auto-revert-mode 1)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
+
 (defun font-lock-comment-annotations ()
   "Highlight a bunch of well known comment annotations.
 This functions should be added to the hooks of major modes for programming."
@@ -97,7 +97,6 @@ This functions should be added to the hooks of major modes for programming."
    nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|NOTE\\|HACK\\|REFACTOR\\):"
           1 font-lock-warning-face t))))
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
-
 
 (setq-default indent-tabs-mode nil)
 (set-language-environment "UTF-8")
@@ -113,8 +112,9 @@ This functions should be added to the hooks of major modes for programming."
 (delete-selection-mode t)
 (display-time-mode -1)
 (global-subword-mode 1)
-;;(global-superword-mode 1)
 (blink-cursor-mode 1)
+(setq linum-format "%3d  ")
+(global-linum-mode t)
 
 (defadvice kill-buffer (around kill-buffer-around-advice activate)
   (let ((buffer-to-kill (ad-get-arg 0)))
@@ -122,40 +122,9 @@ This functions should be added to the hooks of major modes for programming."
         (bury-buffer)
       ad-do-it)))
 
-(mouse-wheel-mode t)
-;;(menu-bar-mode t)
-(setq-default mac-option-modifier 'super)
-(setq-default mac-pass-command-to-system nil)
-(setq mouse-wheel-follow-mouse 't)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-
 (require 'use-package)
 
-;; Invoke `helm-git-grep' from other helm.
-(eval-after-load 'helm
-  '(define-key helm-map (kbd "C-c g") 'helm-git-grep-from-helm))
-
-(eval-after-load 'helm
-  '(define-key helm-map (kbd "C-e") 'helm-etags-select))
-
-(require 'git-messenger)
-(setq git-messenger:show-detail 't)
-(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
-
-
 (setq show-trailing-whitespace t)
-
-;; make characters after column 80 purple
-;; (setq whitespace-style (quote (face trailing tab-mark lines-tail)))
-;; (add-hook 'find-file-hook 'whitespace-mode)
-
-                                        ; transform literal tabs into a right-pointing triangle
-(setq whitespace-display-mappings ;http://ergoemacs.org/emacs/whitespace-mode.html
-      '(
-        (tab-mark 9 [9654 9] [92 9])
-                                        ;others substitutions...
-        ))
-
 
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
@@ -164,7 +133,6 @@ This functions should be added to the hooks of major modes for programming."
   (push "~/bin" exec-path))
 
 (exec-path-from-shell-initialize)
-
 
 (use-package rbenv
   :init (progn
@@ -175,16 +143,9 @@ This functions should be added to the hooks of major modes for programming."
 (use-package multiple-cursors
   :init (progn (require 'inline-string-rectangle)
                (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
-               (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-               (global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
-               (global-set-key (kbd "C-S-c C-a") 'mc/edit-beginnings-of-lines)
                (global-set-key (kbd "C->") 'mc/mark-next-like-this)
                (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-               (global-set-key (kbd "C-<return>") 'mc/mark-more-like-this-extended)
-               (global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
-               (global-set-key (kbd "C-M-=") 'mc/insert-numbers)
-               (global-set-key (kbd "C-*") 'mc/mark-all-like-this)
-               (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)))
+               (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
 
 (use-package ace-jump-mode
   :init (define-key global-map (kbd "C-;") 'ace-jump-mode))
@@ -209,10 +170,6 @@ This functions should be added to the hooks of major modes for programming."
 
     (global-rainbow-delimiters-mode)))
 
-;;;; Git-Gutter
-(use-package git-gutter
-  :init (global-git-gutter-mode t))
-
 ;;;; idle-highlight
 (use-package idle-highlight-mode
   :init (progn (setq idle-highlight-idle-time 1.5)
@@ -221,12 +178,6 @@ This functions should be added to the hooks of major modes for programming."
                (add-hook 'prog-mode-hook 'idle-coding-hook)))
 
 (set-default 'imenu-auto-rescan t)
-
-
-;; (use-package zop-to-char
-;;   :init (progn
-;;           (global-set-key (kbd "M-c") 'zop-to-char)))
-
 
 (use-package iregister
   :init (progn
@@ -250,13 +201,11 @@ This functions should be added to the hooks of major modes for programming."
   (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
 (add-hook 'ido-setup-hook 'ido-define-keys)
 
-
 (use-package flx-ido
   :init (progn
           (flx-ido-mode 1)
           (setq gc-cons-threshold 20000000)
           (setq ido-use-faces nil)))
-
 
 (use-package saveplace
   :init (progn (setq-default save-place t)
@@ -266,11 +215,10 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
           (recentf-mode t)
-          (setq recentf-max-saved-items 700)
+          (setq recentf-max-saved-items 1000)
           (setq recentf-max-menu-items 50)
           (add-to-list 'recentf-exclude "\\.revive\\'")
           (add-to-list 'recentf-exclude "elpa")))
-
 
 (use-package smartparens)
 (use-package smartparens-config
@@ -291,7 +239,6 @@ This functions should be added to the hooks of major modes for programming."
           (define-key sp-keymap (kbd "C-M-d") 'sp-kill-sexp)
           ;; Emulate paredit in smartparens-mode
           (define-key sp-keymap (kbd "M-J") 'sp-join-sexp)
-          (define-key sp-keymap (kbd "<M-up>") 'sp-splice-sexp-killing-backward)
           (sp-with-modes sp--lisp-modes
             (sp-local-pair "(" nil :bind "C-("))
           (sp-with-modes '(rhtml-mode)
@@ -311,7 +258,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package fancy-narrow
   :init (fancy-narrow-mode))
 
-
 (use-package easy-kill
   :init (progn
           (global-set-key [remap mark-sexp] 'easy-mark)
@@ -320,8 +266,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package helm :init
   (progn
     (global-set-key (kbd "M-\.") 'helm-etags-select)))
-;;     (require 'helm-config)
-;;     (helm-mode 1)))
 
 (use-package smex
   :init
@@ -333,13 +277,24 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smartscan
   :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
+(winner-mode 1)
+(require 'windmove)
 
-(use-package bookmark+)
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
 
-(require 'helm-swoop)
-(global-set-key (kbd "M-i") 'helm-swoop)
-(global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
-;; When doing isearch, hand the word over to helm-swoop
-(define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+(use-package multi-term
+  :init (progn
+          (setq multi-term-program "/bin/zsh")))
+
+(use-package helm-swoop
+  :init (progn
+          (global-set-key (kbd "M-i") 'helm-swoop)
+          (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+          ;; When doing isearch, hand the word over to helm-swoop
+          (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)))
+
 (setq dired-listing-switches "-alh")
 (provide 'basic-settings)

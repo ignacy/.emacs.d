@@ -17,8 +17,8 @@
 (use-package fiplr
   :init (progn
           (setq fiplr-root-markers '(".git"))
-          (setq fiplr-ignored-globs '((directories (".git" ".svn" "log" "tmp"))
-                                      (files (".keep" ".DS_Store" "TAGS*" "*.jpg" "*.elc" "*.png" "*.zip" "*~"))))))
+          (setq fiplr-ignored-globs '((directories (".git" "target" ".svn" "log" "tmp"))
+                                      (files (".keep" ".DS_Store" ".class" "TAGS*" "*.jpg" "*.elc" "*.png" "*.zip" "*~"))))))
 
 (eval-after-load "grep"
   '(progn
