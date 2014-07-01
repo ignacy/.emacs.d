@@ -1,4 +1,3 @@
-
 (defface sm-column-overflow-face
   '((t :inherit mode-line :foreground "red"))
   "Smart modeline " :group 'smart-modeline-faces)
@@ -22,18 +21,18 @@
 (defun sm-clean-directory-name ()
   (car (last (butlast (split-string (git-repo-name default-directory) "/")))))
 
-(display-time-mode 1)
-(defface egoge-display-time
-  '((((type x w32 mac))
-     ;; #060525 is the background colour of my default face.
-     (:foreground "#060525" :inherit bold))
-    (((type tty))
-     (:foreground "blue")))
-  "Face used to display the time in the mode line.")
+;;(display-time-mode 1)
+;; (defface egoge-display-time
+;;   '((((type x w32 mac))
+;;      ;; #060525 is the background colour of my default face.
+;;      (:foreground "#060525" :inherit bold))
+;;     (((type tty))
+;;      (:foreground "blue")))
+;;   "Face used to display the time in the mode line.")
 
-(setq display-time-string-forms
-      '((propertize (concat " " 24-hours ":" minutes " ")
-                    'face 'egoge-display-time)))
+;; (setq display-time-string-forms
+;;       '((propertize (concat " " 24-hours ":" minutes " ")
+;;                     'face 'egoge-display-time)))
 
 ;;(which-function-mode t)
 ;; (setq-default header-line-format
@@ -58,10 +57,14 @@
 
                (propertize "  %03l," 'face 'sm-branch-face)
 
-               '(:eval (propertize "%02c" 'face
-                                   (if (>= (current-column) 80)
-                                       'sm-column-overflow-face
-                                     'sm-branch-face)))
+               ;; '(:eval (propertize "%02c" 'face
+               ;;                     (if (>= (current-column) 80)
+               ;;                         'sm-column-overflow-face
+               ;;                       'sm-branch-face)))
+
+               '(:eval (propertize "%02c" 'face 'sm-branch-face))
+
+
                " "
                '(:eval (when (vc-mode)
                          (propertize (sm-clean-directory-name)
@@ -80,9 +83,10 @@
 
 ;;(set-face-background 'mode-line "black")
 ;; (set-face-foreground 'mode-line "white")
-;; (set-face-background 'mode-line-inactive "black")
+;;(set-face-background 'mode-line-inactive "DarkGrey")
 ;;(set-face-foreground 'mode-line-inactive "#eee")
 ;;(custom-set-faces '(mode-line ((t (:box nil)))))
+;;(custom-set-faces '(mode-line ((t (:box (:line-width 2 :color "thistle4" :style released-button))))))
 ;;(custom-set-faces '(mode-line-inactive ((t (:box nil)))))
 
 (provide 'smart-modeline)

@@ -21,10 +21,10 @@
              ;;(buffer-face-set 'font-lock-small-face)
              (hl-line-mode nil)))
 
-(setq comint-prompt-read-only t)
+;;(setq comint-prompt-read-only t)
+(setq comint-process-echoes t)
 
 (setq explicit-shell-file-name "/bin/zsh")
-
 
 (setq ansi-color-names-vector ; better contrast colors
       ["black" "red4" "green4" "yellow4"
@@ -101,7 +101,7 @@
     ("M-N" . term-send-backward-kill-word)
     ("M-r" . term-send-reverse-search-history)
     ("M-," . term-send-input)
-    ("M-." . comint-dynamic-complete))
+    ("C-/" . comint-dynamic-complete))
   "The key alist that will need to be bind.
 If you do not like default setup, modify it, with (KEY . COMMAND) format."
   :type 'alist
@@ -127,6 +127,18 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
 
 (defun switch-to-zsh ()
   (interactive)
-  (switch-to-buffer "*terminal<1>*"))
+  (switch-to-buffer "zsh"))
+
+(defun sh (&optional name)
+   (interactive)
+   (ansi-term name))
+
+;; (defun zsh ()
+;;   (interactive)
+;;   (multi-term))
+
+;; (defun switch-to-zsh ()
+;;    (interactive)
+;;    (switch-to-buffer "*terminal<1>*"))
 
 (provide 'init-shell-mode)

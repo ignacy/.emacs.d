@@ -116,12 +116,20 @@ might be bad."
   (dolist (i custom-enabled-themes)
     (disable-theme i)))
 
-(setq deployable-apps '("dev_locator" "dev_nds" ))
+(setq deployable-apps '("dev_locator" "dev_nds" "dev_qbp" ))
 
 (defun deploy ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployable-apps)))
     (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
+
+(defun im/split ()
+  "Splits window into 3 nice columns"
+  (interactive)
+  (save-excursion
+    (split-window-horizontally)
+    (split-window-horizontally)
+    (balance-windows)))
 
 (defun deploy-nds-local ()
   (interactive)
@@ -288,5 +296,14 @@ otherwise invokes BACKWARD-KILL-WORD-FN, which must be an unquoted symbol."
        (if (region-active-p)
            (kill-region (region-beginning) (region-end))
          (apply (quote ,backward-kill-word-fn) (quote ,backward-kill-word-args))))))
+
+
+
+;; Execute command on a region
+(defun ejmr/send-buffer-to-jrnl ()
+  "Sends the content of the current buffer to jrnl."
+  (interactive)
+  (call-process-region (point-min) (point-max) "jrnl")
+  (message "Saved buffer contents in journal"))
 
 (provide 'helpers)

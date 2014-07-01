@@ -13,6 +13,8 @@
   :init
   (progn
     ;;(setq company-idle-delay t)
+    (push 'company-readline company-backends)
+    (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
     (define-key company-active-map "\t" 'company-yasnippet-or-completion)
     (global-company-mode)))
 
@@ -27,9 +29,11 @@
 (require 'setup-hippie)
 
 
- (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
+(setq abbrev-file-name "~/.emacs.d/abbrev_defs")
+(setq dabbrev-case-replace nil)
 (setq default-abbrev-mode t)
- (if (file-exists-p abbrev-file-name)
-        (quietly-read-abbrev-file))
+
+(if (file-exists-p abbrev-file-name)
+    (quietly-read-abbrev-file))
 
 (provide 'init-completition)

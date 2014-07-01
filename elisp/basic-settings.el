@@ -62,6 +62,7 @@
 (setq-default mac-pass-command-to-system nil)
 (setq mouse-wheel-follow-mouse 't)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq tags-add-tables nil)
 
 (setq visible-bell t
       x-select-enable-clipboard t
@@ -89,6 +90,7 @@
 (global-auto-revert-mode 1)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
+(winner-mode 1)
 
 (defun font-lock-comment-annotations ()
   "Highlight a bunch of well known comment annotations.
@@ -97,6 +99,13 @@ This functions should be added to the hooks of major modes for programming."
    nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|NOTE\\|HACK\\|REFACTOR\\):"
           1 font-lock-warning-face t))))
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
+
+(add-hook 'prog-mode-hook '(lambda () (flyspell-prog-mode)))
+
+(eval-after-load "flyspell"
+  '(progn
+     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+     (define-key flyspell-mouse-map [mouse-3] #'undefined)))
 
 (setq-default indent-tabs-mode nil)
 (set-language-environment "UTF-8")
@@ -110,11 +119,10 @@ This functions should be added to the hooks of major modes for programming."
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (delete-selection-mode t)
-(display-time-mode -1)
 (global-subword-mode 1)
 (blink-cursor-mode 1)
-(setq linum-format "%3d  ")
-(global-linum-mode t)
+;;(setq linum-format "%3d  ")
+;;(global-linum-mode t)
 
 (defadvice kill-buffer (around kill-buffer-around-advice activate)
   (let ((buffer-to-kill (ad-get-arg 0)))
@@ -124,8 +132,6 @@ This functions should be added to the hooks of major modes for programming."
 
 (require 'use-package)
 
-(setq show-trailing-whitespace t)
-
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
   (push "/opt/local/bin" exec-path)
@@ -133,11 +139,6 @@ This functions should be added to the hooks of major modes for programming."
   (push "~/bin" exec-path))
 
 (exec-path-from-shell-initialize)
-
-(use-package rbenv
-  :init (progn
-          (setq rbenv-show-active-ruby-in-modeline nil)
-          (global-rbenv-mode)))
 
 ;;;; multiple-cursors
 (use-package multiple-cursors
@@ -147,8 +148,6 @@ This functions should be added to the hooks of major modes for programming."
                (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
                (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
 
-(use-package ace-jump-mode
-  :init (define-key global-map (kbd "C-;") 'ace-jump-mode))
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
@@ -228,7 +227,7 @@ This functions should be added to the hooks of major modes for programming."
 
           (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
           (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
-
+          (setq sp-show-pair-from-inside t)
           (define-key sp-keymap (kbd "C-M-a") 'sp-beginning-of-sexp)
           (define-key sp-keymap (kbd "C-M-e") 'sp-end-of-sexp)
 
@@ -265,6 +264,30 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package helm :init
   (progn
+    (setq
+     helm-google-suggest-use-curl-p t
+     helm-scroll-amount 4 ; scroll 4 lines other window using M-<next>/M-<prior>
+     helm-quick-update t ; do not display invisible candidates
+     helm-idle-delay 0.01 ; be idle for this many seconds, before updating in delayed sources.
+     helm-input-idle-delay 0.01 ; be idle for this many seconds, before updating candidate buffer
+     helm-ff-search-library-in-sexp t ; search for library in `require' and `declare-function' sexp.
+
+     ;; you can customize helm-do-grep to execute ack-grep
+     ;; helm-grep-default-command "ack-grep -Hn --smart-case --no-group --no-color %e %p %f"
+     ;; helm-grep-default-recurse-command "ack-grep -H --smart-case --no-group --no-color %e %p %f"
+     helm-split-window-default-side 'other ;; open helm buffer in another window
+     helm-split-window-in-side-p t ;; open helm buffer inside current window, not occupy whole other window
+     helm-candidate-number-limit 200 ; limit the number of displayed canidates
+     helm-M-x-requires-pattern 0     ; show all candidates when set to 0
+     helm-boring-file-regexp-list
+     '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "\\.i$") ; do not show these files in helm buffer
+     helm-ff-file-name-history-use-recentf t
+     helm-move-to-line-cycle-in-source t ; move to end or beginning of source
+                                        ; when reaching top or bottom of source.
+     ido-use-virtual-buffers t      ; Needed in helm-buffers-list
+     helm-buffers-fuzzy-matching t          ; fuzzy matching buffer names when non--nil
+                                        ; useful in helm-mini that lists buffers
+     )
     (global-set-key (kbd "M-\.") 'helm-etags-select)))
 
 (use-package smex
@@ -277,14 +300,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smartscan
   :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
-(winner-mode 1)
-(require 'windmove)
-
-(global-set-key (kbd "C-x <up>") 'windmove-up)
-(global-set-key (kbd "C-x <down>") 'windmove-down)
-(global-set-key (kbd "C-x <right>") 'windmove-right)
-(global-set-key (kbd "C-x <left>") 'windmove-left)
-
 (use-package multi-term
   :init (progn
           (setq multi-term-program "/bin/zsh")))
@@ -295,6 +310,9 @@ This functions should be added to the hooks of major modes for programming."
           (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
           ;; When doing isearch, hand the word over to helm-swoop
           (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)))
+
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 (setq dired-listing-switches "-alh")
 (provide 'basic-settings)

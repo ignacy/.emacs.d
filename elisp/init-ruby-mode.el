@@ -101,7 +101,6 @@
 (setq rspec-use-rake-when-possible nil)
 (setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible nil)
-
 (setq rspec-command-options "--format documentation --order random")
 
 
@@ -116,5 +115,6 @@
 (ad-activate 'rspec-compile)
 
 (setq explicit-shell-file-name "/bin/zsh")
+
 
 (provide 'init-ruby-mode)

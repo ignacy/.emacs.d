@@ -91,10 +91,16 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
+    ("josn" "json" nil 1)
+    ("jsno" "json" nil 2)
     ("redner" "render" nil 2)
+    ("reponse" "response" nil 2)
+    ("repsone" "response" nil 1)
     ("tarce" "trace" nil 2)
     ("tarcing" "tracing" nil 1)
    ))
+
+(define-abbrev-table 'gnus-group-mode-abbrev-table '())
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
@@ -103,6 +109,8 @@
 (define-abbrev-table 'helm-git-grep-mode-abbrev-table '())
 
 (define-abbrev-table 'helm-grep-mode-abbrev-table '())
+
+(define-abbrev-table 'helm-moccur-mode-abbrev-table '())
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
@@ -117,6 +125,8 @@
 (define-abbrev-table 'image-dired-thumbnail-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
 (define-abbrev-table 'java-mode-abbrev-table
   '(
@@ -178,9 +188,17 @@
 
 (define-abbrev-table 'project-explorer-mode-abbrev-table '())
 
+(define-abbrev-table 'python-mode-abbrev-table '())
+
+(define-abbrev-table 'python-mode-skeleton-abbrev-table
+  '(
+   ))
+
 (define-abbrev-table 'rhtml-mode-abbrev-table '())
 
 (define-abbrev-table 'rspec-compilation-mode-abbrev-table '())
+
+(define-abbrev-table 'ruby-compilation-mode-abbrev-table '())
 
 (define-abbrev-table 'ruby-dev-doc-mode-abbrev-table '())
 
@@ -209,6 +227,8 @@
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 
 (define-abbrev-table 'tar-mode-abbrev-table '())
+
+(define-abbrev-table 'term-mode-abbrev-table '())
 
 (define-abbrev-table 'text-mode-abbrev-table '())
 
