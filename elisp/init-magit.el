@@ -29,12 +29,13 @@
             :group 'magit-faces)
 
           ;; ;; Change Magit colors for diff highlighting
-          ;; (set-face-foreground 'magit-diff-del "red3")
-          ;; (set-face-foreground 'magit-diff-add "green3")
-          ;; (set-face-foreground 'my-magit-range-info "cyan3")
-
+          (set-face-foreground 'magit-diff-del "red3")
+          (set-face-foreground 'magit-diff-add "green3")
+          (set-face-foreground 'my-magit-range-info "cyan3")
 
           ;; Add an extra newline to separate commit message from git commentary
+
+
 
           (defun magit-commit-mode-init ()
             (when (looking-at "\n")
