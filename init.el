@@ -2,6 +2,11 @@
 (require 'cl)
 (setq debug-on-error nil)
 
+
+(setq default-frame-alist '((font . "Inconsolata-16")))
+;; set italic font for italic face, since Emacs does not set italic
+;; face automatically
+(set-face-attribute 'italic nil :family "Inconsolata-Italic")
 ;;(set-frame-font "Monaco 12")
 ;;(set-frame-font "Menelo 13")
 ;;(set-frame-font "Inconsolata 16")
@@ -24,8 +29,9 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 ;;(load-theme 'ir-black t)
 ;(load-theme 'tango-dark t)
-(load-theme 'tech49 t)
+;;(load-theme 'tech49 t)
 ;;(load-theme 'resesif-boned t)
+(load-theme 'wombat t)
 
 ;; (global-hl-line-mode)
 ;; (set-face-attribute hl-line-face nil :underline nil)

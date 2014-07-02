@@ -20,64 +20,24 @@
 ;;                  (concat "ruby -Ilib:test:. " buffer-file-name))))
 
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
-
-(set-face-attribute (make-face 'test-heading1) nil
-                    :family "arial"
-                    :height 240
-                    :background "#000000"
-                    :foreground "#9999ff")
-
-(set-face-attribute (make-face 'test-heading2) nil
-                    :family "arial"
-                    :height 180
-                    :background "#000000"
-                    :foreground "#9999ff")
-
-
-(set-face-attribute (make-face 'test-success) nil
-                    :family "arial"
-                    :height 240
-                    :foreground (if window-system "#00aa00" "white"))
-
-(set-face-attribute (make-face 'test-failure) nil
-                    :family "arial"
-                    :height 240
-                    :foreground (if window-system "ff3333" "white"))
-
-(add-to-list 'compilation-mode-font-lock-keywords
-             '("^\\([0-9]+ examples?, 0 failures?.*\n\\)"
-               (1 'test-success)))
-
-(add-to-list 'compilation-mode-font-lock-keywords
-             '("^\\(.* 0 failures, 0 errors.*\n\\)"
-               (1 'test-success)))
-
-(add-to-list 'compilation-mode-font-lock-keywords
-             '("\\(\\.\\)" (1 'test-success)))
-
-(add-to-list 'compilation-mode-font-lock-keywords
-             '("^\\(.* [1-9][0-9]* \\(failures?\\|errors?\\).*\n\\)"
-               (1 'test-failure)))
-
-(add-to-list 'compilation-mode-font-lock-keywords
-             '("^= \\(.*\n\\)"
-               (1 'test-heading1)))
-
-(add-to-list 'compilation-mode-font-lock-keywords
-             '("^==+ \\(.*\n\\)"
-               (1 'test-heading2)))
-
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
-
 
 ;; (require 'ruby-dev)
 ;; (add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
+
+(defun bundle ()
+  "Install bundle"
+  (interactive)
+  (let ((shell-file-name "/bin/bash"))
+    (rbenv-use-corresponding)
+    (run-ruby (concat (simp-project-root) "/bin/bundle install"))))
+
 
 (defun rails-console ()
   "Runs inf-ruby process with a rails console loaded inside"
   (interactive)
   (let ((shell-file-name "/bin/bash"))
-    (run-ruby "bundle exec rails console")))
+    (run-ruby (concat (simp-project-root) "/bin/rails console"))))
 
 (defun spork ()
   "Runs inf-ruby process with a rails console loaded inside"
@@ -89,7 +49,7 @@
   "Runs rails server for the current project"
   (interactive)
   (let ((shell-file-name "/bin/bash"))
-    (ruby-compilation-run (concat (projectile-project-root) "bin/rails server") nil "server")))
+    (ruby-compilation-run (concat (simp-project-root) "/bin/rails server") nil "server")))
 
 (setq ruby-use-encoding-map nil)
 (setq ruby-deep-arglist nil)

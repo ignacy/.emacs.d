@@ -30,7 +30,7 @@
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-i" 'imenu)
-;;(bind "C-x C-r" 'ido-recentf-open) ;; Im disabling it in favour of project based search
+(bind "C-x C-r" 'ido-recentf-open) ;; Im disabling it in favour of project based search
 
 (bind "M-h" 'backward-kill-word)
 (bind "C-x C-o" 'other-window)
@@ -111,8 +111,8 @@
 (require 'key-chord)
 (key-chord-mode 1)
 
-(key-chord-define ruby-mode-map ";;"  'rspec-rerun)
-(key-chord-define-global "ff" 'simp-project-find-file)
+;; (key-chord-define ruby-mode-map ";;"  'rspec-rerun)
+;; (key-chord-define-global "==" 'simp-project-find-file)
 
 
 

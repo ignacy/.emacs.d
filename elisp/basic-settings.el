@@ -32,8 +32,7 @@
                       idle-highlight-mode
                       ido-hacks
                       inf-ruby
-                      magit
-                      mark-multiple
+                      magit                      mark-multiple
                       multiple-cursors
                       org
                       projectile
@@ -147,6 +146,16 @@ This functions should be added to the hooks of major modes for programming."
                (global-set-key (kbd "C->") 'mc/mark-next-like-this)
                (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
                (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
+
+
+(add-hook 'prog-mode-hook 'number-font-lock-mode)
+
+
+(require 'info+)
+
+(use-package discover-my-major
+  :init (define-key 'help-command (kbd "C-m") 'discover-my-major))
+
 
 
 ;;;; rainbow-delimeters
@@ -315,4 +324,44 @@ This functions should be added to the hooks of major modes for programming."
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (setq dired-listing-switches "-alh")
+
+
+(defun prelude-colorize-compilation-buffer ()
+  "Colorize a compilation mode buffer."
+  (interactive)
+  ;; we don't want to mess with child modes such as grep-mode, ack, ag, etc
+  (when (eq major-mode 'compilation-mode)
+    (let ((inhibit-read-only t))
+      (ansi-color-apply-on-region (point-min) (point-max)))))
+(add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
+
+
+(eval-after-load "golden-ratio"
+  '(progn
+     (add-to-list 'golden-ratio-exclude-modes "ediff-mode")
+     (add-to-list 'golden-ratio-exclude-modes "helm-mode")
+     (add-to-list 'golden-ratio-exclude-modes "dired-mode")
+     (add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p)))
+
+(defun pl/helm-alive-p ()
+  (if (boundp 'helm-alive-p)
+      (symbol-value 'helm-alive-p)))
+
+;; do not enable golden-raio in thses modes
+(setq golden-ratio-exclude-modes
+      '("ediff-mode"
+        "gdb-locals-mode"
+        "gdb-breakpoints-mode"
+        "gdb-frames-mode"
+        "gud-mode"
+        "gdb-inferior-io-mode"
+        "magit-log-mode"
+        "magit-reflog-mode"
+        "magit-status-mode"
+        "eshell-mode"
+        "dired-mode"))
+
+(golden-ratio-mode)
+
+
 (provide 'basic-settings)
