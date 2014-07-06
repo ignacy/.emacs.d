@@ -120,8 +120,8 @@ This functions should be added to the hooks of major modes for programming."
 (delete-selection-mode t)
 (global-subword-mode 1)
 (blink-cursor-mode 1)
-;;(setq linum-format "%3d  ")
-;;(global-linum-mode t)
+(setq linum-format "%3d  ")
+(global-linum-mode t)
 
 (defadvice kill-buffer (around kill-buffer-around-advice activate)
   (let ((buffer-to-kill (ad-get-arg 0)))
@@ -139,13 +139,13 @@ This functions should be added to the hooks of major modes for programming."
 
 (exec-path-from-shell-initialize)
 
-;;;; multiple-cursors
-(use-package multiple-cursors
-  :init (progn (require 'inline-string-rectangle)
-               (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
-               (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-               (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-               (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
+;; ;;;; multiple-cursors
+;; (use-package multiple-cursors
+;;   :init (progn (require 'inline-string-rectangle)
+;;                (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+;;                (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+;;                (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+;;                (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
 
 
 (add-hook 'prog-mode-hook 'number-font-lock-mode)
@@ -266,11 +266,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package fancy-narrow
   :init (fancy-narrow-mode))
 
-(use-package easy-kill
-  :init (progn
-          (global-set-key [remap mark-sexp] 'easy-mark)
-          (global-set-key [remap kill-ring-save] 'easy-kill)))
-
 (use-package helm :init
   (progn
     (setq
@@ -309,9 +304,9 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smartscan
   :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
-(use-package multi-term
-  :init (progn
-          (setq multi-term-program "/bin/zsh")))
+;; (use-package multi-term
+;;   :init (progn
+;;           (setq multi-term-program "/bin/zsh")))
 
 (use-package helm-swoop
   :init (progn
@@ -320,8 +315,8 @@ This functions should be added to the hooks of major modes for programming."
           ;; When doing isearch, hand the word over to helm-swoop
           (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)))
 
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
+;; (require 'expand-region)
+;; (global-set-key (kbd "C-=") 'er/expand-region)
 
 (setq dired-listing-switches "-alh")
 
@@ -333,35 +328,7 @@ This functions should be added to the hooks of major modes for programming."
   (when (eq major-mode 'compilation-mode)
     (let ((inhibit-read-only t))
       (ansi-color-apply-on-region (point-min) (point-max)))))
+
 (add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
-
-
-(eval-after-load "golden-ratio"
-  '(progn
-     (add-to-list 'golden-ratio-exclude-modes "ediff-mode")
-     (add-to-list 'golden-ratio-exclude-modes "helm-mode")
-     (add-to-list 'golden-ratio-exclude-modes "dired-mode")
-     (add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p)))
-
-(defun pl/helm-alive-p ()
-  (if (boundp 'helm-alive-p)
-      (symbol-value 'helm-alive-p)))
-
-;; do not enable golden-raio in thses modes
-(setq golden-ratio-exclude-modes
-      '("ediff-mode"
-        "gdb-locals-mode"
-        "gdb-breakpoints-mode"
-        "gdb-frames-mode"
-        "gud-mode"
-        "gdb-inferior-io-mode"
-        "magit-log-mode"
-        "magit-reflog-mode"
-        "magit-status-mode"
-        "eshell-mode"
-        "dired-mode"))
-
-(golden-ratio-mode)
-
 
 (provide 'basic-settings)

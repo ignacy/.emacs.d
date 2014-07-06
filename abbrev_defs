@@ -91,6 +91,8 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
+    ("craete" "create" nil 1)
+    ("crate" "create" nil 1)
     ("josn" "json" nil 1)
     ("jsno" "json" nil 2)
     ("redner" "render" nil 2)

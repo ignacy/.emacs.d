@@ -31,7 +31,7 @@
 ;(load-theme 'tango-dark t)
 ;;(load-theme 'tech49 t)
 ;;(load-theme 'resesif-boned t)
-(load-theme 'wombat t)
+(load-theme 'zenburn t)
 
 ;; (global-hl-line-mode)
 ;; (set-face-attribute hl-line-face nil :underline nil)
@@ -58,7 +58,7 @@
 (require 'init-shell-mode)
 (require 'ido-bookmark-jump)
 (require 'init-org)
-;;(require 'init-evil)
+(require 'init-evil)
 
 (use-package rbenv
   :init (progn
@@ -103,6 +103,19 @@
 
 
 
+(setq selective-display-level 0)
+(setq selective-display-increment 4)
+(setq max-selective-display-level 8)
+(defun switch-selective-display ()
+  "Switch to the next selective display level, starting over if appropriate"
+  (if (>= selective-display-level max-selective-display-level)
+      (setq selective-display-level 0)
+    (setq selective-display-level
+          (+ selective-display-increment
+             selective-display-level)))
+  (interactive)
+  (set-selective-display selective-display-level))
+(global-set-key "\M-c" 'switch-selective-display)
 
 (display-time-mode -1)
 (put 'dired-find-alternate-file 'disabled nil)

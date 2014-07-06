@@ -5,15 +5,15 @@
 (evil-leader/set-key
   "e" 'ido-find-file
   "b" 'ido-switch-buffer
-  "f" 'fiplr-find-file
+  "f" 'simp-project-find-file
   "r" 'ido-recentf-open
   "-" 'evil-split-buffer
   "|" 'split-window-horizontally
   "k" 'kill-buffer)
 
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
-(require 'surround)
-(global-surround-mode 1)
 (require 'evil)
 (evil-mode 1)
 

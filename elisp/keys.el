@@ -108,12 +108,5 @@
 (global-set-key "\C-w" (make-backward-kill-word-fn backward-kill-word (1)))
 
 
-(require 'key-chord)
-(key-chord-mode 1)
-
-;; (key-chord-define ruby-mode-map ";;"  'rspec-rerun)
-;; (key-chord-define-global "==" 'simp-project-find-file)
-
-
 
 (provide 'keys)
