@@ -3,10 +3,11 @@
 (setq debug-on-error nil)
 
 
-(setq default-frame-alist '((font . "Inconsolata-16")))
+(setq default-frame-alist '((font . "Menelo-15")))
+
 ;; set italic font for italic face, since Emacs does not set italic
 ;; face automatically
-(set-face-attribute 'italic nil :family "Inconsolata-Italic")
+;;(set-face-attribute 'italic nil :family "Inconsolata-Italic")
 ;;(set-frame-font "Monaco 12")
 ;;(set-frame-font "Menelo 13")
 ;;(set-frame-font "Inconsolata 16")
@@ -30,8 +31,12 @@
 ;;(load-theme 'ir-black t)
 ;(load-theme 'tango-dark t)
 ;;(load-theme 'tech49 t)
-;;(load-theme 'resesif-boned t)
-(load-theme 'zenburn t)
+;;(load-theme 'easyballs t)
+(load-theme 'atom-dark t)
+
+
+(autoload 'gofmt-before-save "go-mode"
+    (add-hook 'before-save-hook 'gofmt-before-save))
 
 ;; (global-hl-line-mode)
 ;; (set-face-attribute hl-line-face nil :underline nil)
@@ -101,7 +106,7 @@
 (global-set-key (kbd "C-c C-s") 'simp-project-with-bookmark-rgrep)
 (global-set-key (kbd "C-c C-b") 'simp-project-with-bookmark-ibuffer)
 
-
+(use-package wrap-region)
 
 (setq selective-display-level 0)
 (setq selective-display-increment 4)

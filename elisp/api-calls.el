@@ -30,7 +30,7 @@
                (insert "\n I sent: %S" (assoc-default 'form data))))
    :status-code '((401 . (lambda (&rest _) (insert "\n Got 401."))))))
 
-(create-user)
-s
+;; (create-user)
 
-(refresh-token)
+
+;; (refresh-token)

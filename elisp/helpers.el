@@ -299,11 +299,34 @@ otherwise invokes BACKWARD-KILL-WORD-FN, which must be an unquoted symbol."
 
 
 
+(defun endless/ispell-word-then-abbrev (p)
+  "Call `ispell-word'. Then create an abbrev for the correction made.
+With prefix P, create local abbrev. Otherwise it will be global."
+  (interactive "P")
+  (let ((bef (downcase (or (thing-at-point 'word) ""))) aft)
+    (call-interactively 'ispell-word)
+    (setq aft (downcase (or (thing-at-point 'word) "")))
+    (unless (string= aft bef)
+      (message "\"%s\" now expands to \"%s\" %sally"
+               bef aft (if p "loc" "glob"))
+      (define-abbrev
+        (if p global-abbrev-table local-abbrev-table)
+        bef aft))))
+
+
 ;; Execute command on a region
 (defun ejmr/send-buffer-to-jrnl ()
   "Sends the content of the current buffer to jrnl."
   (interactive)
   (call-process-region (point-min) (point-max) "jrnl")
   (message "Saved buffer contents in journal"))
+
+
+(defun join-lines (arg)
+  (interactive "p")
+  (end-of-line)
+  (delete-char 1)
+  (delete-horizontal-space)
+  (insert " "))
 
 (provide 'helpers)

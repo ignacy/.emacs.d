@@ -99,6 +99,8 @@ This functions should be added to the hooks of major modes for programming."
           1 font-lock-warning-face t))))
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
+
+
 (add-hook 'prog-mode-hook '(lambda () (flyspell-prog-mode)))
 
 (eval-after-load "flyspell"
@@ -120,14 +122,9 @@ This functions should be added to the hooks of major modes for programming."
 (delete-selection-mode t)
 (global-subword-mode 1)
 (blink-cursor-mode 1)
-(setq linum-format "%3d  ")
 (global-linum-mode t)
 
-(defadvice kill-buffer (around kill-buffer-around-advice activate)
-  (let ((buffer-to-kill (ad-get-arg 0)))
-    (if (or (equal buffer-to-kill "*scratch*") (equal buffer-to-kill "*Messages*"))
-        (bury-buffer)
-      ad-do-it)))
+(setq linum-format "%3d ")
 
 (require 'use-package)
 
@@ -140,24 +137,16 @@ This functions should be added to the hooks of major modes for programming."
 (exec-path-from-shell-initialize)
 
 ;; ;;;; multiple-cursors
-;; (use-package multiple-cursors
-;;   :init (progn (require 'inline-string-rectangle)
-;;                (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
-;;                (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-;;                (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-;;                (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
+ (use-package multiple-cursors
+   :init (progn (require 'inline-string-rectangle)
+               (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+                (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+                (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+                (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
 
 
 (add-hook 'prog-mode-hook 'number-font-lock-mode)
-
-
 (require 'info+)
-
-(use-package discover-my-major
-  :init (define-key 'help-command (kbd "C-m") 'discover-my-major))
-
-
-
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
   :init
@@ -180,7 +169,7 @@ This functions should be added to the hooks of major modes for programming."
 
 ;;;; idle-highlight
 (use-package idle-highlight-mode
-  :init (progn (setq idle-highlight-idle-time 1.5)
+  :init (progn (setq idle-highlight-idle-time 1.1)
                (defun idle-coding-hook ()
                  (idle-highlight-mode t))
                (add-hook 'prog-mode-hook 'idle-coding-hook)))
@@ -228,31 +217,6 @@ This functions should be added to the hooks of major modes for programming."
           (add-to-list 'recentf-exclude "\\.revive\\'")
           (add-to-list 'recentf-exclude "elpa")))
 
-(use-package smartparens)
-(use-package smartparens-config
-  :init (progn
-          (smartparens-global-mode t)
-          (show-smartparens-global-mode +1)
-
-          (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
-          (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
-          (setq sp-show-pair-from-inside t)
-          (define-key sp-keymap (kbd "C-M-a") 'sp-beginning-of-sexp)
-          (define-key sp-keymap (kbd "C-M-e") 'sp-end-of-sexp)
-
-          (define-key sp-keymap (kbd "C-)") 'sp-forward-slurp-sexp)
-          (define-key sp-keymap (kbd "C-(") 'sp-backward-slurp-sexp)
-          ;; To free C-M-d in OS X, see
-          ;; http://superuser.com/questions/326223/how-do-i-disable-the-command-control-d-word-definition-keyboard-shortcut-in-os-x
-          (define-key sp-keymap (kbd "C-M-d") 'sp-kill-sexp)
-          ;; Emulate paredit in smartparens-mode
-          (define-key sp-keymap (kbd "M-J") 'sp-join-sexp)
-          (sp-with-modes sp--lisp-modes
-            (sp-local-pair "(" nil :bind "C-("))
-          (sp-with-modes '(rhtml-mode)
-            (sp-local-pair "<" ">")
-            (sp-local-pair "<%" "%>"))))
-
 ;;;; Cider
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (setq nrepl-hide-special-buffers nil)
@@ -268,6 +232,7 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package helm :init
   (progn
+    (set-face-attribute 'helm-selection nil :background "#441100")
     (setq
      helm-google-suggest-use-curl-p t
      helm-scroll-amount 4 ; scroll 4 lines other window using M-<next>/M-<prior>
@@ -302,7 +267,7 @@ This functions should be added to the hooks of major modes for programming."
     (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
 
 (use-package smartscan
-  :init (add-hook 'prog-mode-hook 'smartscan-mode))
+   :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
 ;; (use-package multi-term
 ;;   :init (progn
@@ -315,10 +280,39 @@ This functions should be added to the hooks of major modes for programming."
           ;; When doing isearch, hand the word over to helm-swoop
           (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)))
 
-;; (require 'expand-region)
-;; (global-set-key (kbd "C-=") 'er/expand-region)
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 (setq dired-listing-switches "-alh")
+
+
+
+(use-package smartparens)
+(use-package smartparens-config
+  :init (progn
+          (smartparens-global-mode t)
+          (show-smartparens-global-mode +1)
+
+          (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
+          (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
+
+          (define-key sp-keymap (kbd "C-M-a") 'sp-beginning-of-sexp)
+          (define-key sp-keymap (kbd "C-M-e") 'sp-end-of-sexp)
+
+          (define-key sp-keymap (kbd "C-)") 'sp-forward-slurp-sexp)
+          (define-key sp-keymap (kbd "C-(") 'sp-backward-slurp-sexp)
+          ;; To free C-M-d in OS X, see
+          ;; http://superuser.com/questions/326223/how-do-i-disable-the-command-control-d-word-definition-keyboard-shortcut-in-os-x
+          (define-key sp-keymap (kbd "C-M-d") 'sp-kill-sexp)
+          ;; Emulate paredit in smartparens-mode
+          (define-key sp-keymap (kbd "M-J") 'sp-join-sexp)
+          (sp-with-modes sp--lisp-modes
+            (sp-local-pair "(" nil :bind "C-("))
+          (sp-with-modes '(rhtml-mode)
+            (sp-local-pair "<" ">")
+            (sp-local-pair "<%" "%>"))))
+
+(global-set-key [remap kill-ring-save] 'easy-kill)
 
 
 (defun prelude-colorize-compilation-buffer ()

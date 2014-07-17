@@ -15,23 +15,17 @@
 (define-key input-decode-map "\e[1;5C" [C-right])
 (define-key input-decode-map "\e[1;5D" [C-left])
 
-(bind "C-s" 'isearch-forward-regexp)
-(bind "C-r" 'isearch-backward-regexp)
-
 (bind "M-r" 'helm-git-grep)
 (define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
 
 (bind "M-z" 'undo)
-;;(bind "M-z" 'zop-up-to-char)
-(bind "M-s m" 'multi-occur-in-this-mode)
-;;(bind "C-x f" 'projectile-find-file)
-
-(bind "C-c q" 'toggle-quotes)
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-i" 'imenu)
 (bind "C-x C-r" 'ido-recentf-open) ;; Im disabling it in favour of project based search
 
+
+(bind "C-x g" 'magit-status)
 (bind "M-h" 'backward-kill-word)
 (bind "C-x C-o" 'other-window)
 (bind "C-x C-1" 'delete-other-windows)
@@ -39,7 +33,7 @@
 (bind "C-x r b" 'bookmark-ido-quick-jump)
 (bind "C-x C-f" 'ido-find-file)
 (bind "C-x C-p" 'find-file-at-point)
-(bind "C-1" 'switch-to-zsh)
+;;(bind "C-1" 'switch-to-zsh)
 
 (bind "C-x k" 'im/kill-current-buffer)
 (bind "M-%" 'replace-regexp)
@@ -67,28 +61,10 @@
 (bind "S-<up>" 'shrink-window)
 (bind "S-<down>" 'enlarge-window)
 (bind "C-j" 'newline-and-indent)
-(bind "C-S-o" 'move-line-up)
 
-(bind "M-o" 'helm-mini)
+(bind "M-j" 'join-lines)
 
-
-
-(defun my-multi-occur-in-matching-buffers (regexp &optional allbufs)
-  "Show all lines matching REGEXP in all buffers."
-  (interactive (occur-read-primary-args))
-  (multi-occur-in-matching-buffers ".*" regexp))
-(global-set-key (kbd "M-s /") 'my-multi-occur-in-matching-buffers)
-
-(bind "C-o" 'open-line-above)
-(bind "C-c d" (lambda()
-                (interactive)
-                (find-file "~/Dropbox/notes/index.org")))
-(bind "C-c a" 'org-agenda)
-(bind "C-x g" 'magit-status)
-(global-set-key (kbd "M-j")
-                (lambda ()
-                  (interactive)
-                  (join-line -1)))
+;; (bind "C-S-o" 'move-line-up)
 
 ;; Move more quickly
 (global-set-key (kbd "C-S-n")
