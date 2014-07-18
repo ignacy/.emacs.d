@@ -145,8 +145,6 @@ This functions should be added to the hooks of major modes for programming."
                 (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
 
 
-(add-hook 'prog-mode-hook 'number-font-lock-mode)
-(require 'info+)
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
   :init
