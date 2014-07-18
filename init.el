@@ -31,8 +31,8 @@
 ;;(load-theme 'ir-black t)
 ;(load-theme 'tango-dark t)
 ;;(load-theme 'tech49 t)
-;;(load-theme 'easyballs t)
-(load-theme 'atom-dark t)
+(load-theme 'easyballs t)
+;;(load-theme 'atom-dark t)
 
 
 (autoload 'gofmt-before-save "go-mode"
@@ -63,7 +63,7 @@
 (require 'init-shell-mode)
 (require 'ido-bookmark-jump)
 (require 'init-org)
-(require 'init-evil)
+;;(require 'init-evil)
 
 (use-package rbenv
   :init (progn

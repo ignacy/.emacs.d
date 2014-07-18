@@ -293,6 +293,9 @@ This functions should be added to the hooks of major modes for programming."
           (smartparens-global-mode t)
           (show-smartparens-global-mode +1)
 
+          (global-set-key (kbd "C-M-f") 'sp-forward-sexp)
+          (global-set-key (kbd "C-M-b") 'sp-backward-sexp)
+
           (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
           (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
 
