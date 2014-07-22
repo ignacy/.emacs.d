@@ -122,9 +122,9 @@ This functions should be added to the hooks of major modes for programming."
 (delete-selection-mode t)
 (global-subword-mode 1)
 (blink-cursor-mode 1)
-(global-linum-mode t)
 
-(setq linum-format "%3d ")
+;; (global-linum-mode t)
+;; (setq linum-format "%3d ")
 
 (require 'use-package)
 
@@ -315,6 +315,9 @@ This functions should be added to the hooks of major modes for programming."
 
 (global-set-key [remap kill-ring-save] 'easy-kill)
 
+(put 'dired-find-alternate-file 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 (defun prelude-colorize-compilation-buffer ()
   "Colorize a compilation mode buffer."
@@ -325,5 +328,12 @@ This functions should be added to the hooks of major modes for programming."
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
+
+(use-package auto-dim-other-buffers
+  :init (auto-dim-other-buffers-mode t))
+
+(use-package wrap-region)
+
+(display-time-mode -1)
 
 (provide 'basic-settings)

@@ -32,6 +32,9 @@
 (bind "C-," 'find-tag-at-point)
 (bind "C-x r b" 'bookmark-ido-quick-jump)
 (bind "C-x C-f" 'ido-find-file)
+
+(bind "C-x f" 'projectile-find-file)
+
 (bind "C-x C-p" 'find-file-at-point)
 ;;(bind "C-1" 'switch-to-zsh)
 
@@ -41,7 +44,7 @@
 (bind "C-'" 'helm-imenu)
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x b" 'ido-switch-buffer)
-(bind "C-x C-b" 'ibuffer)
+(bind "C-x C-b" 'projectile-switch-to-buffer)
 
 (bind "M-g" 'goto-line-with-feedback)
 ;;(bind "M-g" 'helm-google-suggest)

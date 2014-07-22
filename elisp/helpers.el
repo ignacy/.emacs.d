@@ -116,12 +116,22 @@ might be bad."
   (dolist (i custom-enabled-themes)
     (disable-theme i)))
 
-(setq deployable-apps '("dev_locator" "dev_nds" "dev_qbp" ))
+(setq deployable-apps '("dev_locator" "dev_nds" "dev_qbp" "dev_otp"))
 
 (defun deploy ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployable-apps)))
     (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
+
+
+(setq deployed-applications '("qbp_backend" "otp_manager"))
+
+(defun search-dev-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications))
+        (query (read-string "Query: " nil nil)))
+    (compile (concat "search_dev_log_for " app " " query))))
+
 
 (defun im/split ()
   "Splits window into 3 nice columns"
@@ -313,13 +323,20 @@ With prefix P, create local abbrev. Otherwise it will be global."
         (if p global-abbrev-table local-abbrev-table)
         bef aft))))
 
-
-;; Execute command on a region
-(defun ejmr/send-buffer-to-jrnl ()
-  "Sends the content of the current buffer to jrnl."
+(setq selective-display-level 0)
+(setq selective-display-increment 4)
+(setq max-selective-display-level 8)
+(defun switch-selective-display ()
+  "Switch to the next selective display level, starting over if appropriate"
+  (if (>= selective-display-level max-selective-display-level)
+      (setq selective-display-level 0)
+    (setq selective-display-level
+          (+ selective-display-increment
+             selective-display-level)))
   (interactive)
-  (call-process-region (point-min) (point-max) "jrnl")
-  (message "Saved buffer contents in journal"))
+  (set-selective-display selective-display-level))
+(global-set-key "\M-c" 'switch-selective-display)
+
 
 
 (defun join-lines (arg)
