@@ -30,14 +30,14 @@
   (interactive)
   (let ((shell-file-name "/bin/bash"))
     (rbenv-use-corresponding)
-    (run-ruby (concat (simp-project-root) "/bin/bundle install"))))
+    (run-ruby (concat (projectile-project-root) "/bin/bundle install"))))
 
 
 (defun rails-console ()
   "Runs inf-ruby process with a rails console loaded inside"
   (interactive)
   (let ((shell-file-name "/bin/bash"))
-    (run-ruby (concat (simp-project-root) "/bin/rails console"))))
+    (run-ruby (concat (projectile-project-root) "/bin/rails console"))))
 
 (defun spork ()
   "Runs inf-ruby process with a rails console loaded inside"
