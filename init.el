@@ -19,6 +19,7 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 ;;(load-theme 'tech49 t)
 (load-theme 'easyballs t)
+;;(load-theme 'mbo t)
 ;;(load-theme 'atom-dark t)
 
 
@@ -48,11 +49,14 @@
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
 
-(use-package color-identifiers-mode
-  :init
-  (global-color-identifiers-mode t))
+;; (use-package color-identifiers-mode
+;;   :init
+;;   (global-color-identifiers-mode t))
 
 (fringe-mode '(0 . 0))
+
+(set-cursor-color "#ff000")
+
 
 (require 'server)
 (if (server-running-p)

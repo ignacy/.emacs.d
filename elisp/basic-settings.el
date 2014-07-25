@@ -259,6 +259,8 @@ This functions should be added to the hooks of major modes for programming."
      )
     (global-set-key (kbd "M-\.") 'helm-etags-select)))
 
+(use-package helm-ls-git)
+
 (use-package smex
   :init
   (progn
@@ -337,5 +339,4 @@ This functions should be added to the hooks of major modes for programming."
 (use-package wrap-region)
 
 (display-time-mode -1)
-
 (provide 'basic-settings)
