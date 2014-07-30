@@ -315,7 +315,8 @@ This functions should be added to the hooks of major modes for programming."
             (sp-local-pair "<" ">")
             (sp-local-pair "<%" "%>"))))
 
-(global-set-key [remap kill-ring-save] 'easy-kill)
+(use-package easy-kill
+  (global-set-key [remap kill-ring-save] 'easy-kill))
 
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'upcase-region 'disabled nil)
