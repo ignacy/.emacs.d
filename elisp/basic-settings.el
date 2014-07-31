@@ -185,6 +185,8 @@ This functions should be added to the hooks of major modes for programming."
 (ido-mode t)
 (ido-everywhere t)
 (setq ido-create-new-buffer 'always)
+(setq ido-flex-match t)
+(setq ido-enable-flex-matching t)
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (add-to-list 'ido-ignore-files "\\.keep")
 (setq ido-file-extensions-order '(".rb" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
@@ -316,7 +318,8 @@ This functions should be added to the hooks of major modes for programming."
             (sp-local-pair "<%" "%>"))))
 
 (use-package easy-kill
-  (global-set-key [remap kill-ring-save] 'easy-kill))
+  :init (global-set-key [remap kill-ring-save] 'easy-kill))
+
 
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'upcase-region 'disabled nil)

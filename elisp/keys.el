@@ -34,7 +34,8 @@
 (bind "C-x C-f" 'ido-find-file)
 
 ;;(bind "C-x f" 'projectile-find-file)
-(bind "C-x f" 'helm-ls-git-ls)
+;;(bind "C-x f" 'helm-ls-git-ls)
+(bind "C-x f" 'fiplr-find-file)
 
 
 (bind "C-x C-p" 'find-file-at-point)
