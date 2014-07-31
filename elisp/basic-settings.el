@@ -325,6 +325,14 @@ This functions should be added to the hooks of major modes for programming."
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+
+
+(unless (fboundp 'hungry-delete-mode)
+  (package-install 'hungry-delete))
+
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+
 (defun prelude-colorize-compilation-buffer ()
   "Colorize a compilation mode buffer."
   (interactive)
