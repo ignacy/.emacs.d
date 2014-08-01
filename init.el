@@ -2,11 +2,15 @@
 (require 'cl)
 (setq debug-on-error nil)
 
-(setq default-frame-alist '((font . "Menelo-14")))
-;;(set-frame-font "Monaco 12")
+;;(setq default-frame-alist '((font . "Menelo-14")))
+;;(setq default-frame-alist '((font . "Source Code Pro-14")))
+(setq default-frame-alist '((font . "Cousine-14")))
+
+
+;;(set-frame-font "Cousine 14")
 ;;(set-frame-font "Menelo 13")
 ;;(set-frame-font "Inconsolata 16")
-;;(set-frame-font "Source Code Pro 12")
+;;(set-frame-font "Source Code Pro 14")
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))
@@ -24,6 +28,8 @@
 
 (autoload 'gofmt-before-save "go-mode"
   (add-hook 'before-save-hook 'gofmt-before-save))
+
+(add-hook 'go-mode-hook (lambda () (setq tab-width 4)))
 
 (use-package smart-modeline)
 (use-package helpers)
