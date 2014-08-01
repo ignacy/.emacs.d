@@ -33,7 +33,10 @@
 (bind "C-x r b" 'bookmark-ido-quick-jump)
 (bind "C-x C-f" 'ido-find-file)
 
-(bind "C-x f" 'projectile-find-file)
+;;(bind "C-x f" 'projectile-find-file)
+;;(bind "C-x f" 'helm-ls-git-ls)
+(bind "C-x f" 'fiplr-find-file)
+
 
 (bind "C-x C-p" 'find-file-at-point)
 ;;(bind "C-1" 'switch-to-zsh)

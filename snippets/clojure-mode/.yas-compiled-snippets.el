@@ -6,4 +6,4 @@
                        ("compojure_deps" ":dependencies [[org.clojure/clojure \"1.$1.0\"]\n               [compojure \"1.1.1\"]\n               [ring/ring-jetty-adapter \"1.0.2\"]\n               [hiccup \"1.0.0\"]]" "Compojure Dependencies" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Mon Jun 24 20:09:34 2013
+;;; Do not edit! File generated at Mon Jul 28 09:47:58 2014

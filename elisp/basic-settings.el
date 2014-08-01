@@ -185,6 +185,8 @@ This functions should be added to the hooks of major modes for programming."
 (ido-mode t)
 (ido-everywhere t)
 (setq ido-create-new-buffer 'always)
+(setq ido-flex-match t)
+(setq ido-enable-flex-matching t)
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (add-to-list 'ido-ignore-files "\\.keep")
 (setq ido-file-extensions-order '(".rb" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
@@ -257,6 +259,8 @@ This functions should be added to the hooks of major modes for programming."
      )
     (global-set-key (kbd "M-\.") 'helm-etags-select)))
 
+(use-package helm-ls-git)
+
 (use-package smex
   :init
   (progn
@@ -313,11 +317,21 @@ This functions should be added to the hooks of major modes for programming."
             (sp-local-pair "<" ">")
             (sp-local-pair "<%" "%>"))))
 
-(global-set-key [remap kill-ring-save] 'easy-kill)
+(use-package easy-kill
+  :init (global-set-key [remap kill-ring-save] 'easy-kill))
+
 
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+
+
+(unless (fboundp 'hungry-delete-mode)
+  (package-install 'hungry-delete))
+
+(require 'hungry-delete)
+(global-hungry-delete-mode)
 
 (defun prelude-colorize-compilation-buffer ()
   "Colorize a compilation mode buffer."
@@ -335,5 +349,4 @@ This functions should be added to the hooks of major modes for programming."
 (use-package wrap-region)
 
 (display-time-mode -1)
-
 (provide 'basic-settings)

@@ -29,6 +29,7 @@
                        ("ifee" "if (${1:condition}) {\n    $2\n} else if (${3:condition}) {\n    $4\n} else {\n    $5\n}\n" "if, else if, else" nil nil nil nil nil nil)
                        ("im" "import $0;" "import" nil nil nil nil nil nil)
                        ("imp" "implements $0\n" "imp" nil nil nil nil nil nil)
+                       ("dbg" "System.out.println(\"\\n\\n ********************************* \\n\\n $1 value is \" + $0 + \"\\n\\n ********************************* \\n\\n\");" "javalog" nil nil nil nil nil nil)
                        ("list" "List<${1:String}> ${2:list} = new ArrayList<$1>();$0" "list" nil nil nil nil nil nil)
                        ("main" "public static void main(String[] args) {\n    $0\n}" "public static void main (String[] args) { ... }" nil nil nil nil nil nil)
                        ("maine" "public static void main(String[] args) throws Exception {\n    $0\n}" "public static void main (String[] args) throws Exception { ... }" nil nil nil nil nil nil)
@@ -57,4 +58,4 @@
                        ("writer" "PrintWriter writer = null;\ntry {\n    writer =\n        new PrintWriter(\n            new BufferedWriter(\n                new OutputStreamWriter(out, ${1:\"UTF-8\"})), true);\n    $2\n    writer.flush();\n} catch (IOException ex) {\n    $3\n} finally {\n    try {\n        writer.close();\n    } catch (Exception ignore) { }\n}\n" "PrintWriter" nil nil nil nil nil nil)))
 
 
-;;; Do not edit! File generated at Mon Jun 24 20:09:34 2013
+;;; Do not edit! File generated at Mon Jul 28 09:47:58 2014

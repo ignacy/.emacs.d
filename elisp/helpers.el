@@ -338,6 +338,22 @@ With prefix P, create local abbrev. Otherwise it will be global."
 (global-set-key "\M-c" 'switch-selective-display)
 
 
+(defun narrow-or-widen-dwim (p)
+  "If the buffer is narrowed, it widens. Otherwise, it narrows intelligently.
+Intelligently means: region, subtree, or defun, whichever applies
+first.
+
+With prefix P, don't widen, just narrow even if buffer is already
+narrowed."
+  (interactive "P")
+  (declare (interactive-only))
+  (cond ((and (buffer-narrowed-p) (not p)) (widen))
+        ((region-active-p)
+         (narrow-to-region (region-beginning) (region-end)))
+        ((derived-mode-p 'org-mode) (org-narrow-to-subtree))
+        (t (narrow-to-defun))))
+
+(global-set-key (kbd "C-x t n") 'narrow-or-widen-dwim)
 
 (defun join-lines (arg)
   (interactive "p")
@@ -345,5 +361,42 @@ With prefix P, create local abbrev. Otherwise it will be global."
   (delete-char 1)
   (delete-horizontal-space)
   (insert " "))
+
+
+
+(defun endless/forward-paragraph (&optional n)
+  "Advance just past next blank line."
+  (interactive "p")
+  (let ((m (use-region-p))
+        (para-commands
+         '(endless/forward-paragraph endless/backward-paragraph)))
+    ;; Only push mark if it's not active and we're not repeating.
+    (or m
+        (not (member this-command para-commands))
+        (member last-command para-commands)
+        (push-mark))
+    ;; The actual movement.
+    (dotimes (_ (abs n))
+      (if (> n 0)
+          (skip-chars-forward "\n[:blank:]")
+        (skip-chars-backward "\n[:blank:]"))
+      (if (search-forward-regexp
+           "\n[[:blank:]]*\n[[:blank:]]*" nil t (cl-signum n))
+          (goto-char (match-end 0))
+        (goto-char (if (> n 0) (point-max) (point-min)))))
+    ;; If mark wasn't active, I like to indent the line too.
+    (unless m
+      (indent-according-to-mode)
+      ;; This looks redundant, but it's surprisingly necessary.
+      (back-to-indentation))))
+
+(defun endless/backward-paragraph (&optional n)
+  "Go back up to previous blank line."
+  (interactive "p")
+  (endless/forward-paragraph (- n)))
+
+(global-set-key "\M-a" 'endless/backward-paragraph)
+(global-set-key "\M-e" 'endless/forward-paragraph)
+
 
 (provide 'helpers)
