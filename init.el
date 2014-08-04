@@ -4,12 +4,11 @@
 
 ;;(setq default-frame-alist '((font . "Menelo-14")))
 ;;(setq default-frame-alist '((font . "Source Code Pro-14")))
-(setq default-frame-alist '((font . "Cousine-14")))
+(setq default-frame-alist '((font . "Cousine-16")))
 
-
-;;(set-frame-font "Cousine 14")
+;;(set-frame-font "Cousine 16")
 ;;(set-frame-font "Menelo 13")
-;;(set-frame-font "Inconsolata 16")
+;;(set-frame-font "Inconsolatxa 16")
 ;;(set-frame-font "Source Code Pro 14")
 
 (setq dotfiles-dir "~/.emacs.d")
@@ -21,12 +20,11 @@
 (require 'basic-settings)
 
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-(load-theme 'antigua t)
 ;;(load-theme 'easyballs t)
 ;;(load-theme 'mbo t)
 ;;(load-theme 'atom-dark t)
 ;;(load-theme 'oscuro t)
-
+;;(load-theme 'espresso-tutti t)
 
 (autoload 'gofmt-before-save "go-mode"
   (add-hook 'before-save-hook 'gofmt-before-save))

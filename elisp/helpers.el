@@ -132,6 +132,11 @@ might be bad."
         (query (read-string "Query: " nil nil)))
     (compile (concat "search_dev_log_for " app " " query))))
 
+(defun get-last-3000-lines-from-dev-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications)))
+    (compile (concat "get_last_3000_lines_from_dev_log_for " app ))))
+
 
 (defun im/split ()
   "Splits window into 3 nice columns"
@@ -261,36 +266,6 @@ point reaches the beginning or end of the buffer, stop there."
              (file-exists-p (byte-compile-dest-file buffer-file-name)))
     (byte-compile-file buffer-file-name)))
 (add-hook 'after-save-hook 'byte-compile-current-buffer)
-
-
-(define-minor-mode focus-on-buffer-mode
-  "Minor mode to center the buffer onscreen and display it in a narrow column.
-Currently only supports doing this in one frame at a time."
-  :init-value nil
-  :lighter " Focus"
-  (message "focus-on-buffer-mode is %s" (prin1-to-string focus-on-buffer-mode))
-  (if focus-on-buffer-mode
-      (progn
-        ;; (setq focus-on-buffer-mode:fullscreen (frame-parameter nil 'fullscreen))
-        ;; TODO: make focus-on-buffer-mode:config a set of configurations, one
-        ;; per frame
-        ;; (setq focus-on-buffer-mode:config (current-window-configuration))
-        (setq focus-on-buffer-mode:fringe fringe-mode)
-        (setq focus-on-buffer-mode:indicators fringe-indicator-alist)
-        (delete-other-windows)
-        ;; TODO: uncomment this once the Emacs bug is fixed where
-        ;; (frame-pixel-width) is unreliable in full screen
-        ;; (set-frame-parameter nil 'fullscreen 'fullboth)
-        (set-fringe-mode
-         (/ (- (frame-pixel-width)
-               (* 100 (frame-char-width)))
-            2))
-        (setq fringe-indicator-alist nil))
-    ;; (set-frame-parameter nil 'fullscreen focus-on-buffer-mode:fullscreen)
-    (setq fringe-indicator-alist focus-on-buffer-mode:indicators)
-    ;; (set-window-configuration focus-on-buffer-mode:config)
-    (set-fringe-mode focus-on-buffer-mode:fringe)))
-
 
 (defmacro make-backward-kill-word-fn (backward-kill-word-fn
                                       &optional backward-kill-word-args)
