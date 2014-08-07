@@ -137,12 +137,12 @@ This functions should be added to the hooks of major modes for programming."
 (exec-path-from-shell-initialize)
 
 ;; ;;;; multiple-cursors
- (use-package multiple-cursors
-   :init (progn (require 'inline-string-rectangle)
+(use-package multiple-cursors
+  :init (progn (require 'inline-string-rectangle)
                (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
-                (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-                (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-                (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
+               (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+               (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+               (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
 
 
 ;;;; rainbow-delimeters
@@ -269,7 +269,7 @@ This functions should be added to the hooks of major modes for programming."
     (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
 
 (use-package smartscan
-   :init (add-hook 'prog-mode-hook 'smartscan-mode))
+  :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
 ;; (use-package multi-term
 ;;   :init (progn
@@ -324,6 +324,17 @@ This functions should be added to the hooks of major modes for programming."
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+(require 'rhtml-mode)
+
+(defun customizations-for-rhtml-mode ()
+  (interactive)
+  (fci-mode)
+  (setq tab-width 2)
+  (setq highlight-indentation-offset 2)
+  (highlight-indentation-mode))
+
+(add-hook 'rhtml-mode-hook 'customizations-for-rhtml-mode)
 
 
 

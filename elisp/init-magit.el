@@ -16,26 +16,24 @@
 
 (use-package magit
   :init (progn
-          (add-hook 'magit-mode-hook 'my-magit-make-color-map)
-          (add-hook 'magit-mode-hook (lambda () (setq truncate-lines nil)))
-          (defface my-magit-range-info
-            '((t :inherit diff-context))
-            "Face to highlight range information for a diff."
-            :group 'magit-faces)
+          ;; (add-hook 'magit-mode-hook 'my-magit-make-color-map)
+          ;; (add-hook 'magit-mode-hook (lambda () (setq truncate-lines nil)))
+          ;; (defface my-magit-range-info
+          ;;   '((t :inherit diff-context))
+          ;;   "Face to highlight range information for a diff."
+          ;;   :group 'magit-faces)
 
-          (defface my-magit-diff-highlight
-            '((t))
-            "Face to highlight changes in lines for a diff."
-            :group 'magit-faces)
+          ;; (defface my-magit-diff-highlight
+          ;;   '((t))
+          ;;   "Face to highlight changes in lines for a diff."
+          ;;   :group 'magit-faces)
 
-          ;; ;; Change Magit colors for diff highlighting
-          (set-face-foreground 'magit-diff-del "red3")
-          (set-face-foreground 'magit-diff-add "green3")
-          (set-face-foreground 'my-magit-range-info "cyan3")
+          ;; ;; ;; Change Magit colors for diff highlighting
+          ;; (set-face-foreground 'magit-diff-del "red3")
+          ;; (set-face-foreground 'magit-diff-add "green3")
+          ;; (set-face-foreground 'my-magit-range-info "cyan3")
 
           ;; Add an extra newline to separate commit message from git commentary
-
-
 
           (defun magit-commit-mode-init ()
             (when (looking-at "\n")

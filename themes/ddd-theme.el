@@ -1,20 +1,11 @@
-;;; ddd-theme.el --- Port of the Sublime Text 2 theme of the same name
-
-;; Copyright 2013-2014 J Irving
-
-;; Author: J Irving <j@lollyshouse.ca>
-;; URL: http://github.com/j0ni/ddd
-;; Version: 1.2
-
-;; Org-mode mods from Rikard Glans - https://github.com/darrik/ddd
-
+;;; ddd-theme.el --- Adjusted phoenix theme
 ;; Code:
 
 (unless (>= 24 emacs-major-version)
   (error "ddd-theme requires Emacs 24 or later."))
 
 (deftheme ddd
-  "Phoenix Dark Pink color theme")
+  "Dark Dark Green")
 
 (custom-theme-set-faces
  'ddd
