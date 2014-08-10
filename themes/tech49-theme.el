@@ -1,4 +1,4 @@
-y;;; tech49-theme.el --- an Emacs 24 theme based on Tech49 (tmTheme)
+;;; tech49-theme.el --- an Emacs 24 theme based on Tech49 (tmTheme)
 ;;
 ;;; Author: Auto Converted to Emacs 24 by tmtheme-to-deftheme
 ;;; Version: 1403804527

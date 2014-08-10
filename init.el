@@ -21,12 +21,12 @@
 (require 'basic-settings)
 
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-(load-theme 'antigua t)
+;;(load-theme 'dream t)
 ;;(load-theme 'easyballs t)
 ;;(load-theme 'mbo t)
 ;;(load-theme 'atom-dark t)
 ;;(load-theme 'oscuro t)
-
+(load-theme 'tech49 t)
 
 (autoload 'gofmt-before-save "go-mode"
   (add-hook 'before-save-hook 'gofmt-before-save))

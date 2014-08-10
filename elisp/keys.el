@@ -70,7 +70,7 @@
 
 (bind "M-j" 'join-lines)
 
-;; (bind "C-S-o" 'move-line-up)
+(bind "C-S-o" 'move-line-up)
 
 ;; Move more quickly
 (global-set-key (kbd "C-S-n")
