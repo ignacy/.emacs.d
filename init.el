@@ -2,14 +2,14 @@
 (require 'cl)
 (setq debug-on-error nil)
 
-;;(setq default-frame-alist '((font . "Menelo-14")))
-;;(setq default-frame-alist '((font . "Source Code Pro-14")))
-(setq default-frame-alist '((font . "Cousine-14")))
+(setq default-frame-alist '((font . "Menelo-14")))
+;;(setq default-frame-alist '((font . "Source Code Pro-15")))
+;;(setq default-frame-alist '((font . "Cousine-15")))
 
-;;(set-frame-font "Cousine 14")
-;;(set-frame-font "Menelo 13")
-;;(set-frame-font "Inconsolatxa 16")
-;;(set-frame-font "Source Code Pro 14")
+;;(set-frame-font "Cousine 15")
+;;(set-frame-font "Menelo 14")
+;;(set-frame-font "Inconsolata 16")
+;;(set-frame-font "Source Code Pro 15")
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))
@@ -24,7 +24,7 @@
 ;;(load-theme 'oscuro t)
 ;;(load-theme 'espresso-tutti t)
 ;;(load-theme 'purple-haze t)
-(load-theme 'noctilux t)
+(load-theme 'text-ex-machina t)
 
 
 
