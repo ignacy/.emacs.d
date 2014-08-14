@@ -9,7 +9,11 @@
    (vector "#eaeaea" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8" "#70c0b1" "#000000"))
  '(ansi-term-color-vector
    [unspecified "#FFFFFF" "#d15120" "#5f9411" "#d2ad00" "#6b82a7" "#a66bab" "#6b82a7" "#505050"] t)
+ '(background-color "#202020")
+ '(background-mode dark)
  '(bmkp-last-as-first-bookmark-file "~/.bookmarks_emacs")
+ '(compilation-message-face (quote bold))
+ '(cursor-color "#cccccc")
  '(cursor-in-non-selected-windows nil)
  '(custom-safe-themes
    (quote
@@ -17,52 +21,27 @@
  '(fancy-narrow-mode t)
  '(fci-rule-character-color "#d9d9d9")
  '(fci-rule-color "#14151E" t)
+ '(foreground-color "#cccccc")
+ '(frame-background-mode (quote light))
  '(frame-brackground-mode (quote dark))
- '(fringe-mode 6 nil (fringe))
  '(hl-paren-background-colors (quote ("#2492db" "#95a5a6" nil)))
  '(hl-paren-colors (quote ("#ecf0f1" "#ecf0f1" "#c0392b")))
- '(linum-format " %7i ")
  '(main-line-color1 "#1E1E1E")
  '(main-line-color2 "#111111")
  '(main-line-separator-style (quote chamfer))
  '(menu-bar-mode nil)
- '(powerline-color1 "#1E1E1E")
- '(powerline-color2 "#111111")
  '(rainbow-identifiers-cie-l*a*b*-lightness 35)
  '(rainbow-identifiers-cie-l*a*b*-saturation 40)
  '(scroll-bar-mode nil)
  '(show-trailing-whitespace t)
- '(sml/active-background-color "#34495e")
- '(sml/active-foreground-color "#ecf0f1")
- '(sml/inactive-background-color "#dfe4ea")
- '(sml/inactive-foreground-color "#34495e")
- '(tool-bar-mode nil)
- '(vc-annotate-background nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#d54e53")
-     (40 . "#e78c45")
-     (60 . "#e7c547")
-     (80 . "#b9ca4a")
-     (100 . "#70c0b1")
-     (120 . "#7aa6da")
-     (140 . "#c397d8")
-     (160 . "#d54e53")
-     (180 . "#e78c45")
-     (200 . "#e7c547")
-     (220 . "#b9ca4a")
-     (240 . "#70c0b1")
-     (260 . "#7aa6da")
-     (280 . "#c397d8")
-     (300 . "#d54e53")
-     (320 . "#e78c45")
-     (340 . "#e7c547")
-     (360 . "#b9ca4a"))))
- '(vc-annotate-very-old-color nil))
+ '(tool-bar-mode nil))
+
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-dim-other-buffers-face ((t (:background "gray10"))))
+ '(erb-face ((t (:background "gray14"))))
  '(fringe ((t (:background "White")))))

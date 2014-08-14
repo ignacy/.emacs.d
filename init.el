@@ -2,15 +2,14 @@
 (require 'cl)
 (setq debug-on-error nil)
 
-;;(setq default-frame-alist '((font . "Menelo-14")))
-;;(setq default-frame-alist '((font . "Source Code Pro-14")))
-(setq default-frame-alist '((font . "Cousine-14")))
+(setq default-frame-alist '((font . "Menelo-14")))
+;;(setq default-frame-alist '((font . "Source Code Pro-15")))
+;;(setq default-frame-alist '((font . "Cousine-15")))
 
-
-;;(set-frame-font "Cousine 14")
-;;(set-frame-font "Menelo 13")
+;;(set-frame-font "Cousine 15")
+;;(set-frame-font "Menelo 14")
 ;;(set-frame-font "Inconsolata 16")
-;;(set-frame-font "Source Code Pro 14")
+;;(set-frame-font "Source Code Pro 15")
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))
@@ -21,12 +20,7 @@
 (require 'basic-settings)
 
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-;;(load-theme 'dream t)
-;;(load-theme 'easyballs t)
-;;(load-theme 'mbo t)
-;;(load-theme 'atom-dark t)
-;;(load-theme 'oscuro t)
-(load-theme 'tech49 t)
+(load-theme 'text-ex-machina t)
 
 (autoload 'gofmt-before-save "go-mode"
   (add-hook 'before-save-hook 'gofmt-before-save))

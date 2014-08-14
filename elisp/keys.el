@@ -35,8 +35,9 @@
 
 ;;(bind "C-x f" 'projectile-find-file)
 ;;(bind "C-x f" 'helm-ls-git-ls)
-(bind "C-x f" 'fiplr-find-file)
+;;(bind "C-x f" 'fiplr-find-file)
 
+(bind "C-x f" 'helm-projectile)
 
 (bind "C-x C-p" 'find-file-at-point)
 ;;(bind "C-1" 'switch-to-zsh)
