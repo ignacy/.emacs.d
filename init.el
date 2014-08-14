@@ -49,6 +49,7 @@
 (require 'init-shell-mode)
 (require 'ido-bookmark-jump)
 (require 'init-org)
+(require 'init-neotree)
 ;;(require 'init-evil)
 
 (use-package rbenv

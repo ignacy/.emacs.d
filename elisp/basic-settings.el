@@ -32,7 +32,9 @@
                       idle-highlight-mode
                       ido-hacks
                       inf-ruby
-                      magit                      mark-multiple
+                      neotree
+                      magit
+                      mark-multiple
                       multiple-cursors
                       org
                       projectile
