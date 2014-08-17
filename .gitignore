@@ -14,3 +14,5 @@ tramp
 /.places
 /ido.last
 /recentf
+/.mc-lists.el
+/themes/upstream-theme.el

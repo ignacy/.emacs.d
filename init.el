@@ -2,12 +2,12 @@
 (require 'cl)
 (setq debug-on-error nil)
 
-(setq default-frame-alist '((font . "Menelo-14")))
+(setq default-frame-alist '((font . "Monaco-14")))
 ;;(setq default-frame-alist '((font . "Source Code Pro-15")))
 ;;(setq default-frame-alist '((font . "Cousine-15")))
 
 ;;(set-frame-font "Cousine 15")
-;;(set-frame-font "Menelo 14")
+;;(set-frame-font "Monaco 14")
 ;;(set-frame-font "Inconsolata 16")
 ;;(set-frame-font "Source Code Pro 15")
 
