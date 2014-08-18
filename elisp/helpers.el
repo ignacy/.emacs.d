@@ -116,7 +116,7 @@ might be bad."
   (dolist (i custom-enabled-themes)
     (disable-theme i)))
 
-(setq deployable-apps '("dev_locator" "dev_nds" "dev_qbp" "dev_otp"))
+(setq deployable-apps '("dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector"))
 
 (defun deploy ()
   (interactive)
@@ -124,7 +124,7 @@ might be bad."
     (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
 
 
-(setq deployed-applications '("qbp_backend" "otp_manager"))
+(setq deployed-applications '("qbp_backend" "otp_manager" "data_collector"))
 
 (defun search-dev-log-for ()
   (interactive)
