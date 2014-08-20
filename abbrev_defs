@@ -35,6 +35,8 @@
 
 (define-abbrev-table 'change-log-mode-abbrev-table '())
 
+(define-abbrev-table 'clojure-mode-abbrev-table '())
+
 (define-abbrev-table 'coffee-mode-abbrev-table '())
 
 (define-abbrev-table 'comint-mode-abbrev-table '())
@@ -91,18 +93,23 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
-    ("craete" "create" nil 1)
-    ("crate" "create" nil 1)
-    ("josn" "json" nil 1)
+    ("craete" "create" nil 2)
+    ("craeted_at" "created_at" nil 2)
+    ("crate" "create" nil 2)
+    ("josn" "json" nil 2)
     ("jsno" "json" nil 2)
+    ("recipt" "receipt" nil 2)
+    ("recipts" "receipts" nil 2)
     ("redner" "render" nil 2)
     ("reponse" "response" nil 2)
-    ("repsone" "response" nil 1)
+    ("repsone" "response" nil 2)
     ("tarce" "trace" nil 2)
-    ("tarcing" "tracing" nil 1)
+    ("tarcing" "tracing" nil 2)
    ))
 
 (define-abbrev-table 'gnus-group-mode-abbrev-table '())
+
+(define-abbrev-table 'go-mode-abbrev-table '())
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
@@ -166,6 +173,8 @@
 
 (define-abbrev-table 'messages-buffer-mode-abbrev-table '())
 
+(define-abbrev-table 'neotree-mode-abbrev-table '())
+
 (define-abbrev-table 'objc-mode-abbrev-table
   '(
    ))
@@ -192,9 +201,7 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
 
 (define-abbrev-table 'rhtml-mode-abbrev-table '())
 

@@ -2,12 +2,12 @@
 (require 'cl)
 (setq debug-on-error nil)
 
-(setq default-frame-alist '((font . "Monaco-14")))
+(setq default-frame-alist '((font . "Inconsolata-16")))
 ;;(setq default-frame-alist '((font . "Source Code Pro-15")))
 ;;(setq default-frame-alist '((font . "Cousine-15")))
 
 ;;(set-frame-font "Cousine 15")
-;;(set-frame-font "Monaco 14")
+;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata 16")
 ;;(set-frame-font "Source Code Pro 15")
 
@@ -20,7 +20,8 @@
 (require 'basic-settings)
 
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-(load-theme 'text-ex-machina t)
+;;(load-theme 'text-ex-machina t)
+(load-theme 'tronesque t)
 
 (autoload 'gofmt-before-save "go-mode"
   (add-hook 'before-save-hook 'gofmt-before-save))

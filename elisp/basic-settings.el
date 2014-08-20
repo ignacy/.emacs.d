@@ -147,6 +147,11 @@ This functions should be added to the hooks of major modes for programming."
                (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
 
 
+(use-package ace-jump-mode
+  :init
+  (global-set-key (kbd "C-/") 'ace-jump-word-mode)
+  (global-set-key (kbd "§") 'ace-jump-word-mode))
+
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
   :init
@@ -356,8 +361,8 @@ This functions should be added to the hooks of major modes for programming."
 
 (add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
 
-(use-package auto-dim-other-buffers
-  :init (auto-dim-other-buffers-mode t))
+;; (use-package auto-dim-other-buffers
+;;   :init (auto-dim-other-buffers-mode t))
 
 (use-package wrap-region)
 

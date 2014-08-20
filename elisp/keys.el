@@ -42,6 +42,9 @@
 (bind "C-x C-p" 'find-file-at-point)
 ;;(bind "C-1" 'switch-to-zsh)
 
+;; Replace rectangle-text with inline-string-rectangle
+(bind "C-x r t" 'inline-string-rectangle)
+
 (bind "C-x k" 'im/kill-current-buffer)
 (bind "M-%" 'replace-regexp)
 (bind "C-c e" 'replace-string)
