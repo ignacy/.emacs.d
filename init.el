@@ -2,13 +2,13 @@
 (require 'cl)
 (setq debug-on-error nil)
 
-(setq default-frame-alist '((font . "Inconsolata-16")))
+(setq default-frame-alist '((font . "Inconsolata-18")))
 ;;(setq default-frame-alist '((font . "Source Code Pro-15")))
 ;;(setq default-frame-alist '((font . "Cousine-15")))
 
 ;;(set-frame-font "Cousine 15")
 ;;(set-frame-font "Monaco 15")
-;;(set-frame-font "Inconsolata 16")
+;;(set-frame-font "Inconsolata 18")
 ;;(set-frame-font "Source Code Pro 15")
 
 (setq dotfiles-dir "~/.emacs.d")
@@ -21,7 +21,8 @@
 
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 ;;(load-theme 'text-ex-machina t)
-(load-theme 'tronesque t)
+(load-theme 'stekene-dark t)
+;;(load-theme 'seti t)
 
 (autoload 'gofmt-before-save "go-mode"
   (add-hook 'before-save-hook 'gofmt-before-save))
