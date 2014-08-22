@@ -26,6 +26,11 @@
     (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
     (yas-global-mode 1)))
 
+;;(global-set-key (kbd "C-c y") 'company-yasnippet)
+
+(require 'dropdown-list)
+(setq yas-prompt-functions '(yas-dropdown-prompt yas-x-prompt yas-dropdown-prompt))
+
 (require 'setup-hippie)
 
 
