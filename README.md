@@ -1,3 +1,3 @@
 
 
-    git clone https://github.com/ignacy/dot_emacs.git ~/.emacs.d
+    git clone https://github.com/ignacy/.emacs.git ~/.emacs.d

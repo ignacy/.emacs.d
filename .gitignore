@@ -16,3 +16,4 @@ tramp
 /recentf
 /.mc-lists.el
 /themes/upstream-theme.el
+/backups/.emacs.desktop

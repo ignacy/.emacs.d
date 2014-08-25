@@ -8,43 +8,25 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;;(eval-buffer)
-
 (defvar my-packages '(
                       use-package
-                      markdown-mode
                       cider
                       clojure-mode
-                      colorsarenice-theme
                       company
-                      evil
-                      evil-leader
                       exec-path-from-shell
-                      fancy-narrow
-                      fiplr
-                      flatland-theme
                       flx-ido
-                      gist
-                      git-gutter
-                      helm
-                      helm-git-grep
-                      helm-swoop
+                      find-file-in-project
                       idle-highlight-mode
                       ido-hacks
                       inf-ruby
-                      neotree
                       magit
                       mark-multiple
                       multiple-cursors
-                      org
                       projectile
-                      perspective
-                      persp-projectile
                       rainbow-delimiters
                       rbenv
                       rhtml-mode
                       rspec-mode
-                      ruby-end
                       ruby-mode
                       smartparens
                       smex
@@ -103,7 +85,7 @@ This functions should be added to the hooks of major modes for programming."
 
 
 
-(add-hook 'prog-mode-hook '(lambda () (flyspell-prog-mode)))
+;;(add-hook 'prog-mode-hook '(lambda () (flyspell-prog-mode)))
 
 (eval-after-load "flyspell"
   '(progn
@@ -154,44 +136,18 @@ This functions should be added to the hooks of major modes for programming."
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
-  :init
-  (progn
-    (require 'cl-lib)
-    (require 'color)
-    (cl-loop
-     for index from 1 to rainbow-delimiters-max-face-count
-     do
-     (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-       (cl-callf color-saturate-name (face-foreground face) 30)))
-
-    (require 'paren) ; show-paren-mismatch is defined in paren.el
-    (set-face-attribute 'rainbow-delimiters-unmatched-face nil
-                        :foreground 'unspecified
-                        :strike-through t
-                        :inherit 'show-paren-mismatch)
-
-    (global-rainbow-delimiters-mode)))
+  :init (global-rainbow-delimiters-mode))
 
 ;;;; idle-highlight
 (use-package idle-highlight-mode
-  :init (progn (setq idle-highlight-idle-time 1.1)
-               (defun idle-coding-hook ()
-                 (idle-highlight-mode t))
-               (add-hook 'prog-mode-hook 'idle-coding-hook)))
-
-(set-default 'imenu-auto-rescan t)
-
-(use-package iregister
-  :init (progn
-          (global-set-key (kbd "C-\\") 'iregister-jump-to-next-marker)
-          (global-set-key (kbd "M-|") 'iregister-jump-to-previous-marker)
-          (global-set-key (kbd "M-\\") 'iregister-point-or-text-to-register)))
+  :init (idle-highlight-mode t))
 
 ;;;; IDO-MODE
 ;; Display ido results vertically, rather than horizontally
 (ido-mode t)
 (ido-everywhere t)
 (setq ido-create-new-buffer 'always)
+(set-default 'imenu-auto-rescan t)
 (setq ido-flex-match t)
 (setq ido-enable-flex-matching t)
 (add-to-list 'ido-ignore-files "\\.DS_Store")
@@ -237,37 +193,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package fancy-narrow
   :init (fancy-narrow-mode))
 
-(use-package helm :init
-  (progn
-    (set-face-attribute 'helm-selection nil :background "#441100")
-    (setq
-     helm-google-suggest-use-curl-p t
-     helm-scroll-amount 4 ; scroll 4 lines other window using M-<next>/M-<prior>
-     helm-quick-update t ; do not display invisible candidates
-     helm-idle-delay 0.01 ; be idle for this many seconds, before updating in delayed sources.
-     helm-input-idle-delay 0.01 ; be idle for this many seconds, before updating candidate buffer
-     helm-ff-search-library-in-sexp t ; search for library in `require' and `declare-function' sexp.
-
-     ;; you can customize helm-do-grep to execute ack-grep
-     ;; helm-grep-default-command "ack-grep -Hn --smart-case --no-group --no-color %e %p %f"
-     ;; helm-grep-default-recurse-command "ack-grep -H --smart-case --no-group --no-color %e %p %f"
-     helm-split-window-default-side 'other ;; open helm buffer in another window
-     helm-split-window-in-side-p t ;; open helm buffer inside current window, not occupy whole other window
-     helm-candidate-number-limit 200 ; limit the number of displayed canidates
-     helm-M-x-requires-pattern 0     ; show all candidates when set to 0
-     helm-boring-file-regexp-list
-     '("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "\\.i$") ; do not show these files in helm buffer
-     helm-ff-file-name-history-use-recentf t
-     helm-move-to-line-cycle-in-source t ; move to end or beginning of source
-                                        ; when reaching top or bottom of source.
-     ido-use-virtual-buffers t      ; Needed in helm-buffers-list
-     helm-buffers-fuzzy-matching t          ; fuzzy matching buffer names when non--nil
-                                        ; useful in helm-mini that lists buffers
-     )
-    (global-set-key (kbd "M-\.") 'helm-etags-select)))
-
-(use-package helm-ls-git)
-
 (use-package smex
   :init
   (progn
@@ -278,78 +203,21 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smartscan
   :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
-;; (use-package multi-term
-;;   :init (progn
-;;           (setq multi-term-program "/bin/zsh")))
-
-(use-package helm-swoop
-  :init (progn
-          (global-set-key (kbd "M-i") 'helm-swoop)
-          (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
-          ;; When doing isearch, hand the word over to helm-swoop
-          (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)))
-
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-
-(setq dired-listing-switches "-alh")
-
+(use-package expand-region
+  :init (global-set-key (kbd "C-=") 'er/expand-region))
 
 
 (use-package smartparens)
-(use-package smartparens-config
-  :init (progn
-          (smartparens-global-mode t)
-          (show-smartparens-global-mode +1)
-
-          (global-set-key (kbd "C-M-f") 'sp-forward-sexp)
-          (global-set-key (kbd "C-M-b") 'sp-backward-sexp)
-
-          (global-set-key (kbd "C-M-a") 'sp-beginning-of-sexp)
-          (global-set-key (kbd "C-M-e") 'sp-end-of-sexp)
-
-          (define-key sp-keymap (kbd "C-M-a") 'sp-beginning-of-sexp)
-          (define-key sp-keymap (kbd "C-M-e") 'sp-end-of-sexp)
-
-          (define-key sp-keymap (kbd "C-)") 'sp-forward-slurp-sexp)
-          (define-key sp-keymap (kbd "C-(") 'sp-backward-slurp-sexp)
-          ;; To free C-M-d in OS X, see
-          ;; http://superuser.com/questions/326223/how-do-i-disable-the-command-control-d-word-definition-keyboard-shortcut-in-os-x
-          (define-key sp-keymap (kbd "C-M-d") 'sp-kill-sexp)
-          ;; Emulate paredit in smartparens-mode
-          (define-key sp-keymap (kbd "M-J") 'sp-join-sexp)
-          (sp-with-modes sp--lisp-modes
-            (sp-local-pair "(" nil :bind "C-("))
-          (sp-with-modes '(rhtml-mode)
-            (sp-local-pair "<" ">")
-            (sp-local-pair "<%" "%>"))))
+(require 'smartparens-config)
+(smartparens-global-mode t)
+(show-smartparens-global-mode +1)
 
 (use-package easy-kill
   :init (global-set-key [remap kill-ring-save] 'easy-kill))
 
 
-(put 'dired-find-alternate-file 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
-(require 'rhtml-mode)
-
-(defun customizations-for-rhtml-mode ()
-  (interactive)
-  (fci-mode)
-  (setq tab-width 2)
-  (setq highlight-indentation-offset 2)
-  (highlight-indentation-mode))
-
-(add-hook 'rhtml-mode-hook 'customizations-for-rhtml-mode)
-
-
-
-(unless (fboundp 'hungry-delete-mode)
-  (package-install 'hungry-delete))
-
-(require 'hungry-delete)
-(global-hungry-delete-mode)
+(use-package hungry-delete
+  :init (global-hungry-delete-mode))
 
 (defun prelude-colorize-compilation-buffer ()
   "Colorize a compilation mode buffer."

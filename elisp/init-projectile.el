@@ -16,8 +16,6 @@
   ;;(define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)
   (global-set-key (kbd "C-c p s") 'projectile-persp-switch-project))
 
-(use-package helm-projectile)
-
 (use-package fiplr
   :init (progn
           (setq fiplr-root-markers '(".git"))

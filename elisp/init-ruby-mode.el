@@ -7,6 +7,20 @@
   (progn
     (setq rinari-tags-file-name "TAGS")))
 
+(use-package rhtml-mode
+  :init
+  (progn
+
+    (defun customizations-for-rhtml-mode ()
+      (interactive)
+      (fci-mode)
+      (setq tab-width 2)
+      (setq highlight-indentation-offset 2)
+      (highlight-indentation-mode))
+
+    (add-hook 'rhtml-mode-hook 'customizations-for-rhtml-mode)))
+
+
 
 ;; work around possible elpa bug
 (ignore-errors (require 'ruby-compilation))

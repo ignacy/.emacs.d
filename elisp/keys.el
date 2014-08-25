@@ -15,8 +15,8 @@
 (define-key input-decode-map "\e[1;5C" [C-right])
 (define-key input-decode-map "\e[1;5D" [C-left])
 
-(bind "M-r" 'helm-git-grep)
-(define-key isearch-mode-map (kbd "C-c g") 'helm-git-grep-from-isearch)
+;;(bind "M-r" 'helm-git-grep)
+(bind "M-r" 'projectile-pt)
 
 (bind "M-z" 'undo)
 (bind "C-x i" 'indent-region-or-buffer)
@@ -34,10 +34,7 @@
 (bind "C-x C-f" 'ido-find-file)
 
 ;;(bind "C-x f" 'projectile-find-file)
-;;(bind "C-x f" 'helm-ls-git-ls)
-;;(bind "C-x f" 'fiplr-find-file)
-
-(bind "C-x f" 'helm-projectile)
+(bind "C-x f" 'find-file-in-project)
 
 (bind "C-x C-p" 'find-file-at-point)
 ;;(bind "C-1" 'switch-to-zsh)
@@ -48,14 +45,12 @@
 (bind "C-x k" 'im/kill-current-buffer)
 (bind "M-%" 'replace-regexp)
 (bind "C-c e" 'replace-string)
-(bind "C-'" 'helm-imenu)
+(bind "C-i" 'ido-imenu)
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x b" 'ido-switch-buffer)
 (bind "C-x C-b" 'projectile-switch-to-buffer)
 
 (bind "M-g" 'goto-line-with-feedback)
-;;(bind "M-g" 'helm-google-suggest)
-;;(bind "C-c h" 'helm-projectile)
 (bind "M-/" 'hippie-expand-no-case-fold)
 (bind "M-?" 'hippie-expand-lines)
 (bind "M-u" 'toggle-letter-case)
