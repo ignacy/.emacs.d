@@ -98,6 +98,7 @@
     ("crate" "create" nil 2)
     ("josn" "json" nil 2)
     ("jsno" "json" nil 2)
+    ("ppr" "binding.pry" nil 5)
     ("recipt" "receipt" nil 2)
     ("recipts" "receipts" nil 2)
     ("redner" "render" nil 2)
