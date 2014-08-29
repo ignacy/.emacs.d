@@ -26,13 +26,9 @@
                               (setq css-indent-offset 2))))
 (add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
-
-
 (add-to-list 'auto-mode-alist '("\\.jsp$" . html-mode))
 
 (use-package yaml-mode)
-(defun yaml-mode-hook ()
-  (autoload 'yaml-mode "yaml-mode" nil t))
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 

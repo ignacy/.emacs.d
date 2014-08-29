@@ -1,6 +1,5 @@
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (package-initialize)
@@ -28,6 +27,7 @@
                       rhtml-mode
                       rspec-mode
                       ruby-mode
+                      yaml-mode
                       smartparens
                       smex
                       yasnippet))
@@ -36,6 +36,9 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(set-terminal-coding-system nil)
+(set-keyboard-coding-system nil)
+(prefer-coding-system 'utf-8)
 
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)

@@ -21,7 +21,6 @@
 (bind "M-z" 'undo)
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
-(bind "C-x C-i" 'imenu)
 (bind "C-x C-r" 'ido-recentf-open) ;; Im disabling it in favour of project based search
 
 
@@ -45,7 +44,7 @@
 (bind "C-x k" 'im/kill-current-buffer)
 (bind "M-%" 'replace-regexp)
 (bind "C-c e" 'replace-string)
-(bind "C-i" 'ido-imenu)
+(bind "C-|" 'ido-imenu)
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x b" 'ido-switch-buffer)
 (bind "C-x C-b" 'projectile-switch-to-buffer)
