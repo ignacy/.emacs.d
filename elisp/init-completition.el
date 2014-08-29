@@ -1,3 +1,9 @@
+(use-package yasnippet
+  :init
+  (progn
+    (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
+    (yas-global-mode 1)))
+
 (defun company-yasnippet-or-completion ()
   (interactive)
   (if (yas/expansion-at-point)
@@ -19,12 +25,6 @@
     (global-company-mode)))
 
 (add-hook 'after-init-hook 'global-company-mode)
-
-(use-package yasnippet
-  :init
-  (progn
-    (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
-    (yas-global-mode 1)))
 
 ;;(global-set-key (kbd "C-c y") 'company-yasnippet)
 

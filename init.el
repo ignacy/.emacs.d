@@ -1,14 +1,6 @@
 ;;; init -- my emacs configuration
 (require 'cl)
 (setq debug-on-error nil)
-;;(setq default-frame-alist '((font . "Inconsolata-18")))
-;;(setq default-frame-alist '((font . "Source Code Pro-15")))
-;;(setq default-frame-alist '((font . "Cousine-15")))
-
-;;(set-frame-font "Cousine 15")
-(set-frame-font "Menlo 13")
-;;(set-frame-font "Inconsolata 18")
-;;(set-frame-font "Source Code Pro 15")
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))
@@ -19,13 +11,6 @@
 (require 'basic-settings)
 
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-;;(load-theme 'text-ex-machina t)
-(load-theme 'brin t)
-
-(autoload 'gofmt-before-save "go-mode"
-  (add-hook 'before-save-hook 'gofmt-before-save))
-
-(add-hook 'go-mode-hook (lambda () (setq tab-width 4)))
 
 (use-package smart-modeline)
 (use-package helpers)
@@ -55,13 +40,8 @@
 ;;   :init
 ;;   (global-color-identifiers-mode t))
 
+
+(load-file "~/.emacs.local")
+
 (fringe-mode '(0 . 0))
-
 (set-cursor-color "#ff000")
-
-
-(require 'server)
-(if (server-running-p)
-    (message "Server already running")
-  (message "Starting server")
-  (server-start))

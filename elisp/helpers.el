@@ -104,6 +104,60 @@ might be bad."
   (interactive)
   (kill-buffer (current-buffer)))
 
+
+(defun ido-find-tag ()
+  "Find a tag using ido"
+  (interactive)
+  (tags-completion-table)
+  (let* ((initial-input
+          (funcall (or find-tag-default-function
+                       (get major-mode 'find-tag-default-function)
+                       'find-tag-default)))
+         (initial-input-regex (concat "\\(^\\|::\\)" initial-input "$")))
+    (find-tag (ido-completing-read
+               "Tag: "
+               (sort
+                (remove nil
+                        (mapcar (lambda (tag) (unless (integerp tag)
+                                                (prin1-to-string tag 'noescape)))
+                                tags-completion-table))
+                ;; put those matching initial-input first:
+                (lambda (a b) (string-match initial-input-regex a)))
+               nil
+               'require-match
+               initial-input))))
+
+
+(defun toggle-letter-case ()
+  "Toggle the letter case of current word or text selection.
+Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
+  (interactive)
+  (let (p1 p2 (deactivate-mark nil) (case-fold-search nil))
+    (if (use-region-p)
+        (setq p1 (region-beginning) p2 (region-end))
+      (let ((bds (bounds-of-thing-at-point 'word) ) )
+        (setq p1 (car bds) p2 (cdr bds)) ) )
+
+    (when (not (eq last-command this-command))
+      (save-excursion
+        (goto-char p1)
+        (cond
+         ((looking-at "[[:lower:]][[:lower:]]") (put this-command 'state "all lower"))
+         ((looking-at "[[:upper:]][[:upper:]]") (put this-command 'state "all caps") )
+         ((looking-at "[[:upper:]][[:lower:]]") (put this-command 'state "init caps") )
+         ((looking-at "[[:lower:]]") (put this-command 'state "all lower"))
+         ((looking-at "[[:upper:]]") (put this-command 'state "all caps") )
+         (t (put this-command 'state "all lower") ) ) ) )
+
+    (cond
+     ((string= "all lower" (get this-command 'state))
+      (upcase-initials-region p1 p2) (put this-command 'state "init caps"))
+     ((string= "init caps" (get this-command 'state))
+      (upcase-region p1 p2) (put this-command 'state "all caps"))
+     ((string= "all caps" (get this-command 'state))
+      (downcase-region p1 p2) (put this-command 'state "all lower")) )
+    ) )
+
 (defun ido-imenu ()
   "Update the imenu index and then use ido to select a symbol to navigate to.
 Symbols matching the text at point are put first in the completion list."

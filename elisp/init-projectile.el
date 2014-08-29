@@ -22,6 +22,15 @@
           (setq fiplr-ignored-globs '((directories (".git" "target" ".svn" "log" "tmp"))
                                       (files (".keep" ".DS_Store" ".class" "TAGS*" "*.jpg" "*.elc" "*.png" "*.zip" "*~"))))))
 
+
+(use-package find-file-in-project
+  :init (progn
+          (require 'setup-ffip)
+          (add-to-list 'ffip-patterns "*.haml")
+          (add-to-list 'ffip-patterns "*.erb")
+          (add-to-list 'ffip-patterns "*Gemfile")
+          (add-to-list 'ffip-patterns "*yml")))
+
 (eval-after-load "grep"
   '(progn
      (add-to-list 'grep-find-ignored-directories ".bundle")

@@ -38,13 +38,14 @@
 (bind "C-x C-p" 'find-file-at-point)
 ;;(bind "C-1" 'switch-to-zsh)
 
+(bind "C-'" 'ido-imenu)
+
 ;; Replace rectangle-text with inline-string-rectangle
 (bind "C-x r t" 'inline-string-rectangle)
 
 (bind "C-x k" 'im/kill-current-buffer)
 (bind "M-%" 'replace-regexp)
 (bind "C-c e" 'replace-string)
-(bind "C-|" 'ido-imenu)
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x b" 'ido-switch-buffer)
 (bind "C-x C-b" 'projectile-switch-to-buffer)
