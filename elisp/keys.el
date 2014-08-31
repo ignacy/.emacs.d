@@ -16,7 +16,13 @@
 (define-key input-decode-map "\e[1;5D" [C-left])
 
 ;;(bind "M-r" 'helm-git-grep)
-(bind "M-r" 'projectile-pt)
+;;(bind "M-r" 'projectile-pt)
+
+;;(require 'ag)(setq ag-executable "/usr/local/bin/ag")
+
+
+
+(bind "M-r" 'projectile-ag)
 
 (bind "M-z" 'undo)
 (bind "C-x i" 'indent-region-or-buffer)

@@ -121,7 +121,9 @@ This functions should be added to the hooks of major modes for programming."
   (push "~/.rbenv/shims" exec-path)
   (push "~/bin" exec-path))
 
-(exec-path-from-shell-initialize)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 
 ;; ;;;; multiple-cursors
 (use-package multiple-cursors

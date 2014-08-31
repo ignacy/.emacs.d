@@ -42,6 +42,3 @@
 
 
 (load-file "~/.emacs.local")
-
-(fringe-mode '(0 . 0))
-(set-cursor-color "#ff000")
