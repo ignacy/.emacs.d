@@ -73,6 +73,9 @@
 (bind "S-<down>" 'enlarge-window)
 (bind "C-j" 'newline-and-indent)
 
+
+(bind "M-\." 'find-tag-at-point)
+
 (bind "M-j" 'join-lines)
 
 (bind "C-S-o" 'move-line-up)

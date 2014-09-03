@@ -105,29 +105,6 @@ might be bad."
   (kill-buffer (current-buffer)))
 
 
-(defun ido-find-tag ()
-  "Find a tag using ido"
-  (interactive)
-  (tags-completion-table)
-  (let* ((initial-input
-          (funcall (or find-tag-default-function
-                       (get major-mode 'find-tag-default-function)
-                       'find-tag-default)))
-         (initial-input-regex (concat "\\(^\\|::\\)" initial-input "$")))
-    (find-tag (ido-completing-read
-               "Tag: "
-               (sort
-                (remove nil
-                        (mapcar (lambda (tag) (unless (integerp tag)
-                                                (prin1-to-string tag 'noescape)))
-                                tags-completion-table))
-                ;; put those matching initial-input first:
-                (lambda (a b) (string-match initial-input-regex a)))
-               nil
-               'require-match
-               initial-input))))
-
-
 (defun toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
 Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
@@ -212,28 +189,6 @@ Symbols matching the text at point are put first in the completion list."
   (dolist (i custom-enabled-themes)
     (disable-theme i)))
 
-(setq deployable-apps '("dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector"))
-
-(defun deploy ()
-  (interactive)
-  (let ((app (ido-completing-read "Which app?: " deployable-apps)))
-    (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
-
-
-(setq deployed-applications '("qbp_backend" "otp_manager" "data_collector"))
-
-(defun search-dev-log-for ()
-  (interactive)
-  (let ((app (ido-completing-read "Which app?: " deployed-applications))
-        (query (read-string "Query: " nil nil)))
-    (compile (concat "search_dev_log_for " app " " query))))
-
-(defun get-last-3000-lines-from-dev-log-for ()
-  (interactive)
-  (let ((app (ido-completing-read "Which app?: " deployed-applications)))
-    (compile (concat "get_last_3000_lines_from_dev_log_for " app ))))
-
-
 (defun im/split ()
   "Splits window into 3 nice columns"
   (interactive)
@@ -241,16 +196,6 @@ Symbols matching the text at point are put first in the completion list."
     (split-window-horizontally)
     (split-window-horizontally)
     (balance-windows)))
-
-(defun deploy-nds-local ()
-  (interactive)
-  (compile "~/bin/local_nds_deploy"))
-
-(add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-tail-mode))
-
-(defun tail-nds-local ()
-  (interactive)
-  (shell-command "tail -f /usr/local/Cellar/tomcat/7.0.53/libexec/logs/pnds1.log"))
 
 
 (defun node-repl ()
@@ -468,6 +413,39 @@ narrowed."
 
 (global-set-key "\M-a" 'endless/backward-paragraph)
 (global-set-key "\M-e" 'endless/forward-paragraph)
+
+
+;;; WORK
+
+(setq deployable-apps '("dev_interceptor" "dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector"))
+
+(defun deploy ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployable-apps)))
+    (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
+
+
+(setq deployed-applications '("qbp_backend" "interceptor" "otp_manager" "data_collector"))
+
+(defun search-dev-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications))
+        (query (read-string "Query: " nil nil)))
+    (compile (concat "search_dev_log_for " app " " query))))
+
+(defun get-last-3000-lines-from-dev-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications)))
+    (compile (concat "get_last_3000_lines_from_dev_log_for " app ))))
+
+
+(defun deploy-nds-local ()
+  (interactive)
+  (compile "~/bin/local_nds_deploy"))
+
+(defun tail-nds-local ()
+  (interactive)
+  (shell-command "tail -f /usr/local/Cellar/tomcat/7.0.53/libexec/logs/pnds1.log"))
 
 
 (defun im-ssh (args)
