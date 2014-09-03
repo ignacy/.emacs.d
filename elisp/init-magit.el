@@ -28,7 +28,7 @@
           ;;   "Face to highlight changes in lines for a diff."
           ;;   :group 'magit-faces)
 
-          ;; ;; ;; Change Magit colors for diff highlighting
+          ;; ;; ;; ;; Change Magit colors for diff highlighting
           ;; (set-face-foreground 'magit-diff-del "red3")
           ;; (set-face-foreground 'magit-diff-add "green3")
           ;; (set-face-foreground 'my-magit-range-info "cyan3")
@@ -44,5 +44,15 @@
           ;; close popup when commiting
           (defadvice git-commit-commit (after delete-window activate)
             (delete-window))))
+
+
+;; change magit diff colors
+(eval-after-load 'magit
+  '(progn
+     (set-face-foreground 'magit-diff-add "green3")
+     (set-face-foreground 'magit-diff-del "red3")
+     (when (not window-system)
+       (set-face-background 'magit-item-highlight "black"))))
+
 
 (provide 'init-magit)

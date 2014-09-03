@@ -470,4 +470,23 @@ narrowed."
 (global-set-key "\M-e" 'endless/forward-paragraph)
 
 
+(defun im-ssh (args)
+  "Connect to a remote host by SSH."
+  (interactive "sssh ")
+  (let ((switches (split-string-and-unquote args)))
+    (set-buffer (apply 'make-term "ssh" "ssh" nil switches))
+    (term-mode)
+    (term-char-mode)
+    (switch-to-buffer "*ssh*")))
+
+(defun dev ()
+  "Connect to a DEV using SSH."
+  (interactive)
+  (set-buffer (make-term "ssh" "ssh" nil "dev"))
+  (term-mode)
+  (term-char-mode)
+  (switch-to-buffer "*ssh*"))
+
+
+
 (provide 'helpers)

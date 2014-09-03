@@ -1,5 +1,6 @@
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (package-initialize)
@@ -233,6 +234,13 @@ This functions should be added to the hooks of major modes for programming."
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
+
+
+(setq compilation-scroll-output 'first-error) ;; follows output
+
+
+(use-package font-lock+)
+
 
 ;; (use-package auto-dim-other-buffers
 ;;   :init (auto-dim-other-buffers-mode t))

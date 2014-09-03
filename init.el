@@ -16,6 +16,9 @@
 (use-package helpers)
 (use-package keys)
 
+
+(load-file "~/.emacs.local")
+
 ;;;; Customize some packages
 (require 'init-file-associations)
 (require 'init-clojure-mode)
@@ -39,6 +42,3 @@
 ;; (use-package color-identifiers-mode
 ;;   :init
 ;;   (global-color-identifiers-mode t))
-
-
-(load-file "~/.emacs.local")
