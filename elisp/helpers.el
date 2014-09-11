@@ -433,10 +433,21 @@ narrowed."
         (query (read-string "Query: " nil nil)))
     (compile (concat "search_dev_log_for " app " " query))))
 
+(defun search-staging-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications))
+        (query (read-string "Query: " nil nil)))
+    (compile (concat "search_staging_log_for " app " " query))))
+
 (defun get-last-3000-lines-from-dev-log-for ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployed-applications)))
     (compile (concat "get_last_3000_lines_from_dev_log_for " app ))))
+
+(defun get-last-3000-lines-from-staging-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications)))
+    (compile (concat "get_last_3000_lines_from_staging_log_for " app ))))
 
 
 (defun deploy-nds-local ()

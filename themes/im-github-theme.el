@@ -5,7 +5,8 @@
 
 (deftheme im-github "Based on Port of Github Theme for Emacs 24")
 
-(let ((*background-color*  "#f0f0f0")
+(let (
+      (*background-color*  "#f0f0f0")
       (*background-mode*  'light)
       (*border-color*  "black")
       (*cursor-color*  "#000000")

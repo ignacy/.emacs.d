@@ -14,6 +14,7 @@
                       clojure-mode
                       company
                       exec-path-from-shell
+                      expand-region
                       flx-ido
                       find-file-in-project
                       idle-highlight-mode
@@ -210,7 +211,7 @@ This functions should be added to the hooks of major modes for programming."
   :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
 (use-package expand-region
-  :init (global-set-key (kbd "C-=") 'er/expand-region))
+  :init (global-set-key (kbd "§") 'er/expand-region))
 
 
 (use-package smartparens)
@@ -242,8 +243,15 @@ This functions should be added to the hooks of major modes for programming."
 (use-package font-lock+)
 
 
-;; (use-package auto-dim-other-buffers
-;;   :init (auto-dim-other-buffers-mode t))
+(use-package auto-dim-other-buffers
+  :init (auto-dim-other-buffers-mode t))
+
+
+(use-package indent-guide
+  :init
+  (progn
+    (indent-guide-global-mode)
+    (setq indent-guide-delay 0.8)))
 
 (use-package wrap-region)
 
