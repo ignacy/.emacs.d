@@ -45,3 +45,12 @@
 
 (load-theme 'underwater t)
 (set-frame-font "Source Code Pro Light 13")
+
+(defun fix-fonts ()
+  " wiegth: 'normal or 'light"
+  (interactive)
+  (mapc (lambda (face)
+          (set-face-attribute face nil :weight 'light :underline nil))
+        (face-list)))
+
+(fix-fonts)

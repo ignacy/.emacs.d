@@ -9,17 +9,17 @@
   (package-refresh-contents))
 
 (defvar my-packages '(use-package cider
-                      clojure-mode company
-                      exec-path-from-shell expand-region
-                      flx-ido find-file-in-project
-                      idle-highlight-mode ido-hacks
-                      inf-ruby magit underwater-theme
-                      mark-multiple multiple-cursors
-                      projectile rainbow-delimiters
-                      rbenv rhtml-mode
-                      rspec-mode ruby-mode
-                      yaml-mode smartparens
-                      smex yasnippet))
+                       clojure-mode company
+                       exec-path-from-shell expand-region
+                       flx-ido find-file-in-project
+                       idle-highlight-mode ido-hacks
+                       inf-ruby magit underwater-theme
+                       mark-multiple multiple-cursors
+                       projectile rainbow-delimiters
+                       rbenv rhtml-mode
+                       rspec-mode ruby-mode
+                       yaml-mode smartparens
+                       smex yasnippet))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -241,6 +241,8 @@ This functions should be added to the hooks of major modes for programming."
 ;;     (setq indent-guide-delay 0.8)))
 
 (use-package wrap-region)
-(smartscan-mode 1)
+(use-package smartscan
+  :init (smartscan-mode 1))
+
 (display-time-mode -1)
 (provide 'basic-settings)
