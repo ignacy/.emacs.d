@@ -8,31 +8,18 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(
-                      use-package
-                      cider
-                      clojure-mode
-                      company
-                      exec-path-from-shell
-                      expand-region
-                      flx-ido
-                      find-file-in-project
-                      idle-highlight-mode
-                      ido-hacks
-                      inf-ruby
-                      magit
-                      mark-multiple
-                      multiple-cursors
-                      projectile
-                      rainbow-delimiters
-                      rbenv
-                      rhtml-mode
-                      rspec-mode
-                      ruby-mode
-                      yaml-mode
-                      smartparens
-                      smex
-                      yasnippet))
+(defvar my-packages '(use-package cider
+                      clojure-mode company
+                      exec-path-from-shell expand-region
+                      flx-ido find-file-in-project
+                      idle-highlight-mode ido-hacks
+                      inf-ruby magit underwater-theme
+                      mark-multiple multiple-cursors
+                      projectile rainbow-delimiters
+                      rbenv rhtml-mode
+                      rspec-mode ruby-mode
+                      yaml-mode smartparens
+                      smex yasnippet))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -51,6 +38,7 @@
 (setq mouse-wheel-follow-mouse 't)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq tags-add-tables nil)
+(fringe-mode '(0 . 0))
 
 (setq visible-bell t
       x-select-enable-clipboard t
@@ -204,8 +192,7 @@ This functions should be added to the hooks of major modes for programming."
   :init
   (progn
     (smex-initialize)
-    (global-set-key (kbd "M-x") 'smex)
-    (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+    (global-set-key (kbd "M-x") 'smex)))
 
 (use-package smartscan
   :init (add-hook 'prog-mode-hook 'smartscan-mode))
@@ -247,13 +234,13 @@ This functions should be added to the hooks of major modes for programming."
   :init (auto-dim-other-buffers-mode t))
 
 
-(use-package indent-guide
-  :init
-  (progn
-    (indent-guide-global-mode)
-    (setq indent-guide-delay 0.8)))
+;; (use-package indent-guide
+;;   :init
+;;   (progn
+;;     (indent-guide-global-mode)
+;;     (setq indent-guide-delay 0.8)))
 
 (use-package wrap-region)
-
+(smartscan-mode 1)
 (display-time-mode -1)
 (provide 'basic-settings)
