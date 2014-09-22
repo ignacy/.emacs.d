@@ -1,5 +1,6 @@
 (use-package projectile
   :init (progn
+          (add-hook 'projectile-mode-hook 'projectile-rails-on)
           (projectile-global-mode)
           (setq projectile-enable-caching t)
           (defadvice find-tag-at-point (before auto-visti-tags)

@@ -36,6 +36,8 @@
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
 
+(add-hook 'ruby-mode-hook 'robe-mode)
+
 ;; (require 'ruby-dev)
 ;; (add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
 
