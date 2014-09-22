@@ -5,6 +5,9 @@
  ;; If there is more than one, they won't work right.
  '(background-mode dark)
  '(bmkp-last-as-first-bookmark-file "~/.bookmarks_emacs")
+ '(custom-safe-themes
+   (quote
+    ("c08c5e81432b54fcbc0a1f7f714687f02894e0a8d45e4a8298abb9eedd7f7a05" default)))
  '(rspec-use-bundler-when-possible t)
  '(rspec-use-spring-when-possible nil))
 

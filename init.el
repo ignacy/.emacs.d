@@ -44,13 +44,13 @@
   (global-color-identifiers-mode t))
 
 (load-theme 'underwater t)
-(set-frame-font "Source Code Pro Light 13")
+(set-frame-font "Source Code Pro Light 15")
 
-(defun fix-fonts ()
+(defun fix-fonts (type)
   " wiegth: 'normal or 'light"
   (interactive)
   (mapc (lambda (face)
-          (set-face-attribute face nil :weight 'light :underline nil))
+          (set-face-attribute face nil :weight type :underline nil))
         (face-list)))
 
-(fix-fonts)
+(fix-fonts 'normal)
