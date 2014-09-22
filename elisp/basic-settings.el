@@ -10,6 +10,7 @@
 
 (defvar my-packages '(use-package cider
                        clojure-mode company
+			projectile-rails
                        exec-path-from-shell expand-region
                        flx-ido find-file-in-project
                        idle-highlight-mode ido-hacks
