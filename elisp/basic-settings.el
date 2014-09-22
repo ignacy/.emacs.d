@@ -10,7 +10,8 @@
 
 (defvar my-packages '(use-package cider
                        clojure-mode company
-			projectile-rails
+                       projectile-rails
+                       ag color-identifiers-mode
                        exec-path-from-shell expand-region
                        flx-ido find-file-in-project
                        idle-highlight-mode ido-hacks
@@ -230,16 +231,14 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package font-lock+)
 
+;; (use-package auto-dim-other-buffers
+;;   :init (auto-dim-other-buffers-mode t))
 
-(use-package auto-dim-other-buffers
-  :init (auto-dim-other-buffers-mode t))
+
+(use-package ag
+  :init (setq ag-highlight-search t))
 
 
-;; (use-package indent-guide
-;;   :init
-;;   (progn
-;;     (indent-guide-global-mode)
-;;     (setq indent-guide-delay 0.8)))
 
 (use-package wrap-region)
 (use-package smartscan

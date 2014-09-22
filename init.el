@@ -16,9 +16,6 @@
 (use-package helpers)
 (use-package keys)
 
-
-(load-file "~/.emacs.local")
-
 ;;;; Customize some packages
 (require 'init-file-associations)
 (require 'init-clojure-mode)
@@ -44,16 +41,18 @@
   (global-color-identifiers-mode t))
 
 ;;(load-theme 'underwater t)
+;;(load-theme 'grandshell2 t)
 
-(load-theme 'grandshell2 t)
+(load-theme 'zenburn t)
 
-;; (defun fix-fonts (type)
-;;   " wiegth: 'normal or 'light"
-;;   (interactive)
-;;   (mapc (lambda (face)
-;;           (set-face-attribute face nil :weight type :underline nil))
-;;         (face-list)))
 
-;; (fix-fonts 'normal)
+(defun fix-fonts (type)
+  " wiegth: 'normal or 'light"
+  (interactive)
+  (mapc (lambda (face)
+          (set-face-attribute face nil :weight type :underline nil))
+        (face-list)))
 
-(set-frame-font "Source Code Pro Light 15")
+;;(fix-fonts 'light)
+
+(set-frame-font "Source Code Pro 12")
