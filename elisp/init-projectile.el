@@ -17,11 +17,11 @@
   ;;(define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)
   (global-set-key (kbd "C-c p s") 'projectile-persp-switch-project))
 
-(use-package fiplr
-  :init (progn
-          (setq fiplr-root-markers '(".git"))
-          (setq fiplr-ignored-globs '((directories (".git" "target" ".svn" "log" "tmp"))
-                                      (files (".keep" ".DS_Store" ".class" "TAGS*" "*.jpg" "*.elc" "*.png" "*.zip" "*~"))))))
+;; (use-package fiplr
+;;   :init (progn
+;;           (setq fiplr-root-markers '(".git"))
+;;           (setq fiplr-ignored-globs '((directories (".git" "target" ".svn" "log" "tmp"))
+;;                                       (files (".keep" ".DS_Store" ".class" "TAGS*" "*.jpg" "*.elc" "*.png" "*.zip" "*~"))))))
 
 
 (use-package find-file-in-project

@@ -133,7 +133,7 @@ This functions should be added to the hooks of major modes for programming."
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
-  :init (global-rainbow-delimiters-mode))
+  :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;;;; idle-highlight
 (use-package idle-highlight-mode
@@ -163,6 +163,7 @@ This functions should be added to the hooks of major modes for programming."
           (flx-ido-mode 1)
           (setq gc-cons-threshold 20000000)
           (setq ido-use-faces nil)))
+
 
 (use-package saveplace
   :init (progn (setq-default save-place t)

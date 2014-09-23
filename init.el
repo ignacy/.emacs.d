@@ -42,6 +42,7 @@
 
 ;;(load-theme 'underwater t)
 ;;(load-theme 'grandshell2 t)
+;;(load-theme 'lush t)
 
 (load-theme 'zenburn t)
 
@@ -55,4 +56,4 @@
 
 ;;(fix-fonts 'light)
 
-(set-frame-font "Source Code Pro 12")
+(set-frame-font "Source Code Pro 15")
