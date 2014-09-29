@@ -43,9 +43,9 @@
 ;;(load-theme 'underwater t)
 ;;(load-theme 'grandshell2 t)
 ;;(load-theme 'lush t)
+;;(load-theme 'zenburn t)
 
-(load-theme 'zenburn t)
-
+(load-theme 'desert t)
 
 (defun fix-fonts (type)
   " wiegth: 'normal or 'light"

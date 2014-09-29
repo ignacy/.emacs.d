@@ -31,6 +31,8 @@
 (set-keyboard-coding-system nil)
 (prefer-coding-system 'utf-8)
 
+(setq fill-column 80)
+
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
@@ -239,7 +241,10 @@ This functions should be added to the hooks of major modes for programming."
 (use-package ag
   :init (setq ag-highlight-search t))
 
-
+;; (use-package fill-column-indicator
+;;   :init
+;;   (progn
+;;     (add-hook 'prog-mode-hook 'fci-mode)))
 
 (use-package wrap-region)
 (use-package smartscan
