@@ -5,6 +5,8 @@
 
 (define-abbrev-table 'Info-edit-mode-abbrev-table '())
 
+(define-abbrev-table 'ag-mode-abbrev-table '())
+
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
 (define-abbrev-table 'awk-mode-abbrev-table
@@ -96,8 +98,11 @@
     ("craete" "create" nil 2)
     ("craeted_at" "created_at" nil 2)
     ("crate" "create" nil 2)
+    ("inteceptor" "interceptor" nil 1)
+    ("intreceptor" "interceptor" nil 1)
     ("josn" "json" nil 2)
     ("jsno" "json" nil 2)
+    ("mechant_location_id" "merchant_location_id" nil 1)
     ("ppr" "binding.pry" nil 5)
     ("recipt" "receipt" nil 2)
     ("recipts" "receipts" nil 2)
@@ -200,9 +205,17 @@
 
 (define-abbrev-table 'project-explorer-mode-abbrev-table '())
 
+(define-abbrev-table 'projectile-rails-compilation-mode-abbrev-table '())
+
+(define-abbrev-table 'projectile-rails-generate-mode-abbrev-table '())
+
+(define-abbrev-table 'projectile-rails-server-mode-abbrev-table '())
+
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
+(define-abbrev-table 'python-mode-skeleton-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'rhtml-mode-abbrev-table '())
 

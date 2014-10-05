@@ -20,6 +20,8 @@
   (progn
     ;;(setq company-idle-delay t)
     (push 'company-readline company-backends)
+    (add-to-list 'company-dabbrev-code-modes 'prog-mode)
+    (add-to-list 'company-dabbrev-code-modes 'ruby-mode)
     (push 'company-robe company-backends)
     (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
     (define-key company-active-map "\t" 'company-yasnippet-or-completion)

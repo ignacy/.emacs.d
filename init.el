@@ -46,7 +46,7 @@
 (load-theme 'smyx t)
 
 
-(require 'nssh)
+;;(require 'nssh)
 
 (defun fix-fonts (type)
   " wiegth: 'normal or 'light"
