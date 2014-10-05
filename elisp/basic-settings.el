@@ -259,5 +259,9 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smartscan
   :init (smartscan-mode 1))
 
+(use-package diminish
+  :init (progn
+          (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
+
 (display-time-mode -1)
 (provide 'basic-settings)

@@ -48,13 +48,12 @@
 
 ;;(require 'nssh)
 
-(defun fix-fonts (type)
-  " wiegth: 'normal or 'light"
-  (interactive)
-  (mapc (lambda (face)
-          (set-face-attribute face nil :weight type :underline nil))
-        (face-list)))
-
+;; (defun fix-fonts (type)
+;;   " wiegth: 'normal or 'light"
+;;   (interactive)
+;;   (mapc (lambda (face)
+;;           (set-face-attribute face nil :weight type :underline nil))
+;;         (face-list)))
 ;;(fix-fonts 'light)
 
 (set-frame-font "Source Code Pro 13")
