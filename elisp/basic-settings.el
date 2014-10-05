@@ -11,6 +11,7 @@
 (defvar my-packages '(use-package cider
                        clojure-mode company
                        projectile-rails
+                       smyx-theme
                        ag color-identifiers-mode
                        exec-path-from-shell expand-region
                        flx-ido find-file-in-project

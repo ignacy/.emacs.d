@@ -40,12 +40,13 @@
   :init
   (global-color-identifiers-mode t))
 
-;;(load-theme 'underwater t)
 ;;(load-theme 'grandshell2 t)
 ;;(load-theme 'lush t)
+;;(load-theme 'zenburn t)
+(load-theme 'smyx t)
 
-(load-theme 'zenburn t)
 
+(require 'nssh)
 
 (defun fix-fonts (type)
   " wiegth: 'normal or 'light"
@@ -56,4 +57,4 @@
 
 ;;(fix-fonts 'light)
 
-(set-frame-font "Source Code Pro 15")
+(set-frame-font "Source Code Pro 13")
