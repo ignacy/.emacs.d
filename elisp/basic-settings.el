@@ -8,8 +8,9 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(use-package cider
-                       clojure-mode company
+(defvar my-packages '(use-package
+                       clojure-mode
+                       company
                        projectile-rails
                        smyx-theme
                        ag color-identifiers-mode

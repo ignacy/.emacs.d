@@ -1,8 +1,6 @@
 (autoload 'clojure-mode "clojure-mode" t)
-(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
-;; (autoload 'midje-mode "midje-mode" t)
-;; (add-hook 'clojure-mode-hook 'midje-mode)
 
+(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 ;;(add-to-list 'gist-supported-modes-alist '(clojure-mode . ".clj"))
 
 (add-hook 'nrepl-mode-hook 'subword-mode)
