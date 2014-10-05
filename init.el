@@ -43,7 +43,8 @@
 ;;(load-theme 'grandshell2 t)
 ;;(load-theme 'lush t)
 ;;(load-theme 'zenburn t)
-(load-theme 'smyx t)
+;;(load-theme 'smyx t)
+(load-theme 'monokai t)
 
 
 ;;(require 'nssh)
