@@ -14,7 +14,7 @@
                        ag color-identifiers-mode
                        exec-path-from-shell expand-region
                        flx-ido find-file-in-project
-                       idle-highlight-mode ido-hacks
+                       highlight-symbol ido-hacks
                        inf-ruby magit underwater-theme
                        mark-multiple multiple-cursors
                        projectile rainbow-delimiters
@@ -137,9 +137,11 @@ This functions should be added to the hooks of major modes for programming."
 (use-package rainbow-delimiters
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-;;;; idle-highlight
-(use-package idle-highlight-mode
-  :init (idle-highlight-mode t))
+
+(use-package highlight-symbol
+             :init (progn
+                     (add-hook 'prog-mode-hook 'highlight-symbol-mode)
+                     (setq highlight-symbol-idle-delay 0)))
 
 ;;;; IDO-MODE
 ;; Display ido results vertically, rather than horizontally
