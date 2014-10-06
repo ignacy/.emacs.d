@@ -23,7 +23,9 @@
     (push 'company-robe company-backends)
     (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
     (define-key company-active-map "\t" 'company-yasnippet-or-completion)
-    (global-company-mode)))
+    (global-company-mode)
+    (add-to-list 'company-dabbrev-code-modes 'prog-mode)
+    (add-to-list 'company-dabbrev-code-modes 'ruby-mode)))
 
 (add-hook 'after-init-hook 'global-company-mode)
 

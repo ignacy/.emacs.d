@@ -40,20 +40,21 @@
   :init
   (global-color-identifiers-mode t))
 
-;;(load-theme 'underwater t)
 ;;(load-theme 'grandshell2 t)
 ;;(load-theme 'lush t)
 ;;(load-theme 'zenburn t)
+;;(load-theme 'smyx t)
+(load-theme 'monokai t)
 
-(load-theme 'desert t)
 
-(defun fix-fonts (type)
-  " wiegth: 'normal or 'light"
-  (interactive)
-  (mapc (lambda (face)
-          (set-face-attribute face nil :weight type :underline nil))
-        (face-list)))
+;;(require 'nssh)
 
+;; (defun fix-fonts (type)
+;;   " wiegth: 'normal or 'light"
+;;   (interactive)
+;;   (mapc (lambda (face)
+;;           (set-face-attribute face nil :weight type :underline nil))
+;;         (face-list)))
 ;;(fix-fonts 'light)
 
-(set-frame-font "Source Code Pro 15")
+(set-frame-font "Source Code Pro 13")

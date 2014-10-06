@@ -8,9 +8,11 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(use-package cider
-                       clojure-mode company
+(defvar my-packages '(use-package
+                       clojure-mode
+                       company
                        projectile-rails
+                       smyx-theme
                        ag color-identifiers-mode
                        exec-path-from-shell expand-region
                        flx-ido find-file-in-project
@@ -243,14 +245,26 @@ This functions should be added to the hooks of major modes for programming."
 (use-package ag
   :init (setq ag-highlight-search t))
 
-;; (use-package fill-column-indicator
-;;   :init
-;;   (progn
-;;     (add-hook 'prog-mode-hook 'fci-mode)))
+(defun copy-from-osx ()
+  (shell-command-to-string "pbpaste"))
+
+(defun paste-to-osx (text &optional push)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
+
+(unless (getenv "TMUX")
+  (setq interprogram-cut-function 'paste-to-osx)
+  (setq interprogram-paste-function 'copy-from-osx))
 
 (use-package wrap-region)
 (use-package smartscan
   :init (smartscan-mode 1))
+
+(use-package diminish
+  :init (progn
+          (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
 
 (display-time-mode -1)
 (provide 'basic-settings)
