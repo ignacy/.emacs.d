@@ -477,5 +477,4 @@ narrowed."
   (switch-to-buffer "*ssh*"))
 
 
-
 (provide 'helpers)

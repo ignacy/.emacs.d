@@ -7,10 +7,35 @@
 (add-to-list 'load-path configuration-files-dir)
 (setq custom-file (expand-file-name "custom.el" configuration-files-dir))
 (load custom-file)
+(add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
+
+
+;;(load-theme 'oceanic-eighties t)
+(load-theme 'exu t)
+;;(load-theme 'zenburn t)
+;;(load-theme 'smyx t)
+;;(load-theme 'monokai t)
+;;(load-theme 'soft-charcoal t)
+;;(load-theme 'im-github)
+
+
+;;(require 'nssh)
+;;(set-frame-font "Source Code Pro 15")
+(set-frame-font "Inconsolata-g 15")
+
+(defun fix-fonts (type)
+  " wiegth: 'normal or 'light"
+  (interactive)
+  (mapc (lambda (face)
+          (set-face-attribute face nil :weight type :underline nil))
+        (face-list)))
+;; (fix-fonts 'normal)
+
+(fringe-mode '(0 . 0))
 
 (require 'basic-settings)
 
-(add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
+
 
 (use-package smart-modeline)
 (use-package helpers)
@@ -35,26 +60,3 @@
   :init (progn
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
-
-(use-package color-identifiers-mode
-  :init
-  (global-color-identifiers-mode t))
-
-;;(load-theme 'grandshell2 t)
-;;(load-theme 'lush t)
-;;(load-theme 'zenburn t)
-;;(load-theme 'smyx t)
-(load-theme 'monokai t)
-
-
-;;(require 'nssh)
-
-;; (defun fix-fonts (type)
-;;   " wiegth: 'normal or 'light"
-;;   (interactive)
-;;   (mapc (lambda (face)
-;;           (set-face-attribute face nil :weight type :underline nil))
-;;         (face-list)))
-;;(fix-fonts 'light)
-
-(set-frame-font "Source Code Pro 13")

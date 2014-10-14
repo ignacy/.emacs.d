@@ -12,10 +12,10 @@
                        clojure-mode
                        company
                        projectile-rails
-                       smyx-theme
                        ag color-identifiers-mode
                        exec-path-from-shell expand-region
                        flx-ido find-file-in-project
+                       ace-jump-mode helm-swoop
                        highlight-symbol ido-hacks
                        inf-ruby magit underwater-theme
                        mark-multiple multiple-cursors
@@ -44,7 +44,7 @@
 (setq mouse-wheel-follow-mouse 't)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq tags-add-tables nil)
-(fringe-mode '(0 . 0))
+
 
 (setq visible-bell t
       x-select-enable-clipboard t
@@ -141,9 +141,9 @@ This functions should be added to the hooks of major modes for programming."
 
 
 (use-package highlight-symbol
-             :init (progn
-                     (add-hook 'prog-mode-hook 'highlight-symbol-mode)
-                     (setq highlight-symbol-idle-delay 0)))
+  :init (progn
+          (add-hook 'prog-mode-hook 'highlight-symbol-mode)
+          (setq highlight-symbol-idle-delay 0)))
 
 ;;;; IDO-MODE
 ;; Display ido results vertically, rather than horizontally
@@ -262,9 +262,22 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smartscan
   :init (smartscan-mode 1))
 
+(use-package helm-swoop)
+
+
+(use-package ace-jump-mode
+  :init (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
+
+(use-package ace-isearch
+  :init (global-ace-isearch-mode +1))
+
 (use-package diminish
   :init (progn
           (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
+
+(use-package color-identifiers-mode
+  :init
+  (global-color-identifiers-mode t))
 
 (display-time-mode -1)
 (provide 'basic-settings)
