@@ -339,21 +339,6 @@ With prefix P, create local abbrev. Otherwise it will be global."
         (if p global-abbrev-table local-abbrev-table)
         bef aft))))
 
-(setq selective-display-level 0)
-(setq selective-display-increment 4)
-(setq max-selective-display-level 8)
-(defun switch-selective-display ()
-  "Switch to the next selective display level, starting over if appropriate"
-  (if (>= selective-display-level max-selective-display-level)
-      (setq selective-display-level 0)
-    (setq selective-display-level
-          (+ selective-display-increment
-             selective-display-level)))
-  (interactive)
-  (set-selective-display selective-display-level))
-(global-set-key "\M-c" 'switch-selective-display)
-
-
 (defun narrow-or-widen-dwim (p)
   "If the buffer is narrowed, it widens. Otherwise, it narrows intelligently.
 Intelligently means: region, subtree, or defun, whichever applies

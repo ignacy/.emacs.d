@@ -9,9 +9,10 @@
 (load custom-file)
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
+(require 'basic-settings)
 
-;;(load-theme 'oceanic-eighties t)
-(load-theme 'exu t)
+(load-theme 'oceanic-eighties t)
+;;(load-theme 'exu t)
 ;;(load-theme 'zenburn t)
 ;;(load-theme 'smyx t)
 ;;(load-theme 'monokai t)
@@ -21,7 +22,8 @@
 
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
-(set-frame-font "Inconsolata-g 15")
+(set-frame-font "Menlo 15")
+;;(set-frame-font "Inconsolata-g 15")
 
 (defun fix-fonts (type)
   " wiegth: 'normal or 'light"
@@ -32,8 +34,6 @@
 ;; (fix-fonts 'normal)
 
 (fringe-mode '(0 . 0))
-
-(require 'basic-settings)
 
 
 

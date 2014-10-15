@@ -15,14 +15,18 @@
 (define-key input-decode-map "\e[1;5C" [C-right])
 (define-key input-decode-map "\e[1;5D" [C-left])
 
-;;(bind "M-r" 'helm-git-grep)
+(bind "M-r" 'helm-git-grep)
 ;;(bind "M-r" 'projectile-pt)
 
-;;(require 'ag)(setq ag-executable "/usr/local/bin/ag")
+;; (defun qrc (replace-str)
+;;    (interactive "sDo query-replace current word with: ")
+;;    (forward-word)
+;;    (let ((end (point)))
+;;       (backward-word)
+;;       (kill-ring-save (point) end)
+;;       (query-replace (current-kill 0) replace-str) ))
 
-
-
-(bind "M-r" 'projectile-ag)
+(bind "M-c" 'query-replace)
 
 (bind "M-z" 'undo)
 (bind "C-x i" 'indent-region-or-buffer)
