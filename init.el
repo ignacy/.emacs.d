@@ -11,8 +11,8 @@
 
 (require 'basic-settings)
 
-;;(load-theme 'oceanic-eighties t)
-(load-theme 'warm-night t)
+(load-theme 'oceanic-eighties t)
+;;(load-theme 'warm-night t)
 
 
 ;;(require 'nssh)
