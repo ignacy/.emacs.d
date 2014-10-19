@@ -1,13 +1,6 @@
 (use-package inf-ruby)
 (use-package ruby-mode)
 (use-package rspec-mode)
-
-(use-package enh-ruby-mode
-  :init (progn
-          (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
-          (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
-          (setq enh-ruby-program "~/.rbenv/versions/2.1.2/bin/ruby")))
-
 (use-package rhtml-mode
   :init
   (progn
@@ -72,12 +65,12 @@
   (let ((shell-file-name "/bin/bash"))
     (ruby-compilation-run (concat (simp-project-root) "/bin/rails server") nil "server")))
 
-(setq enh-ruby-use-encoding-map nil)
-(setq enh-ruby-deep-arglist nil)
-(setq enh-ruby-deep-indent-paren nil)
-(setq enh-ruby-insert-encoding-magic-comment nil)
-(setq enh-ruby-deep-indent-paren-style nil)
-(setq enh-ruby-deep-indent-paren nil)
+(setq ruby-use-encoding-map nil)
+(setq ruby-deep-arglist nil)
+(setq ruby-deep-indent-paren nil)
+(setq ruby-insert-encoding-magic-comment nil)
+(setq ruby-deep-indent-paren-style nil)
+(setq ruby-deep-indent-paren nil)
 (setq rspec-use-rake-when-possible nil)
 (setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible nil)

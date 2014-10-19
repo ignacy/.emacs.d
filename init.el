@@ -12,12 +12,7 @@
 (require 'basic-settings)
 
 (load-theme 'oceanic-eighties t)
-;;(load-theme 'exu t)
-;;(load-theme 'zenburn t)
-;;(load-theme 'smyx t)
-;;(load-theme 'monokai t)
-;;(load-theme 'soft-charcoal t)
-;;(load-theme 'im-github)
+;;(load-theme 'warm-night t)
 
 
 ;;(require 'nssh)
@@ -60,3 +55,6 @@
   :init (progn
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
+
+(require 'color-identifiers-mode)
+(add-hook 'after-init-hook 'global-color-identifiers-mode)
