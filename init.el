@@ -22,7 +22,7 @@
 
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
-(set-frame-font "Menlo 15")
+(set-frame-font "Monaco 13")
 ;;(set-frame-font "Inconsolata-g 15")
 
 (defun fix-fonts (type)

@@ -133,6 +133,14 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
    (interactive)
    (ansi-term name))
 
+
+(use-package sane-term
+  :init (progn
+          (setq sane-term-shell-command "/bin/zsh")
+          (global-set-key (kbd "C-x t") 'sane-term)
+          (global-set-key (kbd "C-x T") 'sane-term-create)))
+
+
 ;; (defun zsh ()
 ;;   (interactive)
 ;;   (multi-term))

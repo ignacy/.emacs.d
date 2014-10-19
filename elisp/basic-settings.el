@@ -11,6 +11,7 @@
 (defvar my-packages '(use-package
                        clojure-mode
                        company
+                       sane-term
                        projectile-rails
                        ag color-identifiers-mode
                        exec-path-from-shell expand-region
@@ -278,6 +279,12 @@ This functions should be added to the hooks of major modes for programming."
 (use-package color-identifiers-mode
   :init
   (global-color-identifiers-mode t))
+
+(require 'go-mode)
+(require 'go-mode-load)
+(add-hook 'go-mode-hook (lambda ()
+                          (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 (display-time-mode -1)
 (provide 'basic-settings)
