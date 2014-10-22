@@ -284,7 +284,7 @@ This functions should be added to the hooks of major modes for programming."
 (require 'go-mode-load)
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
-(add-hook 'before-save-hook 'gofmt-before-save)
+(add-hook 'before-save-hook #'gofmt-before-save)
 
 (display-time-mode -1)
 (provide 'basic-settings)
