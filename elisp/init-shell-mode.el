@@ -21,7 +21,7 @@
              ;;(buffer-face-set 'font-lock-small-face)
              (hl-line-mode nil)))
 
-;;(setq comint-prompt-read-only t)
+(setq comint-prompt-read-only nil)
 (setq comint-process-echoes t)
 
 (setq explicit-shell-file-name "/bin/zsh")

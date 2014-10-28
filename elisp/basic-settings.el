@@ -66,6 +66,12 @@
       ispell-program-name "/usr/local/bin/aspell"
       enable-recursive-minibuffers t)
 
+(custom-set-variables
+  '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t))))
+
+;; create the autosave dir if necessary, since emacs won't.
+(make-directory "~/.emacs.d/autosaves/" t)
+
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))

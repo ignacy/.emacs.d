@@ -48,6 +48,7 @@
 (bind "C-x C-p" 'find-file-at-point)
 ;;(bind "C-1" 'switch-to-zsh)
 
+(require 'imenu)
 (bind "C-'" 'ido-imenu)
 
 ;; Replace rectangle-text with inline-string-rectangle

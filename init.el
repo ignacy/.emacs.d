@@ -17,8 +17,14 @@
 
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
-(set-frame-font "Monaco 13")
+(set-frame-font "Monaco 14")
 ;;(set-frame-font "Inconsolata-g 15")
+
+;; red line after 80 characters
+;; (add-hook 'after-change-major-mode-hook 'fci-mode)
+;; (setq fci-rule-column 80)
+;; (setq fci-rule-color "red")
+
 
 (defun fix-fonts (type)
   " wiegth: 'normal or 'light"
