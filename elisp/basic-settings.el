@@ -282,10 +282,6 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
 
-(use-package color-identifiers-mode
-  :init
-  (global-color-identifiers-mode t))
-
 (require 'go-mode)
 (require 'go-mode-load)
 (add-hook 'go-mode-hook (lambda ()
