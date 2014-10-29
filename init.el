@@ -13,7 +13,7 @@
 
 (load-theme 'oceanic-eighties t)
 ;;(load-theme 'warm-night t)
-
+(load-theme 'soft-stone t)
 
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
