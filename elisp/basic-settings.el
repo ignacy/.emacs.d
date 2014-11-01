@@ -67,7 +67,7 @@
       enable-recursive-minibuffers t)
 
 (custom-set-variables
-  '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t))))
+ '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t))))
 
 ;; create the autosave dir if necessary, since emacs won't.
 (make-directory "~/.emacs.d/autosaves/" t)
@@ -286,6 +286,12 @@ This functions should be added to the hooks of major modes for programming."
 (require 'go-mode-load)
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+
+(add-hook 'go-mode-hook (lambda ()
+                          (if (not (string-match "go" compile-command))
+                              (set (make-local-variable 'compile-command)
+                                   "go build -v && go test -v && go vet"))
+                          ))
 (add-hook 'before-save-hook #'gofmt-before-save)
 
 (display-time-mode -1)

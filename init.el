@@ -13,11 +13,12 @@
 
 (load-theme 'oceanic-eighties t)
 ;;(load-theme 'warm-night t)
-(load-theme 'soft-stone t)
+;;(load-theme 'ir-white t)
+;;(load-theme 'monokai t)
 
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
-(set-frame-font "Monaco 14")
+(set-frame-font "Monaco 13")
 ;;(set-frame-font "Inconsolata-g 15")
 
 ;; red line after 80 characters
