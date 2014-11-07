@@ -22,6 +22,10 @@
 (setq yas/mode-symbol 'rails-mode)
 (setq ruby-use-encoding-map nil)
 
+
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (setq flycheck-checker 'ruby-rubocop) ))
 ;; (add-hook 'ruby-mode-hook
 ;;           (lambda ()
 ;;             (set (make-local-variable 'compile-command)

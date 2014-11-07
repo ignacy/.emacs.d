@@ -11,8 +11,12 @@
 (defvar my-packages '(use-package
                        clojure-mode
                        company
-                       key-chor
+                       key-chord
                        sane-term
+                       go-mode
+                       go-eldoc
+                       golint
+                       flycheck
                        projectile-rails
                        ag color-identifiers-mode
                        exec-path-from-shell expand-region
@@ -68,7 +72,7 @@
       enable-recursive-minibuffers t)
 
 (custom-set-variables
-  '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t))))
+ '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t))))
 
 ;; create the autosave dir if necessary, since emacs won't.
 (make-directory "~/.emacs.d/autosaves/" t)
@@ -113,7 +117,15 @@ This functions should be added to the hooks of major modes for programming."
 
 (delete-selection-mode t)
 (global-subword-mode 1)
-(blink-cursor-mode 1)
+
+;; undo setting
+(setq undo-no-redo t
+      undo-limit 600000
+      undo-strong-limit 900000)
+
+;; history
+(setq history-length 500
+      history-delete-duplicates t)
 
 ;; (global-linum-mode t)
 ;; (setq linum-format "%3d ")
@@ -265,7 +277,14 @@ This functions should be added to the hooks of major modes for programming."
   (setq interprogram-cut-function 'paste-to-osx)
   (setq interprogram-paste-function 'copy-from-osx))
 
-(use-package wrap-region)
+(use-package wrap-region
+  :init (progn
+          ;; wrap-region
+          (wrap-region-global-mode +1)
+          ;; add wrappers
+          (wrap-region-add-wrapper "`" "`")
+          (wrap-region-add-wrapper "{" "}")))
+
 (use-package smartscan
   :init (smartscan-mode 1))
 
@@ -286,12 +305,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package diminish
   :init (progn
           (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
-
-(require 'go-mode)
-(require 'go-mode-load)
-(add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
-(add-hook 'before-save-hook #'gofmt-before-save)
 
 (display-time-mode -1)
 (provide 'basic-settings)

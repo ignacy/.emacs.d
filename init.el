@@ -12,12 +12,20 @@
 (require 'basic-settings)
 
 ;;(load-theme 'derfian-light t)
-(load-theme 'gotham t)
+;;(load-theme 'gotham t)
+(load-theme 'ir-black t)
 
+;; cursor
+(set-cursor-color "chartreuse2")
+(blink-cursor-mode t)
 
+;; font setting
+(set-face-attribute 'default nil
+                    :family "monaco"
+                    :height 140)
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
-(set-frame-font "Monaco 15")
+;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
 
 ;; red line after 80 characters
@@ -51,10 +59,13 @@
 (require 'init-projectile)
 (require 'init-magit)
 (require 'init-ruby-mode)
+(require 'init-go-mode)
 (require 'init-shell-mode)
 (require 'ido-bookmark-jump)
 (require 'init-org)
 (require 'init-neotree)
+
+(require 'init-flycheck)
 ;;(require 'init-evil)
 
 (use-package rbenv
@@ -66,3 +77,7 @@
   :init
   (progn
     (add-hook 'after-init-hook 'global-color-identifiers-mode)))
+
+
+(require 'git-gutter+)
+(global-git-gutter+-mode t)
