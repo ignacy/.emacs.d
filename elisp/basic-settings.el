@@ -11,6 +11,7 @@
 (defvar my-packages '(use-package
                        clojure-mode
                        company
+                       key-chor
                        sane-term
                        projectile-rails
                        ag color-identifiers-mode
@@ -99,6 +100,7 @@ This functions should be added to the hooks of major modes for programming."
      (define-key flyspell-mouse-map [mouse-3] #'undefined)))
 
 (setq-default indent-tabs-mode nil)
+(setq default-tab-width 2)
 (set-language-environment "UTF-8")
 (setenv "LC_LOCALE" "en_US.UTF-8")
 (setenv "LC_CTYPE" "en_US.UTF-8")
@@ -213,9 +215,7 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smartscan
   :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
-(use-package expand-region
-  :init (global-set-key (kbd "§") 'er/expand-region))
-
+(use-package expand-region)
 
 (use-package smartparens)
 (require 'smartparens-config)
@@ -277,6 +277,11 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package ace-isearch
   :init (global-ace-isearch-mode +1))
+
+(use-package key-chord
+  :init (progn
+          (key-chord-define-global "xx" 'er/expand-region)
+          (key-chord-mode +1)))
 
 (use-package diminish
   :init (progn

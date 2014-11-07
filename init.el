@@ -12,8 +12,7 @@
 (require 'basic-settings)
 
 ;;(load-theme 'derfian-light t)
-;;(load-theme 'gotham t)
-(load-theme 'cyberpunk t)
+(load-theme 'gotham t)
 
 
 ;;(require 'nssh)
