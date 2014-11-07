@@ -6,6 +6,7 @@
           (defun my-go-mode-hook ()
             (add-hook 'before-save-hook 'gofmt-before-save)
             ;;(if (not (string-match "go" compile-command))
+            (subword-mode 1)
             (set (make-local-variable 'compile-command)
                  "go vet && go test -cover -v && go build -v")
             ;;                )

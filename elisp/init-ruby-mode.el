@@ -25,6 +25,7 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
+            (superword-mode 1)
             (setq flycheck-checker 'ruby-rubocop) ))
 ;; (add-hook 'ruby-mode-hook
 ;;           (lambda ()

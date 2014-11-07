@@ -257,9 +257,8 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package font-lock+)
 
-;; (use-package auto-dim-other-buffers
-;;   :init (auto-dim-other-buffers-mode t))
-
+(use-package auto-dim-other-buffers
+  :init (auto-dim-other-buffers-mode t))
 
 (use-package ag
   :init (setq ag-highlight-search t))

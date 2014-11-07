@@ -55,8 +55,8 @@
 
 ;;(force-mode-line-update)
 ;;(set-face-background 'mode-line "brightblack")
-;; (set-face-foreground 'mode-line "white")
-;;(set-face-background 'mode-line-inactive "black")
+;; (set-face-foreground 'mode-line "#444")
+;; (set-face-background 'mode-line-inactive "black")
 ;;(set-face-foreground 'mode-line-inactive "#eee")
 ;;(custom-set-faces '(mode-line ((t (:box nil)))))
 ;;(custom-set-faces '(mode-line ((t (:box (:line-width 2 :color "thistle4" :style released-button))))))
