@@ -6,8 +6,7 @@
           (defadvice find-tag-at-point (before auto-visti-tags)
             "Load default TAGS file from home directory if needed"
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
-          (ad-activate 'find-tag-at-point))
-            )
+          (ad-activate 'find-tag-at-point)))
 
 (use-package perspective
   :init (persp-mode))

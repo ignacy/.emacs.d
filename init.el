@@ -11,13 +11,14 @@
 
 (require 'basic-settings)
 
-(load-theme 'oceanic-eighties t)
-;;(load-theme 'warm-night t)
-(load-theme 'soft-stone t)
+;;(load-theme 'derfian-light t)
+;;(load-theme 'gotham t)
+(load-theme 'cyberpunk t)
+
 
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
-(set-frame-font "Monaco 14")
+(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
 
 ;; red line after 80 characters
@@ -65,14 +66,4 @@
 (use-package color-identifiers-mode
   :init
   (progn
-    ;; (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face font-lock-type-face font-lock-function-name-face font-lock-variable-name-face font-lock-keyword-face font-lock-string-face font-lock-builtin-face font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
-    ;;   (dolist (face faces)
-    ;;     (set-face-attribute face nil :foreground nil :weight 'normal :slant 'normal)))
-
-    ;; (set-face-attribute 'font-lock-comment-delimiter-face nil :slant 'italic)
-    ;; (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
-    ;; (set-face-attribute 'font-lock-doc-face nil :slant 'italic)
-    ;; (set-face-attribute 'font-lock-keyword-face nil :weight 'bold)
-    ;; (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
-    ;; (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
     (add-hook 'after-init-hook 'global-color-identifiers-mode)))
