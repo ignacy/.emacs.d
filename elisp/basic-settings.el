@@ -17,6 +17,7 @@
                        go-eldoc
                        golint
                        flycheck
+                       ace-window
                        projectile-rails
                        ag color-identifiers-mode
                        exec-path-from-shell expand-region
@@ -134,6 +135,7 @@ This functions should be added to the hooks of major modes for programming."
 
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
+  (setenv "GOPATH" (concat (getenv "HOME") "/code/go:" (getenv "GOPATH")))
   (push "/opt/local/bin" exec-path)
   (push "~/.rbenv/shims" exec-path)
   (push "~/bin" exec-path))

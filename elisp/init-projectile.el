@@ -28,6 +28,7 @@
           (require 'setup-ffip)
           (add-to-list 'ffip-patterns "*.haml")
           (add-to-list 'ffip-patterns "*.erb")
+          (add-to-list 'ffip-patterns "*.go")
           (add-to-list 'ffip-patterns "*Gemfile")
           (add-to-list 'ffip-patterns "*yml")))
 

@@ -52,7 +52,7 @@
 
 ;;;; Customize some packages
 (require 'init-file-associations)
-(require 'init-clojure-mode)
+;;(require 'init-clojure-mode)
 (require 'init-completition)
 ;;(require 'init-javascript-settings)
 (require 'init-markup-and-style-modes)
@@ -62,8 +62,7 @@
 (require 'init-go-mode)
 (require 'init-shell-mode)
 (require 'ido-bookmark-jump)
-(require 'init-org)
-(require 'init-neotree)
+;;(require 'init-org)
 
 (require 'init-flycheck)
 ;;(require 'init-evil)
