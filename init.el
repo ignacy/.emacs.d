@@ -80,3 +80,4 @@
 
 (require 'git-gutter+)
 (global-git-gutter+-mode t)
+(put 'narrow-to-region 'disabled nil)

@@ -22,7 +22,7 @@
 (setq yas/mode-symbol 'rails-mode)
 (setq ruby-use-encoding-map nil)
 
-
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
 (add-hook 'ruby-mode-hook
           (lambda ()
             (superword-mode 1)
