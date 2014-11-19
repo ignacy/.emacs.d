@@ -15,10 +15,6 @@
          (ansi-color-make-color-map))))
 
 
-(add-hook 'git-commit-comment-hook
-          '(lambda ()
-             (message "Runnign post commit hooks")
-             (message (shell-command-to-string (concat "sh " (magit-git-dir) "hooks/log_commits")))))
 
 (use-package magit
   :init (progn
@@ -49,6 +45,8 @@
 
           ;; close popup when commiting
           (defadvice git-commit-commit (after delete-window activate)
+            (message "Runnign post commit hooks")
+            (message (shell-command-to-string (concat "sh " (magit-git-dir) "hooks/log_commits")))
             (delete-window))))
 
 
