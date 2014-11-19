@@ -27,8 +27,6 @@
 ;;       (query-replace (current-kill 0) replace-str) ))
 
 (bind "M-c" 'query-replace)
-(global-set-key (kbd "C-x o") 'ace-window)
-
 
 (bind "M-z" 'undo)
 (bind "C-x i" 'indent-region-or-buffer)

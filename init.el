@@ -11,9 +11,19 @@
 
 (require 'basic-settings)
 
-;;(load-theme 'derfian-light t)
-;;(load-theme 'gotham t)
-(load-theme 'ir-black t)
+;;(load-theme 'ir-black t)
+(load-theme 'firecode t)
+;; themes to check out:
+;; bliss
+;; boron
+;; colonoscopy
+;; dark-krystal
+;; firecode
+;; flatland-black
+;; lavender
+;; mustard
+;; peacock
+;; slime
 
 ;; cursor
 (set-cursor-color "chartreuse2")
@@ -42,8 +52,8 @@
         (face-list)))
 ;; (fix-fonts 'normal)
 
+;;(set-face-background 'fringe "#444")
 (fringe-mode '(0 . 0))
-
 
 
 (use-package smart-modeline)

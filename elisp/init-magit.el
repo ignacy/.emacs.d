@@ -14,6 +14,12 @@
     (set (make-local-variable 'ansi-color-map)
          (ansi-color-make-color-map))))
 
+
+(add-hook 'git-commit-comment-hook
+          '(lambda ()
+             (message "Runnign post commit hooks")
+             (message (shell-command-to-string (concat "sh " (magit-git-dir) "hooks/log_commits")))))
+
 (use-package magit
   :init (progn
           ;; (add-hook 'magit-mode-hook 'my-magit-make-color-map)

@@ -17,7 +17,6 @@
                        go-eldoc
                        golint
                        flycheck
-                       ace-window
                        projectile-rails
                        ag color-identifiers-mode
                        exec-path-from-shell expand-region
