@@ -12,10 +12,11 @@
 (require 'basic-settings)
 
 ;;(load-theme 'ir-black t)
-(load-theme 'firecode t)
+;;(load-theme 'firecode t)
 ;; themes to check out:
 ;; bliss
-;; boron
+;;(load-theme 'boron t)
+(load-theme 'firecode t)
 ;; colonoscopy
 ;; dark-krystal
 ;; firecode
@@ -52,7 +53,6 @@
         (face-list)))
 ;; (fix-fonts 'normal)
 
-;;(set-face-background 'fringe "#444")
 (fringe-mode '(0 . 0))
 
 
