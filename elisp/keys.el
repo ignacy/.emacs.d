@@ -28,6 +28,8 @@
 
 (bind "M-c" 'query-replace)
 
+(bind "C-c y" 'browse-kill-ring)
+
 (bind "M-z" 'undo)
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)

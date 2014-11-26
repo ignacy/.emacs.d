@@ -16,7 +16,7 @@
 ;; themes to check out:
 ;; bliss
 ;;(load-theme 'boron t)
-(load-theme 'firecode t)
+(load-theme 'bliss t)
 ;; colonoscopy
 ;; dark-krystal
 ;; firecode
@@ -82,10 +82,10 @@
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
 
-(use-package color-identifiers-mode
-  :init
-  (progn
-    (add-hook 'after-init-hook 'global-color-identifiers-mode)))
+;; (use-package color-identifiers-mode
+;;   :init
+;;   (progn
+;;     (add-hook 'after-init-hook 'global-color-identifiers-mode)))
 
 
 (require 'git-gutter+)

@@ -15,6 +15,8 @@
                        sane-term
                        go-mode
                        go-eldoc
+                       undo-tree
+                       browse-kill-ring
                        golint
                        flycheck
                        projectile-rails
@@ -258,8 +260,8 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package font-lock+)
 
-(use-package auto-dim-other-buffers
-  :init (auto-dim-other-buffers-mode t))
+;; (use-package auto-dim-other-buffers
+;;   :init (auto-dim-other-buffers-mode t))
 
 (use-package ag
   :init (setq ag-highlight-search t))
@@ -301,6 +303,9 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (key-chord-define-global "xx" 'er/expand-region)
           (key-chord-mode +1)))
+
+(use-package undo-tree
+  :init (undo-tree-mode))
 
 (use-package diminish
   :init (progn

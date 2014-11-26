@@ -54,12 +54,13 @@
                ))
 
 ;;(force-mode-line-update)
-;;(set-face-background 'mode-line "brightblack")
-;; (set-face-foreground 'mode-line "#444")
+(set-face-background 'mode-line "#444")
+;;(set-face-foreground 'mode-line "#444")
+;;(set-face-foreground 'mode-line-inactive "#666")
 ;; (set-face-background 'mode-line-inactive "black")
 ;;(set-face-foreground 'mode-line-inactive "#eee")
 ;;(custom-set-faces '(mode-line ((t (:box nil)))))
-;;(custom-set-faces '(mode-line ((t (:box (:line-width 2 :color "thistle4" :style released-button))))))
-;;(custom-set-faces '(mode-line-inactive ((t (:box nil)))))
+;;(custom-set-faces '(mode-line ((t (:box (:line-width 1 :color "DarkBlue" :style released-button))))))
+;;(custom-set-faces '(mode-line ((t (:box nil) (:background "#fff")))))
 
 (provide 'smart-modeline)
