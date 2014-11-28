@@ -11,8 +11,10 @@
 
 (require 'basic-settings)
 
-(load-theme 'ir-black t)
+;;(load-theme 'ir-black t)
 ;;(load-theme 'firecode t)
+;;(load-theme 'ir-black t)
+(load-theme 'bliss t)
 ;; themes to check out:
 ;; bliss
 ;;(load-theme 'boron t)
