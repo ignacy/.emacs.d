@@ -11,12 +11,12 @@
 
 (require 'basic-settings)
 
-;;(load-theme 'ir-black t)
+(load-theme 'ir-black t)
 ;;(load-theme 'firecode t)
 ;; themes to check out:
 ;; bliss
 ;;(load-theme 'boron t)
-(load-theme 'bliss t)
+;;(load-theme 'bliss t)
 ;; colonoscopy
 ;; dark-krystal
 ;; firecode
