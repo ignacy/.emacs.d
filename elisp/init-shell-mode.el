@@ -130,15 +130,15 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
   (switch-to-buffer "zsh"))
 
 (defun sh (&optional name)
-   (interactive)
-   (ansi-term name))
+  (interactive)
+  (ansi-term name))
 
 
-(use-package sane-term
-  :init (progn
-          (setq sane-term-shell-command "/bin/zsh")
-          (global-set-key (kbd "C-x t") 'sane-term)
-          (global-set-key (kbd "C-x T") 'sane-term-create)))
+;; (use-package sane-term
+;;   :init (progn
+;;           (setq sane-term-shell-command "/bin/zsh")
+;;           (global-set-key (kbd "C-x t") 'sane-term)
+;;           (global-set-key (kbd "C-x T") 'sane-term-create)))
 
 
 ;; (defun zsh ()
