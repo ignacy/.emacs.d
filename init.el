@@ -10,11 +10,9 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-
 ;;(load-theme 'ir-black t)
-;;(load-theme 'firecode t)
-;;(load-theme 'ir-black t)
-(load-theme 'bliss t)
+(load-theme 'firecode t)
+;;(load-theme 'bliss t)
 ;; themes to check out:
 ;; bliss
 ;;(load-theme 'boron t)
@@ -31,6 +29,8 @@
 ;; cursor
 (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
+
+(setq-default cursor-type '(hbar . 6))
 
 ;; font setting
 (set-face-attribute 'default nil
