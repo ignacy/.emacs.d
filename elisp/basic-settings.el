@@ -51,7 +51,11 @@
 (setq-default mac-pass-command-to-system nil)
 (setq mouse-wheel-follow-mouse 't)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-(setq tags-add-tables nil)
+
+
+
+;; TODO: Figurew out if combining TAGS list works better
+(setq tags-add-tables t)
 
 
 (setq visible-bell t
