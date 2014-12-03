@@ -315,5 +315,12 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
 
+
+(use-package sane-term
+  :init (progn
+          (setq sane-term-shell-command "/bin/zsh")
+          (global-set-key (kbd "C-c t") 'sane-term)
+          (global-set-key (kbd "C-c T") 'sane-term-create)))
+
 (display-time-mode -1)
 (provide 'basic-settings)

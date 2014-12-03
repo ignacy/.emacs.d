@@ -10,27 +10,22 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-;;(load-theme 'ir-black t)
-(load-theme 'firecode t)
-;;(load-theme 'bliss t)
-;; themes to check out:
-;; bliss
+(load-theme 'ir-black t)
+;;(load-theme 'firecode t)
 ;;(load-theme 'boron t)
 ;;(load-theme 'bliss t)
 ;; colonoscopy
 ;; dark-krystal
 ;; firecode
-;; flatland-black
 ;; lavender
-;; mustard
 ;; peacock
-;; slime
 
 ;; cursor
 (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
 
-(setq-default cursor-type '(hbar . 6))
+
+;;(setq-default cursor-type '(hbar . 3))
 
 ;; font setting
 (set-face-attribute 'default nil
