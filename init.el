@@ -28,14 +28,6 @@
 
 ;;(setq-default cursor-type '(hbar . 3))
 
-;; font setting
-(set-face-attribute 'default nil
-                    :family "monaco"
-                    :height 140)
-;;(require 'nssh)
-;;(set-frame-font "Source Code Pro 15")
-;;(set-frame-font "Monaco 15")
-;;(set-frame-font "Inconsolata-g 15")
 
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
@@ -90,3 +82,12 @@
 (require 'git-gutter+)
 (global-git-gutter+-mode t)
 (put 'narrow-to-region 'disabled nil)
+
+
+;; font setting
+(set-face-attribute 'default nil :family "monaco" :height 140)
+
+;;(require 'nssh)
+;;(set-frame-font "Source Code Pro 15")
+;;(set-frame-font "Monaco 15")
+;;(set-frame-font "Inconsolata-g 15")
