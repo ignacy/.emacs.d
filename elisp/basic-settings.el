@@ -43,10 +43,10 @@
 
 (setq fill-column 80)
 
-(setq mac-option-key-is-meta nil)
+(setq mac-option-key-is-meta t)
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
+(setq mac-option-modifier 'meta)
 (setq-default mac-option-modifier 'super)
 (setq-default mac-pass-command-to-system nil)
 (setq mouse-wheel-follow-mouse 't)
