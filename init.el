@@ -10,12 +10,13 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
+(load-theme 'grandshell2 t)
 ;;(load-theme 'ir-black t)
 ;;(load-theme 'firecode t)
 ;;(load-theme 'boron t)
 ;;(load-theme 'bliss t)
 ;; colonoscopy
-(load-theme 'dark-krystal t)
+;;(load-theme 'dark-krystal t)
 ;; firecode
 ;; lavender
 ;; peacock
