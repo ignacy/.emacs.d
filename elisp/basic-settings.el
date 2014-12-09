@@ -54,8 +54,8 @@
 
 
 
-;; TODO: Figurew out if combining TAGS list works better
-(setq tags-add-tables t)
+;; Don't combine TAGS lists
+(setq tags-add-tables nil)
 
 
 (setq visible-bell t
@@ -321,6 +321,17 @@ This functions should be added to the hooks of major modes for programming."
           (setq sane-term-shell-command "/bin/zsh")
           (global-set-key (kbd "C-c t") 'sane-term)
           (global-set-key (kbd "C-c T") 'sane-term-create)))
+
+(use-package ibuffer-vc
+  :init (progn
+          (require 'ibuf-ext)
+          (add-to-list 'ibuffer-never-show-predicates "^\\*")
+          (add-to-list 'ibuffer-never-show-predicates "TAGS")
+           (add-hook 'ibuffer-hook
+                    (lambda ()
+                      (ibuffer-vc-set-filter-groups-by-vc-root)
+                      (unless (eq ibuffer-sorting-mode 'alphabetic)
+                        (ibuffer-do-sort-by-alphabetic))))))
 
 (display-time-mode -1)
 (provide 'basic-settings)

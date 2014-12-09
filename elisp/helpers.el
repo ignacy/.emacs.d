@@ -264,21 +264,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; remap C-a to `smarter-move-beginning-of-line'
 (global-set-key [remap move-beginning-of-line] 'smarter-move-beginning-of-line)
 
-
-(defun open-line-below ()
-  (interactive)
-  (end-of-line)
-  (newline)
-  (indent-for-tab-command))
-
-(defun open-line-above ()
-  (interactive)
-  (beginning-of-line)
-  (newline)
-  (forward-line -1)
-  (indent-for-tab-command))
-
-
 (defun move-line-down ()
   (interactive)
   (let ((col (current-column)))
@@ -402,7 +387,7 @@ narrowed."
 
 ;;; WORK
 
-(setq deployable-apps '("dev_interceptor" "dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector"))
+(setq deployable-apps '("dev_interceptor" "dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector" "dev_connector_admin"))
 
 (defun deploy ()
   (interactive)

@@ -61,7 +61,9 @@
 (bind "C-c e" 'replace-string)
 (bind "C-<tab>" 'switch-to-previous-buffer)
 (bind "C-x b" 'ido-switch-buffer)
-(bind "C-x C-b" 'projectile-switch-to-buffer)
+;;(bind "C-x C-b" 'projectile-switch-to-buffer)
+(bind "C-x C-b" 'ibuffer)
+(bind "M-o" 'helm-projectile)
 
 (bind "M-g" 'goto-line-with-feedback)
 (bind "M-/" 'hippie-expand-no-case-fold)
@@ -85,7 +87,9 @@
 
 (bind "M-j" 'join-lines)
 
+
 (bind "C-S-o" 'move-line-up)
+
 
 ;; Move more quickly
 (global-set-key (kbd "C-S-n")
