@@ -10,13 +10,13 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-(load-theme 'grandshell2 t)
+;;(load-theme 'grandshell2 t)
 ;;(load-theme 'ir-black t)
 ;;(load-theme 'firecode t)
 ;;(load-theme 'boron t)
 ;;(load-theme 'bliss t)
 ;; colonoscopy
-;;(load-theme 'dark-krystal t)
+(load-theme 'easyballs t)
 ;; firecode
 ;; lavender
 ;; peacock
@@ -85,7 +85,7 @@
 
 
 ;; font setting
-(set-face-attribute 'default nil :family "monaco" :height 140)
+(set-face-attribute 'default nil :family "monaco" :height 150)
 
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")

@@ -14,7 +14,7 @@
 (use-package persp-projectile
   :init
   ;;(define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)
-  (global-set-key (kbd "C-c p s") 'projectile-persp-switch-project))
+  (global-set-key (kbd "C-c C-p") 'projectile-persp-switch-project))
 
 ;; (use-package fiplr
 ;;   :init (progn
