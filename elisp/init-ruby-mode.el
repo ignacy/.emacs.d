@@ -23,10 +23,46 @@
 (setq ruby-use-encoding-map nil)
 
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (superword-mode 1)
-            (setq flycheck-checker 'ruby-rubocop) ))
+
+
+(use-package ruby-mode
+  :init (progn
+          ;; Libraries
+          (require 'flymake)
+          (require 'ruby-tools)
+
+          ;; Invoke ruby with '-c' to get syntax checking
+          (defun flymake-ruby-init ()
+            (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                               'flymake-create-temp-inplace))
+                   (local-file (file-relative-name
+                                temp-file
+                                (file-name-directory buffer-file-name))))
+              (list "~/.rbenv/versions/2.1.2/bin/ruby" (list "-c" local-file))))
+
+          (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
+          (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+
+          (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3)
+                flymake-err-line-patterns)
+
+          ;;(add-hook 'ruby-mode-hook 'cabbage-flymake-init)
+
+          (add-hook 'ruby-mode-hook
+                    (lambda ()
+                      (subword-mode 1)
+                      (when (and buffer-file-name
+                                 (file-writable-p
+                                  (file-name-directory buffer-file-name))
+                                 (file-writable-p buffer-file-name)
+                                 (if (fboundp 'tramp-list-remote-buffers)
+                                     (not (subsetp
+                                           (list (current-buffer))
+                                           (tramp-list-remote-buffers)))
+                                   t))
+                        (local-set-key (kbd "C-c d") 'flymake-popup-current-error-menu)
+                        (flymake-mode t))))))
+
 ;; (add-hook 'ruby-mode-hook
 ;;           (lambda ()
 ;;             (set (make-local-variable 'compile-command)
