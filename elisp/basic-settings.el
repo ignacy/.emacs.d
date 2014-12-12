@@ -13,6 +13,7 @@
                        company
                        key-chord
                        sane-term
+                       emr
                        go-mode
                        go-eldoc
                        undo-tree
@@ -117,8 +118,12 @@ This functions should be added to the hooks of major modes for programming."
 (autoload 'epa "epa-file-mode" t)
 (epa-file-enable)
 
-(show-paren-mode t)
-(setq show-paren-style 'paranthesis)
+(setq paren-dont-touch-blink t)
+(require 'mic-paren)
+(paren-activate)
+(setq paren-match-face 'paren-face-match)
+(setq paren-sexp-mode t)
+
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (delete-selection-mode t)
@@ -212,6 +217,8 @@ This functions should be added to the hooks of major modes for programming."
           (add-to-list 'recentf-exclude "\\.revive\\'")
           (add-to-list 'recentf-exclude "elpa")))
 
+
+
 ;;;; Cider
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (setq nrepl-hide-special-buffers nil)
@@ -239,7 +246,7 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smartparens)
 (require 'smartparens-config)
 (smartparens-global-mode t)
-(show-smartparens-global-mode +1)
+;;(show-smartparens-global-mode +1)
 
 (use-package easy-kill
   :init (global-set-key [remap kill-ring-save] 'easy-kill))
@@ -332,6 +339,11 @@ This functions should be added to the hooks of major modes for programming."
                       (ibuffer-vc-set-filter-groups-by-vc-root)
                       (unless (eq ibuffer-sorting-mode 'alphabetic)
                         (ibuffer-do-sort-by-alphabetic))))))
+
+(use-package emr
+  :init (progn
+          (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
+          (add-hook 'prog-mode-hook 'emr-initialize)))
 
 (display-time-mode -1)
 (provide 'basic-settings)

@@ -11,12 +11,12 @@
 
 (require 'basic-settings)
 ;;(load-theme 'grandshell2 t)
-;;(load-theme 'ir-black t)
+(load-theme 'ir-black t)
 ;;(load-theme 'firecode t)
 ;;(load-theme 'boron t)
 ;;(load-theme 'bliss t)
 ;; colonoscopy
-(load-theme 'easyballs t)
+;;(load-theme 'easyballs t)
 ;; firecode
 ;; lavender
 ;; peacock
@@ -91,3 +91,6 @@
 ;;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
+
+
+(recentf-cleanup) ;; remove old files from recentf list

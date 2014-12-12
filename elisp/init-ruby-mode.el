@@ -29,8 +29,6 @@
   :init (progn
           ;; Libraries
           (require 'flymake)
-          (require 'ruby-tools)
-
           ;; Invoke ruby with '-c' to get syntax checking
           (defun flymake-ruby-init ()
             (let* ((temp-file (flymake-init-create-temp-buffer-copy
@@ -129,6 +127,5 @@
 (ad-activate 'rspec-compile)
 
 (setq explicit-shell-file-name "/bin/zsh")
-
 
 (provide 'init-ruby-mode)

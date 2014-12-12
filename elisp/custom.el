@@ -69,4 +69,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background nil))))
- '(auto-dim-other-buffers-face ((t (:background "gray8")))))
+ '(auto-dim-other-buffers-face ((t (:background "gray8"))))
+ '(paren-face-match ((t (:background "gray23")))))

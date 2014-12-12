@@ -54,7 +54,7 @@
                ))
 
 ;;(force-mode-line-update)
-(set-face-background 'mode-line "#235")
+(set-face-background 'mode-line "grey22")
 ;;(set-face-foreground 'mode-line "#444")
 (set-face-background 'mode-line-inactive "#111")
 ;; (set-face-background 'mode-line-inactive "black")
