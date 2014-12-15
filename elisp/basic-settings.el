@@ -121,7 +121,7 @@ This functions should be added to the hooks of major modes for programming."
 (setq paren-dont-touch-blink t)
 (require 'mic-paren)
 (paren-activate)
-(setq paren-match-face 'paren-face-match)
+(setq paren-match-face 'highlight)
 (setq paren-sexp-mode t)
 
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -339,6 +339,13 @@ This functions should be added to the hooks of major modes for programming."
                       (ibuffer-vc-set-filter-groups-by-vc-root)
                       (unless (eq ibuffer-sorting-mode 'alphabetic)
                         (ibuffer-do-sort-by-alphabetic))))))
+
+(use-package whitespace
+  :init (progn
+          (setq whitespace-style '(face empty lines-tail trailing))
+          (setq whitespace-line-column 80)
+          (setq whitespace-global-modes '(not git-commit-mode))
+          (global-whitespace-mode)))
 
 (use-package emr
   :init (progn

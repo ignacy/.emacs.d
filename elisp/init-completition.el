@@ -2,6 +2,7 @@
   :init
   (progn
     (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
+    (setq yas-verbosity 1)
     (yas-global-mode 1)))
 
 (defun company-yasnippet-or-completion ()

@@ -63,11 +63,12 @@
      (360 . "#dc8cc3"))))
  '(vc-annotate-very-old-color "#dc8cc3"))
 
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil))))
- '(auto-dim-other-buffers-face ((t (:background "gray8"))))
- '(paren-face-match ((t (:background "gray23")))))
+ '(default ((t (:inherit nil :stipple nil :background "#3F3F3F" :foreground "#DCDCCC" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "nil" :family "monaco"))))
+ '(flycheck-fringe-error ((t (:background "dark red"))))
+ '(region ((t (:background "black" :foreground "white" :inverse-video t)))))
