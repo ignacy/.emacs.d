@@ -334,7 +334,7 @@ This functions should be added to the hooks of major modes for programming."
           (require 'ibuf-ext)
           (add-to-list 'ibuffer-never-show-predicates "^\\*")
           (add-to-list 'ibuffer-never-show-predicates "TAGS")
-           (add-hook 'ibuffer-hook
+          (add-hook 'ibuffer-hook
                     (lambda ()
                       (ibuffer-vc-set-filter-groups-by-vc-root)
                       (unless (eq ibuffer-sorting-mode 'alphabetic)
@@ -351,6 +351,11 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
           (add-hook 'prog-mode-hook 'emr-initialize)))
+
+
+(use-package keyfreq
+  :init (progn (keyfreq-mode 1)
+               (keyfreq-autosave-mode 1)))
 
 (display-time-mode -1)
 (provide 'basic-settings)
