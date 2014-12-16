@@ -1,6 +1,6 @@
 ;;; init -- my emacs configuration
 (require 'cl)
-(setq debug-on-error nil)
+(setq debug-on-error t)
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))

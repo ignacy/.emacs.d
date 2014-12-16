@@ -353,9 +353,5 @@ This functions should be added to the hooks of major modes for programming."
           (add-hook 'prog-mode-hook 'emr-initialize)))
 
 
-(use-package keyfreq
-  :init (progn (keyfreq-mode 1)
-               (keyfreq-autosave-mode 1)))
-
 (display-time-mode -1)
 (provide 'basic-settings)
