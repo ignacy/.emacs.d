@@ -12,7 +12,7 @@
 (require 'basic-settings)
 ;;(load-theme 'grandshell2 t)
 ;;(load-theme 'ir-black t)
-(load-theme 'zenburn t)
+(load-theme 'hopscotch t)
 ;;(load-theme 'firecode t)
 ;;(load-theme 'boron t)
 ;;(load-theme 'bliss t)
