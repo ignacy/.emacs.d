@@ -7,7 +7,6 @@
 
     (defun customizations-for-rhtml-mode ()
       (interactive)
-      (fci-mode)
       (setq tab-width 2)
       (setq highlight-indentation-offset 2)
       (highlight-indentation-mode))
