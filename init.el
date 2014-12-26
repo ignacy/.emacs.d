@@ -1,6 +1,6 @@
 ;;; init -- my emacs configuration
 (require 'cl)
-(setq debug-on-error t)
+(setq debug-on-error nil)
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))
@@ -10,17 +10,7 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-;;(load-theme 'grandshell2 t)
-;;(load-theme 'ir-black t)
-(load-theme 'hopscotch t)
-;;(load-theme 'firecode t)
-;;(load-theme 'boron t)
-;;(load-theme 'bliss t)
-;; colonoscopy
-;;(load-theme 'easyballs t)
-;; firecode
-;; lavender
-;; peacock
+(load-theme 'im t)
 
 ;; cursor
 (set-cursor-color "chartreuse2")
@@ -87,6 +77,7 @@
 
 ;; font setting
 (set-face-attribute 'default nil :family "monaco" :height 150)
+;;(set-face-attribute 'default nil :background "gray17")
 
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")

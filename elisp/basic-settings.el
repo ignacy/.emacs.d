@@ -166,7 +166,7 @@ This functions should be added to the hooks of major modes for programming."
 (use-package ace-jump-mode
   :init
   (global-set-key (kbd "C-/") 'ace-jump-word-mode)
-  (global-set-key (kbd "§") 'ace-jump-word-mode))
+  (global-set-key (kbd "M-1") 'ace-jump-word-mode))
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
@@ -310,10 +310,11 @@ This functions should be added to the hooks of major modes for programming."
 (use-package ace-isearch
   :init (global-ace-isearch-mode +1))
 
-(use-package key-chord
-  :init (progn
-          (key-chord-define-global "xx" 'er/expand-region)
-          (key-chord-mode +1)))
+(use-package expand-region
+  :init (global-set-key (kbd "M-2") 'er/expand-region))
+
+(use-package kpm-list
+  :init (global-set-key (kbd "C-x C-b") 'kpm-list))
 
 (use-package undo-tree
   :init (undo-tree-mode))

@@ -15,7 +15,8 @@
 (define-key input-decode-map "\e[1;5C" [C-right])
 (define-key input-decode-map "\e[1;5D" [C-left])
 
-(bind "M-r" 'helm-git-grep)
+;;(bind "M-r" 'helm-git-grep)
+(bind "M-r" 'helm-ag)
 ;;(bind "M-r" 'projectile-pt)
 
 ;; (defun qrc (replace-str)
