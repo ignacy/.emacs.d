@@ -77,7 +77,7 @@
 
 ;; font setting
 (set-face-attribute 'default nil :family "monaco" :height 150)
-;;(set-face-attribute 'default nil :background "gray17")
+;; (set-face-attribute 'default nil :background "gray17")
 
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
