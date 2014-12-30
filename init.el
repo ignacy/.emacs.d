@@ -45,7 +45,7 @@
 (require 'init-file-associations)
 ;;(require 'init-clojure-mode)
 (require 'init-completition)
-;;(require 'init-javascript-settings)
+(require 'init-javascript-settings)
 (require 'init-markup-and-style-modes)
 
 (require 'init-projectile)

@@ -31,6 +31,8 @@
           (add-to-list 'ffip-patterns "*.erb")
           (add-to-list 'ffip-patterns "*.go")
           (add-to-list 'ffip-patterns "*.java")
+          (add-to-list 'ffip-patterns "*.js")
+          (add-to-list 'ffip-patterns "*.css")
           (add-to-list 'ffip-patterns "*Gemfile")
           (add-to-list 'ffip-patterns "*yml")))
 

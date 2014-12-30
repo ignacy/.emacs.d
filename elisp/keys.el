@@ -16,7 +16,14 @@
 (define-key input-decode-map "\e[1;5D" [C-left])
 
 ;;(bind "M-r" 'helm-git-grep)
-(bind "M-r" 'helm-ag)
+
+
+(defun projectile-helm-do-ag ()
+  (interactive)
+  (helm-do-ag (projectile-project-root)))
+
+(bind "M-r" 'projectile-helm-do-ag)
+
 ;;(bind "M-r" 'projectile-pt)
 
 ;; (defun qrc (replace-str)
@@ -87,7 +94,6 @@
 (bind "M-\." 'find-tag-at-point)
 
 (bind "M-j" 'join-lines)
-
 
 (bind "C-S-o" 'move-line-up)
 
