@@ -7,7 +7,7 @@
 
 (deftheme im)
 
-(let ((base00 "#292929")
+(let ((base00 "#232323")
       (base01 "#433b42")
       (base02 "#5c545b")
       (base03 "#797379")

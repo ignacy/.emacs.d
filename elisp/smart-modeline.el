@@ -55,8 +55,9 @@
 
 ;;(force-mode-line-update)
 (set-face-background 'mode-line "grey22")
-;;(set-face-foreground 'mode-line "#444")
-(set-face-background 'mode-line-inactive "#111")
+;;(set-face-foreground 'mode-line "#dedede")
+;;(set-face-background 'mode-line-inactive "#111")
+;;(set-face-foreground 'mode-line-inactive "#dbdbdb")
 ;; (set-face-background 'mode-line-inactive "black")
 ;;(set-face-foreground 'mode-line-inactive "#eee")
 ;;(custom-set-faces '(mode-line ((t (:box nil)))))

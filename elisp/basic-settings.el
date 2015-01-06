@@ -7,13 +7,13 @@
 (setq package-enable-at-startup nil)
 (when (not package-archive-contents)
   (package-refresh-contents))
-
 (defvar my-packages '(use-package
                        clojure-mode
                        company
                        key-chord
                        sane-term
                        emr
+                       js2-mode
                        go-mode
                        go-eldoc
                        undo-tree
@@ -41,8 +41,10 @@
 (set-terminal-coding-system nil)
 (set-keyboard-coding-system nil)
 (prefer-coding-system 'utf-8)
-
 (setq fill-column 80)
+
+(global-font-lock-mode t)
+(setq font-lock-maximum-decoration t)
 
 (setq mac-option-key-is-meta t)
 (setq mac-command-key-is-meta t)
@@ -89,8 +91,6 @@
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 (global-auto-revert-mode 1)
-(global-font-lock-mode t)
-(setq font-lock-maximum-decoration t)
 (winner-mode 1)
 
 (defun font-lock-comment-annotations ()
@@ -341,18 +341,20 @@ This functions should be added to the hooks of major modes for programming."
                       (unless (eq ibuffer-sorting-mode 'alphabetic)
                         (ibuffer-do-sort-by-alphabetic))))))
 
-(use-package whitespace
-  :init (progn
-          (setq whitespace-style '(face empty lines-tail trailing))
-          (setq whitespace-line-column 80)
-          (setq whitespace-global-modes '(not git-commit-mode))
-          (global-whitespace-mode)))
+;; (use-package whitespace
+;;   :init (progn
+;;           (setq whitespace-style '(face empty lines-tail trailing))
+;;           (setq whitespace-line-column 80)
+;;           (setq whitespace-global-modes '(not git-commit-mode))
+;;           (global-whitespace-mode)))
 
 (use-package emr
   :init (progn
           (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
           (add-hook 'prog-mode-hook 'emr-initialize)))
 
+(use-package re-builder
+  :init (setq reb-re-syntax 'string))
 
 (display-time-mode -1)
 (provide 'basic-settings)
