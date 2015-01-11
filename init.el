@@ -10,7 +10,8 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-(load-theme 'im t)
+;;(load-theme 'im t)
+(load-theme 'atom-dark t)
 
 ;; cursor
 (set-cursor-color "chartreuse2")

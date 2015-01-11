@@ -53,7 +53,8 @@
 (bind "C-x C-f" 'ido-find-file)
 
 ;;(bind "C-x f" 'projectile-find-file)
-(bind "C-x f" 'find-file-in-project)
+;;(bind "C-x f" 'find-file-in-project)
+(bind "C-x f" 'helm-projectile)
 
 (bind "C-x C-p" 'find-file-at-point)
 ;;(bind "C-1" 'switch-to-zsh)

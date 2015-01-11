@@ -30,6 +30,7 @@
                        mark-multiple multiple-cursors
                        projectile rainbow-delimiters
                        rbenv rhtml-mode
+                       helm-projectile
                        rspec-mode ruby-mode
                        yaml-mode smartparens
                        smex yasnippet))
