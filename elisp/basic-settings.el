@@ -31,6 +31,7 @@
                        projectile rainbow-delimiters
                        rbenv rhtml-mode
                        helm-projectile
+                       atom-dark-theme
                        rspec-mode ruby-mode
                        yaml-mode smartparens
                        smex yasnippet))
@@ -76,6 +77,7 @@
       bookmark-save-flag 1
       confirm-nonexistent-file-or-buffer nil
       slime-net-coding-system 'utf-8-unix
+      confirm-kill-emacs (quote yes-or-no-p)
       delete-by-moving-to-trash t
       trash-directory "~/.Trash/emacs"
       ispell-program-name "/usr/local/bin/aspell"
