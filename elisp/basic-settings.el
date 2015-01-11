@@ -19,6 +19,7 @@
                        undo-tree
                        browse-kill-ring
                        golint
+                       ibuffer-vc
                        flycheck
                        projectile-rails
                        ag color-identifiers-mode
@@ -358,6 +359,9 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package re-builder
   :init (setq reb-re-syntax 'string))
+
+(use-package ibuffer-vc
+  :init (ibuffer-vc-set-filter-groups-by-vc-root))
 
 (display-time-mode -1)
 (provide 'basic-settings)
