@@ -12,6 +12,8 @@
 (require 'basic-settings)
 ;;(load-theme 'im t)
 (load-theme 'atom-dark t)
+;;(load-theme 'spolsky t)
+;;(load-theme 'gandalf t)
 
 ;; cursor
 (set-cursor-color "chartreuse2")
@@ -62,6 +64,7 @@
 
 (use-package rbenv
   :init (progn
+          ;;(setq rbenv-installation-dir "/usr/local/rbenv")
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
 
@@ -84,6 +87,5 @@
 ;;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
-
 
 (recentf-cleanup) ;; remove old files from recentf list

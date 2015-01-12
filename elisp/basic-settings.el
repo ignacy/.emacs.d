@@ -317,9 +317,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package expand-region
   :init (global-set-key (kbd "M-2") 'er/expand-region))
 
-(use-package kpm-list
-  :init (global-set-key (kbd "C-x C-b") 'kpm-list))
-
 (use-package undo-tree
   :init (undo-tree-mode))
 
