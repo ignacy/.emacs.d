@@ -135,6 +135,9 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
       (downcase-region p1 p2) (put this-command 'state "all lower")) )
     ) )
 
+
+;; ido-imenu
+(require 'imenu)
 (defun ido-imenu ()
   "Update the imenu index and then use ido to select a symbol to navigate to.
 Symbols matching the text at point are put first in the completion list."
@@ -176,6 +179,8 @@ Symbols matching the text at point are put first in the completion list."
     (let* ((selected-symbol (ido-completing-read "Symbol? " symbol-names))
            (position (cdr (assoc selected-symbol name-and-pos))))
       (goto-char position))))
+
+(set-default 'imenu-auto-rescan t)
 
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
