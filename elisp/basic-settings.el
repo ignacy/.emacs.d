@@ -19,6 +19,7 @@
                        undo-tree
                        browse-kill-ring
                        golint
+                       visual-regexp
                        ibuffer-vc
                        flycheck
                        projectile-rails
@@ -348,6 +349,13 @@ This functions should be added to the hooks of major modes for programming."
 ;;           (setq whitespace-line-column 80)
 ;;           (setq whitespace-global-modes '(not git-commit-mode))
 ;;           (global-whitespace-mode)))
+
+(use-package visual-regexp
+  :init (progn
+          (define-key global-map (kbd "C-c r") 'vr/replace)
+          (define-key global-map (kbd "C-c q") 'vr/query-replace)
+          ;; if you use multiple-cursors, this is for you:
+          (define-key global-map (kbd "C-c m") 'vr/mc-mark)))
 
 (use-package emr
   :init (progn
