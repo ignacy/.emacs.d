@@ -7,6 +7,12 @@
               (0 (progn (compose-region (match-beginning 1)
                                         (match-end 1) "\u0192") nil)))))
 
+
+;; Javascript
+(setq-default js2-basic-offset 2)
+;; JSON
+(setq-default js-indent-level 2)
+
 (setq-default js2-mode-indent-ignore-first-tab t)
 (setq-default js2-show-parse-errors nil)
 (setq-default js2-strict-inconsistent-return-warning nil)
