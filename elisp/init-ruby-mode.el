@@ -68,12 +68,12 @@
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
 
-(use-package robe
-  :init (progn
-          (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
-            (rbenv-use-corresponding))
-          (setq robe-turn-on-eldoc nil)
-          (add-hook 'ruby-mode-hook 'robe-mode)))
+;; (use-package robe
+;;   :init (progn
+;;           (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
+;;             (rbenv-use-corresponding))
+;;           (setq robe-turn-on-eldoc nil)
+;;           (add-hook 'ruby-mode-hook 'robe-mode)))
 
 
 ;; (require 'ruby-dev)
