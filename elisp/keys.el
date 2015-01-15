@@ -56,6 +56,8 @@
 ;;(bind "C-x f" 'find-file-in-project)
 (bind "C-x f" 'helm-projectile)
 
+(bind "C-c b" 'browse-web)
+
 (bind "C-x C-p" 'find-file-at-point)
 ;;(bind "C-1" 'switch-to-zsh)
 
