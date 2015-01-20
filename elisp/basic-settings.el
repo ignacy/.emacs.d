@@ -42,6 +42,7 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(setq compilation-ask-about-save nil)
 (set-terminal-coding-system nil)
 (set-keyboard-coding-system nil)
 (prefer-coding-system 'utf-8)
@@ -58,7 +59,6 @@
 (setq-default mac-pass-command-to-system nil)
 (setq mouse-wheel-follow-mouse 't)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-
 
 
 ;; Don't combine TAGS lists
@@ -126,7 +126,7 @@ This functions should be added to the hooks of major modes for programming."
 (setq paren-dont-touch-blink t)
 (require 'mic-paren)
 (paren-activate)
-(setq paren-match-face 'highlight)
+(setq paren-match-face 'mic-paren-matching)
 (setq paren-sexp-mode t)
 
 (fset 'yes-or-no-p 'y-or-n-p)

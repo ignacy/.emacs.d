@@ -10,10 +10,9 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-(load-theme 'ir-black t)
 ;;(load-theme 'im t)
 ;;(load-theme 'atom-dark t)
-;;(load-theme 'brin t)
+(load-theme 'brogrammer t)
 ;;(load-theme 'gandalf t)
 
 ;; cursor
@@ -39,7 +38,6 @@
 ;; (fix-fonts 'normal)
 
 (fringe-mode '(0 . 0))
-
 
 (use-package smart-modeline)
 (use-package helpers)
@@ -87,7 +85,7 @@
 ;;(set-frame-font "CamingoCode 15")
 
 ;;(require 'nssh)
-(set-frame-font "Source Code Pro 15")
+(set-frame-font "Source Code Pro 14")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
 
