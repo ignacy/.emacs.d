@@ -34,6 +34,7 @@
           (add-to-list 'ffip-patterns "*.js")
           (add-to-list 'ffip-patterns "*.css")
           (add-to-list 'ffip-patterns "*Gemfile")
+          (add-to-list 'ffip-patterns "*.xml")
           (add-to-list 'ffip-patterns "*yml")))
 
 (eval-after-load "grep"
