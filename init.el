@@ -85,7 +85,7 @@
 ;;(set-frame-font "CamingoCode 15")
 
 ;;(require 'nssh)
-(set-frame-font "Source Code Pro 14")
+(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
 
