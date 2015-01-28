@@ -19,6 +19,7 @@
                        undo-tree
                        browse-kill-ring
                        golint
+                       color-theme-sanityinc-tomorrow
                        visual-regexp
                        ibuffer-vc
                        flycheck
