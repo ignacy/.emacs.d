@@ -13,11 +13,6 @@
 ;;(load-theme 'im t)
 ;;(load-theme 'atom-dark t)
 (load-theme 'brogrammer t)
-;;(load-theme 'gandalf t)
-
-;; (require 'color-theme-sanityinc-tomorrow)
-;; (color-theme-sanityinc-tomorrow-night)
-
 ;; cursor
 (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
