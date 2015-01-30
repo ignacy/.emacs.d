@@ -10,6 +10,7 @@
 (defvar my-packages '(use-package
                        clojure-mode
                        company
+                       company-quickhelp
                        key-chord
                        sane-term
                        emr

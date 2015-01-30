@@ -20,6 +20,7 @@
   :init
   (progn
     ;;(setq company-idle-delay t)
+    (company-quickhelp-mode 1)
     (push 'company-readline company-backends)
     (push 'company-robe company-backends)
     (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
