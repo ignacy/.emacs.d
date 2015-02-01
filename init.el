@@ -11,8 +11,7 @@
 
 (require 'basic-settings)
 ;;(load-theme 'im t)
-(load-theme 'atom-dark t)
-;;(load-theme 'brogrammer t)
+(load-theme 'sanityinc-tomorrow-night t)
 ;; cursor
 (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
@@ -83,7 +82,7 @@
 ;;(set-frame-font "CamingoCode 15")
 
 ;;(require 'nssh)
-(set-frame-font "Source Code Pro 15")
+(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
 

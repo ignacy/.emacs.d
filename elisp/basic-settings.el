@@ -14,6 +14,7 @@
                        key-chord
                        sane-term
                        emr
+                       waher-theme
                        js2-mode
                        go-mode
                        go-eldoc
@@ -263,6 +264,7 @@ This functions should be added to the hooks of major modes for programming."
     (indent-according-to-mode)))
 
 (sp-local-pair 'go-mode "{" nil :post-handlers '(:add block-go-mode))
+
 ;;(show-smartparens-global-mode +1)
 
 (use-package easy-kill
