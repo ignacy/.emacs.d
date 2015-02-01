@@ -1,4 +1,4 @@
-;;; dimmed---monokai-theme.el --- an Emacs 24 theme based on Dimmed - Monokai (tmTheme)
+;;; dimmed-monokai-theme.el --- an Emacs 24 theme based on Dimmed - Monokai (tmTheme)
 ;;
 ;;; Author: Auto Converted to Emacs 24 by tmtheme-to-deftheme (tm2deftheme)
 ;;; Version: 1412862689
@@ -12,15 +12,15 @@
 ;;
 ;;; Code:
 
-(deftheme dimmed---monokai
-  "dimmed---monokai-theme - Created by tmtheme-to-deftheme - 2014-10-09 15:51:29 +0200")
+(deftheme dimmed-monokai
+  "dimmed-monokai-theme - Created by tmtheme-to-deftheme - 2014-10-09 15:51:29 +0200")
 
 (custom-theme-set-variables
- 'dimmed---monokai
+ 'dimmed-monokai
 )
 
 (custom-theme-set-faces
- 'dimmed---monokai
+ 'dimmed-monokai
  ;; basic theming.
 
  '(default ((t (:foreground "#C5C8C6" :background "#1e1e1e" ))))
@@ -118,10 +118,10 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'dimmed---monokai)
+(provide-theme 'dimmed-monokai)
 
 ;; Local Variables:
 ;; eval: (when (fboundp 'rainbow-mode) (rainbow-mode +1))
 ;; End:
 
-;;; dimmed---monokai-theme.el ends here
+;;; dimmed-monokai-theme.el ends here
