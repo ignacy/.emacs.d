@@ -253,6 +253,16 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smartparens)
 (require 'smartparens-config)
 (smartparens-global-mode t)
+
+(defun block-go-mode (id action context)
+  (when (eq action 'insert)
+    (newline)
+    (newline)
+    (indent-according-to-mode)
+    (previous-line)
+    (indent-according-to-mode)))
+
+(sp-local-pair 'go-mode "{" nil :post-handlers '(:add block-go-mode))
 ;;(show-smartparens-global-mode +1)
 
 (use-package easy-kill
