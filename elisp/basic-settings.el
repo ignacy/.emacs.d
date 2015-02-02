@@ -255,7 +255,7 @@ This functions should be added to the hooks of major modes for programming."
 (require 'smartparens-config)
 (smartparens-global-mode t)
 
-(defun block-go-mode (id action context)
+(defun handle-curlys (id action context)
   (when (eq action 'insert)
     (newline)
     (newline)
@@ -263,7 +263,8 @@ This functions should be added to the hooks of major modes for programming."
     (previous-line)
     (indent-according-to-mode)))
 
-(sp-local-pair 'go-mode "{" nil :post-handlers '(:add block-go-mode))
+(sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
+(sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys))
 
 ;;(show-smartparens-global-mode +1)
 
