@@ -12,7 +12,7 @@
                        company
                        company-quickhelp
                        key-chord
-                       sane-term
+                       helm-mt
                        emr
                        waher-theme
                        js2-mode
@@ -340,11 +340,8 @@ This functions should be added to the hooks of major modes for programming."
           (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
 
 
-(use-package sane-term
-  :init (progn
-          (setq sane-term-shell-command "/bin/zsh")
-          (global-set-key (kbd "C-c t") 'sane-term)
-          (global-set-key (kbd "C-c T") 'sane-term-create)))
+(use-package helm-mt
+  :init (global-set-key (kbd "C-x t") 'helm-mt))
 
 (use-package ibuffer-vc
   :init (progn
