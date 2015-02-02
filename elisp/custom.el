@@ -73,5 +73,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highlight-symbol-face ((t (:background "LightSkyBlue3" :foreground "gray0"))))
+ '(highlight-symbol-face ((t (:background "DarkBlue" :foreground "seashell3" :weight normal))))
  '(region ((t (:background "black" :foreground "white" :inverse-video t)))))
