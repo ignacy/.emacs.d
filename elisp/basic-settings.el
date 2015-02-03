@@ -12,7 +12,6 @@
                        company
                        company-quickhelp
                        key-chord
-                       helm-mt
                        emr
                        waher-theme
                        js2-mode
@@ -340,9 +339,6 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
 
-
-(use-package helm-mt
-  :init (global-set-key (kbd "C-x t") 'helm-mt))
 
 (use-package ibuffer-vc
   :init (progn
