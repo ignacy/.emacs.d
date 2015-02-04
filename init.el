@@ -15,7 +15,7 @@
 (load-theme 'im t)
 
 ;; cursor
-(set-cursor-color "chartreuse2")
+;; (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
 
 

@@ -169,7 +169,7 @@
  `(yas-field-highlight-face            ((t (:foreground "#121212" :background "#ff2d6f"))))
 
  ;; Rainbow delim
- `(rainbow-delimiters-depth-1-face ((t (:foreground "#d4e157" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
+ `(rainbow-delimiters-depth-1-face ((t (:foreground "#2baf2b" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
  `(rainbow-delimiters-depth-2-face ((t (:foreground "#738ffe" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
  `(rainbow-delimiters-depth-3-face ((t (:foreground "#ec407a" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
  `(rainbow-delimiters-depth-4-face ((t (:foreground "#26a69a" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
@@ -177,7 +177,7 @@
  `(rainbow-delimiters-depth-6-face ((t (:foreground "#9ccc65" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
  `(rainbow-delimiters-depth-7-face ((t (:foreground "#ab47bc" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
  `(rainbow-delimiters-depth-8-face ((t (:foreground "#26c6da" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
- `(rainbow-delimiters-depth-9-face ((t (:foreground "#2baf2b" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
+ `(rainbow-delimiters-depth-9-face ((t (:foreground "#d4e157" :background nil :weight ultra-bold :width ultra-expanded :distant-foreground "#dadada"))))
  `(rainbow-delimiters-unmatched-face ((t (:inherit error))))
 
  ;; Show paren
