@@ -12,7 +12,7 @@
 (require 'basic-settings)
 ;;(load-theme 'im t)
 
-(load-theme 'soft-charcoal t)
+(load-theme 'im t)
 
 ;; cursor
 (set-cursor-color "chartreuse2")

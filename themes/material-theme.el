@@ -1,11 +1,12 @@
-;;; im-theme.el --- Emacs im-inspired dark theme
+;;; material-theme.el --- Emacs material-inspired dark theme
 ;;; Commentary:
+;;; Based on ample theme by Jordon Biondo <jordonbiondo@gmail.com>
 ;;; Code:
-(deftheme im "A dark theme.")
+(deftheme material "Material-inspired dark theme.")
 
 ;; Set faces
 (custom-theme-set-faces
- `im ;; you must use the same theme name here...
+ `material ;; you must use the same theme name here...
  `(default ((t (:foreground "#dadada" :background "#121212"))))
  `(fringe  ((t (:background "#1f1f1f"))))
  `(vertical-border ((t ( :foreground "#3f51b5" :background "#3f51b5"))))
@@ -35,8 +36,8 @@
 
  ;; Mode line & header line & powerline
  `(mode-line-buffer-id ((t (:foreground "#ffc400"))))
- `(mode-line-inactive  ((t (:box nil :foreground "#969696" :background "#1f1f1f" :slant italic))))
- `(mode-line           ((t (:box nil :foreground "#ffffff" :background "grey13" :weight bold))))
+ `(mode-line-inactive  ((t (:box (:line-width 1 :color "#3f51b5") :foreground "#969696" :background "#1f1f1f" :slant italic))))
+ `(mode-line           ((t (:box (:line-width 1 :color "#3f51b5") :foreground "#ffffff" :background "#3f51b5" :weight bold))))
  `(header-line         ((t (:box (:line-width 1 :color "#3f51b5") :foreground "#7986cb" :background "#292929" :bold t))))
  `(popup-tip-face      ((t (:foreground "#1f1f1f" :background "#dadada"))))
  `(powerline-active1   ((t (:foreground "#ffffff" :background "#3f51b5"))))
@@ -312,24 +313,24 @@
  `(magit-item-highlight     ((t (:foreground "#dadada" :background "#303f9f"))))
  `(magit-item-mark        ((t (:foreground "#ffc400"   :background "#121212"))))
 
- `(magit-diff-add       ((t (:foreground "green3"))))
- `(magit-diff-del       ((t (:foreground "red3"))))
+ `(magit-diff-add       ((t (:foreground "#72d572"        :background "#144517"))))
+ `(magit-diff-del       ((t (:foreground "#f69988"     :background "#851414"))))
  `(magit-diff-none        ((t (:foreground "#969696"    ))))
  `(magit-diff-file-header     ((t (:foreground "#d4e157" :bold t        ))))
  `(magit-diff-hunk-header     ((t (:foreground "#d4e157"                ))))
 
- ;; `(magit-diff-merge-current      ((t (:foreground ,im/orange :background nil))))
- ;; `(magit-diff-merge-diff3-separator    ((t (:foreground ,im/orange :background nil))))
- ;; `(magit-diff-merge-proposed     ((t (:foreground ,im/orange :background nil))))
- ;; `(magit-diff-merge-separator    ((t (:foreground ,im/orange :background nil))))
+ ;; `(magit-diff-merge-current      ((t (:foreground ,material/orange :background nil))))
+ ;; `(magit-diff-merge-diff3-separator    ((t (:foreground ,material/orange :background nil))))
+ ;; `(magit-diff-merge-proposed     ((t (:foreground ,material/orange :background nil))))
+ ;; `(magit-diff-merge-separator    ((t (:foreground ,material/orange :background nil))))
 
  ;;`(magit-key-mode-args-face     ((t (:foreground "black" :background "yellow3"))))
- ;; `(magit-key-mode-button-face      ((t (:foreground ,im/light-blue :background nil))))
- ;; `(magit-key-mode-header-face      ((t (:foreground ,im/blue :background nil))))
+ ;; `(magit-key-mode-button-face      ((t (:foreground ,material/light-blue :background nil))))
+ ;; `(magit-key-mode-header-face      ((t (:foreground ,material/blue :background nil))))
  ;;`(magit-key-mode-switch-face   ((t (:foreground "red" :background nil :bold t))))
 
- ;; `(magit-log-author        ((t (:foreground ,im/red :background nil))))
- ;; `(magit-log-author-date-cutoff    ((t (:foreground ,im/red :background nil :bold t))))
+ ;; `(magit-log-author        ((t (:foreground ,material/red :background nil))))
+ ;; `(magit-log-author-date-cutoff    ((t (:foreground ,material/red :background nil :bold t))))
  ;; `(magit-log-date        ((t (:foreground nil :background nil))))
  ;; `(magit-log-graph       ((t (:foreground "grey80" :background nil))))
  ;;`(magit-log-head-label-bisect-bad    ((t (:foreground "IndianRed4" :background "IndianRed1"))))
@@ -369,62 +370,62 @@
  ;; ----------------------------
  ;; NOT YET CUSTOMIZED
  ;; ----------------------------
- ;; `(button  ((t (:foreground ,im/lighter-blue :background nil :underline t))))
- ;; `(linum ((t (:foreground ,im/gray :background nil))))
+ ;; `(button  ((t (:foreground ,material/lighter-blue :background nil :underline t))))
+ ;; `(linum ((t (:foreground ,material/gray :background nil))))
 
- ;; `(git-gutter:deleted   ((t (:foreground ,im/red :background nil :bold t))))
- ;; `(git-gutter:modified  ((t (:foreground ,im/purple :background nil :bold t))))
- ;; `(git-gutter:separator ((t (:foreground ,im/orange :background nil :bold t))))
- ;; `(git-gutter:unchanged ((t (:foreground ,im/yellow :background nil))))
+ ;; `(git-gutter:deleted   ((t (:foreground ,material/red :background nil :bold t))))
+ ;; `(git-gutter:modified  ((t (:foreground ,material/purple :background nil :bold t))))
+ ;; `(git-gutter:separator ((t (:foreground ,material/orange :background nil :bold t))))
+ ;; `(git-gutter:unchanged ((t (:foreground ,material/yellow :background nil))))
 
  ;; ;; ace-jump
  ;; `(ace-jump-face-background ((t (:inherit font-lock-comment-face))))
- ;; `(ace-jump-face-foreground ((t (:foreground ,im/orange))))
+ ;; `(ace-jump-face-foreground ((t (:foreground ,material/orange))))
 
 
 
- ;; `(highlight-indentation-face ((t (:background ,im/darkest-gray))))
+ ;; `(highlight-indentation-face ((t (:background ,material/darkest-gray))))
 
 
  ;; ;; eshell
- ;; `(eshell-prompt ((t (:foreground ,im/purple))))
- ;; `(eshell-ls-directory ((t (:foreground ,im/blue))))
- ;; `(eshell-ls-product ((t (:foreground ,im/orange))))
- ;; `(eshell-ls-backup ((t (:foreground ,im/darker-gray))))
- ;; `(eshell-ls-executable ((t (:foreground ,im/green))))
+ ;; `(eshell-prompt ((t (:foreground ,material/purple))))
+ ;; `(eshell-ls-directory ((t (:foreground ,material/blue))))
+ ;; `(eshell-ls-product ((t (:foreground ,material/orange))))
+ ;; `(eshell-ls-backup ((t (:foreground ,material/darker-gray))))
+ ;; `(eshell-ls-executable ((t (:foreground ,material/green))))
 
  ;; ;; shell
- ;; `(comint-highlight-prompt ((t (:foreground ,im/green))))
+ ;; `(comint-highlight-prompt ((t (:foreground ,material/green))))
 
  ;; ;; erc
- ;; `(erc-nick-default-face ((t (:foreground ,im/blue))))
- ;; `(erc-my-nick-face ((t (:foreground ,im/yellow))))
- ;; `(erc-current-nick-face ((t (:foreground ,im/light-blue))))
- ;; `(erc-notice-face ((t (:foreground ,im/green))))
+ ;; `(erc-nick-default-face ((t (:foreground ,material/blue))))
+ ;; `(erc-my-nick-face ((t (:foreground ,material/yellow))))
+ ;; `(erc-current-nick-face ((t (:foreground ,material/light-blue))))
+ ;; `(erc-notice-face ((t (:foreground ,material/green))))
  ;; `(erc-input-face ((t (:foreground "white"))))
- ;; `(erc-timestamp-face ((t (:foreground ,im/darker-gray))))
- ;; `(erc-prompt-face ((t (:foreground "#191919" :background ,im/purple))))
+ ;; `(erc-timestamp-face ((t (:foreground ,material/darker-gray))))
+ ;; `(erc-prompt-face ((t (:foreground "#191919" :background ,material/purple))))
 
  ;; ;; ido
- ;; `(ido-only-match    ((t (:foreground ,im/green))))
- ;; `(ido-first-match   ((t (:foreground ,im/blue))))
- ;; `(ido-incomplete-regexp ((t (:foreground ,im/red))))
- ;; `(ido-subdir      ((t (:foreground ,im/yellow))))
+ ;; `(ido-only-match    ((t (:foreground ,material/green))))
+ ;; `(ido-first-match   ((t (:foreground ,material/blue))))
+ ;; `(ido-incomplete-regexp ((t (:foreground ,material/red))))
+ ;; `(ido-subdir      ((t (:foreground ,material/yellow))))
  ;; ;; flx-ido
- ;; `(flx-highlight-face         ((t (:foreground ,im/lighter-blue :background nil :underline nil :bold t))))
+ ;; `(flx-highlight-face         ((t (:foreground ,material/lighter-blue :background nil :underline nil :bold t))))
 
  ;; ;;js2
- ;; `(js2-external-variable   ((t (:foreground ,im/orange :background nil))))
- ;; `(js2-function-param      ((t (:foreground ,im/dark-green :background nil))))
- ;; `(js2-instance-member   ((t (:foreground ,im/purple :background nil))))
- ;; `(js2-jsdoc-html-tag-delimiter  ((t (:foreground ,im/dark-gray :background nil))))
- ;; `(js2-jsdoc-html-tag-name   ((t (:foreground ,im/darkest-gray :background nil))))
- ;; `(js2-jsdoc-tag     ((t (:foreground ,im/dark-red :background nil))))
- ;; `(js2-jsdoc-type      ((t (:foreground ,im/red :background nil))))
- ;; `(js2-jsdoc-value     ((t (:foreground ,im/tan :background nil))))
- ;; `(js2-private-function-call   ((t (:foreground ,im/dark-green :background nil))))
- ;; `(js2-private-member      ((t (:foreground ,im/dark-tan :background nil))))
- ;; `(js2-warning     ((t (:foreground nil :background nil :underline ,im/orange))))
+ ;; `(js2-external-variable   ((t (:foreground ,material/orange :background nil))))
+ ;; `(js2-function-param      ((t (:foreground ,material/dark-green :background nil))))
+ ;; `(js2-instance-member   ((t (:foreground ,material/purple :background nil))))
+ ;; `(js2-jsdoc-html-tag-delimiter  ((t (:foreground ,material/dark-gray :background nil))))
+ ;; `(js2-jsdoc-html-tag-name   ((t (:foreground ,material/darkest-gray :background nil))))
+ ;; `(js2-jsdoc-tag     ((t (:foreground ,material/dark-red :background nil))))
+ ;; `(js2-jsdoc-type      ((t (:foreground ,material/red :background nil))))
+ ;; `(js2-jsdoc-value     ((t (:foreground ,material/tan :background nil))))
+ ;; `(js2-private-function-call   ((t (:foreground ,material/dark-green :background nil))))
+ ;; `(js2-private-member      ((t (:foreground ,material/dark-tan :background nil))))
+ ;; `(js2-warning     ((t (:foreground nil :background nil :underline ,material/orange))))
 
  ;; ;;web-mode
  ;; `(web-mode-block-attr-name-face   ((t (:foreground "#8fbc8f" :background nil))))
@@ -437,16 +438,16 @@
  ;; `(web-mode-builtin-face     ((t (:inherit font-lock-builtin-face))))
  ;; `(web-mode-comment-face     ((t (:inherit font-lock-comment-face))))
  ;; `(web-mode-comment-keyword-face   ((t (:foreground nil :background nil :bold t))))
- ;; `(web-mode-constant-face      ((t (:foreground ,im/purple :background nil))))
- ;; `(web-mode-css-at-rule-face     ((t (:foreground ,im/purple :background nil))))
- ;; `(web-mode-css-color-face     ((t (:foreground ,im/light-blue :background nil))))
+ ;; `(web-mode-constant-face      ((t (:foreground ,material/purple :background nil))))
+ ;; `(web-mode-css-at-rule-face     ((t (:foreground ,material/purple :background nil))))
+ ;; `(web-mode-css-color-face     ((t (:foreground ,material/light-blue :background nil))))
  ;; `(web-mode-css-comment-face     ((t (:inherit font-lock-comment-face))))
- ;; `(web-mode-css-function-face      ((t (:foreground ,im/light-blue :background nil))))
- ;; `(web-mode-css-priority-face      ((t (:foreground ,im/light-blue :background nil))))
+ ;; `(web-mode-css-function-face      ((t (:foreground ,material/light-blue :background nil))))
+ ;; `(web-mode-css-priority-face      ((t (:foreground ,material/light-blue :background nil))))
  ;; `(web-mode-css-property-name-face   ((t (:inherit font-lock-variable-name-face))))
- ;; `(web-mode-css-pseudo-class-face    ((t (:foreground ,im/light-blue :background nil))))
- ;; `(web-mode-css-selector-face      ((t (:foreground ,im/blue :background nil))))
- ;; `(web-mode-css-string-face      ((t (:foreground ,im/tan :background nil))))
+ ;; `(web-mode-css-pseudo-class-face    ((t (:foreground ,material/light-blue :background nil))))
+ ;; `(web-mode-css-selector-face      ((t (:foreground ,material/blue :background nil))))
+ ;; `(web-mode-css-string-face      ((t (:foreground ,material/tan :background nil))))
  ;; `(web-mode-current-element-highlight-face ((t (:foreground nil :background "#000000"))))
  ;; `(web-mode-doctype-face     ((t (:inherit font-lock-doc-face))))
  ;; `(web-mode-error-face     ((t (:inherit error))))
@@ -483,14 +484,14 @@
  ;; `(jabber-activity-face    ((t (:inherit font-lock-variable-name-face :bold t))))
  ;; `(jabber-activity-personal-face ((t (:inherit font-lock-function-name-face :bold t))))
  ;; `(jabber-chat-error     ((t (:inherit error :bold t))))
- ;; `(jabber-chat-prompt-foreign    ((t (:foreground ,im/green  :background nil :underline nil :bold t))))
- ;; `(jabber-chat-prompt-local    ((t (:foreground ,im/light-blue   :background nil :underline nil :bold t))))
- ;; `(jabber-chat-prompt-system   ((t (:foreground ,im/yellow :background nil :underline nil :bold t))))
+ ;; `(jabber-chat-prompt-foreign    ((t (:foreground ,material/green  :background nil :underline nil :bold t))))
+ ;; `(jabber-chat-prompt-local    ((t (:foreground ,material/light-blue   :background nil :underline nil :bold t))))
+ ;; `(jabber-chat-prompt-system   ((t (:foreground ,material/yellow :background nil :underline nil :bold t))))
  ;; `(jabber-chat-text-foreign    ((t (:inherit default :background nil))))
  ;; `(jabber-chat-text-local    ((t (:inherit default :bold t))))
- ;; `(jabber-rare-time-face   ((t (:foreground ,im/purple :background nil :underline t))))
+ ;; `(jabber-rare-time-face   ((t (:foreground ,material/purple :background nil :underline t))))
  ;; `(jabber-roster-user-away   ((t (:inherit font-lock-string-face))))
- ;; `(jabber-roster-user-chatty   ((t (:foreground ,im/orange :background nil :bold t))))
+ ;; `(jabber-roster-user-chatty   ((t (:foreground ,material/orange :background nil :bold t))))
  ;; ;;`(jabber-roster-user-dnd    ((t (:foreground "red" :background nil))))
  ;; `(jabber-roster-user-error    ((t (:inherit error))))
  ;; `(jabber-roster-user-offline    ((t (:inherit font-lock-comment-face))))
@@ -503,7 +504,7 @@
 
  ;; ;; auto complete
  ;; `(ac-candidate-face     ((t (:foreground "black" :background "#dadada"))))
- ;; `(ac-selection-face     ((t (:foreground "#dadada" :background ,im/blue))))
+ ;; `(ac-selection-face     ((t (:foreground "#dadada" :background ,material/blue))))
  ;; `(ac-candidate-mouse-face   ((t (:inherit ac-selection-face))))
  ;; `(ac-clang-candidate-face   ((t (:inherit ac-candidate-face))))
  ;; `(ac-clang-selection-face   ((t (:inherit ac-selection-face))))
@@ -519,7 +520,7 @@
  ;; ;; w3m
  ;; ;;`(w3m-anchor      ((t (:foreground "cyan" :background nil))))
  ;; ;;`(w3m-arrived-anchor    ((t (:foreground "LightSkyBlue" :background nil))))
- ;; `(w3m-bold        ((t (:foreground ,im/blue :background nil :bold t))))
+ ;; `(w3m-bold        ((t (:foreground ,material/blue :background nil :bold t))))
  ;; `(w3m-current-anchor      ((t (:foreground nil :background nil :underline t :bold t))))
  ;; ;;`(w3m-form        ((t (:foreground "red" :background nil :underline t))))
  ;; ;;`(w3m-form-button     ((t (:foreground "red" :background nil :underline t))))
@@ -532,7 +533,7 @@
  ;; ;;`(w3m-image     ((t (:foreground "PaleGreen" :background nil))))
  ;; ;;`(w3m-image-anchor      ((t (:foreground nil :background "dark green"))))
  ;; ;;`(w3m-insert      ((t (:foreground "orchid" :background nil))))
- ;; `(w3m-italic        ((t (:foreground ,im/orange :background nil :underline t))))
+ ;; `(w3m-italic        ((t (:foreground ,material/orange :background nil :underline t))))
  ;; ;;`(w3m-session-select    ((t (:foreground "cyan" :background nil))))
  ;; ;;`(w3m-session-selected    ((t (:foreground "cyan" :background nil :underline t :bold t))))
  ;; ;;`(w3m-strike-through    ((t (:foreground nil :background nil))))
@@ -544,7 +545,7 @@
  ;; ;;`(w3m-tab-unselected    ((t (:foreground "black" :background "blue"))))
  ;; ;;`(w3m-tab-unselected-retrieving ((t (:foreground "OrangeRed" :background "blue"))))
  ;; ;;`(w3m-tab-unselected-unseen ((t (:foreground "gray60" :background "blue"))))
- ;; `(w3m-underline     ((t (:foreground ,im/green :background nil :underline t))))
+ ;; `(w3m-underline     ((t (:foreground ,material/green :background nil :underline t))))
 
 
  ;; ;; ediff
@@ -581,21 +582,21 @@
  ;;`(ediff-odd-diff-Ancestor    ((t ())))
 
  ;; ;; man pages
- ;; `(Man-overstrike ((t (:foreground ,im/blue))))
- ;; `(Man-underline ((t (:foreground ,im/yellow))))
+ ;; `(Man-overstrike ((t (:foreground ,material/blue))))
+ ;; `(Man-underline ((t (:foreground ,material/yellow))))
 
 
 
  ;; ;; message-mode
  ;; `(message-cited-text  ((t (:inherit font-lock-comment-face))))
- ;; `(message-header-cc  ((t (:foreground ,im/light-blue :background nil :bold t))))
- ;; `(message-header-name  ((t (:foreground ,im/orange :background nil))))
- ;; `(message-header-newsgroups  ((t (:foreground ,im/dark-tan :background nil :bold t))))
- ;; `(message-header-other  ((t (:foreground ,im/blue :background nil))))
- ;; `(message-header-subject  ((t (:foreground ,im/tan :background nil))))
- ;; `(message-header-to  ((t (:foreground ,im/yellow :background nil :bold t))))
- ;; `(message-header-xheader  ((t (:foreground ,im/purple :background nil))))
- ;; `(message-mml  ((t (:foreground ,im/dark-tan :background nil))))
+ ;; `(message-header-cc  ((t (:foreground ,material/light-blue :background nil :bold t))))
+ ;; `(message-header-name  ((t (:foreground ,material/orange :background nil))))
+ ;; `(message-header-newsgroups  ((t (:foreground ,material/dark-tan :background nil :bold t))))
+ ;; `(message-header-other  ((t (:foreground ,material/blue :background nil))))
+ ;; `(message-header-subject  ((t (:foreground ,material/tan :background nil))))
+ ;; `(message-header-to  ((t (:foreground ,material/yellow :background nil :bold t))))
+ ;; `(message-header-xheader  ((t (:foreground ,material/purple :background nil))))
+ ;; `(message-mml  ((t (:foreground ,material/dark-tan :background nil))))
 
  ;; gnus
  ;; `(gnus-button       ((t (:foreground nil :background nil :bold t))))
@@ -620,14 +621,14 @@
  ;; `(gnus-emphasis-underline-bold    ((t (:foreground nil :background nil :underline t :bold t))))
  ;; `(gnus-emphasis-underline-bold-italic ((t (:foreground nil :background nil :underline t :bold t))))
  ;; `(gnus-emphasis-underline-italic    ((t (:foreground nil :background nil :underline t))))
- ;; `(gnus-group-mail-1       ((t (:foreground ,im/blue :background nil :bold t))))
- ;; `(gnus-group-mail-1-empty     ((t (:foreground ,im/blue :background nil))))
- ;; `(gnus-group-mail-2       ((t (:foreground ,im/lighter-blue :background nil :bold t))))
- ;; `(gnus-group-mail-2-empty     ((t (:foreground ,im/lighter-blue :background nil))))
- ;; `(gnus-group-mail-3       ((t (:foreground ,im/light-blue :background nil :bold t))))
- ;; `(gnus-group-mail-3-empty     ((t (:foreground ,im/light-blue :background nil))))
- ;; `(gnus-group-mail-low     ((t (:foreground ,im/yellow :background nil :bold t))))
- ;; `(gnus-group-mail-low-empty     ((t (:foreground ,im/yellow :background nil))))
+ ;; `(gnus-group-mail-1       ((t (:foreground ,material/blue :background nil :bold t))))
+ ;; `(gnus-group-mail-1-empty     ((t (:foreground ,material/blue :background nil))))
+ ;; `(gnus-group-mail-2       ((t (:foreground ,material/lighter-blue :background nil :bold t))))
+ ;; `(gnus-group-mail-2-empty     ((t (:foreground ,material/lighter-blue :background nil))))
+ ;; `(gnus-group-mail-3       ((t (:foreground ,material/light-blue :background nil :bold t))))
+ ;; `(gnus-group-mail-3-empty     ((t (:foreground ,material/light-blue :background nil))))
+ ;; `(gnus-group-mail-low     ((t (:foreground ,material/yellow :background nil :bold t))))
+ ;; `(gnus-group-mail-low-empty     ((t (:foreground ,material/yellow :background nil))))
  ;; `(gnus-group-news-1       ((t (:foreground "PaleTurquoise" :background nil :bold t))))
  ;; `(gnus-group-news-1-empty     ((t (:foreground "PaleTurquoise" :background nil))))
  ;; `(gnus-group-news-2       ((t (:foreground "turquoise" :background nil :bold t))))
@@ -666,10 +667,10 @@
  ;; `(gnus-summary-low-undownloaded   ((t (:foreground "LightGray" :background nil))))
  ;; `(gnus-summary-low-unread     ((t (:foreground nil :background nil))))
  ;; `(gnus-summary-normal-ancient   ((t (:inherit default))))
- ;; `(gnus-summary-normal-read      ((t (:foreground ,im/green :background nil))))
- ;; `(gnus-summary-normal-ticked      ((t (:foreground ,im/orange :background nil))))
- ;; `(gnus-summary-normal-undownloaded    ((t (:foreground ,im/dark-gray :background nil))))
- ;; `(gnus-summary-normal-unread      ((t (:foreground ,im/light-blue :background nil))))
+ ;; `(gnus-summary-normal-read      ((t (:foreground ,material/green :background nil))))
+ ;; `(gnus-summary-normal-ticked      ((t (:foreground ,material/orange :background nil))))
+ ;; `(gnus-summary-normal-undownloaded    ((t (:foreground ,material/dark-gray :background nil))))
+ ;; `(gnus-summary-normal-unread      ((t (:foreground ,material/light-blue :background nil))))
  ;; `(gnus-summary-selected     ((t (:foreground nil :background nil :underline t))))
 
  ;; `(twittering-timeline-footer-face ((t (:foreground nil :background nil :inherit font-lock-function-name-face))))
@@ -677,13 +678,13 @@
  ;; `(twittering-uri-face   ((t (:foreground nil :background nil :underline t))))
  ;; `(twittering-username-face    ((t (:foreground nil :background nil :inherit font-lock-keyword-face :underline t))))
 
- ;; `(highlight-indentation-current-column-face ((t (:foreground nil :background ,im/gray))))
- ;; `(highlight-indentation-face                ((t (:foreground nil :background ,im/darkest-gray))))
+ ;; `(highlight-indentation-current-column-face ((t (:foreground nil :background ,material/gray))))
+ ;; `(highlight-indentation-face                ((t (:foreground nil :background ,material/darkest-gray))))
 
  )
 
 (custom-theme-set-variables
- 'im
+ 'material
  ;; IBuffer
  `(ibuffer-title-face 'helm-source-header)
  `(ibuffer-filter-group-name-face 'helm-source-header)
@@ -707,11 +708,11 @@
                (file-name-as-directory (file-name-directory load-file-name))))
 
 ;;;###autoload
-(defun im-theme()
-  "Apply the im-theme."
+(defun material-theme()
+  "Apply the material-theme."
   (interactive)
-  (load-theme 'im t))
+  (load-theme 'material t))
 
 
-(provide-theme 'im)
-;;; im-theme.el ends here
+(provide-theme 'material)
+;;; material-theme.el ends here
