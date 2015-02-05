@@ -12,7 +12,9 @@
 (require 'basic-settings)
 ;;(load-theme 'im t)
 
-(load-theme 'im t)
+;;;(load-theme 'im t)
+
+(load-theme 'monokai t)
 
 ;; cursor
 ;; (set-cursor-color "chartreuse2")
@@ -58,7 +60,7 @@
 ;;(require 'init-org)
 
 (require 'init-flycheck)
-;;(require 'init-evil)
+;; (require 'init-evil)
 
 (use-package rbenv
   :init (progn

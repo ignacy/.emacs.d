@@ -1,3 +1,10 @@
+(defvar evil-packages '(evil evil-leader evil-surround evil-nerd-commenter evil-matchit))
+
+(dolist (p evil-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
+
 (require 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
@@ -5,7 +12,7 @@
 (evil-leader/set-key
   "e" 'ido-find-file
   "b" 'ido-switch-buffer
-  "f" 'simp-project-find-file
+  "f" 'helm-projectile
   "r" 'ido-recentf-open
   "-" 'evil-split-buffer
   "i" 'helm-imenu

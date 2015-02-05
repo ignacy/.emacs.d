@@ -53,7 +53,7 @@
  `(font-lock-comment-delimiter-face ((t (:foreground "#424242"))))
  `(font-lock-function-name-face     ((t (:foreground "#d4e157"))))
  `(font-lock-keyword-face           ((t (:foreground "#738ffe"))))
- `(font-lock-string-face            ((t (:foreground "#26a69a"))))
+ `(font-lock-string-face            ((t (:foreground "#A8FF60"))))
  `(font-lock-preprocessor-face      ((t (:foreground "#ba68c8"))))
  `(font-lock-type-face              ((t (:foreground "#ec407a"))))
  `(font-lock-constant-face          ((t (:foreground "#2baf2b"))))

@@ -17,6 +17,7 @@
                        js2-mode
                        go-mode
                        go-eldoc
+                       monokai-theme
                        undo-tree
                        browse-kill-ring
                        golint
