@@ -38,7 +38,10 @@
 
 (bind "C-c y" 'browse-kill-ring)
 
-(bind "M-z" 'undo)
+;;(bind "M-z" 'undo)
+(require 'zop-to-char)
+(bind "M-z" 'zop-to-char)
+
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-r" 'ido-recentf-open) ;; Im disabling it in favour of project based search
