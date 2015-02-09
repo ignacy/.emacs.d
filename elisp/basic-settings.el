@@ -340,7 +340,6 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
 
-
 (use-package ibuffer-vc
   :init (progn
           (require 'ibuf-ext)
