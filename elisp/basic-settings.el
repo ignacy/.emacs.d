@@ -51,6 +51,7 @@
 (prefer-coding-system 'utf-8)
 (setq fill-column 80)
 
+(setq kill-do-not-save-duplicates t)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 
@@ -378,3 +379,14 @@ This functions should be added to the hooks of major modes for programming."
 
 (display-time-mode -1)
 (provide 'basic-settings)
+
+
+(defun my/replace-blank-kill (args)
+  (let ((string (car args))
+        (replace (cdr args))
+        (last (car-safe kill-ring)))
+    (when (and last (string-blank-p last))
+      (setq replace t))
+    (list string replace)))
+
+(advice-add 'kill-new :filter-args #'my/replace-blank-kill)
