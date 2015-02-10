@@ -86,8 +86,8 @@
 ;;(set-frame-font "CamingoCode 15")
 
 ;;(require 'nssh)
-(set-frame-font "Source Code Pro 16")
+;;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
-;;(set-frame-font "Inconsolata-g 15")
+(set-frame-font "Inconsolata-g 14")
 
 (recentf-cleanup) ;; remove old files from recentf list

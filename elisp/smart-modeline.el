@@ -1,3 +1,16 @@
+;;(force-mode-line-update)
+;;(set-face-background 'mode-line "grey99")
+;;(set-face-foreground 'mode-line "#dedede")
+;;(set-face-background 'mode-line-inactive "grey90")
+;;(set-face-foreground 'mode-line-inactive "#dbdbdb")
+;; (set-face-background 'mode-line-inactive "black")
+;;(set-face-foreground 'mode-line-inactive "#eee")
+;;(custom-set-faces '(mode-line ((t (:box nil)))))
+;;(custom-set-faces '(mode-line ((t (:box (:line-width 1 :color "DarkBlue" :style released-button))))))
+(custom-set-faces '(mode-line ((t (:box nil) (:background "#grey30")))))
+(custom-set-faces '(mode-line-inactive ((t (:box nil) (:background "#grey20")))))
+
+
 (defface sm-default-face
   '((t :inherit default :foreground "#FF1F69"))
   "Smart modeline " :group 'smart-modeline-faces)
@@ -52,16 +65,5 @@
 
 
                ))
-
-;;(force-mode-line-update)
-(set-face-background 'mode-line "grey22")
-;;(set-face-foreground 'mode-line "#dedede")
-;;(set-face-background 'mode-line-inactive "#111")
-;;(set-face-foreground 'mode-line-inactive "#dbdbdb")
-;; (set-face-background 'mode-line-inactive "black")
-;;(set-face-foreground 'mode-line-inactive "#eee")
-;;(custom-set-faces '(mode-line ((t (:box nil)))))
-;;(custom-set-faces '(mode-line ((t (:box (:line-width 1 :color "DarkBlue" :style released-button))))))
-;;(custom-set-faces '(mode-line ((t (:box nil) (:background "#fff")))))
 
 (provide 'smart-modeline)
