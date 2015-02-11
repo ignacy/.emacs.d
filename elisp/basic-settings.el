@@ -26,8 +26,9 @@
                        ibuffer-vc
                        flycheck
                        projectile-rails
-                       ag color-identifiers-mode
-                       exec-path-from-shell expand-region
+                       color-identifiers-mode
+                       exec-path-from-shell
+                       expand-region
                        flx-ido find-file-in-project
                        ace-jump-mode helm-swoop
                        highlight-symbol ido-hacks
@@ -380,6 +381,10 @@ This functions should be added to the hooks of major modes for programming."
 (display-time-mode -1)
 (provide 'basic-settings)
 
+
+
+(setq browse-kill-ring-separator
+      "--------------------------------------------------------------------------------")
 
 (defun my/replace-blank-kill (args)
   (let ((string (car args))

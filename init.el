@@ -12,9 +12,9 @@
 (require 'basic-settings)
 ;;(load-theme 'im t)
 
-;;;(load-theme 'im t)
+(load-theme 'brin t)
 
-(load-theme 'monokai t)
+;;(load-theme 'monokai t)
 
 ;; cursor
 ;; (set-cursor-color "chartreuse2")

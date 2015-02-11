@@ -15,27 +15,9 @@
 (define-key input-decode-map "\e[1;5C" [C-right])
 (define-key input-decode-map "\e[1;5D" [C-left])
 
-;;(bind "M-r" 'helm-git-grep)
-
-
-(defun projectile-helm-do-ag ()
-  (interactive)
-  (helm-do-ag (projectile-project-root)))
-
-(bind "M-r" 'projectile-helm-do-ag)
-
-;;(bind "M-r" 'projectile-pt)
-
-;; (defun qrc (replace-str)
-;;    (interactive "sDo query-replace current word with: ")
-;;    (forward-word)
-;;    (let ((end (point)))
-;;       (backward-word)
-;;       (kill-ring-save (point) end)
-;;       (query-replace (current-kill 0) replace-str) ))
+(bind "M-r" 'helm-projectile-grep)
 
 (bind "M-c" 'query-replace)
-
 (bind "C-c y" 'browse-kill-ring)
 
 ;;(bind "M-z" 'undo)
