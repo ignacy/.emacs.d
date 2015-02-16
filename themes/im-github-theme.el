@@ -6,17 +6,18 @@
 (deftheme im-github "Based on Port of Github Theme for Emacs 24")
 
 (let (
-      (*background-color*  "#f0f0f0")
-      (*background-mode*  'light)
-      (*border-color*  "black")
-      (*cursor-color*  "#000000")
-      (*foreground-color*  "#000000")
-      (*mouse-color*  "#bcd5fa"))
+      ;; (*background-color*  "#cccccc")
+      ;; (*background-mode*  'light)
+      ;; (*border-color*  "black")
+      ;; (*cursor-color*  "#000000")
+      ;; (*foreground-color*  "#000000")
+      ;; (*mouse-color*  "#bcd5fa")
+      )
 
   (custom-theme-set-faces
    'im-github
 
-   `(default ((t (:stipple nil :background "#f8f8ff" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal))))
+   `(default ((t (:stipple nil :background "#e8e8e8" :foreground "#000000" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal))))
    `(css-property ((t (:foreground "#0086b3"))))
    `(css-selector ((t (:foreground "#990000"))))
    `(cursor ((t (:background "#a7a7a7"))))
