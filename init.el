@@ -10,10 +10,7 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-(load-theme 'easyballs t)
-
-;;(load-theme 'monokai t)
-
+(load-theme 'railscasts t)
 ;; cursor
 ;; (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
@@ -35,7 +32,6 @@
           (set-face-attribute face nil :weight type :underline nil))
         (face-list)))
 ;; (fix-fonts 'normal)
-
 
 (fringe-mode '(0 . 0))
 
@@ -87,8 +83,7 @@
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
-;;(set-frame-font "Inconsolata-g 15")
-
-(set-frame-font "Lucida Grande Mono 16")
+;;(set-frame-font "Inconsolata-g 14")
+(set-frame-font "Lucida Grande Mono 14")
 
 (recentf-cleanup) ;; remove old files from recentf list
