@@ -21,7 +21,6 @@
                        go-mode
                        go-eldoc
                        monokai-theme
-                       undo-tree
                        browse-kill-ring
                        golint
                        color-theme-sanityinc-tomorrow
@@ -337,9 +336,6 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package expand-region
   :init (global-set-key (kbd "M-2") 'er/expand-region))
-
-(use-package undo-tree
-  :init (undo-tree-mode))
 
 (use-package diminish
   :init (progn

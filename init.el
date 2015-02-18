@@ -10,7 +10,7 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-(load-theme 'text-ex-machina t)
+(load-theme 'brogrammer t)
 
 ;;(color-theme-mac-classic)
 
@@ -37,6 +37,7 @@
           (set-face-attribute face nil :weight type :underline nil))
         (face-list)))
 ;; (fix-fonts 'normal)
+
 
 (fringe-mode '(0 . 0))
 

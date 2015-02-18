@@ -22,6 +22,8 @@
 
 ;;(bind "M-z" 'undo)
 (require 'zop-to-char)
+
+(setq zop-to-char--delete-up-to-char t)
 (bind "M-z" 'zop-to-char)
 
 (bind "C-x i" 'indent-region-or-buffer)
