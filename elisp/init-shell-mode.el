@@ -1,37 +1,5 @@
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 
-
-;; make a face
-(make-face 'font-lock-small-face)
-(set-face-attribute 'font-lock-small-face nil :height 0.9)
-
-(add-hook 'shell-mode-hook
-          '(lambda ()
-             (setq ansi-color-names-vector ; better contrast colors
-                   ["black" "red4" "green4" "yellow4"
-                    "blue3" "magenta4" "cyan4" "white"])
-             (setq show-trailing-whitespace nil)
-             (make-local-variable 'global-hl-line-mode)
-             (setq global-hl-line-mode nil)
-             (toggle-truncate-lines 1)
-             (ansi-color-for-comint-mode-on)
-             (set-face-foreground 'highlight nil)
-             (font-lock-mode t)
-             ;;(buffer-face-mode t) ; only in emacs 23
-             ;;(buffer-face-set 'font-lock-small-face)
-             (hl-line-mode nil)))
-
-(setq comint-prompt-read-only nil)
-(setq comint-process-echoes t)
-
-(setq explicit-shell-file-name "/bin/zsh")
-
-(setq ansi-color-names-vector ; better contrast colors
-      ["black" "red4" "green4" "yellow4"
-       "blue3" "magenta4" "cyan4" "white"])
-(ansi-color-for-comint-mode-on)
-
-;; term
 (defface term-color-black
   '((t (:foreground "#3f3f3f" :background "#272822")))
   "Unhelpful docstring.")
@@ -65,11 +33,38 @@
             term-color-blue term-color-magenta term-color-cyan term-color-white])
 
 
+;; make a face
+(make-face 'font-lock-small-face)
+(set-face-attribute 'font-lock-small-face nil :height 0.9)
+
+(add-hook 'shell-mode-hook
+          '(lambda ()
+             (setq show-trailing-whitespace nil)
+             (make-local-variable 'global-hl-line-mode)
+             (setq global-hl-line-mode nil)
+             (ansi-color-for-comint-mode-on)
+             (toggle-truncate-lines 1)
+             (set-face-foreground 'highlight nil)
+             (font-lock-mode t)
+             ;;(buffer-face-mode t) ; only in emacs 23
+             ;;(buffer-face-set 'font-lock-small-face)
+             (hl-line-mode nil)))
+
+;;(setq comint-prompt-read-only nil)
+(setq comint-process-echoes t)
+
+(setq explicit-shell-file-name "/bin/zsh")
+
+
+;; term
+
+
 (add-hook 'term-mode-hook
           (lambda ()
             (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))
             (setq term-buffer-maximum-size 10000)
+            (ansi-color-for-comint-mode-on)
             (setq show-trailing-whitespace nil)
             (yas-minor-mode -1)
             (set (make-local-variable 'company-mode) nil)

@@ -51,6 +51,9 @@
  '(main-line-color1 "#1E1E1E")
  '(main-line-color2 "#111111")
  '(main-line-separator-style (quote chamfer))
+ '(package-selected-packages
+   (quote
+    (atom-dark-theme find-file-in-project color-theme-sanityinc-tomorrow monokai-theme company-quickhelp zenburn yasnippet yaml-mode warm-night-theme waher-theme visual-regexp use-package underwater-theme ujelly-theme ubuntu-theme twilight-theme twilight-anti-bright-theme tronesque-theme tron-theme tommyh-theme sublime-themes subatomic-theme subatomic-enhanced-theme speed-type spacegray-theme soothe-theme soft-charcoal-theme smyx-theme smex smartscan smartparens slime-theme sane-term ruby-tools ruby-hash-syntax rspec-mode rhtml-mode rbenv rainbow-mode rainbow-delimiters quickrun projectile-rails professional-theme persp-projectile oldlace-theme noctilux-theme naquadah-theme mustard-theme multiple-cursors monochrome-theme minimal-theme mellow-theme mark-multiple magit lush-theme key-chord jujube-theme json-reformat js2-mode jade-mode ir-black-theme indent-guide ido-hacks ido-better-flex ibuffer-vc highlight-symbol highlight-indentation helm-projectile helm-mt gruvbox-theme grandshell-theme gotham-theme golint go-eldoc github-theme git-gutter-fringe git-gutter+ gist gandalf-theme font-lock+ flycheck flx-ido flatui-theme flatland-theme firecode-theme firebelly-theme fill-column-indicator expand-region exec-path-from-shell enh-ruby-mode emr dropdown-list darkmine-theme company-go color-theme-zenburn color-identifiers-mode colonoscopy-theme clojure-mode browse-kill-ring base16-theme auto-dim-other-buffers ace-isearch)))
  '(powerline-color1 "#1E1E1E")
  '(powerline-color2 "#111111")
  '(rspec-command-options "--color --order random")

@@ -10,9 +10,7 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-(load-theme 'brogrammer t)
-
-;;(color-theme-mac-classic)
+(load-theme 'easyballs t)
 
 ;;(load-theme 'monokai t)
 
@@ -87,8 +85,10 @@
 ;;(set-frame-font "CamingoCode 15")
 
 ;;(require 'nssh)
-(set-frame-font "Source Code Pro 15")
+;;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
+
+(set-frame-font "Lucida Grande Mono 16")
 
 (recentf-cleanup) ;; remove old files from recentf list
