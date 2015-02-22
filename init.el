@@ -11,6 +11,7 @@
 
 (require 'basic-settings)
 (load-theme 'railscasts t)
+
 ;; cursor
 ;; (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)

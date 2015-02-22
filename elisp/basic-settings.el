@@ -22,6 +22,7 @@
                        go-eldoc
                        monokai-theme
                        browse-kill-ring
+                       railscasts-theme
                        golint
                        color-theme-sanityinc-tomorrow
                        visual-regexp
