@@ -141,6 +141,7 @@ This functions should be added to the hooks of major modes for programming."
 
 (delete-selection-mode t)
 (global-subword-mode 1)
+(setq tramp-default-method "ssh")
 
 ;; undo setting
 (setq undo-no-redo t
