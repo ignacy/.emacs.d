@@ -33,6 +33,9 @@
             term-color-blue term-color-magenta term-color-cyan term-color-white])
 
 
+(defadvice ansi-term (after advice-term-line-mode activate)
+  (term-line-mode))
+
 ;; make a face
 (make-face 'font-lock-small-face)
 (set-face-attribute 'font-lock-small-face nil :height 0.9)
@@ -129,11 +132,13 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
   (ansi-term name))
 
 
-;; (use-package sane-term
-;;   :init (progn
-;;           (setq sane-term-shell-command "/bin/zsh")
-;;           (global-set-key (kbd "C-x t") 'sane-term)
-;;           (global-set-key (kbd "C-x T") 'sane-term-create)))
+(use-package sane-term
+  :ensure sane-term
+  :defer t
+  :init (progn
+          (setq sane-term-shell-command "/bin/zsh")
+          (global-set-key (kbd "C-x t") 'sane-term)
+          (global-set-key (kbd "C-x T") 'sane-term-create)))
 
 
 ;; (defun zsh ()

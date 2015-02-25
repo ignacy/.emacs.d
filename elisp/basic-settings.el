@@ -330,4 +330,11 @@ This functions should be added to the hooks of major modes for programming."
 (advice-add 'kill-new :filter-args #'my/replace-blank-kill)
 
 
+(require 'wakatime-mode)
+(setq wakatime-api-key "378d5540-75fa-415f-8a20-51aac381b1ac")
+(setq wakatime-cli-path "/usr/local/bin/wakatime")
+(setq wakatime-python-bin "/usr/local/bin/python")
+(global-wakatime-mode)
+
+
 (provide 'basic-settings)

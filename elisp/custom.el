@@ -107,4 +107,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(highlight-symbol-face ((t (:background "DarkBlue" :foreground "gray93" :weight normal))))
- '(paren-face-match ((t (:background "gray20")))))
+ '(mode-line ((t (:box nil) (:background "grey3"))))
+ '(mode-line-inactive ((t (:box nil) (:background "grey6"))))
+ '(paren-face-match ((t (:background "gray20"))))
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "slate blue"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "turquoise4"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "purple2")))))
