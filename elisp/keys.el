@@ -30,8 +30,6 @@
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-r" 'ido-recentf-open) ;; Im disabling it in favour of project based search
 
-
-(bind "C-x g" 'magit-status)
 (bind "M-h" 'backward-kill-word)
 (bind "C-x C-o" 'other-window)
 (bind "C-x C-1" 'delete-other-windows)
@@ -86,7 +84,7 @@
 
 (bind "C-S-o" 'move-line-up)
 
-
+(bind "C-x C-x" 'term-run-shell-command)
 ;; Move more quickly
 (global-set-key (kbd "C-S-n")
                 (lambda ()

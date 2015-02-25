@@ -1,4 +1,8 @@
+(use-package projectile-rails
+  :ensure projectile-rails)
+
 (use-package projectile
+  :ensure projectile
   :init (progn
           (add-hook 'projectile-mode-hook 'projectile-rails-on)
           (projectile-global-mode)
@@ -8,29 +12,18 @@
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
           (ad-activate 'find-tag-at-point)))
 
-(use-package helm-projectile)
+(use-package helm-projectile
+  :ensure helm-projectile
+  :defer t)
 
 (use-package perspective
-  :init (persp-mode))
+  :init (persp-mode)
+  :ensure perspective)
 
 (use-package persp-projectile
-  :init
-  ;;(define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)
-  (global-set-key (kbd "C-c C-p") 'projectile-persp-switch-project))
-
-(use-package find-file-in-project
-  :init (progn
-          (require 'setup-ffip)
-          (add-to-list 'ffip-patterns "*.haml")
-          (add-to-list 'ffip-patterns "*.html.erb")
-          (add-to-list 'ffip-patterns "*.erb")
-          (add-to-list 'ffip-patterns "*.go")
-          (add-to-list 'ffip-patterns "*.java")
-          (add-to-list 'ffip-patterns "*.js")
-          (add-to-list 'ffip-patterns "*.css")
-          (add-to-list 'ffip-patterns "*Gemfile")
-          (add-to-list 'ffip-patterns "*.xml")
-          (add-to-list 'ffip-patterns "*yml")))
+  :ensure persp-projectile
+  :defer t
+  :init (global-set-key (kbd "C-c C-p") 'projectile-persp-switch-project))
 
 (eval-after-load "grep"
   '(progn

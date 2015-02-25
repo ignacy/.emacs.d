@@ -7,12 +7,15 @@
 ;;(set-face-foreground 'mode-line-inactive "#eee")
 ;;(custom-set-faces '(mode-line ((t (:box nil)))))
 ;;(custom-set-faces '(mode-line ((t (:box (:line-width 1 :color "DarkBlue" :style released-button))))))
-(custom-set-faces '(mode-line ((t (:box nil) (:background "#grey30")))))
-(custom-set-faces '(mode-line-inactive ((t (:box nil) (:background "#grey20")))))
+(custom-set-faces '(mode-line ((t (:box nil) (:background "grey3")))))
+(custom-set-faces '(mode-line-inactive ((t (:box nil) (:background "grey6")))))
+(set-face-foreground 'mode-line "grey7")
+(set-face-foreground 'mode-line-inactive "grey10")
+
 
 
 (defface sm-default-face
-  '((t :inherit default :foreground "#FF1F69"))
+  '((t :inherit default :foreground "#FF1F68"))
   "Smart modeline " :group 'smart-modeline-faces)
 
 (defface sm-project-face

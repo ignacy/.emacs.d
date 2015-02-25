@@ -2,52 +2,9 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-;; Removed for the time being
-;;("marmalade" . "http://marmalade-repo.org/packages/")
-
-
-(package-initialize)
 (setq package-enable-at-startup nil)
-(when (not package-archive-contents)
-  (package-refresh-contents))
-(defvar my-packages '(use-package
-                       clojure-mode
-                       company
-                       company-quickhelp
-                       key-chord
-                       emr
-                       waher-theme
-                       js2-mode
-                       go-mode
-                       go-eldoc
-                       monokai-theme
-                       browse-kill-ring
-                       railscasts-theme
-                       golint
-                       color-theme-sanityinc-tomorrow
-                       visual-regexp
-                       ibuffer-vc
-                       flycheck
-                       projectile-rails
-                       color-identifiers-mode
-                       exec-path-from-shell
-                       expand-region
-                       flx-ido find-file-in-project
-                       ace-jump-mode helm-swoop
-                       highlight-symbol ido-hacks
-                       inf-ruby magit underwater-theme
-                       mark-multiple multiple-cursors
-                       projectile rainbow-delimiters
-                       rbenv rhtml-mode
-                       helm-projectile
-                       atom-dark-theme
-                       rspec-mode ruby-mode
-                       yaml-mode smartparens
-                       smex yasnippet))
+(package-initialize)
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
 
 (setq compilation-ask-about-save nil)
 (set-terminal-coding-system nil)
@@ -114,15 +71,6 @@ This functions should be added to the hooks of major modes for programming."
           1 font-lock-warning-face t))))
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
-
-
-;;(add-hook 'prog-mode-hook '(lambda () (flyspell-prog-mode)))
-
-(eval-after-load "flyspell"
-  '(progn
-     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
-     (define-key flyspell-mouse-map [mouse-3] #'undefined)))
-
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 2)
 (set-language-environment "UTF-8")
@@ -130,12 +78,7 @@ This functions should be added to the hooks of major modes for programming."
 (setenv "LC_CTYPE" "en_US.UTF-8")
 (autoload 'epa "epa-file-mode" t)
 (epa-file-enable)
-
-(setq paren-dont-touch-blink t)
-(require 'mic-paren)
-(paren-activate)
-(setq paren-match-face 'mic-paren-matching)
-(setq paren-sexp-mode t)
+;;(setq paren-dont-touch-blink t)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -157,6 +100,8 @@ This functions should be added to the hooks of major modes for programming."
 
 (require 'use-package)
 
+
+
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
   (setenv "GOPATH" (concat (getenv "HOME") "/code/go:" (getenv "GOPATH")))
@@ -164,30 +109,40 @@ This functions should be added to the hooks of major modes for programming."
   (push "~/.rbenv/shims" exec-path)
   (push "~/bin" exec-path))
 
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
 
+(use-package exec-path-from-shell
+  :ensure exec-path-from-shell
+  :init (progn
+         (when (memq window-system '(mac ns))
+           (exec-path-from-shell-initialize))))
+
+(use-package mic-paren
+  :ensure mic-paren
+  :init (paren-activate)
+  :config (progn
+            (setq paren-match-face 'paren-face-match)
+            (setq paren-sexp-mode t)))
+
+(use-package inline-string-rectangle)
 
 ;; ;;;; multiple-cursors
 (use-package multiple-cursors
-  :init (progn (require 'inline-string-rectangle)
-               (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
-               (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-               (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-               (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
-
-
-(use-package ace-jump-mode
-  :init
-  (global-set-key (kbd "C-/") 'ace-jump-word-mode)
-  (global-set-key (kbd "M-1") 'ace-jump-word-mode))
+  :ensure multiple-cursors
+  :defer t
+  :init (progn
+          (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+          (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+          (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+          (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
+  :ensure rainbow-delimiters
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 
 (use-package highlight-symbol
+  :ensure highlight-symbol
   :init (progn
           (add-hook 'prog-mode-hook 'highlight-symbol-mode)
           (setq highlight-symbol-idle-delay 0)))
@@ -212,6 +167,8 @@ This functions should be added to the hooks of major modes for programming."
 (add-hook 'ido-setup-hook 'ido-define-keys)
 
 (use-package flx-ido
+  :ensure flx-ido
+  :defer t
   :init (progn
           (flx-ido-mode 1)
           (setq gc-cons-threshold 20000000)
@@ -219,10 +176,12 @@ This functions should be added to the hooks of major modes for programming."
 
 
 (use-package saveplace
+  :ensure saveplace
   :init (progn (setq-default save-place t)
                (setq save-place-file (expand-file-name ".places" user-emacs-directory))))
 
 (use-package recentf
+  :ensure recentf
   :init (progn
           (setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
           (recentf-mode t)
@@ -232,53 +191,48 @@ This functions should be added to the hooks of major modes for programming."
           (add-to-list 'recentf-exclude "elpa")))
 
 
-
-;;;; Cider
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-(setq nrepl-hide-special-buffers nil)
-(setq cider-repl-pop-to-buffer-on-connect nil)
-(setq cider-popup-stacktraces nil)
-(setq cider-repl-popup-stacktraces t)
-(setq nrepl-buffer-name-separator "-")
-(setq cider-repl-display-in-current-window t)
-(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
-
 (use-package fancy-narrow
+  :ensure fancy-narrow
+  :defer t
   :init (fancy-narrow-mode))
 
 (use-package smex
-  :init
-  (progn
+  :ensure smex
+  :init (progn
     (smex-initialize)
     (global-set-key (kbd "M-x") 'smex)))
 
 (use-package smartscan
+  :ensure smartscan
+  :defer t
   :init (add-hook 'prog-mode-hook 'smartscan-mode))
 
-(use-package expand-region)
+(use-package smartparens
+  :ensure smartparens
+  :config (progn
+            (require 'smartparens-config)
+            (smartparens-global-mode t))
+  (defun handle-curlys (id action context)
+    (when (eq action 'insert)
+      (newline)
+      (newline)
+      (indent-according-to-mode)
+      (previous-line)
+      (indent-according-to-mode)))
 
-(use-package smartparens)
-(require 'smartparens-config)
-(smartparens-global-mode t)
+  (sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
+  (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys)))
 
-(defun handle-curlys (id action context)
-  (when (eq action 'insert)
-    (newline)
-    (newline)
-    (indent-according-to-mode)
-    (previous-line)
-    (indent-according-to-mode)))
-
-(sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
-(sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys))
-
-;;(show-smartparens-global-mode +1)
 
 (use-package easy-kill
+  :ensure easy-kill
+  :defer t
   :init (global-set-key [remap kill-ring-save] 'easy-kill))
 
 
 (use-package hungry-delete
+  :ensure hungry-delete
+  :defer t
   :init (global-hungry-delete-mode))
 
 (defun prelude-colorize-compilation-buffer ()
@@ -294,14 +248,11 @@ This functions should be added to the hooks of major modes for programming."
 
 (setq compilation-scroll-output 'first-error) ;; follows output
 
-
-(use-package font-lock+)
+(use-package font-lock+
+  :ensure  font-lock+)
 
 ;; (use-package auto-dim-other-buffers
 ;;   :init (auto-dim-other-buffers-mode t))
-
-(use-package ag
-  :init (setq ag-highlight-search t))
 
 (defun copy-from-osx ()
   (shell-command-to-string "pbpaste"))
@@ -317,6 +268,7 @@ This functions should be added to the hooks of major modes for programming."
   (setq interprogram-paste-function 'copy-from-osx))
 
 (use-package wrap-region
+  :ensure  wrap-region
   :init (progn
           ;; wrap-region
           (wrap-region-global-mode +1)
@@ -324,65 +276,45 @@ This functions should be added to the hooks of major modes for programming."
           (wrap-region-add-wrapper "`" "`")
           (wrap-region-add-wrapper "{" "}")))
 
-(use-package smartscan
-  :init (smartscan-mode 1))
-
-(use-package helm-swoop)
+(use-package helm-swoop
+  :ensure  helm-swoop
+  :defer t)
 
 
 (use-package ace-jump-mode
+  :ensure  ace-jump-mode
+  :defer t
   :init (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
 
 (use-package ace-isearch
+  :ensure ace-isearch
+  :defer t
   :init (global-ace-isearch-mode +1))
 
 (use-package expand-region
+  :ensure  expand-region
+  :defer t
   :init (global-set-key (kbd "M-2") 'er/expand-region))
 
-(use-package diminish
-  :init (progn
-          (eval-after-load "filladapt" '(diminish 'filladapt-mode))))
-
-(use-package ibuffer-vc
-  :init (progn
-          (require 'ibuf-ext)
-          (add-to-list 'ibuffer-never-show-predicates "^\\*")
-          (add-to-list 'ibuffer-never-show-predicates "TAGS")
-          (add-hook 'ibuffer-hook
-                    (lambda ()
-                      (ibuffer-vc-set-filter-groups-by-vc-root)
-                      (unless (eq ibuffer-sorting-mode 'alphabetic)
-                        (ibuffer-do-sort-by-alphabetic))))))
-
-;; (use-package whitespace
-;;   :init (progn
-;;           (setq whitespace-style '(face empty lines-tail trailing))
-;;           (setq whitespace-line-column 80)
-;;           (setq whitespace-global-modes '(not git-commit-mode))
-;;           (global-whitespace-mode)))
-
 (use-package visual-regexp
+  :ensure  visual-regexp
+  :defer t
   :init (progn
           (define-key global-map (kbd "C-c r") 'vr/replace)
           (define-key global-map (kbd "C-c q") 'vr/query-replace)
           ;; if you use multiple-cursors, this is for you:
           (define-key global-map (kbd "C-c m") 'vr/mc-mark)))
 
-(use-package emr
-  :init (progn
-          (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
-          (add-hook 'prog-mode-hook 'emr-initialize)))
-
 (use-package re-builder
+  :ensure  re-builder
+  :defer t
   :init (setq reb-re-syntax 'string))
 
-(use-package ibuffer-vc
-  :init (ibuffer-vc-set-filter-groups-by-vc-root))
-
 (display-time-mode -1)
-(provide 'basic-settings)
 
 
+(use-package term-run
+  :ensure term-run)
 
 (setq browse-kill-ring-separator
       "--------------------------------------------------------------------------------")
@@ -396,3 +328,6 @@ This functions should be added to the hooks of major modes for programming."
     (list string replace)))
 
 (advice-add 'kill-new :filter-args #'my/replace-blank-kill)
+
+
+(provide 'basic-settings)

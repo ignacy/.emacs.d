@@ -1,7 +1,13 @@
-(use-package inf-ruby)
-(use-package ruby-mode)
-(use-package rspec-mode)
+(use-package inf-ruby
+  :ensure  inf-ruby
+  :defer t)
+
+(use-package rspec-mode
+  :ensure  rspec-mode
+  :defer t)
+
 (use-package rhtml-mode
+  :ensure  rhtml-mode
   :init
   (progn
 
@@ -25,6 +31,7 @@
 
 
 (use-package ruby-mode
+  :ensure  ruby-mode
   :init (progn
           ;; Libraries
           (require 'flymake)
@@ -60,24 +67,8 @@
                         (local-set-key (kbd "C-c d") 'flymake-popup-current-error-menu)
                         (flymake-mode t))))))
 
-;; (add-hook 'ruby-mode-hook
-;;           (lambda ()
-;;             (set (make-local-variable 'compile-command)
-;;                  (concat "ruby -Ilib:test:. " buffer-file-name))))
-
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
-
-;; (use-package robe
-;;   :init (progn
-;;           (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
-;;             (rbenv-use-corresponding))
-;;           (setq robe-turn-on-eldoc nil)
-;;           (add-hook 'ruby-mode-hook 'robe-mode)))
-
-
-;; (require 'ruby-dev)
-;; (add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
 
 
 (defun bundle ()
@@ -93,12 +84,6 @@
   (interactive)
   (let ((shell-file-name "/bin/bash"))
     (run-ruby (concat (projectile-project-root) "/bin/rails console"))))
-
-(defun spork ()
-  "Runs inf-ruby process with a rails console loaded inside"
-  (interactive)
-  (let ((shell-file-name "/bin/bash"))
-    (run-ruby "bundle exec spork")))
 
 (defun rails-server ()
   "Runs rails server for the current project"
@@ -117,6 +102,10 @@
 (setq rspec-use-bundler-when-possible nil)
 (setq rspec-command-options "--format documentation --order random")
 
+
+(defun run-rspecs ()
+  (interactive)
+  (term-run-shell-command "sp"))
 
 (font-lock-add-keywords
  'ruby-mode

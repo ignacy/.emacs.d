@@ -1,7 +1,6 @@
 ;;; init -- my emacs configuration
 (require 'cl)
-(setq debug-on-error nil)
-
+(setq debug-on-error t)
 (setq dotfiles-dir "~/.emacs.d")
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))
 (add-to-list 'load-path configuration-files-dir)
@@ -10,7 +9,10 @@
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (require 'basic-settings)
-(load-theme 'railscasts t)
+
+(use-package noctilux-theme
+   :ensure noctilux-theme
+   :init (load-theme 'noctilux t))
 
 ;; cursor
 ;; (set-cursor-color "chartreuse2")
@@ -36,7 +38,6 @@
 
 (fringe-mode '(0 . 0))
 
-(use-package smart-modeline)
 (use-package helpers)
 (use-package keys)
 
@@ -48,6 +49,7 @@
 (require 'init-markup-and-style-modes)
 
 (require 'init-projectile)
+
 (require 'init-magit)
 (require 'init-ruby-mode)
 (require 'init-go-mode)
@@ -70,10 +72,7 @@
 ;;     (add-hook 'after-init-hook 'global-color-identifiers-mode)))
 
 
-(require 'git-gutter+)
-(global-git-gutter+-mode t)
 (put 'narrow-to-region 'disabled nil)
-
 
 ;; font setting
 ;;(set-face-attribute 'default nil :family "CamingoCode" :height 150)
@@ -85,6 +84,12 @@
 ;;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 14")
-(set-frame-font "Lucida Grande Mono 14")
+
+(if (string= (system-name) "MacBook-Pro-Ignacy.local")
+    (set-frame-font "Lucida Grande Mono 16")
+  (set-frame-font "Lucida Grande Mono 15"))
+
+(use-package smart-modeline)
+
 
 (recentf-cleanup) ;; remove old files from recentf list

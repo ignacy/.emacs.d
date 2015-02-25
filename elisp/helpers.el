@@ -430,7 +430,7 @@ narrowed."
 
 (defun tail-nds-local ()
   (interactive)
-  (shell-command "tail -f /usr/local/Cellar/tomcat/7.0.53/libexec/logs/pnds1.log"))
+  (term-run-shell-command "tail -f /usr/local/Cellar/tomcat/7.0.53/libexec/logs/pnds1.log"))
 
 
 (defun im-ssh (args)
@@ -501,6 +501,11 @@ and the point, not include the isearch word."
 
 (define-key isearch-mode-map [(meta z)] 'zap-to-isearch)
 
+
+(require 'term-run)
+(defun git-last-30-commits ()
+  (interactive)
+  (term-run-shell-command "git log --oneline -30"))
 
 ;; Behave like vi's O command
 (defun open-previous-line (arg)
