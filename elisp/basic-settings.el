@@ -113,8 +113,8 @@ This functions should be added to the hooks of major modes for programming."
 (use-package exec-path-from-shell
   :ensure exec-path-from-shell
   :init (progn
-         (when (memq window-system '(mac ns))
-           (exec-path-from-shell-initialize))))
+          (when (memq window-system '(mac ns))
+            (exec-path-from-shell-initialize))))
 
 (use-package mic-paren
   :ensure mic-paren
@@ -199,8 +199,8 @@ This functions should be added to the hooks of major modes for programming."
 (use-package smex
   :ensure smex
   :init (progn
-    (smex-initialize)
-    (global-set-key (kbd "M-x") 'smex)))
+          (smex-initialize)
+          (global-set-key (kbd "M-x") 'smex)))
 
 (use-package smartscan
   :ensure smartscan
@@ -276,6 +276,42 @@ This functions should be added to the hooks of major modes for programming."
           (wrap-region-add-wrapper "`" "`")
           (wrap-region-add-wrapper "{" "}")))
 
+(use-package helm
+  :ensure helm
+  :init (progn
+          (setq helm-ff-transformer-show-only-basename nil
+                helm-adaptive-history-file             "~/.emacs.d/data/helm-history"
+                helm-yank-symbol-first                 t
+                helm-move-to-line-cycle-in-source      t
+                helm-buffers-fuzzy-matching            t
+                helm-ff-auto-update-initial-value      t)
+
+          (autoload 'helm-descbinds      "helm-descbinds" t)
+          (autoload 'helm-eshell-history "helm-eshell"    t)
+          (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
+
+          (global-set-key (kbd "C-h a")    #'helm-apropos)
+          (global-set-key (kbd "C-h i")    #'helm-info-emacs)
+          (global-set-key (kbd "C-h b")    #'helm-descbinds)
+
+          (add-hook 'eshell-mode-hook
+                    #'(lambda ()
+                        (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
+                        (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
+
+          (global-set-key (kbd "C-x b")   #'helm-mini)
+          (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
+          (global-set-key (kbd "C-x C-m") #'helm-M-x)
+          (global-set-key (kbd "C-x C-f") #'helm-find-files)
+          (global-set-key (kbd "C-x C-r") #'helm-recentf)
+          (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
+          (global-set-key (kbd "M-y")     #'helm-show-kill-ring)
+          (global-set-key (kbd "M-s o")   #'helm-swoop)
+          (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
+
+          (require 'helm-config)
+          (helm-mode t) ))
+
 (use-package helm-swoop
   :ensure  helm-swoop
   :defer t)
@@ -312,10 +348,6 @@ This functions should be added to the hooks of major modes for programming."
 
 (display-time-mode -1)
 
-
-(use-package term-run
-  :ensure term-run)
-
 (setq browse-kill-ring-separator
       "--------------------------------------------------------------------------------")
 
@@ -330,11 +362,12 @@ This functions should be added to the hooks of major modes for programming."
 (advice-add 'kill-new :filter-args #'my/replace-blank-kill)
 
 
-(require 'wakatime-mode)
-(setq wakatime-api-key "378d5540-75fa-415f-8a20-51aac381b1ac")
-(setq wakatime-cli-path "/usr/local/bin/wakatime")
-(setq wakatime-python-bin "/usr/local/bin/python")
-(global-wakatime-mode)
-
+;; (use-package wakatime-mode
+;;   :ensure wakatime-mode
+;;   :init (progn
+;;           (setq wakatime-api-key "378d5540-75fa-415f-8a20-51aac381b1ac")
+;;           (setq wakatime-cli-path "/usr/local/bin/wakatime")
+;;           (setq wakatime-python-bin "/usr/local/bin/python")
+;;           (global-wakatime-mode)))
 
 (provide 'basic-settings)

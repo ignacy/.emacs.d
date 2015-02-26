@@ -1,4 +1,4 @@
-(global-set-key [(control h)] 'delete-backward-char)
+;;(global-set-key [(control h)] 'delete-backward-char)
 (keyboard-translate ?\C-h ?\C-?)
 
 ;; This are key bindings that I use
@@ -28,7 +28,7 @@
 
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
-(bind "C-x C-r" 'ido-recentf-open) ;; Im disabling it in favour of project based search
+;;(bind "C-x C-r" 'ido-recentf-open) ;; Im disabling it in favour of project based search
 
 (bind "M-h" 'backward-kill-word)
 (bind "C-x C-o" 'other-window)
@@ -55,10 +55,9 @@
 (bind "M-%" 'replace-regexp)
 (bind "C-c e" 'replace-string)
 (bind "C-<tab>" 'switch-to-previous-buffer)
-(bind "C-x b" 'ido-switch-buffer)
+;;(bind "C-x b" 'ido-switch-buffer)
 ;;(bind "C-x C-b" 'projectile-switch-to-buffer)
-(bind "C-x C-b" 'ibuffer)
-(bind "M-o" 'helm-projectile)
+;;(bind "C-x C-b" 'ibuffer)
 
 (bind "M-g" 'goto-line-with-feedback)
 (bind "M-/" 'hippie-expand-no-case-fold)

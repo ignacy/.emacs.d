@@ -14,6 +14,7 @@
    :ensure noctilux-theme
    :init (load-theme 'noctilux t))
 
+
 ;; cursor
 ;; (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
