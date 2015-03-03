@@ -10,9 +10,13 @@
 
 (require 'basic-settings)
 
-(use-package noctilux-theme
-   :ensure noctilux-theme
-   :init (load-theme 'noctilux t))
+(load-theme 'steady-dark t)
+;; (load-theme 'ample-flat t)
+;; (enable-theme 'ample-flat)
+;; (use-package noctilux-theme
+;;    :ensure noctilux-theme
+;;    :init (load-theme 'noctilux t))
+;;(load-theme 'minimo t)
 
 
 ;; cursor
@@ -87,8 +91,8 @@
 ;;(set-frame-font "Inconsolata-g 14")
 
 (if (string= (system-name) "MacBook-Pro-Ignacy.local")
-    (set-frame-font "Lucida Grande Mono 16")
-  (set-frame-font "Lucida Grande Mono 15"))
+    (set-frame-font "Lucida Grande Mono 13")
+  (set-frame-font "Lucida Grande Mono 14"))
 
 (use-package smart-modeline)
 

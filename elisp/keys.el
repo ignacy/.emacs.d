@@ -15,7 +15,7 @@
 (define-key input-decode-map "\e[1;5C" [C-right])
 (define-key input-decode-map "\e[1;5D" [C-left])
 
-(bind "M-r" 'helm-projectile-grep)
+(bind "M-r" 'helm-projectile-ag)
 
 (bind "M-c" 'query-replace)
 (bind "C-c y" 'browse-kill-ring)

@@ -132,23 +132,23 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
   (ansi-term name))
 
 
-;; (use-package sane-term
-;;   :ensure sane-term
-;;   :defer t
-;;   :init (progn
-;;           (setq sane-term-shell-command "/bin/zsh")
-;;           (global-set-key (kbd "C-x t") 'sane-term)
-;;           (global-set-key (kbd "C-x T") 'sane-term-create)))
+(use-package sane-term
+  :ensure sane-term
+  :defer t
+  :init (progn
+          (setq sane-term-shell-command "/bin/zsh")
+          (global-set-key (kbd "C-x t") 'sane-term)
+          (global-set-key (kbd "C-x T") 'sane-term-create)))
 
 
 (use-package term-run
   :ensure term-run)
 
 
-(use-package helm-mt
-  :ensure helm-mt
-  :init (progn
-          (global-set-key (kbd "C-x t") 'helm-mt)))
+;; (use-package helm-mt
+;;   :ensure helm-mt
+;;   :init (progn
+;;           (global-set-key (kbd "C-x t") 'helm-mt)))
 
 
 ;; (defun zsh ()

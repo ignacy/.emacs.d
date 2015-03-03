@@ -316,6 +316,9 @@ This functions should be added to the hooks of major modes for programming."
   :ensure  helm-swoop
   :defer t)
 
+(use-package helm-ag
+  :ensure helm-ag)
+
 
 (use-package ace-jump-mode
   :ensure  ace-jump-mode
