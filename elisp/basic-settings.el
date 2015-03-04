@@ -284,6 +284,7 @@ This functions should be added to the hooks of major modes for programming."
                 helm-yank-symbol-first                 t
                 helm-move-to-line-cycle-in-source      t
                 helm-buffers-fuzzy-matching            t
+                helm-split-window-in-side-p            t
                 helm-ff-auto-update-initial-value      t)
 
           (autoload 'helm-descbinds      "helm-descbinds" t)

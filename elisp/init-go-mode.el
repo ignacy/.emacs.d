@@ -28,5 +28,7 @@
 (use-package golint
   :ensure golint)
 
+(use-package company-go
+  :ensure company-go)
 
 (provide 'init-go-mode)
