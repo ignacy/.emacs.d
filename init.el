@@ -1,6 +1,6 @@
 ;;; init -- my emacs configuration
 (require 'cl)
-(setq debug-on-error t)
+(setq debug-on-error nil)
 (setq dotfiles-dir "~/.emacs.d")
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))
 (add-to-list 'load-path configuration-files-dir)
@@ -10,13 +10,13 @@
 
 (require 'basic-settings)
 
-;;(load-theme 'steady-dark t)
-;; (load-theme 'ample-flat t)
+(load-theme 'material t)
+
+;;(load-theme 'ample-flat t)
 ;; (enable-theme 'ample-flat)
-(use-package noctilux-theme
-   :ensure noctilux-theme
-   :init (load-theme 'noctilux t))
-;;(load-theme 'minimo t)
+;; (use-package noctilux-theme
+;;    :ensure noctilux-theme
+;;    :init (load-theme 'noctilux t))
 
 ;; cursor
 ;; (set-cursor-color "chartreuse2")
