@@ -71,6 +71,7 @@
  '(powerline-color2 "#111111")
  '(red "#ffffff")
  '(rspec-command-options "--color --order random")
+ '(rspec-spec-command "sp")
  '(rspec-use-bundler-when-possible t)
  '(rspec-use-spring-when-possible nil)
  '(sml/active-background-color "#34495e")
