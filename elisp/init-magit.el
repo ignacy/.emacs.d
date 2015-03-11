@@ -24,4 +24,10 @@
 
           ))
 
+
+(defun whats-up ()
+  (interactive)
+  (term-run-shell-command "git whatchanged --since='1 day ago' -p"))
+
+
 (provide 'init-magit)

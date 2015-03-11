@@ -14,7 +14,8 @@
 
 (use-package helm-projectile
   :ensure helm-projectile
-  :defer t)
+  :defer t
+  :config (defalias 'helm-buffers-list--match-fn 'helm-buffers-match-function))
 
 (use-package perspective
   :init (persp-mode)
