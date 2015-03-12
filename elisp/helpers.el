@@ -518,4 +518,27 @@ and the point, not include the isearch word."
 
 (global-set-key (kbd "C-o") 'open-previous-line)
 
+
+(defun ora-test-emacs ()
+  (interactive)
+  (require 'async)
+  (async-start
+   (lambda () (shell-command-to-string
+          "emacs --batch --eval \"
+(condition-case e
+    (progn
+      (load \\\"~/.emacs.d/init.el\\\")
+      (message \\\"-OK-\\\"))
+  (error
+   (message \\\"ERROR!\\\")
+   (signal (car e) (cdr e))))\""))
+   `(lambda (output)
+      (if (string-match "-OK-" output)
+          (when ,(called-interactively-p 'any)
+            (message "All is well"))
+        (switch-to-buffer-other-window "*startup error*")
+        (delete-region (point-min) (point-max))
+        (insert output)
+        (search-backward "ERROR!")))))
+
 (provide 'helpers)
