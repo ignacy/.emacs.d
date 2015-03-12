@@ -19,11 +19,9 @@
 ;;    :init (load-theme 'noctilux t))
 
 ;; cursor
-;; (set-cursor-color "chartreuse2")
 (blink-cursor-mode t)
-
-
-;;(setq-default cursor-type '(hbar . 3))
+(set-cursor-color "chartreuse2")
+(setq-default cursor-type '(bar . 4))
 
 
 ;; red line after 80 characters
@@ -40,7 +38,7 @@
         (face-list)))
 ;; (fix-fonts 'normal)
 
-(fringe-mode '(0 . 0))
+(fringe-mode '(6 . 0))
 
 (use-package helpers)
 (use-package keys)
