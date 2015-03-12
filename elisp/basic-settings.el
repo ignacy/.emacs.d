@@ -365,6 +365,12 @@ This functions should be added to the hooks of major modes for programming."
 
 (advice-add 'kill-new :filter-args #'my/replace-blank-kill)
 
+(use-package guide-key
+  :ensure guide-key
+  :init (progn
+          (setq guide-key/guide-key-sequence '("C-x r" "C-x 4"))
+          (setq guide-key/highlight-command-regexp "register")
+            (guide-key-mode 1) ))
 
 ;; (use-package wakatime-mode
 ;;   :ensure wakatime-mode

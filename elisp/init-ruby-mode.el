@@ -71,6 +71,10 @@
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
 
 
+(use-package rubocop
+  :ensure rubocop
+  :config (setq rubocop-check-command "~/.rbenv/versions/2.2.1/bin/rubocop -a --format emacs"))
+
 (defun bundle ()
   "Install bundle"
   (interactive)

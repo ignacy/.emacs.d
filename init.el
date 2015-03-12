@@ -10,7 +10,7 @@
 
 (require 'basic-settings)
 
-(load-theme 'material t)
+(load-theme 'sidewalk-chalk t)
 
 ;;(load-theme 'ample-flat t)
 ;; (enable-theme 'ample-flat)
@@ -89,7 +89,7 @@
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 14")
 
-(set-frame-font "Lucida Grande Mono 14")
+(set-frame-font "Lucida Grande Mono 15")
 
 (use-package smart-modeline)
 
