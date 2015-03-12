@@ -13,8 +13,8 @@
            "go vet && go test -cover -v && go build -v")
       ;;                )
 
-
       (setq tab-width 2)
+      (flycheck-mode)
       (setq standard-indent 2)
       (setq indent-tabs-mode nil)
       (local-set-key (kbd "M-.") 'godef-jump))

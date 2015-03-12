@@ -1,4 +1,5 @@
-;;; init -- my emacs configuration
+;;; Commentary: init -- my emacs configuration
+
 (require 'cl)
 (setq debug-on-error nil)
 (setq dotfiles-dir "~/.emacs.d")
@@ -10,9 +11,8 @@
 
 (require 'basic-settings)
 
-(load-theme 'sidewalk-chalk t)
+(load-theme 'lioshi t)
 
-;;(load-theme 'ample-flat t)
 ;; (enable-theme 'ample-flat)
 ;; (use-package noctilux-theme
 ;;    :ensure noctilux-theme
