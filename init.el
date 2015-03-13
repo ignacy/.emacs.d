@@ -11,7 +11,9 @@
 
 (require 'basic-settings)
 
-(load-theme 'lioshi t)
+
+(if (window-system)
+    (load-theme 'text-ex-machina t))
 
 ;; (enable-theme 'ample-flat)
 ;; (use-package noctilux-theme
@@ -19,7 +21,9 @@
 ;;    :init (load-theme 'noctilux t))
 
 ;; cursor
+(setq cursor-in-non-selected-windows nil)
 (blink-cursor-mode t)
+(setq blink-cursor-blinks 0)
 (set-cursor-color "chartreuse2")
 (setq-default cursor-type '(bar . 4))
 
