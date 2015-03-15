@@ -145,12 +145,6 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
   :ensure term-run)
 
 
-;; (use-package helm-mt
-;;   :ensure helm-mt
-;;   :init (progn
-;;           (global-set-key (kbd "C-x t") 'helm-mt)))
-
-
 ;; (defun zsh ()
 ;;   (interactive)
 ;;   (multi-term))

@@ -12,11 +12,6 @@
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
           (ad-activate 'find-tag-at-point)))
 
-(use-package helm-projectile
-  :ensure helm-projectile
-  :defer t
-  :config (defalias 'helm-buffers-list--match-fn 'helm-buffers-match-function))
-
 (use-package perspective
   :init (persp-mode)
   :ensure perspective)

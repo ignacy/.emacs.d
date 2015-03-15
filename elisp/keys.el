@@ -15,7 +15,7 @@
 (define-key input-decode-map "\e[1;5C" [C-right])
 (define-key input-decode-map "\e[1;5D" [C-left])
 
-(bind "M-r" 'helm-projectile-ag)
+(bind "M-r" 'projectile-ag)
 
 (bind "M-c" 'query-replace)
 (bind "C-c y" 'browse-kill-ring)
@@ -28,7 +28,7 @@
 
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
-;;(bind "C-x C-r" 'ido-recentf-open) ;; Im disabling it in favour of project based search
+(bind "C-x C-r" 'ido-recentf-open)
 
 (bind "M-h" 'backward-kill-word)
 (bind "C-x C-o" 'other-window)
@@ -37,9 +37,8 @@
 (bind "C-x r b" 'bookmark-ido-quick-jump)
 (bind "C-x C-f" 'ido-find-file)
 
-;;(bind "C-x f" 'projectile-find-file)
+(bind "C-x f" 'projectile-find-file)
 ;;(bind "C-x f" 'find-file-in-project)
-(bind "C-x f" 'helm-projectile)
 
 (bind "C-c b" 'browse-web)
 

@@ -12,10 +12,8 @@
 ;; (evil-leader/set-key
 ;;   "e" 'ido-find-file
 ;;   "b" 'ido-switch-buffer
-;;   "f" 'helm-projectile
 ;;   "r" 'ido-recentf-open
 ;;   "-" 'evil-split-buffer
-;;   "i" 'helm-imenu
 ;;   "|" 'split-window-horizontally
 ;;   "k" 'im/kill-current-buffer)
 

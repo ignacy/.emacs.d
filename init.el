@@ -13,7 +13,7 @@
 
 
 (if (window-system)
-    (load-theme 'text-ex-machina t))
+    (load-theme 'minimo t))
 
 ;; (enable-theme 'ample-flat)
 ;; (use-package noctilux-theme
@@ -67,6 +67,7 @@
 ;; (require 'init-evil)
 
 (use-package rbenv
+  :ensure rbenv
   :init (progn
           ;;(setq rbenv-installation-dir "/usr/local/rbenv")
           (setq rbenv-show-active-ruby-in-modeline nil)

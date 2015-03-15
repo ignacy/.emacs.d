@@ -10,10 +10,10 @@
             (message (shell-command-to-string (concat "sh " (magit-git-dir) "hooks/log_commits")))
             (delete-window))
 
-          (set-face-foreground 'magit-diff-add "green3")
-          (set-face-foreground 'magit-diff-del "red3")
-          (when (not window-system)
-            (set-face-background 'magit-item-highlight "black"))
+          ;; (set-face-foreground 'magit-diff-add "green3")
+          ;; (set-face-foreground 'magit-diff-del "red3")
+          ;; (when (not window-system)
+          ;;   (set-face-background 'magit-item-highlight "black"))
 
           (global-set-key (kbd "C-x g") 'magit-status)
           ;; (add-hook 'magit-mode-hook (lambda () (setq truncate-lines nil)))

@@ -276,50 +276,8 @@ This functions should be added to the hooks of major modes for programming."
           (wrap-region-add-wrapper "`" "`")
           (wrap-region-add-wrapper "{" "}")))
 
-(use-package helm
-  :ensure helm
-  :init (progn
-          (setq helm-ff-transformer-show-only-basename nil
-                helm-adaptive-history-file             "~/.emacs.d/data/helm-history"
-                helm-yank-symbol-first                 t
-                helm-move-to-line-cycle-in-source      t
-                helm-buffers-fuzzy-matching            t
-                helm-split-window-in-side-p            t
-                helm-ff-auto-update-initial-value      t)
-
-          (autoload 'helm-descbinds      "helm-descbinds" t)
-          (autoload 'helm-eshell-history "helm-eshell"    t)
-          (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
-
-          (global-set-key (kbd "C-h a")    #'helm-apropos)
-          (global-set-key (kbd "C-h i")    #'helm-info-emacs)
-          (global-set-key (kbd "C-h b")    #'helm-descbinds)
-
-          (add-hook 'eshell-mode-hook
-                    #'(lambda ()
-                        (define-key eshell-mode-map (kbd "TAB")     #'helm-esh-pcomplete)
-                        (define-key eshell-mode-map (kbd "C-c C-l") #'helm-eshell-history)))
-
-          (global-set-key (kbd "C-x b")   #'helm-mini)
-          (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-          (global-set-key (kbd "C-x C-m") #'helm-M-x)
-          (global-set-key (kbd "C-x C-f") #'helm-find-files)
-          (global-set-key (kbd "C-x C-r") #'helm-recentf)
-          (global-set-key (kbd "C-x r l") #'helm-filtered-bookmarks)
-          (global-set-key (kbd "M-y")     #'helm-show-kill-ring)
-          (global-set-key (kbd "M-s o")   #'helm-swoop)
-          (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-
-          (require 'helm-config)
-          (helm-mode t) ))
-
-(use-package helm-swoop
-  :ensure  helm-swoop
-  :defer t)
-
-(use-package helm-ag
-  :ensure helm-ag)
-
+(use-package ag
+  :ensure ag)
 
 (use-package ace-jump-mode
   :ensure  ace-jump-mode
