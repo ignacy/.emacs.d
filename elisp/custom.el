@@ -45,8 +45,9 @@
  '(hl-paren-background-colors (quote ("#2492db" "#95a5a6" nil)))
  '(hl-paren-colors (quote ("#ecf0f1" "#ecf0f1" "#c0392b")) t)
  '(ibuffer-deletion-face (quote error))
-  '(linum-format " %7i ")
+ '(linum-format " %7i ")
  '(magit-diff-use-overlays nil)
+ '(magit-item-highlight-face nil)
  '(magit-use-overlays nil)
  '(main-line-color1 "#1E1E1E")
  '(main-line-color2 "#111111")
@@ -66,6 +67,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(highlight-symbol-face ((t (:background "DarkBlue" :foreground "gray93" :weight normal))))
+ '(magit-item-highlight ((t nil)))
  '(mode-line ((t (:box nil) (:background "grey3"))))
  '(mode-line-inactive ((t (:box nil) (:background "grey6"))))
  '(paren-face-match ((t (:background "gray20"))))
