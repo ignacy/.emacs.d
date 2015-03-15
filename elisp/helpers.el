@@ -13,7 +13,7 @@
 (add-hook 'emacs-lisp-mode-hook 'remove-elc-on-save)
 
 (defun clean-up-buffer-or-region ()
-  "Untabifies, indents and deletes trailing whitespace from buffer or region."
+  "Untabifies, indent and deletes trailing whitespace from buffer or region."
   (interactive)
   (save-excursion
     (unless (region-active-p)
@@ -27,7 +27,7 @@
 
 (defun cleanup-buffer-safe ()
   "Perform a bunch of safe operations on the whitespace content of a buffer.
-Does not indent buffer, because it is used for a before-save-hook, and that
+Does not indent buffer, because it is used for a `before-save-hook`, and that
 might be bad."
   (interactive)
   (untabify (point-min) (point-max))

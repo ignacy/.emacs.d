@@ -172,6 +172,7 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (flx-ido-mode 1)
           (setq gc-cons-threshold 20000000)
+          (setq ido-enable-flex-matching t)
           (setq ido-use-faces nil)))
 
 
@@ -284,10 +285,10 @@ This functions should be added to the hooks of major modes for programming."
   :defer t
   :init (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
 
-(use-package ace-isearch
-  :ensure ace-isearch
-  :defer t
-  :init (global-ace-isearch-mode +1))
+;; (use-package ace-isearch
+;;   :ensure ace-isearch
+;;   :defer t
+;;  :init (global-ace-isearch-mode +1))
 
 (use-package expand-region
   :ensure  expand-region
