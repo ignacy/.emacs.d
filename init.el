@@ -33,6 +33,8 @@
 ;; (setq fci-rule-column 80)
 ;; (setq fci-rule-color "red")
 
+(global-hl-line-mode)
+
 
 (defun fix-fonts (type)
   " wiegth: 'normal or 'light"

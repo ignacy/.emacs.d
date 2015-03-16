@@ -52,6 +52,9 @@
  '(main-line-color1 "#1E1E1E")
  '(main-line-color2 "#111111")
  '(main-line-separator-style (quote chamfer))
+ '(package-selected-packages
+   (quote
+    (ruby-hash-syntax rbenv ag yasnippet yaml-mode wrap-region wakatime-mode visual-regexp use-package term-run subatomic-theme smex smartscan smartparens sane-term rubocop rspec-mode rhtml-mode rainbow-mode rainbow-delimiters railscasts-theme projectile-rails persp-projectile noctilux-theme multiple-cursors multi-term mic-paren markdown-mode magit js2-mode hungry-delete highlight-symbol haml-mode guide-key gotham-theme golint go-eldoc font-lock+ flycheck flx-ido fancy-narrow expand-region exec-path-from-shell easy-kill company-quickhelp company-go async ample-theme ace-isearch)))
  '(powerline-color1 "#1E1E1E")
  '(powerline-color2 "#111111")
  '(red "#ffffff")
