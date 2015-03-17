@@ -123,6 +123,9 @@ This functions should be added to the hooks of major modes for programming."
             (setq paren-match-face 'paren-face-match)
             (setq paren-sexp-mode t)))
 
+(use-package unkillable-scratch
+  :ensure unkillable-scratch
+  :init (unkillable-scratch 1))
 
 ;; ;;;; multiple-cursors
 (use-package multiple-cursors
