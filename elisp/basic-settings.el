@@ -123,14 +123,13 @@ This functions should be added to the hooks of major modes for programming."
             (setq paren-match-face 'paren-face-match)
             (setq paren-sexp-mode t)))
 
-(use-package inline-string-rectangle)
 
 ;; ;;;; multiple-cursors
 (use-package multiple-cursors
   :ensure multiple-cursors
   :defer t
   :init (progn
-          (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+          (global-set-key (kbd "C-x r t") 'mc/edit-lines)
           (global-set-key (kbd "C->") 'mc/mark-next-like-this)
           (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
           (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))

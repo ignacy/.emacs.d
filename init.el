@@ -13,7 +13,7 @@
 
 
 (if (window-system)
-    (load-theme 'minimo t))
+    (load-theme 'sidewalk-chalk t))
 
 ;; (enable-theme 'ample-flat)
 ;; (use-package noctilux-theme
@@ -34,7 +34,6 @@
 ;; (setq fci-rule-color "red")
 
 (global-hl-line-mode)
-
 
 (defun fix-fonts (type)
   " wiegth: 'normal or 'light"
@@ -94,7 +93,7 @@
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 14")
 
-(set-frame-font "Lucida Grande Mono 15")
+(set-frame-font "Lucida Grande Mono 16")
 
 (use-package smart-modeline)
 

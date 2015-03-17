@@ -6,7 +6,6 @@
             (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
             (setq yas-verbosity 1)))
 
-
 (use-package company
   :ensure  company
   :defer t
@@ -23,9 +22,10 @@
           (defun yas/expansion-at-point ()
             "Tested with v0.6.1. Extracted from `yas/expand-1'"
             (first (yas/current-key)))
+
           (company-quickhelp-mode 1)
+
           (push 'company-readline company-backends)
-          (push 'company-robe company-backends)
           (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
           (define-key company-active-map "\t" 'company-yasnippet-or-completion)
           (global-company-mode)

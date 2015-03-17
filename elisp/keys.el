@@ -48,8 +48,6 @@
 (require 'imenu)
 (bind "C-'" 'ido-imenu)
 
-;; Replace rectangle-text with inline-string-rectangle
-(bind "C-x r t" 'inline-string-rectangle)
 (bind "C-x k" 'im/kill-current-buffer)
 (bind "M-%" 'replace-regexp)
 (bind "C-c e" 'replace-string)
