@@ -1,4 +1,5 @@
-(require 'request)
+(use-package request
+  :ensure request)
 
 
 (defun refresh-token ()
@@ -31,6 +32,4 @@
    :status-code '((401 . (lambda (&rest _) (insert "\n Got 401."))))))
 
 ;; (create-user)
-
-
 ;; (refresh-token)
