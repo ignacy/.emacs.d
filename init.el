@@ -93,7 +93,9 @@
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 14")
 
-(set-frame-font "Lucida Grande Mono 16")
+(if (string-equal system-name "MacBook-Pro-Ignacy.local")
+    (set-frame-font "Lucida Grande Mono 14")
+  (set-frame-font "Lucida Grande Mono Nrw 16"))
 
 (use-package smart-modeline)
 
