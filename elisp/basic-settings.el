@@ -333,12 +333,12 @@ This functions should be added to the hooks of major modes for programming."
           (setq guide-key/highlight-command-regexp "register")
             (guide-key-mode 1) ))
 
-;; (use-package wakatime-mode
-;;   :ensure wakatime-mode
-;;   :init (progn
-;;           (setq wakatime-api-key "378d5540-75fa-415f-8a20-51aac381b1ac")
-;;           (setq wakatime-cli-path "/usr/local/bin/wakatime")
-;;           (setq wakatime-python-bin "/usr/local/bin/python")
-;;           (global-wakatime-mode)))
+(use-package wakatime-mode
+  :ensure wakatime-mode
+  :init (progn
+          (setq wakatime-api-key "378d5540-75fa-415f-8a20-51aac381b1ac")
+          (setq wakatime-cli-path "/usr/local/bin/wakatime")
+          (setq wakatime-python-bin "/usr/local/bin/python")
+          (global-wakatime-mode)))
 
 (provide 'basic-settings)

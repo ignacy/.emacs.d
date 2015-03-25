@@ -12,16 +12,19 @@
 (require 'basic-settings)
 
 
-(if (window-system)
-    (load-theme 'sidewalk-chalk t))
+;; (if (window-system)
+;;     (load-theme 'sidewalk-chalk t))
 
 ;; (enable-theme 'ample-flat)
-;; (use-package noctilux-theme
-;;    :ensure noctilux-theme
-;;    :init (load-theme 'noctilux t))
+(if (string-equal system-name "MacBook-Pro-Ignacy.local")
+    (load-theme 'hickey t)
+  (use-package material-theme
+    :ensure material-theme
+    :init (load-theme 'material t)))
 
-;; cursor
-(setq cursor-in-non-selected-windows nil)
+
+;; ;; cursor
+;; (setq cursor-in-non-selected-windows nil)
 (blink-cursor-mode t)
 (setq blink-cursor-blinks 0)
 (set-cursor-color "chartreuse2")
@@ -94,7 +97,7 @@
 ;;(set-frame-font "Inconsolata-g 14")
 
 (if (string-equal system-name "MacBook-Pro-Ignacy.local")
-    (set-frame-font "Lucida Grande Mono 14")
+    (set-frame-font "Lucida Grande Mono 16")
   (set-frame-font "Lucida Grande Mono Nrw 16"))
 
 (use-package smart-modeline)

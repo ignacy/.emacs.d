@@ -391,12 +391,14 @@ narrowed."
 
 ;;; WORK
 
-(setq deployable-apps '("dev_interceptor" "dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector" "dev_connector_admin"))
+(setq deployable-apps '("dev_interceptor" "dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector" "dev_connector_admin"
+                        "dev_vpn_adapter"
+                        ))
 
 (defun deploy ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployable-apps)))
-    (term-run-shell (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
+    (term-run-shell-command (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
 
 
 (setq deployed-applications '("qbp_backend" "interceptor" "otp_manager" "data_collector"))
@@ -411,22 +413,22 @@ narrowed."
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployed-applications))
         (query (read-string "Query: " nil nil)))
-    (term-run-shell (concat "search_staging_log_for " app " " query))))
+    (term-run-shell-command (concat "search_staging_log_for " app " " query))))
 
 (defun get-last-3000-lines-from-dev-log-for ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployed-applications)))
-    (term-run-shell (concat "get_last_3000_lines_from_dev_log_for " app ))))
+    (term-run-shell-command (concat "get_last_3000_lines_from_dev_log_for " app ))))
 
 (defun get-last-3000-lines-from-staging-log-for ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployed-applications)))
-    (term-run-shell (concat "get_last_3000_lines_from_staging_log_for " app ))))
+    (term-run-shell-command (concat "get_last_3000_lines_from_staging_log_for " app ))))
 
 
 (defun deploy-nds-local ()
   (interactive)
-  (term-run-shell "~/bin/local_nds_deploy"))
+  (term-run-shell-command "~/bin/local_nds_deploy"))
 
 (defun tail-nds-local ()
   (interactive)
