@@ -1,7 +1,3 @@
-;;(global-set-key [(control h)] 'delete-backward-char)
-(keyboard-translate ?\C-h ?\C-?)
-
-;; This are key bindings that I use
 (defmacro bind (key fn)
   "shortcut for global-set-key"
   `(global-set-key (kbd ,key)
@@ -16,17 +12,8 @@
 (define-key input-decode-map "\e[1;5D" [C-left])
 
 (bind "M-r" 'projectile-ag)
-
 (bind "M-c" 'query-replace)
 (bind "C-c y" 'browse-kill-ring)
-
-;;(bind "M-z" 'undo)
-(require 'zop-to-char)
-
-(setq zop-to-char--delete-up-to-char t)
-(bind "M-z" 'zop-to-char)
-
-(bind "C-x i" 'indent-region-or-buffer)
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-r" 'ido-recentf-open)
 
@@ -36,14 +23,8 @@
 (bind "C-," 'find-tag-at-point)
 (bind "C-x r b" 'bookmark-ido-quick-jump)
 (bind "C-x C-f" 'ido-find-file)
-
 (bind "C-x f" 'projectile-find-file)
-;;(bind "C-x f" 'find-file-in-project)
-
-(bind "C-c b" 'browse-web)
-
 (bind "C-x C-p" 'find-file-at-point)
-;;(bind "C-1" 'switch-to-zsh)
 
 (require 'imenu)
 (bind "C-'" 'ido-imenu)
@@ -52,9 +33,6 @@
 (bind "M-%" 'replace-regexp)
 (bind "C-c e" 'replace-string)
 (bind "C-<tab>" 'switch-to-previous-buffer)
-;;(bind "C-x b" 'ido-switch-buffer)
-;;(bind "C-x C-b" 'projectile-switch-to-buffer)
-;;(bind "C-x C-b" 'ibuffer)
 
 (bind "M-g" 'goto-line-with-feedback)
 (bind "M-/" 'hippie-expand-no-case-fold)
@@ -85,12 +63,14 @@
 (global-set-key (kbd "C-S-n")
                 (lambda ()
                   (interactive)
-                  (ignore-errors (next-line 5))))
+                  ;;(ignore-errors (next-line 5))))
+                  (message "Use M-e")))
 
 (global-set-key (kbd "C-S-p")
                 (lambda ()
                   (interactive)
-                  (ignore-errors (previous-line 5))))
+                  ;;(ignore-errors (previous-line 5))))
+                  (message "Use M-a")))
 
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [mode-line mouse-2] 'ignore)
