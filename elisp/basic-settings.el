@@ -292,6 +292,9 @@ This functions should be added to the hooks of major modes for programming."
 ;;   :defer t
 ;;  :init (global-ace-isearch-mode +1))
 
+(use-package restclient
+  :ensure restclient)
+
 (use-package expand-region
   :ensure  expand-region
   :defer t
