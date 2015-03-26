@@ -1,4 +1,4 @@
-;;; default-black-theme.el --- an Emacs 24 theme 
+;;; default-black-theme.el --- an Emacs 24 theme
 ;;
 ;;
 ;;; Code:
@@ -22,7 +22,6 @@
  '(font-lock-warning-face ((nil (:foreground "#ff6666"))))
  '(show-paren-match ((nil (:background "#333399"))))
  '(show-paren-mismatch ((((class color)) (:background "red")))))
-
 
 ;;;###autoload
 (when load-file-name

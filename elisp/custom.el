@@ -91,7 +91,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(hl-line ((t (:background "gray20"))))
  '(mode-line ((t (:box nil) (:background "grey3"))))
  '(mode-line-inactive ((t (:box nil) (:background "grey6"))))
  '(paren-face-match ((t (:background "gray13")))))
