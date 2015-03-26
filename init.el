@@ -16,12 +16,16 @@
 
 ;; (enable-theme 'ample-flat)
 (if (string-equal system-name "MacBook-Pro-Ignacy.local")
-    (use-package ir-black-theme
-      :ensure ir-black-theme
-        :init (load-theme 'ir-black t))
+    (load-theme 'default-black t)
   (use-package material-theme
     :ensure material-theme
     :init (load-theme 'material t)))
+
+
+;; (use-package ir-black-theme
+;;     :ensure ir-black-theme
+;;       :init (load-theme 'ir-black t))
+
 
 ;; ;; cursor
 ;; (setq cursor-in-non-selected-windows nil)
