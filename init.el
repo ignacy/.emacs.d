@@ -8,7 +8,6 @@
 (setq custom-file (expand-file-name "custom.el" configuration-files-dir))
 (load custom-file)
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
-
 (require 'basic-settings)
 
 
@@ -17,18 +16,19 @@
 
 ;; (enable-theme 'ample-flat)
 (if (string-equal system-name "MacBook-Pro-Ignacy.local")
-    (load-theme 'hickey t)
+    (use-package ir-black-theme
+      :ensure ir-black-theme
+        :init (load-theme 'ir-black t))
   (use-package material-theme
     :ensure material-theme
     :init (load-theme 'material t)))
-
 
 ;; ;; cursor
 ;; (setq cursor-in-non-selected-windows nil)
 (blink-cursor-mode t)
 (setq blink-cursor-blinks 0)
 (set-cursor-color "chartreuse2")
-(setq-default cursor-type '(bar . 4))
+;;(setq-default cursor-type '(bar . 4))
 
 
 ;; red line after 80 characters
@@ -102,5 +102,6 @@
 
 (use-package smart-modeline)
 
+(set-face-attribute hl-line-face nil :underline nil)
 
 (recentf-cleanup) ;; remove old files from recentf list
