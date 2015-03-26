@@ -19,6 +19,7 @@
  '(hl-line ((nil (:background "#222222"))))
  '(yas-field-highlight-face ((nil (:background "#333399"))))
  '(js2-function-param-face ((t (:foreground "LightGoldenrod"))))
+ '(font-lock-comment-face ((t (:foreground "#808080"  ))))
  '(font-lock-warning-face ((nil (:foreground "#ff6666"))))
  '(show-paren-match ((nil (:background "#333399"))))
  '(show-paren-mismatch ((((class color)) (:background "red")))))
