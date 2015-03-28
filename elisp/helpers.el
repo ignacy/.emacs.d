@@ -352,43 +352,6 @@ narrowed."
   (delete-horizontal-space)
   (insert " "))
 
-
-
-(defun endless/forward-paragraph (&optional n)
-  "Advance just past next blank line."
-  (interactive "p")
-  (let ((m (use-region-p))
-        (para-commands
-         '(endless/forward-paragraph endless/backward-paragraph)))
-    ;; Only push mark if it's not active and we're not repeating.
-    (or m
-        (not (member this-command para-commands))
-        (member last-command para-commands)
-        (push-mark))
-    ;; The actual movement.
-    (dotimes (_ (abs n))
-      (if (> n 0)
-          (skip-chars-forward "\n[:blank:]")
-        (skip-chars-backward "\n[:blank:]"))
-      (if (search-forward-regexp
-           "\n[[:blank:]]*\n[[:blank:]]*" nil t (cl-signum n))
-          (goto-char (match-end 0))
-        (goto-char (if (> n 0) (point-max) (point-min)))))
-    ;; If mark wasn't active, I like to indent the line too.
-    (unless m
-      (indent-according-to-mode)
-      ;; This looks redundant, but it's surprisingly necessary.
-      (back-to-indentation))))
-
-(defun endless/backward-paragraph (&optional n)
-  "Go back up to previous blank line."
-  (interactive "p")
-  (endless/forward-paragraph (- n)))
-
-(global-set-key "\M-a" 'endless/backward-paragraph)
-(global-set-key "\M-e" 'endless/forward-paragraph)
-
-
 ;;; WORK
 
 (setq deployable-apps '("dev_interceptor" "dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector" "dev_connector_admin"

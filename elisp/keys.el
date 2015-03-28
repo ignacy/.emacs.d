@@ -63,14 +63,12 @@
 (global-set-key (kbd "C-S-n")
                 (lambda ()
                   (interactive)
-                  ;;(ignore-errors (next-line 5))))
-                  (message "Use M-e")))
+                  (ignore-errors (next-line 5))))
 
 (global-set-key (kbd "C-S-p")
                 (lambda ()
                   (interactive)
-                  ;;(ignore-errors (previous-line 5))))
-                  (message "Use M-a")))
+                  (ignore-errors (previous-line 5))))
 
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [mode-line mouse-2] 'ignore)
