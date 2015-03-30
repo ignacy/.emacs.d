@@ -17,6 +17,7 @@
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-r" 'ido-recentf-open)
 
+(bind "C-x i" 'indent-region-or-buffer)
 (bind "M-h" 'backward-kill-word)
 (bind "C-x C-o" 'other-window)
 (bind "C-x C-1" 'delete-other-windows)

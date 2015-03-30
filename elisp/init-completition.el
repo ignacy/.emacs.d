@@ -1,10 +1,10 @@
-(use-package yasnippet
-  :ensure  yasnippet
-  :defer t
-  :init (yas-global-mode 1)
-  :config (progn
-            (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
-            (setq yas-verbosity 1)))
+;; (use-package yasnippet
+;;   :ensure  yasnippet
+;;   :defer t
+;;   :init (yas-global-mode 1)
+;;   :config (progn
+;;             (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
+;;             (setq yas-verbosity 1)))
 
 (use-package company
   :ensure  company
@@ -12,16 +12,16 @@
   :init (progn
           ;;(setq company-idle-delay t)
 
-          (defun company-yasnippet-or-completion ()
-            (interactive)
-            (if (yas/expansion-at-point)
-                (progn (company-abort)
-                       (yas/expand))
-              (company-complete-common)))
+          ;; (defun company-yasnippet-or-completion ()
+          ;;   (interactive)
+          ;;   (if (yas/expansion-at-point)
+          ;;       (progn (company-abort)
+          ;;              (yas/expand))
+          ;;     (company-complete-common)))
 
-          (defun yas/expansion-at-point ()
-            "Tested with v0.6.1. Extracted from `yas/expand-1'"
-            (first (yas/current-key)))
+          ;; (defun yas/expansion-at-point ()
+          ;;   "Tested with v0.6.1. Extracted from `yas/expand-1'"
+          ;;   (first (yas/current-key)))
 
           (company-quickhelp-mode 1)
 

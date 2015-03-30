@@ -80,7 +80,6 @@ might be bad."
         (indent-buffer)
         (message "Indented buffer.")))))
 
-
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
