@@ -111,13 +111,12 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
 
 ;; shell-mode
 (defun sh (&optional name)
-  (interactive)
-  (shell name))
+  (shell (concat "*" name "*")))
 
 (defun run-shell (shell-buffer-name)
   "Runs shell in a buffer named shell-buffer-name"
   (interactive "sEnter new shell buffer name: ")
-  (shell shell-buffer-name))
+  (sh shell-buffer-name))
 
 (defun zsh ()
   (interactive)
@@ -127,10 +126,24 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
   (interactive)
   (switch-to-buffer "zsh"))
 
-(defun sh (&optional name)
-  (interactive)
-  (ansi-term name))
+(defun ido-for-mode(prompt the-mode)
+  (switch-to-buffer
+   (ido-completing-read prompt
+                        (save-excursion
+                          (delq
+                           nil
+                           (mapcar (lambda (buf)
+                                     (when (buffer-live-p buf)
+                                       (with-current-buffer buf
+                                         (and (eq major-mode the-mode)
+                                              (buffer-name buf)))))
+                                   (buffer-list)))))))
 
+(defun ido-shell-buffer()
+  (interactive)
+  (ido-for-mode "Shell:" 'shell-mode))
+
+(global-set-key (kbd "C-c s") 'ido-shell-buffer)
 
 (use-package sane-term
   :ensure sane-term
@@ -143,11 +156,6 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
 
 (use-package term-run
   :ensure term-run)
-
-
-;; (defun zsh ()
-;;   (interactive)
-;;   (multi-term))
 
 ;; (defun switch-to-zsh ()
 ;;    (interactive)

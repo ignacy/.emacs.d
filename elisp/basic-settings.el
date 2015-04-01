@@ -123,6 +123,11 @@ This functions should be added to the hooks of major modes for programming."
 ;;             (setq paren-match-face 'paren-face-match)
 ;;             (setq paren-sexp-mode t)))
 
+(use-package google-this
+  :ensure google-this
+  :init (google-this-mode))
+
+
 (use-package unkillable-scratch
   :ensure unkillable-scratch
   :init (unkillable-scratch 1))
@@ -254,8 +259,9 @@ This functions should be added to the hooks of major modes for programming."
 (use-package font-lock+
   :ensure  font-lock+)
 
-;; (use-package auto-dim-other-buffers
-;;   :init (auto-dim-other-buffers-mode t))
+(use-package auto-dim-other-buffers
+  :ensure auto-dim-other-buffers
+  :init (auto-dim-other-buffers-mode t))
 
 (defun copy-from-osx ()
   (shell-command-to-string "pbpaste"))

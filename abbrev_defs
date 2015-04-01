@@ -45,6 +45,20 @@
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
 
+(define-abbrev-table 'conf-colon-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-javaprop-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-ppd-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-space-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-unix-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-windows-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-xdefaults-mode-abbrev-table '())
+
 (define-abbrev-table 'confluence-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'confluence-mode-abbrev-table '())
@@ -67,7 +81,11 @@
 
 (define-abbrev-table 'display-time-world-mode-abbrev-table '())
 
+(define-abbrev-table 'dsssl-mode-abbrev-table '())
+
 (define-abbrev-table 'edit-abbrevs-mode-abbrev-table '())
+
+(define-abbrev-table 'elisp-byte-code-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-byte-code-mode-abbrev-table '())
 
@@ -82,6 +100,16 @@
 (define-abbrev-table 'ert-results-mode-abbrev-table '())
 
 (define-abbrev-table 'ert-simple-view-mode-abbrev-table '())
+
+(define-abbrev-table 'eww-bookmark-mode-abbrev-table '())
+
+(define-abbrev-table 'eww-buffers-mode-abbrev-table '())
+
+(define-abbrev-table 'eww-history-mode-abbrev-table '())
+
+(define-abbrev-table 'eww-mode-abbrev-table '())
+
+(define-abbrev-table 'flycheck-error-list-mode-abbrev-table '())
 
 (define-abbrev-table 'fundamental-mode-abbrev-table '())
 
@@ -103,6 +131,7 @@
     ("josn" "json" nil 2)
     ("jsno" "json" nil 2)
     ("mechant_location_id" "merchant_location_id" nil 1)
+    ("peek" ".tap { |x| puts x }" nil 2)
     ("ppr" "binding.pry" nil 5)
     ("recipt" "receipt" nil 2)
     ("recipts" "receipts" nil 2)
@@ -117,10 +146,11 @@
 
 (define-abbrev-table 'go-mode-abbrev-table '())
 
+(define-abbrev-table 'golint-mode-abbrev-table '())
+
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
 (define-abbrev-table 'haml-mode-abbrev-table '())
-
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 
@@ -138,11 +168,15 @@
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
+(define-abbrev-table 'inferior-scheme-mode-abbrev-table '())
+
 (define-abbrev-table 'java-mode-abbrev-table
   '(
    ))
 
 (define-abbrev-table 'js-mode-abbrev-table '())
+
+(define-abbrev-table 'js2-mode-abbrev-table '())
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
@@ -208,9 +242,11 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-skeleton-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'python-mode-skeleton-abbrev-table '())
+
+(define-abbrev-table 'rake-compilation-mode-abbrev-table '())
+
+(define-abbrev-table 'restclient-mode-abbrev-table '())
 
 (define-abbrev-table 'rhtml-mode-abbrev-table '())
 
@@ -230,11 +266,17 @@
 
 (define-abbrev-table 'scala-mode-abbrev-table '())
 
+(define-abbrev-table 'scheme-mode-abbrev-table '())
+
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
 (define-abbrev-table 'sgml-mode-abbrev-table '())
 
-(define-abbrev-table 'shell-mode-abbrev-table '())
+(define-abbrev-table 'shell-mode-abbrev-table
+  '(
+    ("bex" "bundle exec" nil 2)
+    ("rp4000" "rails server -p 4000" nil 2)
+   ))
 
 (define-abbrev-table 'snippet-mode-abbrev-table '())
 
@@ -258,10 +300,15 @@
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
 
+(define-abbrev-table 'vc-git-region-history-mode-abbrev-table '())
+
 (define-abbrev-table 'vc-hg-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-mtn-log-view-mode-abbrev-table '())
 
 (define-abbrev-table 'vc-svn-log-view-mode-abbrev-table '())
 
+(define-abbrev-table 'xref--xref-buffer-mode-abbrev-table '())
+
 (define-abbrev-table 'yaml-mode-abbrev-table '())
+

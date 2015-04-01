@@ -16,6 +16,8 @@
 
 ;; (enable-theme 'ample-flat)
 (load-theme 'default-black t)
+;;(load-theme 'apropospriate-dark t)
+
 
 (use-package mustang-theme
   :ensure mustang-theme
@@ -95,6 +97,8 @@
 ;;(set-frame-font "Inconsolata-g 14")
 
 (set-frame-font "Lucida Grande Mono 16")
+
+(setq recenter-positions '(top middle bottom))
 
 (use-package smart-modeline)
 

@@ -26,6 +26,8 @@
 (bind "C-x C-f" 'ido-find-file)
 (bind "C-x f" 'projectile-find-file)
 (bind "C-x C-p" 'find-file-at-point)
+(bind "M-s" 'ido-shell-buffer)
+(bind "C-x C-x" 'run-shell)
 
 (require 'imenu)
 (bind "C-'" 'ido-imenu)
@@ -59,7 +61,6 @@
 
 (bind "C-S-o" 'move-line-up)
 
-(bind "C-x C-x" 'term-run-shell-command)
 ;; Move more quickly
 (global-set-key (kbd "C-S-n")
                 (lambda ()
