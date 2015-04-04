@@ -1,6 +1,6 @@
 (use-package inf-ruby
-  :ensure  inf-ruby
-  :defer t)
+   :ensure  inf-ruby
+   :defer t)
 
 (use-package rspec-mode
   :ensure  rspec-mode
@@ -23,11 +23,7 @@
 
 ;; work around possible elpa bug
 (ignore-errors (require 'ruby-compilation))
-(setq yas/mode-symbol 'ruby-mode)
-(setq yas/mode-symbol 'rails-mode)
 (setq ruby-use-encoding-map nil)
-
-(add-hook 'after-init-hook 'inf-ruby-switch-setup)
 
 
 (use-package ruby-mode
@@ -55,7 +51,12 @@
 
 (use-package rubocop
   :ensure rubocop
-  :config (setq rubocop-check-command "~/.rbenv/versions/2.2.1/bin/rubocop -a --format emacs"))
+  :config (progn
+
+            (setq rubocop-check-command "~/.rbenv/versions/2.2.1/bin/rubocop --format emacs")
+            (setq rubocop-autocorrect-command "~/.rbenv/versions/2.2.1/bin/rubocop -a --format emacs")
+
+            ))
 
 (defun bundle ()
   "Install bundle"

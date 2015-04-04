@@ -17,9 +17,9 @@
 ;; (enable-theme 'ample-flat)
 (load-theme 'default-black t)
 
-;; (use-package ir-black-theme
-;;     :ensure ir-black-theme
-;;       :init (load-theme 'ir-black t))
+(use-package mustang-theme
+  :ensure mustang-theme
+  :init (load-theme 'mustang t))
 
 
 ;; ;; cursor

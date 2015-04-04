@@ -1,6 +1,7 @@
 (use-package magit
   :ensure magit
   :init (progn
+          (setq magit-last-seen-setup-instructions "1.4.0")
           (setq magit-completing-read-function 'magit-ido-completing-read)
 
           (add-hook 'git-commit-mode-hook 'magit-commit-mode-init)

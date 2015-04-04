@@ -1,10 +1,6 @@
-(use-package projectile-rails
-  :ensure projectile-rails)
-
 (use-package projectile
   :ensure projectile
   :init (progn
-          (add-hook 'projectile-mode-hook 'projectile-rails-on)
           (setq projectile-completion-system 'ido)
           (projectile-global-mode)
           (setq projectile-enable-caching t)
