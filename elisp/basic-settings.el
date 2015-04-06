@@ -116,12 +116,12 @@ This functions should be added to the hooks of major modes for programming."
           (when (memq window-system '(mac ns))
             (exec-path-from-shell-initialize))))
 
-(use-package mic-paren
-  :ensure mic-paren
-  :init (paren-activate)
-  :config (progn
-            (setq paren-match-face 'paren-face-match)
-            (setq paren-sexp-mode t)))
+;; (use-package mic-paren
+;;   :ensure mic-paren
+;;   :init (paren-activate)
+;;   :config (progn
+;;             (setq paren-match-face 'paren-face-match)
+;;             (setq paren-sexp-mode t)))
 
 (use-package unkillable-scratch
   :ensure unkillable-scratch
@@ -282,10 +282,26 @@ This functions should be added to the hooks of major modes for programming."
 (use-package ag
   :ensure ag)
 
+
+(use-package key-chord
+  :ensure key-chord
+  :init (progn
+          (key-chord-mode 1)
+          (key-chord-define-global "gg"     'ace-jump-mode)
+          (key-chord-define-global "oo"     'ace-window)
+          (key-chord-define-global "bb" 'ace-jump-buffer)))
+
 (use-package ace-jump-mode
   :ensure  ace-jump-mode
   :defer t
   :init (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
+
+(use-package ace-jump-buffer
+  :ensure ace-jump-buffer)
+
+(use-package ace-window
+  :ensure ace-window)
+
 
 ;; (use-package ace-isearch
 ;;   :ensure ace-isearch

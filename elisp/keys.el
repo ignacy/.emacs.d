@@ -77,6 +77,7 @@
 
 (global-set-key "\C-w" (make-backward-kill-word-fn backward-kill-word (1)))
 
+(bind "C-x o" nil)
 
 
 (provide 'keys)

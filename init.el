@@ -21,7 +21,6 @@
   :ensure mustang-theme
   :init (load-theme 'mustang t))
 
-
 ;; ;; cursor
 ;; (setq cursor-in-non-selected-windows nil)
 (blink-cursor-mode t)
@@ -95,8 +94,7 @@
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 14")
 
-;;(set-frame-font "Lucida Grande Mono 16")
-(set-frame-font "Lucida Grande Mono 14")
+(set-frame-font "Lucida Grande Mono 16")
 
 (use-package smart-modeline)
 
