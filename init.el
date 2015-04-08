@@ -13,16 +13,10 @@
 
 ;; (if (window-system)
 ;;     (load-theme 'sidewalk-chalk t))
-
-;; (enable-theme 'ample-flat)
-(load-theme 'default-black t)
+;;(load-theme 'default-black t)
 ;;(load-theme 'apropospriate-dark t)
 
-
-(use-package mustang-theme
-  :ensure mustang-theme
-  :init (load-theme 'mustang t))
-
+(load-theme 'smooth t)
 ;; ;; cursor
 ;; (setq cursor-in-non-selected-windows nil)
 (blink-cursor-mode t)
@@ -94,9 +88,8 @@
 ;;(require 'nssh)
 ;;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
-;;(set-frame-font "Inconsolata-g 14")
-
-(set-frame-font "Lucida Grande Mono 16")
+;;(set-frame-font "Inconsolata-g 16")
+(set-frame-font "Lucida Grande Mono 15")
 
 (setq recenter-positions '(top middle bottom))
 

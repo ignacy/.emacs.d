@@ -29,6 +29,10 @@
 ;; Don't combine TAGS lists
 (setq tags-add-tables nil)
 
+(require 'paren)
+(set-face-foreground 'show-paren-match "red")
+(set-face-attribute 'show-paren-match nil :weight 'extra-bold)
+(show-paren-mode 1)
 
 (setq visible-bell t
       x-select-enable-clipboard t
@@ -115,13 +119,6 @@ This functions should be added to the hooks of major modes for programming."
   :init (progn
           (when (memq window-system '(mac ns))
             (exec-path-from-shell-initialize))))
-
-;; (use-package mic-paren
-;;   :ensure mic-paren
-;;   :init (paren-activate)
-;;   :config (progn
-;;             (setq paren-match-face 'paren-face-match)
-;;             (setq paren-sexp-mode t)))
 
 (use-package google-this
   :ensure google-this

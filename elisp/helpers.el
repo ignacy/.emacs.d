@@ -360,7 +360,7 @@ narrowed."
 (defun deploy ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployable-apps)))
-    (term-run-shell-command (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
+    (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
 
 
 (setq deployed-applications '("qbp_backend" "interceptor" "otp_manager" "data_collector"))
@@ -369,32 +369,32 @@ narrowed."
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployed-applications))
         (query (read-string "Query: " nil nil)))
-    (term-run-shell-command (concat "search_dev_log_for " app " " query))))
+    (compile (concat "search_dev_log_for " app " " query))))
 
 (defun search-staging-log-for ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployed-applications))
         (query (read-string "Query: " nil nil)))
-    (term-run-shell-command (concat "search_staging_log_for " app " " query))))
+    (compile (concat "search_staging_log_for " app " " query))))
 
 (defun get-last-3000-lines-from-dev-log-for ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployed-applications)))
-    (term-run-shell-command (concat "get_last_3000_lines_from_dev_log_for " app ))))
+    (compile (concat "get_last_3000_lines_from_dev_log_for " app ))))
 
 (defun get-last-3000-lines-from-staging-log-for ()
   (interactive)
   (let ((app (ido-completing-read "Which app?: " deployed-applications)))
-    (term-run-shell-command (concat "get_last_3000_lines_from_staging_log_for " app ))))
+    (compile (concat "get_last_3000_lines_from_staging_log_for " app ))))
 
 
 (defun deploy-nds-local ()
   (interactive)
-  (term-run-shell-command "~/bin/local_nds_deploy"))
+  (compile "~/bin/local_nds_deploy"))
 
 (defun tail-nds-local ()
   (interactive)
-  (term-run-shell-command "tail -f /usr/local/Cellar/tomcat/7.0.53/libexec/logs/pnds1.log"))
+  (compile "tail -f /usr/local/Cellar/tomcat/7.0.53/libexec/logs/pnds1.log"))
 
 
 (defun im-ssh (args)
@@ -419,7 +419,7 @@ narrowed."
 
 (defun git-last-30-commits ()
   (interactive)
-  (term-run-shell-command "git log --oneline -30"))
+  (compile "git log --oneline -30"))
 
 ;; Behave like vi's O command
 (defun open-previous-line (arg)
