@@ -14,9 +14,9 @@
 ;; (if (window-system)
 ;;     (load-theme 'sidewalk-chalk t))
 ;;(load-theme 'default-black t)
-;;(load-theme 'apropospriate-dark t)
+(load-theme 'apropospriate-dark t)
 
-(load-theme 'smooth t)
+;;(load-theme 'smooth t)
 ;; ;; cursor
 ;; (setq cursor-in-non-selected-windows nil)
 (blink-cursor-mode t)
@@ -89,7 +89,7 @@
 ;;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 16")
-(set-frame-font "Lucida Grande Mono 15")
+(set-frame-font "Lucida Grande Mono 14")
 
 (setq recenter-positions '(top middle bottom))
 
