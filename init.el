@@ -14,7 +14,10 @@
 ;; (if (window-system)
 ;;     (load-theme 'sidewalk-chalk t))
 ;;(load-theme 'default-black t)
-(load-theme 'apropospriate-dark t)
+
+(use-package seti-theme
+  :ensure seti-theme
+  :init (load-theme 'seti t))
 
 ;;(load-theme 'smooth t)
 ;; ;; cursor
@@ -22,7 +25,7 @@
 (blink-cursor-mode t)
 (setq blink-cursor-blinks 0)
 (set-cursor-color "chartreuse2")
-;;(setq-default cursor-type '(bar . 4))
+(setq-default cursor-type '(bar . 5))
 
 
 ;; red line after 80 characters
@@ -86,10 +89,10 @@
 ;;(set-frame-font "CamingoCode 15")
 
 ;;(require 'nssh)
-;;(set-frame-font "Source Code Pro 15")
+(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
-;;(set-frame-font "Inconsolata-g 16")
-(set-frame-font "Lucida Grande Mono 14")
+;;(set-frame-font "Inconsolata-g 15")
+;;(set-frame-font "Lucida Grande Mono 14")
 
 (setq recenter-positions '(top middle bottom))
 

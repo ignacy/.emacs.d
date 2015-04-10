@@ -7,8 +7,10 @@
           (setq org-default-notes-file (concat org-directory "/notes.org"))
           (setq org-default-todo-file (concat org-directory "/todo.org"))
           (setq org-default-book-notes-file (concat org-directory "/book_notes.org"))
+          (setq org-upnext-file (concat org-directory "/upnext.org"))
 
           (define-key global-map "\C-cc" 'org-capture)
+          (global-set-key (kbd "M-t") 'org-capture)
           (global-set-key "\C-cl" 'org-store-link)
           (global-set-key (kbd "<f12>") 'org-agenda)
           (global-set-key "\C-cb" 'org-iswitchb)
@@ -20,6 +22,8 @@
           (setq org-capture-templates
                 '(("t" "Todo" entry (file org-default-todo-file "Tasks")
                    "* TODO %?\n  %i\n ")
+                  ("u" "Note" entry (file org-upnext-file)
+                   "* %?\n  %i\n ")
                   ("o" "Book note" entry (file org-default-book-notes-file)
                    "* %^{Book title}\n %?\n")
                   ("n" "Note" entry (file org-default-notes-file)

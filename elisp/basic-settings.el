@@ -155,14 +155,12 @@ This functions should be added to the hooks of major modes for programming."
 ;; Display ido results vertically, rather than horizontally
 (ido-mode t)
 (ido-everywhere t)
-(setq ido-create-new-buffer 'always)
-(set-default 'imenu-auto-rescan t)
-(setq ido-flex-match t)
-(setq ido-enable-flex-matching t)
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (add-to-list 'ido-ignore-files "\\.keep")
 (setq ido-file-extensions-order '(".rb" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(setq ido-create-new-buffer 'always)
+(set-default 'imenu-auto-rescan t)
 (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
   (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
@@ -172,7 +170,6 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package flx-ido
   :ensure flx-ido
-  :defer t
   :init (progn
           (flx-ido-mode 1)
           (setq gc-cons-threshold 20000000)
@@ -256,9 +253,9 @@ This functions should be added to the hooks of major modes for programming."
 (use-package font-lock+
   :ensure  font-lock+)
 
-(use-package auto-dim-other-buffers
-  :ensure auto-dim-other-buffers
-  :init (auto-dim-other-buffers-mode t))
+;; (use-package auto-dim-other-buffers
+;;   :ensure auto-dim-other-buffers
+;;   :init (auto-dim-other-buffers-mode t))
 
 (defun copy-from-osx ()
   (shell-command-to-string "pbpaste"))
@@ -290,6 +287,7 @@ This functions should be added to the hooks of major modes for programming."
   :ensure key-chord
   :init (progn
           (key-chord-mode 1)
+          (key-chord-define-global "ff"     'projectile-find-file)
           (key-chord-define-global "gg"     'ace-jump-mode)
           (key-chord-define-global "oo"     'ace-window)
           (key-chord-define-global "bb" 'ace-jump-buffer)))
