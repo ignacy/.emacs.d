@@ -361,4 +361,9 @@ This functions should be added to the hooks of major modes for programming."
           (setq wakatime-python-bin "/usr/local/bin/python")
           (global-wakatime-mode)))
 
+
+(use-package color-identifiers-mode
+  :ensure color-identifiers-mode
+  :init (global-color-identifiers-mode))
+
 (provide 'basic-settings)

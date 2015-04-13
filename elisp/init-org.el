@@ -24,7 +24,7 @@
                    "* TODO %?\n  %i\n ")
                   ("u" "Note" entry (file org-upnext-file)
                    "* %?\n  %i\n ")
-                  ("o" "Book note" entry (file org-default-book-notes-file)
+                  ("b" "Book note" entry (file org-default-book-notes-file)
                    "* %^{Book title}\n %?\n")
                   ("n" "Note" entry (file org-default-notes-file)
                    "* %^{Title}\n %?\non %U\n  %i\n  ")))

@@ -15,11 +15,12 @@
 ;;     (load-theme 'sidewalk-chalk t))
 ;;(load-theme 'default-black t)
 
-(use-package seti-theme
-  :ensure seti-theme
-  :init (load-theme 'seti t))
+;; (use-package seti-theme
+;;   :ensure seti-theme
+;;   :init (load-theme 'seti t))
 
-;;(load-theme 'smooth t)
+(load-theme 'railscasts t)
+
 ;; ;; cursor
 ;; (setq cursor-in-non-selected-windows nil)
 (blink-cursor-mode t)
@@ -89,15 +90,25 @@
 ;;(set-frame-font "CamingoCode 15")
 
 ;;(require 'nssh)
-(set-frame-font "Source Code Pro 15")
+(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
 ;;(set-frame-font "Lucida Grande Mono 14")
 
 (setq recenter-positions '(top middle bottom))
 
+
 (use-package smart-modeline)
 
 (set-face-attribute hl-line-face nil :underline nil)
 
 (recentf-cleanup) ;; remove old files from recentf list
+(put 'set-goal-column 'disabled nil)
+
+
+;; Dont use bold fonts and underlines
+(set-face-bold-p 'bold nil)
+(mapc
+  (lambda (face)
+    (set-face-attribute face nil :weight 'normal :underline nil))
+  (face-list))
