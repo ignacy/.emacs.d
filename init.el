@@ -15,11 +15,9 @@
 ;;     (load-theme 'sidewalk-chalk t))
 ;;(load-theme 'default-black t)
 
-;; (use-package seti-theme
-;;   :ensure seti-theme
-;;   :init (load-theme 'seti t))
-
-(load-theme 'railscasts t)
+(use-package ir-black-theme
+  :ensure ir-black-theme
+  :init (load-theme 'ir-black t))
 
 ;; ;; cursor
 ;; (setq cursor-in-non-selected-windows nil)
@@ -33,8 +31,6 @@
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
 ;; (setq fci-rule-column 80)
 ;; (setq fci-rule-color "red")
-
-(global-hl-line-mode)
 
 (defun fix-fonts (type)
   " wiegth: 'normal or 'light"
@@ -80,7 +76,6 @@
 ;;   (progn
 ;;     (add-hook 'after-init-hook 'global-color-identifiers-mode)))
 
-
 (put 'narrow-to-region 'disabled nil)
 
 ;; font setting
@@ -90,17 +85,18 @@
 ;;(set-frame-font "CamingoCode 15")
 
 ;;(require 'nssh)
-(set-frame-font "Source Code Pro 16")
+;;(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
-;;(set-frame-font "Lucida Grande Mono 14")
+(set-frame-font "Lucida Grande Mono 14")
 
 (setq recenter-positions '(top middle bottom))
 
 
 (use-package smart-modeline)
 
-(set-face-attribute hl-line-face nil :underline nil)
+;;(global-hl-line-mode)
+;;(set-face-attribute hl-line-face nil :underline nil)
 
 (recentf-cleanup) ;; remove old files from recentf list
 (put 'set-goal-column 'disabled nil)

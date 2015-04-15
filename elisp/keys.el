@@ -15,7 +15,7 @@
 (bind "M-c" 'query-replace)
 (bind "C-c y" 'browse-kill-ring)
 (bind "C-c TAB" 'align-regexp)
-(bind "C-x C-r" 'ido-recentf-open) use ,r ! - keychords
+(bind "C-x C-r" 'ido-recentf-open)
 
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "M-h" 'backward-kill-word)
@@ -77,8 +77,5 @@
 (global-set-key [(meta delete)] 'backward-kill-word)
 
 (global-set-key "\C-w" (make-backward-kill-word-fn backward-kill-word (1)))
-
-(bind "C-x o" nil)
-
 
 (provide 'keys)

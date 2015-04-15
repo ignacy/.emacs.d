@@ -283,25 +283,14 @@ This functions should be added to the hooks of major modes for programming."
   :ensure ag)
 
 
-(use-package key-chord
-  :ensure key-chord
-  :init (progn
-          (key-chord-mode 1)
-          (key-chord-define-global "ff"     'projectile-find-file)
-          (key-chord-define-global "gg"     'ace-jump-mode)
-          (key-chord-define-global "oo"     'ace-window)
-          (key-chord-define-global "bb" 'ace-jump-buffer)))
-
 (use-package ace-jump-mode
   :ensure  ace-jump-mode
   :defer t
   :init (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
 
-(use-package ace-jump-buffer
-  :ensure ace-jump-buffer)
-
 (use-package ace-window
-  :ensure ace-window)
+  :ensure ace-window
+  :init (global-set-key (kbd "C-x o") 'ace-window))
 
 
 ;; (use-package ace-isearch
