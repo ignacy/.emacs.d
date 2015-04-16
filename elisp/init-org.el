@@ -24,6 +24,8 @@
                    "* TODO %?\n  %i\n ")
                   ("u" "Note" entry (file org-upnext-file)
                    "* %?\n  %i\n ")
+                  ("p" "Plan" entry (file org-default-notes-file "Plans")
+                   "* %?\n  %i\n ")
                   ("b" "Book note" entry (file org-default-book-notes-file)
                    "* %^{Book title}\n %?\n")
                   ("n" "Note" entry (file org-default-notes-file)

@@ -87,7 +87,6 @@ This functions should be added to the hooks of major modes for programming."
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (delete-selection-mode t)
-(global-subword-mode 1)
 (setq tramp-default-method "ssh")
 
 ;; undo setting
@@ -124,6 +123,11 @@ This functions should be added to the hooks of major modes for programming."
   :ensure google-this
   :init (google-this-mode))
 
+(global-subword-mode 1)
+
+(use-package syntax-subword
+  :ensure syntax-subword
+  :init (global-syntax-subword-mode 1))
 
 (use-package unkillable-scratch
   :ensure unkillable-scratch

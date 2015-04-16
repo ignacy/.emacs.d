@@ -23,22 +23,14 @@
 ;; (setq cursor-in-non-selected-windows nil)
 (blink-cursor-mode t)
 (setq blink-cursor-blinks 0)
-(set-cursor-color "chartreuse2")
-(setq-default cursor-type '(bar . 5))
+;;(set-cursor-color "chartreuse2")
+;;(setq-default cursor-type '(bar . 5))
 
 
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
 ;; (setq fci-rule-column 80)
 ;; (setq fci-rule-color "red")
-
-(defun fix-fonts (type)
-  " wiegth: 'normal or 'light"
-  (interactive)
-  (mapc (lambda (face)
-          (set-face-attribute face nil :weight type :underline nil))
-        (face-list)))
-;; (fix-fonts 'normal)
 
 (fringe-mode '(6 . 0))
 
@@ -89,18 +81,11 @@
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
 (set-frame-font "Lucida Grande Mono 14")
-
-(setq recenter-positions '(top middle bottom))
-
-
 (use-package smart-modeline)
-
 ;;(global-hl-line-mode)
 ;;(set-face-attribute hl-line-face nil :underline nil)
-
 (recentf-cleanup) ;; remove old files from recentf list
 (put 'set-goal-column 'disabled nil)
-
 
 ;; Dont use bold fonts and underlines
 (set-face-bold-p 'bold nil)
