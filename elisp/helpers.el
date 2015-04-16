@@ -415,7 +415,8 @@ narrowed."
   (switch-to-buffer "*ssh*"))
 
 
-(require 'term-run)
+(use-package term-run
+:ensure term-run)
 
 (defun git-last-30-commits ()
   (interactive)
