@@ -213,7 +213,6 @@ This functions should be added to the hooks of major modes for programming."
   (sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
   (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys)))
 
-
 (use-package easy-kill
   :ensure easy-kill
   :defer t
@@ -309,6 +308,16 @@ This functions should be added to the hooks of major modes for programming."
           (setq wakatime-python-bin "/usr/local/bin/python")
           (global-wakatime-mode)))
 
+(use-package swiper
+  :ensure swiper
+  :init (progn
+          (ivy-mode t)))
+(autoload 'ivy-read "ivy")
+
+
+(use-package find-file-in-project
+  :ensure find-file-in-project
+  :init (global-set-key (kbd "C-x f") 'find-file-in-project))
 
 (use-package color-identifiers-mode
   :ensure color-identifiers-mode

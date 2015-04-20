@@ -30,16 +30,12 @@
   '((t :inherit default :foreground "#FF1F69"))
   "Smart modeline " :group 'smart-modeline-faces)
 
-(defun git-repo-name (dir)
-  (if (string= "/" dir)
-      "-"
-    (if (file-exists-p (expand-file-name ".git/" dir))
-        dir
-      (git-repo-name (expand-file-name "../" dir)))))
+(defun git-repo-name ()
+  "Get the nane of the closest .git directory or ...?"
+  (locate-dominating-file default-directory ".git"))
 
 (defun sm-clean-directory-name ()
-  (car (last (butlast (split-string (git-repo-name default-directory) "/")))))
-
+  (car (last (butlast (split-string (git-repo-name) "/")))))
 
 (setq-default mode-line-format
               (list

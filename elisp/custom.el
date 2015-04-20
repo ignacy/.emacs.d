@@ -38,15 +38,15 @@
  '(main-line-separator-style (quote chamfer))
  '(package-selected-packages
    (quote
-    (inf-ruby evil-tutor evil-matchit evil-nerd-commenter evil-surround evil-leader evil gist atom-dark-theme dash syntax-subword plan9-theme color-identifiers-mode alect-themes lenlen-theme tao-theme seti-theme cyberpunk-theme monokai-theme org-mode molokai-theme mustang-theme ace-window ace-jump-buffer key-chord auto-dim-other-buffers google-this apropospriate-theme color-theme-sanityinc-tomorrow ir-black-theme company-restclient restclient material-theme sublime-themes darktooth-theme afternoon-theme bliss-theme ace-jump-mode request elisp--witness--lisp unkillable-scratch ruby-hash-syntax rbenv ag yasnippet yaml-mode wrap-region wakatime-mode visual-regexp use-package term-run subatomic-theme smex smartscan smartparens sane-term rubocop rspec-mode rhtml-mode rainbow-mode rainbow-delimiters railscasts-theme projectile-rails persp-projectile noctilux-theme multiple-cursors multi-term mic-paren markdown-mode magit js2-mode hungry-delete highlight-symbol haml-mode guide-key gotham-theme golint go-eldoc font-lock+ flycheck flx-ido fancy-narrow expand-region exec-path-from-shell easy-kill company-quickhelp company-go async ample-theme ace-isearch)))
+    (find-file-in-project swiper swipper inf-ruby evil-tutor evil-matchit evil-nerd-commenter evil-surround evil-leader evil gist atom-dark-theme dash syntax-subword plan9-theme color-identifiers-mode alect-themes lenlen-theme tao-theme seti-theme cyberpunk-theme monokai-theme org-mode molokai-theme mustang-theme ace-window ace-jump-buffer key-chord auto-dim-other-buffers google-this apropospriate-theme color-theme-sanityinc-tomorrow ir-black-theme company-restclient restclient material-theme sublime-themes darktooth-theme afternoon-theme bliss-theme ace-jump-mode request elisp--witness--lisp unkillable-scratch ruby-hash-syntax rbenv ag yasnippet yaml-mode wrap-region wakatime-mode visual-regexp use-package term-run subatomic-theme smex smartscan smartparens sane-term rubocop rspec-mode rhtml-mode rainbow-mode rainbow-delimiters railscasts-theme projectile-rails persp-projectile noctilux-theme multiple-cursors multi-term mic-paren markdown-mode magit js2-mode hungry-delete highlight-symbol haml-mode guide-key gotham-theme golint go-eldoc font-lock+ flycheck flx-ido fancy-narrow expand-region exec-path-from-shell easy-kill company-quickhelp company-go async ample-theme ace-isearch)))
  '(pos-tip-background-color "#3a3a3a")
  '(pos-tip-foreground-color "#9E9E9E")
  '(powerline-color1 "#1E1E1E")
  '(powerline-color2 "#111111")
  '(red "#ffffff")
- '(rspec-command-options "--color --order random")
+ '(rspec-command-options "--color --order random" t)
  '(rspec-spec-command "sp")
- '(rspec-use-bundler-when-possible t)
+ '(rspec-use-bundler-when-possible t t)
  '(rspec-use-spring-when-possible nil)
  '(tabbar-background-color "#353535")
  '(vc-annotate-background nil)

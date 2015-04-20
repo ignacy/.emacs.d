@@ -44,7 +44,7 @@
 (require 'init-javascript-settings)
 (require 'init-markup-and-style-modes)
 
-(require 'init-projectile)
+;;(require 'init-projectile)
 
 (require 'init-magit)
 (require 'init-ruby-mode)
@@ -76,21 +76,14 @@
 
 ;;(set-frame-font "CamingoCode 15")
 
-;;(require 'nssh)
-(set-frame-font "Office Code Pro Light 12")
-;(set-frame-font "Source Code Pro 15")
+(set-frame-font "Office Code Pro 14")
+;;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
 ;;(set-frame-font "Lucida Grande Mono 14")
+
 (use-package smart-modeline)
 ;;(global-hl-line-mode)
 ;;(set-face-attribute hl-line-face nil :underline nil)
-(recentf-cleanup) ;; remove old files from recentf list
-(put 'set-goal-column 'disabled nil)
 
-;; Dont use bold fonts and underlines
-(set-face-bold-p 'bold nil)
-(mapc
-  (lambda (face)
-    (set-face-attribute face nil :weight 'normal :underline nil))
-  (face-list))
+(recentf-cleanup) ;; remove old files from recentf list
