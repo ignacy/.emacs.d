@@ -22,7 +22,7 @@
           (setq org-capture-templates
                 '(("t" "Todo" entry (file org-default-todo-file "Tasks")
                    "* TODO %?\n  %i\n ")
-                  ("u" "Note" entry (file org-upnext-file)
+                  ("u" "Upnext" entry (file org-upnext-file)
                    "* %?\n  %i\n ")
                   ("p" "Plan" entry (file org-default-notes-file "Plans")
                    "* %?\n  %i\n ")

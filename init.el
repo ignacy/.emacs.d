@@ -15,9 +15,9 @@
 ;;     (load-theme 'sidewalk-chalk t))
 ;;(load-theme 'default-black t)
 
-(use-package ir-black-theme
-  :ensure ir-black-theme
-  :init (load-theme 'ir-black t))
+(use-package atom-dark-theme
+  :ensure atom-dark-theme
+  :init (load-theme 'atom-dark t))
 
 ;; ;; cursor
 ;; (setq cursor-in-non-selected-windows nil)
@@ -54,7 +54,7 @@
 (require 'init-org)
 
 (require 'init-flycheck)
-;; (require 'init-evil)
+;;(require 'init-evil)
 
 (use-package rbenv
   :ensure rbenv
@@ -77,10 +77,11 @@
 ;;(set-frame-font "CamingoCode 15")
 
 ;;(require 'nssh)
-;;(set-frame-font "Source Code Pro 16")
+(set-frame-font "Office Code Pro Light 12")
+;(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Monaco 15")
 ;;(set-frame-font "Inconsolata-g 15")
-(set-frame-font "Lucida Grande Mono 14")
+;;(set-frame-font "Lucida Grande Mono 14")
 (use-package smart-modeline)
 ;;(global-hl-line-mode)
 ;;(set-face-attribute hl-line-face nil :underline nil)

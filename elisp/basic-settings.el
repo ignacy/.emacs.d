@@ -119,19 +119,10 @@ This functions should be added to the hooks of major modes for programming."
           (when (memq window-system '(mac ns))
             (exec-path-from-shell-initialize))))
 
-(use-package google-this
-  :ensure google-this
-  :init (google-this-mode))
-
 (global-subword-mode 1)
-
 (use-package syntax-subword
   :ensure syntax-subword
   :init (global-syntax-subword-mode 1))
-
-(use-package unkillable-scratch
-  :ensure unkillable-scratch
-  :init (unkillable-scratch 1))
 
 ;; ;;;; multiple-cursors
 (use-package multiple-cursors
@@ -180,7 +171,6 @@ This functions should be added to the hooks of major modes for programming."
           (setq ido-enable-flex-matching t)
           (setq ido-use-faces nil)))
 
-
 (use-package saveplace
   :ensure saveplace
   :init (progn (setq-default save-place t)
@@ -195,12 +185,6 @@ This functions should be added to the hooks of major modes for programming."
           (setq recentf-max-menu-items 50)
           (add-to-list 'recentf-exclude "\\.revive\\'")
           (add-to-list 'recentf-exclude "elpa")))
-
-
-(use-package fancy-narrow
-  :ensure fancy-narrow
-  :defer t
-  :init (fancy-narrow-mode))
 
 (use-package smex
   :ensure smex
@@ -235,7 +219,6 @@ This functions should be added to the hooks of major modes for programming."
   :defer t
   :init (global-set-key [remap kill-ring-save] 'easy-kill))
 
-
 (use-package hungry-delete
   :ensure hungry-delete
   :defer t
@@ -250,16 +233,7 @@ This functions should be added to the hooks of major modes for programming."
       (ansi-color-apply-on-region (point-min) (point-max)))))
 
 (add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
-
-
 (setq compilation-scroll-output 'first-error) ;; follows output
-
-(use-package font-lock+
-  :ensure  font-lock+)
-
-;; (use-package auto-dim-other-buffers
-;;   :ensure auto-dim-other-buffers
-;;   :init (auto-dim-other-buffers-mode t))
 
 (defun copy-from-osx ()
   (shell-command-to-string "pbpaste"))
@@ -286,7 +260,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package ag
   :ensure ag)
 
-
 (use-package ace-jump-mode
   :ensure  ace-jump-mode
   :defer t
@@ -295,7 +268,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package ace-window
   :ensure ace-window
   :init (global-set-key (kbd "C-x o") 'ace-window))
-
 
 ;; (use-package ace-isearch
 ;;   :ensure ace-isearch
@@ -310,24 +282,7 @@ This functions should be added to the hooks of major modes for programming."
   :defer t
   :init (global-set-key (kbd "M-2") 'er/expand-region))
 
-(use-package visual-regexp
-  :ensure  visual-regexp
-  :defer t
-  :init (progn
-          (define-key global-map (kbd "C-c r") 'vr/replace)
-          (define-key global-map (kbd "C-c q") 'vr/query-replace)
-          ;; if you use multiple-cursors, this is for you:
-          (define-key global-map (kbd "C-c m") 'vr/mc-mark)))
-
-(use-package re-builder
-  :ensure  re-builder
-  :defer t
-  :init (setq reb-re-syntax 'string))
-
 (display-time-mode -1)
-
-(setq browse-kill-ring-separator
-      "--------------------------------------------------------------------------------")
 
 (defun my/replace-blank-kill (args)
   (let ((string (car args))

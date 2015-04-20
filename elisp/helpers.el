@@ -352,10 +352,9 @@ narrowed."
   (insert " "))
 
 ;;; WORK
-
 (setq deployable-apps '("dev_interceptor" "dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector" "dev_connector_admin"
                         "dev_vpn_adapter"
-                        ))
+                        "staging_vpn_adapter" "staging_connector_admin" "staging_interceptor"))
 
 (defun deploy ()
   (interactive)
