@@ -223,17 +223,6 @@ This functions should be added to the hooks of major modes for programming."
   :defer t
   :init (global-hungry-delete-mode))
 
-(defun prelude-colorize-compilation-buffer ()
-  "Colorize a compilation mode buffer."
-  (interactive)
-  ;; we don't want to mess with child modes such as grep-mode, ack, ag, etc
-  (when (eq major-mode 'compilation-mode)
-    (let ((inhibit-read-only t))
-      (ansi-color-apply-on-region (point-min) (point-max)))))
-
-(add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
-(setq compilation-scroll-output 'first-error) ;; follows output
-
 (defun copy-from-osx ()
   (shell-command-to-string "pbpaste"))
 
@@ -309,11 +298,14 @@ This functions should be added to the hooks of major modes for programming."
           (global-wakatime-mode)))
 
 (use-package swiper
-  :ensure swiper
-  :init (progn
-          (ivy-mode t)))
-(autoload 'ivy-read "ivy")
+  :ensure swiper)
 
+(use-package perspective
+  :ensure perspective
+  :init
+  (progn
+    (persp-mode)))
+    ;;(global-set-key (kbd "C-c C-p") 'persp-switch)))
 
 (use-package find-file-in-project
   :ensure find-file-in-project

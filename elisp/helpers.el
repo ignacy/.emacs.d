@@ -187,13 +187,6 @@ Symbols matching the text at point are put first in the completion list."
       (message "Opening file...")
     (message "Aborting")))
 
-(defun ivy-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ivy-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
-
 (defun disable-all-themes ()
   "disable all active themes."
   (dolist (i custom-enabled-themes)
@@ -484,5 +477,28 @@ narrowed."
       (find-file (car lst))
       (goto-char (point-min))
       (forward-line (1- (string-to-number (cadr lst)))))))
+
+(defun new-shell (name)
+  "Opens a new shell buffer with the given name in
+asterisks (*name*) in the current directory and changes the
+prompt to 'name>'."
+  (interactive "sName: ")
+  (pop-to-buffer (concat "*" name "*"))
+  (unless (eq major-mode 'shell-mode)
+    (shell (current-buffer))
+    (sleep-for 0 200)
+    (delete-region (point-min) (point-max))))
+
+(defun mydelete ()
+  "Delete the failed portion of the search string, or the last char if successful."
+  (interactive)
+  (with-isearch-suspended
+      (setq isearch-new-string
+            (substring
+             isearch-string 0 (or (isearch-fail-pos) (1- (length isearch-string))))
+            isearch-new-message
+            (mapconcat 'isearch-text-char-description isearch-new-string ""))))
+
+(define-key isearch-mode-map (kbd "<backspace>") #'mydelete)
 
 (provide 'helpers)

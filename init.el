@@ -1,3 +1,9 @@
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 ;;; Commentary: init -- my emacs configuration
 
 (require 'cl)
@@ -13,17 +19,20 @@
 
 ;; (if (window-system)
 ;;     (load-theme 'sidewalk-chalk t))
-;;(load-theme 'default-black t)
 
-(use-package atom-dark-theme
-  :ensure atom-dark-theme
-  :init (load-theme 'atom-dark t))
+(load-theme 'default-black t)
+
+;; (use-package atom-dark-theme
+;;   :ensure atom-dark-theme
+;;   :init (load-theme 'atom-dark t))
+
+;;(load-theme 'im t)
 
 ;; ;; cursor
 ;; (setq cursor-in-non-selected-windows nil)
 (blink-cursor-mode t)
 (setq blink-cursor-blinks 0)
-;;(set-cursor-color "chartreuse2")
+(set-cursor-color "chartreuse2")
 ;;(setq-default cursor-type '(bar . 5))
 
 
@@ -44,7 +53,7 @@
 (require 'init-javascript-settings)
 (require 'init-markup-and-style-modes)
 
-;;(require 'init-projectile)
+(require 'init-projectile)
 
 (require 'init-magit)
 (require 'init-ruby-mode)
@@ -54,6 +63,7 @@
 (require 'init-org)
 
 (require 'init-flycheck)
+(require 'init-compilation)
 ;;(require 'init-evil)
 
 (use-package rbenv

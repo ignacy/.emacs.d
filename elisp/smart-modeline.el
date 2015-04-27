@@ -12,8 +12,6 @@
 (set-face-foreground 'mode-line "grey7")
 (set-face-foreground 'mode-line-inactive "grey10")
 
-
-
 (defface sm-default-face
   '((t :inherit default :foreground "#FF1F68"))
   "Smart modeline " :group 'smart-modeline-faces)

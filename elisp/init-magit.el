@@ -3,8 +3,7 @@
   :init (progn
 
           (setq magit-last-seen-setup-instructions "1.4.0")
-          ;;(setq magit-completing-read-function 'magit-ido-completing-read)
-          (setq magit-completing-read-function 'ivy-completing-read)
+          (setq magit-completing-read-function 'magit-ido-completing-read)
 
           (add-hook 'git-commit-mode-hook 'magit-commit-mode-init)
           ;; close popup when commiting

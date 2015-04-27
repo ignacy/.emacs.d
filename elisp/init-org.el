@@ -29,7 +29,7 @@
                   ("b" "Book note" entry (file org-default-book-notes-file)
                    "* %^{Book title}\n %?\n")
                   ("n" "Note" entry (file org-default-notes-file)
-                   "* %^{Title}\n %?\non %U\n  %i\n  ")))
+                   "* %?\n %i\n  ")))
 
           (setq org-todo-keywords
                 (quote ((sequence "TODO(t)" "|" "DONE(d)")
