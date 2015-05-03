@@ -501,4 +501,23 @@ prompt to 'name>'."
 
 (define-key isearch-mode-map (kbd "<backspace>") #'mydelete)
 
+
+(defun my/vsplit-last-buffer (prefix)
+  "Split the window vertically and display the previous buffer."
+  (interactive "p")
+  (split-window-vertically)
+  (other-window 1 nil)
+  (if (= prefix 1)
+    (switch-to-next-buffer)))
+
+(defun my/hsplit-last-buffer (prefix)
+  "Split the window horizontally and display the previous buffer."
+  (interactive "p")
+  (split-window-horizontally)
+  (other-window 1 nil)
+  (if (= prefix 1) (switch-to-next-buffer)))
+
+(bind-key "C-x 2" 'my/vsplit-last-buffer)
+(bind-key "C-x 3" 'my/hsplit-last-buffer)
+
 (provide 'helpers)

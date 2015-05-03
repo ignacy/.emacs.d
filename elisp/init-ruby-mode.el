@@ -87,7 +87,7 @@
 (setq rspec-use-rake-when-possible nil)
 (setq rspec-use-rvm nil)
 (setq rspec-use-bundler-when-possible nil)
-(setq rspec-command-options "--format documentation --order random")
+(setq rspec-command-options "--format progress --order random")
 
 
 (defun run-rspecs ()

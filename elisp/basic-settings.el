@@ -4,18 +4,7 @@
 
 (setq package-enable-at-startup nil)
 (package-initialize)
-
-
-(setq compilation-ask-about-save nil)
-(set-terminal-coding-system nil)
-(set-keyboard-coding-system nil)
-(prefer-coding-system 'utf-8)
-(setq fill-column 80)
-
-(setq kill-do-not-save-duplicates t)
-(global-font-lock-mode t)
-(setq font-lock-maximum-decoration t)
-
+(set-fringe-mode '(0 . 0))
 (setq mac-option-key-is-meta t)
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier 'meta)
@@ -24,7 +13,6 @@
 (setq-default mac-pass-command-to-system nil)
 (setq mouse-wheel-follow-mouse 't)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-
 
 ;; Don't combine TAGS lists
 (setq tags-add-tables nil)
@@ -54,18 +42,11 @@
       ispell-program-name "/usr/local/bin/aspell"
       enable-recursive-minibuffers t)
 
-(custom-set-variables
- '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t))))
-
-;; create the autosave dir if necessary, since emacs won't.
-(make-directory "~/.emacs.d/autosaves/" t)
-
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 (global-auto-revert-mode 1)
-(winner-mode 1)
 
 (defun font-lock-comment-annotations ()
   "Highlight a bunch of well known comment annotations.
@@ -77,9 +58,7 @@ This functions should be added to the hooks of major modes for programming."
 
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 2)
-(set-language-environment "UTF-8")
-(setenv "LC_LOCALE" "en_US.UTF-8")
-(setenv "LC_CTYPE" "en_US.UTF-8")
+
 (autoload 'epa "epa-file-mode" t)
 (epa-file-enable)
 ;;(setq paren-dont-touch-blink t)
@@ -98,12 +77,7 @@ This functions should be added to the hooks of major modes for programming."
 (setq history-length 500
       history-delete-duplicates t)
 
-;; (global-linum-mode t)
-;; (setq linum-format "%3d ")
-
 (require 'use-package)
-
-
 
 (when (equal system-type 'darwin)
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
@@ -139,6 +113,9 @@ This functions should be added to the hooks of major modes for programming."
   :ensure rainbow-delimiters
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
+;; (use-package color-identifiers-mode
+;;   :ensure color-identifiers-mode
+;;   :init (global-color-identifiers-mode))
 
 (use-package highlight-symbol
   :ensure highlight-symbol
@@ -186,6 +163,7 @@ This functions should be added to the hooks of major modes for programming."
           (add-to-list 'recentf-exclude "\\.revive\\'")
           (add-to-list 'recentf-exclude "elpa")))
 
+
 (use-package smex
   :ensure smex
   :init (progn
@@ -193,9 +171,8 @@ This functions should be added to the hooks of major modes for programming."
           (global-set-key (kbd "M-x") 'smex)))
 
 (use-package smartscan
-  :ensure smartscan
   :defer t
-  :init (add-hook 'prog-mode-hook 'smartscan-mode))
+  :init (global-smartscan-mode t))
 
 (use-package smartparens
   :ensure smartparens
@@ -223,19 +200,6 @@ This functions should be added to the hooks of major modes for programming."
   :defer t
   :init (global-hungry-delete-mode))
 
-(defun copy-from-osx ()
-  (shell-command-to-string "pbpaste"))
-
-(defun paste-to-osx (text &optional push)
-  (let ((process-connection-type nil))
-    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-      (process-send-string proc text)
-      (process-send-eof proc))))
-
-(unless (getenv "TMUX")
-  (setq interprogram-cut-function 'paste-to-osx)
-  (setq interprogram-paste-function 'copy-from-osx))
-
 (use-package wrap-region
   :ensure  wrap-region
   :init (progn
@@ -248,20 +212,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package ag
   :ensure ag)
 
-(use-package ace-jump-mode
-  :ensure  ace-jump-mode
-  :defer t
-  :init (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
-
-(use-package ace-window
-  :ensure ace-window
-  :init (global-set-key (kbd "C-x o") 'ace-window))
-
-;; (use-package ace-isearch
-;;   :ensure ace-isearch
-;;   :defer t
-;;  :init (global-ace-isearch-mode +1))
-
 (use-package restclient
   :ensure restclient)
 
@@ -269,25 +219,6 @@ This functions should be added to the hooks of major modes for programming."
   :ensure  expand-region
   :defer t
   :init (global-set-key (kbd "M-2") 'er/expand-region))
-
-(display-time-mode -1)
-
-(defun my/replace-blank-kill (args)
-  (let ((string (car args))
-        (replace (cdr args))
-        (last (car-safe kill-ring)))
-    (when (and last (string-blank-p last))
-      (setq replace t))
-    (list string replace)))
-
-(advice-add 'kill-new :filter-args #'my/replace-blank-kill)
-
-(use-package guide-key
-  :ensure guide-key
-  :init (progn
-          (setq guide-key/guide-key-sequence '("C-x r" "C-x 4"))
-          (setq guide-key/highlight-command-regexp "register")
-            (guide-key-mode 1) ))
 
 (use-package wakatime-mode
   :ensure wakatime-mode
@@ -297,22 +228,8 @@ This functions should be added to the hooks of major modes for programming."
           (setq wakatime-python-bin "/usr/local/bin/python")
           (global-wakatime-mode)))
 
-(use-package swiper
-  :ensure swiper)
-
-(use-package perspective
-  :ensure perspective
-  :init
-  (progn
-    (persp-mode)))
-    ;;(global-set-key (kbd "C-c C-p") 'persp-switch)))
-
 (use-package find-file-in-project
   :ensure find-file-in-project
   :init (global-set-key (kbd "C-x f") 'find-file-in-project))
-
-(use-package color-identifiers-mode
-  :ensure color-identifiers-mode
-  :init (global-color-identifiers-mode))
 
 (provide 'basic-settings)

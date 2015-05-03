@@ -11,14 +11,15 @@
 (define-key input-decode-map "\e[1;5C" [C-right])
 (define-key input-decode-map "\e[1;5D" [C-left])
 
-;;(bind "M-r" 'projectile-ag)
-(bind "M-r" 'counsel-git-grep)
+(bind "M-r" 'projectile-ag)
+;;(bind "M-r" 'counsel-git-grep)
 
 (bind "M-c" 'query-replace)
 (bind "C-c y" 'browse-kill-ring)
 (bind "C-c TAB" 'align-regexp)
 (bind "C-x C-r" 'ido-recentf-open)
 
+(global-set-key "\C-s" 'swiper)
 (bind "C-x i" 'indent-region-or-buffer)
 (bind "M-h" 'backward-kill-word)
 (bind "C-x C-o" 'other-window)
@@ -32,9 +33,6 @@
 (bind "C-x C-p" 'find-file-at-point)
 (bind "M-s" 'ido-shell-buffer)
 (bind "C-x C-x" 'run-shell)
-
-(bind "C-s" 'swiper)
-(bind "C-r" 'swiper)
 
 (require 'imenu)
 (bind "C-'" 'ido-imenu)
