@@ -17,6 +17,7 @@ tramp
 /.mc-lists.el
 /themes/upstream-theme.el
 /backups
+/persp-confs
 /TAGS
 /TAGS.86853
 /newsticker/
