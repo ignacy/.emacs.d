@@ -1,9 +1,3 @@
-(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-
-(setq package-enable-at-startup nil)
-(package-initialize)
 (set-fringe-mode '(0 . 0))
 (setq mac-option-key-is-meta t)
 (setq mac-command-key-is-meta t)
@@ -231,5 +225,10 @@ This functions should be added to the hooks of major modes for programming."
 (use-package find-file-in-project
   :ensure find-file-in-project
   :init (global-set-key (kbd "C-x f") 'find-file-in-project))
+
+
+;; (which-function-mode 1)
+;; (setq-default header-line-format '((which-func-mode ("" which-func-current " ")) b-narrow-mode-line))
+
 
 (provide 'basic-settings)
