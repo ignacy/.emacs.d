@@ -51,7 +51,7 @@
 (require 'init-go-mode)
 (require 'init-shell-mode)
 (require 'ido-bookmark-jump)
-(require 'init-org)
+;;(require 'init-org)
 
 (require 'init-flycheck)
 (require 'init-compilation)

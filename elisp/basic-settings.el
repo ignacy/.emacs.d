@@ -226,6 +226,10 @@ This functions should be added to the hooks of major modes for programming."
   :ensure find-file-in-project
   :init (global-set-key (kbd "C-x f") 'find-file-in-project))
 
+(use-package avy
+  :ensure avy
+  :init (global-set-key (kbd "§") 'avy-goto-char))
+
 
 ;; (which-function-mode 1)
 ;; (setq-default header-line-format '((which-func-mode ("" which-func-current " ")) b-narrow-mode-line))
