@@ -417,9 +417,6 @@ narrowed."
   (switch-to-buffer "*ssh*"))
 
 
-(use-package term-run
-:ensure term-run)
-
 (defun git-last-30-commits ()
   (interactive)
   (compile "git log --oneline -30"))

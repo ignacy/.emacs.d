@@ -126,37 +126,6 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
   (interactive)
   (switch-to-buffer "zsh"))
 
-(defun ido-for-mode(prompt the-mode)
-  (switch-to-buffer
-   (ido-completing-read prompt
-                        (save-excursion
-                          (delq
-                           nil
-                           (mapcar (lambda (buf)
-                                     (when (buffer-live-p buf)
-                                       (with-current-buffer buf
-                                         (and (eq major-mode the-mode)
-                                              (buffer-name buf)))))
-                                   (buffer-list)))))))
-
-(defun ido-shell-buffer()
-  (interactive)
-  (ido-for-mode "Shell:" 'shell-mode))
-
-(global-set-key (kbd "C-c s") 'ido-shell-buffer)
-
-(use-package sane-term
-  :ensure sane-term
-  :defer t
-  :init (progn
-          (setq sane-term-shell-command "/bin/zsh")
-          (global-set-key (kbd "C-x t") 'sane-term)
-          (global-set-key (kbd "C-x T") 'sane-term-create)))
-
-
-(use-package term-run
-  :ensure term-run)
-
 ;; (defun switch-to-zsh ()
 ;;    (interactive)
 ;;    (switch-to-buffer "*terminal<1>*"))

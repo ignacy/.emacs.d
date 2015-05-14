@@ -10,6 +10,8 @@
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case nil)
  '(flycheck-display-errors-delay 0.2)
+ '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
+ '(flycheck-disabled-checkers (quote (ruby-rubylint ruby-lint)))
  '(hl-paren-background-colors (quote ("#2492db" "#95a5a6" nil)))
  '(hl-paren-colors (quote ("#ecf0f1" "#ecf0f1" "#c0392b")) t)
  '(ibuffer-deletion-face (quote error))
