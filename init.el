@@ -13,6 +13,7 @@
 (setq configuration-files-dir (concat dotfiles-dir "/elisp"))
 (add-to-list 'load-path configuration-files-dir)
 (setq custom-file (expand-file-name "custom.el" configuration-files-dir))
+
 (load custom-file)
 (add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
@@ -32,10 +33,8 @@
 ;; Don't combine TAGS lists
 (setq tags-add-tables nil)
 
-(require 'paren)
-(set-face-foreground 'show-paren-match "red")
-(set-face-attribute 'show-paren-match nil :weight 'extra-bold)
-(show-paren-mode 1)
+(show-paren-mode)
+
 
 (setq visible-bell t
       x-select-enable-clipboard t
@@ -55,9 +54,9 @@
       ispell-program-name "/usr/local/bin/aspell"
       enable-recursive-minibuffers t)
 
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(menu-bar-mode -1)
 
 (global-auto-revert-mode 1)
 
@@ -111,15 +110,14 @@ This functions should be added to the hooks of major modes for programming."
   :ensure syntax-subword
   :init (global-syntax-subword-mode 1))
 
-;; ;;;; multiple-cursors
-(use-package multiple-cursors
-  :ensure multiple-cursors
-  :defer t
-  :init (progn
-          (global-set-key (kbd "C-x r t") 'mc/edit-lines)
-          (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-          (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-          (global-set-key (kbd "C-*") 'mc/mark-all-like-this)))
+;; ;; ;;;; multiple-cursors
+;; (use-package multiple-cursors
+;;   :ensure multiple-cursors
+;;   :defer t
+;;   :bind (("C-x r t" . 'mc/edit-lines)
+;;          ("C->" . 'mc/mark-next-like-this)
+;;          ("C-<" . 'mc/mark-previous-like-this)
+;;          ("C-*" . 'mc/mark-all-like-this)))
 
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
@@ -161,11 +159,6 @@ This functions should be added to the hooks of major modes for programming."
           (setq ido-enable-flex-matching t)
           (setq ido-use-faces nil)))
 
-(use-package saveplace
-  :ensure saveplace
-  :init (progn (setq-default save-place t)
-               (setq save-place-file (expand-file-name ".places" user-emacs-directory))))
-
 (use-package recentf
   :ensure recentf
   :init (progn
@@ -179,9 +172,8 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package smex
   :ensure smex
-  :init (progn
-          (smex-initialize)
-          (global-set-key (kbd "M-x") 'smex)))
+  :init (smex-initialize)
+  :bind ("M-x" . smex))
 
 (use-package smartparens
   :ensure smartparens
@@ -199,16 +191,6 @@ This functions should be added to the hooks of major modes for programming."
   (sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
   (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys)))
 
-(use-package easy-kill
-  :ensure easy-kill
-  :defer t
-  :init (global-set-key [remap kill-ring-save] 'easy-kill))
-
-(use-package hungry-delete
-  :ensure hungry-delete
-  :defer t
-  :init (global-hungry-delete-mode))
-
 (use-package wrap-region
   :ensure  wrap-region
   :init (progn
@@ -225,7 +207,7 @@ This functions should be added to the hooks of major modes for programming."
 (use-package expand-region
   :ensure  expand-region
   :defer t
-  :init (global-set-key (kbd "M-2") 'er/expand-region))
+  :bind ("M-2" . er/expand-region))
 
 (use-package wakatime-mode
   :ensure wakatime-mode
@@ -237,11 +219,9 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package find-file-in-project
   :ensure find-file-in-project
-  :init (global-set-key (kbd "C-x f") 'find-file-in-project))
+  :bind ("C-x f" . find-file-in-project))
 
-
-(load-theme 'farmhouse-dark t)
-;;(load-theme 'im t)
+(load-theme 'base16-isotope-dark t)
 
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
@@ -250,11 +230,12 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package helpers)
 
-;;;; Customize some packages
+(use-package bind-key
+  :ensure bind-key)
 
+;;;; Customize some packages
 (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
 
-(require 'init-completition)
 (require 'init-javascript-settings)
 
 (require 'init-projectile)
@@ -264,13 +245,46 @@ This functions should be added to the hooks of major modes for programming."
 (require 'init-go-mode)
 (require 'init-shell-mode)
 (require 'init-flycheck)
-(require 'init-compilation)
+
+(load-library "compile")
+
+(defun prelude-colorize-compilation-buffer ()
+  "Colorize a compilation mode buffer."
+  (interactive)
+  ;; we don't want to mess with child modes such as grep-mode, ack, ag, etc
+  (when (eq major-mode 'compilation-mode)
+    (let ((inhibit-read-only t))
+      (ansi-color-apply-on-region (point-min) (point-max)))))
+
+(add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
+(setq compilation-scroll-output 'first-error) ;; follows output
+
+
+
+(use-package company
+  :ensure  company
+  :defer t
+  :init (progn
+          (company-quickhelp-mode 1)
+          (push 'company-readline company-backends)
+          (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
+          (define-key company-active-map "\t" 'company-yasnippet-or-completion)
+          (global-company-mode)
+          ))
+
+(setq abbrev-file-name "~/.emacs.d/abbrev_defs")
+(setq dabbrev-case-replace nil)
+(setq default-abbrev-mode t)
+
+(if (file-exists-p abbrev-file-name)
+    (quietly-read-abbrev-file))
+
+
 (use-package smart-modeline)
 
 (use-package rbenv
   :ensure rbenv
   :init (progn
-          ;;(setq rbenv-installation-dir "/usr/local/rbenv")
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
 
@@ -279,43 +293,29 @@ This functions should be added to the hooks of major modes for programming."
 ;;(set-frame-font "Inconsolata-g 15")
 ;;(set-frame-font "Lucida Grande Mono 14")
 
-(mapc
- (lambda (face)
-   (set-face-attribute face nil :weight 'normal :underline nil))
- (face-list))
+(mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
 
-(global-set-key (kbd "M-r") 'projectile-ag)
-(global-set-key (kbd "M-c") 'query-replace)
-(global-set-key (kbd "C-c TAB") 'align-regexp)
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
-(global-set-key (kbd "C-x i") 'indent-region-or-buffer)
-(global-set-key (kbd "M-h") 'backward-kill-word)
-(global-set-key (kbd "C-x C-o") 'other-window)
-(global-set-key (kbd "C-,") 'find-tag-at-point)
-(global-set-key (kbd "C-x C-f") 'ido-find-file)
-(global-set-key (kbd "C-x f") 'projectile-find-file)
-(global-set-key (kbd "C-x k") 'im/kill-current-buffer)
-(global-set-key (kbd "C-<tab>") 'switch-to-previous-buffer)
-(global-set-key (kbd "M-g") 'goto-line-with-feedback)
-(global-set-key (kbd "M-/") 'hippie-expand-no-case-fold)
-(global-set-key (kbd "M-?") 'hippie-expand-lines)
-(global-set-key (kbd "M-u") 'toggle-letter-case)
-(global-set-key (kbd "C-j") 'newline-and-indent)
-(global-set-key (kbd "M-\.") 'find-tag-at-point)
-(global-set-key (kbd "M-j") 'join-lines)
-(global-set-key (kbd "C-S-o") 'move-line-up)
-
-;; Move more quickly
-(global-set-key (kbd "C-S-n")
-                (lambda ()
-                  (interactive)
-                  (ignore-errors (next-line 5))))
-(global-set-key (kbd "C-S-p")
-                (lambda ()
-                  (interactive)
-                  (ignore-errors (previous-line 5))))
+(bind-key "M-r" 'projectile-ag)
+(bind-key "M-c" 'query-replace)
+(bind-key "C-c TAB" 'align-regexp)
+(bind-key "C-x C-r" 'ido-recentf-open)
+(bind-key "C-x i" 'indent-region-or-buffer)
+(bind-key "M-h" 'backward-kill-word)
+(bind-key "C-x C-o" 'other-window)
+(bind-key "C-," 'find-tag-at-point)
+(bind-key "C-x C-f" 'ido-find-file)
+(bind-key "C-x f" 'projectile-find-file)
+(bind-key "C-x k" 'im/kill-current-buffer)
+(bind-key "C-<tab>" 'switch-to-previous-buffer)
+(bind-key "M-g" 'goto-line-with-feedback)
+(bind-key "M-u" 'toggle-letter-case)
+(bind-key "C-j" 'newline-and-indent)
+(bind-key "M-\." 'find-tag-at-point)
+(bind-key "M-j" 'join-lines)
+(bind-key "C-S-o" 'move-line-up)
+(global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
+(global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
+(global-set-key (kbd "\C-w") (make-backward-kill-word-fn backward-kill-word (1)))
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [mode-line mouse-2] 'ignore)
 (global-set-key [(meta delete)] 'backward-kill-word)
-
-(global-set-key (kbd "\C-w") (make-backward-kill-word-fn backward-kill-word (1)))
