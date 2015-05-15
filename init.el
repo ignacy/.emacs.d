@@ -109,6 +109,40 @@ This functions should be added to the hooks of major modes for programming."
   :ensure syntax-subword
   :init (global-syntax-subword-mode 1))
 
+(use-package go-mode
+  :ensure go-mode
+  :defer t
+  :config
+  (progn
+    (defun my-go-mode-hook ()
+      (setq gofmt-command "goimports")
+      (add-hook 'before-save-hook 'gofmt-before-save)
+      (set (make-local-variable 'company-backends) '(company-go))
+      ;;(if (not (string-match "go" compile-command))
+      (subword-mode 1)
+      (set (make-local-variable 'compile-command)
+           "go vet && go test -cover -v && go build -v")
+      ;;                )
+
+      (setq tab-width 2)
+      (flycheck-mode)
+      (setq standard-indent 2)
+      (setq indent-tabs-mode nil)
+      (local-set-key (kbd "M-.") 'godef-jump))
+    ;;(add-hook 'go-mode-hook 'go-oracle-mode)
+    (add-hook 'go-mode-hook 'my-go-mode-hook)
+    (add-hook 'go-mode-hook 'go-eldoc-setup)))
+
+(use-package go-eldoc
+  :ensure go-eldoc)
+
+(use-package golint
+  :ensure golint)
+
+(use-package company-go
+  :ensure company-go)
+
+
 ;; ;; ;;;; multiple-cursors
 ;; (use-package multiple-cursors
 ;;   :ensure multiple-cursors
@@ -259,10 +293,40 @@ This functions should be added to the hooks of major modes for programming."
           (setq-default js2-global-externs
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
-(require 'init-projectile)
+(use-package projectile
+  :ensure projectile
+  :init (progn
+          (setq projectile-completion-system 'ido)
+          (projectile-global-mode)
+          (setq projectile-enable-caching t)
+          (setq projectile-switch-project-action 'projectile-find-file)
+
+          (defadvice find-tag-at-point (before auto-visti-tags)
+            "Load default TAGS file from home directory if needed"
+            (visit-tags-table (concat (projectile-project-root) "TAGS")))
+          (ad-activate 'find-tag-at-point))
+
+  )
+
+(use-package perspective
+  :init (persp-mode)
+  :ensure perspective)
+
+(use-package persp-projectile
+  :ensure persp-projectile
+  :defer t
+  :init (global-set-key (kbd "C-c C-p") 'projectile-persp-switch-project))
+
+(eval-after-load "grep"
+  '(progn
+     (add-to-list 'grep-find-ignored-files "TAGS*")
+     (add-to-list 'grep-find-ignored-directories ".bundle")
+     (add-to-list 'grep-find-ignored-directories "tmp")
+     (add-to-list 'grep-find-ignored-directories "coverage")
+     (add-to-list 'grep-find-ignored-directories "log")))
+
 (require 'init-magit)
 (require 'init-ruby-mode)
-(require 'init-go-mode)
 (require 'init-shell-mode)
 (require 'init-flycheck)
 
