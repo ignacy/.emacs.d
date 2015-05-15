@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: push to axle-test
-# key: pat
-# --
-git push axle-test $1:master $0

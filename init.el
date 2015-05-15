@@ -15,7 +15,6 @@
 (setq custom-file (expand-file-name "custom.el" configuration-files-dir))
 
 (load custom-file)
-(add-to-list 'custom-theme-load-path (concat dotfiles-dir "/themes/"))
 
 (set-fringe-mode '(0 . 0))
 (setq mac-option-key-is-meta t)
@@ -64,7 +63,7 @@
   "Highlight a bunch of well known comment annotations.
 This functions should be added to the hooks of major modes for programming."
   (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|NOTE\\|HACK\\|REFACTOR\\):"
+   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|NOTE\\):"
           1 font-lock-warning-face t))))
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
@@ -123,6 +122,12 @@ This functions should be added to the hooks of major modes for programming."
 (use-package rainbow-delimiters
   :ensure rainbow-delimiters
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+
+(use-package flycheck
+  :ensure flycheck
+  :init (progn
+          (setq flycheck-ruby-rubocop-executable "~/.rbenv/versions/2.2.1/bin/rubocop") ))
 
 ;; (use-package color-identifiers-mode
 ;;   :ensure color-identifiers-mode
@@ -236,10 +241,25 @@ This functions should be added to the hooks of major modes for programming."
 ;;;; Customize some packages
 (add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
 
-(require 'init-javascript-settings)
-
+(use-package js2-mode
+  :ensure js2-mode
+  :init (progn
+          ;; Javascript
+          (setq-default js2-basic-offset 4)
+          ;; JSON
+          (setq-default js-indent-level 4)
+          (setq-default js2-mode-indent-ignore-first-tab t)
+          (setq-default js2-show-parse-errors nil)
+          (setq-default js2-strict-inconsistent-return-warning nil)
+          (setq-default js2-strict-var-hides-function-arg-warning nil)
+          (setq-default js2-strict-missing-semi-warning nil)
+          (setq-default js2-strict-trailing-comma-warning nil)
+          (setq-default js2-strict-cond-assign-warning nil)
+          (setq-default js2-strict-var-redeclaration-warning nil)
+          (setq-default js2-global-externs
+                        '("module" "require" "__dirname" "process" "console" "define"
+                          "JSON" "$" "_" "Backbone" ))))
 (require 'init-projectile)
-
 (require 'init-magit)
 (require 'init-ruby-mode)
 (require 'init-go-mode)
