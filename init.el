@@ -10,11 +10,61 @@
 (require 'cl)
 (setq debug-on-error nil)
 (setq dotfiles-dir "~/.emacs.d")
-(setq configuration-files-dir (concat dotfiles-dir "/elisp"))
-(add-to-list 'load-path configuration-files-dir)
-(setq custom-file (expand-file-name "custom.el" configuration-files-dir))
+(setq explicit-shell-file-name "/bin/zsh")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   ["#2f1e2e" "#ef6155" "#48b685" "#fec418" "#06b6ef" "#815ba4" "#06b6ef" "#a39e9b"])
+ '(ansi-term-color-vector
+   [unspecified "#2f1e2e" "#ef6155" "#48b685" "#fec418" "#06b6ef" "#815ba4" "#06b6ef" "#a39e9b"] t)
+ '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
+ '(bmkp-last-as-first-bookmark-file "~/.bookmarks_emacs")
+ '(company-dabbrev-downcase nil)
+ '(company-dabbrev-ignore-case nil)
+ '(custom-safe-themes
+   (quote
+    ("d7e434a3c19f87fa00b945edfaedc9a21a6e436a7814c23277d4112ad83b5e85" "1dd2d01010a9ae1f54775abceb080e231b6f9c781c5282b25b8c4edd3f3a14e0" "d72836155cd3b3e52fd86a9164120d597cbe12a67609ab90effa54710b2ac53b" "e7ec0cc3ce134cc0bd420b98573bbd339a908ac24162b8034c98e1ba5ee1f9f6" "d3a86848a5e9bf123f3dd3bf82ab96995837b50f780dd7d5f65dc72c2b81a955" default)))
+ '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
+ '(flycheck-disabled-checkers (quote (ruby-rubylint ruby-lint)))
+ '(flycheck-display-errors-delay 0.2)
+ '(hl-paren-background-colors (quote ("#2492db" "#95a5a6" nil)))
+ '(hl-paren-colors (quote ("#ecf0f1" "#ecf0f1" "#c0392b")) t)
+ '(ibuffer-deletion-face (quote error))
+ '(magit-diff-use-overlays nil)
+ '(magit-item-highlight-face nil)
+ '(magit-use-overlays nil)
+ '(package-selected-packages
+   (quote
+    (yaml-mode xterm-keybinder wrap-region wakatime-mode visual-regexp use-package unkillable-scratch term-run syntax-subword swiper sublime-themes smex smartscan smartparens sane-term ruby-hash-syntax rubocop rspec-mode rhtml-mode restclient request rbenv rainbow-mode rainbow-delimiters persp-projectile multiple-cursors material-theme markdown-mode magit key-chord js2-mode ir-black-theme inf-ruby hungry-delete highlight-symbol haskell-mode haml-mode guide-key google-this golint go-eldoc gist font-lock+ flycheck flx-ido find-file-in-project farmhouse-theme fancy-narrow expand-region exec-path-from-shell evil-tutor evil-surround evil-nerd-commenter evil-matchit evil-leader easy-kill company-quickhelp company-go color-theme-sanityinc-tomorrow color-identifiers-mode base16-theme auto-dim-other-buffers atom-dark-theme ag ace-window ace-jump-mode)))
+ '(rspec-command-options "--color --order random")
+ '(rspec-spec-command "sp")
+ '(rspec-use-bundler-when-possible t)
+ '(rspec-use-spring-when-possible nil)
+ '(when
+      (or
+       (not
+        (boundp
+         (quote ansi-term-color-vector)))
+       (not
+        (facep
+         (aref ansi-term-color-vector 0))))))
 
-(load custom-file)
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "gray8" :foreground "#f6f2f3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "nil" :family "Source Code Pro"))))
+ '(font-lock-type-face ((t (:foreground "MediumPurple3"))))
+ '(mode-line ((t (:box nil) (:background "grey3"))))
+ '(mode-line-inactive ((t (:box nil) (:background "grey6"))))
+ '(org-level-1 ((t (:inherit nil :background "gray15" :foreground "gray95" :weight bold)))))
 
 (set-fringe-mode '(0 . 0))
 (setq mac-option-key-is-meta t)
@@ -260,6 +310,15 @@ This functions should be added to the hooks of major modes for programming."
   :ensure find-file-in-project
   :bind ("C-x f" . find-file-in-project))
 
+
+(defun disable-all-themes ()
+  "disable all active themes."
+  (dolist (i custom-enabled-themes)
+    (disable-theme i)))
+
+(defadvice load-theme (before disable-themes-first activate)
+  (disable-all-themes))
+
 (load-theme 'base16-isotope-dark t)
 
 ;; red line after 80 characters
@@ -315,7 +374,7 @@ This functions should be added to the hooks of major modes for programming."
 (use-package persp-projectile
   :ensure persp-projectile
   :defer t
-  :init (global-set-key (kbd "C-c C-p") 'projectile-persp-switch-project))
+  :bind ("C-c C-p" . projectile-persp-switch-project))
 
 (eval-after-load "grep"
   '(progn
@@ -325,10 +384,185 @@ This functions should be added to the hooks of major modes for programming."
      (add-to-list 'grep-find-ignored-directories "coverage")
      (add-to-list 'grep-find-ignored-directories "log")))
 
-(require 'init-magit)
-(require 'init-ruby-mode)
-(require 'init-shell-mode)
-(require 'init-flycheck)
+(use-package inf-ruby
+  :ensure  inf-ruby
+  :defer t)
+
+(use-package rspec-mode
+  :ensure  rspec-mode
+  :defer t)
+
+(use-package rhtml-mode
+  :ensure  rhtml-mode
+  :init
+  (progn
+
+    (defun customizations-for-rhtml-mode ()
+      (interactive)
+      (setq tab-width 2)
+      (setq highlight-indentation-offset 2)
+      (highlight-indentation-mode))
+
+    (add-hook 'rhtml-mode-hook 'customizations-for-rhtml-mode)))
+
+
+
+;; work around possible elpa bug
+(ignore-errors (require 'ruby-compilation))
+(setq ruby-use-encoding-map nil)
+
+
+(use-package ruby-mode
+  :ensure  ruby-mode
+  :init (progn
+          (add-hook 'ruby-mode-hook
+                    (lambda ()
+                      (subword-mode 1)
+                      (flycheck-mode)
+
+                      (when (and buffer-file-name
+                                 (file-writable-p
+                                  (file-name-directory buffer-file-name))
+                                 (file-writable-p buffer-file-name)
+                                 (if (fboundp 'tramp-list-remote-buffers)
+                                     (not (subsetp
+                                           (list (current-buffer))
+                                           (tramp-list-remote-buffers)))
+                                   t))
+                        )))))
+
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
+(define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
+
+
+(use-package rubocop
+  :ensure rubocop
+  :config (progn
+
+            (setq rubocop-check-command "~/.rbenv/versions/2.2.1/bin/rubocop --format emacs")
+            (setq rubocop-autocorrect-command "~/.rbenv/versions/2.2.1/bin/rubocop -a --format emacs")
+
+            ))
+
+(setq ruby-use-encoding-map nil)
+(setq ruby-deep-arglist nil)
+(setq ruby-deep-indent-paren nil)
+(setq ruby-insert-encoding-magic-comment nil)
+(setq ruby-deep-indent-paren-style nil)
+(setq ruby-deep-indent-paren nil)
+(setq rspec-use-rake-when-possible nil)
+(setq rspec-use-rvm nil)
+(setq rspec-use-bundler-when-possible nil)
+(setq rspec-command-options "--format progress --order random")
+
+
+(font-lock-add-keywords
+ 'ruby-mode
+ '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
+
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+
+
+(add-hook 'shell-mode-hook
+          '(lambda ()
+             (setq show-trailing-whitespace nil)
+             (make-local-variable 'global-hl-line-mode)
+             (setq global-hl-line-mode nil)
+             (ansi-color-for-comint-mode-on)
+             (toggle-truncate-lines 1)
+             (set-face-foreground 'highlight nil)
+             (font-lock-mode t)
+             ;;(buffer-face-mode t) ; only in emacs 23
+             ;;(buffer-face-set 'font-lock-small-face)
+             (hl-line-mode nil)))
+
+;;(setq comint-prompt-read-only nil)
+(setq comint-process-echoes t)
+;; term
+
+
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq term-buffer-maximum-size 10000)
+            (ansi-color-for-comint-mode-on)
+            (setq show-trailing-whitespace nil)
+            (yas-minor-mode -1)
+            (set (make-local-variable 'company-mode) nil)
+            (set (make-local-variable 'transient-mark-mode) nil)
+            (set (make-local-variable 'smartparens-mode) nil)
+            (set (make-local-variable 'global-hl-line-mode) nil)
+            (define-key term-raw-map (kbd "C-y") 'term-paste)))
+
+(defcustom term-unbind-key-list
+  '("C-z" "C-x" "C-c" "C-h" "C-y" "<ESC>")
+  "The key list that will need to be unbind."
+  :type 'list
+  :group 'multi-term)
+
+(defcustom term-bind-key-alist
+  '(
+    ("C-c C-c" . term-interrupt-subjob)
+    ("C-p" . previous-line)
+    ("C-n" . next-line)
+    ("C-s" . isearch-forward)
+    ("C-r" . isearch-backward)
+    ("C-m" . term-send-raw)
+    ("M-f" . term-send-forward-word)
+    ("M-b" . term-send-backward-word)
+    ("M-o" . term-send-backspace)
+    ("M-p" . term-send-up)
+    ("M-n" . term-send-down)
+    ("M-M" . term-send-forward-kill-word)
+    ("M-N" . term-send-backward-kill-word)
+    ("M-r" . term-send-reverse-search-history)
+    ("M-," . term-send-input)
+    ("C-/" . comint-dynamic-complete))
+  "The key alist that will need to be bind.
+If you do not like default setup, modify it, with (KEY . COMMAND) format."
+  :type 'alist
+  :group 'multi-term)
+
+;; (defadvice ansi-term (after advise-ansi-term-coding-system)
+;;     (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+;; (ad-activate 'ansi-term)
+
+;; shell-mode
+(defun sh (&optional name)
+  (shell (concat "*" name "*")))
+
+(defun zsh ()
+  (interactive)
+  (shell "zsh"))
+
+(defun switch-to-zsh ()
+  (interactive)
+  (switch-to-buffer "zsh"))
+
+
+(use-package magit
+  :ensure magit
+  :bind ("C-x g" . magit-status)
+  :init (progn
+
+          (setq magit-last-seen-setup-instructions "1.4.0")
+          (setq magit-completing-read-function 'magit-ido-completing-read)
+
+          (add-hook 'git-commit-mode-hook 'magit-commit-mode-init)
+          ;; close popup when commiting
+          (defadvice git-commit-commit (after delete-window activate)
+            (message "Runnign post commit hooks")
+            (message (shell-command-to-string (concat "sh " (magit-git-dir) "hooks/log_commits")))
+            (delete-window))
+
+          ;; (set-face-foreground 'magit-diff-add "green3")
+          ;; (set-face-foreground 'magit-diff-del "red3")
+          ;; (when (not window-system)
+          ;;   (set-face-background 'magit-item-highlight "black"))
+
+          ;; (add-hook 'magit-mode-hook (lambda () (setq truncate-lines nil)))
+          (defun magit-commit-mode-init () (when (looking-at "\n")
+                                             (open-line 1)))
+          ))
 
 (load-library "compile")
 
@@ -364,8 +598,6 @@ This functions should be added to the hooks of major modes for programming."
     (quietly-read-abbrev-file))
 
 
-(use-package smart-modeline)
-
 (use-package rbenv
   :ensure rbenv
   :init (progn
@@ -377,7 +609,326 @@ This functions should be added to the hooks of major modes for programming."
 ;;(set-frame-font "Inconsolata-g 15")
 ;;(set-frame-font "Lucida Grande Mono 14")
 
+(custom-set-faces '(mode-line ((t (:box nil) (:background "grey3")))))
+(custom-set-faces '(mode-line-inactive ((t (:box nil) (:background "grey6")))))
+(set-face-foreground 'mode-line "grey7")
+(set-face-foreground 'mode-line-inactive "grey10")
+
+(defface sm-default-face
+  '((t :inherit default :foreground "#FF1F68"))
+  "Smart modeline " :group 'smart-modeline-faces)
+
+(defface sm-project-face
+  '((t :inherit default :foreground "lightblue"))
+  "Smart modeline " :group 'smart-modeline-faces)
+
+(defface sm-branch-face
+  '((t :inherit default :foreground "green"))
+  "Smart modeline " :group 'smart-modeline-faces)
+
+(defface sm-file-face
+  '((t :inherit default :foreground "#FF1F69"))
+  "Smart modeline " :group 'smart-modeline-faces)
+
+(defun git-repo-name ()
+  "Get the nane of the closest .git directory or ...?"
+  (locate-dominating-file default-directory ".git"))
+
+(defun sm-clean-directory-name ()
+  (car (last (butlast (split-string (git-repo-name) "/")))))
+
+(setq-default mode-line-format
+              (list
+               ;;'(:eval (propertize mode-line-misc-info 'face 'sm-branch-face))
+
+               '(:eval (if (buffer-modified-p)
+                           (propertize "*" 'face 'sm-default-face
+                                       'help-echo "Buffer has been modified")
+                         " "))
+
+               '(:eval (propertize "%b " 'face 'sm-file-face
+                                   'help-echo (buffer-file-name)))
+
+               (propertize "  %03l," 'face 'sm-project-face)
+               '(:eval (propertize "%02c" 'face 'sm-project-face))
+
+
+               " "
+               '(:eval (when (vc-mode)
+                         (propertize (concat (substring vc-mode 5) " @") 'face 'sm-branch-face)))
+
+               " "
+               '(:eval (when (vc-mode)
+                         (propertize (sm-clean-directory-name)
+                                     'face 'sm-project-face)))
+
+
+               ))
+
+
 (mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
+
+
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
+
+(defun im/kill-current-buffer()
+  "Most of the times you just want to kill currently opened buffer"
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+(defun remove-elc-on-save ()
+  "If you're saving an elisp file, likely the .elc is no longer valid."
+  (add-hook 'after-save-hook
+            (lambda ()
+              (if (file-exists-p (concat buffer-file-name "c"))
+                  (delete-file (concat buffer-file-name "c"))))
+            nil
+            t))
+
+(add-hook 'emacs-lisp-mode-hook 'remove-elc-on-save)
+
+(defun cleanup-buffer-safe ()
+  "Perform a bunch of safe operations on the whitespace content of a buffer.
+Does not indent buffer, because it is used for a `before-save-hook`, and that
+might be bad."
+  (interactive)
+  (untabify (point-min) (point-max))
+  (delete-trailing-whitespace)
+  (set-buffer-file-coding-system 'utf-8))
+
+(add-hook 'before-save-hook 'cleanup-buffer-safe)
+
+(defun find-tag-at-point ()
+  (interactive)
+  (find-tag (thing-at-point 'symbol)))
+
+(defun stop-using-minibuffer ()
+  "kill the minibuffer"
+  (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
+    (abort-recursive-edit)))
+(add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)
+
+(defun indent-buffer ()
+  "Indent the currently visited buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun indent-region-or-buffer ()
+  "Indent a region if selected, otherwise the whole buffer."
+  (interactive)
+  (save-excursion
+    (if (region-active-p)
+        (progn
+          (indent-region (region-beginning) (region-end))
+          (message "Indented selected region."))
+      (progn
+        (indent-buffer)
+        (message "Indented buffer.")))))
+
+(defun rename-current-buffer-file ()
+  "Renames current buffer and file it is visiting."
+  (interactive)
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (error "Buffer '%s' is not visiting a file!" name)
+      (let ((new-name (read-file-name "New name: " filename)))
+        (if (get-buffer new-name)
+            (error "A buffer named '%s' already exists!" new-name)
+          (rename-file filename new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil)
+          (message "File '%s' successfully renamed to '%s'"
+                   name (file-name-nondirectory new-name)))))))
+
+
+
+
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+        (linum-mode 1)
+        (goto-line (read-number "Goto line: ")))
+    (linum-mode -1)))
+
+(defun smarter-move-beginning-of-line (arg)
+  "Move point back to indentation of beginning of line.
+
+Move point to the first non-whitespace character on this line.
+If point is already there, move to the beginning of the line.
+Effectively toggle between the first non-whitespace character and
+the beginning of the line.
+
+If ARG is not nil or 1, move forward ARG - 1 lines first.  If
+point reaches the beginning or end of the buffer, stop there."
+  (interactive "^p")
+  (setq arg (or arg 1))
+
+  ;; Move lines first
+  (when (/= arg 1)
+    (let ((line-move-visual nil))
+      (forward-line (1- arg))))
+
+  (let ((orig-point (point)))
+    (back-to-indentation)
+    (when (= orig-point (point))
+      (move-beginning-of-line 1))))
+
+;; remap C-a to `smarter-move-beginning-of-line'
+(global-set-key [remap move-beginning-of-line] 'smarter-move-beginning-of-line)
+
+
+(defun move-line-down ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+
+(defun move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (move-to-column col)))
+
+(defadvice other-window (after other-window-now activate)
+  (when (< (window-width) 80)
+    (enlarge-window (- 80 (window-width)) t)))
+
+(defun byte-compile-current-buffer ()
+  "`byte-compile' current buffer if it's emacs-lisp-mode and compiled file exists."
+  (interactive)
+  (when (and (eq major-mode 'emacs-lisp-mode)
+             (file-exists-p (byte-compile-dest-file buffer-file-name)))
+    (byte-compile-file buffer-file-name)))
+(add-hook 'after-save-hook 'byte-compile-current-buffer)
+
+(defun join-lines (arg)
+  (interactive "p")
+  (end-of-line)
+  (delete-char 1)
+  (delete-horizontal-space)
+  (insert " "))
+
+;;; WORK
+(setq deployable-apps '("dev_interceptor" "dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector" "dev_connector_admin"
+                        "dev_vpn_adapter"
+                        "staging_vpn_adapter" "staging_connector_admin" "staging_interceptor"))
+
+(defun deploy ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployable-apps)))
+    (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
+
+
+(setq deployed-applications '("qbp_backend" "interceptor" "otp_manager" "data_collector"))
+
+(defun search-dev-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications))
+        (query (read-string "Query: " nil nil)))
+    (compile (concat "search_dev_log_for " app " " query))))
+
+(defun search-staging-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications))
+        (query (read-string "Query: " nil nil)))
+    (compile (concat "search_staging_log_for " app " " query))))
+
+(defun get-last-3000-lines-from-dev-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications)))
+    (compile (concat "get_last_3000_lines_from_dev_log_for " app ))))
+
+(defun get-last-3000-lines-from-staging-log-for ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployed-applications)))
+    (compile (concat "get_last_3000_lines_from_staging_log_for " app ))))
+
+
+(defun deploy-nds-local ()
+  (interactive)
+  (compile "~/bin/local_nds_deploy"))
+
+(defun tail-nds-local ()
+  (interactive)
+  (compile "tail -f /usr/local/Cellar/tomcat/7.0.53/libexec/logs/pnds1.log"))
+
+
+
+(defun dev ()
+  "Connect to a DEV using SSH."
+  (interactive)
+  (set-buffer (make-term "ssh" "ssh" nil "dev"))
+  (term-mode)
+  (term-char-mode)
+  (switch-to-buffer "*ssh*"))
+
+(defun ora-test-emacs ()
+  (interactive)
+  (require 'async)
+  (async-start
+   (lambda () (shell-command-to-string
+               "emacs --batch --eval \"
+(condition-case e
+    (progn
+      (load \\\"~/.emacs.d/init.el\\\")
+      (message \\\"-OK-\\\"))
+  (error
+   (message \\\"ERROR!\\\")
+   (signal (car e) (cdr e))))\""))
+   `(lambda (output)
+      (if (string-match "-OK-" output)
+          (when ,(called-interactively-p 'any)
+            (message "All is well"))
+        (switch-to-buffer-other-window "*startup error*")
+        (delete-region (point-min) (point-max))
+        (insert output)
+        (search-backward "ERROR!")))))
+
+
+(defun my/vsplit-last-buffer (prefix)
+  "Split the window vertically and display the previous buffer."
+  (interactive "p")
+  (split-window-vertically)
+  (other-window 1 nil)
+  (if (= prefix 1)
+      (switch-to-next-buffer)))
+
+(defun my/hsplit-last-buffer (prefix)
+  "Split the window horizontally and display the previous buffer."
+  (interactive "p")
+  (split-window-horizontally)
+  (other-window 1 nil)
+  (if (= prefix 1) (switch-to-next-buffer)))
+
+(bind-key "C-x 2" 'my/vsplit-last-buffer)
+(bind-key "C-x 3" 'my/hsplit-last-buffer)
+
+
+;; Behave like vi's O command
+(defun open-previous-line (arg)
+  "Open a new line before the current one.
+     See also `newline-and-indent'."
+  (interactive "p")
+  (beginning-of-line)
+  (open-line arg)
+  (indent-according-to-mode))
+
+(bind-key "C-o" 'open-previous-line)
 
 (bind-key "M-r" 'projectile-ag)
 (bind-key "M-c" 'query-replace)
@@ -399,7 +950,6 @@ This functions should be added to the hooks of major modes for programming."
 (bind-key "C-S-o" 'move-line-up)
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
-(global-set-key (kbd "\C-w") (make-backward-kill-word-fn backward-kill-word (1)))
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [mode-line mouse-2] 'ignore)
 (global-set-key [(meta delete)] 'backward-kill-word)
