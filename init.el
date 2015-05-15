@@ -4,6 +4,9 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 (setq package-enable-at-startup nil)
 
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 ;;; Commentary: init -- my emacs configuration
 
@@ -11,6 +14,7 @@
 (setq debug-on-error nil)
 (setq dotfiles-dir "~/.emacs.d")
 (setq explicit-shell-file-name "/bin/zsh")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -26,9 +30,6 @@
  '(bmkp-last-as-first-bookmark-file "~/.bookmarks_emacs")
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case nil)
- '(custom-safe-themes
-   (quote
-    ("d7e434a3c19f87fa00b945edfaedc9a21a6e436a7814c23277d4112ad83b5e85" "1dd2d01010a9ae1f54775abceb080e231b6f9c781c5282b25b8c4edd3f3a14e0" "d72836155cd3b3e52fd86a9164120d597cbe12a67609ab90effa54710b2ac53b" "e7ec0cc3ce134cc0bd420b98573bbd339a908ac24162b8034c98e1ba5ee1f9f6" "d3a86848a5e9bf123f3dd3bf82ab96995837b50f780dd7d5f65dc72c2b81a955" default)))
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
  '(flycheck-disabled-checkers (quote (ruby-rubylint ruby-lint)))
  '(flycheck-display-errors-delay 0.2)
@@ -40,7 +41,7 @@
  '(magit-use-overlays nil)
  '(package-selected-packages
    (quote
-    (yaml-mode xterm-keybinder wrap-region wakatime-mode visual-regexp use-package unkillable-scratch term-run syntax-subword swiper sublime-themes smex smartscan smartparens sane-term ruby-hash-syntax rubocop rspec-mode rhtml-mode restclient request rbenv rainbow-mode rainbow-delimiters persp-projectile multiple-cursors material-theme markdown-mode magit key-chord js2-mode ir-black-theme inf-ruby hungry-delete highlight-symbol haskell-mode haml-mode guide-key google-this golint go-eldoc gist font-lock+ flycheck flx-ido find-file-in-project farmhouse-theme fancy-narrow expand-region exec-path-from-shell evil-tutor evil-surround evil-nerd-commenter evil-matchit evil-leader easy-kill company-quickhelp company-go color-theme-sanityinc-tomorrow color-identifiers-mode base16-theme auto-dim-other-buffers atom-dark-theme ag ace-window ace-jump-mode)))
+    (projectile js2-mode find-file-in-project wakatime-mode expand-region ag wrap-region smartparens smex flx-ido highlight-symbol flycheck rainbow-delimiters company-go golint go-eldoc go-mode syntax-subword exec-path-from-shell use-package)))
  '(rspec-command-options "--color --order random")
  '(rspec-spec-command "sp")
  '(rspec-use-bundler-when-possible t)
@@ -60,8 +61,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "gray8" :foreground "#f6f2f3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "nil" :family "Source Code Pro"))))
- '(font-lock-type-face ((t (:foreground "MediumPurple3"))))
  '(mode-line ((t (:box nil) (:background "grey3"))))
  '(mode-line-inactive ((t (:box nil) (:background "grey6"))))
  '(org-level-1 ((t (:inherit nil :background "gray15" :foreground "gray95" :weight bold)))))
@@ -207,6 +206,9 @@ This functions should be added to the hooks of major modes for programming."
   :ensure rainbow-delimiters
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
+(use-package base16-theme
+  :ensure base16-theme)
+
 
 (use-package flycheck
   :ensure flycheck
@@ -331,9 +333,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package bind-key
   :ensure bind-key)
 
-;;;; Customize some packages
-(add-to-list 'auto-mode-alist '("\\.erb$" . rhtml-mode))
-
 (use-package js2-mode
   :ensure js2-mode
   :init (progn
@@ -392,20 +391,13 @@ This functions should be added to the hooks of major modes for programming."
   :ensure  rspec-mode
   :defer t)
 
-(use-package rhtml-mode
-  :ensure  rhtml-mode
-  :init
-  (progn
-
-    (defun customizations-for-rhtml-mode ()
-      (interactive)
-      (setq tab-width 2)
-      (setq highlight-indentation-offset 2)
-      (highlight-indentation-mode))
-
-    (add-hook 'rhtml-mode-hook 'customizations-for-rhtml-mode)))
-
-
+(use-package web-mode
+  :ensure t
+  :init (progn (setq web-mode-markup-indent-offset 2)
+               (setq web-mode-css-indent-offset 2)
+               (setq web-mode-code-indent-offset 2)
+               (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+               (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))))
 
 ;; work around possible elpa bug
 (ignore-errors (require 'ruby-compilation))
@@ -609,8 +601,8 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
 ;;(set-frame-font "Inconsolata-g 15")
 ;;(set-frame-font "Lucida Grande Mono 14")
 
-(custom-set-faces '(mode-line ((t (:box nil) (:background "grey3")))))
-(custom-set-faces '(mode-line-inactive ((t (:box nil) (:background "grey6")))))
+
+
 (set-face-foreground 'mode-line "grey7")
 (set-face-foreground 'mode-line-inactive "grey10")
 
