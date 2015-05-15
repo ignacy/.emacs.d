@@ -918,7 +918,6 @@ point reaches the beginning or end of the buffer, stop there."
 (bind-key "C-x 2" 'my/vsplit-last-buffer)
 (bind-key "C-x 3" 'my/hsplit-last-buffer)
 
-
 ;; Behave like vi's O command
 (defun open-previous-line (arg)
   "Open a new line before the current one.
