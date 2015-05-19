@@ -30,6 +30,9 @@
  '(bmkp-last-as-first-bookmark-file "~/.bookmarks_emacs")
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case nil)
+ '(custom-safe-themes
+   (quote
+    ("113ae6902d98261317b5507e55ac6e7758af81fc4660c34130490252640224a2" "1dd2d01010a9ae1f54775abceb080e231b6f9c781c5282b25b8c4edd3f3a14e0" "3514fe07ecd0dc2f8b747706370c169b3d8053f825c009414e1a86eac8978327" "d7e434a3c19f87fa00b945edfaedc9a21a6e436a7814c23277d4112ad83b5e85" default)))
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
  '(flycheck-disabled-checkers (quote (ruby-rubylint ruby-lint)))
  '(flycheck-display-errors-delay 0.2)
@@ -41,7 +44,7 @@
  '(magit-use-overlays nil)
  '(package-selected-packages
    (quote
-    (projectile js2-mode find-file-in-project wakatime-mode expand-region ag wrap-region smartparens smex flx-ido highlight-symbol flycheck rainbow-delimiters company-go golint go-eldoc go-mode syntax-subword exec-path-from-shell use-package)))
+    (iedit projectile js2-mode find-file-in-project wakatime-mode expand-region ag wrap-region smartparens smex flx-ido highlight-symbol flycheck rainbow-delimiters company-go golint go-eldoc go-mode syntax-subword exec-path-from-shell use-package)))
  '(rspec-command-options "--color --order random")
  '(rspec-spec-command "sp")
  '(rspec-use-bundler-when-possible t)
@@ -321,7 +324,7 @@ This functions should be added to the hooks of major modes for programming."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'base16-isotope-dark t)
+(load-theme 'base16-google-dark t)
 
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
@@ -568,6 +571,29 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
 
 (add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
 (setq compilation-scroll-output 'first-error) ;; follows output
+
+(use-package iedit
+  :init (progn
+          (defun iedit-dwim (arg)
+            "Starts iedit but uses \\[narrow-to-defun] to limit its scope."
+            (interactive "P")
+            (if arg
+                (iedit-mode)
+              (save-excursion
+                (save-restriction
+                  (widen)
+                  ;; this function determines the scope of `iedit-start'.
+                  (if iedit-mode
+                      (iedit-done)
+                    ;; `current-word' can of course be replaced by other
+                    ;; functions.
+                    (narrow-to-defun)
+                    (iedit-start (current-word) (point-min) (point-max)))))))
+
+
+
+          (global-set-key (kbd "C-;") 'iedit-dwim)
+          ))
 
 
 
@@ -918,6 +944,7 @@ point reaches the beginning or end of the buffer, stop there."
   (beginning-of-line)
   (open-line arg)
   (indent-according-to-mode))
+
 
 (bind-key "C-o" 'open-previous-line)
 
