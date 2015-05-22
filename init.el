@@ -25,14 +25,12 @@
  '(ansi-color-names-vector
    ["#2f1e2e" "#ef6155" "#48b685" "#fec418" "#06b6ef" "#815ba4" "#06b6ef" "#a39e9b"])
  '(ansi-term-color-vector
-   [unspecified "#2f1e2e" "#ef6155" "#48b685" "#fec418" "#06b6ef" "#815ba4" "#06b6ef" "#a39e9b"] t)
+   [unspecified "#0b1c2c" "#bf8b56" "#56bf8b" "#8bbf56" "#8b56bf" "#bf568b" "#8b56bf" "#cbd6e2"] t)
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(bmkp-last-as-first-bookmark-file "~/.bookmarks_emacs")
- '(company-dabbrev-downcase nil)
- '(company-dabbrev-ignore-case nil)
  '(custom-safe-themes
    (quote
-    ("113ae6902d98261317b5507e55ac6e7758af81fc4660c34130490252640224a2" "1dd2d01010a9ae1f54775abceb080e231b6f9c781c5282b25b8c4edd3f3a14e0" "3514fe07ecd0dc2f8b747706370c169b3d8053f825c009414e1a86eac8978327" "d7e434a3c19f87fa00b945edfaedc9a21a6e436a7814c23277d4112ad83b5e85" default)))
+    ("3539b3cc5cbba41609117830a79f71309a89782f23c740d4a5b569935f9b7726" "17f35b689dd41e49cb740bfb810ac8a53d13292cbebf68f41f772787d8b3aebf" "ced74ff794aad9ac93266bf9a9a92c5641c01b05715c6862e30459a24844eec9" "8a36587d6cbcc30c85372568ed29d45ec393a32e3c779cba8cfd5fade229025d" "d3a86848a5e9bf123f3dd3bf82ab96995837b50f780dd7d5f65dc72c2b81a955" "fe6fb0cb1aa50dc563d81aad98c470a30f4e89db6d55a108f1083f33317ad413" "54a8c782a7a66e9aeb542af758f7f9f1a5702b956f425ffe15fccf5339f01f1e" "6184465774e662dc5f3ddb0751b20d97aaff2ae95d5cf3c885b6c1944ddcb371" "cc495c40747ae22dd2de6e250cbd9a408e3588b59989368af565deeeff334126" "9fab7d4f70b99927d898a0c93b1ae90fc1529248b9c2604ed88e864fc2665aa7" "f0e69da2cf73c7f153fc09ed3e0ba6e1fd670fec09b8a6a8ed7b4f9efea3b501" "17fd8388e49d3055185e817ed3a2b7c955a2dda92b990f475c14a8e1d97dbe4b" "3f04f37604c5f5cc3c71bc1a4a604ed8be340d0f150946b25658e403ccbad6d2" "3328e7238e0f6d0a5e1793539dfe55c2685f24b6cdff099c9a0c185b71fbfff9" "113ae6902d98261317b5507e55ac6e7758af81fc4660c34130490252640224a2" "1dd2d01010a9ae1f54775abceb080e231b6f9c781c5282b25b8c4edd3f3a14e0" "3514fe07ecd0dc2f8b747706370c169b3d8053f825c009414e1a86eac8978327" "d7e434a3c19f87fa00b945edfaedc9a21a6e436a7814c23277d4112ad83b5e85" default)))
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
  '(flycheck-disabled-checkers (quote (ruby-rubylint ruby-lint)))
  '(flycheck-display-errors-delay 0.2)
@@ -44,19 +42,11 @@
  '(magit-use-overlays nil)
  '(package-selected-packages
    (quote
-    (iedit projectile js2-mode find-file-in-project wakatime-mode expand-region ag wrap-region smartparens smex flx-ido highlight-symbol flycheck rainbow-delimiters company-go golint go-eldoc go-mode syntax-subword exec-path-from-shell use-package)))
+    (focus elm-mode inf-ruby elisp--witness--lisp yasnippet base16-theme haskell-mode markdown-mode iedit projectile js2-mode find-file-in-project wakatime-mode expand-region ag wrap-region smartparens smex flx-ido highlight-symbol flycheck rainbow-delimiters company-go golint go-eldoc go-mode syntax-subword exec-path-from-shell use-package)))
  '(rspec-command-options "--color --order random")
  '(rspec-spec-command "sp")
  '(rspec-use-bundler-when-possible t)
- '(rspec-use-spring-when-possible nil)
- '(when
-      (or
-       (not
-        (boundp
-         (quote ansi-term-color-vector)))
-       (not
-        (facep
-         (aref ansi-term-color-vector 0))))))
+ '(rspec-use-spring-when-possible nil))
 
 
 (custom-set-faces
@@ -160,6 +150,25 @@ This functions should be added to the hooks of major modes for programming."
 (use-package syntax-subword
   :ensure syntax-subword
   :init (global-syntax-subword-mode 1))
+
+
+
+;; (use-package yasnippet
+;;   :ensure yasnippet
+;;   :init (progn
+;;           (yas-global-mode 1)))
+;; (require 'yasnippet)
+;; (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+;; (ignore-errors (yas-global-mode 1))
+
+(use-package company
+  :ensure  company
+  :init (progn
+          ;;(add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
+          ;;(define-key company-active-map "\t" 'company-yasnippet-or-completion)
+          (setq company-dabbrev-downcase nil)
+          (setq company-dabbrev-ignore-case nil)
+          (global-company-mode t)))
 
 (use-package go-mode
   :ensure go-mode
@@ -324,7 +333,7 @@ This functions should be added to the hooks of major modes for programming."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'base16-google-dark t)
+(load-theme 'base16-eighties-dark t)
 
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
@@ -387,8 +396,8 @@ This functions should be added to the hooks of major modes for programming."
      (add-to-list 'grep-find-ignored-directories "log")))
 
 (use-package inf-ruby
-  :ensure  inf-ruby
-  :defer t)
+  :ensure inf-ruby
+  :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
 
 (use-package rspec-mode
   :ensure  rspec-mode
@@ -426,7 +435,6 @@ This functions should be added to the hooks of major modes for programming."
                                    t))
                         )))))
 
-(add-hook 'after-init-hook 'inf-ruby-switch-setup)
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
 
 
@@ -521,6 +529,39 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
 ;;     (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
 ;; (ad-activate 'ansi-term)
 
+;; term
+(defface term-color-black
+  '((t (:foreground "#3f3f3f" :background "#272822")))
+  "Unhelpful docstring.")
+(defface term-color-red
+  '((t (:foreground "#cc9393" :background "#272822")))
+  "Unhelpful docstring.")
+(defface term-color-green
+  '((t (:foreground "#7f9f7f" :background "#272822")))
+  "Unhelpful docstring.")
+(defface term-color-yellow
+  '((t (:foreground "#f0dfaf" :background "#272822")))
+  "Unhelpful docstring.")
+(defface term-color-blue
+  '((t (:foreground "#6d85ba" :background "#272822")))
+  "Unhelpful docstring.")
+(defface term-color-magenta
+  '((t (:foreground "#dc8cc3" :background "#272822")))
+  "Unhelpful docstring.")
+(defface term-color-cyan
+  '((t (:foreground "#93e0e3" :background "#272822")))
+  "Unhelpful docstring.")
+(defface term-color-white
+  '((t (:foreground "#dcdccc" :background "#272822")))
+  "Unhelpful docstring.")
+'(term-default-fg-color ((t (:inherit term-color-white))))
+'(term-default-bg-color ((t (:inherit term-color-black))))
+
+;; ansi-term colors
+(setq ansi-term-color-vector
+  [term term-color-black term-color-red term-color-green term-color-yellow
+    term-color-blue term-color-magenta term-color-cyan term-color-white])
+
 ;; shell-mode
 (defun sh (&optional name)
   (shell (concat "*" name "*")))
@@ -596,24 +637,20 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
           ))
 
 
-
-(use-package company
-  :ensure  company
-  :defer t
-  :init (progn
-          (company-quickhelp-mode 1)
-          (push 'company-readline company-backends)
-          (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
-          (define-key company-active-map "\t" 'company-yasnippet-or-completion)
-          (global-company-mode)
-          ))
-
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 (setq dabbrev-case-replace nil)
 (setq default-abbrev-mode t)
 
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
+
+
+(use-package markdown-mode
+  :ensure markdown-mode
+  :init (progn
+          (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+          (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+          (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))))
 
 
 (use-package rbenv
@@ -623,11 +660,13 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
           (global-rbenv-mode)))
 
 ;;(set-frame-font "Office Code Pro 15")
-(set-frame-font "Source Code Pro 15")
+;;(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "Inconsolata-g 15")
-;;(set-frame-font "Lucida Grande Mono 14")
+(set-frame-font "Lucida Grande Mono 16")
 
-
+(use-package focus
+  :ensure focus
+  :init (add-hook 'prog-mode-hook 'focus-mode))
 
 (set-face-foreground 'mode-line "grey7")
 (set-face-foreground 'mode-line-inactive "grey10")
@@ -971,3 +1010,4 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [mode-line mouse-2] 'ignore)
 (global-set-key [(meta delete)] 'backward-kill-word)
+(put 'narrow-to-region 'disabled nil)
