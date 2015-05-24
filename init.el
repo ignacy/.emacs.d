@@ -15,6 +15,8 @@
 (setq dotfiles-dir "~/.emacs.d")
 (setq explicit-shell-file-name "/bin/zsh")
 
+(whitespace-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -25,12 +27,12 @@
  '(ansi-color-names-vector
    ["#2f1e2e" "#ef6155" "#48b685" "#fec418" "#06b6ef" "#815ba4" "#06b6ef" "#a39e9b"])
  '(ansi-term-color-vector
-   [unspecified "#0b1c2c" "#bf8b56" "#56bf8b" "#8bbf56" "#8b56bf" "#bf568b" "#8b56bf" "#cbd6e2"] t)
+   [unspecified "#2f1e2e" "#ef6155" "#48b685" "#fec418" "#06b6ef" "#815ba4" "#06b6ef" "#a39e9b"] t)
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(bmkp-last-as-first-bookmark-file "~/.bookmarks_emacs")
  '(custom-safe-themes
    (quote
-    ("3539b3cc5cbba41609117830a79f71309a89782f23c740d4a5b569935f9b7726" "17f35b689dd41e49cb740bfb810ac8a53d13292cbebf68f41f772787d8b3aebf" "ced74ff794aad9ac93266bf9a9a92c5641c01b05715c6862e30459a24844eec9" "8a36587d6cbcc30c85372568ed29d45ec393a32e3c779cba8cfd5fade229025d" "d3a86848a5e9bf123f3dd3bf82ab96995837b50f780dd7d5f65dc72c2b81a955" "fe6fb0cb1aa50dc563d81aad98c470a30f4e89db6d55a108f1083f33317ad413" "54a8c782a7a66e9aeb542af758f7f9f1a5702b956f425ffe15fccf5339f01f1e" "6184465774e662dc5f3ddb0751b20d97aaff2ae95d5cf3c885b6c1944ddcb371" "cc495c40747ae22dd2de6e250cbd9a408e3588b59989368af565deeeff334126" "9fab7d4f70b99927d898a0c93b1ae90fc1529248b9c2604ed88e864fc2665aa7" "f0e69da2cf73c7f153fc09ed3e0ba6e1fd670fec09b8a6a8ed7b4f9efea3b501" "17fd8388e49d3055185e817ed3a2b7c955a2dda92b990f475c14a8e1d97dbe4b" "3f04f37604c5f5cc3c71bc1a4a604ed8be340d0f150946b25658e403ccbad6d2" "3328e7238e0f6d0a5e1793539dfe55c2685f24b6cdff099c9a0c185b71fbfff9" "113ae6902d98261317b5507e55ac6e7758af81fc4660c34130490252640224a2" "1dd2d01010a9ae1f54775abceb080e231b6f9c781c5282b25b8c4edd3f3a14e0" "3514fe07ecd0dc2f8b747706370c169b3d8053f825c009414e1a86eac8978327" "d7e434a3c19f87fa00b945edfaedc9a21a6e436a7814c23277d4112ad83b5e85" default)))
+    ("17f35b689dd41e49cb740bfb810ac8a53d13292cbebf68f41f772787d8b3aebf" "ced74ff794aad9ac93266bf9a9a92c5641c01b05715c6862e30459a24844eec9" "8a36587d6cbcc30c85372568ed29d45ec393a32e3c779cba8cfd5fade229025d" "d3a86848a5e9bf123f3dd3bf82ab96995837b50f780dd7d5f65dc72c2b81a955" "fe6fb0cb1aa50dc563d81aad98c470a30f4e89db6d55a108f1083f33317ad413" "54a8c782a7a66e9aeb542af758f7f9f1a5702b956f425ffe15fccf5339f01f1e" "6184465774e662dc5f3ddb0751b20d97aaff2ae95d5cf3c885b6c1944ddcb371" "cc495c40747ae22dd2de6e250cbd9a408e3588b59989368af565deeeff334126" "9fab7d4f70b99927d898a0c93b1ae90fc1529248b9c2604ed88e864fc2665aa7" "f0e69da2cf73c7f153fc09ed3e0ba6e1fd670fec09b8a6a8ed7b4f9efea3b501" "17fd8388e49d3055185e817ed3a2b7c955a2dda92b990f475c14a8e1d97dbe4b" "3f04f37604c5f5cc3c71bc1a4a604ed8be340d0f150946b25658e403ccbad6d2" "3328e7238e0f6d0a5e1793539dfe55c2685f24b6cdff099c9a0c185b71fbfff9" "113ae6902d98261317b5507e55ac6e7758af81fc4660c34130490252640224a2" "1dd2d01010a9ae1f54775abceb080e231b6f9c781c5282b25b8c4edd3f3a14e0" "3514fe07ecd0dc2f8b747706370c169b3d8053f825c009414e1a86eac8978327" "d7e434a3c19f87fa00b945edfaedc9a21a6e436a7814c23277d4112ad83b5e85" default)))
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
  '(flycheck-disabled-checkers (quote (ruby-rubylint ruby-lint)))
  '(flycheck-display-errors-delay 0.2)
@@ -42,11 +44,19 @@
  '(magit-use-overlays nil)
  '(package-selected-packages
    (quote
-    (focus elm-mode inf-ruby elisp--witness--lisp yasnippet base16-theme haskell-mode markdown-mode iedit projectile js2-mode find-file-in-project wakatime-mode expand-region ag wrap-region smartparens smex flx-ido highlight-symbol flycheck rainbow-delimiters company-go golint go-eldoc go-mode syntax-subword exec-path-from-shell use-package)))
- '(rspec-command-options "--color --order random")
+    (multi-term ir-black-theme inf-ruby elisp--witness--lisp yasnippet base16-theme haskell-mode markdown-mode iedit projectile js2-mode find-file-in-project wakatime-mode expand-region ag wrap-region smartparens smex flx-ido highlight-symbol flycheck rainbow-delimiters company-go golint go-eldoc go-mode syntax-subword exec-path-from-shell use-package)))
+ '(rspec-command-options "--color --order random" t)
  '(rspec-spec-command "sp")
- '(rspec-use-bundler-when-possible t)
- '(rspec-use-spring-when-possible nil))
+ '(rspec-use-bundler-when-possible t t)
+ '(rspec-use-spring-when-possible nil)
+ '(when
+      (or
+       (not
+        (boundp
+         (quote ansi-term-color-vector)))
+       (not
+        (facep
+         (aref ansi-term-color-vector 0))))))
 
 
 (custom-set-faces
@@ -109,8 +119,16 @@ This functions should be added to the hooks of major modes for programming."
           1 font-lock-warning-face t))))
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
+;; (setq-default indent-tabs-mode nil)
+;; (setq default-tab-width 2)
+
+;; use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
-(setq default-tab-width 2)
+(setq-default tab-width        4)
+(setq         tab-stop-list    (number-sequence 4 120 4))
+
+;; setup junk whitespace types for when whitespace mode is active
+(setq whitespace-style '(face tabs trailing empty))
 
 (autoload 'epa "epa-file-mode" t)
 (epa-file-enable)
@@ -153,9 +171,15 @@ This functions should be added to the hooks of major modes for programming."
 
 
 
-;; (use-package yasnippet
-;;   :ensure yasnippet
-;;   :init (progn
+(use-package yasnippet
+  :ensure yasnippet
+  :init (progn
+          (setq yas-snippet-dirs
+                (list (expand-file-name "snippets" dotfiles-dir)
+                      ))
+          (yas-global-mode)
+          (setq yas-prompt-functions '(yas/ido-prompt))))
+
 ;;           (yas-global-mode 1)))
 ;; (require 'yasnippet)
 ;; (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
@@ -333,7 +357,7 @@ This functions should be added to the hooks of major modes for programming."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'base16-eighties-dark t)
+(load-theme 'ir-black t)
 
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
@@ -397,6 +421,9 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package inf-ruby
   :ensure inf-ruby
+  :config (progn
+            (make-local-variable 'comint-prompt-read-only)
+            (setq                 comint-prompt-read-only t))
   :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
 
 (use-package rspec-mode
@@ -484,6 +511,7 @@ This functions should be added to the hooks of major modes for programming."
 ;; term
 
 
+
 (add-hook 'term-mode-hook
           (lambda ()
             (setq term-buffer-maximum-size 10000)
@@ -525,9 +553,14 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
   :type 'alist
   :group 'multi-term)
 
-;; (defadvice ansi-term (after advise-ansi-term-coding-system)
-;;     (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-;; (ad-activate 'ansi-term)
+(add-hook 'term-mode-hook
+          (lambda ()
+            (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+            (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
+
+(use-package multi-term
+  :ensure multi-term
+  :init (setq multi-term-program "/bin/zsh"))
 
 ;; term
 (defface term-color-black
@@ -559,8 +592,8 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
 
 ;; ansi-term colors
 (setq ansi-term-color-vector
-  [term term-color-black term-color-red term-color-green term-color-yellow
-    term-color-blue term-color-magenta term-color-cyan term-color-white])
+      [term term-color-black term-color-red term-color-green term-color-yellow
+            term-color-blue term-color-magenta term-color-cyan term-color-white])
 
 ;; shell-mode
 (defun sh (&optional name)
@@ -645,6 +678,20 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
     (quietly-read-abbrev-file))
 
 
+(defun jeg2/insert-fenced-code-block (&optional add-yank)
+  "Inserts fenced code blocks, optionally with yanked text between."
+  (interactive "P")
+  (if add-yank (call-interactively 'yank))
+  (dotimes (_ 3) (insert "`"))
+  (let ((return-to (point)))
+    (newline-and-indent)
+    (if add-yank
+        (progn
+          (goto-char (mark))
+          (unless (bolp) (newline-and-indent))))
+    (dotimes (_ 3) (insert "`"))
+    (goto-char return-to)))
+
 (use-package markdown-mode
   :ensure markdown-mode
   :init (progn
@@ -664,9 +711,9 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
 ;;(set-frame-font "Inconsolata-g 15")
 (set-frame-font "Lucida Grande Mono 16")
 
-(use-package focus
-  :ensure focus
-  :init (add-hook 'prog-mode-hook 'focus-mode))
+;; (use-package focus
+;;   :ensure focus
+;;   :init (add-hook 'prog-mode-hook 'focus-mode))
 
 (set-face-foreground 'mode-line "grey7")
 (set-face-foreground 'mode-line-inactive "grey10")
@@ -1010,4 +1057,7 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [(control backspace)] 'backward-kill-word)
 (global-set-key [mode-line mouse-2] 'ignore)
 (global-set-key [(meta delete)] 'backward-kill-word)
+(global-set-key [delete] 'delete-char)
+(global-set-key [M-delete] 'kill-word)
+(define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
