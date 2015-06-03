@@ -18,6 +18,7 @@
 (setq custom-file (expand-file-name "custom.el" dotfiles-dir))
 (load custom-file)
 
+(setq fill-column 80)
 (whitespace-mode)
 
 (set-fringe-mode '(0 . 0))
@@ -29,8 +30,10 @@
 (setq-default mac-pass-command-to-system nil)
 (setq mouse-wheel-follow-mouse 't)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-
+(setq scroll-preserve-screen-position 'always)
 (setq split-height-threshold nil)
+
+(setq-default x-stretch-cursor t)
 (setq split-width-threshold 160)
 
 ;; Don't combine TAGS lists
@@ -309,8 +312,9 @@ This functions should be added to the hooks of major modes for programming."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
+;; (use-package orpheus-theme)
+;; (load-theme 'orpheus t)
 (load-theme 'ir-black t)
-
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
 ;; (setq fci-rule-column 80)
@@ -351,8 +355,8 @@ This functions should be added to the hooks of major modes for programming."
             "Load default TAGS file from home directory if needed"
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
           (ad-activate 'find-tag-at-point))
+  :bind ("C-x b" . projectile-switch-to-buffer))
 
-  )
 
 (use-package perspective
   :init (persp-mode)
@@ -482,29 +486,6 @@ This functions should be added to the hooks of major modes for programming."
   :type 'list
   :group 'multi-term)
 
-(defcustom term-bind-key-alist
-  '(
-    ("C-c C-c" . term-interrupt-subjob)
-    ("C-p" . previous-line)
-    ("C-n" . next-line)
-    ("C-s" . isearch-forward)
-    ("C-r" . isearch-backward)
-    ("C-m" . term-send-raw)
-    ("M-f" . term-send-forward-word)
-    ("M-b" . term-send-backward-word)
-    ("M-o" . term-send-backspace)
-    ("M-p" . term-send-up)
-    ("M-n" . term-send-down)
-    ("M-M" . term-send-forward-kill-word)
-    ("M-N" . term-send-backward-kill-word)
-    ("M-r" . term-send-reverse-search-history)
-    ("M-," . term-send-input)
-    ("C-/" . comint-dynamic-complete))
-  "The key alist that will need to be bind.
-If you do not like default setup, modify it, with (KEY . COMMAND) format."
-  :type 'alist
-  :group 'multi-term)
-
 (add-hook 'term-mode-hook
           (lambda ()
             (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
@@ -598,6 +579,16 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
 (add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
 (setq compilation-scroll-output 'first-error) ;; follows output
 
+(use-package haskell-mode
+  :defer 2
+  :init
+  (progn
+    (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+    (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+    (add-hook 'haskell-mode-hook 'interactive-haskell-mode))
+  :config
+  (setq haskell-font-lock-symbols nil))
+
 (use-package iedit
   :init (progn
           (defun iedit-dwim (arg)
@@ -657,11 +648,6 @@ If you do not like default setup, modify it, with (KEY . COMMAND) format."
   :init (progn
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
-
-;;(set-frame-font "Office Code Pro 15")
-;;(set-frame-font "Source Code Pro 16")
-;;(set-frame-font "Inconsolata-g 15")
-(set-frame-font "Lucida Grande Mono 16")
 
 ;; (use-package focus
 ;;   :ensure focus
@@ -889,6 +875,10 @@ point reaches the beginning or end of the buffer, stop there."
   (let ((app (ido-completing-read "Which app?: " deployable-apps)))
     (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
 
+(defun deploy-migrations ()
+  (interactive)
+  (let ((app (ido-completing-read "Which app?: " deployable-apps)))
+    (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy:migrations"))))
 
 (setq deployed-applications '("qbp_backend" "interceptor" "otp_manager" "data_collector"))
 
@@ -955,6 +945,9 @@ point reaches the beginning or end of the buffer, stop there."
         (insert output)
         (search-backward "ERROR!")))))
 
+(defun switch-to-previous-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 (defun my/vsplit-last-buffer (prefix)
   "Split the window vertically and display the previous buffer."
@@ -983,9 +976,53 @@ point reaches the beginning or end of the buffer, stop there."
   (open-line arg)
   (indent-according-to-mode))
 
+(use-package imenu+)
+
+(defun ido-imenu ()
+  "Update the imenu index and then use ido to select a symbol to navigate to.
+Symbols matching the text at point are put first in the completion list."
+  (interactive)
+  (imenu--make-index-alist)
+  (let ((name-and-pos '())
+        (symbol-names '()))
+    (flet ((addsymbols (symbol-list)
+                       (when (listp symbol-list)
+                         (dolist (symbol symbol-list)
+                           (let ((name nil) (position nil))
+                             (cond
+                              ((and (listp symbol) (imenu--subalist-p symbol))
+                               (addsymbols symbol))
+
+                              ((listp symbol)
+                               (setq name (car symbol))
+                               (setq position (cdr symbol)))
+
+                              ((stringp symbol)
+                               (setq name symbol)
+                               (setq position (get-text-property 1 'org-imenu-marker symbol))))
+
+                             (unless (or (null position) (null name))
+                               (add-to-list 'symbol-names name)
+                               (add-to-list 'name-and-pos (cons name position))))))))
+      (addsymbols imenu--index-alist))
+    ;; If there are matching symbols at point, put them at the beginning of `symbol-names'.
+    (let ((symbol-at-point (thing-at-point 'symbol)))
+      (when symbol-at-point
+        (let* ((regexp (concat (regexp-quote symbol-at-point) "$"))
+               (matching-symbols (delq nil (mapcar (lambda (symbol)
+                                                     (if (string-match regexp symbol) symbol))
+                                                   symbol-names))))
+          (when matching-symbols
+            (sort matching-symbols (lambda (a b) (> (length a) (length b))))
+            (mapc (lambda (symbol) (setq symbol-names (cons symbol (delete symbol symbol-names))))
+                  matching-symbols)))))
+    (let* ((selected-symbol (ido-completing-read "Symbol? " symbol-names))
+           (position (cdr (assoc selected-symbol name-and-pos))))
+      (goto-char position))))
 
 (bind-key "C-o" 'open-previous-line)
-
+(bind-key "C-'" 'ido-imenu)
+(bind-key "C-c t" 'multi-term)
 (bind-key "M-r" 'projectile-ag)
 (bind-key "M-c" 'query-replace)
 (bind-key "C-c TAB" 'align-regexp)
@@ -1013,3 +1050,8 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [M-delete] 'kill-word)
 (define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
+
+;;(set-frame-font "Office Code Pro 15")
+;;(set-frame-font "Source Code Pro 16")
+;;(set-frame-font "Inconsolata-g 15")
+(set-frame-font "Lucida Grande Mono 15")
