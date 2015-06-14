@@ -33,7 +33,6 @@
 (setq scroll-preserve-screen-position 'always)
 (setq split-height-threshold nil)
 
-(setq-default x-stretch-cursor t)
 (setq split-width-threshold 160)
 
 ;; Don't combine TAGS lists
@@ -125,6 +124,9 @@ This functions should be added to the hooks of major modes for programming."
   :init (global-syntax-subword-mode 1))
 
 
+(use-package emamux
+  :ensure emamux
+  :bind ("C-c s" . emamux:send-command))
 
 (use-package yasnippet
   :ensure yasnippet
@@ -135,10 +137,12 @@ This functions should be added to the hooks of major modes for programming."
           (yas-global-mode)
           (setq yas-prompt-functions '(yas/ido-prompt))))
 
-;;           (yas-global-mode 1)))
-;; (require 'yasnippet)
-;; (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-;; (ignore-errors (yas-global-mode 1))
+(use-package evil
+  :ensure evil
+  :init (evil-mode 1))
+
+(use-package powerline-evil
+  :ensure powerline-evil)
 
 (use-package company
   :ensure  company
@@ -286,6 +290,9 @@ This functions should be added to the hooks of major modes for programming."
   :ensure ag
   :init (setq ag-highlight-search t))
 
+(use-package wgrep-ag
+  :ensure wgrep-ag)
+
 (use-package expand-region
   :ensure  expand-region
   :defer t
@@ -312,9 +319,9 @@ This functions should be added to the hooks of major modes for programming."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-;; (use-package orpheus-theme)
-;; (load-theme 'orpheus t)
-(load-theme 'ir-black t)
+;;(load-theme 'ir-black t)
+
+(load-theme 'base16-default-dark t)
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
 ;; (setq fci-rule-column 80)
@@ -649,10 +656,6 @@ This functions should be added to the hooks of major modes for programming."
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
 
-;; (use-package focus
-;;   :ensure focus
-;;   :init (add-hook 'prog-mode-hook 'focus-mode))
-
 (set-face-foreground 'mode-line "grey7")
 (set-face-foreground 'mode-line-inactive "grey10")
 
@@ -667,7 +670,7 @@ This functions should be added to the hooks of major modes for programming."
 (defface sm-branch-face
   '((t :inherit default :foreground "green"))
   "Smart modeline " :group 'smart-modeline-faces)
-
+                                        ;
 (defface sm-file-face
   '((t :inherit default :foreground "#FF1F69"))
   "Smart modeline " :group 'smart-modeline-faces)
@@ -681,8 +684,10 @@ This functions should be added to the hooks of major modes for programming."
 
 (setq-default mode-line-format
               (list
-               ;;'(:eval (propertize mode-line-misc-info 'face 'sm-branch-face))
+                ;;'(:eval (propertize mode-line-misc-info 'face 'sm-branch-face))
 
+               '(:eval (powerline-evil-tag))
+               " "
                '(:eval (if (buffer-modified-p)
                            (propertize "*" 'face 'sm-default-face
                                        'help-echo "Buffer has been modified")
