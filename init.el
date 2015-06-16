@@ -137,13 +137,6 @@ This functions should be added to the hooks of major modes for programming."
           (yas-global-mode)
           (setq yas-prompt-functions '(yas/ido-prompt))))
 
-(use-package evil
-  :ensure evil
-  :init (evil-mode 1))
-
-(use-package powerline-evil
-  :ensure powerline-evil)
-
 (use-package company
   :ensure  company
   :init (progn
@@ -319,9 +312,12 @@ This functions should be added to the hooks of major modes for programming."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-;;(load-theme 'ir-black t)
+;; Good dark room theme:
+;;(load-theme 'spolsky t)
 
-(load-theme 'base16-default-dark t)
+;; Light room theme
+(load-theme 'fogus t)
+
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
 ;; (setq fci-rule-column 80)
@@ -391,7 +387,12 @@ This functions should be added to the hooks of major modes for programming."
 
 (use-package rspec-mode
   :ensure  rspec-mode
-  :defer t)
+  :config (progn
+            (setq rspec-use-rake-when-possible nil)
+            (setq rspec-use-rvm nil)
+            (setq rspec-use-bundler-when-possible nil)
+            (setq rspec-command-options "--format progress --order random")
+            ))
 
 (use-package web-mode
   :ensure t
@@ -443,10 +444,6 @@ This functions should be added to the hooks of major modes for programming."
 (setq ruby-insert-encoding-magic-comment nil)
 (setq ruby-deep-indent-paren-style nil)
 (setq ruby-deep-indent-paren nil)
-(setq rspec-use-rake-when-possible nil)
-(setq rspec-use-rvm nil)
-(setq rspec-use-bundler-when-possible nil)
-(setq rspec-command-options "--format progress --order random")
 
 
 (font-lock-add-keywords
@@ -684,7 +681,7 @@ This functions should be added to the hooks of major modes for programming."
 
 (setq-default mode-line-format
               (list
-                ;;'(:eval (propertize mode-line-misc-info 'face 'sm-branch-face))
+               ;;'(:eval (propertize mode-line-misc-info 'face 'sm-branch-face))
 
                '(:eval (powerline-evil-tag))
                " "
@@ -1056,7 +1053,8 @@ Symbols matching the text at point are put first in the completion list."
 (define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
 
-;;(set-frame-font "Office Code Pro 15")
-;;(set-frame-font "Source Code Pro 16")
+;;(set-frame-font "Office Code Pro 13")
+(set-frame-font "Source Code Pro 15")
 ;;(set-frame-font "Inconsolata-g 15")
-(set-frame-font "Lucida Grande Mono 15")
+;;(set-frame-font "Lucida Grande Mono 15")
+;;(set-frame-font "Monoid 13")
