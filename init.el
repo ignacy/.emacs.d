@@ -312,11 +312,8 @@ This functions should be added to the hooks of major modes for programming."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-;; Good dark room theme:
-;;(load-theme 'spolsky t)
-
-;; Light room theme
-(load-theme 'fogus t)
+;;(load-theme 'planet t)
+(load-theme 'atom-dark t)
 
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
@@ -653,8 +650,8 @@ This functions should be added to the hooks of major modes for programming."
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
 
-(set-face-foreground 'mode-line "grey7")
-(set-face-foreground 'mode-line-inactive "grey10")
+;; (set-face-foreground 'mode-line "grey7")
+;; (set-face-foreground 'mode-line-inactive "grey10")
 
 (defface sm-default-face
   '((t :inherit default :foreground "#FF1F68"))
@@ -867,63 +864,7 @@ point reaches the beginning or end of the buffer, stop there."
   (delete-horizontal-space)
   (insert " "))
 
-;;; WORK
-(setq deployable-apps '("dev_interceptor" "dev_locator" "dev_nds" "dev_qbp" "dev_otp" "dev_data_collector" "dev_connector_admin"
-                        "dev_vpn_adapter"
-                        "staging_vpn_adapter" "staging_connector_admin" "staging_interceptor"))
-
-(defun deploy ()
-  (interactive)
-  (let ((app (ido-completing-read "Which app?: " deployable-apps)))
-    (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy"))))
-
-(defun deploy-migrations ()
-  (interactive)
-  (let ((app (ido-completing-read "Which app?: " deployable-apps)))
-    (compile (concat "cd " "/Users/ignacymoryc/code/capistrano_configuration && cap " app " deploy:migrations"))))
-
-(setq deployed-applications '("qbp_backend" "interceptor" "otp_manager" "data_collector"))
-
-(defun search-dev-log-for ()
-  (interactive)
-  (let ((app (ido-completing-read "Which app?: " deployed-applications))
-        (query (read-string "Query: " nil nil)))
-    (compile (concat "search_dev_log_for " app " " query))))
-
-(defun search-staging-log-for ()
-  (interactive)
-  (let ((app (ido-completing-read "Which app?: " deployed-applications))
-        (query (read-string "Query: " nil nil)))
-    (compile (concat "search_staging_log_for " app " " query))))
-
-(defun get-last-3000-lines-from-dev-log-for ()
-  (interactive)
-  (let ((app (ido-completing-read "Which app?: " deployed-applications)))
-    (compile (concat "get_last_3000_lines_from_dev_log_for " app ))))
-
-(defun get-last-3000-lines-from-staging-log-for ()
-  (interactive)
-  (let ((app (ido-completing-read "Which app?: " deployed-applications)))
-    (compile (concat "get_last_3000_lines_from_staging_log_for " app ))))
-
-
-(defun deploy-nds-local ()
-  (interactive)
-  (compile "~/bin/local_nds_deploy"))
-
-(defun tail-nds-local ()
-  (interactive)
-  (compile "tail -f /usr/local/Cellar/tomcat/7.0.53/libexec/logs/pnds1.log"))
-
-
-
-(defun dev ()
-  "Connect to a DEV using SSH."
-  (interactive)
-  (set-buffer (make-term "ssh" "ssh" nil "dev"))
-  (term-mode)
-  (term-char-mode)
-  (switch-to-buffer "*ssh*"))
+(ignore-errors (load-file "~/.local.el"))
 
 (defun ora-test-emacs ()
   (interactive)
@@ -951,24 +892,6 @@ point reaches the beginning or end of the buffer, stop there."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
-(defun my/vsplit-last-buffer (prefix)
-  "Split the window vertically and display the previous buffer."
-  (interactive "p")
-  (split-window-vertically)
-  (other-window 1 nil)
-  (if (= prefix 1)
-      (switch-to-next-buffer)))
-
-(defun my/hsplit-last-buffer (prefix)
-  "Split the window horizontally and display the previous buffer."
-  (interactive "p")
-  (split-window-horizontally)
-  (other-window 1 nil)
-  (if (= prefix 1) (switch-to-next-buffer)))
-
-(bind-key "C-x 2" 'my/vsplit-last-buffer)
-(bind-key "C-x 3" 'my/hsplit-last-buffer)
-
 ;; Behave like vi's O command
 (defun open-previous-line (arg)
   "Open a new line before the current one.
@@ -977,6 +900,14 @@ point reaches the beginning or end of the buffer, stop there."
   (beginning-of-line)
   (open-line arg)
   (indent-according-to-mode))
+
+;; TODO - name clash with rspec.el
+;; (defun rspec-compile ()
+;;   (interactive)
+;;   (compile "rspec *_spec.rb"))
+
+;; (global-set-key (kbd "C-c m") 'rspec-compile)
+
 
 (use-package imenu+)
 
@@ -1053,8 +984,15 @@ Symbols matching the text at point are put first in the completion list."
 (define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
 
-;;(set-frame-font "Office Code Pro 13")
-(set-frame-font "Source Code Pro 15")
-;;(set-frame-font "Inconsolata-g 15")
-;;(set-frame-font "Lucida Grande Mono 15")
+
+;; (defun this-will-make-you-sleep-better ()
+;;   (when (and (stringp buffer-file-name)
+;;              (string-match "\\migrate\\" buffer-file-name))
+;;     (message "Don't forget to add FK!! It will hurt you later")))
+
+;; (add-hook 'save-file-hook 'this-will-make-you-sleep-better)
+
+;;(set-frame-font "Source Code Pro 14")
+;;(set-frame-font "Inconsolata-g 14")
+(set-frame-font "Lucida Grande Mono 14")
 ;;(set-frame-font "Monoid 13")
