@@ -146,6 +146,9 @@ This functions should be added to the hooks of major modes for programming."
           (setq company-dabbrev-ignore-case nil)
           (global-company-mode t)))
 
+(use-package alchemist
+  :ensure alchemist)
+
 ;; ;; ;;;; multiple-cursors
 ;; (use-package multiple-cursors
 ;;   :ensure multiple-cursors
