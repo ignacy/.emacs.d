@@ -871,53 +871,12 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; (global-set-key (kbd "C-c m") 'rspec-compile)
 
+(use-package idomenu
+  :ensure idomenu
+  :bind ("C-'" . idomenu))
 
-(use-package imenu+)
-
-(defun ido-imenu ()
-  "Update the imenu index and then use ido to select a symbol to navigate to.
-Symbols matching the text at point are put first in the completion list."
-  (interactive)
-  (imenu--make-index-alist)
-  (let ((name-and-pos '())
-        (symbol-names '()))
-    (flet ((addsymbols (symbol-list)
-                       (when (listp symbol-list)
-                         (dolist (symbol symbol-list)
-                           (let ((name nil) (position nil))
-                             (cond
-                              ((and (listp symbol) (imenu--subalist-p symbol))
-                               (addsymbols symbol))
-
-                              ((listp symbol)
-                               (setq name (car symbol))
-                               (setq position (cdr symbol)))
-
-                              ((stringp symbol)
-                               (setq name symbol)
-                               (setq position (get-text-property 1 'org-imenu-marker symbol))))
-
-                             (unless (or (null position) (null name))
-                               (add-to-list 'symbol-names name)
-                               (add-to-list 'name-and-pos (cons name position))))))))
-      (addsymbols imenu--index-alist))
-    ;; If there are matching symbols at point, put them at the beginning of `symbol-names'.
-    (let ((symbol-at-point (thing-at-point 'symbol)))
-      (when symbol-at-point
-        (let* ((regexp (concat (regexp-quote symbol-at-point) "$"))
-               (matching-symbols (delq nil (mapcar (lambda (symbol)
-                                                     (if (string-match regexp symbol) symbol))
-                                                   symbol-names))))
-          (when matching-symbols
-            (sort matching-symbols (lambda (a b) (> (length a) (length b))))
-            (mapc (lambda (symbol) (setq symbol-names (cons symbol (delete symbol symbol-names))))
-                  matching-symbols)))))
-    (let* ((selected-symbol (ido-completing-read "Symbol? " symbol-names))
-           (position (cdr (assoc selected-symbol name-and-pos))))
-      (goto-char position))))
 
 (bind-key "C-o" 'open-previous-line)
-(bind-key "C-'" 'ido-imenu)
 (bind-key "C-c t" 'multi-term)
 (bind-key "M-r" 'projectile-ag)
 (bind-key "M-c" 'query-replace)
@@ -946,14 +905,6 @@ Symbols matching the text at point are put first in the completion list."
 (global-set-key [M-delete] 'kill-word)
 (define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
-
-
-;; (defun this-will-make-you-sleep-better ()
-;;   (when (and (stringp buffer-file-name)
-;;              (string-match "\\migrate\\" buffer-file-name))
-;;     (message "Don't forget to add FK!! It will hurt you later")))
-
-;; (add-hook 'save-file-hook 'this-will-make-you-sleep-better)
 
 ;;(set-frame-font "Source Code Pro 14")
 ;;(set-frame-font "Inconsolata-g 14")
