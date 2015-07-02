@@ -518,17 +518,6 @@ This functions should be added to the hooks of major modes for programming."
           (setq magit-completing-read-function 'magit-ido-completing-read)
           (add-hook 'git-commit-mode-hook 'magit-commit-mode-init)
           ;; close popup when commiting
-          (defadvice git-commit-commit (after delete-window activate)
-            (message "Runnign post commit hooks")
-            (message (shell-command-to-string (concat "sh " (magit-git-dir) "hooks/log_commits")))
-            (delete-window))
-
-          ;; (set-face-foreground 'magit-diff-add "green3")
-          ;; (set-face-foreground 'magit-diff-del "red3")
-          ;; (when (not window-system)
-          ;;   (set-face-background 'magit-item-highlight "black"))
-
-          ;; (add-hook 'magit-mode-hook (lambda () (setq truncate-lines nil)))
           (defun magit-commit-mode-init () (when (looking-at "\n")
                                              (open-line 1)))
           ))
@@ -545,16 +534,6 @@ This functions should be added to the hooks of major modes for programming."
 
 (add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
 (setq compilation-scroll-output 'first-error) ;; follows output
-
-(use-package haskell-mode
-  :defer 2
-  :init
-  (progn
-    (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-    (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-    (add-hook 'haskell-mode-hook 'interactive-haskell-mode))
-  :config
-  (setq haskell-font-lock-symbols nil))
 
 (use-package iedit
   :init (progn
@@ -587,21 +566,6 @@ This functions should be added to the hooks of major modes for programming."
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
 
-
-(defun jeg2/insert-fenced-code-block (&optional add-yank)
-  "Inserts fenced code blocks, optionally with yanked text between."
-  (interactive "P")
-  (if add-yank (call-interactively 'yank))
-  (dotimes (_ 3) (insert "`"))
-  (let ((return-to (point)))
-    (newline-and-indent)
-    (if add-yank
-        (progn
-          (goto-char (mark))
-          (unless (bolp) (newline-and-indent))))
-    (dotimes (_ 3) (insert "`"))
-    (goto-char return-to)))
-
 (use-package markdown-mode
   :ensure markdown-mode
   :init (progn
@@ -609,15 +573,11 @@ This functions should be added to the hooks of major modes for programming."
           (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
           (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))))
 
-
 (use-package rbenv
   :ensure rbenv
   :init (progn
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
-
-;; (set-face-foreground 'mode-line "grey7")
-;; (set-face-foreground 'mode-line-inactive "grey10")
 
 (defface sm-default-face
   '((t :inherit default :foreground "#FF1F68"))
