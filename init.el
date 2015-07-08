@@ -583,62 +583,6 @@ This functions should be added to the hooks of major modes for programming."
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
 
-(defface sm-default-face
-  '((t :inherit default :foreground "#FF1F68"))
-  "Smart modeline " :group 'smart-modeline-faces)
-
-(defface sm-project-face
-  '((t :inherit default :foreground "lightblue"))
-  "Smart modeline " :group 'smart-modeline-faces)
-
-(defface sm-branch-face
-  '((t :inherit default :foreground "green"))
-  "Smart modeline " :group 'smart-modeline-faces)
-                                        ;
-(defface sm-file-face
-  '((t :inherit default :foreground "#FF1F69"))
-  "Smart modeline " :group 'smart-modeline-faces)
-
-(defun git-repo-name ()
-  "Get the nane of the closest .git directory or ...?"
-  (locate-dominating-file default-directory ".git"))
-
-(defun sm-clean-directory-name ()
-  (car (last (butlast (split-string (git-repo-name) "/")))))
-
-(setq-default mode-line-format
-              (list
-               ;;'(:eval (propertize mode-line-misc-info 'face 'sm-branch-face))
-
-               '(:eval (powerline-evil-tag))
-               " "
-               '(:eval (if (buffer-modified-p)
-                           (propertize "*" 'face 'sm-default-face
-                                       'help-echo "Buffer has been modified")
-                         " "))
-
-               '(:eval (propertize "%b " 'face 'sm-file-face
-                                   'help-echo (buffer-file-name)))
-
-               (propertize "  %03l," 'face 'sm-project-face)
-               '(:eval (propertize "%02c" 'face 'sm-project-face))
-
-
-               " "
-               '(:eval (when (vc-mode)
-                         (propertize (concat (substring vc-mode 5) " @") 'face 'sm-branch-face)))
-
-               " "
-               '(:eval (when (vc-mode)
-                         (propertize (sm-clean-directory-name)
-                                     'face 'sm-project-face)))
-
-
-               ))
-
-
-(mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
-
 
 ;; (defun ido-recentf-open ()
 ;;   "Use `ido-completing-read' to \\[find-file] a recent file"
@@ -831,12 +775,38 @@ point reaches the beginning or end of the buffer, stop there."
   (open-line arg)
   (indent-according-to-mode))
 
-;; TODO - name clash with rspec.el
-;; (defun rspec-compile ()
-;;   (interactive)
-;;   (compile "rspec *_spec.rb"))
 
-;; (global-set-key (kbd "C-c m") 'rspec-compile)
+(defface sm-default-face
+  '((t :inherit default :foreground "#FF1F68"))
+  "Smart modeline " :group 'smart-modeline-faces)
+
+(defface sm-project-face
+  '((t :inherit default :foreground "lightblue"))
+  "Smart modeline " :group 'smart-modeline-faces)
+                                        ;
+(defface sm-file-face
+  '((t :inherit default :foreground "#FF1F69"))
+  "Smart modeline " :group 'smart-modeline-faces)
+
+(setq-default mode-line-format
+              (list
+               " "
+               '(:eval (if (buffer-modified-p)
+                           (propertize "*" 'face 'sm-default-face
+                                       'help-echo "Buffer has been modified")
+                         " "))
+
+               '(:eval (propertize "%b " 'face 'sm-file-face
+                                   'help-echo (buffer-file-name)))
+
+               " "
+               '(:eval (propertize (projectile-project-name)
+                                   'face 'sm-project-face))
+
+               ))
+
+
+(mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
 
 (use-package idomenu
   :ensure idomenu
