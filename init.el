@@ -285,8 +285,8 @@ This functions should be added to the hooks of major modes for programming."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-;;(load-theme 'planet t)
-(load-theme 'apropospriate-dark t)
+(load-theme 'planet t)
+;;(load-theme 'sanityinc-tomorrow-night t)
 
 ;; red line after 80 characters
 ;; (add-hook 'after-change-major-mode-hook 'fci-mode)
@@ -322,12 +322,14 @@ This functions should be added to the hooks of major modes for programming."
           (setq projectile-completion-system 'ido)
           (projectile-global-mode)
           (setq projectile-enable-caching t)
-          (setq projectile-switch-project-action 'projectile-find-file)
+          (setq projectile-switch-project-action 'projectile-dired)
 
           (defadvice find-tag-at-point (before auto-visti-tags)
             "Load default TAGS file from home directory if needed"
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
+
           (ad-activate 'find-tag-at-point))
+
   :bind ("C-x b" . projectile-switch-to-buffer))
 
 
@@ -845,5 +847,5 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;;(set-frame-font "Source Code Pro 14")
 ;;(set-frame-font "Inconsolata-g 14")
-(set-frame-font "Lucida Grande Mono 14")
+(set-frame-font "Lucida Grande Mono 15")
 ;;(set-frame-font "Monoid 13")
