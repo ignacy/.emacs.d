@@ -123,11 +123,6 @@ This functions should be added to the hooks of major modes for programming."
   :ensure syntax-subword
   :init (global-syntax-subword-mode 1))
 
-
-(use-package emamux
-  :ensure emamux
-  :bind ("C-c s" . emamux:send-command))
-
 (use-package yasnippet
   :ensure yasnippet
   :init (progn
@@ -140,8 +135,6 @@ This functions should be added to the hooks of major modes for programming."
 (use-package company
   :ensure  company
   :init (progn
-          ;;(add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
-          ;;(define-key company-active-map "\t" 'company-yasnippet-or-completion)
           (setq company-dabbrev-downcase nil)
           (setq company-dabbrev-ignore-case nil)
           (global-company-mode t)))
@@ -153,23 +146,10 @@ This functions should be added to the hooks of major modes for programming."
 (use-package elixir-mode
   :ensure elixir-mode)
 
-;; ;; ;;;; multiple-cursors
-;; (use-package multiple-cursors
-;;   :ensure multiple-cursors
-;;   :defer t
-;;   :bind (("C-x r t" . 'mc/edit-lines)
-;;          ("C->" . 'mc/mark-next-like-this)
-;;          ("C-<" . 'mc/mark-previous-like-this)
-;;          ("C-*" . 'mc/mark-all-like-this)))
-
 ;;;; rainbow-delimeters
 (use-package rainbow-delimiters
   :ensure rainbow-delimiters
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-
-(use-package base16-theme
-  :ensure base16-theme)
-
 
 (use-package flycheck
   :ensure flycheck
@@ -210,17 +190,6 @@ This functions should be added to the hooks of major modes for programming."
           (setq gc-cons-threshold 20000000)
           (setq ido-enable-flex-matching t)
           (setq ido-use-faces nil)))
-
-;; (use-package recentf
-;;   :ensure recentf
-;;   :init (progn
-;;           (setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
-;;           (recentf-mode t)
-;;           (setq recentf-max-saved-items 1000)
-;;           (setq recentf-max-menu-items 50)
-;;           (add-to-list 'recentf-exclude "\\.revive\\'")
-;;           (add-to-list 'recentf-exclude "elpa")))
-
 
 (use-package smex
   :ensure smex
@@ -272,11 +241,6 @@ This functions should be added to the hooks of major modes for programming."
           (setq wakatime-python-bin "/usr/local/bin/python")
           (global-wakatime-mode)))
 
-(use-package find-file-in-project
-  :ensure find-file-in-project
-  :bind ("C-x f" . find-file-in-project))
-
-
 (defun disable-all-themes ()
   "disable all active themes."
   (dolist (i custom-enabled-themes)
@@ -287,13 +251,6 @@ This functions should be added to the hooks of major modes for programming."
 
 (load-theme 'planet t)
 ;;(load-theme 'sanityinc-tomorrow-night t)
-
-;; red line after 80 characters
-;; (add-hook 'after-change-major-mode-hook 'fci-mode)
-;; (setq fci-rule-column 80)
-;; (setq fci-rule-color "red")
-
-(use-package helpers)
 
 (use-package bind-key
   :ensure bind-key)
@@ -331,16 +288,6 @@ This functions should be added to the hooks of major modes for programming."
           (ad-activate 'find-tag-at-point))
 
   :bind ("C-x b" . projectile-switch-to-buffer))
-
-
-(use-package perspective
-  :init (persp-mode)
-  :ensure perspective)
-
-(use-package persp-projectile
-  :ensure persp-projectile
-  :defer t
-  :bind ("C-c C-p" . projectile-persp-switch-project))
 
 (eval-after-load "grep"
   '(progn
@@ -385,21 +332,9 @@ This functions should be added to the hooks of major modes for programming."
           (add-hook 'ruby-mode-hook
                     (lambda ()
                       (subword-mode 1)
-                      (flycheck-mode)
-
-                      (when (and buffer-file-name
-                                 (file-writable-p
-                                  (file-name-directory buffer-file-name))
-                                 (file-writable-p buffer-file-name)
-                                 (if (fboundp 'tramp-list-remote-buffers)
-                                     (not (subsetp
-                                           (list (current-buffer))
-                                           (tramp-list-remote-buffers)))
-                                   t))
-                        )))))
+                      (flycheck-mode) ))))
 
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
-
 
 (use-package rubocop
   :ensure rubocop
@@ -417,13 +352,7 @@ This functions should be added to the hooks of major modes for programming."
 (setq ruby-deep-indent-paren-style nil)
 (setq ruby-deep-indent-paren nil)
 
-
-(font-lock-add-keywords
- 'ruby-mode
- '(("\\(\\b\\sw[_a-zA-Z0-9]*:\\)\\(?:\\s-\\|$\\)" (1 font-lock-constant-face))))
-
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
-
 
 (add-hook 'shell-mode-hook
           '(lambda ()
@@ -434,15 +363,9 @@ This functions should be added to the hooks of major modes for programming."
              (toggle-truncate-lines 1)
              (set-face-foreground 'highlight nil)
              (font-lock-mode t)
-             ;;(buffer-face-mode t) ; only in emacs 23
-             ;;(buffer-face-set 'font-lock-small-face)
              (hl-line-mode nil)))
 
-;;(setq comint-prompt-read-only nil)
 (setq comint-process-echoes t)
-;; term
-
-
 
 (add-hook 'term-mode-hook
           (lambda ()
@@ -586,14 +509,6 @@ This functions should be added to the hooks of major modes for programming."
           (global-rbenv-mode)))
 
 
-;; (defun ido-recentf-open ()
-;;   "Use `ido-completing-read' to \\[find-file] a recent file"
-;;   (interactive)
-;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-;;       (message "Opening file...")
-;;     (message "Aborting")))
-
-
 (defun im/kill-current-buffer()
   "Most of the times you just want to kill currently opened buffer"
   (interactive)
@@ -664,9 +579,6 @@ might be bad."
           (set-buffer-modified-p nil)
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
-
-
-
 
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line number input"
