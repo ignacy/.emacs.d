@@ -147,7 +147,11 @@ This functions should be added to the hooks of major modes for programming."
           (global-company-mode t)))
 
 (use-package alchemist
-  :ensure alchemist)
+  :ensure alchemist
+  :init (progn (setq alchemist-buffer-status-modeline nil)))
+
+(use-package elixir-mode
+  :ensure elixir-mode)
 
 ;; ;; ;;;; multiple-cursors
 ;; (use-package multiple-cursors
