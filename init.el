@@ -211,15 +211,15 @@ This functions should be added to the hooks of major modes for programming."
           (setq ido-enable-flex-matching t)
           (setq ido-use-faces nil)))
 
-(use-package recentf
-  :ensure recentf
-  :init (progn
-          (setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
-          (recentf-mode t)
-          (setq recentf-max-saved-items 1000)
-          (setq recentf-max-menu-items 50)
-          (add-to-list 'recentf-exclude "\\.revive\\'")
-          (add-to-list 'recentf-exclude "elpa")))
+;; (use-package recentf
+;;   :ensure recentf
+;;   :init (progn
+;;           (setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
+;;           (recentf-mode t)
+;;           (setq recentf-max-saved-items 1000)
+;;           (setq recentf-max-menu-items 50)
+;;           (add-to-list 'recentf-exclude "\\.revive\\'")
+;;           (add-to-list 'recentf-exclude "elpa")))
 
 
 (use-package smex
@@ -640,12 +640,12 @@ This functions should be added to the hooks of major modes for programming."
 (mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
 
 
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
+;; (defun ido-recentf-open ()
+;;   "Use `ido-completing-read' to \\[find-file] a recent file"
+;;   (interactive)
+;;   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+;;       (message "Opening file...")
+;;     (message "Aborting")))
 
 
 (defun im/kill-current-buffer()
@@ -848,7 +848,7 @@ point reaches the beginning or end of the buffer, stop there."
 (bind-key "M-r" 'projectile-ag)
 (bind-key "M-c" 'query-replace)
 (bind-key "C-c TAB" 'align-regexp)
-(bind-key "C-x C-r" 'ido-recentf-open)
+;;(bind-key "C-x C-r" 'ido-recentf-open)
 (bind-key "C-x i" 'indent-region-or-buffer)
 (bind-key "M-h" 'backward-kill-word)
 (bind-key "C-x C-o" 'other-window)
