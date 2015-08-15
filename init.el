@@ -668,6 +668,8 @@ point reaches the beginning or end of the buffer, stop there."
                '(:eval (propertize "%b " 'face 'sm-file-face
                                    'help-echo (buffer-file-name)))
 
+               (propertize "  %03l," 'face 'sm-project-face)
+               '(:eval (propertize "%02c" 'face 'sm-project-face))
                " "
                '(:eval (propertize (projectile-project-name)
                                    'face 'sm-project-face))
