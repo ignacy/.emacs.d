@@ -65,17 +65,6 @@
 
 (global-auto-revert-mode 1)
 
-(defun font-lock-comment-annotations ()
-  "Highlight a bunch of well known comment annotations.
-This functions should be added to the hooks of major modes for programming."
-  (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|NOTE\\):"
-          1 font-lock-warning-face t))))
-(add-hook 'prog-mode-hook 'font-lock-comment-annotations)
-
-;; (setq-default indent-tabs-mode nil)
-;; (setq default-tab-width 2)
-
 ;; use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width        4)
