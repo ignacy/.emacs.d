@@ -419,6 +419,7 @@
 (setq compilation-scroll-output 'first-error) ;; follows output
 
 (use-package iedit
+  :ensure iedit
   :init (progn
           (defun iedit-dwim (arg)
             "Starts iedit but uses \\[narrow-to-defun] to limit its scope."
