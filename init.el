@@ -398,7 +398,7 @@
   :ensure magit
   :bind ("C-x g" . magit-status)
   :init (progn
-          (setq magit-completing-read-function 'magit-ido-completing-read)
+          (setq magit-completing-read-function completing-read-function)
           ;; close popup when commiting
           (defun magit-commit-mode-init () (when (looking-at "\n")
                                              (open-line 1)))
