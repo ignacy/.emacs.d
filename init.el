@@ -1,15 +1,15 @@
-(package-initialize)
 (require 'package)
+
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 (setq package-enable-at-startup nil)
+(package-initialize)
 
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
   (package-install 'use-package))
 
 ;;; Commentary: init -- my emacs configuration
-
 (require 'cl)
 (setq debug-on-error nil)
 (setq dotfiles-dir "~/.emacs.d")
