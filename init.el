@@ -276,7 +276,7 @@
 
           (ad-activate 'find-tag-at-point))
 
-  :bind ("C-x b" . projectile-switch-to-buffer))
+  :bind ("C-c C-p" . projectile-switch-project))
 
 (eval-after-load "grep"
   '(progn
