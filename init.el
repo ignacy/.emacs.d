@@ -17,7 +17,7 @@
 (setq debug-on-error nil)
 (setq dotfiles-dir "~/.emacs.d")
 (setq explicit-shell-file-name "/bin/zsh")
-
+(setq load-prefer-newer t)
 (setq custom-file (expand-file-name "custom.el" dotfiles-dir))
 (load custom-file)
 
