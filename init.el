@@ -399,7 +399,6 @@
   :bind ("C-x g" . magit-status)
   :init (progn
           (setq magit-completing-read-function 'magit-ido-completing-read)
-          (add-hook 'git-commit-mode-hook 'magit-commit-mode-init)
           ;; close popup when commiting
           (defun magit-commit-mode-init () (when (looking-at "\n")
                                              (open-line 1)))
