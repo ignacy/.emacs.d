@@ -718,3 +718,4 @@ point reaches the beginning or end of the buffer, stop there."
 ;;(set-frame-font "Inconsolata-g 14")
 (set-frame-font "Lucida Grande Mono 14")
 ;;(set-frame-font "Monoid 13")
+(toggle-frame-maximized)
