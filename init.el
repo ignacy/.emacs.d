@@ -244,11 +244,10 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(use-package gruber-darker-theme
-  :ensure gruber-darker-theme)
+(use-package zerodark-theme
+  :ensure zerodark-theme)
 
-;;(load-theme 'zerodark t)
-(load-theme 'gruber-darker t)
+(load-theme 'zerodark t)
 ;;(load-theme 'sanityinc-tomorrow-night t)
 
 (use-package bind-key
@@ -278,7 +277,7 @@
           (setq projectile-completion-system 'ido)
           (projectile-global-mode)
           (setq projectile-enable-caching t)
-          (setq projectile-switch-project-action 'projectile-dired)
+          (setq projectile-switch-project-action 'projectile-find-file)
 
           (defadvice find-tag-at-point (before auto-visti-tags)
             "Load default TAGS file from home directory if needed"
@@ -406,17 +405,6 @@
 
 (use-package ido-completing-read+
   :ensure ido-completing-read+)
-
-(use-package magit
-  :ensure magit
-  :bind ("C-x g" . magit-status)
-  :init (progn
-          (setq magit-completing-read-function 'magit-ido-completing-read)
-
-          ;; close popup when commiting
-          (defun magit-commit-mode-init () (when (looking-at "\n")
-                                             (open-line 1)))
-          ))
 
 (load-library "compile")
 
