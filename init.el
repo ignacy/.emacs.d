@@ -244,7 +244,11 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'planet t)
+(use-package gruber-darker-theme
+  :ensure gruber-darker-theme)
+
+;;(load-theme 'zerodark t)
+(load-theme 'gruber-darker t)
 ;;(load-theme 'sanityinc-tomorrow-night t)
 
 (use-package bind-key
@@ -688,13 +692,29 @@ point reaches the beginning or end of the buffer, stop there."
   :ensure idomenu
   :bind ("C-'" . idomenu))
 
+(use-package recentf
+  :ensure recentf
+  :init (progn
+          (setq recentf-auto-cleanup 'never)
+          (recentf-mode t)
+          (setq recentf-max-saved-items 1000)
+          (setq recentf-max-menu-items 50)
+          (add-to-list 'recentf-exclude "\\.revive\\'")
+          (add-to-list 'recentf-exclude "elpa")))
+
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
 
 (bind-key "C-o" 'open-previous-line)
 (bind-key "C-c t" 'multi-term)
 (bind-key "M-r" 'projectile-ag)
 (bind-key "M-c" 'query-replace)
 (bind-key "C-c TAB" 'align-regexp)
-;;(bind-key "C-x C-r" 'ido-recentf-open)
+(bind-key "C-x C-r" 'ido-recentf-open)
 (bind-key "C-x i" 'indent-region-or-buffer)
 (bind-key "M-h" 'backward-kill-word)
 (bind-key "C-x C-o" 'other-window)
