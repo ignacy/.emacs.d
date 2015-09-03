@@ -24,6 +24,9 @@
 (setq fill-column 80)
 (whitespace-mode)
 
+(custom-set-variables
+ '(safe-local-variable-values (quote ((encoding . utf-8)))))
+
 (set-fringe-mode '(0 . 0))
 (setq mac-option-key-is-meta t)
 (setq mac-command-key-is-meta t)
