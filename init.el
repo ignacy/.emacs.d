@@ -404,6 +404,9 @@
   (switch-to-buffer "zsh"))
 
 
+(use-package ido-completing-read+
+  :ensure ido-completing-read+)
+
 (use-package magit
   :ensure magit
   :bind ("C-x g" . magit-status)
