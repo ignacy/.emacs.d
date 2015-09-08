@@ -1,13 +1,13 @@
 (require 'package)
 
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-
-(setq package-enable-at-startup nil)
 (package-initialize)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/"))
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
@@ -244,11 +244,8 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(use-package zerodark-theme
-  :ensure zerodark-theme)
+(load-theme 'atom-dark t)
 
-(load-theme 'zerodark t)
-;;(load-theme 'sanityinc-tomorrow-night t)
 
 (use-package bind-key
   :ensure bind-key)
@@ -332,15 +329,16 @@
                       (subword-mode 1)
                       (flycheck-mode) ))))
 
+(use-package ruby-hash-syntax
+  :ensure ruby-hash-syntax)
+
 (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
 
 (use-package rubocop
   :ensure rubocop
   :config (progn
-
-            (setq rubocop-check-command "~/.rbenv/versions/2.2.1/bin/rubocop --format emacs")
-            (setq rubocop-autocorrect-command "~/.rbenv/versions/2.2.1/bin/rubocop -a --format emacs")
-
+            (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
+            (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
             ))
 
 (setq ruby-use-encoding-map nil)
@@ -706,6 +704,21 @@ point reaches the beginning or end of the buffer, stop there."
           (add-to-list 'recentf-exclude "\\.revive\\'")
           (add-to-list 'recentf-exclude "elpa")))
 
+
+(use-package org
+  :ensure org
+  :init (progn
+          (setq org-capture-templates
+                '(("t" "Todo" entry (file "~/Dropbox/todo.org")
+                   "* TODO %?\n  %i\n  %a")))
+
+          (define-key global-map "\C-cd"
+            (lambda () (interactive) (org-capture nil "t")))
+          (setq org-default-notes-file "~/Dropbox/notes/todo.org")
+          (define-key global-map "\C-cc" 'org-capture)
+         ))
+
+
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
   (interactive)
@@ -743,8 +756,8 @@ point reaches the beginning or end of the buffer, stop there."
 (define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
 
-;;(set-frame-font "Source Code Pro 14")
+(set-frame-font "Source Code Pro 13")
 ;;(set-frame-font "Inconsolata-g 14")
-(set-frame-font "Lucida Grande Mono 14")
+;;(set-frame-font "Lucida Grande Mono 14")
 ;;(set-frame-font "Monoid 13")
 (toggle-frame-maximized)
