@@ -688,6 +688,7 @@ point reaches the beginning or end of the buffer, stop there."
           (setq magit-completing-read-function 'magit-ido-completing-read)
           (setq magit-process-popup-time 0)
           (setq magit-diff-auto-show nil)
+          (add-hook 'server-switch-hook 'magit-process)
           ;;(add-hook 'magit-pre-call-git-hook 'magit-process)
           ))
 
