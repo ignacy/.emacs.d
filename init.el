@@ -14,6 +14,7 @@
 
 ;;; Commentary: init -- my emacs configuration
 (require 'cl)
+
 (setq debug-on-error nil)
 (setq dotfiles-dir "~/.emacs.d")
 (setq explicit-shell-file-name "/bin/zsh")
@@ -687,7 +688,7 @@ point reaches the beginning or end of the buffer, stop there."
           (setq magit-completing-read-function 'magit-ido-completing-read)
           (setq magit-process-popup-time 0)
           (setq magit-diff-auto-show nil)
-          (add-hook 'magit-pre-call-git-hook 'magit-process)
+          ;;(add-hook 'magit-pre-call-git-hook 'magit-process)
           ))
 
 
