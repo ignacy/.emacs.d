@@ -685,11 +685,8 @@ point reaches the beginning or end of the buffer, stop there."
   :bind ("C-x g" . magit-status)
   :init (progn
           (setq magit-completing-read-function 'magit-ido-completing-read)
-
           (setq magit-process-popup-time 0)
-          ;; close popup when commiting
-          (defun magit-commit-mode-init () (when (looking-at "\n")
-                                             (open-line 1)))
+          (add-hook 'magit-pre-call-git-hook 'magit-process)
           ))
 
 
