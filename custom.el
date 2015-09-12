@@ -11,6 +11,9 @@
    [unspecified "#2f1e2e" "#ef6155" "#48b685" "#fec418" "#06b6ef" "#815ba4" "#06b6ef" "#a39e9b"] t)
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(bmkp-last-as-first-bookmark-file "~/.bookmarks_emacs")
+ '(custom-safe-themes
+   (quote
+    ("76626efc044daee1c402e50f185bd633d1a688c332bc15c8fd5db4cdf2966b79" default)))
  '(diary-entry-marker (quote font-lock-variable-name-face))
  '(fci-rule-color "#6c6c6c")
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
@@ -19,7 +22,7 @@
  '(gnus-logo-colors (quote ("#528d8d" "#c0c0c0")))
  '(package-selected-packages
    (quote
-    (org-mode php-mode ido-compleating-read+ gruber-darker-theme web-mode zonokai-theme zerodark-theme gotham-theme spacemacs-theme ruby-hash-syntax darktooth-theme color-theme-sanityinc-tomorrow alect-themes alert elixir-mode alchemist idoimenu idomenu imenus ido-completing-read+ rainbow-mode planet-theme apropospriate-theme seti-theme atom-dark-theme subatomic-theme underwater-theme inkpot-theme smart-compile sublime-themes firebelly-theme flatland-theme flatland-black-theme firecode-theme twilight-theme dark-krystal-theme bliss-theme minimal-theme farmhouse-theme focus powerline powerline-evil smart-mode-line evil emamux-ruby-test emamux wgrep-ag rbenv magit rubocop rspec-mode persp-projectile perspective imenu+ gist multi-term ir-black-theme inf-ruby elisp--witness--lisp yasnippet base16-theme haskell-mode markdown-mode iedit projectile js2-mode find-file-in-project wakatime-mode expand-region ag wrap-region smartparens smex flx-ido highlight-symbol flycheck rainbow-delimiters company-go golint go-eldoc go-mode syntax-subword exec-path-from-shell use-package)))
+    (aurora-theme haml-mode haml org-mode php-mode ido-compleating-read+ gruber-darker-theme web-mode zonokai-theme zerodark-theme gotham-theme spacemacs-theme ruby-hash-syntax darktooth-theme color-theme-sanityinc-tomorrow alect-themes alert elixir-mode alchemist idoimenu idomenu imenus ido-completing-read+ rainbow-mode planet-theme apropospriate-theme seti-theme atom-dark-theme subatomic-theme underwater-theme inkpot-theme smart-compile sublime-themes firebelly-theme flatland-theme flatland-black-theme firecode-theme twilight-theme dark-krystal-theme bliss-theme minimal-theme farmhouse-theme focus powerline powerline-evil smart-mode-line evil emamux-ruby-test emamux wgrep-ag rbenv magit rubocop rspec-mode persp-projectile perspective imenu+ gist multi-term ir-black-theme inf-ruby elisp--witness--lisp yasnippet base16-theme haskell-mode markdown-mode iedit projectile js2-mode find-file-in-project wakatime-mode expand-region ag wrap-region smartparens smex flx-ido highlight-symbol flycheck rainbow-delimiters company-go golint go-eldoc go-mode syntax-subword exec-path-from-shell use-package)))
  '(rspec-command-options "--color --order random")
  '(rspec-spec-command "sp")
  '(rspec-use-bundler-when-possible t)

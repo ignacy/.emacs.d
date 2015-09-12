@@ -2,7 +2,7 @@
 
 (package-initialize)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives
              '("org" . "http://orgmode.org/elpa/"))
 
@@ -244,7 +244,7 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'atom-dark t)
+(load-theme 'ir-black t)
 
 
 (use-package bind-key
@@ -307,6 +307,10 @@
             (setq rspec-use-bundler-when-possible nil)
             (setq rspec-command-options "--format progress --order random")
             ))
+
+(use-package haml-mode
+  :ensure haml-mode
+  :init (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode)))
 
 (use-package web-mode
   :ensure t
@@ -682,6 +686,7 @@ point reaches the beginning or end of the buffer, stop there."
   :init (progn
           (setq magit-completing-read-function 'magit-ido-completing-read)
 
+          (setq magit-process-popup-time 0)
           ;; close popup when commiting
           (defun magit-commit-mode-init () (when (looking-at "\n")
                                              (open-line 1)))
@@ -726,6 +731,8 @@ point reaches the beginning or end of the buffer, stop there."
       (message "Opening file...")
     (message "Aborting")))
 
+
+
 (bind-key "C-o" 'open-previous-line)
 (bind-key "C-c t" 'multi-term)
 (bind-key "M-r" 'projectile-ag)
@@ -756,8 +763,8 @@ point reaches the beginning or end of the buffer, stop there."
 (define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
 
-(set-frame-font "Source Code Pro 13")
-;;(set-frame-font "Inconsolata-g 14")
-;;(set-frame-font "Lucida Grande Mono 14")
+;;(set-frame-font "Source Code Pro 12")
+;;(set-frame-font "Inconsolata 13")
+(set-frame-font "Lucida Grande Mono 12")
 ;;(set-frame-font "Monoid 13")
 (toggle-frame-maximized)
