@@ -187,10 +187,11 @@
           (setq ido-enable-flex-matching t)
           (setq ido-use-faces nil)))
 
-(use-package smex
-  :ensure smex
-  :init (smex-initialize)
-  :bind ("M-x" . smex))
+
+;; (use-package smex
+;;   :ensure smex
+;;   :init (smex-initialize)
+;;   :bind ("M-x" . smex))
 
 (use-package smartparens
   :ensure smartparens
@@ -217,9 +218,12 @@
           (wrap-region-add-wrapper "`" "`")
           (wrap-region-add-wrapper "{" "}")))
 
-(use-package ag
-  :ensure ag
-  :init (setq ag-highlight-search t))
+;; (use-package ag
+;;   :ensure ag
+;;   :init (setq ag-highlight-search t))
+
+(use-package helm-ag
+  :ensure helm-ag)
 
 (use-package wgrep-ag
   :ensure wgrep-ag)
@@ -245,7 +249,8 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'ir-black t)
+(load-theme 'atom-dark t)
+(global-hl-line-mode)
 
 
 (use-package bind-key
@@ -269,13 +274,19 @@
           (setq-default js2-global-externs
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
+
+(use-package projectile-rails
+  :ensure projectile-rails)
+
 (use-package projectile
   :ensure projectile
   :init (progn
           (setq projectile-completion-system 'ido)
           (projectile-global-mode)
-          (setq projectile-enable-caching t)
-          (setq projectile-switch-project-action 'projectile-find-file)
+
+          (setq projectile-enable-caching nil)
+          (setq projectile-switch-project-action 'helm-projectile)
+          (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
           (defadvice find-tag-at-point (before auto-visti-tags)
             "Load default TAGS file from home directory if needed"
@@ -283,7 +294,21 @@
 
           (ad-activate 'find-tag-at-point))
 
-  :bind ("C-c C-p" . projectile-switch-project))
+  :bind ("C-c C-p" . helm-projectile-switch-project))
+
+(use-package helm
+  :ensure helm
+  :init (progn
+          (require 'helm-config)
+          (helm-mode 1)
+          ;;(global-set-key (kbd "M-x") 'helm-M-x)
+
+          ))
+
+(use-package helm-projectile
+  :ensure helm-projectile
+  :init (helm-projectile-on))
+
 
 (eval-after-load "grep"
   '(progn
@@ -306,7 +331,7 @@
             (setq rspec-use-rake-when-possible nil)
             (setq rspec-use-rvm nil)
             (setq rspec-use-bundler-when-possible nil)
-            (setq rspec-command-options "--format progress --order random")
+            ;;(setq rspec-command-options "--format progress --order random")
             ))
 
 (use-package haml-mode
@@ -688,8 +713,6 @@ point reaches the beginning or end of the buffer, stop there."
           (setq magit-completing-read-function 'magit-ido-completing-read)
           (setq magit-process-popup-time 0)
           (setq magit-diff-auto-show nil)
-          ;;(add-hook 'server-switch-hook 'magit-process)
-
           (add-hook 'git-commit-mode-hook (lambda () (save-selected-window (magit-process))))
           ))
 
@@ -731,20 +754,21 @@ point reaches the beginning or end of the buffer, stop there."
       (message "Opening file...")
     (message "Aborting")))
 
-
-
 (bind-key "C-o" 'open-previous-line)
+(global-set-key (kbd "M-i") 'helm-swoop)
+(global-set-key (kbd "§") 'helm-all-mark-rings)
 (bind-key "C-c t" 'multi-term)
-(bind-key "M-r" 'projectile-ag)
+(bind-key "M-r" 'helm-projectile-ag)
 (bind-key "M-c" 'query-replace)
 (bind-key "C-c TAB" 'align-regexp)
-(bind-key "C-x C-r" 'ido-recentf-open)
+(bind-key "C-x C-r" 'helm-recentf)
 (bind-key "C-x i" 'indent-region-or-buffer)
 (bind-key "M-h" 'backward-kill-word)
 (bind-key "C-x C-o" 'other-window)
 (bind-key "C-," 'find-tag-at-point)
+(bind-key "C-x b" 'helm-projectile-switch-to-buffer)
 (bind-key "C-x C-f" 'ido-find-file)
-(bind-key "C-x f" 'projectile-find-file)
+(bind-key "C-x f" 'helm-projectile-find-file)
 (bind-key "C-x k" 'im/kill-current-buffer)
 (bind-key "C-<tab>" 'switch-to-previous-buffer)
 (bind-key "M-g" 'goto-line-with-feedback)
