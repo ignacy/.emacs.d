@@ -16,6 +16,11 @@
 (require 'cl)
 
 (setq debug-on-error nil)
+
+(prefer-coding-system 'utf-8)
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
+
 (setq dotfiles-dir "~/.emacs.d")
 (setq explicit-shell-file-name "/bin/zsh")
 (setq load-prefer-newer t)
@@ -24,9 +29,6 @@
 
 (setq fill-column 80)
 (whitespace-mode)
-
-(custom-set-variables
- '(safe-local-variable-values (quote ((encoding . utf-8)))))
 
 (set-fringe-mode '(0 . 0))
 (setq mac-option-key-is-meta t)
@@ -249,7 +251,7 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'atom-dark t)
+(load-theme 'hydrangea t)
 (global-hl-line-mode)
 
 
