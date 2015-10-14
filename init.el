@@ -49,8 +49,8 @@
 
 (show-paren-mode)
 
-
-(setq visible-bell t
+(setq ring-bell-function 'ignore)
+(setq visible-bell nil
       x-select-enable-clipboard t
       x-select-enable-primary t
       mouse-yank-at-point t
@@ -190,10 +190,10 @@
           (setq ido-use-faces nil)))
 
 
-;; (use-package smex
-;;   :ensure smex
-;;   :init (smex-initialize)
-;;   :bind ("M-x" . smex))
+(use-package smex
+  :ensure smex
+  :init (smex-initialize)
+  :bind ("M-x" . smex))
 
 (use-package smartparens
   :ensure smartparens
@@ -220,12 +220,9 @@
           (wrap-region-add-wrapper "`" "`")
           (wrap-region-add-wrapper "{" "}")))
 
-;; (use-package ag
-;;   :ensure ag
-;;   :init (setq ag-highlight-search t))
-
-(use-package helm-ag
-  :ensure helm-ag)
+(use-package ag
+  :ensure ag
+  :init (setq ag-highlight-search t))
 
 (use-package wgrep-ag
   :ensure wgrep-ag)
@@ -251,9 +248,10 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'hydrangea t)
-(global-hl-line-mode)
-
+;; (load-file "~/.emacs.d/hydrangea.el")
+;; (load-theme 'hydrangea t)
+(load-theme 'atom-dark t)
+(setq frame-background-mode 'dark)
 
 (use-package bind-key
   :ensure bind-key)
@@ -287,7 +285,6 @@
           (projectile-global-mode)
 
           (setq projectile-enable-caching nil)
-          (setq projectile-switch-project-action 'helm-projectile)
           (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
           (defadvice find-tag-at-point (before auto-visti-tags)
@@ -296,21 +293,7 @@
 
           (ad-activate 'find-tag-at-point))
 
-  :bind ("C-c C-p" . helm-projectile-switch-project))
-
-(use-package helm
-  :ensure helm
-  :init (progn
-          (require 'helm-config)
-          (helm-mode 1)
-          ;;(global-set-key (kbd "M-x") 'helm-M-x)
-
-          ))
-
-(use-package helm-projectile
-  :ensure helm-projectile
-  :init (helm-projectile-on))
-
+  :bind ("C-c C-p" . projectile-switch-project))
 
 (eval-after-load "grep"
   '(progn
@@ -706,8 +689,6 @@ point reaches the beginning or end of the buffer, stop there."
                                    'face 'sm-project-face))
 
                ))
-
-
 (use-package magit
   :ensure magit
   :bind ("C-x g" . magit-status)
@@ -715,10 +696,8 @@ point reaches the beginning or end of the buffer, stop there."
           (setq magit-completing-read-function 'magit-ido-completing-read)
           (setq magit-process-popup-time 0)
           (setq magit-diff-auto-show nil)
-          (add-hook 'git-commit-mode-hook (lambda () (save-selected-window (magit-process))))
+          (add-hook 'git-commit-mode-hook (lambda () (save-selected-window (magit-process-buffer))))
           ))
-
-(mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
 
 (use-package idomenu
   :ensure idomenu
@@ -756,21 +735,24 @@ point reaches the beginning or end of the buffer, stop there."
       (message "Opening file...")
     (message "Aborting")))
 
+
+(defadvice projectile-rails-find-current-spec (before split-window-first activate)
+  (split-window-horizontally))
+
+
 (bind-key "C-o" 'open-previous-line)
-(global-set-key (kbd "M-i") 'helm-swoop)
-(global-set-key (kbd "§") 'helm-all-mark-rings)
 (bind-key "C-c t" 'multi-term)
-(bind-key "M-r" 'helm-projectile-ag)
+(bind-key "M-r" 'projectile-ag)
 (bind-key "M-c" 'query-replace)
 (bind-key "C-c TAB" 'align-regexp)
-(bind-key "C-x C-r" 'helm-recentf)
+(bind-key "C-x C-r" 'ido-recentf-open)
 (bind-key "C-x i" 'indent-region-or-buffer)
 (bind-key "M-h" 'backward-kill-word)
 (bind-key "C-x C-o" 'other-window)
 (bind-key "C-," 'find-tag-at-point)
-(bind-key "C-x b" 'helm-projectile-switch-to-buffer)
+(bind-key "C-x b" 'projectile-switch-to-buffer)
 (bind-key "C-x C-f" 'ido-find-file)
-(bind-key "C-x f" 'helm-projectile-find-file)
+(bind-key "C-x f" 'projectile-find-file)
 (bind-key "C-x k" 'im/kill-current-buffer)
 (bind-key "C-<tab>" 'switch-to-previous-buffer)
 (bind-key "M-g" 'goto-line-with-feedback)
@@ -779,6 +761,8 @@ point reaches the beginning or end of the buffer, stop there."
 (bind-key "M-\." 'find-tag-at-point)
 (bind-key "M-j" 'join-lines)
 (bind-key "C-S-o" 'move-line-up)
+(bind-key "M-m" 'projectile-rails-find-current-spec)
+(bind-key "M-s" 'projectile-rails-find-spec)
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
 (global-set-key [(control backspace)] 'backward-kill-word)
@@ -789,8 +773,9 @@ point reaches the beginning or end of the buffer, stop there."
 (define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
 
-;;(set-frame-font "Source Code Pro 12")
+(set-frame-font "Source Code Pro Light 13")
 ;;(set-frame-font "Inconsolata 13")
-(set-frame-font "Lucida Grande Mono 12")
+;;(set-frame-font "Lucida Grande Mono 12")
 ;;(set-frame-font "Monoid 13")
 (toggle-frame-maximized)
+(mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
