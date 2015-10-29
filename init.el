@@ -22,12 +22,14 @@
 (setq coding-system-for-write 'utf-8)
 
 (setq dotfiles-dir "~/.emacs.d")
-(setq explicit-shell-file-name "/bin/zsh")
+(setq explicit-shell-file-name "/usr/local/bin/fish")
 (setq load-prefer-newer t)
 (setq custom-file (expand-file-name "custom.el" dotfiles-dir))
 (load custom-file)
 
-(setq fill-column 80)
+
+(setq fill-column 100)
+
 (whitespace-mode)
 
 (set-fringe-mode '(0 . 0))
@@ -154,9 +156,9 @@
   :init (progn
           (setq flycheck-ruby-rubocop-executable "~/.rbenv/versions/2.2.1/bin/rubocop") ))
 
-;; (use-package color-identifiers-mode
-;;   :ensure color-identifiers-mode
-;;   :init (global-color-identifiers-mode))
+;; (use-package rainbow-identifiers
+;;   :ensure t
+;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
 (use-package highlight-symbol
   :ensure highlight-symbol
@@ -170,8 +172,10 @@
 (ido-everywhere t)
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (add-to-list 'ido-ignore-files "\\.keep")
-(setq ido-file-extensions-order '(".rb" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
+(setq ido-file-extensions-order '(".rb" ".js" ".html" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
 (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(setq ido-use-filename-at-point 'guess)
+(setq ido-use-virtual-buffers t)
 (setq ido-create-new-buffer 'always)
 (set-default 'imenu-auto-rescan t)
 (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
@@ -180,6 +184,10 @@
   (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
   (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
 (add-hook 'ido-setup-hook 'ido-define-keys)
+
+(use-package ido-ubiquitous
+  :ensure ido-ubiquitous
+  :init (ido-ubiquitous-mode))
 
 (use-package flx-ido
   :ensure flx-ido
@@ -235,7 +243,6 @@
 (use-package wakatime-mode
   :ensure wakatime-mode
   :init (progn
-          (setq wakatime-api-key "378d5540-75fa-415f-8a20-51aac381b1ac")
           (setq wakatime-cli-path "/usr/local/bin/wakatime")
           (setq wakatime-python-bin "/usr/local/bin/python")
           (global-wakatime-mode)))
@@ -248,10 +255,11 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-;; (load-file "~/.emacs.d/hydrangea.el")
-;; (load-theme 'hydrangea t)
-(load-theme 'atom-dark t)
-(setq frame-background-mode 'dark)
+(use-package sublime-themes
+  :ensure sublime-themes)
+
+;;(load-theme 'phoenix-dark-pink t)
+(load-theme 'apropospriate-dark t)
 
 (use-package bind-key
   :ensure bind-key)
@@ -310,14 +318,15 @@
             (setq                 comint-prompt-read-only t))
   :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
 
-(use-package rspec-mode
-  :ensure  rspec-mode
-  :config (progn
-            (setq rspec-use-rake-when-possible nil)
-            (setq rspec-use-rvm nil)
-            (setq rspec-use-bundler-when-possible nil)
-            ;;(setq rspec-command-options "--format progress --order random")
-            ))
+(load-file "~/code/rspec-mode/rspec-mode.el")
+;; (use-package rspec-mode
+;;   :ensure  rspec-mode
+;;   :config (progn
+(setq rspec-use-rake-when-possible nil)
+(setq rspec-use-rvm nil)
+(setq rspec-use-bundler-when-possible nil)
+;; ;;(setq rspec-command-options "--format progress --order random")
+;; ))
 
 (use-package haml-mode
   :ensure haml-mode
@@ -330,6 +339,11 @@
                (setq web-mode-code-indent-offset 2)
                (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
                (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))))
+
+
+(use-package puppet-mode
+  :ensure t
+  :init (add-to-list 'auto-mode-alist '("\\.pp\\'" . puppet-mode)))
 
 ;; work around possible elpa bug
 (ignore-errors (require 'ruby-compilation))
@@ -401,19 +415,24 @@
 
 (use-package multi-term
   :ensure multi-term
-  :init (setq multi-term-program "/bin/zsh"))
+  :init (setq multi-term-program "/usr/local/bin/fish"))
+
+
+(use-package fish-mode
+  :ensure fish-mode
+  :init (add-to-list 'auto-mode-alist '("\\.fish\\'" . fish-mode)))
 
 ;; shell-mode
 (defun sh (&optional name)
   (shell (concat "*" name "*")))
 
-(defun zsh ()
-  (interactive)
-  (shell "zsh"))
+;; (defun zsh ()
+;;   (interactive)
+;;   (shell "zsh"))
 
-(defun switch-to-zsh ()
-  (interactive)
-  (switch-to-buffer "zsh"))
+;; (defun switch-to-zsh ()
+;;   (interactive)
+;;   (switch-to-buffer "zsh"))
 
 
 (use-package ido-completing-read+
@@ -660,7 +679,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 
 (defface sm-default-face
-  '((t :inherit default :foreground "#FF1F68"))
+  '((t :inherit default :foreground "#FF1F68" :background "black" ))
   "Smart modeline " :group 'smart-modeline-faces)
 
 (defface sm-project-face
@@ -693,7 +712,7 @@ point reaches the beginning or end of the buffer, stop there."
   :ensure magit
   :bind ("C-x g" . magit-status)
   :init (progn
-          (setq magit-completing-read-function 'magit-ido-completing-read)
+          (setq magit-completing-read-function #'magit-ido-completing-read)
           (setq magit-process-popup-time 0)
           (setq magit-diff-auto-show nil)
           (add-hook 'git-commit-mode-hook (lambda () (save-selected-window (magit-process-buffer))))
@@ -713,20 +732,66 @@ point reaches the beginning or end of the buffer, stop there."
           (add-to-list 'recentf-exclude "\\.revive\\'")
           (add-to-list 'recentf-exclude "elpa")))
 
+(use-package htmlize
+  :ensure htmlize)
 
 (use-package org
   :ensure org
   :init (progn
           (setq org-capture-templates
-                '(("t" "Todo" entry (file "~/Dropbox/todo.org")
+                '(
+                  ("j" "Journal Note"
+                   entry (file (get-journal-file-today))
+                   "* Event: %?\n\n  %i\n\n  From: %a"
+                   :empty-lines 1)
+                  ("t" "Todo" entry (file "~/Dropbox/todo.org")
                    "* TODO %?\n  %i\n  %a")))
 
           (define-key global-map "\C-cd"
             (lambda () (interactive) (org-capture nil "t")))
-          (setq org-default-notes-file "~/Dropbox/notes/todo.org")
-          (define-key global-map "\C-cc" 'org-capture)
-         ))
 
+          (setq org-default-notes-file "~/Dropbox/notes/todo.org")
+          (setq org-default-notes-dir "~/Dropbox/notes/")
+          (define-key global-map "\C-cc" 'org-capture)
+          (setq org-completion-use-ido t org-outline-path-complete-in-steps nil)
+          (defun get-journal-file-today ()
+            "Return filename for today's journal entry."
+            (let ((daily-name (concat (format-time-string "%Y%m%d") ".org")))
+              (expand-file-name (concat org-default-notes-dir daily-name))))
+
+          (defun journal-file-today ()
+            "Create and load a journal file based on today's date."
+            (interactive)
+            (find-file (get-journal-file-today)))
+
+          (defun journal-file-insert ()
+            "Insert's the journal heading based on the file's name."
+            (interactive)
+            (when (string-match "\\(20[0-9][0-9]\\)\\([0-9][0-9]\\)\\([0-9][0-9]\\)"
+                                (buffer-name))
+              (let ((year  (string-to-number (match-string 1 (buffer-name))))
+                    (month (string-to-number (match-string 2 (buffer-name))))
+                    (day   (string-to-number (match-string 3 (buffer-name))))
+                    (datim nil))
+                (setq datim (encode-time 0 0 0 day month year))
+                (insert (format-time-string
+                         "#+TITLE: %Y-%b-%d \n\n" datim))
+                (insert "#+SETUPFILE: ~/code/org-html-themes/setup/theme-readtheorg.setup")
+                (insert "#+OPTIONS: html-postamble:nil")
+                (insert "#+OPTIONS: html5-fancy:t tex:t")
+                (insert "#+OPTIONS: toc:nil")
+                )))
+
+          (add-hook 'find-file-hook 'auto-insert)
+          (setq auto-insert-alist
+                '((".*/[0-9]*\.org$" . journal-file-insert)))
+          (global-set-key (kbd "C-c f j") 'journal-file-today)
+
+          (setq org-export-html-postamble nil)
+          (setq org-export-htmlize-output-type 'css)
+          (defun org-font-lock-ensure ()
+            (font-lock-fontify-buffer))
+          ))
 
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
@@ -735,10 +800,12 @@ point reaches the beginning or end of the buffer, stop there."
       (message "Opening file...")
     (message "Aborting")))
 
-
 (defadvice projectile-rails-find-current-spec (before split-window-first activate)
   (split-window-horizontally))
 
+(defun post-to-s3 ()
+  (interactive)
+  (compile (concat "s3cmd -P put " (buffer-file-name) " s3://imthings")))
 
 (bind-key "C-o" 'open-previous-line)
 (bind-key "C-c t" 'multi-term)
@@ -751,6 +818,7 @@ point reaches the beginning or end of the buffer, stop there."
 (bind-key "C-x C-o" 'other-window)
 (bind-key "C-," 'find-tag-at-point)
 (bind-key "C-x b" 'projectile-switch-to-buffer)
+(bind-key "C-x C-b" 'ido-switch-buffer)
 (bind-key "C-x C-f" 'ido-find-file)
 (bind-key "C-x f" 'projectile-find-file)
 (bind-key "C-x k" 'im/kill-current-buffer)
@@ -773,9 +841,9 @@ point reaches the beginning or end of the buffer, stop there."
 (define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
 
-(set-frame-font "Source Code Pro Light 13")
-;;(set-frame-font "Inconsolata 13")
-;;(set-frame-font "Lucida Grande Mono 12")
+(set-frame-font "Source Code Pro 13")
+;;(set-frame-font "Inconsolata 14")
+;;(set-frame-font "Lucida Grande Mono 13")
 ;;(set-frame-font "Monoid 13")
 (toggle-frame-maximized)
-(mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
+;;(mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
