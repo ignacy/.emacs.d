@@ -22,7 +22,7 @@
 (setq coding-system-for-write 'utf-8)
 
 (setq dotfiles-dir "~/.emacs.d")
-(setq explicit-shell-file-name "/usr/local/bin/fish")
+(setq explicit-shell-file-name "/usr/local/bin/bash")
 (setq load-prefer-newer t)
 (setq custom-file (expand-file-name "custom.el" dotfiles-dir))
 (load custom-file)
@@ -240,13 +240,6 @@
   :defer t
   :bind ("M-2" . er/expand-region))
 
-(use-package wakatime-mode
-  :ensure wakatime-mode
-  :init (progn
-          (setq wakatime-cli-path "/usr/local/bin/wakatime")
-          (setq wakatime-python-bin "/usr/local/bin/python")
-          (global-wakatime-mode)))
-
 (defun disable-all-themes ()
   "disable all active themes."
   (dolist (i custom-enabled-themes)
@@ -258,8 +251,11 @@
 (use-package sublime-themes
   :ensure sublime-themes)
 
-;;(load-theme 'phoenix-dark-pink t)
-(load-theme 'apropospriate-dark t)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+;;(load-theme 'apropospriate-dark t)
+(load-theme 'glacier t)
 
 (use-package bind-key
   :ensure bind-key)

@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: aggregate_failures
+# key: af
+# --
+aggregate_failures "$1" do
+  $0
+end
