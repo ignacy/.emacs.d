@@ -198,10 +198,10 @@
           (setq ido-use-faces nil)))
 
 
-(use-package smex
-  :ensure smex
-  :init (smex-initialize)
-  :bind ("M-x" . smex))
+;; (use-package smex
+;;   :ensure smex
+;;   :init (smex-initialize)
+;;   :bind ("M-x" . smex))
 
 (use-package smartparens
   :ensure smartparens
@@ -254,8 +254,7 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
-;;(load-theme 'apropospriate-dark t)
-(load-theme 'glacier t)
+(load-theme 'boron t)
 
 (use-package bind-key
   :ensure bind-key)
@@ -279,25 +278,29 @@
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
 
-(use-package projectile-rails
-  :ensure projectile-rails)
+(use-package find-file-in-project
+  :ensure t
+  :init (ivy-mode))
 
-(use-package projectile
-  :ensure projectile
-  :init (progn
-          (setq projectile-completion-system 'ido)
-          (projectile-global-mode)
+;; (use-package projectile-rails
+;;   :ensure projectile-rails)
 
-          (setq projectile-enable-caching nil)
-          (add-hook 'projectile-mode-hook 'projectile-rails-on)
+;; (use-package projectile
+;;   :ensure projectile
+;;   :init (progn
+;;           (setq projectile-completion-system 'ido)
+;;           (projectile-global-mode)
 
-          (defadvice find-tag-at-point (before auto-visti-tags)
-            "Load default TAGS file from home directory if needed"
-            (visit-tags-table (concat (projectile-project-root) "TAGS")))
+;;           (setq projectile-enable-caching nil)
+;;           (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
-          (ad-activate 'find-tag-at-point))
+;;           (defadvice find-tag-at-point (before auto-visti-tags)
+;;             "Load default TAGS file from home directory if needed"
+;;             (visit-tags-table (concat (projectile-project-root) "TAGS")))
 
-  :bind ("C-c C-p" . projectile-switch-project))
+;;           (ad-activate 'find-tag-at-point))
+
+;;   :bind ("C-c C-p" . projectile-switch-project))
 
 (eval-after-load "grep"
   '(progn
@@ -700,15 +703,16 @@ point reaches the beginning or end of the buffer, stop there."
                (propertize "  %03l," 'face 'sm-project-face)
                '(:eval (propertize "%02c" 'face 'sm-project-face))
                " "
-               '(:eval (propertize (projectile-project-name)
-                                   'face 'sm-project-face))
+               ;; '(:eval (propertize (projectile-project-name)
+               ;;                     'face 'sm-project-face))
 
                ))
 (use-package magit
   :ensure magit
   :bind ("C-x g" . magit-status)
   :init (progn
-          (setq magit-completing-read-function #'magit-ido-completing-read)
+          ;;(setq magit-completing-read-function #'magit-ido-completing-read)
+          (setq magit-completing-read-function 'ivy-completing-read)
           (setq magit-process-popup-time 0)
           (setq magit-diff-auto-show nil)
           (add-hook 'git-commit-mode-hook (lambda () (save-selected-window (magit-process-buffer))))
@@ -796,8 +800,8 @@ point reaches the beginning or end of the buffer, stop there."
       (message "Opening file...")
     (message "Aborting")))
 
-(defadvice projectile-rails-find-current-spec (before split-window-first activate)
-  (split-window-horizontally))
+;; (defadvice projectile-rails-find-current-spec (before split-window-first activate)
+;;   (split-window-horizontally))
 
 (defun post-to-s3 ()
   (interactive)
@@ -805,7 +809,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 (bind-key "C-o" 'open-previous-line)
 (bind-key "C-c t" 'multi-term)
-(bind-key "M-r" 'projectile-ag)
+(bind-key "M-r" 'ag-project)
 (bind-key "M-c" 'query-replace)
 (bind-key "C-c TAB" 'align-regexp)
 (bind-key "C-x C-r" 'ido-recentf-open)
@@ -813,10 +817,9 @@ point reaches the beginning or end of the buffer, stop there."
 (bind-key "M-h" 'backward-kill-word)
 (bind-key "C-x C-o" 'other-window)
 (bind-key "C-," 'find-tag-at-point)
-(bind-key "C-x b" 'projectile-switch-to-buffer)
 (bind-key "C-x C-b" 'ido-switch-buffer)
 (bind-key "C-x C-f" 'ido-find-file)
-(bind-key "C-x f" 'projectile-find-file)
+(bind-key "C-x f" 'find-file-in-project)
 (bind-key "C-x k" 'im/kill-current-buffer)
 (bind-key "C-<tab>" 'switch-to-previous-buffer)
 (bind-key "M-g" 'goto-line-with-feedback)
@@ -825,8 +828,6 @@ point reaches the beginning or end of the buffer, stop there."
 (bind-key "M-\." 'find-tag-at-point)
 (bind-key "M-j" 'join-lines)
 (bind-key "C-S-o" 'move-line-up)
-(bind-key "M-m" 'projectile-rails-find-current-spec)
-(bind-key "M-s" 'projectile-rails-find-spec)
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
 (global-set-key [(control backspace)] 'backward-kill-word)
@@ -839,7 +840,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 (set-frame-font "Source Code Pro 13")
 ;;(set-frame-font "Inconsolata 14")
-;;(set-frame-font "Lucida Grande Mono 13")
+;;(set-frame-font "Lucida Grande Mono 14")
 ;;(set-frame-font "Monoid 13")
 (toggle-frame-maximized)
 ;;(mapc (lambda (face) (set-face-attribute face nil :weight 'normal :underline nil)) (face-list))
