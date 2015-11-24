@@ -1,5 +1,6 @@
 (require 'package)
 
+(load-library "url-handlers")
 (package-initialize)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -12,7 +13,8 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-;;; Commentary: init -- my emacs configuration
+(setq use-package-always-ensure t)
+
 (require 'cl)
 
 (setq debug-on-error nil)
@@ -23,14 +25,10 @@
 
 (setq dotfiles-dir "~/.emacs.d")
 (setq explicit-shell-file-name "/usr/local/bin/bash")
-(setq load-prefer-newer t)
 (setq custom-file (expand-file-name "custom.el" dotfiles-dir))
 (load custom-file)
 
-
 (setq fill-column 100)
-
-(whitespace-mode)
 
 (set-fringe-mode '(0 . 0))
 (setq mac-option-key-is-meta t)
@@ -45,8 +43,6 @@
 (setq split-height-threshold nil)
 
 (setq split-width-threshold 160)
-
-;; Don't combine TAGS lists
 (setq tags-add-tables nil)
 
 (show-paren-mode)
@@ -56,7 +52,6 @@
       x-select-enable-clipboard t
       x-select-enable-primary t
       mouse-yank-at-point t
-      backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
       auto-save-default nil
       initial-scratch-message nil
       make-backup-files nil
@@ -76,55 +71,40 @@
 
 (global-auto-revert-mode 1)
 
-;; use spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width        4)
 (setq         tab-stop-list    (number-sequence 4 120 4))
 
-;; setup junk whitespace types for when whitespace mode is active
 (setq whitespace-style '(face tabs trailing empty))
 
 (autoload 'epa "epa-file-mode" t)
 (epa-file-enable)
-;;(setq paren-dont-touch-blink t)
-
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (delete-selection-mode t)
 (setq tramp-default-method "ssh")
 
-;; undo setting
 (setq undo-no-redo t
       undo-limit 600000
       undo-strong-limit 900000)
 
-;; history
 (setq history-length 500
       history-delete-duplicates t)
 
 (require 'use-package)
 
-(when (equal system-type 'darwin)
-  (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
-  (setenv "GOPATH" (concat (getenv "HOME") "/code/go:" (getenv "GOPATH")))
-  (push "/opt/local/bin" exec-path)
-  (push "~/.rbenv/shims" exec-path)
-  (push "~/bin" exec-path))
-
-
 (use-package exec-path-from-shell
-  :ensure exec-path-from-shell
   :init (progn
+          (setq exec-path-from-shell-arguments '("-l"))
           (when (memq window-system '(mac ns))
             (exec-path-from-shell-initialize))))
 
 (global-subword-mode 1)
+
 (use-package syntax-subword
-  :ensure syntax-subword
   :init (global-syntax-subword-mode 1))
 
 (use-package yasnippet
-  :ensure yasnippet
   :init (progn
           (setq yas-snippet-dirs
                 (list (expand-file-name "snippets" dotfiles-dir)
@@ -133,78 +113,47 @@
           (setq yas-prompt-functions '(yas/ido-prompt))))
 
 (use-package company
-  :ensure  company
   :init (progn
           (setq company-dabbrev-downcase nil)
           (setq company-dabbrev-ignore-case nil)
           (global-company-mode t)))
 
 (use-package alchemist
-  :ensure alchemist
   :init (progn (setq alchemist-buffer-status-modeline nil)))
 
-(use-package elixir-mode
-  :ensure elixir-mode)
+(use-package elixir-mode)
 
-;;;; rainbow-delimeters
 (use-package rainbow-delimiters
-  :ensure rainbow-delimiters
   :init (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-(use-package flycheck
-  :ensure flycheck
-  :init (progn
-          (setq flycheck-ruby-rubocop-executable "~/.rbenv/versions/2.2.1/bin/rubocop") ))
-
-;; (use-package rainbow-identifiers
-;;   :ensure t
-;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
-
 (use-package highlight-symbol
-  :ensure highlight-symbol
   :init (progn
           (add-hook 'prog-mode-hook 'highlight-symbol-mode)
           (setq highlight-symbol-idle-delay 0)))
 
-;;;; IDO-MODE
-;; Display ido results vertically, rather than horizontally
 (ido-mode t)
 (ido-everywhere t)
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (add-to-list 'ido-ignore-files "\\.keep")
-(setq ido-file-extensions-order '(".rb" ".js" ".html" ".clj" ".el" ".scala" ".java" ".md" ".conf" ".org"))
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 (setq ido-use-filename-at-point 'guess)
 (setq ido-use-virtual-buffers t)
 (setq ido-create-new-buffer 'always)
 (set-default 'imenu-auto-rescan t)
-(defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
-  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
-  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
-  (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
-  (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
-(add-hook 'ido-setup-hook 'ido-define-keys)
 
 (use-package ido-ubiquitous
-  :ensure ido-ubiquitous
   :init (ido-ubiquitous-mode))
 
+(use-package ido-vertical-mode
+  :init (ido-vertical-mode))
+
 (use-package flx-ido
-  :ensure flx-ido
   :init (progn
           (flx-ido-mode 1)
           (setq gc-cons-threshold 20000000)
           (setq ido-enable-flex-matching t)
           (setq ido-use-faces nil)))
 
-
-;; (use-package smex
-;;   :ensure smex
-;;   :init (smex-initialize)
-;;   :bind ("M-x" . smex))
-
 (use-package smartparens
-  :ensure smartparens
   :config (progn
             (require 'smartparens-config)
             (smartparens-global-mode t))
@@ -220,51 +169,25 @@
   (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys)))
 
 (use-package wrap-region
-  :ensure  wrap-region
   :init (progn
-          ;; wrap-region
           (wrap-region-global-mode +1)
-          ;; add wrappers
           (wrap-region-add-wrapper "`" "`")
           (wrap-region-add-wrapper "{" "}")))
 
 (use-package ag
-  :ensure ag
   :init (setq ag-highlight-search t))
 
-(use-package wgrep-ag
-  :ensure wgrep-ag)
+(use-package wgrep-ag)
 
 (use-package expand-region
-  :ensure  expand-region
   :defer t
   :bind ("M-2" . er/expand-region))
 
-(defun disable-all-themes ()
-  "disable all active themes."
-  (dolist (i custom-enabled-themes)
-    (disable-theme i)))
-
-(defadvice load-theme (before disable-themes-first activate)
-  (disable-all-themes))
-
-(use-package sublime-themes
-  :ensure sublime-themes)
-
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-
-(load-theme 'boron t)
-
-(use-package bind-key
-  :ensure bind-key)
+(use-package bind-key)
 
 (use-package js2-mode
-  :ensure js2-mode
   :init (progn
-          ;; Javascript
           (setq-default js2-basic-offset 4)
-          ;; JSON
           (setq-default js-indent-level 4)
           (setq-default js2-mode-indent-ignore-first-tab t)
           (setq-default js2-show-parse-errors nil)
@@ -279,60 +202,98 @@
                           "JSON" "$" "_" "Backbone" ))))
 
 (use-package find-file-in-project
-  :ensure t
-  :init (ivy-mode))
+  :init (progn
+          (ivy-mode)
+          (require 's)
+          (setq ffip-limit 4096)
 
-;; (use-package projectile-rails
-;;   :ensure projectile-rails)
+          ;; Use full project path for ffip
+          ;; Function to create new functions that look for a specific pattern
+          (defun ffip-create-pattern-file-finder (&rest patterns)
+            (lexical-let ((patterns patterns))
+              (lambda ()
+                (interactive)
+                (let ((ffip-patterns patterns))
+                  (find-file-in-project)))))
 
-;; (use-package projectile
-;;   :ensure projectile
-;;   :init (progn
-;;           (setq projectile-completion-system 'ido)
-;;           (projectile-global-mode)
+          ;; Find file in project, with specific patterns
+          (global-set-key (kbd "C-c s") (ffip-create-pattern-file-finder "*spec.rb"))
 
-;;           (setq projectile-enable-caching nil)
-;;           (add-hook 'projectile-mode-hook 'projectile-rails-on)
+          (defun ffip-project-files ()
+            "Return an alist of all filenames in the project and their path."
+            (let ((file-alist nil))
+              (mapcar (lambda (file)
+                        (let ((file-cons (cons (s-chop-prefix (file-truename (ffip-project-root)) (expand-file-name file))
+                                               (expand-file-name file))))
+                          (add-to-list 'file-alist file-cons)
+                          file-cons))
+                      (split-string (shell-command-to-string
+                                     (format "find %s -type f \\( %s \\) %s | head -n %s"
+                                             (or ffip-project-root
+                                                 (ffip-project-root)
+                                                 (error "No project root found"))
+                                             (ffip-join-patterns)
+                                             ffip-find-options
+                                             ffip-limit))))))
 
-;;           (defadvice find-tag-at-point (before auto-visti-tags)
-;;             "Load default TAGS file from home directory if needed"
-;;             (visit-tags-table (concat (projectile-project-root) "TAGS")))
+          ;; Helper methods to create local settings
 
-;;           (ad-activate 'find-tag-at-point))
+          (defun ffip--create-exclude-find-options (names)
+            (mapconcat (lambda (name)
+                         (concat "-not -regex \".*" name ".*\"")) names " "))
 
-;;   :bind ("C-c C-p" . projectile-switch-project))
+          (defun ffip-local-excludes (&rest names)
+            "Given a set of names, will exclude results with those names in the path."
+            (set (make-local-variable 'ffip-find-options)
+                 (ffip--create-exclude-find-options names)))
 
-(eval-after-load "grep"
-  '(progn
-     (add-to-list 'grep-find-ignored-files "TAGS*")
-     (add-to-list 'grep-find-ignored-directories ".bundle")
-     (add-to-list 'grep-find-ignored-directories "tmp")
-     (add-to-list 'grep-find-ignored-directories "coverage")
-     (add-to-list 'grep-find-ignored-directories "log")))
+          (defun ffip-local-patterns (&rest patterns)
+            "An exhaustive list of file name patterns to look for."
+            (set (make-local-variable 'ffip-patterns) patterns))
+
+          ;; Function to create new functions that look for a specific pattern
+          (defun ffip-create-pattern-file-finder (&rest patterns)
+            (lexical-let ((patterns patterns))
+              (lambda ()
+                (interactive)
+                (let ((ffip-patterns patterns))
+                  (find-file-in-project)))))
+
+          ;; Default excludes - override with ffip-local-excludes
+
+          (setq-default ffip-find-options
+                        (ffip--create-exclude-find-options
+                         '("/node_modules"
+                           ".cask"
+                           "/.git"
+                           "/app/stylesheets"
+                           ".DS_Store"
+                           "TAGS"
+                           "/public"
+                           "/.sass-cache"
+                           "/tmp"
+                           "/.repl"
+                           "/vendor"
+                           "/.tmp")))))
 
 (use-package inf-ruby
-  :ensure inf-ruby
   :config (progn
             (make-local-variable 'comint-prompt-read-only)
             (setq                 comint-prompt-read-only t))
   :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
 
-(load-file "~/code/rspec-mode/rspec-mode.el")
-;; (use-package rspec-mode
-;;   :ensure  rspec-mode
-;;   :config (progn
-(setq rspec-use-rake-when-possible nil)
-(setq rspec-use-rvm nil)
-(setq rspec-use-bundler-when-possible nil)
-;; ;;(setq rspec-command-options "--format progress --order random")
-;; ))
+(use-package rspec-mode
+  :config (progn
+            (setq rspec-use-rake-when-possible nil)
+            (setq rspec-use-rvm nil)
+            (setq rspec-use-bundler-when-possible nil)
+            ;;(setq rspec-command-options "--format progress --order random")
+            ))
 
 (use-package haml-mode
-  :ensure haml-mode
   :init (add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode)))
 
 (use-package web-mode
-  :ensure t
   :init (progn (setq web-mode-markup-indent-offset 2)
                (setq web-mode-css-indent-offset 2)
                (setq web-mode-code-indent-offset 2)
@@ -341,29 +302,22 @@
 
 
 (use-package puppet-mode
-  :ensure t
   :init (add-to-list 'auto-mode-alist '("\\.pp\\'" . puppet-mode)))
 
 ;; work around possible elpa bug
 (ignore-errors (require 'ruby-compilation))
 (setq ruby-use-encoding-map nil)
 
-
 (use-package ruby-mode
-  :ensure  ruby-mode
   :init (progn
           (add-hook 'ruby-mode-hook
                     (lambda ()
                       (subword-mode 1)
                       (flycheck-mode) ))))
 
-(use-package ruby-hash-syntax
-  :ensure ruby-hash-syntax)
-
-(define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
+(use-package ruby-hash-syntax)
 
 (use-package rubocop
-  :ensure rubocop
   :config (progn
             (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
             (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
@@ -413,45 +367,31 @@
             (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next))))
 
 (use-package multi-term
-  :ensure multi-term
   :init (setq multi-term-program "/usr/local/bin/fish"))
 
 
 (use-package fish-mode
-  :ensure fish-mode
   :init (add-to-list 'auto-mode-alist '("\\.fish\\'" . fish-mode)))
 
-;; shell-mode
 (defun sh (&optional name)
   (shell (concat "*" name "*")))
 
-;; (defun zsh ()
+(use-package ido-completing-read+)
+
+;; (load-library "compile")
+
+;; (defun prelude-colorize-compilation-buffer ()
+;;   "Colorize a compilation mode buffer."
 ;;   (interactive)
-;;   (shell "zsh"))
+;;   ;; we don't want to mess with child modes such as grep-mode, ack, ag, etc
+;;   (when (eq major-mode 'compilation-mode)
+;;     (let ((inhibit-read-only t))
+;;       (ansi-color-apply-on-region (point-min) (point-max)))))
 
-;; (defun switch-to-zsh ()
-;;   (interactive)
-;;   (switch-to-buffer "zsh"))
-
-
-(use-package ido-completing-read+
-  :ensure ido-completing-read+)
-
-(load-library "compile")
-
-(defun prelude-colorize-compilation-buffer ()
-  "Colorize a compilation mode buffer."
-  (interactive)
-  ;; we don't want to mess with child modes such as grep-mode, ack, ag, etc
-  (when (eq major-mode 'compilation-mode)
-    (let ((inhibit-read-only t))
-      (ansi-color-apply-on-region (point-min) (point-max)))))
-
-(add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
-(setq compilation-scroll-output 'first-error) ;; follows output
+;; (add-hook 'compilation-filter-hook #'prelude-colorize-compilation-buffer)
+;; (setq compilation-scroll-output 'first-error) ;; follows output
 
 (use-package iedit
-  :ensure iedit
   :init (progn
           (defun iedit-dwim (arg)
             "Starts iedit but uses \\[narrow-to-defun] to limit its scope."
@@ -468,12 +408,8 @@
                     ;; functions.
                     (narrow-to-defun)
                     (iedit-start (current-word) (point-min) (point-max)))))))
-
-
-
           (global-set-key (kbd "C-;") 'iedit-dwim)
           ))
-
 
 (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
 (setq dabbrev-case-replace nil)
@@ -483,14 +419,12 @@
     (quietly-read-abbrev-file))
 
 (use-package markdown-mode
-  :ensure markdown-mode
   :init (progn
           (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
           (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
           (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))))
 
 (use-package rbenv
-  :ensure rbenv
   :init (progn
           (setq rbenv-show-active-ruby-in-modeline nil)
           (global-rbenv-mode)))
@@ -576,33 +510,6 @@ might be bad."
         (goto-line (read-number "Goto line: ")))
     (linum-mode -1)))
 
-(defun smarter-move-beginning-of-line (arg)
-  "Move point back to indentation of beginning of line.
-
-Move point to the first non-whitespace character on this line.
-If point is already there, move to the beginning of the line.
-Effectively toggle between the first non-whitespace character and
-the beginning of the line.
-
-If ARG is not nil or 1, move forward ARG - 1 lines first.  If
-point reaches the beginning or end of the buffer, stop there."
-  (interactive "^p")
-  (setq arg (or arg 1))
-
-  ;; Move lines first
-  (when (/= arg 1)
-    (let ((line-move-visual nil))
-      (forward-line (1- arg))))
-
-  (let ((orig-point (point)))
-    (back-to-indentation)
-    (when (= orig-point (point))
-      (move-beginning-of-line 1))))
-
-;; remap C-a to `smarter-move-beginning-of-line'
-(global-set-key [remap move-beginning-of-line] 'smarter-move-beginning-of-line)
-
-
 (defun move-line-down ()
   (interactive)
   (let ((col (current-column)))
@@ -641,33 +548,10 @@ point reaches the beginning or end of the buffer, stop there."
 
 (ignore-errors (load-file "~/.local.el"))
 
-(defun ora-test-emacs ()
-  (interactive)
-  (require 'async)
-  (async-start
-   (lambda () (shell-command-to-string
-               "emacs --batch --eval \"
-(condition-case e
-    (progn
-      (load \\\"~/.emacs.d/init.el\\\")
-      (message \\\"-OK-\\\"))
-  (error
-   (message \\\"ERROR!\\\")
-   (signal (car e) (cdr e))))\""))
-   `(lambda (output)
-      (if (string-match "-OK-" output)
-          (when ,(called-interactively-p 'any)
-            (message "All is well"))
-        (switch-to-buffer-other-window "*startup error*")
-        (delete-region (point-min) (point-max))
-        (insert output)
-        (search-backward "ERROR!")))))
-
 (defun switch-to-previous-buffer ()
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
-;; Behave like vi's O command
 (defun open-previous-line (arg)
   "Open a new line before the current one.
      See also `newline-and-indent'."
@@ -676,6 +560,24 @@ point reaches the beginning or end of the buffer, stop there."
   (open-line arg)
   (indent-according-to-mode))
 
+(defun disable-all-themes ()
+  "disable all active themes."
+  (dolist (i custom-enabled-themes)
+    (disable-theme i)))
+
+(defadvice load-theme (before disable-themes-first activate)
+  (disable-all-themes))
+
+(use-package sublime-themes)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+(load-theme 'badwolf t)
+
+(set-face-attribute 'mode-line nil
+                    :foreground "gray60" :background "gray10"
+                    :inverse-video nil
+                    :box '(:line-width 4 :color "gray10" :style nil))
 
 (defface sm-default-face
   '((t :inherit default :foreground "#FF1F68" :background "black" ))
@@ -707,8 +609,8 @@ point reaches the beginning or end of the buffer, stop there."
                ;;                     'face 'sm-project-face))
 
                ))
+
 (use-package magit
-  :ensure magit
   :bind ("C-x g" . magit-status)
   :init (progn
           ;;(setq magit-completing-read-function #'magit-ido-completing-read)
@@ -719,24 +621,19 @@ point reaches the beginning or end of the buffer, stop there."
           ))
 
 (use-package idomenu
-  :ensure idomenu
   :bind ("C-'" . idomenu))
 
 (use-package recentf
-  :ensure recentf
   :init (progn
           (setq recentf-auto-cleanup 'never)
           (recentf-mode t)
-          (setq recentf-max-saved-items 1000)
-          (setq recentf-max-menu-items 50)
+          (setq recentf-max-saved-items 2000)
+          (setq recentf-max-menu-items 25)
           (add-to-list 'recentf-exclude "\\.revive\\'")
           (add-to-list 'recentf-exclude "elpa")))
 
-(use-package htmlize
-  :ensure htmlize)
-
+(use-package htmlize)
 (use-package org
-  :ensure org
   :init (progn
           (setq org-capture-templates
                 '(
@@ -800,9 +697,6 @@ point reaches the beginning or end of the buffer, stop there."
       (message "Opening file...")
     (message "Aborting")))
 
-;; (defadvice projectile-rails-find-current-spec (before split-window-first activate)
-;;   (split-window-horizontally))
-
 (defun post-to-s3 ()
   (interactive)
   (compile (concat "s3cmd -P put " (buffer-file-name) " s3://imthings")))
@@ -812,7 +706,8 @@ point reaches the beginning or end of the buffer, stop there."
 (bind-key "M-r" 'ag-project)
 (bind-key "M-c" 'query-replace)
 (bind-key "C-c TAB" 'align-regexp)
-(bind-key "C-x C-r" 'ido-recentf-open)
+;;(bind-key "C-x C-r" 'ido-recentf-open)
+(bind-key "C-x C-r" 'ivy-recentf)
 (bind-key "C-x i" 'indent-region-or-buffer)
 (bind-key "M-h" 'backward-kill-word)
 (bind-key "C-x C-o" 'other-window)
@@ -838,8 +733,8 @@ point reaches the beginning or end of the buffer, stop there."
 (define-key key-translation-map [?\C-h] [?\C-?])
 (put 'narrow-to-region 'disabled nil)
 
-(set-frame-font "Source Code Pro 13")
-;;(set-frame-font "Inconsolata 14")
+;;(set-frame-font "Source Code Pro 13")
+(set-frame-font "Inconsolata 16")
 ;;(set-frame-font "Lucida Grande Mono 14")
 ;;(set-frame-font "Monoid 13")
 (toggle-frame-maximized)
