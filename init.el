@@ -1,3 +1,5 @@
+(package-initialize)
+
 (setq mac-command-modifier 'meta)
 (setq inhibit-startup-message 't)
 (setq tags-add-tables nil)
@@ -333,7 +335,7 @@ might be bad."
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(set-frame-font "Fira Code 13")
+(set-frame-font "Fira Code 14")
 ;;(set-frame-font "Source Code Pro 13")
 
 (use-package smartparens
