@@ -1,0 +1,27 @@
+;;-*-coding: utf-8;-*-
+(define-abbrev-table 'global-abbrev-table
+  '(
+    ("bb" "byebug" nil 7)
+    ("craete" "create" nil 2)
+    ("craeted_at" "created_at" nil 2)
+    ("crate" "create" nil 2)
+    ("cns" "console.log" nil 1)
+    ("firamware" "firmware" nil 2)
+    ("firmare" "firmware" nil 2)
+    ("firmaware" "firmware" nil 2)
+    ("inteceptor" "interceptor" nil 1)
+    ("intreceptor" "interceptor" nil 1)
+    ("josn" "json" nil 2)
+    ("jsno" "json" nil 2)
+    ("mechant_location_id" "merchant_location_id" nil 1)
+    ("peek" ".tap { |x| puts x }" nil 2)
+    ("ppr" "binding.pry" nil 5)
+    ("recipt" "receipt" nil 2)
+    ("recipts" "receipts" nil 2)
+    ("redner" "render" nil 2)
+    ("reponse" "response" nil 2)
+    ("repsone" "response" nil 2)
+    ("tarce" "trace" nil 2)
+    ("tarcing" "tracing" nil 2)
+   ))
+
