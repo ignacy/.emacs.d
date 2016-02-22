@@ -48,7 +48,7 @@
 (use-package elixir-mode)
 
 (use-package alchemist)
-
+(use-package ido-completing-read+)
 
 (ido-mode 1)
 (ido-everywhere)
@@ -177,6 +177,7 @@
   :config (setq magit-completing-read-function 'ido-completing-read)
   :init (global-set-key (kbd "C-x g") 'magit-status))
 
+(use-package wgrep-ag)
 
 (use-package ag
   :init (global-set-key (kbd "M-r") 'ag-project))
@@ -335,7 +336,7 @@ might be bad."
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(set-frame-font "Fira Code 14")
+(set-frame-font "Fira Code 15")
 ;;(set-frame-font "Source Code Pro 13")
 
 (use-package smartparens
@@ -371,7 +372,8 @@ might be bad."
 (global-set-key (kbd "C-x T") 'sane-term-create)
 (global-set-key (kbd "M-z") 'undo)
 
-(load-theme 'base16-harmonic16-dark t)
+(load-theme 'base16-default-dark t)
+;;(load-theme 'foggy-night t)
 
 (setq column-number-mode t)
 
