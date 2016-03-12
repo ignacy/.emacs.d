@@ -1,3 +1,4 @@
+(setq tramp-ssh-controlmaster-options "")
 (package-initialize)
 
 (setq mac-command-modifier 'meta)
@@ -49,6 +50,7 @@
 
 (use-package alchemist)
 (use-package ido-completing-read+)
+(use-package haml-mode)
 
 (ido-mode 1)
 (ido-everywhere)
@@ -309,35 +311,36 @@ might be bad."
                           "JSON" "$" "_" "Backbone" ))))
 
 
-(when (window-system)
-  (set-default-font "Fira Code"))
-(let ((alist '((33 . ".\\(?:\\(?:==\\)\\|[!=]\\)")
-               (35 . ".\\(?:[(?[_{]\\)")
-               (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
-               (42 . ".\\(?:\\(?:\\*\\*\\)\\|[*/]\\)")
-               (43 . ".\\(?:\\(?:\\+\\+\\)\\|\\+\\)")
-               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
-               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=]\\)")
-               (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
-               (58 . ".\\(?:[:=]\\)")
-               (59 . ".\\(?:;\\)")
-               (60 . ".\\(?:\\(?:!--\\)\\|\\(?:\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[/<=>|-]\\)")
-               (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
-               (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
-               (63 . ".\\(?:[:=?]\\)")
-               (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
-               (94 . ".\\(?:=\\)")
-               (123 . ".\\(?:-\\)")
-               (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
-               (126 . ".\\(?:[=@~-]\\)")
-               )
-             ))
-  (dolist (char-regexp alist)
-    (set-char-table-range composition-function-table (car char-regexp)
-                          `([,(cdr char-regexp) 0 font-shape-gstring]))))
+;; (when (window-system)
+;;   (set-default-font "Fira Code"))
+;; (let ((alist '((33 . ".\\(?:\\(?:==\\)\\|[!=]\\)")
+;;                (35 . ".\\(?:[(?[_{]\\)")
+;;                (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
+;;                (42 . ".\\(?:\\(?:\\*\\*\\)\\|[*/]\\)")
+;;                (43 . ".\\(?:\\(?:\\+\\+\\)\\|\\+\\)")
+;;                (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+;;                (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=]\\)")
+;;                (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
+;;                (58 . ".\\(?:[:=]\\)")
+;;                (59 . ".\\(?:;\\)")
+;;                (60 . ".\\(?:\\(?:!--\\)\\|\\(?:\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[/<=>|-]\\)")
+;;                (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
+;;                (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
+;;                (63 . ".\\(?:[:=?]\\)")
+;;                (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
+;;                (94 . ".\\(?:=\\)")
+;;                (123 . ".\\(?:-\\)")
+;;                (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
+;;                (126 . ".\\(?:[=@~-]\\)")
+;;                )
+;;              ))
+;;   (dolist (char-regexp alist)
+;;     (set-char-table-range composition-function-table (car char-regexp)
+;;                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(set-frame-font "Fira Code 15")
+;; (set-frame-font "Fira Code 15")
 ;;(set-frame-font "Source Code Pro 13")
+(set-frame-font "Lucida Grande Mono 15")
 
 (use-package smartparens
   :config (progn
@@ -367,15 +370,56 @@ might be bad."
 
 ;; (use-package rainbow-identifiers
 ;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
-(require 'sane-term)
-(global-set-key (kbd "C-x t") 'sane-term)
-(global-set-key (kbd "C-x T") 'sane-term-create)
+(use-package sane-term
+  :init (progn (global-set-key (kbd "C-x t") 'sane-term)
+               (global-set-key (kbd "C-x T") 'sane-term-create)))
 (global-set-key (kbd "M-z") 'undo)
 
-(load-theme 'base16-default-dark t)
-;;(load-theme 'foggy-night t)
+(use-package apropospriate-theme)
 
+(load-theme 'spacegray t)
 (setq column-number-mode t)
+
+
+(setq ispell-program-name "aspell")
+(setq ispell-dictionary "american")
+(define-key ctl-x-map "\C-i"
+  #'endless/ispell-word-then-abbrev)
+
+(defun endless/ispell-word-then-abbrev (p)
+  "Call `ispell-word', then create an abbrev for it.
+With prefix P, create local abbrev. Otherwise it will
+be global.
+If there's nothing wrong with the word at point, keep
+looking for a typo until the beginning of buffer. You can
+skip typos you don't want to fix with `SPC', and you can
+abort completely with `C-g'."
+  (interactive "P")
+  (let (bef aft)
+    (save-excursion
+      (while (if (setq bef (thing-at-point 'word))
+                 ;; Word was corrected or used quit.
+                 (if (ispell-word nil 'quiet)
+                     nil ; End the loop.
+                   ;; Also end if we reach `bob'.
+                   (not (bobp)))
+               ;; If there's no word at point, keep looking
+               ;; until `bob'.
+               (not (bobp)))
+        (backward-word))
+      (setq aft (thing-at-point 'word)))
+    (if (and aft bef (not (equal aft bef)))
+        (let ((aft (downcase aft))
+              (bef (downcase bef)))
+          (define-abbrev
+            (if p local-abbrev-table global-abbrev-table)
+            bef aft)
+          (message "\"%s\" now expands to \"%s\" %sally"
+                   bef aft (if p "loc" "glob")))
+      (user-error "No typo at or before point"))))
+
+(setq save-abbrevs 'silently)
+(setq-default abbrev-mode t)
 
 
 (use-package org
