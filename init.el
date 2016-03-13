@@ -46,9 +46,9 @@
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
 
-(use-package elixir-mode)
+;;(use-package elixir-mode)
 
-(use-package alchemist)
+;;(use-package alchemist)
 (use-package ido-completing-read+)
 (use-package haml-mode)
 
