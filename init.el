@@ -2,6 +2,7 @@
 (package-initialize)
 
 (setq mac-command-modifier 'meta)
+
 (setq inhibit-startup-message 't)
 (setq tags-add-tables nil)
 (tool-bar-mode -1)
@@ -46,9 +47,9 @@
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
 
-;;(use-package elixir-mode)
+(use-package elixir-mode)
 
-;;(use-package alchemist)
+(use-package alchemist)
 (use-package ido-completing-read+)
 (use-package haml-mode)
 
@@ -375,9 +376,34 @@ might be bad."
                (global-set-key (kbd "C-x T") 'sane-term-create)))
 (global-set-key (kbd "M-z") 'undo)
 
-(use-package apropospriate-theme)
 
-(load-theme 'spacegray t)
+
+(defun disable-all-themes ()
+  "disable all active themes."
+  (dolist (i custom-enabled-themes)
+    (disable-theme i)))
+
+(defadvice load-theme (before disable-themes-first activate)
+  (disable-all-themes))
+
+;; (use-package phoenix-dark-mono-theme)
+;; (use-package tao-theme)
+;;(use-package pastelmac-theme)
+
+;;(load-theme 'phoenix-dark-mono t)
+
+(defun day-colors()
+  (interactive)
+  (load-theme 'pastelmac t))
+
+(defun day()
+  (interactive)
+  (load-theme 'mono-day t))
+
+(defun night()
+  (interactive)
+  (load-theme 'phoenix-dark-mono t))
+
 (setq column-number-mode t)
 
 
