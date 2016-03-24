@@ -26,3 +26,4 @@ tramp
 /.cask/
 custom.el
 /abbrev_defs
+/bookmarks
