@@ -229,23 +229,6 @@
       (transpose-lines -1))
     (move-to-column col)))
 
-(defun post-to-s3 ()
-  (interactive)
-  (compile (concat "s3cmd -P put " (buffer-file-name) " s3://imthings")))
-
-(defun publish-file ()
-  (interactive)
-  (let ((content (replace-regexp-in-string
-                  "\n$" ""
-                  (shell-command-to-string (concat "~/bin/producer.rb " (buffer-file-name)))))
-        (output-name (concat "http://imthings.s3.amazonaws.com/"
-                             (file-name-base (buffer-file-name))
-                             ".html")))
-    (progn
-      (compile (concat "s3cmd -P put " content " s3://imthings"))
-      (kill-new output-name))))
-
-
 (defun open-previous-line (arg)
   "Open a new line before the current one.
      See also `newline-and-indent'."
@@ -273,10 +256,6 @@ might be bad."
 
 (use-package idomenu
   :bind ("C-'" . idomenu))
-;;
-;; (use-package fill-column-indicator
-;;   :config (setq fci-rule-column 120)
-;;   :init (add-hook 'prog-mode-hook 'fci-mode))
 
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
@@ -312,36 +291,36 @@ might be bad."
                           "JSON" "$" "_" "Backbone" ))))
 
 
-;; (when (window-system)
-;;   (set-default-font "Fira Code"))
-;; (let ((alist '((33 . ".\\(?:\\(?:==\\)\\|[!=]\\)")
-;;                (35 . ".\\(?:[(?[_{]\\)")
-;;                (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
-;;                (42 . ".\\(?:\\(?:\\*\\*\\)\\|[*/]\\)")
-;;                (43 . ".\\(?:\\(?:\\+\\+\\)\\|\\+\\)")
-;;                (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
-;;                (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=]\\)")
-;;                (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
-;;                (58 . ".\\(?:[:=]\\)")
-;;                (59 . ".\\(?:;\\)")
-;;                (60 . ".\\(?:\\(?:!--\\)\\|\\(?:\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[/<=>|-]\\)")
-;;                (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
-;;                (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
-;;                (63 . ".\\(?:[:=?]\\)")
-;;                (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
-;;                (94 . ".\\(?:=\\)")
-;;                (123 . ".\\(?:-\\)")
-;;                (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
-;;                (126 . ".\\(?:[=@~-]\\)")
-;;                )
-;;              ))
-;;   (dolist (char-regexp alist)
-;;     (set-char-table-range composition-function-table (car char-regexp)
-;;                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
+(when (window-system)
+  (set-default-font "Fira Code"))
+(let ((alist '((33 . ".\\(?:\\(?:==\\)\\|[!=]\\)")
+               (35 . ".\\(?:[(?[_{]\\)")
+               (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
+               (42 . ".\\(?:\\(?:\\*\\*\\)\\|[*/]\\)")
+               (43 . ".\\(?:\\(?:\\+\\+\\)\\|\\+\\)")
+               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=]\\)")
+               (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
+               (58 . ".\\(?:[:=]\\)")
+               (59 . ".\\(?:;\\)")
+               (60 . ".\\(?:\\(?:!--\\)\\|\\(?:\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[/<=>|-]\\)")
+               (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
+               (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
+               (63 . ".\\(?:[:=?]\\)")
+               (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
+               (94 . ".\\(?:=\\)")
+               (123 . ".\\(?:-\\)")
+               (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
+               (126 . ".\\(?:[=@~-]\\)")
+               )
+             ))
+  (dolist (char-regexp alist)
+    (set-char-table-range composition-function-table (car char-regexp)
+                          `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-;; (set-frame-font "Fira Code 15")
-;;(set-frame-font "Source Code Pro 13")
-(set-frame-font "Lucida Grande Mono 15")
+(set-frame-font "Fira Code 15")
+;; (set-frame-font "Source Code Pro 13")
+;; (set-frame-font "Lucida Grande Mono 15")
 
 (use-package smartparens
   :config (progn
@@ -386,12 +365,6 @@ might be bad."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-;; (use-package phoenix-dark-mono-theme)
-;; (use-package tao-theme)
-;;(use-package pastelmac-theme)
-
-;;(load-theme 'phoenix-dark-mono t)
-
 (defun day-colors()
   (interactive)
   (load-theme 'pastelmac t))
@@ -403,6 +376,10 @@ might be bad."
 (defun night()
   (interactive)
   (load-theme 'phoenix-dark-mono t))
+
+(defun night-colors()
+  (interactive)
+  (load-theme 'tango-dark t))
 
 (setq column-number-mode t)
 
@@ -453,6 +430,23 @@ abort completely with `C-g'."
           (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
           (global-set-key "\C-cl" 'org-store-link)
           (global-set-key "\C-ca" 'org-agenda)))
+
+(use-package color-identifiers-mode
+  :init (progn
+          (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face font-lock-type-face font-lock-function-name-face font-lock-variable-name-face font-lock-keyword-face font-lock-string-face font-lock-builtin-face font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
+            (dolist (face faces)
+              (set-face-attribute face nil :foreground nil :weight 'normal :slant 'normal)))
+
+          (set-face-attribute 'font-lock-comment-delimiter-face nil :slant 'italic)
+          (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
+          (set-face-attribute 'font-lock-doc-face nil :slant 'italic)
+          (set-face-attribute 'font-lock-keyword-face nil :weight 'bold)
+          (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
+          (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
+          (global-color-identifiers-mode) ))
+
+(if (file-exists-p "~/.emacs.local")
+    (load-file "~/.emacs.local"))
 
 (defun add-statistics ()
   (interactive)
