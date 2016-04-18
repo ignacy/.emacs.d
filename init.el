@@ -7,7 +7,7 @@
 (setq tags-add-tables nil)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(fringe-mode -1)
+(fringe-mode '(0 . 0))
 (show-paren-mode 1)
 (setq ring-bell-function 'ignore)
 (delete-selection-mode t)
@@ -16,6 +16,8 @@
              '("melpa" . "https://melpa.org/packages/"))
 (when (not package-archive-contents)
   (package-refresh-contents))
+
+(setq dotfiles-dir "~/.emacs.d/")
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
@@ -31,6 +33,18 @@
 
 (use-package diminish)
 
+
+(use-package yasnippet
+  :ensure yasnippet
+  :init (progn
+          (setq yas-snippet-dirs
+                (list (expand-file-name "snippets" dotfiles-dir)
+                      ))
+
+          (add-to-list 'yas-snippet-dirs "~/code/yasnippet-snippets")
+          (yas-global-mode)
+          (setq yas-prompt-functions '(yas/ido-prompt))))
+
 (use-package company
   :init (progn
           (setq company-dabbrev-downcase nil)
@@ -38,11 +52,10 @@
           (global-company-mode t)
           (diminish 'company-mode)))
 
-(setq abbrev-file-name "~/.emacs.d/abbrevations")
+(setq abbrev-file-name (concat dotfiles-dir "abbrevations"))
 (setq dabbrev-case-replace nil)
 (setq default-abbrev-mode t)
-(setq compilation-scroll-output t)
-
+(setq compilation-scroll-output nil)
 
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
@@ -78,7 +91,7 @@
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (concat dotfiles-dir "custom.el"))
 (load custom-file)
 
 (use-package projectile-rails)
@@ -183,6 +196,7 @@
 (use-package wgrep-ag)
 
 (use-package ag
+  :config (setq ag-highlight-search t)
   :init (global-set-key (kbd "M-r") 'ag-project))
 
 (global-auto-revert-mode 1)
@@ -276,6 +290,7 @@ might be bad."
 
 (use-package js2-mode
   :init (progn
+          (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-jsx-mode))
           (setq-default js2-basic-offset 4)
           (setq-default js-indent-level 4)
           (setq-default js2-mode-indent-ignore-first-tab t)
@@ -290,37 +305,8 @@ might be bad."
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
 
-
-(when (window-system)
-  (set-default-font "Fira Code"))
-(let ((alist '((33 . ".\\(?:\\(?:==\\)\\|[!=]\\)")
-               (35 . ".\\(?:[(?[_{]\\)")
-               (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
-               (42 . ".\\(?:\\(?:\\*\\*\\)\\|[*/]\\)")
-               (43 . ".\\(?:\\(?:\\+\\+\\)\\|\\+\\)")
-               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
-               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=]\\)")
-               (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
-               (58 . ".\\(?:[:=]\\)")
-               (59 . ".\\(?:;\\)")
-               (60 . ".\\(?:\\(?:!--\\)\\|\\(?:\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[/<=>|-]\\)")
-               (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
-               (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
-               (63 . ".\\(?:[:=?]\\)")
-               (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
-               (94 . ".\\(?:=\\)")
-               (123 . ".\\(?:-\\)")
-               (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
-               (126 . ".\\(?:[=@~-]\\)")
-               )
-             ))
-  (dolist (char-regexp alist)
-    (set-char-table-range composition-function-table (car char-regexp)
-                          `([,(cdr char-regexp) 0 font-shape-gstring]))))
-
-(set-frame-font "Fira Code 15")
-;; (set-frame-font "Source Code Pro 13")
-;; (set-frame-font "Lucida Grande Mono 15")
+;;(set-frame-font "Source Code Pro 14")
+(set-frame-font "Lucida Grande Mono 14")
 
 (use-package smartparens
   :config (progn
@@ -356,6 +342,7 @@ might be bad."
 (global-set-key (kbd "M-z") 'undo)
 
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 (defun disable-all-themes ()
   "disable all active themes."
@@ -367,7 +354,9 @@ might be bad."
 
 (defun day-colors()
   (interactive)
-  (load-theme 'pastelmac t))
+  (load-theme 'flatui t))
+;;  (load-theme 'anti-zenburn t))
+;;  (load-theme 'tango-plus t))
 
 (defun day()
   (interactive)
@@ -379,10 +368,11 @@ might be bad."
 
 (defun night-colors()
   (interactive)
-  (load-theme 'tango-dark t))
+  (load-theme 'arjen-grey t))
+  ;;(load-theme 'sanityinc-tomorrow-blue t))
+;;(load-theme 'base16-ateliersulphurpool-dark t))
 
 (setq column-number-mode t)
-
 
 (setq ispell-program-name "aspell")
 (setq ispell-dictionary "american")
@@ -424,26 +414,44 @@ abort completely with `C-g'."
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
 
+(use-package org-bullets
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(setq dropbox-notes-dir "~/Dropbox/notes/")
 
 (use-package org
   :init (progn
+          (setq org-use-speed-commands t
+                org-hide-emphasis-markers t
+                org-src-fontify-natively t   ;; Pretty code blocks
+                org-src-tab-acts-natively t
+                org-confirm-babel-evaluate nil)
+
+          (setq org-agenda-files '(dropbox-notes-dir))
+          (font-lock-add-keywords 'org-mode
+                                  '(("^ +\\([-*]\\) "
+                                     (0 (prog1 ()
+                                          (compose-region (match-beginning 1) (match-end 1) "•"))))))
           (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
           (global-set-key "\C-cl" 'org-store-link)
           (global-set-key "\C-ca" 'org-agenda)))
 
-(use-package color-identifiers-mode
-  :init (progn
-          (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face font-lock-type-face font-lock-function-name-face font-lock-variable-name-face font-lock-keyword-face font-lock-string-face font-lock-builtin-face font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
-            (dolist (face faces)
-              (set-face-attribute face nil :foreground nil :weight 'normal :slant 'normal)))
+(use-package org-journal
+  :init (setq org-journal-dir (concat dropbox-notes-dir "journal/")))
 
-          (set-face-attribute 'font-lock-comment-delimiter-face nil :slant 'italic)
-          (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
-          (set-face-attribute 'font-lock-doc-face nil :slant 'italic)
-          (set-face-attribute 'font-lock-keyword-face nil :weight 'bold)
-          (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
-          (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
-          (global-color-identifiers-mode) ))
+;; (use-package color-identifiers-mode
+;;   :init (progn
+;;           (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face font-lock-type-face font-lock-function-name-face font-lock-variable-name-face font-lock-keyword-face font-lock-string-face font-lock-builtin-face font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
+;;             (dolist (face faces)
+;;               (set-face-attribute face nil :foreground nil :weight 'normal :slant 'normal)))
+
+;;           (set-face-attribute 'font-lock-comment-delimiter-face nil :slant 'italic)
+;;           (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
+;;           (set-face-attribute 'font-lock-doc-face nil :slant 'italic)
+;;           (set-face-attribute 'font-lock-keyword-face nil :weight 'bold)
+;;           (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
+;;           (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
+;;           (global-color-identifiers-mode) ))
 
 (if (file-exists-p "~/.emacs.local")
     (load-file "~/.emacs.local"))
@@ -453,4 +461,16 @@ abort completely with `C-g'."
   (shell-command-to-string
    (concat "echo \"" (format-time-string "%s") "," (buffer-file-name) "\" >> ~/Dropbox/notes/actionstats.csv")))
 
+(setq-default mode-line-format
+              (list
+               '(:eval (propertize "%* " 'face font-lock-warning-face))
+               ;; value of current buffer name
+               "%b, "
+               '(vc-mode vc-mode)
+               ;; value of current line number
+               " (%l %c) "
+               ))
+
 (add-hook 'after-save-hook 'add-statistics)
+
+(day-colors)

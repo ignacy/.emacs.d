@@ -1,5 +1,5 @@
 
-;;; mono-day-theme.el --- Emacs theme with a light background.
+;;; day-colors-theme.el --- Emacs theme with a light background.
 
 ;; Copyright (C) 2014 , Ignacy Moryc
 
@@ -29,30 +29,29 @@
 
 ;;; Code:
 
- (deftheme mono-day)
+ (deftheme day-colors)
  (let ((class '((class color) (min-colors 89)))
-       (fg1 "#1a1a1a")
-       (fg2 "#292929")
-       (fg3 "#393939")
-       (fg4 "#494949")
-       (regionfg "#01168a")
-       (bg1 "#dedede")
-       (bg2 "#cacaca")
-       (bg3 "#b7b7b7")
-       (bg4 "#a4a4a4")
-       (key2 "#232323")
-       (key3 "#0b0b0b")
-       (builtin "#0c0c0c")
-       (keyword "#0c0c0c")
-       (const   "#0c0c0c")
-       (comment "#cccccc")
-       (func    "#0c0c0c")
-       (str     "#7c7c7c")
-       (type    "#0c0c0c")
-       (var     "#0c0c0c")
-       (warning "#7ec0ee"))
+       (fg1 "#000000")
+       (fg2 "#181818")
+       (fg3 "#282828")
+       (fg4 "#393939")
+       (bg1 "#f0f0f0")
+       (bg2 "#dadada")
+       (bg3 "#c5c5c5")
+       (bg4 "#b1b1b1")
+       (key2 "#4c28d3")
+       (key3 "#1b06b3")
+       (builtin "#006fed")
+       (keyword "#1100cc")
+       (const   "#064f23")
+       (comment "#a8a8a8")
+       (func    "#0d0057")
+       (str     "#198200")
+       (type    "#0030b0")
+       (var     "#7c2acd")
+       (warning "#8db6cd"))
    (custom-theme-set-faces
-   'mono-day
+   'day-colors
         `(default ((,class (:background ,bg1 :foreground ,fg1))))
         `(font-lock-builtin-face ((,class (:foreground ,builtin))))
         `(font-lock-comment-face ((,class (:foreground ,comment))))
@@ -66,7 +65,7 @@
         `(font-lock-type-face ((,class (:foreground ,type ))))
         `(font-lock-variable-name-face ((,class (:foreground ,var))))
         `(font-lock-warning-face ((,class (:foreground ,warning :background ,bg2))))
-        `(region ((,class (:background ,regionfg :foreground ,bg1))))
+        `(region ((,class (:background ,fg1 :foreground ,bg1))))
         `(highlight ((,class (:foreground ,fg3 :background ,bg3))))
         `(hl-line ((,class (:background  ,bg2))))
         `(fringe ((,class (:background ,bg2 :foreground ,fg4))))
@@ -248,10 +247,10 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'mono-day)
+(provide-theme 'day-colors)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; mono-day-theme.el ends here
+;;; day-colors-theme.el ends here
