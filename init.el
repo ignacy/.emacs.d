@@ -65,44 +65,33 @@
 (use-package elixir-mode)
 
 (use-package alchemist)
-;;(use-package ido-completing-read+)
+(use-package ido-completing-read+)
 (use-package haml-mode)
 
-;; (ido-mode 1)
-;; (ido-everywhere)
+(ido-mode 1)
+(ido-everywhere)
 
-;; (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-;; (setq ido-create-new-buffer 'always)
-;; (set-default 'imenu-auto-rescan t)
-;; (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
-;;   (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
-;;   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
-;;   (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
-;;   (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
-;; (add-hook 'ido-setup-hook 'ido-define-keys)
+(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(setq ido-create-new-buffer 'always)
+(set-default 'imenu-auto-rescan t)
+(defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
+  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
+  (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
+  (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
+(add-hook 'ido-setup-hook 'ido-define-keys)
 
-;; (use-package flx-ido
-;;   :init (progn
-;;           (flx-ido-mode 1)
-;;           ;; disable ido faces to see flx highlights.
-;;           (setq ido-enable-flex-matching t)
-;;           (setq ido-use-faces nil)))
+(use-package flx-ido
+  :init (progn
+          (flx-ido-mode 1)
+          ;; disable ido faces to see flx highlights.
+          (setq ido-enable-flex-matching t)
+          (setq ido-use-faces nil)))
 
 (use-package wgrep-ag)
 
 (use-package ag
   :init (global-set-key (kbd "M-r") 'ag-project))
-
-(use-package counsel)
-
-(use-package swiper
-  :init (progn
-          (ivy-mode 1)
-          (setq ivy-use-virtual-buffers t)
-          (setq ivy-height 10)
-          (setq ivy-count-format "(%d/%d) ")
-          (global-set-key "\C-s" 'swiper)
-          ))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
@@ -118,7 +107,7 @@
           (defadvice find-tag-at-point (before auto-visti-tags)
             "Load default TAGS file from home directory if needed"
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
-          (setq projectile-completion-system 'ivy)
+          (setq projectile-completion-system 'ido)
           (ad-activate 'find-tag-at-point)
           (projectile-global-mode)
           (diminish 'projectile-mode)
@@ -195,8 +184,7 @@
               (when file
                 (find-file file))))))
 
-;;(global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
-(global-set-key (kbd "C-x C-r") 'ivy-recentf)
+(global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
 (use-package wrap-region
   :init (progn
@@ -209,7 +197,7 @@
   :bind ("M-2" . er/expand-region))
 
 (use-package magit
-  :config (setq magit-completing-read-function 'ivy-completing-read)
+  :config (setq magit-completing-read-function 'ido-completing-read)
   :init (global-set-key (kbd "C-x g") 'magit-status))
 
 (global-auto-revert-mode 1)
@@ -319,7 +307,8 @@ might be bad."
                           "JSON" "$" "_" "Backbone" ))))
 
 ;;(set-frame-font "Source Code Pro 14")
-(set-frame-font "Lucida Grande Mono 14")
+;;(set-frame-font "Lucida Grande Mono 14")
+(set-frame-font "Menlo 14")
 
 (use-package smartparens
   :config (progn
@@ -451,20 +440,6 @@ abort completely with `C-g'."
 
 (use-package org-journal
   :init (setq org-journal-dir (concat dropbox-notes-dir "journal/")))
-
-;; (use-package color-identifiers-mode
-;;   :init (progn
-;;           (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face font-lock-type-face font-lock-function-name-face font-lock-variable-name-face font-lock-keyword-face font-lock-string-face font-lock-builtin-face font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
-;;             (dolist (face faces)
-;;               (set-face-attribute face nil :foreground nil :weight 'normal :slant 'normal)))
-
-;;           (set-face-attribute 'font-lock-comment-delimiter-face nil :slant 'italic)
-;;           (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
-;;           (set-face-attribute 'font-lock-doc-face nil :slant 'italic)
-;;           (set-face-attribute 'font-lock-keyword-face nil :weight 'bold)
-;;           (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
-;;           (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
-;;           (global-color-identifiers-mode) ))
 
 (if (file-exists-p "~/.emacs.local")
     (load-file "~/.emacs.local"))
