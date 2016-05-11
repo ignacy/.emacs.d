@@ -23,7 +23,7 @@
   (package-install 'use-package))
 
 (setq use-package-always-ensure t)
-
+(save-place-mode 1)
 (require 'use-package)
 (use-package exec-path-from-shell
   :init (progn
@@ -308,7 +308,7 @@ might be bad."
 
 ;;(set-frame-font "Source Code Pro 14")
 ;;(set-frame-font "Lucida Grande Mono 14")
-(set-frame-font "Menlo 14")
+(set-frame-font "Menlo 15")
 
 (use-package smartparens
   :config (progn
@@ -354,14 +354,21 @@ might be bad."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
+(use-package darkokai-theme
+  :config (progn
+            (setq darkokai-mode-line-padding 1)
+            (load-theme 'darkokai t)))
+
 (defun day-colors()
   (interactive)
-  (load-theme 'flatui t))
-;;  (load-theme 'anti-zenburn t))
-;;  (load-theme 'tango-plus t))
+  ;;  (load-theme 'flatui t))
+  ;;  (load-theme 'anti-zenburn t))
+  ;;  (load-theme 'tango-plus t))
+  (load-theme 'day-colors t))
 
 (defun day()
   (interactive)
+  ;;(load-theme 'goose t))
   (load-theme 'mono-day t))
 
 (defun night()
@@ -370,9 +377,9 @@ might be bad."
 
 (defun night-colors()
   (interactive)
-  (load-theme 'arjen-grey t))
-;;(load-theme 'sanityinc-tomorrow-blue t))
-;;(load-theme 'base16-ateliersulphurpool-dark t))
+  ;;  (load-theme 'arjen-grey t))
+  ;;(load-theme 'sanityinc-tomorrow-blue t))
+  (load-theme 'base16-phd-dark t))
 
 (setq column-number-mode t)
 
@@ -420,26 +427,45 @@ abort completely with `C-g'."
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (setq dropbox-notes-dir "~/Dropbox/notes/")
+(setq org-journal-dir dropbox-notes-dir)
 
 (use-package org
   :init (progn
+          (require 'ox-md nil t)
           (setq org-use-speed-commands t
                 org-hide-emphasis-markers t
                 org-src-fontify-natively t   ;; Pretty code blocks
                 org-src-tab-acts-natively t
                 org-confirm-babel-evaluate nil)
 
-          (setq org-agenda-files '(dropbox-notes-dir))
+          (setq org-default-notes-file (concat dropbox-notes-dir "notes.org"))
+          (setq org-default-todo-file (concat dropbox-notes-dir "todo.org"))
+
+          (setq org-capture-templates
+                (quote (("t" "todo" entry (file org-default-todo-file) "* TODO %?\n")
+                        ("f" "File Adnotation" entry (file org-default-notes-file) "* %a comment on %U\n%?")
+                        ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n")
+                        ("j" "Journal" entry (file+datetree org-default-notes-file) "* %?\n%U\n")
+                        ("m" "Meeting" entry (file org-default-notes-file) "* MEETING with %? :MEETING:\n%U")
+                        )))
+
+          (setq org-agenda-files '("~/Dropbox/notes"))
+
+          (defun org-weekly-agenda ()
+            (interactive)
+            (org-agenda nil "a"))
+
+          (global-set-key (kbd "C-c t") 'org-weekly-agenda)
+
           (font-lock-add-keywords 'org-mode
                                   '(("^ +\\([-*]\\) "
                                      (0 (prog1 ()
                                           (compose-region (match-beginning 1) (match-end 1) "•"))))))
           (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
           (global-set-key "\C-cl" 'org-store-link)
+          (global-set-key (kbd "C-c c") 'org-capture)
+          (global-set-key (kbd "C-c C-c") 'org-capture)
           (global-set-key "\C-ca" 'org-agenda)))
-
-(use-package org-journal
-  :init (setq org-journal-dir (concat dropbox-notes-dir "journal/")))
 
 (if (file-exists-p "~/.emacs.local")
     (load-file "~/.emacs.local"))
@@ -447,7 +473,7 @@ abort completely with `C-g'."
 (defun add-statistics ()
   (interactive)
   (shell-command-to-string
-   (concat "echo \"" (format-time-string "%s") "," (buffer-file-name) "\" >> ~/Dropbox/notes/actionstats.csv")))
+   (concat "echok \"" (format-time-string "%s") "," (buffer-file-name) "\" >> ~/Dropbox/notes/actionstats.csv")))
 
 (setq-default mode-line-format
               (list
@@ -460,5 +486,3 @@ abort completely with `C-g'."
                ))
 
 (add-hook 'after-save-hook 'add-statistics)
-
-(day-colors)
