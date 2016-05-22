@@ -308,7 +308,8 @@ might be bad."
 
 ;;(set-frame-font "Source Code Pro 14")
 ;;(set-frame-font "Lucida Grande Mono 14")
-(set-frame-font "Menlo 15")
+(set-frame-font "mononoki 16")
+;;(set-frame-font "Menlo 15")
 
 (use-package smartparens
   :config (progn
@@ -354,32 +355,8 @@ might be bad."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(use-package darkokai-theme
-  :config (progn
-            (setq darkokai-mode-line-padding 1)
-            (load-theme 'darkokai t)))
-
-(defun day-colors()
-  (interactive)
-  ;;  (load-theme 'flatui t))
-  ;;  (load-theme 'anti-zenburn t))
-  ;;  (load-theme 'tango-plus t))
-  (load-theme 'day-colors t))
-
-(defun day()
-  (interactive)
-  ;;(load-theme 'goose t))
-  (load-theme 'mono-day t))
-
-(defun night()
-  (interactive)
-  (load-theme 'phoenix-dark-mono t))
-
-(defun night-colors()
-  (interactive)
-  ;;  (load-theme 'arjen-grey t))
-  ;;(load-theme 'sanityinc-tomorrow-blue t))
-  (load-theme 'base16-phd-dark t))
+;;(load-theme 'ir-black t)
+(load-theme 'zeus-lighter t)
 
 (setq column-number-mode t)
 
@@ -395,7 +372,7 @@ be global.
 If there's nothing wrong with the word at point, keep
 looking for a typo until the beginning of buffer. You can
 skip typos you don't want to fix with `SPC', and you can
-abort completely with `C-g'."
+sabort completely with `C-g'."
   (interactive "P")
   (let (bef aft)
     (save-excursion
@@ -420,6 +397,8 @@ abort completely with `C-g'."
                    bef aft (if p "loc" "glob")))
       (user-error "No typo at or before point"))))
 
+
+(use-package heroku)
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
 
@@ -427,7 +406,6 @@ abort completely with `C-g'."
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (setq dropbox-notes-dir "~/Dropbox/notes/")
-(setq org-journal-dir dropbox-notes-dir)
 
 (use-package org
   :init (progn
@@ -439,15 +417,9 @@ abort completely with `C-g'."
                 org-confirm-babel-evaluate nil)
 
           (setq org-default-notes-file (concat dropbox-notes-dir "notes.org"))
-          (setq org-default-todo-file (concat dropbox-notes-dir "todo.org"))
 
           (setq org-capture-templates
-                (quote (("t" "todo" entry (file org-default-todo-file) "* TODO %?\n")
-                        ("f" "File Adnotation" entry (file org-default-notes-file) "* %a comment on %U\n%?")
-                        ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n")
-                        ("j" "Journal" entry (file+datetree org-default-notes-file) "* %?\n%U\n")
-                        ("m" "Meeting" entry (file org-default-notes-file) "* MEETING with %? :MEETING:\n%U")
-                        )))
+                (quote (("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
 
           (setq org-agenda-files '("~/Dropbox/notes"))
 
@@ -481,7 +453,7 @@ abort completely with `C-g'."
                ;; value of current buffer name
                "%b, "
                '(vc-mode vc-mode)
-               ;; value of current line number
+
                " (%l %c) "
                ))
 
