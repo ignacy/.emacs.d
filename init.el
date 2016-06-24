@@ -67,6 +67,7 @@
 (use-package alchemist)
 (use-package ido-completing-read+)
 (use-package haml-mode)
+(use-package slim-mode)
 
 (ido-mode 1)
 (ido-everywhere)
@@ -91,7 +92,9 @@
 (use-package wgrep-ag)
 
 (use-package ag
-  :init (global-set-key (kbd "M-r") 'ag-project))
+  :init (progn
+          (global-set-key (kbd "M-r") 'ag-project)
+          (global-set-key (kbd "M-R") 'ag-project-regexp)))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
@@ -104,14 +107,14 @@
 (use-package projectile-rails)
 (use-package projectile
   :init (progn
-          (defadvice find-tag-at-point (before auto-visti-tags)
-            "Load default TAGS file from home directory if needed"
-            (visit-tags-table (concat (projectile-project-root) "TAGS")))
-          (setq projectile-completion-system 'ido)
-          (ad-activate 'find-tag-at-point)
-          (projectile-global-mode)
-          (diminish 'projectile-mode)
-          (add-hook 'projectile-mode-hook 'projectile-rails-on))
+	  (defadvice find-tag-at-point (before auto-visti-tags)
+	    "Load default TAGS file from home directory if needed"
+	    (visit-tags-table (concat (projectile-project-root) "TAGS")))
+	  (setq projectile-completion-system 'ido)
+	  (ad-activate 'find-tag-at-point)
+	  (projectile-global-mode)
+	  (diminish 'projectile-mode)
+	  (add-hook 'projectile-mode-hook 'projectile-rails-on))
   :bind ("C-c C-p" . projectile-switch-project))
 
 (global-set-key (kbd "C-x f") 'projectile-find-file)
@@ -121,18 +124,22 @@
 (global-set-key (kbd "C-c m") 'projectile-rails-find-current-spec)
 
 
+(use-package helm-projectile
+  :init (helm-projectile-on))
+
+
 (use-package highlight-symbol
   :init (progn
-          (add-hook 'prog-mode-hook 'highlight-symbol-mode)
-          (add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
-          (setq highlight-symbol-idle-delay 0)))
+	  (add-hook 'prog-mode-hook 'highlight-symbol-mode)
+	  (add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
+	  (setq highlight-symbol-idle-delay 0)))
 
 (use-package ruby-mode
   :init (progn
-          (add-hook 'ruby-mode-hook
-                    (lambda ()
-                      (subword-mode 1)
-                      ))))
+	  (add-hook 'ruby-mode-hook
+		    (lambda ()
+		      (subword-mode 1)
+		      ))))
 
 (use-package inf-ruby)
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
@@ -150,47 +157,54 @@
 
 (use-package rubocop
   :config (progn
-            (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
-            (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
-            ))
+	    (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
+	    (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
+	    ))
 
 
 (use-package rbenv
   :init (progn
-          (setq rbenv-show-active-ruby-in-modeline nil)
-          (global-rbenv-mode)))
+	  (setq rbenv-show-active-ruby-in-modeline nil)
+	  (global-rbenv-mode)))
+
+
+(use-package flycheck
+  :init (global-flycheck-mode))
+
+(use-package flycheck-elixir
+  :init (add-hook 'elixir-mode-hook 'flycheck-mode))
 
 (use-package rspec-mode
   :ensure  rspec-mode
   :config (progn
-            (setq rspec-use-rake-when-possible nil)
-            (setq rspec-use-rvm nil)
-            (setq rspec-use-bundler-when-possible nil)
-            ;;(setq rspec-command-options "--format progress --order random")
-            ))
+	    (setq rspec-use-rake-when-possible nil)
+	    (setq rspec-use-rvm nil)
+	    (setq rspec-use-bundler-when-possible nil)
+	    ;;(setq rspec-command-options "--format progress --order random")
+	    ))
 
 
 (use-package recentf
   :init (progn
-          (setq recentf-auto-cleanup 'never)
-          (recentf-mode t)
-          (setq recentf-max-saved-items 2000)
-          (setq recentf-max-menu-items 25)
+	  (setq recentf-auto-cleanup 'never)
+	  (recentf-mode t)
+	  (setq recentf-max-saved-items 2000)
+	  (setq recentf-max-menu-items 25)
 
-          (defun recentf-ido-find-file ()
-            "Find a recent file using Ido."
-            (interactive)
-            (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-              (when file
-                (find-file file))))))
+	  (defun recentf-ido-find-file ()
+	    "Find a recent file using Ido."
+	    (interactive)
+	    (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+	      (when file
+		(find-file file))))))
 
 (global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
 (use-package wrap-region
   :init (progn
-          (wrap-region-global-mode +1)
-          (wrap-region-add-wrapper "`" "`")
-          (wrap-region-add-wrapper "{" "}")))
+	  (wrap-region-global-mode +1)
+	  (wrap-region-add-wrapper "`" "`")
+	  (wrap-region-add-wrapper "{" "}")))
 
 (use-package expand-region
   :defer t
@@ -212,19 +226,19 @@
   (interactive)
   (save-excursion
     (if (region-active-p)
-        (progn
-          (indent-region (region-beginning) (region-end))
-          (message "Indented selected region."))
+	(progn
+	  (indent-region (region-beginning) (region-end))
+	  (message "Indented selected region."))
       (progn
-        (indent-region (point-min) (point-max))
-        (message "Indented buffer.")))))
+	(indent-region (point-min) (point-max))
+	(message "Indented buffer.")))))
 
 
 (use-package anzu
   :init (progn
-          (global-anzu-mode +1)
-          (global-set-key (kbd "M-c") 'anzu-query-replace-regexp)
-          (diminish 'anzu-mode)))
+	  (global-anzu-mode +1)
+	  (global-set-key (kbd "M-c") 'anzu-query-replace-regexp)
+	  (diminish 'anzu-mode)))
 
 
 (setq echo-keystrokes 0.1)
@@ -269,52 +283,56 @@ might be bad."
 
 (add-hook 'before-save-hook 'cleanup-buffer-safe)
 
-(use-package idomenu
-  :bind ("C-'" . idomenu))
+(use-package idomenu :bind ("M-i" . idomenu))
+
+
+(use-package helm
+  :init (progn
+	  (require 'helm-config)))
 
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
   (let ((name (buffer-name))
-        (filename (buffer-file-name)))
+	(filename (buffer-file-name)))
     (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
+	(error "Buffer '%s' is not visiting a file!" name)
       (let ((new-name (read-file-name "New name: " filename)))
-        (if (get-buffer new-name)
-            (error "A buffer named '%s' already exists!" new-name)
-          (rename-file filename new-name 1)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name)
-          (set-buffer-modified-p nil)
-          (message "File '%s' successfully renamed to '%s'"
-                   name (file-name-nondirectory new-use)))))))
+	(if (get-buffer new-name)
+	    (error "A buffer named '%s' already exists!" new-name)
+	  (rename-file filename new-name 1)
+	  (rename-buffer new-name)
+	  (set-visited-file-name new-name)
+	  (set-buffer-modified-p nil)
+	  (message "File '%s' successfully renamed to '%s'"
+		   name (file-name-nondirectory new-use)))))))
 
 (use-package js2-mode
   :init (progn
-          (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-jsx-mode))
-          (setq-default js2-basic-offset 4)
-          (setq-default js-indent-level 4)
-          (setq-default js2-mode-indent-ignore-first-tab t)
-          (setq-default js2-show-parse-errors nil)
-          (setq-default js2-strict-inconsistent-return-warning nil)
-          (setq-default js2-strict-var-hides-function-arg-warning nil)
-          (setq-default js2-strict-missing-semi-warning nil)
-          (setq-default js2-strict-trailing-comma-warning nil)
-          (setq-default js2-strict-cond-assign-warning nil)
-          (setq-default js2-strict-var-redeclaration-warning nil)
-          (setq-default js2-global-externs
-                        '("module" "require" "__dirname" "process" "console" "define"
-                          "JSON" "$" "_" "Backbone" ))))
+	  (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-jsx-mode))
+	  (setq-default js2-basic-offset 4)
+	  (setq-default js-indent-level 4)
+	  (setq-default js2-mode-indent-ignore-first-tab t)
+	  (setq-default js2-show-parse-errors nil)
+	  (setq-default js2-strict-inconsistent-return-warning nil)
+	  (setq-default js2-strict-var-hides-function-arg-warning nil)
+	  (setq-default js2-strict-missing-semi-warning nil)
+	  (setq-default js2-strict-trailing-comma-warning nil)
+	  (setq-default js2-strict-cond-assign-warning nil)
+	  (setq-default js2-strict-var-redeclaration-warning nil)
+	  (setq-default js2-global-externs
+			'("module" "require" "__dirname" "process" "console" "define"
+			  "JSON" "$" "_" "Backbone" ))))
 
 ;;(set-frame-font "Source Code Pro 14")
 ;;(set-frame-font "Lucida Grande Mono 14")
-(set-frame-font "mononoki 16")
+(set-frame-font "mononoki 17")
 ;;(set-frame-font "Menlo 15")
 
 (use-package smartparens
   :config (progn
-            (require 'smartparens-config)
-            (smartparens-global-mode t))
+	    (require 'smartparens-config)
+	    (smartparens-global-mode t))
   (defun handle-curlys (id action context)
     (when (eq action 'insert)
       (newline)
@@ -325,6 +343,7 @@ might be bad."
 
   (sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
   (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys))
+
   (defun my-elixir-do-end-close-action (id action context)
     (when (eq action 'insert)
       (newline-and-indent)
@@ -332,16 +351,15 @@ might be bad."
       (indent-according-to-mode)))
 
   (sp-with-modes '(elixir-mode)
-    (sp-local-pair "do" "end"
-                   :when '(("SPC" "RET"))
-                   :post-handlers '(:add my-elixir-do-end-close-action)
-                   :actions '(insert))))
+		 (sp-local-pair "do" "end"
+				:when '(("SPC" "RET"))
+				:post-handlers '(:add my-elixir-do-end-close-action)
+				:actions '(insert))))
 
 ;; (use-package rainbow-identifiers
 ;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
-(use-package sane-term
-  :init (progn (global-set-key (kbd "C-x t") 'sane-term)
-               (global-set-key (kbd "C-x T") 'sane-term-create)))
+
+
 (global-set-key (kbd "M-z") 'undo)
 
 
@@ -355,8 +373,6 @@ might be bad."
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-;;(load-theme 'ir-black t)
-(load-theme 'zeus-lighter t)
 
 (setq column-number-mode t)
 
@@ -377,28 +393,46 @@ sabort completely with `C-g'."
   (let (bef aft)
     (save-excursion
       (while (if (setq bef (thing-at-point 'word))
-                 ;; Word was corrected or used quit.
-                 (if (ispell-word nil 'quiet)
-                     nil ; End the loop.
-                   ;; Also end if we reach `bob'.
-                   (not (bobp)))
-               ;; If there's no word at point, keep looking
-               ;; until `bob'.
-               (not (bobp)))
-        (backward-word))
+		 ;; Word was corrected or used quit.
+		 (if (ispell-word nil 'quiet)
+		     nil ; End the loop.
+		   ;; Also end if we reach `bob'.
+		   (not (bobp)))
+	       ;; If there's no word at point, keep looking
+	       ;; until `bob'.
+	       (not (bobp)))
+	(backward-word))
       (setq aft (thing-at-point 'word)))
     (if (and aft bef (not (equal aft bef)))
-        (let ((aft (downcase aft))
-              (bef (downcase bef)))
-          (define-abbrev
-            (if p local-abbrev-table global-abbrev-table)
-            bef aft)
-          (message "\"%s\" now expands to \"%s\" %sally"
-                   bef aft (if p "loc" "glob")))
+	(let ((aft (downcase aft))
+	      (bef (downcase bef)))
+	  (define-abbrev
+	    (if p local-abbrev-table global-abbrev-table)
+	    bef aft)
+	  (message "\"%s\" now expands to \"%s\" %sally"
+		   bef aft (if p "loc" "glob")))
       (user-error "No typo at or before point"))))
 
+;; DONT TURN THIS ON
+;; (use-package evil-leader
+;;   :init (progn
+;;           (global-evil-leader-mode)
+;;           (evil-leader/set-leader ",")
+;;           (evil-leader/set-key
+;;             "f" 'projectile-find-file
+;;             "k" 'kill-this-buffer
+;;             "b" 'switch-to-buffer) ))
 
-(use-package heroku)
+;; (use-package evil
+;;   :init (progn
+;;           (evil-mode)
+;;           (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
+;;           ))
+
+;; (use-package evil-surround
+;;   :init (global-evil-surround-mode 1))
+
+
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
 
@@ -409,35 +443,35 @@ sabort completely with `C-g'."
 
 (use-package org
   :init (progn
-          (require 'ox-md nil t)
-          (setq org-use-speed-commands t
-                org-hide-emphasis-markers t
-                org-src-fontify-natively t   ;; Pretty code blocks
-                org-src-tab-acts-natively t
-                org-confirm-babel-evaluate nil)
+	  (require 'ox-md nil t)
+	  (setq org-use-speed-commands t
+		org-hide-emphasis-markers t
+		org-src-fontify-natively t   ;; Pretty code blocks
+		org-src-tab-acts-natively t
+		org-confirm-babel-evaluate nil)
 
-          (setq org-default-notes-file (concat dropbox-notes-dir "notes.org"))
+	  (setq org-default-notes-file (concat dropbox-notes-dir "notes.org"))
 
-          (setq org-capture-templates
-                (quote (("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
+	  (setq org-capture-templates
+		(quote (("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
 
-          (setq org-agenda-files '("~/Dropbox/notes"))
+	  (setq org-agenda-files '("~/Dropbox/notes"))
 
-          (defun org-weekly-agenda ()
-            (interactive)
-            (org-agenda nil "a"))
+	  (defun org-weekly-agenda ()
+	    (interactive)
+	    (org-agenda nil "a"))
 
-          (global-set-key (kbd "C-c t") 'org-weekly-agenda)
+	  (global-set-key (kbd "C-c t") 'org-weekly-agenda)
 
-          (font-lock-add-keywords 'org-mode
-                                  '(("^ +\\([-*]\\) "
-                                     (0 (prog1 ()
-                                          (compose-region (match-beginning 1) (match-end 1) "•"))))))
-          (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-          (global-set-key "\C-cl" 'org-store-link)
-          (global-set-key (kbd "C-c c") 'org-capture)
-          (global-set-key (kbd "C-c C-c") 'org-capture)
-          (global-set-key "\C-ca" 'org-agenda)))
+	  (font-lock-add-keywords 'org-mode
+				  '(("^ +\\([-*]\\) "
+				     (0 (prog1 ()
+					  (compose-region (match-beginning 1) (match-end 1) "•"))))))
+	  (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+	  (global-set-key "\C-cl" 'org-store-link)
+	  (global-set-key (kbd "C-c c") 'org-capture)
+	  (global-set-key (kbd "C-c C-c") 'org-capture)
+	  (global-set-key "\C-ca" 'org-agenda)))
 
 (if (file-exists-p "~/.emacs.local")
     (load-file "~/.emacs.local"))
@@ -448,13 +482,79 @@ sabort completely with `C-g'."
    (concat "echok \"" (format-time-string "%s") "," (buffer-file-name) "\" >> ~/Dropbox/notes/actionstats.csv")))
 
 (setq-default mode-line-format
-              (list
-               '(:eval (propertize "%* " 'face font-lock-warning-face))
-               ;; value of current buffer name
-               "%b, "
-               '(vc-mode vc-mode)
+	      (list
+	       '(:eval (propertize "%* " 'face font-lock-warning-face))
+	       ;; value of current buffer name
+	       "%b, "
+	       '(vc-mode vc-mode)
 
-               " (%l %c) "
-               ))
+	       " (%l %c) "
+	       ))
+
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+
+(setq shell-file-name "zsh")
+(setenv "SHELL" shell-file-name)
+(add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
+
+(use-package shell-pop
+  :config (progn
+	    (setq shell-pop-term-shell "/usr/local/bin/zsh")
+	    (setq shell-pop-window-size 30)
+	    (setq shell-pop-full-span t)
+	    (setq shell-pop-window-position "right"))
+  :init (global-set-key (kbd "C-t") 'shell-pop))
+
+(defun select-advanon-app ()
+  (interactive)
+  (ido-completing-read+ "Which app? "
+			(split-string (shell-command-to-string "cd ~/code/Advanon && heroku apps | heroku_list_apps") " ")
+			) )
+
+(use-package sublime-themes)
+;;  :init (load-theme 'hickey t))
+(load-theme 'zeus-lighter t)
+(load-theme 'odersky t)
+
+(use-package scala-mode
+  :interpreter
+  ("scala" . scala-mode))
+(use-package sbt-mode
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map))
+(use-package ensime
+  :commands ensime ensime-mode)
+
+(add-hook 'scala-mode-hook 'ensime-mode)
+
+(defun endless/fill-or-unfill ()
+  "Like `fill-paragraph', but unfill if used twice."
+  (interactive)
+  (let ((fill-column
+	 (if (eq last-command 'endless/fill-or-unfill)
+	     (progn (setq this-command nil)
+		    (point-max))
+	   fill-column)))
+    (call-interactively #'fill-paragraph)))
+
+(global-set-key [remap fill-paragraph] #'endless/fill-or-unfill)
+
+(defun heroku-console ()
+  (interactive)
+  (let ((app (select-advanon-app)))
+    (when app
+      (compile (concat "cd ~/code/Advanon && heroku run console --app " app)))))
 
 (add-hook 'after-save-hook 'add-statistics)
+(put 'narrow-to-region 'disabled nil)
