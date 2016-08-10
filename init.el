@@ -31,6 +31,8 @@
           (when (memq window-system '(mac ns))
             (exec-path-from-shell-initialize))))
 
+(setenv "GOPATH" "/Users/ignacy/code/go")
+
 (use-package diminish)
 
 
@@ -51,6 +53,8 @@
           (setq company-dabbrev-ignore-case nil)
           (global-company-mode t)
           (diminish 'company-mode)))
+
+(use-package company-go)
 
 (setq abbrev-file-name (concat dotfiles-dir "abbrevations"))
 (setq dabbrev-case-replace nil)
@@ -91,10 +95,14 @@
 
 (use-package wgrep-ag)
 
-(use-package ag
+;; (use-package ag
+;;   :init (progn
+;;           (global-set-key (kbd "M-r") 'ag-project)
+;;           (global-set-key (kbd "M-R") 'ag-project-regexp)))
+
+(use-package helm-ag
   :init (progn
-          (global-set-key (kbd "M-r") 'ag-project)
-          (global-set-key (kbd "M-R") 'ag-project-regexp)))
+          (global-set-key (kbd "M-r") 'helm-do-ag-project-root)))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
@@ -173,6 +181,8 @@
 (use-package flycheck-elixir
   :init (add-hook 'elixir-mode-hook 'flycheck-mode))
 
+(add-to-list 'load-path "~/code/go/src/github.com/dougm/goflymake")
+
 (use-package rspec-mode
   :ensure  rspec-mode
   :config (progn
@@ -182,22 +192,6 @@
             ;;(setq rspec-command-options "--format progress --order random")
             ))
 
-
-(use-package recentf
-  :init (progn
-          (setq recentf-auto-cleanup 'never)
-          (recentf-mode t)
-          (setq recentf-max-saved-items 2000)
-          (setq recentf-max-menu-items 25)
-
-          (defun recentf-ido-find-file ()
-            "Find a recent file using Ido."
-            (interactive)
-            (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-              (when file
-                (find-file file))))))
-
-(global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
 (use-package wrap-region
   :init (progn
@@ -222,9 +216,8 @@
 (use-package anzu
   :init (progn
           (global-anzu-mode +1)
-          (global-set-key (kbd "C-c r") 'anzu-query-replace-regexp)
+          (global-set-key (kbd "M-c") 'anzu-query-replace-regexp)
           (diminish 'anzu-mode)))
-
 
 (setq echo-keystrokes 0.1)
 
@@ -257,6 +250,23 @@ might be bad."
   :init (progn
           (require 'helm-config)))
 
+(use-package recentf
+  :init (progn
+          (setq recentf-auto-cleanup 'never)
+          (recentf-mode t)
+          (setq recentf-max-saved-items 2000)
+          (setq recentf-max-menu-items 25)
+
+          ;; (defun recentf-ido-find-file ()
+          ;;   "Find a recent file using Ido."
+          ;;   (interactive)
+          ;;   (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+          ;;     (when file
+          ;;       (find-file file))))
+  ))
+
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
+
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
@@ -273,6 +283,27 @@ might be bad."
           (set-buffer-modified-p nil)
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-use)))))))
+
+
+(defun indent-buffer ()
+  "Indent the currently visited buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun indent-region-or-buffer ()
+  "Indent a region if selected, otherwise the whole buffer."
+  (interactive)
+  (save-excursion
+    (if (region-active-p)
+        (progn
+          (indent-region (region-beginning) (region-end))
+          (message "Indented selected region."))
+      (progn
+        (indent-buffer)
+        (message "Indented buffer.")))))
+
+
+(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 
 (use-package js2-mode
   :init (progn
@@ -291,10 +322,31 @@ might be bad."
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
 
-;;(set-frame-font "Source Code Pro 14")
-;;(set-frame-font "Lucida Grande Mono 14")
-(set-frame-font "mononoki 17")
+;;(set-frame-font "Source Code Pro 17")
+;;(set-frame-font "Lucida Grande Mono 16")
+;;(set-frame-font "Inconsolata 17")
+(set-frame-font "mononoki 18")
 ;;(set-frame-font "Menlo 15")
+
+(use-package go-mode
+  :config (progn
+            (add-hook 'go-mode-hook '(lambda ()
+                                       (set (make-local-variable 'company-backends) '(company-go))
+                                       (company-mode)
+
+                                       (setq gofmt-command "goimports")
+
+                                       (local-set-key (kbd "C-c C-f") 'gofmt)
+                                       (local-set-key (kbd "C-c C-k") 'godoc)
+                                       (setq tab-width 4)
+                                       (setq indent-tabs-mode 1)
+                                       ))
+            (add-hook 'before-save-hook 'gofmt-before-save)
+            ))
+
+(require 'go-flycheck)
+
+(use-package dash-at-point)
 
 (use-package smartparens
   :config (progn
@@ -318,14 +370,16 @@ might be bad."
       (indent-according-to-mode)))
 
   (sp-with-modes '(elixir-mode)
-                 (sp-local-pair "do" "end"
-                                :when '(("SPC" "RET"))
-                                :post-handlers '(:add my-elixir-do-end-close-action)
-                                :actions '(insert))))
+    (sp-local-pair "do" "end"
+                   :when '(("SPC" "RET"))
+                   :post-handlers '(:add my-elixir-do-end-close-action)
+                   :actions '(insert))))
 
 ;; (use-package rainbow-identifiers
 ;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
+(use-package rainbow-delimiters
+  :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (global-set-key (kbd "M-z") 'undo)
 
@@ -454,25 +508,15 @@ sabort completely with `C-g'."
                         (split-string (shell-command-to-string "cd ~/code/Advanon && heroku apps | heroku_list_apps") " ")
                         ) )
 
-(use-package sublime-themes)
-(load-theme 'odersky t)
-
-(use-package scala-mode
-  :interpreter
-  ("scala" . scala-mode))
-(use-package sbt-mode
-  :commands sbt-start sbt-command
-  :config
-  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
-  ;; allows using SPACE when in the minibuffer
-  (substitute-key-definition
-   'minibuffer-complete-word
-   'self-insert-command
-   minibuffer-local-completion-map))
-(use-package ensime
-  :commands ensime ensime-mode)
-
-(add-hook 'scala-mode-hook 'ensime-mode)
+;; (use-package sublime-themes)
+;; (load-theme 'odersky t)
+;; (use-package flatui-theme)
+;; (use-package material-theme)
+;;(load-theme 'material-light t)
+;;(load-theme 'flatui t)
+;;(load-theme 'adwaita t)
+;;(load-theme 'spacegray t)
+(load-theme 'spacemacs-dark t)
 
 (defun endless/fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."
