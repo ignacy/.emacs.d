@@ -263,7 +263,7 @@ might be bad."
           ;;   (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
           ;;     (when file
           ;;       (find-file file))))
-  ))
+          ))
 
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 
@@ -325,7 +325,7 @@ might be bad."
 ;;(set-frame-font "Source Code Pro 17")
 ;;(set-frame-font "Lucida Grande Mono 16")
 ;;(set-frame-font "Inconsolata 17")
-(set-frame-font "mononoki 18")
+(set-frame-font "mononoki 17")
 ;;(set-frame-font "Menlo 15")
 
 (use-package go-mode
@@ -508,15 +508,24 @@ sabort completely with `C-g'."
                         (split-string (shell-command-to-string "cd ~/code/Advanon && heroku apps | heroku_list_apps") " ")
                         ) )
 
-;; (use-package sublime-themes)
-;; (load-theme 'odersky t)
-;; (use-package flatui-theme)
-;; (use-package material-theme)
 ;;(load-theme 'material-light t)
-;;(load-theme 'flatui t)
-;;(load-theme 'adwaita t)
-;;(load-theme 'spacegray t)
-(load-theme 'spacemacs-dark t)
+
+;;(load-theme 'bubbleberry t)
+(load-theme 'sanityinc-tomorrow-night t)
+
+;; (use-package evil-leader
+;;   :init (progn
+;;           (global-evil-leader-mode)
+;;           (evil-leader/set-leader ",")
+;;           (evil-leader/set-key
+;;             "b" 'switch-to-buffer
+;;             "f" 'projectile-find-file
+;;             "w" 'save-buffer)))
+
+;; (use-package evil
+;;   :init (evil-mode t))
+
+(use-package gist)
 
 (defun endless/fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."
