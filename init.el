@@ -25,13 +25,13 @@
 (setq use-package-always-ensure t)
 (save-place-mode 1)
 (require 'use-package)
+
 (use-package exec-path-from-shell
   :init (progn
           (setq exec-path-from-shell-arguments '("-l"))
-          (when (memq window-system '(mac ns))
-            (exec-path-from-shell-initialize))))
-
-(setenv "GOPATH" "/Users/ignacy/code/go")
+          (exec-path-from-shell-initialize)
+          (exec-path-from-shell-copy-env "GOPATH")
+          (exec-path-from-shell-copy-env "PATH")))
 
 (use-package diminish)
 
@@ -95,14 +95,14 @@
 
 (use-package wgrep-ag)
 
-;; (use-package ag
-;;   :init (progn
-;;           (global-set-key (kbd "M-r") 'ag-project)
-;;           (global-set-key (kbd "M-R") 'ag-project-regexp)))
-
-(use-package helm-ag
+(use-package ag
   :init (progn
-          (global-set-key (kbd "M-r") 'helm-do-ag-project-root)))
+          (global-set-key (kbd "M-r") 'ag-project)
+          (global-set-key (kbd "M-R") 'ag-project-regexp)))
+
+;; (use-package helm-ag
+;;   :init (progn
+;;           (global-set-key (kbd "M-r") 'helm-do-ag-project-root)))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
@@ -245,6 +245,8 @@ might be bad."
 
 (use-package idomenu :bind ("M-i" . idomenu))
 
+(use-package fancy-narrow
+  :init (fancy-narrow-mode t))
 
 (use-package helm
   :init (progn
@@ -325,8 +327,42 @@ might be bad."
 ;;(set-frame-font "Source Code Pro 17")
 ;;(set-frame-font "Lucida Grande Mono 16")
 ;;(set-frame-font "Inconsolata 17")
-(set-frame-font "mononoki 17")
+;;(set-frame-font "mononoki 17")
 ;;(set-frame-font "Menlo 15")
+
+(when (window-system)
+  (set-default-font "Fira Code"))
+(let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
+               (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
+               (36 . ".\\(?:>\\)")
+               (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
+               (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
+               (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
+               (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
+               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
+               (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
+               (48 . ".\\(?:x[a-zA-Z]\\)")
+               (58 . ".\\(?:::\\|[:=]\\)")
+               (59 . ".\\(?:;;\\|;\\)")
+               (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
+               (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
+               (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
+               (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
+               (91 . ".\\(?:]\\)")
+               (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
+               (94 . ".\\(?:=\\)")
+               (119 . ".\\(?:ww\\)")
+               (123 . ".\\(?:-\\)")
+               (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
+               (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)")
+               )
+             ))
+  (dolist (char-regexp alist)
+    (set-char-table-range composition-function-table (car char-regexp)
+                          `([,(cdr char-regexp) 0 font-shape-gstring]))))
+
+(set-frame-font "Fira Code 17")
 
 (use-package go-mode
   :config (progn
@@ -352,16 +388,16 @@ might be bad."
   :config (progn
             (require 'smartparens-config)
             (smartparens-global-mode t))
-  (defun handle-curlys (id action context)
-    (when (eq action 'insert)
-      (newline)
-      (newline)
-      (indent-according-to-mode)
-      (previous-line)
-      (indent-according-to-mode)))
+  ;; (defun handle-curlys (id action context)
+  ;;   (when (eq action 'insert)
+  ;;     (newline)
+  ;;     (newline)
+  ;;     (indent-according-to-mode)
+  ;;     (previous-line)
+  ;;     (indent-according-to-mode)))
 
-  (sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
-  (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys))
+  ;; (sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
+  ;; (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys))
 
   (defun my-elixir-do-end-close-action (id action context)
     (when (eq action 'insert)
@@ -510,8 +546,10 @@ sabort completely with `C-g'."
 
 ;;(load-theme 'material-light t)
 
-;;(load-theme 'bubbleberry t)
-(load-theme 'sanityinc-tomorrow-night t)
+;;(load-theme 'dark-krystal t)
+;;(load-theme 'kosmos t)
+;;(load-theme 'arjen-grey t)
+(load-theme 'atom-dark t)
 
 ;; (use-package evil-leader
 ;;   :init (progn
@@ -539,5 +577,13 @@ sabort completely with `C-g'."
 
 (global-set-key [remap fill-paragraph] #'endless/fill-or-unfill)
 (put 'narrow-to-region 'disabled nil)
+
+(defun iterm-focus ()
+  (interactive)
+  (do-applescript
+   " do shell script \"open -a iTerm\"\n"
+   ))
+
+(global-set-key (kbd "M-§") 'iterm-focus)
 
 (add-hook 'after-save-hook 'add-statistics)
