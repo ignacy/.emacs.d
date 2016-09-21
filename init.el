@@ -204,7 +204,9 @@
   :bind ("M-2" . er/expand-region))
 
 (use-package magit
-  :config (setq magit-completing-read-function 'ido-completing-read)
+  :config (progn
+            (use-package magithub)
+            (setq magit-completing-read-function 'ido-completing-read))
   :init (global-set-key (kbd "C-x g") 'magit-status))
 
 (global-auto-revert-mode 1)
@@ -362,7 +364,7 @@ might be bad."
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(set-frame-font "Fira Code 17")
+(set-frame-font "Fira Code 13")
 
 (use-package go-mode
   :config (progn
@@ -380,7 +382,7 @@ might be bad."
             (add-hook 'before-save-hook 'gofmt-before-save)
             ))
 
-(require 'go-flycheck)
+(ignore-errors (require 'go-flycheck))
 
 (use-package dash-at-point)
 
@@ -544,12 +546,12 @@ sabort completely with `C-g'."
                         (split-string (shell-command-to-string "cd ~/code/Advanon && heroku apps | heroku_list_apps") " ")
                         ) )
 
-;;(load-theme 'material-light t)
+(load-theme 'apropospriate-dark t)
 
 ;;(load-theme 'dark-krystal t)
 ;;(load-theme 'kosmos t)
 ;;(load-theme 'arjen-grey t)
-(load-theme 'atom-dark t)
+;;(load-theme 'atom-dark t)
 
 ;; (use-package evil-leader
 ;;   :init (progn
