@@ -205,7 +205,6 @@
 
 (use-package magit
   :config (progn
-            (use-package magithub)
             (setq magit-completing-read-function 'ido-completing-read))
   :init (global-set-key (kbd "C-x g") 'magit-status))
 
@@ -546,12 +545,10 @@ sabort completely with `C-g'."
                         (split-string (shell-command-to-string "cd ~/code/Advanon && heroku apps | heroku_list_apps") " ")
                         ) )
 
-(load-theme 'apropospriate-dark t)
+(ignore-errors (use-package color-theme-modern))
 
-;;(load-theme 'dark-krystal t)
-;;(load-theme 'kosmos t)
-;;(load-theme 'arjen-grey t)
-;;(load-theme 'atom-dark t)
+(load-theme 'cobalt t)
+
 
 ;; (use-package evil-leader
 ;;   :init (progn
