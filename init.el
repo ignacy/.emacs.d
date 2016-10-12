@@ -1,4 +1,3 @@
-(setq tramp-ssh-controlmaster-options "")
 (package-initialize)
 
 (setq mac-command-modifier 'meta)
@@ -13,7 +12,7 @@
 (delete-selection-mode t)
 (load-library "url-handlers")
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (when (not package-archive-contents)
   (package-refresh-contents))
 
@@ -95,14 +94,14 @@
 
 (use-package wgrep-ag)
 
-(use-package ag
-  :init (progn
-          (global-set-key (kbd "M-r") 'ag-project)
-          (global-set-key (kbd "M-R") 'ag-project-regexp)))
-
-;; (use-package helm-ag
+;; (use-package ag
 ;;   :init (progn
-;;           (global-set-key (kbd "M-r") 'helm-do-ag-project-root)))
+;;           (global-set-key (kbd "M-r") 'ag-project)
+;;           (global-set-key (kbd "M-R") 'ag-project-regexp)))
+
+(use-package helm-ag
+  :init (progn
+          (global-set-key (kbd "M-r") 'helm-do-ag-project-root)))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
@@ -112,12 +111,16 @@
 (setq custom-file (concat dotfiles-dir "custom.el"))
 (load custom-file)
 
+
+(setq tags-revert-without-query 1)
+
 (use-package projectile-rails)
 (use-package projectile
   :init (progn
           (defadvice find-tag-at-point (before auto-visti-tags)
             "Load default TAGS file from home directory if needed"
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
+
           (setq projectile-completion-system 'ido)
           (ad-activate 'find-tag-at-point)
           (projectile-global-mode)
@@ -133,7 +136,6 @@
 
 (use-package helm-projectile
   :init (helm-projectile-on))
-
 
 (use-package highlight-symbol
   :init (progn
@@ -325,7 +327,11 @@ might be bad."
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
 
-(set-frame-font "mononoki 14")
+(set-frame-font "Source Code Pro 17")
+;;(set-frame-font "Lucida Grande Mono 16")
+;;(set-frame-font "Inconsolata 17")
+;;(set-frame-font "mononoki 16")
+;;(set-frame-font "Menlo 15")
 
 (use-package go-mode
   :config (progn
@@ -350,35 +356,38 @@ might be bad."
 (use-package smartparens
   :config (progn
             (require 'smartparens-config)
-            (smartparens-global-mode t))
-  ;; (defun handle-curlys (id action context)
-  ;;   (when (eq action 'insert)
-  ;;     (newline)
-  ;;     (newline)
-  ;;     (indent-according-to-mode)
-  ;;     (previous-line)
-  ;;     (indent-according-to-mode)))
+            (smartparens-global-mode t)
+            (global-set-key (kbd "C-M-w") 'sp-copy-sexp)
+            ))
 
-  ;; (sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
-  ;; (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys))
+;; (defun handle-curlys (id action context)
+;;   (when (eq action 'insert)
+;;     (newline)
+;;     (newline)
+;;     (indent-according-to-mode)
+;;     (previous-line)
+;;     (indent-according-to-mode)))
 
-  (defun my-elixir-do-end-close-action (id action context)
-    (when (eq action 'insert)
-      (newline-and-indent)
-      (previous-line)
-      (indent-according-to-mode)))
+;; (sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
+;; (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys))
 
-  (sp-with-modes '(elixir-mode)
-    (sp-local-pair "do" "end"
-                   :when '(("SPC" "RET"))
-                   :post-handlers '(:add my-elixir-do-end-close-action)
-                   :actions '(insert))))
+(defun my-elixir-do-end-close-action (id action context)
+  (when (eq action 'insert)
+    (newline-and-indent)
+    (previous-line)
+    (indent-according-to-mode)))
+
+(sp-with-modes '(elixir-mode)
+  (sp-local-pair "do" "end"
+                 :when '(("SPC" "RET"))
+                 :post-handlers '(:add my-elixir-do-end-close-action)
+                 :actions '(insert)))
 
 ;; (use-package rainbow-identifiers
 ;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
-(use-package rainbow-delimiters
-  :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+(use-package rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (global-set-key (kbd "M-z") 'undo)
 
@@ -507,10 +516,12 @@ sabort completely with `C-g'."
                         (split-string (shell-command-to-string "cd ~/code/Advanon && heroku apps | heroku_list_apps") " ")
                         ) )
 
-(ignore-errors (use-package color-theme-modern))
+;;(ignore-errors (use-package color-theme-modern))
 
-(load-theme 'cobalt t)
 
+;;(load-theme 'cobalt t)
+;;(load-theme 'andreas t)
+(load-theme 'danneskjold t)
 
 ;; (use-package evil-leader
 ;;   :init (progn
