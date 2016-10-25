@@ -99,9 +99,14 @@
 ;;           (global-set-key (kbd "M-r") 'ag-project)
 ;;           (global-set-key (kbd "M-R") 'ag-project-regexp)))
 
-(use-package helm-ag
-  :init (progn
-          (global-set-key (kbd "M-r") 'helm-do-ag-project-root)))
+(use-package helm-ag                    ; Helm frontend for Ag
+  :ensure t
+  :bind (("M-r" . helm-do-ag-project-root))
+  :config
+  (setq helm-ag-fuzzy-match t                   ; Fuzzy matching
+        helm-ag-insert-at-point 'symbol         ; Default to symbol at point
+        helm-ag-edit-save t                     ; save buffers after editing
+        ))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
@@ -133,6 +138,16 @@
 (global-set-key (kbd "C-x b") 'projectile-switch-to-buffer)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c m") 'projectile-rails-find-current-spec)
+
+(setq kill-ring-max 200                 ; More killed items
+      kill-do-not-save-duplicates t     ; No duplicates in kill ring
+      ;; Save the contents of the clipboard to kill ring before killing
+      save-interprogram-paste-before-kill t)
+
+(use-package golden-ratio
+  :init (progn
+          (setq golden-ratio-auto-scale t)
+          (golden-ratio-mode 1)))
 
 (use-package helm-projectile
   :init (helm-projectile-on))
@@ -255,19 +270,38 @@ might be bad."
   :init (progn
           (require 'helm-config)))
 
+
+(use-package helm-swoop                 ; Powerful buffer search for Emacs
+  :ensure t
+  :bind  (("C-c s s"   . helm-swoop)
+          ("C-c s S"   . helm-multi-swoop)
+          ("C-c s C-s" . helm-multi-swoop-all)
+          ([remap swoop] . helm-swoop))
+  :init
+  (bind-keys
+   :map isearch-mode-map
+   ("<tab>" . helm-swoop-from-isearch)
+   ("C-i"   . helm-swoop-from-isearch)))
+
+
+(use-package reveal-in-osx-finder       ; Reveal current buffer in finder
+  :ensure t
+  ;; Bind analogous to `dired-jump' at C-c f j
+  :bind (("C-c f J" . reveal-in-osx-finder)))
+
 (use-package recentf
   :init (progn
           (setq recentf-auto-cleanup 'never)
           (recentf-mode t)
           (setq recentf-max-saved-items 2000)
-          (setq recentf-max-menu-items 25)
-
-          ;; (defun recentf-ido-find-file ()
-          ;;   "Find a recent file using Ido."
-          ;;   (interactive)
-          ;;   (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-          ;;     (when file
-          ;;       (find-file file))))
+          (setq recentf-max-menu-items 15)
+          (setq recentf-auto-cleanup 'never);; disable before we start recentf! If using Tramp a lot.
+          (setq recentf-exclude (list "/\\.git/.*\\'" ; Git contents
+                              "/elpa/.*\\'" ; Package files
+                              "TAGS"
+                              "/itsalltext/" ; It's all text temp files
+                              ;; And all other kinds of boring files
+                              #'ignoramus-boring-p))
           ))
 
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
@@ -289,6 +323,22 @@ might be bad."
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-use)))))))
 
+(setq dired-auto-revert-buffer t    ; Revert on re-visiting
+      ;; Better dired flags: `-l' is mandatory, `-a' shows all files, `-h'
+      ;; uses human-readable sizes, and `-F' appends file-type classifiers
+      ;; to file names (for better highlighting)
+      dired-listing-switches "-alhF"
+      dired-ls-F-marks-symlinks t   ; -F marks links with @
+      ;; Inhibit prompts for simple recursive operations
+      dired-recursive-copies 'always
+      ;; Auto-copy to other Dired split window
+      dired-dwim-target t)
+
+(use-package bookmark                   ; Bookmarks for Emacs buffers
+  :bind (("C-c f b" . list-bookmarks))
+  ;; Save bookmarks immediately after a bookmark was added
+  :config (setq bookmark-save-flag 1
+                bookmark-default-file (expand-file-name "bookmarks" "~/.emacs.d")))
 
 (defun indent-buffer ()
   "Indent the currently visited buffer."
@@ -327,11 +377,16 @@ might be bad."
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
 
-(set-frame-font "Source Code Pro 17")
+(set-face-attribute 'default nil :family "Source Code Pro" :height 150)
+;;(set-frame-font "Source Code Pro 17")
 ;;(set-frame-font "Lucida Grande Mono 16")
 ;;(set-frame-font "Inconsolata 17")
 ;;(set-frame-font "mononoki 16")
 ;;(set-frame-font "Menlo 15")
+
+(use-package bug-hunter                 ; Search init file for bugs
+  :ensure t)
+
 
 (use-package go-mode
   :config (progn
@@ -485,17 +540,35 @@ sabort completely with `C-g'."
 (if (file-exists-p "~/.emacs.local")
     (load-file "~/.emacs.local"))
 
+
 (defun add-statistics ()
   (interactive)
   (shell-command-to-string
    (concat "echok \"" (format-time-string "%s") "," (buffer-file-name) "\" >> ~/Dropbox/notes/actionstats.csv")))
 
+
+(use-package which-func                 ; Current function name
+  :init (which-function-mode)
+  :config
+  (setq which-func-unknown "⊥" ; The default is really boring…
+        which-func-format
+        `((:propertize (" ➤ " which-func-current)
+                       local-map ,which-func-keymap
+                       face which-func
+                       mouse-face mode-line-highlight
+                       help-echo "mouse-1: go to beginning\n\
+mouse-2: toggle rest visibility\n\
+mouse-3: go to end"))))
+
 (setq-default mode-line-format
               (list
                '(:eval (propertize "%* " 'face font-lock-warning-face))
+
                ;; value of current buffer name
                "%b, "
                '(vc-mode vc-mode)
+               " "
+               'which-func-current
 
                " (%l %c) "
                ))
@@ -519,9 +592,30 @@ sabort completely with `C-g'."
 ;;(ignore-errors (use-package color-theme-modern))
 
 
-;;(load-theme 'cobalt t)
-;;(load-theme 'andreas t)
-(load-theme 'danneskjold t)
+;; (load-theme 'flatland-black :no-confirm)
+;; (setf frame-background-mode 'dark)
+;; (global-hl-line-mode 1)
+
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :init
+  (progn
+    (load-theme 'sanityinc-tomorrow-night :no-confirm)
+    ;; (load-theme 'sanityinc-tomorrow-blue :no-confirm)
+    (setf frame-background-mode 'dark)
+    (global-hl-line-mode 1)
+    (custom-set-faces
+     '(cursor               ((t :background "#eebb28")))
+     '(diff-added           ((t :foreground "green" :underline nil)))
+     '(diff-removed         ((t :foreground "red" :underline nil)))
+     '(highlight            ((t :background "black" :underline nil)))
+     '(magit-item-highlight ((t :background "black")))
+     '(hl-line              ((t :background "gray10"))))))
+
+;;(load-theme 'danneskjold t)
+;;(load-theme 'oceanic t)
+;;(load-theme 'subatomic256 t)
+;;(load-theme 'adwaita t)
 
 ;; (use-package evil-leader
 ;;   :init (progn
