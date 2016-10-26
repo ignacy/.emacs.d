@@ -377,16 +377,13 @@ might be bad."
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
 
-(set-face-attribute 'default nil :family "Source Code Pro" :height 150)
+(set-face-attribute 'default nil :family "Source Code Pro" :height 140)
 ;;(set-frame-font "Source Code Pro 17")
 ;;(set-frame-font "Lucida Grande Mono 16")
-;;(set-frame-font "Inconsolata 17")
-;;(set-frame-font "mononoki 16")
-;;(set-frame-font "Menlo 15")
+;;(set-frame-font "Menlo 13")
 
 (use-package bug-hunter                 ; Search init file for bugs
   :ensure t)
-
 
 (use-package go-mode
   :config (progn
@@ -596,22 +593,24 @@ mouse-3: go to end"))))
 ;; (setf frame-background-mode 'dark)
 ;; (global-hl-line-mode 1)
 
-(use-package color-theme-sanityinc-tomorrow
-  :ensure t
-  :init
-  (progn
-    (load-theme 'sanityinc-tomorrow-night :no-confirm)
-    ;; (load-theme 'sanityinc-tomorrow-blue :no-confirm)
-    (setf frame-background-mode 'dark)
-    (global-hl-line-mode 1)
-    (custom-set-faces
-     '(cursor               ((t :background "#eebb28")))
-     '(diff-added           ((t :foreground "green" :underline nil)))
-     '(diff-removed         ((t :foreground "red" :underline nil)))
-     '(highlight            ((t :background "black" :underline nil)))
-     '(magit-item-highlight ((t :background "black")))
-     '(hl-line              ((t :background "gray10"))))))
+;; (use-package color-theme-sanityinc-tomorrow
+;;   :ensure t
+;;   :init
+;;   (progn
+;;     (load-theme 'sanityinc-tomorrow-night :no-confirm)
+;;     ;; (load-theme 'sanityinc-tomorrow-blue :no-confirm)
+;;     (setf frame-background-mode 'dark)
+;;     (global-hl-line-mode 1)
+;;     (custom-set-faces
+;;      '(cursor               ((t :background "#eebb28")))
+;;      '(diff-added           ((t :foreground "green" :underline nil)))
+;;      '(diff-removed         ((t :foreground "red" :underline nil)))
+;;      '(highlight            ((t :background "black" :underline nil)))
+;;      '(magit-item-highlight ((t :background "black")))
+;;      '(hl-line              ((t :background "gray10"))))))
 
+(use-package creamsody-theme)
+(load-theme 'creamsody t)
 ;;(load-theme 'danneskjold t)
 ;;(load-theme 'oceanic t)
 ;;(load-theme 'subatomic256 t)
