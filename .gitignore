@@ -28,3 +28,4 @@ custom.el
 /abbrev_defs
 /bookmarks
 places
+flycheck_init.el

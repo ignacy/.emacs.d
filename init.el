@@ -144,11 +144,6 @@
       ;; Save the contents of the clipboard to kill ring before killing
       save-interprogram-paste-before-kill t)
 
-(use-package golden-ratio
-  :init (progn
-          (setq golden-ratio-auto-scale t)
-          (golden-ratio-mode 1)))
-
 (use-package helm-projectile
   :init (helm-projectile-on))
 
@@ -377,10 +372,10 @@ might be bad."
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
 
-;;(set-face-attribute 'default nil :family "Source Code Pro" :height 140)
-;;(set-frame-font "Source Code Pro 14")
-(set-frame-font "Lucida Grande Mono 14")
+(set-frame-font "-*-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+;;(set-frame-font "Lucida Grande Mono 13")
 ;;(set-frame-font "Menlo 13")
+;;(set-frame-font "mononoki 14")
 
 (use-package bug-hunter                 ; Search init file for bugs
   :ensure t)
@@ -589,9 +584,13 @@ mouse-3: go to end"))))
 ;;(ignore-errors (use-package color-theme-modern))
 
 
+(use-package railscasts-reloaded-theme
+    :ensure t
+    :init
+    (load-theme 'railscasts-reloaded' t))
 ;; (use-package creamsody-theme)
 ;; (load-theme 'creamsody t)
-(load-theme 'danneskjold t)
+;;(load-theme 'danneskjold t)
 ;;(load-theme 'oceanic t)
 ;;(load-theme 'subatomic256 t)
 ;;(load-theme 'adwaita t)
@@ -608,6 +607,14 @@ mouse-3: go to end"))))
 ;; (use-package evil
 ;;   :init (evil-mode t))
 
+
+(use-package embrace
+  :init (progn
+          (defun display-buffer-in-major-side-window (name position slotid alist)
+            (display-buffer-in-side-window name alist))
+          (global-set-key (kbd "C-,") #'embrace-commander)
+          (add-hook 'ruby-mode-hook 'embrace-ruby-mode-hook)))
+
 (use-package gist)
 
 (defun endless/fill-or-unfill ()
@@ -623,12 +630,4 @@ mouse-3: go to end"))))
 (global-set-key [remap fill-paragraph] #'endless/fill-or-unfill)
 (put 'narrow-to-region 'disabled nil)
 
-(defun iterm-focus ()
-  (interactive)
-  (do-applescript
-   " do shell script \"open -a iTerm\"\n"
-   ))
-
-(global-set-key (kbd "M-§") 'iterm-focus)
-
-(add-hook 'after-save-hook 'add-statistics)
+;;(add-hook 'after-save-hook 'add-statistics)
