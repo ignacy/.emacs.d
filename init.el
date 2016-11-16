@@ -190,8 +190,8 @@
 (use-package flycheck
   :init (global-flycheck-mode))
 
-(use-package flycheck-elixir
-  :init (add-hook 'elixir-mode-hook 'flycheck-mode))
+;; (use-package flycheck-elixir
+;;   :init (add-hook 'elixir-mode-hook 'flycheck-mode))
 
 (add-to-list 'load-path "~/code/go/src/github.com/dougm/goflymake")
 
@@ -372,10 +372,12 @@ might be bad."
                         '("module" "require" "__dirname" "process" "console" "define"
                           "JSON" "$" "_" "Backbone" ))))
 
-(set-frame-font "-*-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
-;;(set-frame-font "Lucida Grande Mono 13")
+;;(set-frame-font "-*-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+;;(set-frame-font "Lucida Grande Mono 15")
+;;(set-frame-font "Inconsolata 16")
+(set-frame-font "Inconsolata-g 14")
 ;;(set-frame-font "Menlo 13")
-;;(set-frame-font "mononoki 14")
+;;(set-frame-font "mononoki 16")
 
 (use-package bug-hunter                 ; Search init file for bugs
   :ensure t)
@@ -398,37 +400,12 @@ might be bad."
 
 (ignore-errors (require 'go-flycheck))
 
-(use-package dash-at-point)
-
 (use-package smartparens
   :config (progn
             (require 'smartparens-config)
             (smartparens-global-mode t)
             (global-set-key (kbd "C-M-w") 'sp-copy-sexp)
             ))
-
-;; (defun handle-curlys (id action context)
-;;   (when (eq action 'insert)
-;;     (newline)
-;;     (newline)
-;;     (indent-according-to-mode)
-;;     (previous-line)
-;;     (indent-according-to-mode)))
-
-;; (sp-local-pair 'go-mode "{" nil :post-handlers '(:add handle-curlys))
-;; (sp-local-pair 'js2-mode "{" nil :post-handlers '(:add handle-curlys))
-
-(defun my-elixir-do-end-close-action (id action context)
-  (when (eq action 'insert)
-    (newline-and-indent)
-    (previous-line)
-    (indent-according-to-mode)))
-
-(sp-with-modes '(elixir-mode)
-  (sp-local-pair "do" "end"
-                 :when '(("SPC" "RET"))
-                 :post-handlers '(:add my-elixir-do-end-close-action)
-                 :actions '(insert)))
 
 ;; (use-package rainbow-identifiers
 ;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
@@ -583,17 +560,19 @@ mouse-3: go to end"))))
 
 ;;(ignore-errors (use-package color-theme-modern))
 
+;;(load-theme 'darkane t)
 
-(use-package railscasts-reloaded-theme
-    :ensure t
-    :init
-    (load-theme 'railscasts-reloaded' t))
+;; (use-package railscasts-reloaded-theme
+;;     :ensure t
+;;     :init
+;;     (load-theme 'railscasts-reloaded' t))
 ;; (use-package creamsody-theme)
 ;; (load-theme 'creamsody t)
 ;;(load-theme 'danneskjold t)
 ;;(load-theme 'oceanic t)
 ;;(load-theme 'subatomic256 t)
 ;;(load-theme 'adwaita t)
+(load-theme 'arjen-grey t)
 
 ;; (use-package evil-leader
 ;;   :init (progn
