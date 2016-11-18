@@ -72,25 +72,25 @@
 (use-package haml-mode)
 (use-package slim-mode)
 
-(ido-mode 1)
-(ido-everywhere)
+;; (ido-mode 1)
+;; (ido-everywhere)
 
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-(setq ido-create-new-buffer 'always)
-(set-default 'imenu-auto-rescan t)
-(defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
-  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
-  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
-  (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
-  (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
-(add-hook 'ido-setup-hook 'ido-define-keys)
+;; (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+;; (setq ido-create-new-buffer 'always)
+;; (set-default 'imenu-auto-rescan t)
+;; (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
+;;   (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+;;   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
+;;   (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
+;;   (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
+;; (add-hook 'ido-setup-hook 'ido-define-keys)
 
-(use-package flx-ido
-  :init (progn
-          (flx-ido-mode 1)
-          ;; disable ido faces to see flx highlights.
-          (setq ido-enable-flex-matching t)
-          (setq ido-use-faces nil)))
+;; (use-package flx-ido
+;;   :init (progn
+;;           (flx-ido-mode 1)
+;;           ;; disable ido faces to see flx highlights.
+;;           (setq ido-enable-flex-matching t)
+;;           (setq ido-use-faces nil)))
 
 (use-package wgrep-ag)
 
@@ -134,7 +134,7 @@
   :bind ("C-c C-p" . projectile-switch-project))
 
 (global-set-key (kbd "C-x f") 'projectile-find-file)
-(global-set-key (kbd "C-x C-f") 'ido-find-file)
+;; (global-set-key (kbd "C-x C-f") 'ido-find-file)
 (global-set-key (kbd "C-x b") 'projectile-switch-to-buffer)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c m") 'projectile-rails-find-current-spec)
@@ -261,10 +261,17 @@ might be bad."
 (use-package fancy-narrow
   :init (fancy-narrow-mode t))
 
+(use-package ivy
+  :diminish (ivy-mode)
+  :bind (("C-x b" . ivy-switch-buffer))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-display-style 'fancy))
+
 (use-package helm
   :init (progn
           (require 'helm-config)))
-
 
 (use-package helm-swoop                 ; Powerful buffer search for Emacs
   :ensure t
@@ -375,12 +382,17 @@ might be bad."
 ;;(set-frame-font "-*-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 ;;(set-frame-font "Lucida Grande Mono 15")
 ;;(set-frame-font "Inconsolata 16")
-(set-frame-font "Inconsolata-g 14")
+
+;;(set-frame-font "Inconsolata-g 15")
 ;;(set-frame-font "Menlo 13")
 ;;(set-frame-font "mononoki 16")
 
+(set-frame-font "Go Mono 16")
+
+
 (use-package bug-hunter                 ; Search init file for bugs
   :ensure t)
+
 
 (use-package go-mode
   :config (progn
@@ -558,21 +570,25 @@ mouse-3: go to end"))))
                         (split-string (shell-command-to-string "cd ~/code/Advanon && heroku apps | heroku_list_apps") " ")
                         ) )
 
+
+(use-package which-key
+  :init (which-key-mode))
+
 ;;(ignore-errors (use-package color-theme-modern))
 
 ;;(load-theme 'darkane t)
 
-;; (use-package railscasts-reloaded-theme
-;;     :ensure t
-;;     :init
-;;     (load-theme 'railscasts-reloaded' t))
-;; (use-package creamsody-theme)
-;; (load-theme 'creamsody t)
-;;(load-theme 'danneskjold t)
-;;(load-theme 'oceanic t)
-;;(load-theme 'subatomic256 t)
-;;(load-theme 'adwaita t)
-(load-theme 'arjen-grey t)
+(load-theme 'oceanic t)
+
+(use-package ace-window
+  :ensure t
+  :init
+  (progn
+    (global-set-key [remap other-window] 'ace-window)
+    (custom-set-faces
+     '(aw-leading-char-face
+       ((t (:inherit ace-jump-face-foreground :height 3.0)))))
+    ))
 
 ;; (use-package evil-leader
 ;;   :init (progn
