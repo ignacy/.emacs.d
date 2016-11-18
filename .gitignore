@@ -29,3 +29,4 @@ custom.el
 /bookmarks
 places
 flycheck_init.el
+config.el
