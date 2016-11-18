@@ -16,7 +16,7 @@
 
 (setq dotfiles-dir "~/.emacs.d/")
 
-(save-place-mode 1)
+;(save-place-mode 1)
 
 (setq compilation-scroll-output nil)
 (setq compilation-error-regexp-alist nil)
@@ -133,7 +133,7 @@
 
 
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :init (global-flycheck-mode t))
 
 ;; (use-package flycheck-elixir
 ;;   :init (add-hook 'elixir-mode-hook 'flycheck-mode))
@@ -207,7 +207,7 @@
 
 * Fonts and looks
 #+BEGIN_SRC emacs-lisp
-;;(set-frame-font "-*-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "Lucida Grande Mono 15")
 ;;(set-frame-font "Inconsolata 16")
 
@@ -215,15 +215,17 @@
 ;;(set-frame-font "Menlo 13")
 ;;(set-frame-font "mononoki 16")
 
-(set-frame-font "Go Mono 16")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+(defun disable-all-themes ()
+  "disable all active themes."
+  (dolist (i custom-enabled-themes)
+    (disable-theme i)))
 
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
 ;;(load-theme 'darkane t)
-
-
-
 (setq-default mode-line-format
               (list
                '(:eval (propertize "%* " 'face font-lock-warning-face))
@@ -234,9 +236,12 @@
 
                " (%l %c) "
                ))
+;;(load-theme 'oceanic t)
+(load-theme 'day-colors t)
 
+(global-hl-line-mode t)
+(set-face-background hl-line-face "gray83")
 
-(load-theme 'oceanic t)
 
 #+END_SRC
 * Unsorted
@@ -281,7 +286,6 @@
           (add-hook 'prog-mode-hook 'highlight-symbol-mode)
           (add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
           (setq highlight-symbol-idle-delay 0)))
-
 
 (use-package wrap-region
   :init (progn
@@ -451,13 +455,6 @@ might be bad."
 
 (global-set-key (kbd "M-z") 'undo)
 
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-
-(defun disable-all-themes ()
-  "disable all active themes."
-  (dolist (i custom-enabled-themes)
-    (disable-theme i)))
 
 (setq column-number-mode t)
 
