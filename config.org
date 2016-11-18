@@ -190,8 +190,6 @@
 
 #+END_SRC
 
-
-
 * Searching
 
 #+BEGIN_SRC emacs-lisp
@@ -207,16 +205,45 @@
 
 #+END_SRC
 
-* COMMENT Rest
+* Fonts and looks
+#+BEGIN_SRC emacs-lisp
+;;(set-frame-font "-*-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+;;(set-frame-font "Lucida Grande Mono 15")
+;;(set-frame-font "Inconsolata 16")
+
+;;(set-frame-font "Inconsolata-g 15")
+;;(set-frame-font "Menlo 13")
+;;(set-frame-font "mononoki 16")
+
+(set-frame-font "Go Mono 16")
+
+(defadvice load-theme (before disable-themes-first activate)
+  (disable-all-themes))
+
+;;(load-theme 'darkane t)
+
+
+
+(setq-default mode-line-format
+              (list
+               '(:eval (propertize "%* " 'face font-lock-warning-face))
+
+               ;; value of current buffer name
+               "%b, "
+               '(vc-mode vc-mode)
+
+               " (%l %c) "
+               ))
+
+
+(load-theme 'oceanic t)
+
+#+END_SRC
+* Unsorted
 
 
 
 #+BEGIN_SRC emacs-lisp
-
-
-
-(setq custom-file (concat dotfiles-dir "custom.el"))
-(load custom-file)
 
 
 (setq tags-revert-without-query 1)
@@ -408,17 +435,6 @@ might be bad."
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 
 
-;;(set-frame-font "-*-Source Code Pro-normal-normal-normal-*-15-*-*-*-m-0-iso10646-1")
-;;(set-frame-font "Lucida Grande Mono 15")
-;;(set-frame-font "Inconsolata 16")
-
-;;(set-frame-font "Inconsolata-g 15")
-;;(set-frame-font "Menlo 13")
-;;(set-frame-font "mononoki 16")
-
-(set-frame-font "Go Mono 16")
-
-
 
 (use-package smartparens
   :config (progn
@@ -442,10 +458,6 @@ might be bad."
   "disable all active themes."
   (dolist (i custom-enabled-themes)
     (disable-theme i)))
-
-(defadvice load-theme (before disable-themes-first activate)
-  (disable-all-themes))
-
 
 (setq column-number-mode t)
 
@@ -534,18 +546,6 @@ sabort completely with `C-g'."
   (shell-command-to-string
    (concat "echok \"" (format-time-string "%s") "," (buffer-file-name) "\" >> ~/Dropbox/notes/actionstats.csv")))
 
-
-(setq-default mode-line-format
-              (list
-               '(:eval (propertize "%* " 'face font-lock-warning-face))
-
-               ;; value of current buffer name
-               "%b, "
-               '(vc-mode vc-mode)
-
-               " (%l %c) "
-               ))
-
 (require 'ansi-color)
 (defun colorize-compilation-buffer ()
   (let ((inhibit-read-only t))
@@ -565,10 +565,6 @@ sabort completely with `C-g'."
 
 (use-package which-key
   :init (which-key-mode))
-
-;;(load-theme 'darkane t)
-
-(load-theme 'oceanic t)
 
 (use-package ace-window
   :ensure t
@@ -613,5 +609,10 @@ sabort completely with `C-g'."
 
 (global-set-key [remap fill-paragraph] #'endless/fill-or-unfill)
 (put 'narrow-to-region 'disabled nil)
+
+
+(setq custom-file (concat dotfiles-dir "custom.el"))
+(load custom-file)
+
 
 #+END_SRC
