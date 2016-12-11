@@ -16,6 +16,8 @@
 
 (setq dotfiles-dir "~/.emacs.d/")
 
+(setq mac-option-key-is-meta t)
+(setq mac-right-option-modifier nil)
 ;(save-place-mode 1)
 
 (setq compilation-scroll-output nil)
@@ -32,11 +34,12 @@
 
 (use-package diminish)
 (use-package bug-hunter)
+(load-file "~/.emacs.d/font-lock+.el")
 
 #+END_SRC
 
 * Completition & snippets
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 (use-package yasnippet
   :ensure yasnippet
   :init (progn
@@ -90,10 +93,9 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 #+END_SRC
-
 * Programming languages
 
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 
 (use-package elixir-mode)
 (use-package alchemist)
@@ -129,7 +131,7 @@
 (use-package rbenv
   :init (progn
           (setq rbenv-show-active-ruby-in-modeline nil)
-          (global-rbenv-mode)))
+          (ignore-errors (global-rbenv-mode))))
 
 
 (use-package flycheck
@@ -146,6 +148,9 @@
             (setq rspec-use-rake-when-possible nil)
             (setq rspec-use-rvm nil)
             (setq rspec-use-bundler-when-possible nil)
+          (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)
+          (eval-after-load 'rspec-mode
+             '(rspec-install-snippets))
             ;;(setq rspec-command-options "--format progress --order random")
             ))
 
@@ -193,22 +198,29 @@
 * Searching
 
 #+BEGIN_SRC emacs-lisp
-(use-package wgrep-ag)
-(use-package helm-ag                    ; Helm frontend for Ag
-  :ensure t
-  :bind (("M-r" . helm-do-ag-project-root))
-  :config
-  (setq helm-ag-fuzzy-match t                   ; Fuzzy matching
-        helm-ag-insert-at-point 'symbol         ; Default to symbol at point
-        helm-ag-edit-save t                     ; save buffers after editing
-        ))
+  (use-package wgrep-ag)
+  (use-package helm-ag                    ; Helm frontend for Ag
+    :ensure t
+    :bind (("M-r" . helm-do-ag-project-root))
+    :config
+    (setq helm-ag-fuzzy-match t                   ; Fuzzy matching
+          helm-ag-insert-at-point 'symbol         ; Default to symbol at point
+          helm-ag-edit-save t                     ; save buffers after editing
+          ))
+
+(global-set-key (kbd "M-c") 'query-replace-regexp)
+
+  (use-package anzu
+     :init (progn (global-anzu-mode +1)
+     (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)))
 
 #+END_SRC
 
 * Fonts and looks
 #+BEGIN_SRC emacs-lisp
-(set-frame-font "Source Code Pro 16")
-;;(set-frame-font "Lucida Grande Mono 15")
+
+;;(set-frame-font "Source Code Pro 16")
+(set-frame-font "Lucida Grande Mono 17")
 ;;(set-frame-font "Inconsolata 16")
 
 ;;(set-frame-font "Inconsolata-g 15")
@@ -236,12 +248,22 @@
 
                " (%l %c) "
                ))
+
+;;(load-theme 'intellij t)
+;;(load-theme 'material-light t)
+
+(load-file "~/.emacs.d/doom-themes.el")
+(load-theme 'doom-molokai t)
+
+
+;;(load-theme 'danneskjold t)
+;;(load-theme 'leuven t)
+;;(setq leuven-scale-outline-headlines nil)
+;;(load-theme 'zeus-lighter t)
 ;;(load-theme 'oceanic t)
-(load-theme 'day-colors t)
 
-(global-hl-line-mode t)
-(set-face-background hl-line-face "gray83")
-
+;; (global-hl-line-mode t)
+;; (set-face-background hl-line-face "gray92")
 
 #+END_SRC
 * Unsorted
@@ -337,14 +359,6 @@ might be bad."
 (use-package fancy-narrow
   :init (fancy-narrow-mode t))
 
-(use-package ivy
-  :diminish (ivy-mode)
-  :bind (("C-x b" . ivy-switch-buffer))
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-display-style 'fancy))
-
 (use-package helm
   :init (progn
           (require 'helm-config)))
@@ -372,7 +386,7 @@ might be bad."
           (setq recentf-auto-cleanup 'never)
           (recentf-mode t)
           (setq recentf-max-saved-items 2000)
-          (setq recentf-max-menu-items 15)
+          (setq recentf-max-menu-items 10)
           (setq recentf-auto-cleanup 'never);; disable before we start recentf! If using Tramp a lot.
           (setq recentf-exclude (list "/\\.git/.*\\'" ; Git contents
                               "/elpa/.*\\'" ; Package files
@@ -383,6 +397,14 @@ might be bad."
           ))
 
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
+
+(setq helm-mini-default-sources '(helm-source-buffers-list
+                                  helm-source-recentf
+                                  helm-source-bookmarks
+                                  helm-source-buffer-not-found))
+
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-c f b") 'helm-bookmarks)
 
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
@@ -412,11 +434,6 @@ might be bad."
       ;; Auto-copy to other Dired split window
       dired-dwim-target t)
 
-(use-package bookmark                   ; Bookmarks for Emacs buffers
-  :bind (("C-c f b" . list-bookmarks))
-  ;; Save bookmarks immediately after a bookmark was added
-  :config (setq bookmark-save-flag 1
-                bookmark-default-file (expand-file-name "bookmarks" "~/.emacs.d")))
 
 (defun indent-buffer ()
   "Indent the currently visited buffer."
@@ -446,6 +463,8 @@ might be bad."
             (smartparens-global-mode t)
             (global-set-key (kbd "C-M-w") 'sp-copy-sexp)
             ))
+
+(use-package iedit)
 
 ;; (use-package rainbow-identifiers
 ;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
@@ -505,9 +524,15 @@ sabort completely with `C-g'."
 (use-package org
   :init (progn
           (require 'ox-md nil t)
+         (defun add-pcomplete-to-capf ()
+            (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
+
+         (add-hook 'org-mode-hook #'add-pcomplete-to-capf)
+
           (setq org-use-speed-commands t
                 org-hide-emphasis-markers t
                 org-src-fontify-natively t   ;; Pretty code blocks
+                org-fontify-whole-heading-line t
                 org-src-tab-acts-natively t
                 org-confirm-babel-evaluate nil)
 
@@ -534,8 +559,28 @@ sabort completely with `C-g'."
           (global-set-key (kbd "C-c C-c") 'org-capture)
           (global-set-key "\C-ca" 'org-agenda)))
 
-(if (file-exists-p "~/.emacs.local")
-    (load-file "~/.emacs.local"))
+
+(defadvice org-capture-finalize
+    (after delete-capture-frame activate)
+  "Advise capture-finalize to close the frame"
+  (if (equal "capture" (frame-parameter nil 'name))
+    (delete-frame)))
+
+(defadvice org-capture-destroy
+    (after delete-capture-frame activate)
+  "Advise capture-destroy to close the frame"
+  (if (equal "capture" (frame-parameter nil 'name))
+    (delete-frame)))
+
+(load-file "~/.emacs.d/noflet.el")
+(defun make-capture-frame ()
+  "Create a new frame and run org-capture."
+  (interactive)
+  (make-frame '((name . "capture")))
+  (select-frame-by-name "capture")
+  (delete-other-windows)
+  (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
+    (org-capture)))
 
 
 (defun add-statistics ()
@@ -544,6 +589,7 @@ sabort completely with `C-g'."
    (concat "echok \"" (format-time-string "%s") "," (buffer-file-name) "\" >> ~/Dropbox/notes/actionstats.csv")))
 
 (require 'ansi-color)
+
 (defun colorize-compilation-buffer ()
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
@@ -611,5 +657,5 @@ sabort completely with `C-g'."
 (setq custom-file (concat dotfiles-dir "custom.el"))
 (load custom-file)
 
-
+(server-start)
 #+END_SRC
