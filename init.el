@@ -175,8 +175,6 @@
 (use-package haml-mode)
 (use-package slim-mode)
 
-
-
 (use-package go-mode
   :config (progn
             (add-hook 'go-mode-hook '(lambda ()
@@ -229,7 +227,6 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-;;(load-theme 'darkane t)
 (setq-default mode-line-format
               (list
                '(:eval (propertize "%* " 'face font-lock-warning-face))
@@ -241,16 +238,12 @@
                " (%l %c) "
                ))
 
-;;(load-theme 'intellij t)
-;;(load-theme 'material-light t)
-(load-theme 'rebecca t)
-;;(load-theme 'leuven t)
-;;(setq leuven-scale-outline-headlines nil)
-;;(load-theme 'zeus-lighter t)
-;;(load-theme 'oceanic t)
 
-;; (global-hl-line-mode t)
-;; (set-face-background hl-line-face "gray92")
+(use-package creamsody-theme)
+(load-theme 'creamsody t)
+;;(invert-face 'default)
+;(load-theme 'zweilight t)
+;;(load-theme 'darkane t)
 
 (setq tags-revert-without-query 1)
 
@@ -432,16 +425,19 @@ might be bad."
         (message "Indented buffer.")))))
 
 
-(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+(global-set-key (kbd "C-x i") 'indent-region-or-buffer)
 
 
 
-(use-package smartparens
-  :config (progn
-            (require 'smartparens-config)
-            (smartparens-global-mode t)
-            (global-set-key (kbd "C-M-w") 'sp-copy-sexp)
-            ))
+(use-package smartparens-config
+    :ensure smartparens
+    :config
+    (progn
+      (show-smartparens-global-mode t)
+      (smartparens-global-mode t)
+      (global-set-key (kbd "C-M-w") 'sp-copy-sexp)
+      (load-file "~/.emacs.d/im-smartparens.el")
+      ))
 
 (use-package iedit)
 
@@ -591,13 +587,6 @@ sabort completely with `C-g'."
 
 ;;(fset 'evil-visual-update-x-selection 'ignore)
 
-
-(use-package embrace
-  :init (progn
-          (defun display-buffer-in-major-side-window (name position slotid alist)
-            (display-buffer-in-side-window name alist))
-          (global-set-key (kbd "C-,") #'embrace-commander)
-          (add-hook 'ruby-mode-hook 'embrace-ruby-mode-hook)))
 
 (use-package gist)
 
