@@ -239,11 +239,11 @@
                ))
 
 
-(use-package creamsody-theme)
-(load-theme 'creamsody t)
 ;;(invert-face 'default)
-;(load-theme 'zweilight t)
+
+;;(load-theme 'zweilight t)
 ;;(load-theme 'darkane t)
+(load-theme 'dark-krystal t)
 
 (setq tags-revert-without-query 1)
 
