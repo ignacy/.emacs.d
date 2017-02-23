@@ -144,6 +144,11 @@
 
 (add-to-list 'load-path "~/code/go/src/github.com/dougm/goflymake")
 
+
+
+(use-package dockerfile-mode
+  :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
+
 (use-package rspec-mode
   :ensure  rspec-mode
   :config (progn
