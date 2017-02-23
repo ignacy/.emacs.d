@@ -30,7 +30,7 @@
 
 (setq mac-option-key-is-meta t)
 (setq mac-right-option-modifier nil)
-;(save-place-mode 1)
+                                        ;(save-place-mode 1)
 
 (setq compilation-scroll-output nil)
 (setq compilation-error-regexp-alist nil)
@@ -78,26 +78,36 @@
 (use-package ido-completing-read+)
 
 (ido-mode 1)
-(ido-everywhere)
+(ido-everywhere 1)
 
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(use-package ido-ubiquitous
+  :init (ido-ubiquitous-mode 1))
+
+(use-package ido-vertical-mode
+  :init (progn
+          (ido-vertical-mode 1)
+          (setq ido-vertical-define-keys 'C-n-and-C-p-only)))
+
 (setq ido-create-new-buffer 'always)
 (set-default 'imenu-auto-rescan t)
- (defun ido-define-keys () ;; C-n/p is more intuitive in vertical layout
-   (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
-   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)
-   (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
-   (define-key ido-completion-map (kbd "<up>") 'ido-prev-match))
- (add-hook 'ido-setup-hook 'ido-define-keys)
 
- (use-package flx-ido
-   :init (progn
-           (flx-ido-mode 1)
-           ;; disable ido faces to see flx highlights.
-           (setq ido-enable-flex-matching t)
-           (setq ido-use-faces nil)))
+(use-package flx-ido
+  :init (progn
+          (flx-ido-mode 1)
+          ;; disable ido faces to see flx highlights.
+          (setq ido-enable-flex-matching t)
+          (setq ido-use-faces nil)))
 
 (global-set-key (kbd "M-/") 'hippie-expand)
+
+(defun recentf-ido-find-file ()
+  "Find a recent file using ido."
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
+
+(global-set-key (kbd "C-x r") 'recentf-ido-find-file)
 
 (use-package elixir-mode)
 (use-package alchemist)
@@ -155,9 +165,9 @@
             (setq rspec-use-rake-when-possible nil)
             (setq rspec-use-rvm nil)
             (setq rspec-use-bundler-when-possible nil)
-          (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)
-          (eval-after-load 'rspec-mode
-             '(rspec-install-snippets))
+            (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)
+            (eval-after-load 'rspec-mode
+              '(rspec-install-snippets))
             ;;(setq rspec-command-options "--format progress --order random")
             ))
 
@@ -199,20 +209,12 @@
 (ignore-errors (require 'go-flycheck))
 
 (use-package wgrep-ag)
-  (use-package helm-ag                    ; Helm frontend for Ag
-    :ensure t
-    :bind (("M-r" . helm-do-ag-project-root))
-    :config
-    (setq helm-ag-fuzzy-match t                   ; Fuzzy matching
-          helm-ag-insert-at-point 'symbol         ; Default to symbol at point
-          helm-ag-edit-save t                     ; save buffers after editing
-          ))
 
 (global-set-key (kbd "M-c") 'query-replace-regexp)
 
-  (use-package anzu
-     :init (progn (global-anzu-mode +1)
-     (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)))
+(use-package anzu
+  :init (progn (global-anzu-mode +1)
+               (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)))
 
 ;;(set-frame-font "Source Code Pro 16")
 (set-frame-font "Lucida Grande Mono 17")
@@ -243,7 +245,8 @@
                " (%l %c) "
                ))
 
-(load-theme 'paganini t)
+;;(load-theme 'paganini t)
+(load-theme 'grandshell t)
 
 (setq tags-revert-without-query 1)
 
@@ -262,18 +265,26 @@
   :bind ("C-c C-p" . projectile-switch-project))
 
 (global-set-key (kbd "C-x f") 'projectile-find-file)
-;; (global-set-key (kbd "C-x C-f") 'ido-find-file)
+(global-set-key (kbd "C-x C-f") 'ido-find-file)
 (global-set-key (kbd "C-x b") 'projectile-switch-to-buffer)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c m") 'projectile-rails-find-current-spec)
+
+(use-package ibuffer-projectile
+  :init (add-hook 'ibuffer-hook
+                  (lambda ()
+                    (ibuffer-projectile-set-filter-groups)
+                    (unless (eq ibuffer-sorting-mode 'alphabetic)
+                      (ibuffer-do-sort-by-alphabetic)))))
+
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 
 (setq kill-ring-max 200                 ; More killed items
       kill-do-not-save-duplicates t     ; No duplicates in kill ring
       ;; Save the contents of the clipboard to kill ring before killing
       save-interprogram-paste-before-kill t)
-
-(use-package helm-projectile
-  :init (helm-projectile-on))
 
 (use-package highlight-symbol
   :init (progn
@@ -331,23 +342,6 @@ might be bad."
 (use-package fancy-narrow
   :init (fancy-narrow-mode t))
 
-(use-package helm
-  :init (progn
-          (require 'helm-config)))
-
-(use-package helm-swoop                 ; Powerful buffer search for Emacs
-  :ensure t
-  :bind  (("C-c s s"   . helm-swoop)
-          ("C-c s S"   . helm-multi-swoop)
-          ("C-c s C-s" . helm-multi-swoop-all)
-          ([remap swoop] . helm-swoop))
-  :init
-  (bind-keys
-   :map isearch-mode-map
-   ("<tab>" . helm-swoop-from-isearch)
-   ("C-i"   . helm-swoop-from-isearch)))
-
-
 (use-package reveal-in-osx-finder       ; Reveal current buffer in finder
   :ensure t
   ;; Bind analogous to `dired-jump' at C-c f j
@@ -361,22 +355,12 @@ might be bad."
           (setq recentf-max-menu-items 10)
           (setq recentf-auto-cleanup 'never);; disable before we start recentf! If using Tramp a lot.
           (setq recentf-exclude (list "/\\.git/.*\\'" ; Git contents
-                              "/elpa/.*\\'" ; Package files
-                              "TAGS"
-                              "/itsalltext/" ; It's all text temp files
-                              ;; And all other kinds of boring files
-                              #'ignoramus-boring-p))
+                                      "/elpa/.*\\'" ; Package files
+                                      "TAGS"
+                                      "/itsalltext/" ; It's all text temp files
+                                      ;; And all other kinds of boring files
+                                      #'ignoramus-boring-p))
           ))
-
-(global-set-key (kbd "C-x C-r") 'helm-recentf)
-
-(setq helm-mini-default-sources '(helm-source-buffers-list
-                                  helm-source-recentf
-                                  helm-source-bookmarks
-                                  helm-source-buffer-not-found))
-
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-c f b") 'helm-bookmarks)
 
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
@@ -489,10 +473,10 @@ sabort completely with `C-g'."
 (use-package org
   :init (progn
           (require 'ox-md nil t)
-         (defun add-pcomplete-to-capf ()
+          (defun add-pcomplete-to-capf ()
             (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
 
-         (add-hook 'org-mode-hook #'add-pcomplete-to-capf)
+          (add-hook 'org-mode-hook #'add-pcomplete-to-capf)
 
           (setq org-use-speed-commands t
                 org-hide-emphasis-markers t
