@@ -243,6 +243,7 @@
                " (%l %c) "
                ))
 
+(load-theme 'paganini t)
 
 (setq tags-revert-without-query 1)
 
