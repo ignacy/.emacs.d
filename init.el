@@ -208,6 +208,9 @@
 
 (ignore-errors (require 'go-flycheck))
 
+(use-package ag
+  :init (global-set-key (kbd "M-r") 'ag-project))
+
 (use-package wgrep-ag)
 
 (global-set-key (kbd "M-c") 'query-replace-regexp)
