@@ -239,12 +239,6 @@
                ))
 
 
-;;(invert-face 'default)
-
-;;(load-theme 'zweilight t)
-;;(load-theme 'darkane t)
-(load-theme 'dark-krystal t)
-
 (setq tags-revert-without-query 1)
 
 (use-package projectile-rails)
@@ -535,14 +529,14 @@ sabort completely with `C-g'."
           (global-set-key "\C-ca" 'org-agenda)))
 
 
-(require 'ansi-color)
+;;(require 'ansi-color)
 
 (defun colorize-compilation-buffer ()
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
-(setq shell-file-name "zsh")
+(setq shell-file-name "fish")
 (setenv "SHELL" shell-file-name)
 (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
 
