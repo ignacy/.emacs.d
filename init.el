@@ -428,16 +428,6 @@ might be bad."
 
 
 
-(use-package smartparens-config
-    :ensure smartparens
-    :config
-    (progn
-      (show-smartparens-global-mode t)
-      (smartparens-global-mode t)
-      (global-set-key (kbd "C-M-w") 'sp-copy-sexp)
-      (load-file "~/.emacs.d/im-smartparens.el")
-      ))
-
 (use-package iedit)
 
 ;; (use-package rainbow-identifiers
