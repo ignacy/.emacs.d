@@ -249,7 +249,12 @@
                ))
 
 ;;(load-theme 'paganini t)
-(load-theme 'grandshell t)
+
+;;(use-package prassee-theme)
+(use-package kaolin-theme)
+
+;; (use-package grandshell-theme)
+;; (load-theme 'grandshell t)
 
 (setq tags-revert-without-query 1)
 
