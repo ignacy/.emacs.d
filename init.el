@@ -108,6 +108,7 @@
       (find-file file))))
 
 (global-set-key (kbd "C-x r") 'recentf-ido-find-file)
+(global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
 (use-package elixir-mode)
 (use-package alchemist)
@@ -420,6 +421,14 @@ might be bad."
 (global-set-key (kbd "C-x i") 'indent-region-or-buffer)
 
 
+(use-package sane-term
+  :init (progn
+          (global-set-key (kbd "C-x t") 'sane-term)
+          (global-set-key (kbd "C-x T") 'sane-term-create)
+          ;; Optional convenience binding. This allows C-y to paste even when in term-char-mode (see below).
+          (add-hook 'term-mode-hook
+                    (lambda() (define-key
+                                term-raw-map (kbd "C-y") (lambda () (interactive) (term-line-mode) (yank) (term-char-mode)))))))
 
 (use-package iedit)
 
