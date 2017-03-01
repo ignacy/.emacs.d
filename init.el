@@ -30,7 +30,7 @@
 
 (setq mac-option-key-is-meta t)
 (setq mac-right-option-modifier nil)
-                                        ;(save-place-mode 1)
+(save-place-mode 1)
 
 (setq compilation-scroll-output nil)
 (setq compilation-error-regexp-alist nil)
