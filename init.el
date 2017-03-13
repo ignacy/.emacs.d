@@ -108,7 +108,6 @@
       (find-file file))))
 
 (global-set-key (kbd "C-x r") 'recentf-ido-find-file)
-(global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
 (use-package elixir-mode)
 (use-package alchemist)
@@ -220,12 +219,9 @@
   :init (progn (global-anzu-mode +1)
                (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)))
 
-;;(set-frame-font "Source Code Pro 16")
 (set-frame-font "Lucida Grande Mono 17")
-;;(set-frame-font "Inconsolata 16")
-
-;;(set-frame-font "Inconsolata-g 15")
-;;(set-frame-font "Menlo 13")
+;;(set-frame-font "Menlo 18")
+;;(set-frame-font "Source Code Pro 18")
 ;;(set-frame-font "mononoki 16")
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -252,9 +248,8 @@
 ;;(load-theme 'paganini t)
 
 ;;(use-package prassee-theme)
-(use-package kaolin-theme)
 
-;; (use-package grandshell-theme)
+(load-theme 'flatui t)
 ;; (load-theme 'grandshell t)
 
 (setq tags-revert-without-query 1)
@@ -577,7 +572,6 @@ sabort completely with `C-g'."
 ;;(define-key evil-visual-state-map (kbd "M-v")"\C-y" 'yank)
 
 ;;(fset 'evil-visual-update-x-selection 'ignore)
-
 
 (use-package gist)
 
