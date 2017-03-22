@@ -247,9 +247,11 @@
 
 ;;(load-theme 'paganini t)
 
+(load-theme 'ample t)
 ;;(use-package prassee-theme)
+;;(load-theme 'sanityinc-tomorrow-eighties t)
 
-(load-theme 'flatui t)
+;;(load-theme 'flatui t)
 ;; (load-theme 'grandshell t)
 
 (setq tags-revert-without-query 1)
