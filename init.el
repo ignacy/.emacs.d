@@ -1,5 +1,6 @@
 (package-initialize)
 
+
 (load-library "url-handlers")
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -247,7 +248,7 @@
 
 ;;(load-theme 'paganini t)
 
-(load-theme 'ample t)
+(load-theme 'nimbus t)
 ;;(use-package prassee-theme)
 ;;(load-theme 'sanityinc-tomorrow-eighties t)
 
