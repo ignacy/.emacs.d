@@ -101,15 +101,6 @@
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(defun recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
-
-(global-set-key (kbd "C-x r") 'recentf-ido-find-file)
-
 (use-package elixir-mode)
 (use-package alchemist)
 
@@ -126,7 +117,6 @@
 
 (setq ruby-use-encoding-map nil)
 (setq ruby-deep-arglist nil)
-;;(setq ruby-deep-indent-paren nil)
 (setq ruby-deep-indent-paren '(?\[ ?\] t))
 (setq ruby-insert-encoding-magic-comment nil)
 (setq ruby-deep-indent-paren-style nil)
@@ -149,13 +139,6 @@
 
 (use-package flycheck
   :init (global-flycheck-mode t))
-
-;; (use-package flycheck-elixir
-;;   :init (add-hook 'elixir-mode-hook 'flycheck-mode))
-
-(add-to-list 'load-path "~/code/go/src/github.com/dougm/goflymake")
-
-
 
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
@@ -249,9 +232,12 @@
 
 ;;(load-theme 'paganini t)
 
-(load-theme 'nimbus t)
+
+;;(load-theme 'nimbus t)
 ;;(use-package prassee-theme)
 ;;(load-theme 'sanityinc-tomorrow-eighties t)
+(use-package molokai-theme)
+(load-theme 'molokai t)
 
 ;;(load-theme 'flatui t)
 ;; (load-theme 'grandshell t)
@@ -331,7 +317,7 @@
   (insert " "))
 
 (global-set-key (kbd "M-j") 'join-lines)
-(global-set-key (kbd "M-g") 'goto-line)
+(global-set-key (kbd "C-c g") 'goto-line)
 
 
 (defun cleanup-buffer-safe ()
@@ -350,11 +336,6 @@ might be bad."
 (use-package fancy-narrow
   :init (fancy-narrow-mode t))
 
-(use-package reveal-in-osx-finder       ; Reveal current buffer in finder
-  :ensure t
-  ;; Bind analogous to `dired-jump' at C-c f j
-  :bind (("C-c f J" . reveal-in-osx-finder)))
-
 (use-package recentf
   :init (progn
           (setq recentf-auto-cleanup 'never)
@@ -369,6 +350,17 @@ might be bad."
                                       ;; And all other kinds of boring files
                                       #'ignoramus-boring-p))
           ))
+
+(defun recentf-ido-find-file ()
+  "Find a recent file using ido."
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
+
+(global-set-key (kbd "C-x r") 'recentf-ido-find-file)
+
+
 
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
@@ -431,8 +423,8 @@ might be bad."
 
 (use-package iedit)
 
-;; (use-package rainbow-identifiers
-;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
+(use-package rainbow-identifiers
+  :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
 (use-package rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -524,24 +516,8 @@ sabort completely with `C-g'."
           (global-set-key (kbd "C-c C-c") 'org-capture)
           (global-set-key "\C-ca" 'org-agenda)))
 
-
-;;(require 'ansi-color)
-
-(defun colorize-compilation-buffer ()
-  (let ((inhibit-read-only t))
-    (ansi-color-apply-on-region (point-min) (point-max))))
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-
 (setq shell-file-name "fish")
 (setenv "SHELL" shell-file-name)
-(add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)
-
-(defun select-advanon-app ()
-  (interactive)
-  (ido-completing-read+ "Which app? "
-                        (split-string (shell-command-to-string "cd ~/code/Advanon && heroku apps | heroku_list_apps") " ")
-                        ) )
-
 
 (use-package which-key
   :init (which-key-mode))
@@ -591,7 +567,6 @@ sabort completely with `C-g'."
 
 (global-set-key [remap fill-paragraph] #'endless/fill-or-unfill)
 (put 'narrow-to-region 'disabled nil)
-
 
 (setq custom-file (concat dotfiles-dir "custom.el"))
 (load custom-file)
