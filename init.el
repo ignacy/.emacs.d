@@ -412,14 +412,8 @@ might be bad."
 (global-set-key (kbd "C-x i") 'indent-region-or-buffer)
 
 
-(use-package sane-term
-  :init (progn
-          (global-set-key (kbd "C-x t") 'sane-term)
-          (global-set-key (kbd "C-x T") 'sane-term-create)
-          ;; Optional convenience binding. This allows C-y to paste even when in term-char-mode (see below).
-          (add-hook 'term-mode-hook
-                    (lambda() (define-key
-                                term-raw-map (kbd "C-y") (lambda () (interactive) (term-line-mode) (yank) (term-char-mode)))))))
+(use-package project-shells
+  :init (global-project-shells-mode t))
 
 (use-package iedit)
 
