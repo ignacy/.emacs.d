@@ -209,10 +209,11 @@
 
 (ignore-errors (require 'go-flycheck))
 
-(use-package ag
-  :init (global-set-key (kbd "M-r") 'ag-project))
-
-(use-package wgrep-ag)
+(use-package rg
+  :config (progn
+            (setq rg-command-line-flags '("-uu"))
+            (global-set-key (kbd "M-g") 'rg-dwim)
+            (global-set-key (kbd "M-r") 'rg-project)))
 
 (global-set-key (kbd "M-c") 'query-replace-regexp)
 
