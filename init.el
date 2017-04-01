@@ -204,10 +204,12 @@
   :init (progn (global-anzu-mode +1)
                (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)))
 
-(set-frame-font "Lucida Grande Mono 17")
+;;(set-frame-font "Lucida Grande Mono 17")
 ;;(set-frame-font "Menlo 18")
 ;;(set-frame-font "Source Code Pro 18")
 ;;(set-frame-font "mononoki 16")
+;;(set-frame-font "Iosevka Medium 17")
+(set-frame-font "Input 17")
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
