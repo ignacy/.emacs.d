@@ -124,11 +124,11 @@
 
 (use-package ruby-hash-syntax)
 
-(use-package rubocop
-  :config (progn
-            (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
-            (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
-            ))
+(use-package rubocop)
+  ;; :config (progn
+  ;;           (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
+  ;;           (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
+  ;;           ))
 
 
 (use-package rbenv
@@ -192,11 +192,9 @@
 
 (ignore-errors (require 'go-flycheck))
 
-(use-package rg
+(use-package ag
   :config (progn
-            (setq rg-command-line-flags '("-uu"))
-            (global-set-key (kbd "M-g") 'rg-dwim)
-            (global-set-key (kbd "M-r") 'rg-project)))
+            (global-set-key (kbd "M-r") 'ag-project)))
 
 (global-set-key (kbd "M-c") 'query-replace-regexp)
 
@@ -206,10 +204,15 @@
 
 ;;(set-frame-font "Lucida Grande Mono 17")
 ;;(set-frame-font "Menlo 18")
-;;(set-frame-font "Source Code Pro 18")
+(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "mononoki 16")
 ;;(set-frame-font "Iosevka Medium 17")
-(set-frame-font "Input 17")
+;;(set-frame-font "Input 16")
+
+
+(use-package keyfreq
+  :init (progn (keyfreq-mode 1)
+          (keyfreq-autosave-mode 1)))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
@@ -232,17 +235,20 @@
                " (%l %c) "
                ))
 
-;;(load-theme 'paganini t)
-
-
 ;;(load-theme 'nimbus t)
-;;(use-package prassee-theme)
+
 ;;(load-theme 'sanityinc-tomorrow-eighties t)
-(use-package molokai-theme)
-(load-theme 'molokai t)
+;;(use-package molokai-theme)
 
 ;;(load-theme 'flatui t)
-;; (load-theme 'grandshell t)
+;;(load-theme 'grandshell t)
+(use-package firecode-theme)
+
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 (setq tags-revert-without-query 1)
 
@@ -360,7 +366,7 @@ might be bad."
     (when file
       (find-file file))))
 
-(global-set-key (kbd "C-x r") 'recentf-ido-find-file)
+(global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
 
 
@@ -419,8 +425,8 @@ might be bad."
 
 (use-package iedit)
 
-(use-package rainbow-identifiers
-  :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
+;; (use-package rainbow-identifiers
+;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
 (use-package rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -533,21 +539,22 @@ sabort completely with `C-g'."
 ;;          (evil-leader/set-leader ",")
 ;;          (evil-leader/set-key
 ;;            "b" 'switch-to-buffer
+;;            "r" 'recentf-ido-find-file
 ;;            "f" 'projectile-find-file
 ;;            "w" 'save-buffer)))
 
-;;(use-package evil
+;; (use-package evil
 ;;  :init (evil-mode t))
 
-;;(define-key evil-normal-state-map "\C-y" 'yank)
-;;(define-key evil-insert-state-map "\C-y" 'yank)
-;;(define-key evil-visual-state-map "\C-y" 'yank)
+;; (define-key evil-normal-state-map "\C-y" 'yank)
+;; (define-key evil-insert-state-map "\C-y" 'yank)
+;; (define-key evil-visual-state-map "\C-y" 'yank)
 
-;;(define-key evil-normal-state-map "\C-y" 'yank)
-;;(define-key evil-insert-state-map "\C-y" 'yank)
-;;(define-key evil-visual-state-map (kbd "M-v")"\C-y" 'yank)
+;; (define-key evil-normal-state-map "\C-y" 'yank)
+;; (define-key evil-insert-state-map "\C-y" 'yank)
+;; (define-key evil-visual-state-map "\C-y" 'yank)
 
-;;(fset 'evil-visual-update-x-selection 'ignore)
+;; (fset 'evil-visual-update-x-selection 'ignore)
 
 (use-package gist)
 
@@ -566,5 +573,10 @@ sabort completely with `C-g'."
 
 (setq custom-file (concat dotfiles-dir "custom.el"))
 (load custom-file)
+
+(global-unset-key (kbd "<left>"))
+(global-unset-key (kbd "<right>"))
+(global-unset-key (kbd "<up>"))
+(global-unset-key (kbd "<down>"))
 
 (server-start)
