@@ -125,10 +125,10 @@
 (use-package ruby-hash-syntax)
 
 (use-package rubocop)
-  ;; :config (progn
-  ;;           (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
-  ;;           (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
-  ;;           ))
+;; :config (progn
+;;           (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
+;;           (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
+;;           ))
 
 
 (use-package rbenv
@@ -203,16 +203,14 @@
                (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)))
 
 ;;(set-frame-font "Lucida Grande Mono 17")
-;;(set-frame-font "Menlo 18")
-(set-frame-font "Source Code Pro 16")
-;;(set-frame-font "mononoki 16")
-;;(set-frame-font "Iosevka Medium 17")
-;;(set-frame-font "Input 16")
+(set-frame-font "Menlo 16")
+;;(set-frame-font "Source Code Pro 16")
+;;(set-frame-font "mononoki 17")
 
 
 (use-package keyfreq
   :init (progn (keyfreq-mode 1)
-          (keyfreq-autosave-mode 1)))
+               (keyfreq-autosave-mode 1)))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
@@ -237,18 +235,20 @@
 
 ;;(load-theme 'nimbus t)
 
-;;(load-theme 'sanityinc-tomorrow-eighties t)
 ;;(use-package molokai-theme)
 
 ;;(load-theme 'flatui t)
 ;;(load-theme 'grandshell t)
-(use-package firecode-theme)
+;; (use-package firecode-theme)
+;; (load-theme 'firecode t)
+(load-theme 'challenger-deep t)
 
-(require 'ansi-color)
-(defun colorize-compilation-buffer ()
-  (let ((inhibit-read-only t))
-    (ansi-color-apply-on-region (point-min) (point-max))))
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+;; (require 'ansi-color)
+;; (defun colorize-compilation-buffer ()
+;;   (let ((inhibit-read-only t))
+;;     (ansi-color-apply-on-region (point-min) (point-max))))
+;; (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 (setq tags-revert-without-query 1)
 
@@ -306,7 +306,9 @@
 
 (use-package magit
   :config (progn
+            (setq magit-process-popup-time 1)
             (setq magit-completing-read-function 'ido-completing-read))
+
   :init (global-set-key (kbd "C-x g") 'magit-status))
 
 (global-auto-revert-mode 1)
