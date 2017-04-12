@@ -266,6 +266,7 @@
           (add-hook 'projectile-mode-hook 'projectile-rails-on))
   :bind ("C-c C-p" . projectile-switch-project))
 
+
 (global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "C-x C-f") 'ido-find-file)
 (global-set-key (kbd "C-x b") 'projectile-switch-to-buffer)
@@ -371,6 +372,15 @@ might be bad."
 (global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
 
+(use-package ivy
+  :init (progn (ivy-mode 1)
+               (setq ivy-use-virtual-buffers t)
+               (setq enable-recursive-minibuffers t)
+               (global-set-key "\C-s" 'swiper)
+               (global-set-key (kbd "C-c C-r") 'ivy-resume)
+               (global-set-key (kbd "M-x") 'counsel-M-x)
+               (global-set-key (kbd "C-c k") 'counsel-ag)
+               (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
 
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
