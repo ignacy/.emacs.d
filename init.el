@@ -112,6 +112,28 @@
                       ))))
 
 (use-package inf-ruby)
+
+(defconst inf-ruby-prompt-format-custom
+  (concat
+   (mapconcat
+    #'identity
+    '("\\(^%s> *\\)"
+      "\\(^(byebug) *\\)"
+      "\\(^\\(irb([^)]+)"
+      "\\([[0-9]+] \\)?.*([^)]+)" ; pry fix
+      "\\(jruby-\\|JRUBY-\\)?[1-9]\\.[0-9]\\.[0-9]+\\(-?p?[0-9]+\\)?"
+      "^rbx-head\\)")
+    "\\|")
+   " ?[0-9:]* ?%s *\\)")
+  "Format string for the prompt regexp pattern.")
+
+(setq inf-ruby-first-prompt-pattern
+      (format inf-ruby-prompt-format-custom ">" ">"))
+(setq inf-ruby-prompt-pattern
+      (format inf-ruby-prompt-format-custom "[?>]" "[\]>*\"'/`]"))
+
+(eval-after-load 'inf-ruby
+  '(define-key inf-ruby-minor-mode-map (kbd "C-c C-r") 'inf-ruby-console-rails))
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 
 
@@ -124,7 +146,9 @@
 
 (use-package ruby-hash-syntax)
 
-(use-package rubocop)
+(use-package rubocop
+  :init (define-key ruby-mode-map (kbd "C-c C-r") 'rubocop-autocorrect-current-file))
+
 ;; :config (progn
 ;;           (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
 ;;           (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
@@ -203,7 +227,7 @@
                (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)))
 
 ;;(set-frame-font "Lucida Grande Mono 17")
-(set-frame-font "Menlo 16")
+(set-frame-font "Menlo 15")
 ;;(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "mononoki 17")
 
@@ -238,10 +262,9 @@
 ;;(use-package molokai-theme)
 
 ;;(load-theme 'flatui t)
-;;(load-theme 'grandshell t)
-;; (use-package firecode-theme)
-;; (load-theme 'firecode t)
-(load-theme 'challenger-deep t)
+;(load-theme 'tronesque t)
+(load-theme 'cyberpunk t)
+;;(load-theme 'challenger-deep t)
 
 
 ;; (require 'ansi-color)
@@ -373,12 +396,10 @@ might be bad."
 
 
 (use-package ivy
-  :init (progn (ivy-mode 1)
+  :init (progn
                (setq ivy-use-virtual-buffers t)
                (setq enable-recursive-minibuffers t)
                (global-set-key "\C-s" 'swiper)
-               (global-set-key (kbd "C-c C-r") 'ivy-resume)
-               (global-set-key (kbd "M-x") 'counsel-M-x)
                (global-set-key (kbd "C-c k") 'counsel-ag)
                (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
 
