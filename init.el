@@ -59,14 +59,14 @@
           (yas-global-mode)
           (setq yas-prompt-functions '(yas/ido-prompt))))
 
-(use-package company
-  :init (progn
-          (setq company-dabbrev-downcase nil)
-          (setq company-dabbrev-ignore-case nil)
-          (global-company-mode t)
-          (diminish 'company-mode)))
+;; (use-package company
+;;   :init (progn
+;;           (setq company-dabbrev-downcase nil)
+;;           (setq company-dabbrev-ignore-case nil)
+;;           (global-company-mode t)
+;;           (diminish 'company-mode)))
 
-(use-package company-go)
+;; (use-package company-go)
 
 (setq abbrev-file-name (concat dotfiles-dir "abbrevations"))
 (setq dabbrev-case-replace nil)
@@ -201,8 +201,8 @@
 (use-package go-mode
   :config (progn
             (add-hook 'go-mode-hook '(lambda ()
-                                       (set (make-local-variable 'company-backends) '(company-go))
-                                       (company-mode)
+                                       ;; (set (make-local-variable 'company-backends) '(company-go))
+                                       ;; (company-mode)
 
                                        (setq gofmt-command "goimports")
 
@@ -225,11 +225,6 @@
 (use-package anzu
   :init (progn (global-anzu-mode +1)
                (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)))
-
-;;(set-frame-font "Lucida Grande Mono 17")
-(set-frame-font "Menlo 15")
-;;(set-frame-font "Source Code Pro 16")
-;;(set-frame-font "mononoki 17")
 
 
 (use-package keyfreq
@@ -259,11 +254,11 @@
 
 ;;(load-theme 'nimbus t)
 
-;;(use-package molokai-theme)
-
 ;;(load-theme 'flatui t)
 ;(load-theme 'tronesque t)
-(load-theme 'cyberpunk t)
+;;(use-package github-theme)
+(load-theme 'zeus-lighter)
+;;(load-theme 'bliss t)
 ;;(load-theme 'challenger-deep t)
 
 
@@ -394,7 +389,7 @@ might be bad."
 
 (global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
-
+(use-package swiper)
 (use-package ivy
   :init (progn
                (setq ivy-use-virtual-buffers t)
@@ -611,5 +606,13 @@ sabort completely with `C-g'."
 (global-unset-key (kbd "<right>"))
 (global-unset-key (kbd "<up>"))
 (global-unset-key (kbd "<down>"))
+
+;;(set-frame-font "Lucida Grande Mono 17")
+;;(set-frame-font "Menlo 15")
+;;(set-frame-font "Source Code Pro 16")
+;;(set-frame-font "mononoki 17")
+
+(add-to-list 'default-frame-alist '(font . "Source Code Pro-16"))
+(add-to-list 'default-frame-alist '(fullscreen . fullboth))
 
 (server-start)
