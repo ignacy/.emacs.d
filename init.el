@@ -257,7 +257,13 @@
 ;;(load-theme 'flatui t)
 ;(load-theme 'tronesque t)
 ;;(use-package github-theme)
-(load-theme 'zeus-lighter)
+;;(load-theme 'zeus-lighter)
+(use-package apropospriate-theme
+  :ensure t
+  :config
+  ;;(load-theme 'apropospriate-dark t)
+  ;; or
+  (load-theme 'apropospriate-light t))
 ;;(load-theme 'bliss t)
 ;;(load-theme 'challenger-deep t)
 
@@ -612,7 +618,7 @@ sabort completely with `C-g'."
 ;;(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "mononoki 17")
 
-(add-to-list 'default-frame-alist '(font . "Source Code Pro-16"))
+(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
 
 (server-start)
