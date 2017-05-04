@@ -1,6 +1,5 @@
 (package-initialize)
 
-
 (load-library "url-handlers")
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -13,9 +12,6 @@
 (setq use-package-always-ensure t)
 (require 'use-package)
 
-
-(setq mac-command-modifier 'meta)
-
 (setq inhibit-startup-message 't)
 (setq tags-add-tables nil)
 (tool-bar-mode -1)
@@ -26,11 +22,11 @@
 (setq make-backup-files nil)
 (setq ring-bell-function 'ignore)
 (delete-selection-mode t)
-
 (setq dotfiles-dir "~/.emacs.d/")
 
 (setq mac-option-key-is-meta t)
 (setq mac-right-option-modifier nil)
+(setq mac-command-modifier 'meta)
 (save-place-mode 1)
 
 (setq compilation-scroll-output nil)
@@ -44,40 +40,22 @@
           (exec-path-from-shell-copy-env "GOPATH")
           (exec-path-from-shell-copy-env "PATH")))
 
-
-(use-package diminish)
 (use-package bug-hunter)
-
-(use-package yasnippet
-  :ensure yasnippet
-  :init (progn
-          (setq yas-snippet-dirs
-                (list (expand-file-name "snippets" dotfiles-dir)
-                      ))
-
-          (add-to-list 'yas-snippet-dirs "~/code/yasnippet-snippets")
-          (yas-global-mode)
-          (setq yas-prompt-functions '(yas/ido-prompt))))
 
 ;; (use-package company
 ;;   :init (progn
 ;;           (setq company-dabbrev-downcase nil)
 ;;           (setq company-dabbrev-ignore-case nil)
 ;;           (global-company-mode t)
-;;           (diminish 'company-mode)))
 
 ;; (use-package company-go)
-
 (setq abbrev-file-name (concat dotfiles-dir "abbrevations"))
 (setq dabbrev-case-replace nil)
 (setq default-abbrev-mode t)
-
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
 
-
 (use-package ido-completing-read+)
-
 (ido-mode 1)
 (ido-everywhere 1)
 
@@ -133,7 +111,7 @@
       (format inf-ruby-prompt-format-custom "[?>]" "[\]>*\"'/`]"))
 
 (eval-after-load 'inf-ruby
-  '(define-key inf-ruby-minor-mode-map (kbd "C-c C-r") 'inf-ruby-console-rails))
+  '(define-key inf-ruby-minor-mode-map (kbd "C-c C-c") 'inf-ruby-console-rails))
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 
 
@@ -148,12 +126,6 @@
 
 (use-package rubocop
   :init (define-key ruby-mode-map (kbd "C-c C-r") 'rubocop-autocorrect-current-file))
-
-;; :config (progn
-;;           (setq rubocop-check-command "/Users/ignacymoryc/.rbenv/shims/rubocop --format emacs")
-;;           (setq rubocop-autocorrect-command "/Users/ignacymoryc/.rbenv/shims/rubocop -a --format emacs")
-;;           ))
-
 
 (use-package rbenv
   :init (progn
@@ -218,6 +190,7 @@
 
 (use-package ag
   :config (progn
+            (global-set-key (kbd "C-c r") 'ag-files)
             (global-set-key (kbd "M-r") 'ag-project)))
 
 (global-set-key (kbd "M-c") 'query-replace-regexp)
@@ -252,27 +225,7 @@
                " (%l %c) "
                ))
 
-;;(load-theme 'nimbus t)
-
-;;(load-theme 'flatui t)
-;(load-theme 'tronesque t)
-;;(use-package github-theme)
-;;(load-theme 'zeus-lighter)
-(use-package apropospriate-theme
-  :ensure t
-  :config
-  ;;(load-theme 'apropospriate-dark t)
-  ;; or
-  (load-theme 'apropospriate-light t))
-;;(load-theme 'bliss t)
-;;(load-theme 'challenger-deep t)
-
-
-;; (require 'ansi-color)
-;; (defun colorize-compilation-buffer ()
-;;   (let ((inhibit-read-only t))
-;;     (ansi-color-apply-on-region (point-min) (point-max))))
-;; (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+(load-theme 'kaolin t)
 
 (setq tags-revert-without-query 1)
 
@@ -284,9 +237,9 @@
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
 
           (setq projectile-completion-system 'ido)
+          (setq projectile-enable-caching t)
           (ad-activate 'find-tag-at-point)
           (projectile-global-mode)
-          (diminish 'projectile-mode)
           (add-hook 'projectile-mode-hook 'projectile-rails-on))
   :bind ("C-c C-p" . projectile-switch-project))
 
@@ -296,17 +249,6 @@
 (global-set-key (kbd "C-x b") 'projectile-switch-to-buffer)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c m") 'projectile-rails-find-current-spec)
-
-(use-package ibuffer-projectile
-  :init (add-hook 'ibuffer-hook
-                  (lambda ()
-                    (ibuffer-projectile-set-filter-groups)
-                    (unless (eq ibuffer-sorting-mode 'alphabetic)
-                      (ibuffer-do-sort-by-alphabetic)))))
-
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
 
 (setq kill-ring-max 200                 ; More killed items
       kill-do-not-save-duplicates t     ; No duplicates in kill ring
@@ -333,7 +275,6 @@
   :config (progn
             (setq magit-process-popup-time 1)
             (setq magit-completing-read-function 'ido-completing-read))
-
   :init (global-set-key (kbd "C-x g") 'magit-status))
 
 (global-auto-revert-mode 1)
@@ -341,8 +282,6 @@
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
-
-(setq echo-keystrokes 0.1)
 
 (defun join-lines (arg)
   (interactive "p")
@@ -352,8 +291,6 @@
   (insert " "))
 
 (global-set-key (kbd "M-j") 'join-lines)
-(global-set-key (kbd "C-c g") 'goto-line)
-
 
 (defun cleanup-buffer-safe ()
   "Perform a bunch of safe operations on the whitespace content of a buffer.
@@ -365,11 +302,6 @@ might be bad."
   (set-buffer-file-coding-system 'utf-8))
 
 (add-hook 'before-save-hook 'cleanup-buffer-safe)
-
-(use-package idomenu :bind ("M-i" . idomenu))
-
-(use-package fancy-narrow
-  :init (fancy-narrow-mode t))
 
 (use-package recentf
   :init (progn
@@ -395,15 +327,6 @@ might be bad."
 
 (global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
-(use-package swiper)
-(use-package ivy
-  :init (progn
-               (setq ivy-use-virtual-buffers t)
-               (setq enable-recursive-minibuffers t)
-               (global-set-key "\C-s" 'swiper)
-               (global-set-key (kbd "C-c k") 'counsel-ag)
-               (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
-
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
@@ -422,14 +345,9 @@ might be bad."
                    name (file-name-nondirectory new-use)))))))
 
 (setq dired-auto-revert-buffer t    ; Revert on re-visiting
-      ;; Better dired flags: `-l' is mandatory, `-a' shows all files, `-h'
-      ;; uses human-readable sizes, and `-F' appends file-type classifiers
-      ;; to file names (for better highlighting)
       dired-listing-switches "-alhF"
       dired-ls-F-marks-symlinks t   ; -F marks links with @
-      ;; Inhibit prompts for simple recursive operations
       dired-recursive-copies 'always
-      ;; Auto-copy to other Dired split window
       dired-dwim-target t)
 
 
@@ -450,26 +368,19 @@ might be bad."
         (indent-buffer)
         (message "Indented buffer.")))))
 
-
 (global-set-key (kbd "C-x i") 'indent-region-or-buffer)
-
-
-(use-package project-shells
-  :init (global-project-shells-mode t))
 
 (use-package iedit)
 
 ;; (use-package rainbow-identifiers
 ;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
-(use-package rainbow-delimiters)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(use-package rainbow-delimiters
+  :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (global-set-key (kbd "M-z") 'undo)
 
-
 (setq column-number-mode t)
-
 (setq ispell-program-name "aspell")
 (setq ispell-dictionary "american")
 (define-key ctl-x-map "\C-i" #'endless/ispell-word-then-abbrev)
@@ -509,48 +420,48 @@ sabort completely with `C-g'."
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
 
-(use-package org-bullets
-  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+;; (use-package org-bullets
+;;   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(setq dropbox-notes-dir "~/Dropbox/notes/")
+;; (setq dropbox-notes-dir "~/Dropbox/notes/")
 
-(use-package org
-  :init (progn
-          (require 'ox-md nil t)
-          (defun add-pcomplete-to-capf ()
-            (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
+;; (use-package org
+;;   :init (progn
+;;           (require 'ox-md nil t)
+;;           (defun add-pcomplete-to-capf ()
+;;             (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
 
-          (add-hook 'org-mode-hook #'add-pcomplete-to-capf)
+;;           (add-hook 'org-mode-hook #'add-pcomplete-to-capf)
 
-          (setq org-use-speed-commands t
-                org-hide-emphasis-markers t
-                org-src-fontify-natively t   ;; Pretty code blocks
-                org-fontify-whole-heading-line t
-                org-src-tab-acts-natively t
-                org-confirm-babel-evaluate nil)
+;;           (setq org-use-speed-commands t
+;;                 org-hide-emphasis-markers t
+;;                 org-src-fontify-natively t   ;; Pretty code blocks
+;;                 org-fontify-whole-heading-line t
+;;                 org-src-tab-acts-natively t
+;;                 org-confirm-babel-evaluate nil)
 
-          (setq org-default-notes-file (concat dropbox-notes-dir "notes.org"))
+;;           (setq org-default-notes-file (concat dropbox-notes-dir "notes.org"))
 
-          (setq org-capture-templates
-                (quote (("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
+;;           (setq org-capture-templates
+;;                 (quote (("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
 
-          (setq org-agenda-files '("~/Dropbox/notes"))
+;;           (setq org-agenda-files '("~/Dropbox/notes"))
 
-          (defun org-weekly-agenda ()
-            (interactive)
-            (org-agenda nil "a"))
+;;           (defun org-weekly-agenda ()
+;;             (interactive)
+;;             (org-agenda nil "a"))
 
-          (global-set-key (kbd "C-c t") 'org-weekly-agenda)
+;;           (global-set-key (kbd "C-c t") 'org-weekly-agenda)
 
-          (font-lock-add-keywords 'org-mode
-                                  '(("^ +\\([-*]\\) "
-                                     (0 (prog1 ()
-                                          (compose-region (match-beginning 1) (match-end 1) "•"))))))
-          (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-          (global-set-key "\C-cl" 'org-store-link)
-          (global-set-key (kbd "C-c c") 'org-capture)
-          (global-set-key (kbd "C-c C-c") 'org-capture)
-          (global-set-key "\C-ca" 'org-agenda)))
+;;           (font-lock-add-keywords 'org-mode
+;;                                   '(("^ +\\([-*]\\) "
+;;                                      (0 (prog1 ()
+;;                                           (compose-region (match-beginning 1) (match-end 1) "•"))))))
+;;           (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+;;           (global-set-key "\C-cl" 'org-store-link)
+;;           (global-set-key (kbd "C-c c") 'org-capture)
+;;           (global-set-key (kbd "C-c C-c") 'org-capture)
+;;           (global-set-key "\C-ca" 'org-agenda)))
 
 (setq shell-file-name "fish")
 (setenv "SHELL" shell-file-name)
@@ -590,8 +501,6 @@ sabort completely with `C-g'."
 
 ;; (fset 'evil-visual-update-x-selection 'ignore)
 
-(use-package gist)
-
 (defun endless/fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."
   (interactive)
@@ -618,7 +527,8 @@ sabort completely with `C-g'."
 ;;(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "mononoki 17")
 
-(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
+;;(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
+(add-to-list 'default-frame-alist '(font . "Menlo 17"))
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
 
 (server-start)
