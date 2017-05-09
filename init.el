@@ -225,7 +225,7 @@
                " (%l %c) "
                ))
 
-(load-theme 'kaolin t)
+(load-theme 'atom-dark t)
 
 (setq tags-revert-without-query 1)
 
@@ -327,22 +327,18 @@ might be bad."
 
 (global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
-(defun rename-current-buffer-file ()
-  "Renames current buffer and file it is visiting."
+(defun rename-file-and-buffer ()
+  "Rename the current buffer and file it is visiting."
   (interactive)
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
+  (let ((filename (buffer-file-name)))
     (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
+        (message "Buffer is not visiting a file!")
       (let ((new-name (read-file-name "New name: " filename)))
-        (if (get-buffer new-name)
-            (error "A buffer named '%s' already exists!" new-name)
-          (rename-file filename new-name 1)
-          (rename-buffer new-name)
-          (set-visited-file-name new-name)
-          (set-buffer-modified-p nil)
-          (message "File '%s' successfully renamed to '%s'"
-                   name (file-name-nondirectory new-use)))))))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name t t)))))))
 
 (setq dired-auto-revert-buffer t    ; Revert on re-visiting
       dired-listing-switches "-alhF"
@@ -521,6 +517,8 @@ sabort completely with `C-g'."
 (global-unset-key (kbd "<right>"))
 (global-unset-key (kbd "<up>"))
 (global-unset-key (kbd "<down>"))
+
+(global-set-key (kbd "C-h") 'delete-backward-char)
 
 ;;(set-frame-font "Lucida Grande Mono 17")
 ;;(set-frame-font "Menlo 15")
