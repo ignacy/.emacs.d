@@ -525,8 +525,16 @@ sabort completely with `C-g'."
 ;;(set-frame-font "Source Code Pro 16")
 ;;(set-frame-font "mononoki 17")
 
-;;(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
-(add-to-list 'default-frame-alist '(font . "Menlo 18"))
+(defun system-is-imac ()
+  (interactive)
+  (string-equal system-name "iMac-Ignacy.local"))
+
+(if (system-is-imac)
+    (progn
+      ;;(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
+      (add-to-list 'default-frame-alist '(font . "Menlo 18")))
+  (add-to-list 'default-frame-alist '(font . "Menlo 14")))
+
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
 
 (server-start)
