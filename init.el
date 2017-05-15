@@ -41,6 +41,7 @@
           (exec-path-from-shell-copy-env "PATH")))
 
 (use-package bug-hunter)
+(use-package feature-mode)
 
 ;; (use-package company
 ;;   :init (progn
