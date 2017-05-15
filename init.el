@@ -224,7 +224,7 @@
 
                " (%l %c) "
                ))
-(use-package base16-themes)
+(use-package base16-theme)
 (load-theme 'base16-solarflare t)
 
 (setq tags-revert-without-query 1)
