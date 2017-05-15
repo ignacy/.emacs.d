@@ -125,7 +125,7 @@
 (use-package ruby-hash-syntax)
 
 (use-package rubocop
-  :init (define-key ruby-mode-map (kbd "C-c C-r") 'rubocop-autocorrect-current-file))
+  :init (define-key ruby-mode-map (kbd "C-c C-f") 'rubocop-autocorrect-current-file))
 
 (use-package rbenv
   :init (progn
@@ -224,8 +224,8 @@
 
                " (%l %c) "
                ))
-
-(load-theme 'atom-dark t)
+(use-package base16-themes)
+(load-theme 'base16-solarflare t)
 
 (setq tags-revert-without-query 1)
 
@@ -237,7 +237,6 @@
             (visit-tags-table (concat (projectile-project-root) "TAGS")))
 
           (setq projectile-completion-system 'ido)
-          (setq projectile-enable-caching t)
           (ad-activate 'find-tag-at-point)
           (projectile-global-mode)
           (add-hook 'projectile-mode-hook 'projectile-rails-on))
@@ -526,7 +525,7 @@ sabort completely with `C-g'."
 ;;(set-frame-font "mononoki 17")
 
 ;;(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
-(add-to-list 'default-frame-alist '(font . "Menlo 17"))
+(add-to-list 'default-frame-alist '(font . "Menlo 18"))
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
 
 (server-start)
