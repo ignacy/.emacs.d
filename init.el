@@ -416,49 +416,6 @@ sabort completely with `C-g'."
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
 
-;; (use-package org-bullets
-;;   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
-;; (setq dropbox-notes-dir "~/Dropbox/notes/")
-
-;; (use-package org
-;;   :init (progn
-;;           (require 'ox-md nil t)
-;;           (defun add-pcomplete-to-capf ()
-;;             (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
-
-;;           (add-hook 'org-mode-hook #'add-pcomplete-to-capf)
-
-;;           (setq org-use-speed-commands t
-;;                 org-hide-emphasis-markers t
-;;                 org-src-fontify-natively t   ;; Pretty code blocks
-;;                 org-fontify-whole-heading-line t
-;;                 org-src-tab-acts-natively t
-;;                 org-confirm-babel-evaluate nil)
-
-;;           (setq org-default-notes-file (concat dropbox-notes-dir "notes.org"))
-
-;;           (setq org-capture-templates
-;;                 (quote (("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
-
-;;           (setq org-agenda-files '("~/Dropbox/notes"))
-
-;;           (defun org-weekly-agenda ()
-;;             (interactive)
-;;             (org-agenda nil "a"))
-
-;;           (global-set-key (kbd "C-c t") 'org-weekly-agenda)
-
-;;           (font-lock-add-keywords 'org-mode
-;;                                   '(("^ +\\([-*]\\) "
-;;                                      (0 (prog1 ()
-;;                                           (compose-region (match-beginning 1) (match-end 1) "•"))))))
-;;           (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-;;           (global-set-key "\C-cl" 'org-store-link)
-;;           (global-set-key (kbd "C-c c") 'org-capture)
-;;           (global-set-key (kbd "C-c C-c") 'org-capture)
-;;           (global-set-key "\C-ca" 'org-agenda)))
-
 (setq shell-file-name "fish")
 (setenv "SHELL" shell-file-name)
 
