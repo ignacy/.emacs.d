@@ -141,14 +141,13 @@
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
 (use-package rspec-mode
-  :ensure  rspec-mode
   :config (progn
             (setq rspec-use-rake-when-possible nil)
             (setq rspec-use-rvm nil)
             (setq rspec-use-bundler-when-possible nil)
             (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)
-            (eval-after-load 'rspec-mode
-              '(rspec-install-snippets))
+            ;; (eval-after-load 'rspec-mode
+            ;;   '(rspec-install-snippets))
             ;;(setq rspec-command-options "--format progress --order random")
             ))
 
