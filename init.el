@@ -255,11 +255,17 @@
       ;; Save the contents of the clipboard to kill ring before killing
       save-interprogram-paste-before-kill t)
 
-(use-package highlight-symbol
+;; (use-package highlight-symbol
+;;   :init (progn
+;;           (add-hook 'prog-mode-hook 'highlight-symbol-mode)
+;;           (add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
+;;           (setq highlight-symbol-idle-delay 0)))
+
+(use-package symbol-overlay
   :init (progn
-          (add-hook 'prog-mode-hook 'highlight-symbol-mode)
-          (add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
-          (setq highlight-symbol-idle-delay 0)))
+          (add-hook 'prog-mode-hook 'symbol-overlay-mode)
+          (global-set-key (kbd "M-i") 'symbol-overlay-put)
+          (global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)))
 
 (use-package wrap-region
   :init (progn
