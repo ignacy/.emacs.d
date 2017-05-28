@@ -224,8 +224,9 @@
 
                " (%l %c) "
                ))
-(use-package base16-theme)
-(load-theme 'base16-solarflare t)
+
+;;(use-package base16-theme)
+(load-theme 'hopscotch t)
 
 (setq tags-revert-without-query 1)
 
