@@ -23,6 +23,7 @@
 (setq ring-bell-function 'ignore)
 (delete-selection-mode t)
 (setq dotfiles-dir "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (setq mac-option-key-is-meta t)
 (setq mac-right-option-modifier nil)
@@ -43,11 +44,11 @@
 (use-package bug-hunter)
 (use-package feature-mode)
 
-;; (use-package company
-;;   :init (progn
-;;           (setq company-dabbrev-downcase nil)
-;;           (setq company-dabbrev-ignore-case nil)
-;;           (global-company-mode t)
+(use-package company
+  :init (progn
+          (setq company-dabbrev-downcase nil)
+          (setq company-dabbrev-ignore-case nil)
+          (global-company-mode t)))
 
 ;; (use-package company-go)
 (setq abbrev-file-name (concat dotfiles-dir "abbrevations"))
@@ -111,8 +112,8 @@
 (setq inf-ruby-prompt-pattern
       (format inf-ruby-prompt-format-custom "[?>]" "[\]>*\"'/`]"))
 
-(eval-after-load 'inf-ruby
-  '(define-key inf-ruby-minor-mode-map (kbd "C-c C-c") 'inf-ruby-console-rails))
+;;(eval-after-load 'inf-ruby)
+  ;; '(define-key inf-ruby-minor-mode-map (kbd "C-c C-c") 'inf-ruby-console-rails))
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 
 
@@ -136,6 +137,10 @@
 
 (use-package flycheck
   :init (global-flycheck-mode t))
+
+(add-hook 'prog-mode-hook 'eldoc-mode)
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
 
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
@@ -481,6 +486,62 @@ sabort completely with `C-g'."
 (global-unset-key (kbd "<up>"))
 (global-unset-key (kbd "<down>"))
 
+(use-package org-bullets
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(setq dropbox-notes-dir "~/Dropbox/notes/")
+
+(use-package org
+  :init (progn
+          (require 'ox-md nil t)
+          (defun add-pcomplete-to-capf ()
+            (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
+
+          (add-hook 'org-mode-hook #'add-pcomplete-to-capf)
+
+          (setq org-use-speed-commands t
+                org-hide-emphasis-markers t
+                org-src-fontify-natively t   ;; Pretty code blocks
+                org-fontify-whole-heading-line t
+                org-src-tab-acts-natively t
+                org-confirm-babel-evaluate nil)
+
+          (setq org-default-notes-file (concat dropbox-notes-dir "notes.org"))
+          (setq org-capture-templates
+                (quote
+                 (("t" "todo" entry (file org-default-notes-file) "* TODO %?\n")
+                  ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
+
+          (setq org-agenda-files '("~/Dropbox/notes"))
+
+          (setq org-agenda-custom-commands
+                '(("c" . "My Custom Agendas")
+                  ("cu" "Unscheduled TODO"
+                   ((todo ""
+                          ((org-agenda-overriding-header "Unscheduled TODO")
+                           (org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp)))))
+                   nil
+                   nil)))
+
+          (defun org-weekly-agenda ()
+            (interactive)
+            (org-agenda nil "cu"))
+
+          (global-set-key (kbd "C-c t") 'org-weekly-agenda)
+
+          (font-lock-add-keywords 'org-mode
+                                  '(("^ +\\([-*]\\) "
+                                     (0 (prog1 ()
+                                          (compose-region (match-beginning 1) (match-end 1) "•"))))))
+          (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+          (global-set-key "\C-cl" 'org-store-link)
+          (global-set-key (kbd "C-c c") 'org-capture)
+          (global-set-key (kbd "C-c C-c") 'org-capture)
+          (global-set-key "\C-ca" 'org-agenda)))
+
+
+
+
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
 ;;(set-frame-font "Lucida Grande Mono 17")
@@ -495,7 +556,7 @@ sabort completely with `C-g'."
 (if (system-is-imac)
     (progn
       ;;(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
-      (add-to-list 'default-frame-alist '(font . "Menlo 18")))
+      (add-to-list 'default-frame-alist '(font . "Menlo 17")))
   (add-to-list 'default-frame-alist '(font . "Menlo 14")))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
