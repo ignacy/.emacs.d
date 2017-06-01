@@ -556,7 +556,7 @@ sabort completely with `C-g'."
     (progn
       ;;(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
       (add-to-list 'default-frame-alist '(font . "Menlo 18")))
-  (add-to-list 'default-frame-alist '(font . "Menlo 14")))
+  (add-to-list 'default-frame-alist '(font . "mononoki 14")))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
 
