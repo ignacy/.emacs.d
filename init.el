@@ -230,8 +230,8 @@
                " (%l %c) "
                ))
 
-(use-package ir-black-theme)
-(load-theme 'ir-black t)
+(use-package color-theme-sanityinc-tomorrow)
+(load-theme 'sanityinc-tomorrow-blue t)
 (setq tags-revert-without-query 1)
 
 (use-package projectile-rails)
