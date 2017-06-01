@@ -230,9 +230,8 @@
                " (%l %c) "
                ))
 
-;;(use-package base16-theme)
-(load-theme 'hopscotch t)
-
+(use-package ir-black-theme)
+(load-theme 'ir-black t)
 (setq tags-revert-without-query 1)
 
 (use-package projectile-rails)
@@ -270,7 +269,7 @@
   :init (progn
           (add-hook 'prog-mode-hook 'symbol-overlay-mode)
           (global-set-key (kbd "M-i") 'symbol-overlay-put)
-          (global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)))
+          (global-set-key (kbd "M-o") 'symbol-overlay-remove-all)))
 
 (use-package wrap-region
   :init (progn
@@ -556,7 +555,7 @@ sabort completely with `C-g'."
 (if (system-is-imac)
     (progn
       ;;(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
-      (add-to-list 'default-frame-alist '(font . "Menlo 17")))
+      (add-to-list 'default-frame-alist '(font . "Menlo 18")))
   (add-to-list 'default-frame-alist '(font . "Menlo 14")))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
