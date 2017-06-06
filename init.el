@@ -113,7 +113,7 @@
       (format inf-ruby-prompt-format-custom "[?>]" "[\]>*\"'/`]"))
 
 ;;(eval-after-load 'inf-ruby)
-  ;; '(define-key inf-ruby-minor-mode-map (kbd "C-c C-c") 'inf-ruby-console-rails))
+;; '(define-key inf-ruby-minor-mode-map (kbd "C-c C-c") 'inf-ruby-console-rails))
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 
 
@@ -155,6 +155,9 @@
             ;;   '(rspec-install-snippets))
             ;;(setq rspec-command-options "--format progress --order random")
             ))
+
+(use-package coffee-mode
+  :init (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode)))
 
 (use-package js2-mode
   :init (progn
