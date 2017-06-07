@@ -233,8 +233,8 @@
                " (%l %c) "
                ))
 
-(use-package color-theme-sanityinc-tomorrow)
-(load-theme 'sanityinc-tomorrow-blue t)
+;;(use-package ir-black-theme)
+(load-theme 'badger t)
 (setq tags-revert-without-query 1)
 
 (use-package projectile-rails)
