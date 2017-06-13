@@ -243,15 +243,22 @@
 
 (use-package projectile-rails)
 (use-package projectile
-  :init (progn
-          (defadvice find-tag-at-point (before auto-visti-tags)
-            "Load default TAGS file from home directory if needed"
-            (visit-tags-table (concat (projectile-project-root) "TAGS")))
+  :init
+  (progn
+    (defadvice find-tag-at-point (before auto-visti-tags)
+      "Load default TAGS file from home directory if needed"
+      (visit-tags-table (concat (projectile-project-root) "TAGS")))
+    (ad-activate 'find-tag-at-point)
 
-          (setq projectile-completion-system 'ido)
-          (ad-activate 'find-tag-at-point)
-          (projectile-global-mode)
-          (add-hook 'projectile-mode-hook 'projectile-rails-on))
+    (setq projectile-sort-order 'recentf)
+    (setq projectile-completion-system 'ido)
+    (projectile-global-mode)
+    (add-hook 'projectile-mode-hook 'projectile-rails-on))
+
+  :config
+  (progn
+    (setq projectile-switch-project-action 'projectile-dired)
+    (add-to-list 'projectile-globally-ignored-files ".DS_Store"))
   :bind ("C-c C-p" . projectile-switch-project))
 
 
