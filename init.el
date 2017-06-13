@@ -233,7 +233,12 @@
                ))
 
 ;;(use-package ir-black-theme)
-(load-theme 'badger t)
+;;(load-theme 'badger t)
+
+(use-package seoul256-theme)
+(setq seoul256-background 252)
+(load-theme 'seoul256 t)
+
 (setq tags-revert-without-query 1)
 
 (use-package projectile-rails)
