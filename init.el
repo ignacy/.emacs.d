@@ -313,6 +313,10 @@
           git-gutter-fr:hide-gutter t
           git-gutter-fr:verbosity 0)))
 
+
+(use-package github-browse-file
+  :init (global-set-key (kbd "C-c g") 'github-browse-file))
+
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
