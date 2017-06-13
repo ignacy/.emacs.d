@@ -16,7 +16,6 @@
 (setq tags-add-tables nil)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(fringe-mode '(0 . 0))
 (show-paren-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
@@ -289,8 +288,18 @@
             (setq magit-process-popup-time 1)
             (setq magit-completing-read-function 'ido-completing-read))
   :init (global-set-key (kbd "C-x g") 'magit-status))
-
 (global-auto-revert-mode 1)
+
+(use-package git-gutter-fringe
+  :config
+  (progn
+    (global-git-gutter-mode t)
+    (setq git-gutter-fr:update-interval 2
+          git-gutter-fr:modified-sign "▪"
+          git-gutter-fr:added-sign "+"
+          git-gutter-fr:deleted-sign "-"
+          git-gutter-fr:hide-gutter t
+          git-gutter-fr:verbosity 0)))
 
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
