@@ -235,11 +235,18 @@
 ;;(use-package ir-black-theme)
 ;;(load-theme 'badger t)
 
-(use-package seoul256-theme)
-(setq seoul256-background 252)
-(load-theme 'seoul256 t)
+;; (use-package seoul256-theme)
+;; (setq seoul256-background 253)
+;; (load-theme 'seoul256 t)
+(load-theme 'github-modern t)
 
 (setq tags-revert-without-query 1)
+
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode)))
 
 (use-package projectile-rails)
 (use-package projectile
@@ -581,9 +588,7 @@ sabort completely with `C-g'."
   (string-equal system-name "iMac-Ignacy.local"))
 
 (if (system-is-imac)
-    (progn
-      ;;(add-to-list 'default-frame-alist '(font . "Source Code Pro-16:weight=semi-bold"))
-      (add-to-list 'default-frame-alist '(font . "Menlo 18")))
+    (add-to-list 'default-frame-alist '(font . "Office Code Pro D 14"))
   (add-to-list 'default-frame-alist '(font . "mononoki 14")))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
