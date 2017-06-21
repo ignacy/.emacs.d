@@ -9,6 +9,8 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
+(setq im-synched-dir "~/SpiderOakHive/")
+
 (setq use-package-always-ensure t)
 (require 'use-package)
 
@@ -137,7 +139,7 @@
 (use-package flycheck
   :init (global-flycheck-mode t))
 
-(add-hook 'prog-mode-hook 'eldoc-mode)
+;;(add-hook 'prog-mode-hook 'eldoc-mode)
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 
@@ -523,7 +525,7 @@ sabort completely with `C-g'."
 (use-package org-bullets
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(setq dropbox-notes-dir "~/Dropbox/notes/")
+(setq im-notes-dir (concat im-synched-dir "notes/"))
 
 (use-package org
   :init (progn
@@ -540,13 +542,13 @@ sabort completely with `C-g'."
                 org-src-tab-acts-natively t
                 org-confirm-babel-evaluate nil)
 
-          (setq org-default-notes-file (concat dropbox-notes-dir "notes.org"))
+          (setq org-default-notes-file (concat im-notes-dir "notes.org"))
           (setq org-capture-templates
                 (quote
                  (("t" "todo" entry (file org-default-notes-file) "* TODO %?\n")
                   ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
 
-          (setq org-agenda-files '("~/Dropbox/notes"))
+          (setq org-agenda-files '(im-notes-dir))
 
           (setq org-agenda-custom-commands
                 '(("c" . "My Custom Agendas")
@@ -592,5 +594,3 @@ sabort completely with `C-g'."
   (add-to-list 'default-frame-alist '(font . "mononoki 14")))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
-
-(server-start)
