@@ -51,7 +51,7 @@
     ("github-selection"              . "#3390ff")
     ("github-string"                 . "#032f62")
     ("github-text"                   . "#24292e")
-    ("github-white"                  . "#ffffff"))
+    ("github-white"                  . "#f6f8fa"))
   "List of GitHub colors.
 Each element has the form (NAME . HEX).
 
