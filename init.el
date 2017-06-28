@@ -242,6 +242,15 @@
 ;; (load-theme 'seoul256 t)
 (load-theme 'github-modern t)
 
+
+(use-package slime
+  :config (progn
+            (setq inferior-lisp-program "/usr/local/bin/sbcl")
+            (slime-setup '(slime-fancy slime-tramp slime-asdf))
+            (slime-require :swank-listener-hooks))
+  )
+
+
 (setq tags-revert-without-query 1)
 
 (use-package markdown-mode
