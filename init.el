@@ -71,7 +71,9 @@
           (setq ido-vertical-define-keys 'C-n-and-C-p-only)))
 
 (setq ido-create-new-buffer 'always)
+
 (set-default 'imenu-auto-rescan t)
+(global-set-key (kbd "M-\\") 'imenu)
 
 (use-package flx-ido
   :init (progn
@@ -158,6 +160,7 @@
             ))
 
 (use-package coffee-mode
+  :config (custom-set-variables '(coffee-tab-width 2))
   :init (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode)))
 
 (use-package js2-mode
@@ -234,17 +237,19 @@
                " (%l %c) "
                ))
 
-;;(use-package ir-black-theme)
-;;(load-theme 'badger t)
+;;(use-package github-modern-theme)
+;;(load-theme 'dakrone-light t)
+;;(load-theme 'nord t)
 
-;; (use-package seoul256-theme)
-;; (setq seoul256-background 253)
-;; (load-theme 'seoul256 t)
-(load-theme 'github-modern t)
-
+(use-package kaolin-theme)
+(load-theme 'kaolin t)
+;; (load-theme 'seti t)
+(use-package sml-mode)
 
 (use-package slime
   :config (progn
+            (load (expand-file-name "~/quicklisp/slime-helper.el"))
+            ;; Replace "sbcl" with the path to your implementation
             (setq inferior-lisp-program "/usr/local/bin/sbcl")
             (slime-setup '(slime-fancy slime-tramp slime-asdf))
             (slime-require :swank-listener-hooks))
@@ -317,20 +322,10 @@
   :config (progn
             (setq magit-process-popup-time 1)
             (setq magit-completing-read-function 'ido-completing-read))
-  :init (global-set-key (kbd "C-x g") 'magit-status))
+  :init (progn
+          (global-set-key (kbd "<escape> g") 'magit-status)
+          (global-set-key (kbd "C-x g") 'magit-status)))
 (global-auto-revert-mode 1)
-
-(use-package git-gutter-fringe
-  :config
-  (progn
-    (global-git-gutter-mode t)
-    (setq git-gutter-fr:update-interval 2
-          git-gutter-fr:modified-sign "▪"
-          git-gutter-fr:added-sign "+"
-          git-gutter-fr:deleted-sign "-"
-          git-gutter-fr:hide-gutter t
-          git-gutter-fr:verbosity 0)))
-
 
 (use-package github-browse-file
   :init (global-set-key (kbd "C-c g") 'github-browse-file))
@@ -478,15 +473,6 @@ sabort completely with `C-g'."
 (use-package which-key
   :init (which-key-mode))
 
-(use-package ace-window
-  :ensure t
-  :init
-  (progn
-    (global-set-key [remap other-window] 'ace-window)
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 3.0)))))))
-
 ;; (use-package evil-leader
 ;;   :init (progn
 ;;          (global-evil-leader-mode)
@@ -599,7 +585,7 @@ sabort completely with `C-g'."
   (string-equal system-name "iMac-Ignacy.local"))
 
 (if (system-is-imac)
-    (add-to-list 'default-frame-alist '(font . "Office Code Pro D 14"))
-  (add-to-list 'default-frame-alist '(font . "mononoki 14")))
+    (set-frame-font "Inconsolata-19")
+  (add-to-list 'default-frame-alist '(font . "mononoki 16")))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
