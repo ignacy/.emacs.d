@@ -578,7 +578,7 @@ sabort completely with `C-g'."
   (string-equal system-name "iMac-Ignacy.local"))
 
 (if (system-is-imac)
-    (set-frame-font "Inconsolata-17")
+    (set-frame-font "Source Code Pro Semibold-15")
   (add-to-list 'default-frame-alist '(font . "mononoki 16")))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
