@@ -352,29 +352,29 @@ might be bad."
 
 (add-hook 'before-save-hook 'cleanup-buffer-safe)
 
-(use-package recentf
-  :init (progn
-          (setq recentf-auto-cleanup 'never)
-          (recentf-mode t)
-          (setq recentf-max-saved-items 2000)
-          (setq recentf-max-menu-items 10)
-          (setq recentf-auto-cleanup 'never);; disable before we start recentf! If using Tramp a lot.
-          (setq recentf-exclude (list "/\\.git/.*\\'" ; Git contents
-                                      "/elpa/.*\\'" ; Package files
-                                      "TAGS"
-                                      "/itsalltext/" ; It's all text temp files
-                                      ;; And all other kinds of boring files
-                                      #'ignoramus-boring-p))
-          ))
+;; (use-package recentf
+;;   :init (progn
+;;           (setq recentf-auto-cleanup 'never)
+;;           (recentf-mode t)
+;;           (setq recentf-max-saved-items 2000)
+;;           (setq recentf-max-menu-items 10)
+;;           (setq recentf-auto-cleanup 'never);; disable before we start recentf! If using Tramp a lot.
+;;           (setq recentf-exclude (list "/\\.git/.*\\'" ; Git contents
+;;                                       "/elpa/.*\\'" ; Package files
+;;                                       "TAGS"
+;;                                       "/itsalltext/" ; It's all text temp files
+;;                                       ;; And all other kinds of boring files
+;;                                       #'ignoramus-boring-p))
+;;           ))
 
-(defun recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
+;; (defun recentf-ido-find-file ()
+;;   "Find a recent file using ido."
+;;   (interactive)
+;;   (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+;;     (when file
+;;       (find-file file))))
 
-(global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
+;; (global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
 (defun rename-file-and-buffer ()
   "Rename the current buffer and file it is visiting."
