@@ -238,12 +238,10 @@
                ))
 
 ;;(use-package github-modern-theme)
-;;(load-theme 'dakrone-light t)
+(load-theme 'dakrone-light t)
 ;;(load-theme 'nord t)
-
-(use-package kaolin-theme)
-(load-theme 'kaolin t)
-;; (load-theme 'seti t)
+;; (use-package kaolin-theme)
+;; (load-theme 'kaolin t)
 (use-package sml-mode)
 
 (use-package slime
@@ -575,17 +573,12 @@ sabort completely with `C-g'."
 
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
-;;(set-frame-font "Lucida Grande Mono 17")
-;;(set-frame-font "Menlo 15")
-;;(set-frame-font "Source Code Pro 16")
-;;(set-frame-font "mononoki 17")
-
 (defun system-is-imac ()
   (interactive)
   (string-equal system-name "iMac-Ignacy.local"))
 
 (if (system-is-imac)
-    (set-frame-font "Inconsolata-19")
+    (set-frame-font "Inconsolata-17")
   (add-to-list 'default-frame-alist '(font . "mononoki 16")))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
