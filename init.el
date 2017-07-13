@@ -219,7 +219,7 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 (defun disable-all-themes ()
-  "disable all active themes."
+  "Disable all active themes."
   (dolist (i custom-enabled-themes)
     (disable-theme i)))
 
@@ -238,8 +238,8 @@
                ))
 
 ;;(use-package github-modern-theme)
-(load-theme 'dakrone-light t)
-;;(load-theme 'nord t)
+;;(load-theme 'dakrone-light t)
+(load-theme 'nord t)
 ;; (use-package kaolin-theme)
 ;; (load-theme 'kaolin t)
 (use-package sml-mode)
@@ -578,7 +578,11 @@ sabort completely with `C-g'."
   (string-equal system-name "iMac-Ignacy.local"))
 
 (if (system-is-imac)
-    (set-frame-font "Source Code Pro Semibold-15")
+    (set-frame-font "Source Code Pro Semibold-16")
   (add-to-list 'default-frame-alist '(font . "mononoki 16")))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
+
+;; Local Variables:
+;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
+;; End:
