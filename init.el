@@ -137,9 +137,16 @@
           (setq rbenv-show-active-ruby-in-modeline nil)
           (ignore-errors (global-rbenv-mode))))
 
-
 (use-package flycheck
   :init (global-flycheck-mode t))
+
+(when (executable-find "hunspell")
+  (setq-default ispell-program-name "hunspell")
+  (setq ispell-really-hunspell t))
+
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+(use-package flyspell-popup
+  :init (global-set-key (kbd "C-:") #'flyspell-popup-correct))
 
 ;;(add-hook 'prog-mode-hook 'eldoc-mode)
 (require 'google-c-style)
@@ -239,9 +246,9 @@
 
 ;;(use-package github-modern-theme)
 ;;(load-theme 'dakrone-light t)
-(load-theme 'nord t)
-;; (use-package kaolin-theme)
-;; (load-theme 'kaolin t)
+;;(load-theme 'nord t)
+;;(use-package kaolin-theme)
+(load-theme 'kaolin t)
 (use-package sml-mode)
 
 (use-package slime
