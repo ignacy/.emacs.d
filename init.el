@@ -138,6 +138,7 @@
           (ignore-errors (global-rbenv-mode))))
 
 (use-package flycheck
+  :config (setq-default flycheck-disabled-checkers '(ruby-reek))
   :init (global-flycheck-mode t))
 
 (when (executable-find "hunspell")
@@ -587,6 +588,12 @@ sabort completely with `C-g'."
 (if (system-is-imac)
     (set-frame-font "Source Code Pro Semibold-16")
   (add-to-list 'default-frame-alist '(font . "mononoki 16")))
+
+(defun readable-and-clear ()
+  "Set large font and disables the theme. (presentation mode)"
+  (interactive)
+  (disable-all-themes)
+  (set-frame-font "Monaco 18"))
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
 
