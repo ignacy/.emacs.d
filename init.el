@@ -245,9 +245,8 @@
                " (%l %c) "
                ))
 
-
 (use-package base16-theme)
-(load-theme 'base16-shapeshifter t)
+(load-theme 'base16-atelier-lakeside-light t)
 
 (use-package sml-mode)
 (use-package slime
@@ -499,6 +498,23 @@ sabort completely with `C-g'."
 ;; (define-key evil-visual-state-map "\C-y" 'yank)
 
 ;; (fset 'evil-visual-update-x-selection 'ignore)
+
+
+(use-package ivy
+  :init (progn
+          (ivy-mode 1)
+          (setq ivy-use-virtual-buffers t)
+          (setq enable-recursive-minibuffers t)
+          (global-set-key "\C-s" 'swiper)
+          (global-set-key (kbd "C-c C-r") 'ivy-resume)
+          (global-set-key (kbd "M-x") 'counsel-M-x)
+          (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+          (global-set-key (kbd "C-c j") 'counsel-git-grep)
+          (global-set-key (kbd "C-c k") 'counsel-ag)
+          (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
+
+(use-package counsel-projectile
+  :init (counsel-projectile-on))
 
 (defun endless/fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."
