@@ -245,13 +245,11 @@
                " (%l %c) "
                ))
 
-;;(use-package github-modern-theme)
-;;(load-theme 'dakrone-light t)
-;;(load-theme 'nord t)
-;;(use-package kaolin-theme)
-(load-theme 'kaolin t)
-(use-package sml-mode)
 
+(use-package base16-theme)
+(load-theme 'base16-shapeshifter t)
+
+(use-package sml-mode)
 (use-package slime
   :config (progn
             (load (expand-file-name "~/quicklisp/slime-helper.el"))
