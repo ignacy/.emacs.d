@@ -72,6 +72,9 @@
 (set-default 'imenu-auto-rescan t)
 (global-set-key (kbd "M-\\") 'imenu)
 
+(use-package py-yapf
+  :init (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
+
 (use-package flx-ido
   :init (progn
           (flx-ido-mode 1)
