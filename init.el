@@ -242,8 +242,9 @@
                " (%l %c) "
                ))
 
-(use-package base16-theme)
-(load-theme 'base16-atelier-lakeside-light t)
+(setq-default display-line-numbers 't)
+;; (use-package base16-theme)
+;; (load-theme 'base16-atelier-lakeside-light t)
 
 (use-package sml-mode)
 (use-package slime
