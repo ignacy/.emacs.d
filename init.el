@@ -470,7 +470,7 @@ sabort completely with `C-g'."
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
 
-(setq shell-file-name "fish")
+(setq shell-file-name "zsh")
 (setenv "SHELL" shell-file-name)
 
 (use-package which-key
