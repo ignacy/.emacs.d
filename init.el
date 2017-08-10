@@ -246,9 +246,13 @@
                ))
 
 (setq-default display-line-numbers 't)
-(load-theme 'nord t)
+(use-package doom-themes)
+(load-theme 'doom-tomorrow-night t)
+
+(add-to-list 'auto-mode-alist '("\\.zshrc\\'" . sh-mode))
 
 (use-package sml-mode)
+
 (use-package slime
   :config (progn
             (load (expand-file-name "~/quicklisp/slime-helper.el"))
