@@ -246,8 +246,8 @@
                ))
 
 (setq-default display-line-numbers 't)
-(use-package doom-themes)
-(load-theme 'doom-tomorrow-night t)
+(use-package nimbus-theme)
+(load-theme 'nimbus t)
 
 (add-to-list 'auto-mode-alist '("\\.zshrc\\'" . sh-mode))
 
