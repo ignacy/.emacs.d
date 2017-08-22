@@ -146,6 +146,18 @@
   (setq-default ispell-program-name "hunspell")
   (setq ispell-really-hunspell t))
 
+(flycheck-define-checker proselint
+  "A linter for prose."
+  :command ("proselint" source-inplace)
+  :error-patterns
+  ((warning line-start (file-name) ":" line ":" column ": "
+            (id (one-or-more (not (any " "))))
+            (message) line-end))
+  :modes (text-mode markdown-mode gfm-mode))
+
+(add-to-list 'flycheck-checkers 'proselint)
+
+
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (use-package flyspell-popup
   :init (global-set-key (kbd "C-:") #'flyspell-popup-correct))
