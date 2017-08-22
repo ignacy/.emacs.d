@@ -14,6 +14,7 @@
 (setq use-package-always-ensure t)
 (require 'use-package)
 
+(global-auto-revert-mode 1)
 (setq inhibit-startup-message 't)
 (setq tags-add-tables nil)
 (tool-bar-mode -1)
@@ -330,9 +331,13 @@
             (setq magit-process-popup-time 1)
             (setq magit-completing-read-function 'ido-completing-read))
   :init (progn
+          (defun im/magit-soft-reset-head~1 ()
+            "Undo last commit (soft)"
+            (interactive)
+            (magit-reset-soft "HEAD~1"))
+
           (global-set-key (kbd "<escape> g") 'magit-status)
           (global-set-key (kbd "C-x g") 'magit-status)))
-(global-auto-revert-mode 1)
 
 (use-package github-browse-file
   :init (global-set-key (kbd "C-c g") 'github-browse-file))
