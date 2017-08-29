@@ -247,6 +247,8 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
+(load-theme 'misterioso t)
+
 (setq-default mode-line-format
               (list
                '(:eval (propertize "%* " 'face font-lock-warning-face))
@@ -259,8 +261,6 @@
                ))
 
 (setq-default display-line-numbers 't)
-(use-package nimbus-theme)
-(load-theme 'nimbus t)
 
 (add-to-list 'auto-mode-alist '("\\.zshrc\\'" . sh-mode))
 
@@ -630,8 +630,10 @@ sabort completely with `C-g'."
   (disable-all-themes)
   (set-frame-font "Monaco 18"))
 
-(when (system-is-imac)
+(if (system-is-imac)
+    (set-default-font "Fira Code 18")
   (set-default-font "Fira Code 16"))
+
 (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
                (36 . ".\\(?:>\\)")
