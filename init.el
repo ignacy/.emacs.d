@@ -247,7 +247,7 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'misterioso t)
+(load-theme 'snazzy t)
 
 (setq-default mode-line-format
               (list
