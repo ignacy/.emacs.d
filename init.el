@@ -249,6 +249,11 @@
 
 (load-theme 'snazzy t)
 
+(use-package auto-yasnippet
+  :init (progn
+          (global-set-key (kbd "C-c s") #'aya-create)
+          (global-set-key (kbd "C-c i") #'aya-expand)))
+
 (setq-default mode-line-format
               (list
                '(:eval (propertize "%* " 'face font-lock-warning-face))
