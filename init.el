@@ -1,8 +1,10 @@
 (package-initialize)
 
 (load-library "url-handlers")
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
 (when (not package-archive-contents)
   (package-refresh-contents))
 
@@ -173,7 +175,7 @@
   :config (progn
             (setq rspec-use-rake-when-possible nil)
             (setq rspec-use-rvm nil)
-            (setq rspec-use-bundler-when-possible nil)
+            (setq rspec-use-bundler-when-possible 't)
             (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)
             ;; (eval-after-load 'rspec-mode
             ;;   '(rspec-install-snippets))
@@ -247,7 +249,7 @@
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
 
-(load-theme 'snazzy t)
+;;(use-package github-modern-theme)
 
 (use-package auto-yasnippet
   :init (progn
@@ -382,30 +384,6 @@ might be bad."
   (set-buffer-file-coding-system 'utf-8))
 
 (add-hook 'before-save-hook 'cleanup-buffer-safe)
-
-;; (use-package recentf
-;;   :init (progn
-;;           (setq recentf-auto-cleanup 'never)
-;;           (recentf-mode t)
-;;           (setq recentf-max-saved-items 2000)
-;;           (setq recentf-max-menu-items 10)
-;;           (setq recentf-auto-cleanup 'never);; disable before we start recentf! If using Tramp a lot.
-;;           (setq recentf-exclude (list "/\\.git/.*\\'" ; Git contents
-;;                                       "/elpa/.*\\'" ; Package files
-;;                                       "TAGS"
-;;                                       "/itsalltext/" ; It's all text temp files
-;;                                       ;; And all other kinds of boring files
-;;                                       #'ignoramus-boring-p))
-;;           ))
-
-;; (defun recentf-ido-find-file ()
-;;   "Find a recent file using ido."
-;;   (interactive)
-;;   (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-;;     (when file
-;;       (find-file file))))
-
-;; (global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
 
 (defun rename-file-and-buffer ()
   "Rename the current buffer and file it is visiting."
@@ -563,14 +541,12 @@ sabort completely with `C-g'."
 (global-unset-key (kbd "<up>"))
 (global-unset-key (kbd "<down>"))
 
-(use-package org-bullets
-  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
-(setq im-notes-dir (concat im-synched-dir "notes/"))
-
 (use-package org
   :init (progn
           (require 'ox-md nil t)
+          (setq-default im-notes-dir (concat im-synched-dir "notes/"))
+          (setq-default org-default-notes-file (concat im-notes-dir "notes.org"))
+
           (defun add-pcomplete-to-capf ()
             (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
 
@@ -583,13 +559,12 @@ sabort completely with `C-g'."
                 org-src-tab-acts-natively t
                 org-confirm-babel-evaluate nil)
 
-          (setq org-default-notes-file (concat im-notes-dir "notes.org"))
           (setq org-capture-templates
                 (quote
                  (("t" "todo" entry (file org-default-notes-file) "* TODO %?\n")
                   ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
 
-          (setq org-agenda-files '(im-notes-dir))
+          (setq org-agenda-files `(,im-notes-dir))
 
           (setq org-agenda-custom-commands
                 '(("c" . "My Custom Agendas")
@@ -610,11 +585,15 @@ sabort completely with `C-g'."
                                   '(("^ +\\([-*]\\) "
                                      (0 (prog1 ()
                                           (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
           (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
           (global-set-key "\C-cl" 'org-store-link)
           (global-set-key (kbd "C-c c") 'org-capture)
           (global-set-key (kbd "C-c C-c") 'org-capture)
           (global-set-key "\C-ca" 'org-agenda)))
+
+(use-package org-bullets
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 
 
@@ -625,49 +604,18 @@ sabort completely with `C-g'."
   (interactive)
   (string-equal system-name "iMac-Ignacy.local"))
 
-;; (if (system-is-imac)
-;;     (set-frame-font "Source Code Pro Semibold-16")
-;;   (add-to-list 'default-frame-alist '(font . "mononoki 16")))
-
 (defun readable-and-clear ()
   "Set large font and disables the theme. (presentation mode)"
   (interactive)
   (disable-all-themes)
   (set-frame-font "Monaco 18"))
 
-(if (system-is-imac)
-    (set-default-font "Fira Code 18")
-  (set-default-font "Fira Code 16"))
+(use-package moe-theme)
+(moe-dark)
 
-(let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
-               (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
-               (36 . ".\\(?:>\\)")
-               (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
-               (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
-               (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
-               (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
-               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
-               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
-               (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
-               (48 . ".\\(?:x[a-zA-Z]\\)")
-               (58 . ".\\(?:::\\|[:=]\\)")
-               (59 . ".\\(?:;;\\|;\\)")
-               (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
-               (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
-               (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
-               (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
-               (91 . ".\\(?:]\\)")
-               (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
-               (94 . ".\\(?:=\\)")
-               (119 . ".\\(?:ww\\)")
-               (123 . ".\\(?:-\\)")
-               (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
-               (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)")
-               )
-             ))
-  (dolist (char-regexp alist)
-    (set-char-table-range composition-function-table (car char-regexp)
-                          `([,(cdr char-regexp) 0 font-shape-gstring]))))
+(if (system-is-imac)
+    (set-default-font "Monaco 16")
+  (set-default-font "Monaco 15"))
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
