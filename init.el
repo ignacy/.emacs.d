@@ -611,7 +611,11 @@ sabort completely with `C-g'."
   (set-frame-font "Monaco 18"))
 
 (use-package moe-theme)
-(moe-dark)
+(use-package circadian
+  :config
+  (setq circadian-themes '(("8:00" . moe-light)
+                           ("14:00" . moe-dark)))
+  (circadian-setup))
 
 (if (system-is-imac)
     (set-default-font "Monaco 16")
