@@ -226,7 +226,7 @@
 (use-package ag
   :config (progn
             (global-set-key (kbd "C-c r") 'ag-files)
-            (global-set-key (kbd "M-r") 'ag-project)))
+            (global-set-key (kbd "M-r") 'ag-regexp-project-at-point)))
 
 (global-set-key (kbd "M-c") 'query-replace-regexp)
 
@@ -268,6 +268,15 @@
                ))
 
 (setq-default display-line-numbers 't)
+
+(defun camelcase-region (start end)
+  "Changes region from snake_case to camelCase"
+  (interactive "r")
+  (save-restriction (narrow-to-region start end)
+                    (downcase-region start end)
+                    (goto-char (point-min))
+                    (while (re-search-forward "_\\(.\\)" nil t)
+                      (replace-match (upcase (match-string 1))))))
 
 (add-to-list 'auto-mode-alist '("\\.zshrc\\'" . sh-mode))
 
@@ -611,10 +620,12 @@ sabort completely with `C-g'."
   (set-frame-font "Monaco 18"))
 
 (use-package moe-theme)
+(use-package hemera-theme)
+(use-package nord-theme)
 (use-package circadian
   :config
-  (setq circadian-themes '(("8:00" . moe-light)
-                           ("14:00" . moe-dark)))
+  (setq circadian-themes '(("10:00" . hemera)
+                           ("15:00" . nord)))
   (circadian-setup))
 
 (if (system-is-imac)
