@@ -435,9 +435,6 @@ might be bad."
 
 (use-package iedit)
 
-;; (use-package rainbow-identifiers
-;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
-
 (use-package rainbow-delimiters
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
@@ -606,7 +603,6 @@ sabort completely with `C-g'."
 
 
 
-
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
 (defun system-is-imac ()
@@ -619,14 +615,22 @@ sabort completely with `C-g'."
   (disable-all-themes)
   (set-frame-font "Monaco 18"))
 
-(use-package moe-theme)
-(use-package hemera-theme)
-(use-package nord-theme)
-(use-package circadian
-  :config
-  (setq circadian-themes '(("10:00" . hemera)
-                           ("15:00" . nord)))
-  (circadian-setup))
+(use-package tao-theme
+   :init (load-theme 'tao-yin t))
+
+(use-package rainbow-identifiers
+  :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
+
+
+;; (use-package challenger-deep-theme)
+;;  (load-theme 'challenger-deep t)
+
+
+;; (use-package circadian
+;;   :config
+;;   (setq circadian-themes '(("10:00" . hemera)
+;;                            ("15:00" . nord)))
+;;   (circadian-setup))
 
 (if (system-is-imac)
     (set-default-font "Monaco 16")
