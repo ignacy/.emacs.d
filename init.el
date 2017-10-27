@@ -615,15 +615,15 @@ sabort completely with `C-g'."
   (disable-all-themes)
   (set-frame-font "Monaco 18"))
 
-(use-package tao-theme
-   :init (load-theme 'tao-yin t))
+;; (use-package tao-theme
+;;    :init (load-theme 'tao-yang t))
 
 (use-package rainbow-identifiers
   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
 
-;; (use-package challenger-deep-theme)
-;;  (load-theme 'challenger-deep t)
+(use-package challenger-deep-theme)
+  (load-theme 'challenger-deep t)
 
 
 ;; (use-package circadian
@@ -633,8 +633,8 @@ sabort completely with `C-g'."
 ;;   (circadian-setup))
 
 (if (system-is-imac)
-    (set-default-font "Monaco 16")
-  (set-default-font "Monaco 15"))
+    (set-default-font "Monaco 17")
+  (set-default-font "Monaco 16"))
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
