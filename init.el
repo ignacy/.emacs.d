@@ -642,12 +642,14 @@ sabort completely with `C-g'."
 ;; (use-package tao-theme
 ;;    :init (load-theme 'tao-yang t))
 
-(use-package rainbow-identifiers
-  :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
+;; (use-package rainbow-identifiers
+;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
 
 
 (use-package challenger-deep-theme)
-  (load-theme 'challenger-deep t)
+   (load-theme 'challenger-deep t)
+;; (use-package hemera-theme)
+;;   (load-theme 'hemera t)
 
 
 ;; (use-package circadian
