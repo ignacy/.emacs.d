@@ -486,6 +486,30 @@ sabort completely with `C-g'."
 (use-package which-key
   :init (which-key-mode))
 
+(use-package recentf
+  :init (progn
+          (setq recentf-auto-cleanup 'never)
+          (recentf-mode t)
+          (setq recentf-max-saved-items 2000)
+          (setq recentf-max-menu-items 10)
+          (setq recentf-auto-cleanup 'never);; disable before we start recentf! If using Tramp a lot.
+          (setq recentf-exclude (list "/\\.git/.*\\'" ; Git contents
+                                      "/elpa/.*\\'" ; Package files
+                                      "TAGS"
+                                      "/itsalltext/" ; It's all text temp files
+                                      ;; And all other kinds of boring files
+                                      #'ignoramus-boring-p))
+          ))
+
+(defun recentf-ido-find-file ()
+  "Find a recent file using ido."
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
+
+(global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
+
 ;; (use-package evil-leader
 ;;   :init (progn
 ;;          (global-evil-leader-mode)
