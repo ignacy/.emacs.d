@@ -657,7 +657,7 @@ sabort completely with `C-g'."
 ;;   (circadian-setup))
 
 (if (system-is-imac)
-    (set-default-font "Monaco 17")
+    (set-default-font "Monaco 18")
   (set-default-font "Monaco 16"))
 
 ;; Local Variables:
