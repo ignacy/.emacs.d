@@ -357,6 +357,10 @@
 (use-package magit
   :config (progn
             (setq magit-process-popup-time 1)
+            (magit-add-section-hook 'magit-status-sections-hook
+                                    'magit-insert-unpushed-to-upstream
+                                    'magit-insert-unpushed-to-upstream-or-recent
+                                    'replace)
             (setq magit-completing-read-function 'ido-completing-read))
   :init (progn
           (defun im/magit-soft-reset-head~1 ()
