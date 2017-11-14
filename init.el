@@ -374,6 +374,11 @@
 (use-package github-browse-file
   :init (global-set-key (kbd "C-c g") 'github-browse-file))
 
+(use-package auto-dim-other-buffers)
+(add-hook 'after-init-hook (lambda ()
+                             (when (fboundp 'auto-dim-other-buffers-mode)
+                               (auto-dim-other-buffers-mode t))))
+
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
