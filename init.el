@@ -656,10 +656,19 @@ sabort completely with `C-g'."
 
 
 (use-package challenger-deep-theme)
-   (load-theme 'challenger-deep t)
+(load-theme 'challenger-deep t)
+
 ;; (use-package hemera-theme)
 ;;   (load-theme 'hemera t)
 
+(use-package exotica-theme)
+(load-theme 'exotica t)
+
+;; (use-package sexy-monochrome-theme
+;;    (load-theme 'sexy-monochrome t))
+
+;(use-package reykjavik-theme)
+;   (load-theme 'reykjavik t))
 
 ;; (use-package circadian
 ;;   :config
@@ -668,7 +677,7 @@ sabort completely with `C-g'."
 ;;   (circadian-setup))
 
 (if (system-is-imac)
-    (set-default-font "Monaco 18")
+    (set-default-font "Monaco 17")
   (set-default-font "Monaco 16"))
 
 ;; Local Variables:
