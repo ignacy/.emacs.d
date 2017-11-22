@@ -331,6 +331,7 @@
 (global-set-key (kbd "C-x C-f") 'ido-find-file)
 (global-set-key (kbd "C-x b") 'projectile-switch-to-buffer)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c m") 'projectile-rails-find-current-spec)
 
 (setq kill-ring-max 200                 ; More killed items
