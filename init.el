@@ -182,6 +182,12 @@
             ;;(setq rspec-command-options "--format progress --order random")
             ))
 
+(use-package dumb-jump
+  :bind (("C-M-." . dumb-jump-go-other-window))
+  :config (progn
+            (setq dumb-jump-force-searcher 'ag)
+            (setq dumb-jump-selector 'ivy)))
+
 (use-package coffee-mode
   :config (custom-set-variables '(coffee-tab-width 2))
   :init (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode)))
