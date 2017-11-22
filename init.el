@@ -537,6 +537,9 @@ sabort completely with `C-g'."
 
 ;; (fset 'evil-visual-update-x-selection 'ignore)
 
+(use-package ruby-extra-highlight
+  :init (add-hook 'ruby-mode-hook #'ruby-extra-highlight-mode))
+
 
 (use-package ivy
   :init (progn
