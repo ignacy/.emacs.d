@@ -665,6 +665,9 @@ sabort completely with `C-g'."
 ;; (use-package sexy-monochrome-theme
 ;;    (load-theme 'sexy-monochrome t))
 
+(use-package kaolin-themes
+  :init (load-theme 'kaolin-tribal t))
+
 ;(use-package reykjavik-theme)
 ;   (load-theme 'reykjavik t))
 
