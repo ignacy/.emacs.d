@@ -1,7 +1,5 @@
 (package-initialize)
 
-(load-library "url-handlers")
-
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
@@ -19,7 +17,7 @@
 (global-auto-revert-mode 1)
 (setq inhibit-startup-message 't)
 (setq tags-add-tables nil)
-(tool-bar-mode -1)
+(setq tags-revert-without-query 1)
 (scroll-bar-mode -1)
 (show-paren-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -34,10 +32,6 @@
 (setq mac-command-modifier 'meta)
 (save-place-mode 1)
 
-(setq compilation-scroll-output nil)
-(setq compilation-error-regexp-alist nil)
-(setq compilation-error-regexp-alist-alist nil)
-
 (use-package exec-path-from-shell
   :init (progn
           (setq exec-path-from-shell-arguments '("-l"))
@@ -45,32 +39,17 @@
           (exec-path-from-shell-copy-env "GOPATH")
           (exec-path-from-shell-copy-env "PATH")))
 
-(use-package bug-hunter)
-(use-package feature-mode)
-
 (use-package company
   :init (progn
           (setq company-dabbrev-downcase nil)
           (setq company-dabbrev-ignore-case nil)
           (global-company-mode t)))
 
-;; (use-package company-go)
 (setq abbrev-file-name (concat dotfiles-dir "abbrevations"))
 (setq dabbrev-case-replace nil)
 (setq default-abbrev-mode t)
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
-
-(use-package ido-completing-read+)
-(ido-mode 1)
-(ido-everywhere 1)
-
-(use-package ido-vertical-mode
-  :init (progn
-          (ido-vertical-mode 1)
-          (setq ido-vertical-define-keys 'C-n-and-C-p-only)))
-
-(setq ido-create-new-buffer 'always)
 
 (set-default 'imenu-auto-rescan t)
 (global-set-key (kbd "M-\\") 'imenu)
@@ -86,9 +65,6 @@
           (setq ido-use-faces nil)))
 
 (global-set-key (kbd "M-/") 'hippie-expand)
-
-(use-package elixir-mode)
-(use-package alchemist)
 
 (use-package ruby-mode
   :init (progn
@@ -118,19 +94,13 @@
 (setq inf-ruby-prompt-pattern
       (format inf-ruby-prompt-format-custom "[?>]" "[\]>*\"'/`]"))
 
-;;(eval-after-load 'inf-ruby)
-;; '(define-key inf-ruby-minor-mode-map (kbd "C-c C-c") 'inf-ruby-console-rails))
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
-
-
 (setq ruby-use-encoding-map nil)
 (setq ruby-deep-arglist nil)
 (setq ruby-deep-indent-paren '(?\[ ?\] t))
 (setq ruby-insert-encoding-magic-comment nil)
 (setq ruby-deep-indent-paren-style nil)
 (setq ruby-deep-indent-paren nil)
-
-(use-package ruby-hash-syntax)
 
 (use-package rubocop
   :init (define-key ruby-mode-map (kbd "C-c C-f") 'rubocop-autocorrect-current-file))
@@ -148,25 +118,49 @@
   (setq-default ispell-program-name "hunspell")
   (setq ispell-really-hunspell t))
 
-(flycheck-define-checker proselint
-  "A linter for prose."
-  :command ("proselint" source-inplace)
-  :error-patterns
-  ((warning line-start (file-name) ":" line ":" column ": "
-            (id (one-or-more (not (any " "))))
-            (message) line-end))
-  :modes (text-mode markdown-mode gfm-mode))
+(define-key ctl-x-map "\C-i" #'endless/ispell-word-then-abbrev)
 
-(add-to-list 'flycheck-checkers 'proselint)
+(defun endless/ispell-word-then-abbrev (p)
+  "Call `ispell-word', then create an abbrev for it.
+With prefix P, create local abbrev. Otherwise it will
+be global.
+If there's nothing wrong with the word at point, keep
+looking for a typo until the beginning of buffer. You can
+skip typos you don't want to fix with `SPC', and you can
+sabort completely with `C-g'."
+  (interactive "P")
+  (let (bef aft)
+    (save-excursion
+      (while (if (setq bef (thing-at-point 'word))
+                 ;; Word was corrected or used quit.
+                 (if (ispell-word nil 'quiet)
+                     nil ; End the loop.
+                   ;; Also end if we reach `bob'.
+                   (not (bobp)))
+               ;; If there's no word at point, keep looking
+               ;; until `bob'.
+               (not (bobp)))
+        (backward-word))
+      (setq aft (thing-at-point 'word)))
+    (if (and aft bef (not (equal aft bef)))
+        (let ((aft (downcase aft))
+              (bef (downcase bef)))
+          (define-abbrev
+            (if p local-abbrev-table global-abbrev-table)
+            bef aft)
+          (message "\"%s\" now expands to \"%s\" %sally"
+                   bef aft (if p "loc" "glob")))
+      (user-error "No typo at or before point"))))
 
+(setq save-abbrevs 'silently)
+(setq-default abbrev-mode t)
 
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
 (use-package flyspell-popup
   :init (global-set-key (kbd "C-:") #'flyspell-popup-correct))
 
 ;;(add-hook 'prog-mode-hook 'eldoc-mode)
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
 
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
@@ -240,7 +234,6 @@
   :init (progn (global-anzu-mode +1)
                (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)))
 
-
 (use-package keyfreq
   :init (progn (keyfreq-mode 1)
                (keyfreq-autosave-mode 1)))
@@ -275,31 +268,6 @@
 
 (setq-default display-line-numbers 't)
 
-(defun camelcase-region (start end)
-  "Changes region from snake_case to camelCase"
-  (interactive "r")
-  (save-restriction (narrow-to-region start end)
-                    (downcase-region start end)
-                    (goto-char (point-min))
-                    (while (re-search-forward "_\\(.\\)" nil t)
-                      (replace-match (upcase (match-string 1))))))
-
-(add-to-list 'auto-mode-alist '("\\.zshrc\\'" . sh-mode))
-
-(use-package sml-mode)
-
-(use-package slime
-  :config (progn
-            (load (expand-file-name "~/quicklisp/slime-helper.el"))
-            ;; Replace "sbcl" with the path to your implementation
-            (setq inferior-lisp-program "/usr/local/bin/sbcl")
-            (slime-setup '(slime-fancy slime-tramp slime-asdf))
-            (slime-require :swank-listener-hooks))
-  )
-
-
-(setq tags-revert-without-query 1)
-
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
@@ -316,7 +284,7 @@
     (ad-activate 'find-tag-at-point)
 
     (setq projectile-sort-order 'recentf)
-    (setq projectile-completion-system 'ido)
+    (setq projectile-completion-system 'ivy)
     (projectile-global-mode)
     (add-hook 'projectile-mode-hook 'projectile-rails-on))
 
@@ -382,8 +350,8 @@
   :init (global-set-key (kbd "C-c g") 'github-browse-file))
 
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
-(global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
-(global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
+;; (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
+;; (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
 
 (defun join-lines (arg)
   (interactive "p")
@@ -452,45 +420,6 @@ might be bad."
 (global-set-key (kbd "M-z") 'undo)
 
 (setq column-number-mode t)
-(setq ispell-program-name "aspell")
-(setq ispell-dictionary "american")
-(define-key ctl-x-map "\C-i" #'endless/ispell-word-then-abbrev)
-
-(defun endless/ispell-word-then-abbrev (p)
-  "Call `ispell-word', then create an abbrev for it.
-With prefix P, create local abbrev. Otherwise it will
-be global.
-If there's nothing wrong with the word at point, keep
-looking for a typo until the beginning of buffer. You can
-skip typos you don't want to fix with `SPC', and you can
-sabort completely with `C-g'."
-  (interactive "P")
-  (let (bef aft)
-    (save-excursion
-      (while (if (setq bef (thing-at-point 'word))
-                 ;; Word was corrected or used quit.
-                 (if (ispell-word nil 'quiet)
-                     nil ; End the loop.
-                   ;; Also end if we reach `bob'.
-                   (not (bobp)))
-               ;; If there's no word at point, keep looking
-               ;; until `bob'.
-               (not (bobp)))
-        (backward-word))
-      (setq aft (thing-at-point 'word)))
-    (if (and aft bef (not (equal aft bef)))
-        (let ((aft (downcase aft))
-              (bef (downcase bef)))
-          (define-abbrev
-            (if p local-abbrev-table global-abbrev-table)
-            bef aft)
-          (message "\"%s\" now expands to \"%s\" %sally"
-                   bef aft (if p "loc" "glob")))
-      (user-error "No typo at or before point"))))
-
-(setq save-abbrevs 'silently)
-(setq-default abbrev-mode t)
-
 (setq shell-file-name "zsh")
 (setenv "SHELL" shell-file-name)
 
@@ -512,40 +441,7 @@ sabort completely with `C-g'."
                                       #'ignoramus-boring-p))
           ))
 
-(defun recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
-
-(global-set-key (kbd "C-x C-r") 'recentf-ido-find-file)
-
-;; (use-package evil-leader
-;;   :init (progn
-;;          (global-evil-leader-mode)
-;;          (evil-leader/set-leader ",")
-;;          (evil-leader/set-key
-;;            "b" 'switch-to-buffer
-;;            "r" 'recentf-ido-find-file
-;;            "f" 'projectile-find-file
-;;            "w" 'save-buffer)))
-
-;; (use-package evil
-;;  :init (evil-mode t))
-
-;; (define-key evil-normal-state-map "\C-y" 'yank)
-;; (define-key evil-insert-state-map "\C-y" 'yank)
-;; (define-key evil-visual-state-map "\C-y" 'yank)
-
-;; (define-key evil-normal-state-map "\C-y" 'yank)
-;; (define-key evil-insert-state-map "\C-y" 'yank)
-;; (define-key evil-visual-state-map "\C-y" 'yank)
-
-;; (fset 'evil-visual-update-x-selection 'ignore)
-
-(use-package ruby-extra-highlight
-  :init (add-hook 'ruby-mode-hook #'ruby-extra-highlight-mode))
+(global-set-key (kbd "C-x C-r") 'ivy-recentf)
 
 (use-package avy
   :init (global-set-key (kbd "C-:") 'avy-goto-char))
@@ -641,8 +537,6 @@ sabort completely with `C-g'."
 (use-package org-bullets
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-
-
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
 (defun system-is-imac ()
@@ -655,36 +549,23 @@ sabort completely with `C-g'."
   (disable-all-themes)
   (set-frame-font "Monaco 18"))
 
-;; (use-package tao-theme
-;;    :init (load-theme 'tao-yang t))
-
-;; (use-package rainbow-identifiers
-;;   :init (add-hook 'prog-mode-hook 'rainbow-identifiers-mode))
-
-
 ;; (use-package challenger-deep-theme)
 ;; (load-theme 'challenger-deep t)
 
 ;; (use-package hemera-theme)
 ;;   (load-theme 'hemera t)
 
-(use-package exotica-theme)
-(load-theme 'exotica t)
+;; (use-package exotica-theme)
+;; (load-theme 'exotica t)
 
 ;; (use-package sexy-monochrome-theme
 ;;    (load-theme 'sexy-monochrome t))
 
 (use-package kaolin-themes
-  :init (load-theme 'kaolin-tribal t))
+  :init (load-theme 'kaolin-light t))
 
 ;(use-package reykjavik-theme)
 ;   (load-theme 'reykjavik t))
-
-;; (use-package circadian
-;;   :config
-;;   (setq circadian-themes '(("10:00" . hemera)
-;;                            ("15:00" . nord)))
-;;   (circadian-setup))
 
 (if (system-is-imac)
     (set-default-font "Monaco 17")
