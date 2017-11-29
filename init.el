@@ -117,6 +117,7 @@
 (when (executable-find "hunspell")
   (setq-default ispell-program-name "hunspell")
   (setq ispell-really-hunspell t))
+;;(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (define-key ctl-x-map "\C-i" #'endless/ispell-word-then-abbrev)
 
@@ -154,8 +155,6 @@ sabort completely with `C-g'."
 
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
-
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (use-package flyspell-popup
   :init (global-set-key (kbd "C-:") #'flyspell-popup-correct))
@@ -441,7 +440,7 @@ might be bad."
                                       #'ignoramus-boring-p))
           ))
 
-(global-set-key (kbd "C-x C-r") 'ivy-recentf)
+(global-set-key (kbd "C-x C-r") 'counsel-recentf)
 
 (use-package avy
   :init (global-set-key (kbd "C-:") 'avy-goto-char))
@@ -486,8 +485,15 @@ might be bad."
 (use-package org
   :init (progn
           (require 'ox-md nil t)
-          (setq-default im-notes-dir (concat im-synched-dir "org/"))
+
+          (setq org-todo-keywords
+                '((sequence "TODO" "INPROGRESS" "WAITING" "|" "DONE" "CANCELED")))
+
+          (setq-default im-notes-dir (expand-file-name (concat im-synched-dir "org/")))
           (setq-default org-default-notes-file (concat im-notes-dir "notes.org"))
+          (setq-default org-agenda-files (list "~/Dropbox/org"))
+          (setq org-agenda-text-search-extra-files '(agenda-archives))
+          (setq org-enforce-todo-dependencies t)
 
           (defun add-pcomplete-to-capf ()
             (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
@@ -506,12 +512,17 @@ might be bad."
                  (("t" "todo" entry (file org-default-notes-file) "* TODO %?\n")
                   ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
 
-          (setq org-agenda-files `(,im-notes-dir))
           (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
           (setq org-refile-use-outline-path 'file)
           (setq org-outline-path-complete-in-steps nil)
           (setq org-refile-allow-creating-parent-nodes 'confirm)
 
+          (defun org-summary-todo (n-done n-not-done)
+            "Switch entry to DONE when all subentries are done, to TODO otherwise."
+            (let (org-log-done org-log-states)   ; turn off logging
+              (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+
+          (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 
           (defun air-org-skip-subtree-if-priority (priority)
@@ -542,7 +553,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
             (org-agenda nil "c")
             (when (not split)
               (delete-other-windows)))
-          (global-set-key (kbd "S-SPC") 'air-pop-to-org-agenda)
+          (global-set-key (kbd "<f2>") 'air-pop-to-org-agenda)
 
           (font-lock-add-keywords 'org-mode
                                   '(("^ +\\([-*]\\) "
@@ -573,11 +584,11 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;; (use-package challenger-deep-theme)
 ;; (load-theme 'challenger-deep t)
 
-(use-package hemera-theme
-  :init (load-theme 'hemera t))
+;; (use-package hemera-theme
+;;   :init (load-theme 'hemera t))
 
-;; (use-package exotica-theme)
-;; (load-theme 'exotica t)
+(use-package exotica-theme
+  :init (load-theme 'exotica t))
 
 ;; (use-package sexy-monochrome-theme
 ;;    (load-theme 'sexy-monochrome t))
