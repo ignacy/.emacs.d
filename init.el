@@ -9,7 +9,7 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(setq im-synched-dir "~/SpiderOakHive/")
+(setq im-synched-dir "~/Dropbox/")
 
 (setq use-package-always-ensure t)
 (require 'use-package)
@@ -350,8 +350,8 @@ sabort completely with `C-g'."
   :init (global-set-key (kbd "C-c g") 'github-browse-file))
 
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
-;; (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
-;; (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
+(global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
+(global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
 
 (defun join-lines (arg)
   (interactive "p")
@@ -486,7 +486,7 @@ might be bad."
 (use-package org
   :init (progn
           (require 'ox-md nil t)
-          (setq-default im-notes-dir (concat im-synched-dir "notes/"))
+          (setq-default im-notes-dir (concat im-synched-dir "org/"))
           (setq-default org-default-notes-file (concat im-notes-dir "notes.org"))
 
           (defun add-pcomplete-to-capf ()
@@ -507,21 +507,42 @@ might be bad."
                   ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
 
           (setq org-agenda-files `(,im-notes-dir))
+          (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+          (setq org-refile-use-outline-path 'file)
+          (setq org-outline-path-complete-in-steps nil)
+          (setq org-refile-allow-creating-parent-nodes 'confirm)
+
+
+
+          (defun air-org-skip-subtree-if-priority (priority)
+            "Skip an agenda subtree if it has a priority of PRIORITY.
+
+PRIORITY may be one of the characters ?A, ?B, or ?C."
+            (let ((subtree-end (save-excursion (org-end-of-subtree t)))
+                  (pri-value (* 1000 (- org-lowest-priority priority)))
+                  (pri-current (org-get-priority (thing-at-point 'line t))))
+              (if (= pri-value pri-current)
+                  subtree-end
+                nil)))
 
           (setq org-agenda-custom-commands
-                '(("c" . "My Custom Agendas")
-                  ("cu" "Unscheduled TODO"
-                   ((todo ""
-                          ((org-agenda-overriding-header "Unscheduled TODO")
-                           (org-agenda-skip-function '(org-agenda-skip-entry-if 'timestamp)))))
-                   nil
-                   nil)))
+                '(("c" "Simple agenda view"
+                   ((tags "PRIORITY=\"A\""
+                          ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                           (org-agenda-overriding-header "High-priority unfinished tasks:")))
+                    (agenda "")
+                    (alltodo ""
+                             ((org-agenda-skip-function
+                               '(or (air-org-skip-subtree-if-priority ?A)
+                                    (org-agenda-skip-if nil '(scheduled deadline))))))))))
 
-          (defun org-weekly-agenda ()
-            (interactive)
-            (org-agenda nil "cu"))
-
-          (global-set-key (kbd "C-c t") 'org-weekly-agenda)
+          (defun air-pop-to-org-agenda (&optional split)
+            "Visit the org agenda, in the current window or a SPLIT."
+            (interactive "P")
+            (org-agenda nil "c")
+            (when (not split)
+              (delete-other-windows)))
+          (global-set-key (kbd "S-SPC") 'air-pop-to-org-agenda)
 
           (font-lock-add-keywords 'org-mode
                                   '(("^ +\\([-*]\\) "
@@ -552,8 +573,8 @@ might be bad."
 ;; (use-package challenger-deep-theme)
 ;; (load-theme 'challenger-deep t)
 
-;; (use-package hemera-theme)
-;;   (load-theme 'hemera t)
+(use-package hemera-theme
+  :init (load-theme 'hemera t))
 
 ;; (use-package exotica-theme)
 ;; (load-theme 'exotica t)
@@ -561,11 +582,11 @@ might be bad."
 ;; (use-package sexy-monochrome-theme
 ;;    (load-theme 'sexy-monochrome t))
 
-(use-package kaolin-themes
-  :init (load-theme 'kaolin-light t))
+;; (use-package kaolin-themes
+;;   :init (load-theme 'kaolin-light t))
 
-;(use-package reykjavik-theme)
-;   (load-theme 'reykjavik t))
+;; (use-package reykjavik-theme
+;;   :init (load-theme 'reykjavik t))
 
 (if (system-is-imac)
     (set-default-font "Monaco 17")
