@@ -494,6 +494,11 @@ might be bad."
           (setq-default org-agenda-files (list "~/Dropbox/org"))
           (setq org-agenda-text-search-extra-files '(agenda-archives))
           (setq org-enforce-todo-dependencies t)
+          (setq org-blank-before-new-entry (quote ((heading) (plain-list-item))))
+          (setq org-log-done (quote time))
+          (setq org-log-reschedule (quote time))
+          (setq org-log-redeadline (quote time))
+
 
           (defun add-pcomplete-to-capf ()
             (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
@@ -510,7 +515,10 @@ might be bad."
           (setq org-capture-templates
                 (quote
                  (("t" "todo" entry (file org-default-notes-file) "* TODO %?\n")
+                  ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org") "* %?\n %U\n  %i\n  %a")
                   ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
+
+          (global-set-key (kbd "<f5>") (lambda() (interactive) (find-file "~/Dropbox/org/journal.org")))
 
           (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
           (setq org-refile-use-outline-path 'file)
@@ -547,6 +555,17 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
                                '(or (air-org-skip-subtree-if-priority ?A)
                                     (org-agenda-skip-if nil '(scheduled deadline))))))))))
 
+
+
+          (setq org-fontify-done-headline t)
+          (custom-set-faces
+           '(org-done ((t (:foreground "PaleGreen"
+                                       :weight normal
+                                       :strike-through t))))
+           '(org-headline-done
+             ((((class color) (min-colors 16) (background dark))
+               (:foreground "LightYellow4" :strike-through t)))))
+
           (defun air-pop-to-org-agenda (&optional split)
             "Visit the org agenda, in the current window or a SPLIT."
             (interactive "P")
@@ -570,6 +589,11 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (global-set-key (kbd "C-h") 'delete-backward-char)
+
+(use-package eterm-256color
+  :ensure t)
+
+(add-hook 'term-mode-hook #'eterm-256color-mode)
 
 (defun system-is-imac ()
   (interactive)
