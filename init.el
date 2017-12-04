@@ -518,7 +518,7 @@ might be bad."
                   ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org") "* %?\n %U\n  %i\n  %a")
                   ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
 
-          (global-set-key (kbd "<f5>") (lambda() (interactive) (find-file "~/Dropbox/org/journal.org")))
+          ;;(global-set-key (kbd "<f5>") (lambda() (interactive) (find-file "~/Dropbox/org/journal.org")))
 
           (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
           (setq org-refile-use-outline-path 'file)
@@ -581,8 +581,9 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
           (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
           (global-set-key "\C-cl" 'org-store-link)
-          (global-set-key (kbd "C-c c") 'org-capture)
+          (global-set-key (kbd "<f5>") 'org-capture)
           (global-set-key (kbd "C-c C-c") 'org-capture)
+          (global-set-key (kbd "C-c c") 'org-capture)
           (global-set-key "\C-ca" 'org-agenda)))
 
 (use-package org-bullets
@@ -592,6 +593,11 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
 (use-package eterm-256color
   :ensure t)
+
+(use-package jekyll-modes)
+(add-to-list 'auto-mode-alist '("\\.md$" . jekyll-markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.liquid" . jekyll-html-mode))
+(use-package yaml-mode)
 
 (add-hook 'term-mode-hook #'eterm-256color-mode)
 
@@ -611,14 +617,14 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;; (use-package hemera-theme
 ;;   :init (load-theme 'hemera t))
 
-(use-package exotica-theme
-  :init (load-theme 'exotica t))
+;; (use-package exotica-theme
+;;   :init (load-theme 'exotica t))
 
 ;; (use-package sexy-monochrome-theme
 ;;    (load-theme 'sexy-monochrome t))
 
-;; (use-package kaolin-themes
-;;   :init (load-theme 'kaolin-light t))
+(use-package kaolin-themes
+  :init (load-theme 'kaolin-tribal t))
 
 ;; (use-package reykjavik-theme
 ;;   :init (load-theme 'reykjavik t))
