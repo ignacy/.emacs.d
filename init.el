@@ -254,6 +254,9 @@ sabort completely with `C-g'."
           (global-set-key (kbd "C-c s") #'aya-create)
           (global-set-key (kbd "C-c i") #'aya-expand)))
 
+(use-package yasnippet
+  :init (yas-global-mode 1))
+
 (setq-default mode-line-format
               (list
                '(:eval (propertize "%* " 'face font-lock-warning-face))
@@ -620,17 +623,17 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;; (use-package exotica-theme
 ;;   :init (load-theme 'exotica t))
 
+(use-package rebecca-theme
+  :init (load-theme 'rebecca t))
+
 ;; (use-package sexy-monochrome-theme
 ;;    (load-theme 'sexy-monochrome t))
 
-(use-package kaolin-themes
-  :init (load-theme 'kaolin-tribal t))
-
-;; (use-package reykjavik-theme
-;;   :init (load-theme 'reykjavik t))
+;; (use-package kaolin-themes
+;;   :init (load-theme 'kaolin-tribal t))
 
 (if (system-is-imac)
-    (set-default-font "Monaco 17")
+    (set-default-font "Monaco 16")
   (set-default-font "Monaco 16"))
 
 ;; Local Variables:

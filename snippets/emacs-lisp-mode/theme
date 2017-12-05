@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: theme
+# key: theme
+# --
+
+(use-package $1-theme
+  :init (load-theme '$1 t))
