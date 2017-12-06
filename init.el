@@ -523,14 +523,14 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;; (use-package exotica-theme
 ;;   :init (load-theme 'exotica t))
 
-(use-package rebecca-theme
-  :init (load-theme 'rebecca t))
+;; (use-package rebecca-theme
+;;   :init (load-theme 'rebecca t))
 
 ;; (use-package sexy-monochrome-theme
 ;;    (load-theme 'sexy-monochrome t))
 
-;; (use-package kaolin-themes
-;;   :init (load-theme 'kaolin-tribal t))
+(use-package kaolin-themes
+  :init (load-theme 'kaolin-light t))
 
 (if (system-is-imac)
     (set-default-font "Monaco 16")
