@@ -497,6 +497,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (use-package fzf
   :bind (("C-x C-f" . fzf-git)))
 
+(global-set-key (kbd "C-c d") 'cd)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
 (use-package jekyll-modes)
@@ -526,11 +527,14 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;; (use-package rebecca-theme
 ;;   :init (load-theme 'rebecca t))
 
+(use-package github-modern-theme
+  :init (load-theme 'github-modern t))
+
 ;; (use-package sexy-monochrome-theme
 ;;    (load-theme 'sexy-monochrome t))
 
-(use-package kaolin-themes
-  :init (load-theme 'kaolin-light t))
+;; (use-package kaolin-themes
+;;   :init (load-theme 'kaolin-light t))
 
 (if (system-is-imac)
     (set-default-font "Monaco 16")
