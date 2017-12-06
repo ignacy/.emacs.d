@@ -17,8 +17,10 @@
 (global-auto-revert-mode 1)
 (setq inhibit-startup-message 't)
 (setq tags-add-tables nil)
+(set-default 'truncate-lines t)
 (setq tags-revert-without-query 1)
 (scroll-bar-mode -1)
+(tool-bar-mode -1)
 (show-paren-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
@@ -634,7 +636,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
 (if (system-is-imac)
     (set-default-font "Monaco 16")
-  (set-default-font "Monaco 16"))
+  (set-default-font "Monaco 14"))
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
