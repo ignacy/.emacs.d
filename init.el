@@ -224,6 +224,11 @@ sabort completely with `C-g'."
 
 (ignore-errors (require 'go-flycheck))
 
+
+(use-package find-file-in-project)
+(global-set-key (kbd "C-x C-f") 'find-file-in-project)
+(global-set-key (kbd "C-x f") 'find-file)
+
 (use-package ag
   :config (progn
             (global-set-key (kbd "C-c r") 'ag-files)
@@ -278,33 +283,9 @@ sabort completely with `C-g'."
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode)))
 
-(use-package projectile-rails)
-(use-package projectile
-  :init
-  (progn
-    (defadvice find-tag-at-point (before auto-visti-tags)
-      "Load default TAGS file from home directory if needed"
-      (visit-tags-table (concat (projectile-project-root) "TAGS")))
-    (ad-activate 'find-tag-at-point)
-
-    (setq projectile-sort-order 'recentf)
-    (setq projectile-completion-system 'ivy)
-    (projectile-global-mode)
-    (add-hook 'projectile-mode-hook 'projectile-rails-on))
-
-  :config
-  (progn
-    (setq projectile-switch-project-action 'projectile-dired)
-    (add-to-list 'projectile-globally-ignored-files ".DS_Store"))
-  :bind ("C-c C-p" . projectile-switch-project))
-
-
-(global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "C-x C-f") 'ido-find-file)
-(global-set-key (kbd "C-x b") 'projectile-switch-to-buffer)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-c m") 'projectile-rails-find-current-spec)
 
 (setq kill-ring-max 200                 ; More killed items
       kill-do-not-save-duplicates t     ; No duplicates in kill ring
@@ -340,7 +321,7 @@ sabort completely with `C-g'."
                                     'magit-insert-unpushed-to-upstream
                                     'magit-insert-unpushed-to-upstream-or-recent
                                     'replace)
-            (setq magit-completing-read-function 'ido-completing-read))
+            (setq magit-completing-read-function 'ivy-completing-read))
   :init (progn
           (defun im/magit-soft-reset-head~1 ()
             "Undo last commit (soft)"
@@ -463,8 +444,6 @@ might be bad."
           (global-set-key (kbd "C-c k") 'counsel-ag)
           (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
 
-(use-package counsel-projectile
-  :init (counsel-projectile-on))
 
 (defun endless/fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."
