@@ -30,3 +30,4 @@ custom.el
 places
 flycheck_init.el
 config.el
+/smex-items

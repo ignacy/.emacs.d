@@ -59,44 +59,44 @@
 (use-package py-yapf
   :init (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
 
+(use-package ido-occur
+  :bind (("C-c o" . ido-occur)))
+
+(require 'ido)
+(ido-mode t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-case-fold nil
+      ido-auto-merge-work-directories-length -1
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point nil
+      ido-max-prospects 10)
+
+
 (use-package flx-ido
   :init (progn
           (flx-ido-mode 1)
-          ;; disable ido faces to see flx highlights.
-          (setq ido-enable-flex-matching t)
           (setq ido-use-faces nil)))
+
+(use-package ido-vertical-mode
+  :init (progn
+          (ido-vertical-mode)
+          (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right)))
+
+(use-package ido-completing-read+
+  :init (ido-ubiquitous-mode 1))
+
+(use-package smex
+  :init (smex-initialize)
+  :bind (("M-x") . smex)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 (use-package ruby-mode
   :init (progn
           (add-hook 'ruby-mode-hook
-                    (lambda ()
-                      (subword-mode 1)
-                      ))))
+                    (lambda () (subword-mode 1)))))
 
-(use-package inf-ruby)
-
-(defconst inf-ruby-prompt-format-custom
-  (concat
-   (mapconcat
-    #'identity
-    '("\\(^%s> *\\)"
-      "\\(^(byebug) *\\)"
-      "\\(^\\(irb([^)]+)"
-      "\\([[0-9]+] \\)?.*([^)]+)" ; pry fix
-      "\\(jruby-\\|JRUBY-\\)?[1-9]\\.[0-9]\\.[0-9]+\\(-?p?[0-9]+\\)?"
-      "^rbx-head\\)")
-    "\\|")
-   " ?[0-9:]* ?%s *\\)")
-  "Format string for the prompt regexp pattern.")
-
-(setq inf-ruby-first-prompt-pattern
-      (format inf-ruby-prompt-format-custom ">" ">"))
-(setq inf-ruby-prompt-pattern
-      (format inf-ruby-prompt-format-custom "[?>]" "[\]>*\"'/`]"))
-
-(add-hook 'after-init-hook 'inf-ruby-switch-setup)
 (setq ruby-use-encoding-map nil)
 (setq ruby-deep-arglist nil)
 (setq ruby-deep-indent-paren '(?\[ ?\] t))
@@ -159,9 +159,7 @@ sabort completely with `C-g'."
 (setq-default abbrev-mode t)
 
 (use-package flyspell-popup
-  :init (global-set-key (kbd "C-:") #'flyspell-popup-correct))
-
-;;(add-hook 'prog-mode-hook 'eldoc-mode)
+  :bind (("C-:" . #'flyspell-popup-correct)))
 
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
@@ -181,7 +179,7 @@ sabort completely with `C-g'."
   :bind (("C-M-." . dumb-jump-go-other-window))
   :config (progn
             (setq dumb-jump-force-searcher 'ag)
-            (setq dumb-jump-selector 'ivy)))
+            (setq dumb-jump-selector 'ido)))
 
 (use-package coffee-mode
   :config (custom-set-variables '(coffee-tab-width 2))
@@ -209,30 +207,16 @@ sabort completely with `C-g'."
 (use-package go-mode
   :config (progn
             (add-hook 'go-mode-hook '(lambda ()
-                                       ;; (set (make-local-variable 'company-backends) '(company-go))
-                                       ;; (company-mode)
-
                                        (setq gofmt-command "goimports")
-
                                        (local-set-key (kbd "C-c C-f") 'gofmt)
                                        (local-set-key (kbd "C-c C-k") 'godoc)
                                        (setq tab-width 4)
-                                       (setq indent-tabs-mode 1)
-                                       ))
-            (add-hook 'before-save-hook 'gofmt-before-save)
-            ))
-
-(ignore-errors (require 'go-flycheck))
-
-
-(use-package find-file-in-project)
-(global-set-key (kbd "C-x C-f") 'find-file-in-project)
-(global-set-key (kbd "C-x f") 'find-file)
+                                       (setq indent-tabs-mode 1)))
+            (add-hook 'before-save-hook 'gofmt-before-save)))
 
 (use-package ag
-  :config (progn
-            (global-set-key (kbd "C-c r") 'ag-files)
-            (global-set-key (kbd "M-r") 'ag-regexp-project-at-point)))
+  :bind (("C-c r" . ag-files)
+         ("M-r" . ag-regexp-project-at-point)))
 
 (global-set-key (kbd "M-c") 'query-replace-regexp)
 
@@ -257,9 +241,8 @@ sabort completely with `C-g'."
 ;;(use-package github-modern-theme)
 
 (use-package auto-yasnippet
-  :init (progn
-          (global-set-key (kbd "C-c s") #'aya-create)
-          (global-set-key (kbd "C-c i") #'aya-expand)))
+  :bind (("C-c s" . #'aya-create)
+         ("C-c i" . #'aya-expand)))
 
 (use-package yasnippet
   :init (yas-global-mode 1))
@@ -321,7 +304,7 @@ sabort completely with `C-g'."
                                     'magit-insert-unpushed-to-upstream
                                     'magit-insert-unpushed-to-upstream-or-recent
                                     'replace)
-            (setq magit-completing-read-function 'ivy-completing-read))
+            (setq magit-completing-read-function 'ido-completing-read))
   :init (progn
           (defun im/magit-soft-reset-head~1 ()
             "Undo last commit (soft)"
@@ -332,7 +315,7 @@ sabort completely with `C-g'."
           (global-set-key (kbd "C-x g") 'magit-status)))
 
 (use-package github-browse-file
-  :init (global-set-key (kbd "C-c g") 'github-browse-file))
+  :bind (("C-c g" . github-browse-file)))
 
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
@@ -423,27 +406,18 @@ might be bad."
                                       "TAGS"
                                       "/itsalltext/" ; It's all text temp files
                                       ;; And all other kinds of boring files
-                                      #'ignoramus-boring-p))
-          ))
+                                      #'ignoramus-boring-p))))
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to find a recent file."
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
 
-(global-set-key (kbd "C-x C-r") 'counsel-recentf)
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
 (use-package avy
-  :init (global-set-key (kbd "C-:") 'avy-goto-char))
-
-(use-package ivy
-  :init (progn
-          (ivy-mode 1)
-          (setq ivy-use-virtual-buffers t)
-          (setq enable-recursive-minibuffers t)
-          (global-set-key "\C-s" 'swiper)
-          (global-set-key (kbd "C-c C-r") 'ivy-resume)
-          (global-set-key (kbd "M-x") 'counsel-M-x)
-          (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-          (global-set-key (kbd "C-c j") 'counsel-git-grep)
-          (global-set-key (kbd "C-c k") 'counsel-ag)
-          (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
-
+  :bind (("C-:" . avy-goto-char)))
 
 (defun endless/fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."
@@ -573,17 +547,22 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (use-package org-bullets
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+(use-package find-file-in-project
+  :init (setq ffip-prefer-ido-mode t)
+  :bind (("C-x C-f" . find-file-in-project)
+         ("C-x f" . find-file)))
+
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
-(use-package eterm-256color
-  :ensure t)
+;; (use-package eterm-256color
+;;   :ensure t)
+;;(add-hook 'term-mode-hook #'eterm-256color-mode)
 
 (use-package jekyll-modes)
 (add-to-list 'auto-mode-alist '("\\.md$" . jekyll-markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.liquid" . jekyll-html-mode))
 (use-package yaml-mode)
 
-(add-hook 'term-mode-hook #'eterm-256color-mode)
 
 (defun system-is-imac ()
   (interactive)
