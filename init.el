@@ -1,27 +1,18 @@
 (package-initialize)
-
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
+(when (not package-archive-contents) (package-refresh-contents))
+(unless (package-installed-p 'use-package) (package-install 'use-package))
 (setq im-synched-dir "~/Dropbox/")
-
 (setq use-package-always-ensure t)
 (require 'use-package)
 
+(use-package better-defaults)
 (global-auto-revert-mode 1)
 (setq inhibit-startup-message 't)
 (setq tags-add-tables nil)
-(set-default 'truncate-lines t)
 (setq tags-revert-without-query 1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(show-paren-mode 1)
+(set-default 'truncate-lines t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq make-backup-files nil)
 (setq ring-bell-function 'ignore)
@@ -32,7 +23,6 @@
 (setq mac-option-key-is-meta t)
 (setq mac-right-option-modifier nil)
 (setq mac-command-modifier 'meta)
-(save-place-mode 1)
 
 (use-package exec-path-from-shell
   :init (progn
@@ -40,24 +30,16 @@
           (exec-path-from-shell-initialize)
           (exec-path-from-shell-copy-env "GOPATH")
           (exec-path-from-shell-copy-env "PATH")))
-
 (use-package company
   :init (progn
           (setq company-dabbrev-downcase nil)
           (setq company-dabbrev-ignore-case nil)
           (global-company-mode t)))
-
 (setq abbrev-file-name (concat dotfiles-dir "abbrevations"))
 (setq dabbrev-case-replace nil)
 (setq default-abbrev-mode t)
 (if (file-exists-p abbrev-file-name)
     (quietly-read-abbrev-file))
-
-(set-default 'imenu-auto-rescan t)
-(global-set-key (kbd "M-\\") 'imenu)
-
-(use-package py-yapf
-  :init (add-hook 'python-mode-hook 'py-yapf-enable-on-save))
 
 (use-package ido-occur
   :bind (("C-c o" . ido-occur)))
@@ -71,8 +53,6 @@
       ido-create-new-buffer 'always
       ido-use-filename-at-point nil
       ido-max-prospects 10)
-
-
 (use-package flx-ido
   :init (progn
           (flx-ido-mode 1)
@@ -88,9 +68,7 @@
 
 (use-package smex
   :init (smex-initialize)
-  :bind (("M-x") . smex)
-
-(global-set-key (kbd "M-/") 'hippie-expand)
+  :bind (("M-x" . smex)))
 
 (use-package ruby-mode
   :init (progn
@@ -169,11 +147,7 @@ sabort completely with `C-g'."
             (setq rspec-use-rake-when-possible nil)
             (setq rspec-use-rvm nil)
             (setq rspec-use-bundler-when-possible 't)
-            (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)
-            ;; (eval-after-load 'rspec-mode
-            ;;   '(rspec-install-snippets))
-            ;;(setq rspec-command-options "--format progress --order random")
-            ))
+            (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)))
 
 (use-package dumb-jump
   :bind (("C-M-." . dumb-jump-go-other-window))
@@ -189,21 +163,9 @@ sabort completely with `C-g'."
   :init (progn
           (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-jsx-mode))
           (setq-default js2-basic-offset 4)
-          (setq-default js-indent-level 4)
-          (setq-default js2-mode-indent-ignore-first-tab t)
-          (setq-default js2-show-parse-errors nil)
-          (setq-default js2-strict-inconsistent-return-warning nil)
-          (setq-default js2-strict-var-hides-function-arg-warning nil)
-          (setq-default js2-strict-missing-semi-warning nil)
-          (setq-default js2-strict-trailing-comma-warning nil)
-          (setq-default js2-strict-cond-assign-warning nil)
-          (setq-default js2-strict-var-redeclaration-warning nil)
-          (setq-default js2-global-externs
-                        '("module" "require" "__dirname" "process" "console" "define"
-                          "JSON" "$" "_" "Backbone" ))))
+          (setq-default js-indent-level 4)))
 (use-package haml-mode)
 (use-package slim-mode)
-
 (use-package go-mode
   :config (progn
             (add-hook 'go-mode-hook '(lambda ()
@@ -213,11 +175,9 @@ sabort completely with `C-g'."
                                        (setq tab-width 4)
                                        (setq indent-tabs-mode 1)))
             (add-hook 'before-save-hook 'gofmt-before-save)))
-
 (use-package ag
   :bind (("C-c r" . ag-files)
          ("M-r" . ag-regexp-project-at-point)))
-
 (global-set-key (kbd "M-c") 'query-replace-regexp)
 
 (use-package anzu
@@ -229,24 +189,17 @@ sabort completely with `C-g'."
                (keyfreq-autosave-mode 1)))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-
 (defun disable-all-themes ()
   "Disable all active themes."
   (dolist (i custom-enabled-themes)
     (disable-theme i)))
-
 (defadvice load-theme (before disable-themes-first activate)
   (disable-all-themes))
-
-;;(use-package github-modern-theme)
-
 (use-package auto-yasnippet
   :bind (("C-c s" . #'aya-create)
          ("C-c i" . #'aya-expand)))
-
 (use-package yasnippet
   :init (yas-global-mode 1))
-
 (setq-default mode-line-format
               (list
                '(:eval (propertize "%* " 'face font-lock-warning-face))
@@ -260,43 +213,24 @@ sabort completely with `C-g'."
 
 (setq-default display-line-numbers 't)
 
-(use-package markdown-mode
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode)))
-
 (global-set-key (kbd "C-x C-f") 'ido-find-file)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
 (setq kill-ring-max 200                 ; More killed items
       kill-do-not-save-duplicates t     ; No duplicates in kill ring
-      ;; Save the contents of the clipboard to kill ring before killing
       save-interprogram-paste-before-kill t)
-
-;; (use-package highlight-symbol
-;;   :init (progn
-;;           (add-hook 'prog-mode-hook 'highlight-symbol-mode)
-;;           (add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
-;;           (setq highlight-symbol-idle-delay 0)))
-
 (use-package symbol-overlay
   :init (progn
           (add-hook 'prog-mode-hook 'symbol-overlay-mode)
           (global-set-key (kbd "M-i") 'symbol-overlay-put)
           (global-set-key (kbd "M-o") 'symbol-overlay-remove-all)))
-
 (use-package wrap-region
   :init (progn
           (wrap-region-global-mode +1)
           (wrap-region-add-wrapper "`" "`")
           (wrap-region-add-wrapper "{" "}")))
-
 (use-package expand-region
   :defer t
   :bind ("M-2" . er/expand-region))
-
 (use-package magit
   :config (progn
             (setq magit-process-popup-time 1)
@@ -327,7 +261,6 @@ sabort completely with `C-g'."
   (delete-char 1)
   (delete-horizontal-space)
   (insert " "))
-
 (global-set-key (kbd "M-j") 'join-lines)
 
 (defun cleanup-buffer-safe ()
@@ -360,7 +293,6 @@ might be bad."
       dired-recursive-copies 'always
       dired-dwim-target t)
 
-
 (defun indent-buffer ()
   "Indent the currently visited buffer."
   (interactive)
@@ -381,18 +313,15 @@ might be bad."
 (global-set-key (kbd "C-x i") 'indent-region-or-buffer)
 
 (use-package iedit)
-
 (use-package rainbow-delimiters
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (global-set-key (kbd "M-z") 'undo)
-
 (setq column-number-mode t)
 (setq shell-file-name "zsh")
 (setenv "SHELL" shell-file-name)
 
-(use-package which-key
-  :init (which-key-mode))
+(use-package which-key :init (which-key-mode))
 
 (use-package recentf
   :init (progn
@@ -416,8 +345,7 @@ might be bad."
 
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
-(use-package avy
-  :bind (("C-:" . avy-goto-char)))
+(use-package avy :bind (("C-:" . avy-goto-char)))
 
 (defun endless/fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."
@@ -532,6 +460,20 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
               (delete-other-windows)))
           (global-set-key (kbd "<f2>") 'air-pop-to-org-agenda)
 
+
+          (set-face-attribute 'org-level-1 nil :weight 'bold)
+          (set-face-attribute 'org-level-2 nil :weight 'bold)
+          (set-face-attribute 'org-level-3 nil :weight 'bold)
+          (set-face-attribute 'org-level-4 nil :weight 'bold)
+          (font-lock-add-keywords
+           nil
+           '(("\(\+begin_src\)"
+              (0 (progn (compose-region (match-beginning 1) (match-end 1) ?¦)
+                        nil)))
+             ("\(\+end_src\)"
+              (0 (progn (compose-region (match-beginning 1) (match-end 1) ?¦)
+                        nil)))))
+
           (font-lock-add-keywords 'org-mode
                                   '(("^ +\\([-*]\\) "
                                      (0 (prog1 ()
@@ -552,17 +494,15 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
   :bind (("C-x C-f" . find-file-in-project)
          ("C-x f" . find-file)))
 
-(global-set-key (kbd "C-h") 'delete-backward-char)
+(use-package fzf
+  :bind (("C-x C-f" . fzf-git)))
 
-;; (use-package eterm-256color
-;;   :ensure t)
-;;(add-hook 'term-mode-hook #'eterm-256color-mode)
+(global-set-key (kbd "C-h") 'delete-backward-char)
 
 (use-package jekyll-modes)
 (add-to-list 'auto-mode-alist '("\\.md$" . jekyll-markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.liquid" . jekyll-html-mode))
 (use-package yaml-mode)
-
 
 (defun system-is-imac ()
   (interactive)
