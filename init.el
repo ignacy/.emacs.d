@@ -149,11 +149,11 @@ sabort completely with `C-g'."
             (setq rspec-use-bundler-when-possible 't)
             (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)))
 
-(use-package dumb-jump
-  :bind (("C-M-." . dumb-jump-go-other-window))
-  :config (progn
-            (setq dumb-jump-force-searcher 'ag)
-            (setq dumb-jump-selector 'ido)))
+(use-package smart-jump
+  :ensure t
+  :bind (("C-M-." . 'smart-jump-go))
+  :config
+  (smart-jump-setup-default-registers))
 
 (use-package coffee-mode
   :config (custom-set-variables '(coffee-tab-width 2))
