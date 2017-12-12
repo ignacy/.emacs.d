@@ -488,10 +488,14 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (use-package org-bullets
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(use-package find-file-in-project
-  :init (setq ffip-prefer-ido-mode t)
-  :bind (("C-x f" . find-file-in-project)
-         ("C-x C-f" . ido-find-file)))
+;; (use-package find-file-in-project
+;;   :init (setq ffip-prefer-ido-mode t)
+;;   :bind (("C-x f" . find-file-in-project)
+;;          ("C-x C-f" . ido-find-file)))
+
+(use-package fiplr
+  :bind (("C-x f" . fiplr-find-file)))
+
 
 (global-set-key (kbd "C-c d") 'cd)
 (global-set-key (kbd "C-h") 'delete-backward-char)
