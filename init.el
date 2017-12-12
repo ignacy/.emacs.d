@@ -488,15 +488,10 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (use-package org-bullets
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-;; (use-package find-file-in-project
-;;   :init (setq ffip-prefer-ido-mode t)
-;;   :bind (("C-x C-f" . find-file-in-project)
-;;          ("C-x f" . find-file)))
-
-(global-set-key (kbd "C-x C-f") 'ido-find-file)
-(use-package fzf
-  :bind (("C-x f" . fzf-git)))
-
+(use-package find-file-in-project
+  :init (setq ffip-prefer-ido-mode t)
+  :bind (("C-x f" . find-file-in-project)
+         ("C-x C-f" . ido-find-file)))
 
 (global-set-key (kbd "C-c d") 'cd)
 (global-set-key (kbd "C-h") 'delete-backward-char)
@@ -528,10 +523,10 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;; (use-package rebecca-theme
 ;;   :init (load-theme 'rebecca t))
 
-(use-package github-modern-theme
-  :init (load-theme 'github-modern t))
+;; (use-package github-modern-theme
+;;   :init (load-theme 'github-modern t))
 
-;;(load-theme 'awemacs t)
+(load-theme 'awemacs t)
 
 ;; (use-package sexy-monochrome-theme
 ;;    (load-theme 'sexy-monochrome t))
