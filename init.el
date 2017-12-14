@@ -496,6 +496,15 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (use-package fiplr
   :bind (("C-x f" . fiplr-find-file)))
 
+(use-package dired-sidebar
+  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+  :ensure t
+  :commands (dired-sidebar-toggle-sidebar)
+  :config
+  (use-package all-the-icons-dired
+    ;; M-x all-the-icons-install-fonts
+    :ensure t
+    :commands (all-the-icons-dired-mode)))
 
 (global-set-key (kbd "C-c d") 'cd)
 (global-set-key (kbd "C-h") 'delete-backward-char)
@@ -540,7 +549,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
 (if (system-is-imac)
     (set-default-font "Monaco 16")
-  (set-default-font "Monaco 14"))
+  (set-default-font "Lucida Grande Mono 14"))
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
