@@ -66,6 +66,12 @@
 (use-package ido-completing-read+
   :init (ido-ubiquitous-mode 1))
 
+
+(defun switch-project ()
+  (interactive)
+  (let* ((project (ido-completing-read+ "Project: " '("a" "b" "c"))))
+    (message "Switching to project %s" project)))
+
 (use-package smex
   :init (smex-initialize)
   :bind (("M-x" . smex)))
@@ -506,8 +512,17 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
     :ensure t
     :commands (all-the-icons-dired-mode)))
 
+(use-package ibuffer-vc
+  :init (add-hook 'ibuffer-hook
+                  (lambda ()
+                    (ibuffer-vc-set-filter-groups-by-vc-root)
+                    (unless (eq ibuffer-sorting-mode 'alphabetic)
+                      (ibuffer-do-sort-by-alphabetic)))))
+
 (global-set-key (kbd "C-c d") 'cd)
 (global-set-key (kbd "C-h") 'delete-backward-char)
+
+
 
 (use-package jekyll-modes)
 (add-to-list 'auto-mode-alist '("\\.md$" . jekyll-markdown-mode))
