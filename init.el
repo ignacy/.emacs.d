@@ -20,8 +20,7 @@
 (setq dotfiles-dir "~/.emacs.d/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(setq mac-option-key-is-meta t)
-(setq mac-right-option-modifier nil)
+(setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 
 (use-package exec-path-from-shell
@@ -43,6 +42,8 @@
 
 (use-package ido-occur
   :bind (("C-c o" . ido-occur)))
+
+(use-package graphql-mode)
 
 (require 'ido)
 (ido-mode t)
@@ -66,6 +67,10 @@
 (use-package ido-completing-read+
   :init (ido-ubiquitous-mode 1))
 
+(use-package projectile
+  :bind (
+         ("C-c C-p" . projectile-switch-project)
+         ("C-x f" . projectile-find-file)))
 
 (defun switch-project ()
   (interactive)
@@ -315,7 +320,14 @@ might be bad."
         (indent-buffer)
         (message "Indented buffer.")))))
 
-(global-set-key (kbd "C-x i") 'indent-region-or-buffer)
+(global-set-key (kbd "C-c n") 'indent-region-or-buffer)
+
+;; Transpose stuff with M-t
+(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
+(global-set-key (kbd "M-t l") 'transpose-lines)
+(global-set-key (kbd "M-t p") 'transpose-params)
+(global-set-key (kbd "M-t s") 'transpose-sexps)
+(global-set-key (kbd "M-t w") 'transpose-words)
 
 (use-package iedit)
 (use-package rainbow-delimiters
@@ -494,14 +506,6 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (use-package org-bullets
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-;; (use-package find-file-in-project
-;;   :init (setq ffip-prefer-ido-mode t)
-;;   :bind (("C-x f" . find-file-in-project)
-;;          ("C-x C-f" . ido-find-file)))
-
-(use-package fiplr
-  :bind (("C-x f" . fiplr-find-file)))
-
 (use-package dired-sidebar
   :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
   :ensure t
@@ -529,6 +533,39 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (add-to-list 'auto-mode-alist '("\\.liquid" . jekyll-html-mode))
 (use-package yaml-mode)
 
+
+(defun rotate-windows ()
+  "Rotate your windows"
+  (interactive)
+  (cond ((not (> (count-windows)1))
+         (message "You can't rotate a single window!"))
+        (t
+         (setq i 1)
+         (setq numWindows (count-windows))
+         (while  (< i numWindows)
+           (let* (
+                  (w1 (elt (window-list) i))
+                  (w2 (elt (window-list) (+ (% i numWindows) 1)))
+
+                  (b1 (window-buffer w1))
+                  (b2 (window-buffer w2))
+
+                  (s1 (window-start w1))
+                  (s2 (window-start w2))
+                  )
+             (set-window-buffer w1  b2)
+             (set-window-buffer w2 b1)
+             (set-window-start w1 s2)
+             (set-window-start w2 s1)
+             (setq i (1+ i)))))))
+
+(global-set-key (kbd "C-]") 'rotate-windows)
+;; Move windows, even in org-mode
+(global-set-key (kbd "<s-right>") 'windmove-right)
+(global-set-key (kbd "<s-left>") 'windmove-left)
+(global-set-key (kbd "<s-up>") 'windmove-up)
+(global-set-key (kbd "<s-down>") 'windmove-down)
+
 (defun system-is-imac ()
   (interactive)
   (string-equal system-name "iMac-Ignacy.local"))
@@ -541,29 +578,25 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
 ;; (use-package challenger-deep-theme)
 ;; (load-theme 'challenger-deep t)
-
 ;; (use-package hemera-theme
 ;;   :init (load-theme 'hemera t))
-
 ;; (use-package exotica-theme
 ;;   :init (load-theme 'exotica t))
-
 ;; (use-package rebecca-theme
 ;;   :init (load-theme 'rebecca t))
-
 ;; (use-package github-modern-theme
 ;;   :init (load-theme 'github-modern t))
-
-(load-theme 'awemacs t)
-
+;;(load-theme 'awemacs t)
 ;; (use-package sexy-monochrome-theme
-;;    (load-theme 'sexy-monochrome t))
-
+;;   :init (load-theme 'sexy-monochrome t))
 ;; (use-package kaolin-themes
 ;;   :init (load-theme 'kaolin-light t))
 
+(use-package apropospriate-theme
+  :init (load-theme 'apropospriate-light t))
+
 (if (system-is-imac)
-    (set-default-font "Monaco 16")
+    (set-default-font "Hack 16")
   (set-default-font "Lucida Grande Mono 14"))
 
 ;; Local Variables:
