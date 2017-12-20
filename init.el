@@ -174,6 +174,7 @@ sabort completely with `C-g'."
   :config (custom-set-variables '(coffee-tab-width 2))
   :init (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode)))
 
+(use-package json-mode)
 (use-package js2-mode
   :init (progn
           (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-jsx-mode))
