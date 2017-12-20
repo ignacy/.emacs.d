@@ -582,10 +582,11 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
 ;; (use-package challenger-deep-theme)
 ;; (load-theme 'challenger-deep t)
-(use-package hemera-theme
-  :init (load-theme 'hemera t))
+;; (use-package hemera-theme
+;;   :init (load-theme 'hemera t))
+(use-package anti-zenburn-theme
+  :init (load-theme 'anti-zenburn t))
 
-(load-theme 'gandalf t)
 ;; (use-package exotica-theme
 ;;   :init (load-theme 'exotica t))
 ;; (use-package rebecca-theme
