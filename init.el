@@ -44,6 +44,7 @@
   :bind (("C-c o" . ido-occur)))
 
 (use-package graphql-mode)
+(use-package es-mode)
 
 (require 'ido)
 (ido-mode t)
@@ -81,8 +82,11 @@
   :init (smex-initialize)
   :bind (("M-x" . smex)))
 
+(use-package ruby-test-mode)
 (use-package ruby-mode
   :init (progn
+          (add-hook 'ruby-mode-hook
+                    (lambda () (ruby-test-mode 1)))
           (add-hook 'ruby-mode-hook
                     (lambda () (subword-mode 1)))))
 
@@ -153,12 +157,12 @@ sabort completely with `C-g'."
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
-(use-package rspec-mode
-  :config (progn
-            (setq rspec-use-rake-when-possible nil)
-            (setq rspec-use-rvm nil)
-            (setq rspec-use-bundler-when-possible 't)
-            (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)))
+;; (use-package rspec-mode
+;;   :config (progn
+;;             (setq rspec-use-rake-when-possible nil)
+;;             (setq rspec-use-rvm nil)
+;;             (setq rspec-use-bundler-when-possible 't)
+;;             (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)))
 
 (use-package smart-jump
   :ensure t
@@ -421,7 +425,6 @@ might be bad."
                   ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org") "* %?\n %U\n  %i\n  %a")
                   ("n" "note" entry (file org-default-notes-file) "* %? :NOTE:\n"))))
 
-          ;;(global-set-key (kbd "<f5>") (lambda() (interactive) (find-file "~/Dropbox/org/journal.org")))
 
           (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
           (setq org-refile-use-outline-path 'file)
@@ -498,7 +501,6 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
           (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
           (global-set-key "\C-cl" 'org-store-link)
-          (global-set-key (kbd "<f5>") 'org-capture)
           (global-set-key (kbd "C-c C-c") 'org-capture)
           (global-set-key (kbd "C-c c") 'org-capture)
           (global-set-key "\C-ca" 'org-agenda)))
@@ -526,6 +528,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 (global-set-key (kbd "C-c d") 'cd)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
+(global-set-key (kbd "<f5>") 'bookmark-jump)
 
 
 (use-package jekyll-modes)
@@ -578,8 +581,10 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
 ;; (use-package challenger-deep-theme)
 ;; (load-theme 'challenger-deep t)
-;; (use-package hemera-theme
-;;   :init (load-theme 'hemera t))
+(use-package hemera-theme
+  :init (load-theme 'hemera t))
+
+(load-theme 'gandalf t)
 ;; (use-package exotica-theme
 ;;   :init (load-theme 'exotica t))
 ;; (use-package rebecca-theme
@@ -590,10 +595,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;; (use-package sexy-monochrome-theme
 ;;   :init (load-theme 'sexy-monochrome t))
 ;; (use-package kaolin-themes
-;;   :init (load-theme 'kaolin-light t))
-
-(use-package apropospriate-theme
-  :init (load-theme 'apropospriate-light t))
+;;   :init (load-theme 'kaolin-tribal t))
 
 (if (system-is-imac)
     (set-default-font "Hack 16")
