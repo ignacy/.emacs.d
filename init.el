@@ -7,6 +7,7 @@
 (setq use-package-always-ensure t)
 (require 'use-package)
 
+(set-fringe-mode 0)
 (use-package better-defaults)
 (global-auto-revert-mode 1)
 (setq inhibit-startup-message 't)
@@ -584,8 +585,10 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 ;; (load-theme 'challenger-deep t)
 ;; (use-package hemera-theme
 ;;   :init (load-theme 'hemera t))
-(use-package anti-zenburn-theme
-  :init (load-theme 'anti-zenburn t))
+;; (use-package anti-zenburn-theme
+;;   :init (load-theme 'anti-zenburn t))
+
+(load-theme 'meacupla t)
 
 ;; (use-package exotica-theme
 ;;   :init (load-theme 'exotica t))
@@ -601,7 +604,7 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
 (if (system-is-imac)
     (set-default-font "Hack 16")
-  (set-default-font "Lucida Grande Mono 14"))
+  (set-default-font "Hack 14"))
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
