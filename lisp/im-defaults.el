@@ -7,6 +7,7 @@
 (setq use-package-always-ensure t)
 (require 'use-package)
 
+(require 'im-org-setup)
 (use-package auto-async-byte-compile)
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 

@@ -1,7 +1,5 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'im-defaults)
-(require 'im-org-setup)
-
 
 (use-package ido-occur
   :bind (("C-c o" . ido-occur)))
