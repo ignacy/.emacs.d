@@ -133,6 +133,61 @@
           (global-set-key (kbd "<escape> g") 'magit-status)
           (global-set-key (kbd "C-x g") 'magit-status)))
 
+(defun rename-file-and-buffer ()
+  "Rename the current buffer and file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (message "Buffer is not visiting a file!")
+      (let ((new-name (read-file-name "New name: " filename)))
+        (cond
+         ((vc-backend filename) (vc-rename-file filename new-name))
+         (t
+          (rename-file filename new-name t)
+          (set-visited-file-name new-name t t)))))))
+
+(setq dired-auto-revert-buffer t    ; Revert on re-visiting
+      dired-listing-switches "-alhF"
+      dired-ls-F-marks-symlinks t   ; -F marks links with @
+      dired-recursive-copies 'always
+      dired-dwim-target t)
+
+
+(use-package recentf
+  :init (progn
+          (setq recentf-auto-cleanup 'never)
+          (recentf-mode t)
+          (setq recentf-max-saved-items 2000)
+          (setq recentf-max-menu-items 10)
+          (setq recentf-auto-cleanup 'never);; disable before we start recentf! If using Tramp a lot.
+          (setq recentf-exclude (list "/\\.git/.*\\'" ; Git contents
+                                      "/elpa/.*\\'" ; Package files
+                                      "TAGS"
+                                      "/itsalltext/" ; It's all text temp files
+                                      ;; And all other kinds of boring files
+                                      #'ignoramus-boring-p))))
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to find a recent file."
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+
+(setq custom-file (concat dotfiles-dir "custom.el"))
+(load custom-file)
+
+(global-unset-key (kbd "<left>"))
+(global-unset-key (kbd "<right>"))
+(global-unset-key (kbd "<up>"))
+(global-unset-key (kbd "<down>"))
+
+(setq column-number-mode t)
+(setq shell-file-name "zsh")
+(setenv "SHELL" shell-file-name)
+
+(use-package which-key :init (which-key-mode))
 
 (defun top-join-line ()
   "Join the current line with the line beneath it."
