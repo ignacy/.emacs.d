@@ -113,6 +113,27 @@
           (setq rbenv-show-active-ruby-in-modeline nil)
           (ignore-errors (global-rbenv-mode))))
 
+(use-package yasnippet
+  :init (yas-global-mode 1))
+
+(use-package magit
+  :config (progn
+            (setq magit-process-popup-time 1)
+            (magit-add-section-hook 'magit-status-sections-hook
+                                    'magit-insert-unpushed-to-upstream
+                                    'magit-insert-unpushed-to-upstream-or-recent
+                                    'replace)
+            (setq magit-completing-read-function 'ido-completing-read))
+  :init (progn
+          (defun im/magit-soft-reset-head~1 ()
+            "Undo last commit (soft)"
+            (interactive)
+            (magit-reset-soft "HEAD~1"))
+
+          (global-set-key (kbd "<escape> g") 'magit-status)
+          (global-set-key (kbd "C-x g") 'magit-status)))
+
+
 (defun top-join-line ()
   "Join the current line with the line beneath it."
   (interactive)

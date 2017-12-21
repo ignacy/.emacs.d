@@ -1,4 +1,4 @@
-(require 'defaults) ;; Things that seldom change
+(load-file "~/.emacs.d/defaults.el") ;; Things that seldom change
 
 (use-package ido-occur
   :bind (("C-c o" . ido-occur)))
@@ -101,13 +101,12 @@ sabort completely with `C-g'."
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
-(use-package yasnippet
-  :init (yas-global-mode 1))
 (use-package symbol-overlay
   :init (progn
           (add-hook 'prog-mode-hook 'symbol-overlay-mode)
           (global-set-key (kbd "M-i") 'symbol-overlay-put)
           (global-set-key (kbd "M-o") 'symbol-overlay-remove-all)))
+
 (use-package wrap-region
   :init (progn
           (wrap-region-global-mode +1)
@@ -117,23 +116,6 @@ sabort completely with `C-g'."
 (use-package expand-region
   :defer t
   :bind ("M-2" . er/expand-region))
-
-(use-package magit
-  :config (progn
-            (setq magit-process-popup-time 1)
-            (magit-add-section-hook 'magit-status-sections-hook
-                                    'magit-insert-unpushed-to-upstream
-                                    'magit-insert-unpushed-to-upstream-or-recent
-                                    'replace)
-            (setq magit-completing-read-function 'ido-completing-read))
-  :init (progn
-          (defun im/magit-soft-reset-head~1 ()
-            "Undo last commit (soft)"
-            (interactive)
-            (magit-reset-soft "HEAD~1"))
-
-          (global-set-key (kbd "<escape> g") 'magit-status)
-          (global-set-key (kbd "C-x g") 'magit-status)))
 
 (use-package hierarchy)
 (use-package json-navigator)
