@@ -1,122 +1,18 @@
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(when (not package-archive-contents) (package-refresh-contents))
-(unless (package-installed-p 'use-package) (package-install 'use-package))
-(setq im-synched-dir "~/Dropbox/")
-(setq use-package-always-ensure t)
-(require 'use-package)
-
-(set-fringe-mode 0)
-(use-package better-defaults)
-(global-auto-revert-mode 1)
-(setq inhibit-startup-message 't)
-(setq tags-add-tables nil)
-(setq tags-revert-without-query 1)
-(set-default 'truncate-lines t)
-(fset 'yes-or-no-p 'y-or-n-p)
-(setq make-backup-files nil)
-(setq ring-bell-function 'ignore)
-(delete-selection-mode t)
-(setq dotfiles-dir "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-
-(setq mac-option-modifier 'super)
-(setq mac-command-modifier 'meta)
-
-(use-package exec-path-from-shell
-  :init (progn
-          (setq exec-path-from-shell-arguments '("-l"))
-          (exec-path-from-shell-initialize)
-          (exec-path-from-shell-copy-env "GOPATH")
-          (exec-path-from-shell-copy-env "PATH")))
-(use-package company
-  :init (progn
-          (setq company-dabbrev-downcase nil)
-          (setq company-dabbrev-ignore-case nil)
-          (global-company-mode t)))
-(setq abbrev-file-name (concat dotfiles-dir "abbrevations"))
-(setq dabbrev-case-replace nil)
-(setq default-abbrev-mode t)
-(if (file-exists-p abbrev-file-name)
-    (quietly-read-abbrev-file))
+(require 'defaults) ;; Things that seldom change
 
 (use-package ido-occur
   :bind (("C-c o" . ido-occur)))
-
 (use-package graphql-mode)
 (use-package es-mode)
-
-(require 'ido)
-(ido-mode t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-case-fold nil
-      ido-auto-merge-work-directories-length -1
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point nil
-      ido-max-prospects 10)
-(use-package flx-ido
-  :init (progn
-          (flx-ido-mode 1)
-          (setq ido-use-faces nil)))
-
-(use-package ido-vertical-mode
-  :init (progn
-          (ido-vertical-mode)
-          (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right)))
-
-(use-package ido-completing-read+
-  :init (ido-ubiquitous-mode 1))
-
-(use-package projectile
-  :bind (
-         ("C-c C-p" . projectile-switch-project)
-         ("C-x f" . projectile-find-file)))
-
-(defun switch-project ()
-  (interactive)
-  (let* ((project (ido-completing-read+ "Project: " '("a" "b" "c"))))
-    (message "Switching to project %s" project)))
-
 (use-package smex
   :init (smex-initialize)
   :bind (("M-x" . smex)))
-
 (use-package ruby-test-mode)
-(use-package ruby-mode
-  :init (progn
-          (add-hook 'ruby-mode-hook
-                    (lambda () (ruby-test-mode 1)))
-          (add-hook 'ruby-mode-hook
-                    (lambda () (subword-mode 1)))))
-
-(setq ruby-use-encoding-map nil)
-(setq ruby-deep-arglist nil)
-(setq ruby-deep-indent-paren '(?\[ ?\] t))
-(setq ruby-insert-encoding-magic-comment nil)
-(setq ruby-deep-indent-paren-style nil)
-(setq ruby-deep-indent-paren nil)
-
-(use-package rubocop
-  :init (define-key ruby-mode-map (kbd "C-c C-f") 'rubocop-autocorrect-current-file))
-
-(use-package rbenv
-  :init (progn
-          (setq rbenv-show-active-ruby-in-modeline nil)
-          (ignore-errors (global-rbenv-mode))))
-
 (use-package flycheck
-  :config (setq-default flycheck-disabled-checkers '(ruby-reek))
+  ;;:config (setq-default flycheck-disabled-checkers '(ruby-reek))
   :init (global-flycheck-mode t))
 
-(when (executable-find "hunspell")
-  (setq-default ispell-program-name "hunspell")
-  (setq ispell-really-hunspell t))
-;;(add-hook 'prog-mode-hook 'flyspell-prog-mode)
-
 (define-key ctl-x-map "\C-i" #'endless/ispell-word-then-abbrev)
-
 (defun endless/ispell-word-then-abbrev (p)
   "Call `ispell-word', then create an abbrev for it.
 With prefix P, create local abbrev. Otherwise it will
@@ -149,12 +45,6 @@ sabort completely with `C-g'."
                    bef aft (if p "loc" "glob")))
       (user-error "No typo at or before point"))))
 
-(setq save-abbrevs 'silently)
-(setq-default abbrev-mode t)
-
-(use-package flyspell-popup
-  :bind (("C-:" . #'flyspell-popup-correct)))
-
 (use-package dockerfile-mode
   :init (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
 
@@ -181,20 +71,24 @@ sabort completely with `C-g'."
           (add-to-list 'auto-mode-alist '("\\.jsx$" . js2-jsx-mode))
           (setq-default js2-basic-offset 4)
           (setq-default js-indent-level 4)))
+
 (use-package haml-mode)
 (use-package slim-mode)
-(use-package go-mode
-  :config (progn
-            (add-hook 'go-mode-hook '(lambda ()
-                                       (setq gofmt-command "goimports")
-                                       (local-set-key (kbd "C-c C-f") 'gofmt)
-                                       (local-set-key (kbd "C-c C-k") 'godoc)
-                                       (setq tab-width 4)
-                                       (setq indent-tabs-mode 1)))
-            (add-hook 'before-save-hook 'gofmt-before-save)))
+
+;; (use-package go-mode
+;;   :config (progn
+;;             (add-hook 'go-mode-hook '(lambda ()
+;;                                        (setq gofmt-command "goimports")
+;;                                        (local-set-key (kbd "C-c C-f") 'gofmt)
+;;                                        (local-set-key (kbd "C-c C-k") 'godoc)
+;;                                        (setq tab-width 4)
+;;                                        (setq indent-tabs-mode 1)))
+;;             (add-hook 'before-save-hook 'gofmt-before-save)))
+
 (use-package ag
   :bind (("C-c r" . ag-files)
          ("M-r" . ag-regexp-project-at-point)))
+
 (global-set-key (kbd "M-c") 'query-replace-regexp)
 
 (use-package anzu
@@ -206,34 +100,9 @@ sabort completely with `C-g'."
                (keyfreq-autosave-mode 1)))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(defun disable-all-themes ()
-  "Disable all active themes."
-  (dolist (i custom-enabled-themes)
-    (disable-theme i)))
-(defadvice load-theme (before disable-themes-first activate)
-  (disable-all-themes))
-(use-package auto-yasnippet
-  :bind (("C-c s" . #'aya-create)
-         ("C-c i" . #'aya-expand)))
+
 (use-package yasnippet
   :init (yas-global-mode 1))
-(setq-default mode-line-format
-              (list
-               '(:eval (propertize "%* " 'face font-lock-warning-face))
-
-               ;; value of current buffer name
-               "%b, "
-               '(vc-mode vc-mode)
-
-               " (%l %c) "
-               ))
-
-(setq-default display-line-numbers 't)
-
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
-(setq kill-ring-max 200                 ; More killed items
-      kill-do-not-save-duplicates t     ; No duplicates in kill ring
-      save-interprogram-paste-before-kill t)
 (use-package symbol-overlay
   :init (progn
           (add-hook 'prog-mode-hook 'symbol-overlay-mode)
@@ -244,9 +113,11 @@ sabort completely with `C-g'."
           (wrap-region-global-mode +1)
           (wrap-region-add-wrapper "`" "`")
           (wrap-region-add-wrapper "{" "}")))
+
 (use-package expand-region
   :defer t
   :bind ("M-2" . er/expand-region))
+
 (use-package magit
   :config (progn
             (setq magit-process-popup-time 1)
@@ -266,30 +137,6 @@ sabort completely with `C-g'."
 
 (use-package hierarchy)
 (use-package json-navigator)
-
-
-(global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
-(global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
-(global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
-
-(defun join-lines (arg)
-  (interactive "p")
-  (end-of-line)
-  (delete-char 1)
-  (delete-horizontal-space)
-  (insert " "))
-(global-set-key (kbd "M-j") 'join-lines)
-
-(defun cleanup-buffer-safe ()
-  "Perform a bunch of safe operations on the whitespace content of a buffer.
-Does not indent buffer, because it is used for a `before-save-hook`, and that
-might be bad."
-  (interactive)
-  (untabify (point-min) (point-max))
-  (delete-trailing-whitespace)
-  (set-buffer-file-coding-system 'utf-8))
-
-(add-hook 'before-save-hook 'cleanup-buffer-safe)
 
 (defun rename-file-and-buffer ()
   "Rename the current buffer and file it is visiting."
