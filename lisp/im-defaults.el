@@ -7,6 +7,11 @@
 (setq use-package-always-ensure t)
 (require 'use-package)
 
+(use-package auto-async-byte-compile)
+(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+
+
+
 (use-package better-defaults)
 (global-auto-revert-mode 1)
 (setq inhibit-startup-message 't)
@@ -18,7 +23,6 @@
 (setq ring-bell-function 'ignore)
 (delete-selection-mode t)
 (setq dotfiles-dir "~/.emacs.d/")
-(add-to-list 'load-path "~/.emacs.d/lisp/")
 (setq kill-ring-max 200                 ; More killed items
       kill-do-not-save-duplicates t     ; No duplicates in kill ring
       save-interprogram-paste-before-kill t)
@@ -199,4 +203,4 @@
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-S-p") (lambda () (interactive) (ignore-errors (previous-line 5))))
 
-(provide 'defaults)
+(provide 'im-defaults)

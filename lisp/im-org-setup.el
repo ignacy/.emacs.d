@@ -118,4 +118,4 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 
-(provide 'org-setup)
+(provide 'im-org-setup)

@@ -1,5 +1,7 @@
-(load-file "~/.emacs.d/defaults.el") ;; Things that seldom change
-(load-file "~/.emacs.d/org-setup.el") ;; Things that seldom change
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'im-defaults)
+(require 'im-org-setup)
+
 
 (use-package ido-occur
   :bind (("C-c o" . ido-occur)))
