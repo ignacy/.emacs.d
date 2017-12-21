@@ -264,8 +264,9 @@ sabort completely with `C-g'."
           (global-set-key (kbd "<escape> g") 'magit-status)
           (global-set-key (kbd "C-x g") 'magit-status)))
 
-(use-package github-browse-file
-  :bind (("C-c g" . github-browse-file)))
+(use-package hierarchy)
+(use-package json-navigator)
+
 
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))
