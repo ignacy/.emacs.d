@@ -150,6 +150,11 @@ sabort completely with `C-g'."
 (add-to-list 'auto-mode-alist '("\\.liquid" . jekyll-html-mode))
 (use-package yaml-mode)
 
+
+(use-package highlight-indentation
+  :init (progn
+          (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)))
+
 (global-set-key (kbd "<s-right>") 'windmove-right)
 (global-set-key (kbd "<s-left>") 'windmove-left)
 (global-set-key (kbd "<s-up>") 'windmove-up)
@@ -159,26 +164,26 @@ sabort completely with `C-g'."
   (interactive)
   (string-equal (system-name) "iMac-Ignacy.local"))
 
+(defadvice load-theme
+  (before theme-dont-propagate activate)
+  (mapcar #'disable-theme custom-enabled-themes))
+
 ;; (use-package challenger-deep-theme)
 ;; (load-theme 'challenger-deep t)
 ;; (use-package hemera-theme
 ;;   :init (load-theme 'hemera t))
+
 ;; (use-package anti-zenburn-theme
-;;   :init (load-theme 'anti-zenburn t))
+;;    :init (load-theme 'anti-zenburn t))
 
-(load-theme 'meacupla t)
-
-;; (use-package exotica-theme
-;;   :init (load-theme 'exotica t))
-;; (use-package rebecca-theme
-;;   :init (load-theme 'rebecca t))
 ;; (use-package github-modern-theme
 ;;   :init (load-theme 'github-modern t))
-;;(load-theme 'awemacs t)
+(load-theme 'awemacs t)
 ;; (use-package sexy-monochrome-theme
 ;;   :init (load-theme 'sexy-monochrome t))
+
 ;; (use-package kaolin-themes
-;;   :init (load-theme 'kaolin-tribal t))
+;;   :init (load-theme 'kaolin-ocean t))
 
 (if (system-is-imac)
     (set-frame-font "Hack 16")

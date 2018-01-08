@@ -1,4 +1,5 @@
 (package-initialize)
+
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (when (not package-archive-contents) (package-refresh-contents))
@@ -8,10 +9,6 @@
 (require 'use-package)
 
 (require 'im-org-setup)
-(use-package auto-async-byte-compile)
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
-
-
 
 (use-package better-defaults)
 (global-auto-revert-mode 1)
@@ -28,7 +25,7 @@
       kill-do-not-save-duplicates t     ; No duplicates in kill ring
       save-interprogram-paste-before-kill t)
 
-(setq mac-option-modifier 'super)
+(setq mac-option-modifier 'option) ;; ogonki
 (setq mac-command-modifier 'meta)
 
 (use-package exec-path-from-shell
@@ -96,10 +93,14 @@
          ("C-c C-p" . projectile-switch-project)
          ("C-x f" . projectile-find-file)))
 
+(use-package ruby-test-mode
+  :bind (("M-\]" . ruby-test-run)))
+
 (use-package ruby-mode
   :init (progn
           (add-hook 'ruby-mode-hook
                     (lambda () (ruby-test-mode 1)))
+
           (add-hook 'ruby-mode-hook
                     (lambda () (subword-mode 1)))))
 
@@ -199,6 +200,36 @@
   (interactive)
   (delete-indentation 1))
 (global-set-key (kbd "M-j") 'top-join-line)
+
+(defun cleanup-buffer-safe ()
+  "Perform a bunch of safe operations on the whitespace content of a buffer.
+ Does not indent buffer, because it is used for a `before-save-hook`, and that
+ might be bad."
+  (interactive)
+  (untabify (point-min) (point-max))
+  (delete-trailing-whitespace)
+  (set-buffer-file-coding-system 'utf-8))
+
+(add-hook 'before-save-hook 'cleanup-buffer-safe)
+
+(defun indent-buffer ()
+  "Indent the currently visited buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun indent-region-or-buffer ()
+  "Indent a region if selected, otherwise the whole buffer."
+  (interactive)
+  (save-excursion
+    (if (region-active-p)
+        (progn
+          (indent-region (region-beginning) (region-end))
+          (message "Indented selected region."))
+      (progn
+        (indent-buffer)
+        (message "Indented buffer.")))))
+
+(global-set-key (kbd "M-C-\\") 'indent-region-or-buffer)
 
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))
 (global-set-key (kbd "C-S-n") (lambda () (interactive) (ignore-errors (next-line 5))))

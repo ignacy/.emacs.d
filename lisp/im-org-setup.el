@@ -6,7 +6,7 @@
                 '((sequence "TODO" "INPROGRESS" "WAITING" "|" "DONE" "CANCELED")))
 
           (setq-default im-notes-dir (expand-file-name (concat im-synched-dir "org/")))
-          (setq-default org-default-notes-file (concat im-notes-dir "notes.org"))
+          (setq-default org-default-notes-file (concat im-notes-dir "todo.org"))
           (setq-default org-agenda-files (list "~/Dropbox/org"))
           (setq org-agenda-text-search-extra-files '(agenda-archives))
           (setq org-enforce-todo-dependencies t)
@@ -70,8 +70,6 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
                                '(or (air-org-skip-subtree-if-priority ?A)
                                     (org-agenda-skip-if nil '(scheduled deadline))))))))))
 
-
-
           (setq org-fontify-done-headline t)
           (custom-set-faces
            '(org-done ((t (:foreground "PaleGreen"
@@ -116,6 +114,5 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
 
 (use-package org-bullets
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
 
 (provide 'im-org-setup)
