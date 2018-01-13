@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ruby-mode
+# key: rubodis
+# --
+
+# rubocop:disable Metrics/$0

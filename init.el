@@ -145,14 +145,18 @@ sabort completely with `C-g'."
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "<f5>") 'bookmark-jump)
 
+(use-package yaml-mode)
 (use-package jekyll-modes)
+(add-hook 'jekyll-mode-hook 'highlight-indentation-current-column-mode)
 (add-to-list 'auto-mode-alist '("\\.md$" . jekyll-markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.liquid" . jekyll-html-mode))
-(use-package yaml-mode)
 
+(use-package smart-shift
+  :init (global-smart-shift-mode 1))
 
 (use-package highlight-indentation
   :init (progn
+          (set-face-background 'highlight-indentation-current-column-face (face-attribute 'region :background))
           (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)))
 
 (global-set-key (kbd "<s-right>") 'windmove-right)
@@ -165,7 +169,7 @@ sabort completely with `C-g'."
   (string-equal (system-name) "iMac-Ignacy.local"))
 
 (defadvice load-theme
-  (before theme-dont-propagate activate)
+    (before theme-dont-propagate activate)
   (mapcar #'disable-theme custom-enabled-themes))
 
 ;; (use-package challenger-deep-theme)
@@ -173,20 +177,20 @@ sabort completely with `C-g'."
 ;; (use-package hemera-theme
 ;;   :init (load-theme 'hemera t))
 
-;; (use-package anti-zenburn-theme
-;;    :init (load-theme 'anti-zenburn t))
-
+;;(load-theme 'spacemacs-dark t)
 ;; (use-package github-modern-theme
-;;   :init (load-theme 'github-modern t))
-(load-theme 'awemacs t)
+;;    :init (load-theme 'github-modern t))
+;;(load-theme 'awemacs t)
+
 ;; (use-package sexy-monochrome-theme
 ;;   :init (load-theme 'sexy-monochrome t))
 
-;; (use-package kaolin-themes
-;;   :init (load-theme 'kaolin-ocean t))
+(use-package kaolin-themes
+  :init (load-theme 'kaolin-galaxy t))
+;;(load-theme 'sanityinc-tomorrow-day t)
 
 (if (system-is-imac)
-    (set-frame-font "Hack 16")
+    (set-frame-font "Hack 17")
   (set-frame-font "Hack 14"))
 
 ;; Local Variables:

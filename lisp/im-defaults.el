@@ -10,6 +10,8 @@
 
 (require 'im-org-setup)
 
+(set-fringe-mode 0)
+
 (use-package better-defaults)
 (global-auto-revert-mode 1)
 (setq inhibit-startup-message 't)
@@ -89,9 +91,14 @@
   :init (ido-ubiquitous-mode 1))
 
 (use-package projectile
+  :init (progn
+          (setq projectile-switch-project-action #'projectile-dired)
+          (projectile-global-mode)
+          )
   :bind (
-         ("C-c C-p" . projectile-switch-project)
          ("C-x f" . projectile-find-file)))
+
+(global-set-key (kbd "M-1") 'projectile-switch-project)
 
 (use-package ruby-test-mode
   :bind (("M-\]" . ruby-test-run)))

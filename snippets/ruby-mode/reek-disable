@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ruby-mode
+# key: reekdis
+# --
+
+# :reek:ManualDispatch$0
