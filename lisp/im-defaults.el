@@ -41,7 +41,7 @@
   :init (progn
           (setq company-dabbrev-downcase nil)
           (setq company-dabbrev-ignore-case nil)
-          (global-company-mode t)))
+          (add-hook 'after-init-hook 'global-company-mode)))
 
 (setq abbrev-file-name (concat dotfiles-dir "abbrevations"))
 (setq dabbrev-case-replace nil)
@@ -94,22 +94,17 @@
   :init (progn
           (setq projectile-switch-project-action #'projectile-dired)
           (projectile-global-mode)
-          )
-  :bind (
-         ("C-x f" . projectile-find-file)))
-
-(global-set-key (kbd "M-1") 'projectile-switch-project)
+          ))
 
 (use-package ruby-test-mode
-  :bind (("M-\]" . ruby-test-run)))
+  :init (progn
+          (unbind-key (kbd "M-t"))
+          (global-set-key (kbd "M-t") 'ruby-test-run)))
 
 (use-package ruby-mode
   :init (progn
-          (add-hook 'ruby-mode-hook
-                    (lambda () (ruby-test-mode 1)))
-
-          (add-hook 'ruby-mode-hook
-                    (lambda () (subword-mode 1)))))
+          (add-hook 'ruby-mode-hook (lambda () (ruby-test-mode 1)))
+          (add-hook 'ruby-mode-hook (lambda () (subword-mode 1)))))
 
 (setq ruby-use-encoding-map nil)
 (setq ruby-deep-arglist nil)
@@ -236,6 +231,7 @@
         (indent-buffer)
         (message "Indented buffer.")))))
 
+(global-set-key (kbd "M-s") 'save-buffer)
 (global-set-key (kbd "M-C-\\") 'indent-region-or-buffer)
 
 (global-set-key (kbd "C-<tab>") (lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))))

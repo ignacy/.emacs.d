@@ -56,6 +56,9 @@ sabort completely with `C-g'."
 ;;             (setq rspec-use-bundler-when-possible 't)
 ;;             (add-hook 'ruby-mode-hook 'rspec-verifiable-mode)))
 
+(use-package idle-highlight-mode
+  :init (add-hook 'prog-mode-hook 'idle-highlight-mode))
+
 (use-package smart-jump
   :ensure t
   :bind (("C-M-." . 'smart-jump-go))
@@ -122,12 +125,6 @@ sabort completely with `C-g'."
 (use-package hierarchy)
 (use-package json-navigator)
 
-;; Transpose stuff with M-t
-(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
-(global-set-key (kbd "M-t l") 'transpose-lines)
-(global-set-key (kbd "M-t p") 'transpose-params)
-(global-set-key (kbd "M-t s") 'transpose-sexps)
-(global-set-key (kbd "M-t w") 'transpose-words)
 
 (use-package rainbow-delimiters
   :config (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
@@ -159,11 +156,6 @@ sabort completely with `C-g'."
           (set-face-background 'highlight-indentation-current-column-face (face-attribute 'region :background))
           (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)))
 
-(global-set-key (kbd "<s-right>") 'windmove-right)
-(global-set-key (kbd "<s-left>") 'windmove-left)
-(global-set-key (kbd "<s-up>") 'windmove-up)
-(global-set-key (kbd "<s-down>") 'windmove-down)
-
 (defun system-is-imac ()
   (interactive)
   (string-equal (system-name) "iMac-Ignacy.local"))
@@ -182,12 +174,107 @@ sabort completely with `C-g'."
 ;;    :init (load-theme 'github-modern t))
 ;;(load-theme 'awemacs t)
 
+;;(load-theme 'typo t)
+
+;; (use-package eziam-theme)
+(load-theme 'eziam-light t)
+
+
 ;; (use-package sexy-monochrome-theme
 ;;   :init (load-theme 'sexy-monochrome t))
 
-(use-package kaolin-themes
-  :init (load-theme 'kaolin-galaxy t))
+;; (use-package kaolin-themes
+;;   :init (load-theme 'kaolin-galaxy t))
 ;;(load-theme 'sanityinc-tomorrow-day t)
+
+(use-package smartparens
+  :init (progn
+          (smartparens-global-mode)
+          (require 'smartparens-config)
+          (defmacro def-pairs (pairs)
+            `(progn
+               ,@(loop for (key . val) in pairs
+                       collect
+                       `(defun ,(read (concat
+                                       "wrap-with-"
+                                       (prin1-to-string key)
+                                       "s"))
+                            (&optional arg)
+                          (interactive "p")
+                          (sp-wrap-with-pair ,val)))))
+
+          (def-pairs ((paren . "(")
+                      (bracket . "[")
+                      (brace . "{")
+                      (single-quote . "'")
+                      (double-quote . "\"")
+                      (back-quote . "`")))
+          )
+  :bind (:map smartparens-mode-map
+              ("C-M-a" . sp-beginning-of-sexp)
+              ("C-M-e" . sp-end-of-sexp)
+
+              ("C-<down>" . sp-down-sexp)
+              ("C-<up>"   . sp-up-sexp)
+              ("M-<down>" . sp-backward-down-sexp)
+              ("M-<up>"   . sp-backward-up-sexp)
+
+              ("C-M-f" . sp-forward-sexp)
+              ("C-M-b" . sp-backward-sexp)
+
+              ("C-M-n" . sp-next-sexp)
+              ("C-M-p" . sp-previous-sexp)
+
+              ("C-S-f" . sp-forward-symbol)
+              ("C-S-b" . sp-backward-symbol)
+
+              ("C-<right>" . sp-forward-slurp-sexp)
+              ("M-<right>" . sp-forward-barf-sexp)
+              ("C-<left>"  . sp-backward-slurp-sexp)
+              ("M-<left>"  . sp-backward-barf-sexp)
+
+              ("C-M-t" . sp-transpose-sexp)
+              ("C-M-k" . sp-kill-sexp)
+              ("C-k"   . sp-kill-hybrid-sexp)
+              ("M-k"   . sp-backward-kill-sexp)
+              ("C-M-w" . sp-copy-sexp)
+              ("C-M-d" . delete-sexp)
+
+              ("M-<backspace>" . backward-kill-word)
+              ("C-<backspace>" . sp-backward-kill-word)
+              ([remap sp-backward-kill-word] . backward-kill-word)
+
+              ("M-[" . sp-backward-unwrap-sexp)
+              ("M-]" . sp-unwrap-sexp)
+
+              ("C-x C-t" . sp-transpose-hybrid-sexp)
+
+              ("C-c ("  . wrap-with-parens)
+              ("C-c ["  . wrap-with-brackets)
+              ("C-c {"  . wrap-with-braces)
+              ("C-c '"  . wrap-with-single-quotes)
+              ("C-c \"" . wrap-with-double-quotes)
+              ("C-c _"  . wrap-with-underscores)
+              ("C-c `"  . wrap-with-back-quotes)))
+
+
+(global-set-key (kbd "M-1") 'projectile-switch-project)
+(global-set-key (kbd "M-2") 'projectile-find-file)
+(global-set-key (kbd "M-3") 'projectile-switch-to-buffer)
+(global-set-key (kbd "C-x b") 'projectile-switch-to-buffer)
+
+
+(defun copy-from-osx ()
+  (shell-command-to-string "pbpaste"))
+
+(defun paste-to-osx (text &optional push)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
+
+(setq interprogram-cut-function 'paste-to-osx)
+(setq interprogram-paste-function 'copy-from-osx)
 
 (if (system-is-imac)
     (set-frame-font "Hack 17")
